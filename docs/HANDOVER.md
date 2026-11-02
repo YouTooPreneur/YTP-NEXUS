@@ -46,7 +46,7 @@ The way of working (history, handover, tracker tabs, Word copies, choices, desig
   - Never touch Agency OS (being closed; its screenshots are only a feature list).
   - Nexus never stores client or tool passwords: Vaultwarden links only (RULE-025, D-140). Aadhaar: last 4 digits only. Never import passwords.
   - Test mode during development: no message ever reaches a real client.
-  - No git commits unless the owner asks, except the one commit per finished task card that its builder makes (D-189, 2 Nov 2026).
+  - No git commits unless the owner asks, except the one commit per finished task card that its builder makes (D-189) and Claude's own planning saves to `main` (D-193). Uploads (`git push`) are run by the owner.
 
 ## 3. The process
 
