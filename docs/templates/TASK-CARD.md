@@ -8,6 +8,7 @@
 - TASK-XXXX must be **Done** in `docs/STATUS.md`
 - Read: `AGENTS.md`, `docs/logs/TASK-XXXX.md` (Notes for next task), <other files>
 - Work in your own git worktree on a branch cut from the current main; write the start commit in your log.
+- Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
 - Run `pnpm verify`. It must be green. If not: STOP and mark BLOCKED.
 - Run `pnpm verify --card TASK-XXXX` once: this card's tests must fail. Write both results in your log.
 

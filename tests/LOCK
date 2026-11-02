@@ -41,5 +41,6 @@ TASK-0010  apps/api/test/setup/logging.test.ts  76fd9835edb83d0cca2b14ff7e5d979d
 TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104d4fec1e62ddb8d7898084fe5273c3
 TASK-0011  apps/api/test/setup/route.test.ts  2aab207874ea55a6200a48ebb09609731c527a5b249dd8db0282350fd8de4a87
 TASK-0012  tests/setup/TASK-0012.test.mjs  a591e936fcdf3eac3686fa45513f500b9d429fe2f3e51fcdc9746faa7ea67ed9
+TASK-0013  apps/web/test/setup/api-status.test.tsx  b2532a6aecaac504e9e661edd6d08991e591f3ebb0dfb7453b3011863c8fd0df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
 TASK-0013  tests/setup/TASK-0013.test.mjs  bcbffb02a0e73a2e08e837204ef5f8999f2b03a1ad0ff13ad014cb512dd9741c
