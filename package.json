@@ -7,6 +7,8 @@
     "node": ">=24 <25"
   },
   "scripts": {
-    "api:generate": "pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api"
+    "api:generate": "pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api",
+    "services:up": "docker compose -f infra/compose.dev.yaml --env-file infra/.env up -d --wait",
+    "services:down": "docker compose -f infra/compose.dev.yaml --env-file infra/.env down"
   }
 }

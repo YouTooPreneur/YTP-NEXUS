@@ -1,0 +1,91 @@
+COMMAND: node --test tests/setup/TASK-0006.test.mjs
+EXIT: 0
+✔ the three services use pinned images, never latest (1.963ms)
+✔ the database starts with a development and a test database (0.2783ms)
+✔ the settings lists name every setting, in the agreed order, with no real secrets (1.3346ms)
+✔ the example settings files are kept, the real one never is (26.4354ms)
+✔ the root scripts start and stop the services (0.3877ms)
+✔ Docker accepts the compose file (115.4738ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 224.9023
+
+COMMAND: node --test tests/setup/TASK-0001.test.mjs tests/setup/TASK-0003.test.mjs tests/setup/TASK-0004.test.mjs tests/setup/TASK-0005.test.mjs tests/setup/TASK-0006.test.mjs
+EXIT: 0
+✔ package.json is the private workspace root (2.1928ms)
+✔ the pnpm workspace lists the apps and packages folders (0.5982ms)
+✔ the Node version file says 24 (0.2661ms)
+✔ the shared TypeScript settings are strict (0.2643ms)
+✔ editor and line-ending rules exist (0.4835ms)
+✔ .gitignore keeps generated and local files out, and keeps the old lines (0.3808ms)
+✔ the pinned pnpm is the one in use (520.5441ms)
+✔ the frontend package has the agreed name, scripts and exact versions (1.7468ms)
+✔ the page is English, fits phones and loads the app (1.3189ms)
+✔ during development /api goes to the backend on port 3000 (0.36ms)
+✔ the screen-parts package is set up (1.971ms)
+✔ the frontend uses Tailwind, the tokens and the self-hosted fonts (2.1379ms)
+✔ the page starts in Emerald (0.3443ms)
+✔ the root has one command that makes the API description and the client (1.1243ms)
+✔ the contract package and the client tool are pinned (0.5328ms)
+✔ the screens make the API client before they start or build (0.3124ms)
+✔ running the command writes openapi.json and the typed client with a health hook (2737.5262ms)
+✔ the generated files are never committed (100.8482ms)
+✔ the three services use pinned images, never latest (1.9857ms)
+✔ the database starts with a development and a test database (0.3251ms)
+✔ the settings lists name every setting, in the agreed order, with no real secrets (1.3903ms)
+✔ the example settings files are kept, the real one never is (29.8992ms)
+✔ the root scripts start and stop the services (0.4906ms)
+✔ Docker accepts the compose file (132.6001ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2982.1361
+
+COMMAND: pnpm services:up
+EXIT: 0
+$ docker compose -f infra/compose.dev.yaml --env-file infra/.env up -d --wait
+ Container ytp-nexus-dev-mailpit-1 Running 
+ Container ytp-nexus-dev-postgres-1 Running 
+ Container ytp-nexus-dev-seaweedfs-1 Running 
+ Container ytp-nexus-dev-mailpit-1 Waiting 
+ Container ytp-nexus-dev-postgres-1 Waiting 
+ Container ytp-nexus-dev-seaweedfs-1 Waiting 
+ Container ytp-nexus-dev-seaweedfs-1 Healthy 
+ Container ytp-nexus-dev-mailpit-1 Healthy 
+ Container ytp-nexus-dev-postgres-1 Healthy
+
+COMMAND: curl.exe -s -I http://localhost:8025
+EXIT: 0
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self'; script-src 'nonce-58TzlrAwFLw1JWHUHnxJFK'; style-src * 'unsafe-inline'; frame-src 'self'; img-src * data: blob:; font-src * data:; media-src 'self'; connect-src 'self' ws: wss:; object-src 'none'; base-uri 'self';
+Content-Type: text/html; charset=utf-8
+Referrer-Policy: no-referrer
+Date: Mon, 02 Nov 2026 17:23:35 GMT
+Content-Length: 776
+
+COMMAND: pnpm services:down
+EXIT: 0
+$ docker compose -f infra/compose.dev.yaml --env-file infra/.env down
+ Container ytp-nexus-dev-seaweedfs-1 Stopping 
+ Container ytp-nexus-dev-mailpit-1 Stopping 
+ Container ytp-nexus-dev-postgres-1 Stopping 
+ Container ytp-nexus-dev-postgres-1 Stopped 
+ Container ytp-nexus-dev-postgres-1 Removing 
+ Container ytp-nexus-dev-postgres-1 Removed 
+ Container ytp-nexus-dev-mailpit-1 Stopped 
+ Container ytp-nexus-dev-mailpit-1 Removing 
+ Container ytp-nexus-dev-mailpit-1 Removed 
+ Container ytp-nexus-dev-seaweedfs-1 Stopped 
+ Container ytp-nexus-dev-seaweedfs-1 Removing 
+ Container ytp-nexus-dev-seaweedfs-1 Removed 
+ Network ytp-nexus-dev_default Removing 
+ Network ytp-nexus-dev_default Removed

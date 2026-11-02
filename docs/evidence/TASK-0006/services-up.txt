@@ -1,0 +1,10 @@
+$ docker compose -f infra/compose.dev.yaml --env-file infra/.env up -d --wait
+ Container ytp-nexus-dev-postgres-1 Running 
+ Container ytp-nexus-dev-seaweedfs-1 Running 
+ Container ytp-nexus-dev-mailpit-1 Running 
+ Container ytp-nexus-dev-postgres-1 Waiting 
+ Container ytp-nexus-dev-seaweedfs-1 Waiting 
+ Container ytp-nexus-dev-mailpit-1 Waiting 
+ Container ytp-nexus-dev-postgres-1 Healthy 
+ Container ytp-nexus-dev-mailpit-1 Healthy 
+ Container ytp-nexus-dev-seaweedfs-1 Healthy 
