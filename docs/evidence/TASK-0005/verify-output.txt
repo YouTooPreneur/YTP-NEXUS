@@ -1,0 +1,89 @@
+COMMAND: pnpm --filter @ytp/contracts typecheck
+EXIT: 0
+
+COMMAND: pnpm --filter @ytp/contracts test
+EXIT: 0
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0005/packages/contracts
+
+ ✓ test/openapi.test.ts (6 tests) 9ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  21:49:05
+   Duration  291ms (import 78%, transform 12%, tests 6%, worker 4%)
+
+
+COMMAND: node --test tests/setup/TASK-0005.test.mjs
+EXIT: 0
+✔ the root has one command that makes the API description and the client (1.2286ms)
+✔ the contract package and the client tool are pinned (0.6237ms)
+✔ the screens make the API client before they start or build (0.3426ms)
+✔ running the command writes openapi.json and the typed client with a health hook (2607.8264ms)
+✔ the generated files are never committed (33.879ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2724.7602
+
+COMMAND: pnpm --filter @ytp/web typecheck
+EXIT: 0
+
+COMMAND: pnpm --filter @ytp/web test
+EXIT: 0
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0005/apps/web
+
+ ✓ test/setup/cleanup.test.tsx (2 tests) 30ms
+ ✓ test/setup/app.test.tsx (1 test) 113ms
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  21:49:11
+   Duration  1.44s (environment 77%, import 15%, tests 6%, worker 1%, transform 1%)
+
+
+COMMAND: pnpm --filter @ytp/web build
+EXIT: 0
+$ pnpm --workspace-root run api:generate && vite build
+$ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+$ tsx scripts/write-openapi.ts
+openapi.json written
+$ orval --config orval.config.ts
+🍻 orval v8.45.0 - A swagger client generator for typescript
+nexus - Cleaning output folder
+nexus - 🎉 YTP Nexus API - Your OpenAPI spec has been converted into ready to use orval!
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 21 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                            0.41 kB │ gzip:  0.28 kB
+dist/assets/dm-sans-latin-ext-400-normal-BtiwyxMk.woff2    7.36 kB
+dist/assets/dm-sans-latin-ext-600-normal-4vooXBpG.woff2    7.42 kB
+dist/assets/dm-sans-latin-ext-500-normal-BJfUCQsA.woff2    7.43 kB
+dist/assets/dm-sans-latin-ext-700-normal-CJIcxD6K.woff2    7.45 kB
+dist/assets/sora-latin-ext-600-normal-Cue1zdhl.woff2       7.53 kB
+dist/assets/sora-latin-ext-600-normal-DLOJK0Ta.woff        9.82 kB
+dist/assets/dm-sans-latin-ext-400-normal-BjWJ59Pq.woff     9.97 kB
+dist/assets/dm-sans-latin-ext-700-normal-BLI3TTWz.woff    10.01 kB
+dist/assets/dm-sans-latin-ext-600-normal-DRtaDpgU.woff    10.02 kB
+dist/assets/dm-sans-latin-ext-500-normal-DR84L5F-.woff    10.06 kB
+dist/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2       14.14 kB
+dist/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2       14.20 kB
+dist/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2       14.30 kB
+dist/assets/dm-sans-latin-700-normal-DvUfVpUG.woff2       14.34 kB
+dist/assets/sora-latin-600-normal-Cdg4DaK0.woff2          15.00 kB
+dist/assets/dm-sans-latin-600-normal-BmdmIIQ2.woff        18.32 kB
+dist/assets/dm-sans-latin-400-normal-BwCSEQnW.woff        18.35 kB
+dist/assets/dm-sans-latin-700-normal-CUSSCpQX.woff        18.50 kB
+dist/assets/dm-sans-latin-500-normal-Dr3UlScf.woff        18.52 kB
+dist/assets/sora-latin-600-normal-1_7fyUAY.woff           18.85 kB
+dist/assets/index-BJ4smwy8.css                            10.57 kB │ gzip:  2.87 kB
+dist/assets/index-Ce6PqLTg.js                            219.63 kB │ gzip: 68.63 kB
+
+✓ built in 262ms

@@ -6,5 +6,7 @@
   "engines": {
     "node": ">=24 <25"
   },
-  "scripts": {}
+  "scripts": {
+    "api:generate": "pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api"
+  }
 }
