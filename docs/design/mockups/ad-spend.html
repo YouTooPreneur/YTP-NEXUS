@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Ad spend rebilling</title>
+<!-- Batch 5 · SCR-113 Ad spend rebilling: spend per client per month, the client's fee (none, % or fixed) from their agreement, and the bill; spend is typed in or read from the platform's invoice until the Meta and Google doors are connected (FIN-017, CON-015, FIN-004, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .tbl td{padding-top:10px;padding-bottom:10px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:22px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .plat{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line-soft);background:var(--card-2);white-space:nowrap}
+  .plat i{width:8px;height:8px;border-radius:50%}
+  .who2{font-size:12px;font-weight:600}
+  .who2.ytp{color:var(--ink)}
+  .who2.cl{color:var(--muted)}
+  .fee{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--active-bg);color:var(--ink);white-space:nowrap}
+  .lay2{display:flex;flex-direction:column;gap:12px}
+  .calc{display:grid;grid-template-columns:auto 360px 1fr 1fr;gap:18px;align-items:center;padding:14px 18px}
+  .calc h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px}
+  .sum{display:grid;grid-template-columns:1fr auto;gap:6px;font-size:13px;padding:12px 14px;border-radius:12px;background:var(--card-2)}
+  .sum span{color:var(--muted)}
+  .sum b{font-weight:700;text-align:right}
+  .sum .tot2{border-top:1.5px solid var(--line);padding-top:6px;font-size:14px;color:var(--ink)}
+  .tfoot3 td{font-weight:700;background:var(--card-2);border-top:1.5px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="adspend">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Ad spend rebilling</h1>
+          <p>Ad spend we pay for clients, plus our fee, billed each month. Who pays the platform and the fee (none, a percentage or a fixed amount) come from each client's agreement.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>August</span><span class="on">September</span><span>October</span></div><span class="ai-btn" data-ai="Read a platform invoice: upload the Meta, Google or LinkedIn invoice PDF and the spend is filled in for you to check. Nothing is billed until you confirm."><i data-i="spark"></i>Read a platform invoice</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>₹35,000</b><span>Spend we paid in September</span></div>
+        <div class="ctr"><b>₹3,800</b><span>Our fees</span></div>
+        <div class="ctr warn"><b>₹38,800</b><span>To bill · 2 clients · confirm first</span></div>
+        <div class="ctr"><b>₹46,000</b><span>Spend clients paid themselves</span></div>
+      </div>
+
+      <div class="lay2">
+        <div class="card" style="padding:6px 20px 14px">
+          <table class="tbl">
+            <thead><tr><th>Client</th><th>Platform</th><th>Who pays the platform</th><th>Fee</th><th class="num">September spend</th><th class="num">Fee</th><th class="num">Bill</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#A21CAF">LS</span><b>Lakshmi Silks</b></div></td><td><span class="plat"><i style="background:#1877F2"></i>Meta</span></td><td><span class="who2 ytp">YTP, on our card</span><small>Rebilled monthly</small></td><td><span class="fee">10%</span></td><td class="num">₹20,000<small>From Meta's invoice</small></td><td class="num">₹2,000</td><td class="num">₹22,000</td><td><span class="btn solid" style="height:30px" data-ai="Confirmed in the preview only. In Nexus the monthly bill is made and sends itself, like other monthly bills.">Confirm and bill</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">ML</span><b>Meridian Logistics</b></div></td><td><span class="plat"><i style="background:#0A66C2"></i>LinkedIn</span></td><td><span class="who2 ytp">YTP, on our card</span><small>Rebilled monthly</small></td><td><span class="fee">12%</span></td><td class="num">₹15,000<small>Typed in by Karthik</small></td><td class="num">₹1,800</td><td class="num">₹16,800</td><td><span class="btn solid" style="height:30px" data-ai="Confirmed in the preview only.">Confirm and bill</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">VM</span><b>Velocity Motors</b></div></td><td><span class="plat"><i style="background:#1877F2"></i>Meta</span> <span class="plat"><i style="background:#34A853"></i>Google</span></td><td><span class="who2 cl">Client, own ad accounts</span><small>Tracked, not billed</small></td><td><span class="fee">In retainer</span></td><td class="num mut">₹46,000<small>Meta ₹31,200 · Google ₹14,800</small></td><td class="num mut">—</td><td class="num mut">—</td><td><span class="chip c-ink">Nothing to bill</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#A16207">RC</span><b>Royal Caterers</b></div></td><td><span class="plat"><i style="background:#1877F2"></i>Meta</span></td><td><span class="who2 ytp">YTP, on our card</span><small>From October</small></td><td><span class="fee">₹3,000 fixed</span></td><td class="num mut">—<small>Launch was in the project</small></td><td class="num mut">—</td><td class="num mut">—</td><td><span class="chip c-blue">First bill 1 Nov</span></td></tr>
+            </tbody>
+            <tfoot><tr class="tfoot3"><td colspan="4">September · 4 clients with ads</td><td class="num">₹35,000</td><td class="num">₹3,800</td><td class="num">₹38,800</td><td></td></tr></tfoot>
+          </table>
+        </div>
+
+        <div class="card calc">
+          <h3>How a bill<br>is worked out</h3>
+          <div class="sum"><span>Lakshmi Silks · Meta spend</span><b>₹20,000</b><span>Our fee · 10% of the spend</span><b>₹2,000</b><span class="tot2">Bill for September</span><b class="tot2">₹22,000</b></div>
+          <span class="sm" style="font-size:12.5px;line-height:1.5">No GST yet. From the GST registration date, GST is added as the CA advises. A bill waits for the spend to be confirmed, then sends itself like other monthly bills.</span>
+          <div class="banner info" style="font-size:12px;align-items:flex-start"><i data-i="plug"></i>Spend is typed in or read from the platform's invoice for now. Once the Meta, Google and LinkedIn doors are connected (step 3.9), it fills in by itself.</div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

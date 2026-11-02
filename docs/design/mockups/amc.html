@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · AMC and free maintenance</title>
+<!-- Batch 5 · SCR-054 AMC and free maintenance: free maintenance starts at handover and ends on the date in the agreement (shown to the client); the AMC offer goes 30 days before it ends; each AMC has its price, coverage, schedule and support targets, and its schedule makes the maintenance tasks (CON-005, CON-006, CON-014, AUTO-010, AUTO-021, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .card .ch{padding:12px 20px 4px}
+  .card .ch h2{font-size:20px}
+  .cb6{padding:0 20px 12px}
+  .tbl td{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:22px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .cov{display:flex;gap:4px;flex-wrap:wrap}
+  .cov span{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);color:var(--muted);border:1px solid var(--line-soft);white-space:nowrap}
+  .tipr{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px}
+  .tipr .ai-h{margin:0;white-space:nowrap}
+  .tipr .acts3{margin-left:auto;display:flex;gap:6px}
+  .endbar{display:flex;align-items:center;gap:8px}
+  .endbar .meter{width:90px;height:6px}
+  .endbar .meter i{background:var(--on)}
+  .endbar .meter i.a{background:#E2A93B}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="amc">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">AMC and free maintenance</h1>
+          <p>Free maintenance starts at the handover and ends on the date written in the agreement; the client sees that date too. An AMC offer goes out 30 days before it ends. Each AMC's schedule makes its own maintenance tasks.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Who should get an AMC offer? Lists website clients without an AMC, with the last work done and what an AMC would cover. Suggestions go to you first; nothing reaches a client until you confirm."><i data-i="spark"></i>Who should get an offer?</span><span class="btn solid lg"><i data-i="plus"></i>Add AMC</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>14</b><span>AMCs · ₹2,46,000 a year</span></div>
+        <div class="ctr"><b>4</b><span>In free maintenance</span></div>
+        <div class="ctr warn"><b>2</b><span>Free period ends in 30 days</span></div>
+        <div class="ctr"><b>3</b><span>Maintenance tasks this week</span></div>
+        <div class="ctr"><b>11</b><span>Website clients without AMC</span></div>
+      </div>
+
+      <div class="tipr"><span class="ai-h"><i data-i="spark"></i>Worth a look</span><span>Anbu Textiles' AMC offer sends itself on 28 Oct, but ₹28,000 is 34 days overdue. Hold the offer until it is paid, or send it with a friendly reminder?</span><span class="acts3"><span class="btn" data-ai="Held in the preview only. The offer waits until you release it.">Hold offer</span><span class="btn" data-ai="Kept as planned: it sends itself on 28 Oct.">Keep</span></span></div>
+
+      <!-- Free maintenance (CON-005, AUTO-010) -->
+      <div class="card">
+        <div class="ch"><h2 class="serif">Free maintenance</h2><span class="count">4</span></div>
+        <div class="cb6">
+          <table class="tbl">
+            <thead><tr><th>Client and website</th><th>Handover</th><th>Free until</th><th>Time left</th><th>AMC offer</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#15803D">GO</span><div><b>Greenleaf Organics</b><small>greenleaforganics.com</small></div></div></td><td>15 Jul 2026</td><td><b>14 Oct 2026</b><small>3 months · clause 6</small></td><td><div class="endbar"><span class="meter"><i class="a" style="width:86%"></i></span><span class="sm">13 days</span></div></td><td><b>₹9,000 a year</b><small>Sent 14 Sep · opened twice · no reply</small></td><td><span class="chip c-amber">Ending soon</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239">AT</span><div><a href="service-sold.html" style="color:inherit;text-decoration:none"><b>Anbu Textiles</b></a><small>anbutextiles.com · shop</small></div></div></td><td>28 Aug 2026</td><td><b>27 Nov 2026</b><small>3 months · clause 7.2</small></td><td><div class="endbar"><span class="meter"><i style="width:37%"></i></span><span class="sm">57 days</span></div></td><td><b>₹18,000 a year</b><small>Sends itself 28 Oct</small></td><td><span class="chip c-green">Covered</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">BM</span><div><b>Bright Minds Tuition</b><small>Landing page · handed over</small></div></div></td><td>2 Sep 2026</td><td><b>1 Oct 2026</b><small>1 month · clause 4</small></td><td><div class="endbar"><span class="meter"><i class="a" style="width:100%"></i></span><span class="sm">Ends today</span></div></td><td><b>₹6,000 a year</b><small>Declined 20 Sep · "we will manage it"</small></td><td><span class="chip c-ink">Client holds it</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#EA580C">SC</span><div><b>Sunrise Clinic</b><small>Website and booking · in progress</small></div></div></td><td class="sm">Not yet</td><td><b>3 months after handover</b><small>The date is set at handover</small></td><td class="sm">—</td><td class="sm">30 days before the end</td><td><span class="chip c-blue">Starts at handover</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- AMCs (CON-006, CON-014, AUTO-021) -->
+      <div class="card">
+        <div class="ch"><h2 class="serif">Annual maintenance (AMC)</h2><span class="count">14</span><span class="link">4 shown</span></div>
+        <div class="cb6">
+          <table class="tbl">
+            <thead><tr><th>Client</th><th class="num">Price</th><th>Covers</th><th>Schedule</th><th>Support targets</th><th>Next maintenance</th><th>Renews</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490">SD</span><b>Sharma Dental Care</b></div></td><td class="num">₹12,000<small>a year</small></td><td><div class="cov"><span>Updates</span><span>Backups</span><span>Security scan</span><span>2 h changes a month</span></div></td><td>Monthly updates<small>Check every quarter</small></td><td>Reply 24 h<small>Fix 3 days</small></td><td><b>15 Oct</b><small>Quarterly check · Arun</small></td><td>1 Aug 2027</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">VM</span><b>Velocity Motors</b></div></td><td class="num">₹12,000<small>a year</small></td><td><div class="cov"><span>Updates</span><span>Backups</span><span>Form checks</span></div></td><td>Monthly</td><td>Reply 24 h<small>Fix 3 days</small></td><td><b>5 Oct</b><small>Monthly updates · Priya</small></td><td><a href="renewals.html" style="color:inherit">21 Oct</a><small style="color:var(--green)">Paid 30 Sep</small></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#B7791F">AB</span><b>Aroma Bakes</b></div></td><td class="num">₹9,000<small>a year</small></td><td><div class="cov"><span>Updates</span><span>Backups</span></div></td><td>Quarterly</td><td>Reply 48 h<small>Fix 5 days</small></td><td><b>Today</b><small>Update blog plugins · Arun</small></td><td>10 Jan 2027</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857">KH</span><b>Kaveri Hospitals</b></div></td><td class="num">₹23,600<small>a quarter</small></td><td><div class="cov"><span>Updates</span><span>Backups</span><span>6 h changes a month</span></div></td><td>Monthly</td><td>Reply 24 h<small>Fix 3 days</small></td><td><b>7 Oct</b><small>Monthly updates · Arun</small></td><td>Billed each quarter<small>No end date</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

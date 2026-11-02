@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · To-do lists</title>
+<!-- Batch 2 · SCR-082 To-do lists and reminders: own and shared lists, smart views, items with star, reminder, repeat; AI turns notes into to-dos (CORE-043, CORE-047, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:250px 1fr 340px;gap:18px;align-items:start}
+  .nav2{display:flex;flex-direction:column;gap:2px}
+  .nav2 .list-item{padding:9px 12px}
+  .nav2 .list-item svg{width:16px;height:16px;color:var(--muted)}
+  .nav2 .count{margin-left:auto}
+  .cdot{width:10px;height:10px;border-radius:50%;flex:none}
+  .nest{padding-left:34px!important;font-size:13px}
+  .lh{display:flex;align-items:center;gap:12px;padding:18px 22px 12px}
+  .lh h2{font-size:24px}
+  .lh .r{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .add{display:flex;align-items:center;gap:10px;margin:0 22px 6px;height:46px;padding:0 8px 0 14px;border:1px dashed var(--edge);border-radius:var(--radius-sm);color:var(--muted)}
+  .add .sp{flex:1}
+  .it{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:11px 22px;border-top:1px solid var(--line-soft)}
+  .it b{font-weight:600}
+  .it .m{display:flex;gap:12px;align-items:center;font-size:12px;color:var(--muted);margin-top:3px}
+  .it .m svg{width:13px;height:13px}
+  .it .m span{display:inline-flex;gap:5px;align-items:center}
+  .it .r{display:flex;gap:12px;align-items:center}
+  .star svg{width:18px;height:18px;color:var(--muted)}
+  .star.on svg{fill:#E2A93B;color:#E2A93B}
+  .it.done b{text-decoration:line-through;color:var(--muted)}
+  .rm{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line-soft)}
+  .rm:first-of-type{border-top:0}
+  .rm b{font-weight:600;display:block}
+  .rm span.m{font-size:12px;color:var(--muted)}
+  .notes{font-size:12.5px;line-height:1.5;color:var(--muted);background:var(--card);border:1px solid var(--line-soft);border-radius:10px;padding:10px 12px}
+  .sugg{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="app" data-active="Tasks">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="tasks.html">Tasks</a><span>/</span><b style="color:var(--ink)">To-do lists</b></div>
+          <h1 class="serif">To-do lists and reminders</h1>
+          <p>Your own lists, lists shared with colleagues, and personal reminders. Smaller than tasks; just for getting things done.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="plus"></i>New list</span><span class="btn solid lg"><i data-i="clock"></i>New reminder</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="card" style="padding:12px 10px">
+          <div class="nav2">
+            <div class="sect" style="padding:4px 12px 6px">Smart views</div>
+            <a class="list-item"><i data-i="sun"></i>Today<em class="count">5</em></a>
+            <a class="list-item"><i data-i="star"></i>Important<em class="count">3</em></a>
+            <a class="list-item"><i data-i="user"></i>Assigned to me<em class="count">2</em></a>
+            <a class="list-item"><i data-i="flag"></i>Overdue<em class="count">1</em></a>
+            <a class="list-item"><i data-i="check"></i>Completed</a>
+            <div class="sect" style="padding:14px 12px 6px">My lists</div>
+            <a class="list-item on"><i class="cdot" style="background:#12A15E"></i>Client follow-ups<em class="count">5</em></a>
+            <a class="list-item"><i class="cdot" style="background:#2F5E8C"></i>Office<em class="count">4</em></a>
+            <a class="list-item nest"><i class="cdot" style="background:#7FA3C8"></i>Supplies<em class="count">3</em></a>
+            <a class="list-item"><i class="cdot" style="background:#E2A93B"></i>Personal<em class="count">2</em></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="lh"><i class="cdot" style="background:#12A15E;width:14px;height:14px"></i><h2 class="serif">Client follow-ups</h2><span class="r"><span class="av-stack"><span class="av s">YP</span><span class="av s">KR</span><span class="av s">DS</span></span><span class="sm" style="font-size:12px">Shared</span><span class="seg-tg"><span class="on">List</span><span>Board</span></span></span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:0 22px 12px;font-size:12px;color:var(--muted)"><span class="meter" style="flex:1"><i style="width:40%"></i></span>40% done · 2 of 5</div>
+          <div class="add"><i data-i="plus"></i><span class="sp">Add a to-do… or paste notes and let AI split them</span><span class="mic" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span></div>
+          <div class="it"><i class="chk"></i><div><b>Call Ravi back about the form fix</b><div class="m"><span><i data-i="clock"></i>Today 4:00 pm</span><span><i data-i="bell2"></i>3:45 pm</span><span>Velocity Motors</span></div></div><div class="r"><span class="av s">KR</span><span class="star on"><i data-i="star"></i></span></div></div>
+          <div class="it"><i class="chk"></i><div><b>Send revised quote to Urban Nest Interiors</b><div class="m"><span><i data-i="clock"></i>Today 2:00 pm</span><span>Subtasks 1 / 2</span></div></div><div class="r"><span class="av s">YP</span><span class="star on"><i data-i="star"></i></span></div></div>
+          <div class="it"><i class="chk"></i><div><b>Ask Green Valley School for October photos</b><div class="m"><span style="color:var(--red)"><i data-i="flag"></i>Overdue · since Monday</span><span><i data-i="repeat"></i>Every Monday</span></div></div><div class="r"><span class="av s">DS</span><span class="star"><i data-i="star"></i></span></div></div>
+          <div class="it done"><i class="chk on"></i><div><b>Thank Sri Lakshmi Traders for the referral</b><div class="m"><span>Completed today 9:30 am</span></div></div><div class="r"><span class="av s">YP</span><span class="star"><i data-i="star"></i></span></div></div>
+          <div class="it done"><i class="chk on"></i><div><b>Share the Kaveri homepage link with Dr. Rao</b><div class="m"><span>Completed yesterday</span></div></div><div class="r"><span class="av s">DS</span><span class="star"><i data-i="star"></i></span></div></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Turn notes into to-dos</div>
+            <div class="notes">Met Kaveri team. Need hero photo by Fri, Dr. Rao wants Tamil page, invoice the advance after sign-off.</div>
+            <div class="sugg"><i class="chk on"></i>Get hero photo from Kaveri · by Friday</div>
+            <div class="sugg"><i class="chk on"></i>Plan the Tamil page with Dr. Rao</div>
+            <div class="sugg"><i class="chk"></i>Invoice the advance after sign-off</div>
+            <div class="ai-acts"><span class="btn solid">Add 2 to this list</span><span class="btn">Cancel</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">My reminders</h2></div>
+            <div class="rm"><span class="lic"><i data-i="wallet"></i></span><div><b>Pay office internet bill</b><span class="m">Finance · monthly, 5th · 9:00 am</span></div><i class="toggle on"></i></div>
+            <div class="rm"><span class="lic"><i data-i="user"></i></span><div><b>Gym</b><span class="m">Personal · daily · 6:30 am</span></div><i class="toggle on"></i></div>
+            <div class="rm"><span class="lic"><i data-i="doc"></i></span><div><b>File GST return</b><span class="m">Business · after GST starts · 11th</span></div><i class="toggle"></i></div>
+            <p class="help" style="margin-top:8px">Reminders reach you in Nexus, by email or WhatsApp; snooze from the alert.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

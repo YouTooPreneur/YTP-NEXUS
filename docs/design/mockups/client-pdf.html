@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client profile PDF</title>
+<!-- Batch 3 · SCR-252 Client profile PDF: a branded one-page summary of a client (CRM-028). Logins never appear; only "kept in the password manager". -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:var(--stage)}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px 16px 40px}
+  .bar{width:794px;max-width:100%;display:flex;align-items:center;gap:10px}
+  .bar b{font-weight:700}
+  .bar .r{margin-left:auto;display:flex;gap:8px}
+  .a4{width:794px;max-width:100%;min-height:1123px;background:#fff;color:#1C3D36;box-shadow:0 20px 60px rgba(0,0,0,.15);border-radius:4px;padding:48px 56px;display:flex;flex-direction:column;gap:22px;font-size:12.5px}
+  .a4 .top{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #1C3D36;padding-bottom:16px}
+  .a4 .brand{display:flex;align-items:center;gap:10px;font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .a4 .brand svg{width:30px;height:33px;color:#1C3D36}
+  .a4 h1{font-family:Sora,sans-serif;font-weight:600;font-size:26px}
+  .a4 h2{font-family:Sora,sans-serif;font-weight:600;font-size:14px;margin-bottom:8px;letter-spacing:.02em}
+  .a4 table{width:100%;border-collapse:collapse;margin:0}
+  .a4 th{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#5F6B65;text-align:left;padding:6px 8px;border-bottom:1px solid #E7E3D8}
+  .a4 td{padding:7px 8px;border-top:0;border-bottom:1px solid #EFEBE2}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 10px}
+  .kv span{color:var(--muted)}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .nums div{border:1px solid #E7E3D8;border-radius:8px;padding:10px}
+  .nums small{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#5F6B65}
+  .nums b{font-family:Sora,sans-serif;font-size:16px}
+  .foot{margin-top:auto;border-top:1px solid #E7E3D8;padding-top:10px;color:#5F6B65;font-size:10.5px;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar"><a class="btn" href="client-profile.html" style="text-decoration:none"><i data-i="x"></i>Close</a><b>Client profile PDF · Sharma Dental Care</b><span class="r"><span class="btn"><i data-i="mail"></i>Email to me</span><span class="btn solid"><i data-i="download"></i>Download PDF</span></span></div>
+  <div class="a4">
+    <div class="top"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div style="text-align:right;color:var(--muted)">Client profile<br>1 Oct 2026</div></div>
+    <div><h1>Sharma Dental Care</h1><div style="color:var(--muted);margin-top:4px">Active client since Jul 2025 · Healthcare · Adyar, Chennai · referred by Dr. Rao</div></div>
+    <div class="nums"><div><small>Agreement value</small><b>₹1,50,450</b></div><div><small>Invoiced</small><b>₹1,41,600</b></div><div><small>Outstanding</small><b>₹0</b></div><div><small>Unbilled</small><b>₹8,850</b></div></div>
+    <div class="two">
+      <div><h2>Contacts</h2><div class="kv"><span>Dr. Priya Sharma</span><b>Owner · +91 98400 12345</b><span>Ravi Varma</span><b>Front desk · +91 98400 54321</b></div></div>
+      <div><h2>YTP team</h2><div class="kv"><span>Account owner</span><b>Owner</b><span>Website</span><b>Arun</b><span>Design</span><b>Divya</b></div></div>
+    </div>
+    <div><h2>Services</h2><table><thead><tr><th>Service</th><th>Type</th><th>Status</th><th>Renews</th></tr></thead><tbody>
+      <tr><td>Website design</td><td>Project</td><td>Delivered 18 Jul 2025</td><td>—</td></tr>
+      <tr><td>Domain + hosting</td><td>Yearly</td><td>Active</td><td>29 Oct 2026</td></tr>
+      <tr><td>Annual maintenance</td><td>Yearly</td><td>Active</td><td>1 Aug 2027</td></tr>
+    </tbody></table></div>
+    <div><h2>Websites and accounts</h2><table><thead><tr><th>Asset</th><th>Held by</th><th>Expires</th><th>Login</th></tr></thead><tbody>
+      <tr><td>sharmadental.in (domain)</td><td>YTP account</td><td>29 Oct 2026</td><td>Kept in the password manager</td></tr>
+      <tr><td>Business hosting</td><td>YTP account</td><td>29 Oct 2026</td><td>Kept in the password manager</td></tr>
+      <tr><td>Google Business profile</td><td>Client</td><td>—</td><td>Client holds it</td></tr>
+    </tbody></table></div>
+    <div><h2>Recent activity</h2><table><tbody>
+      <tr><td>1 Oct</td><td>Renewal invoice ready; sends 2 Oct</td></tr>
+      <tr><td>1 Aug</td><td>Payment ₹70,800 received by UPI</td></tr>
+      <tr><td>18 Jul 2025</td><td>Website launched and handed over</td></tr>
+    </tbody></table></div>
+    <div class="foot"><span>YouTooPreneur · Chennai · hello@youtoopreneur.com</span><span>Confidential · page 1 of 1</span></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Live chat</title>
+<!-- Batch 8 · SCR-260 Live chat inbox: chatbot conversations on WhatsApp and the website, live; each message marked AI or person; take over and hand back; a discount question hands over to a person with an alert; the chat links to the lead it created (source WhatsApp, AI-suggested service) or to the client (AI-019, AI-020, CRM-030, CRM-008). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:10px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:2px}
+  .lc{display:grid;grid-template-columns:310px minmax(0,1fr) 300px;gap:12px;flex:1;min-height:0}
+  .lst{padding:10px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+  .lst .views{margin:0 0 6px}
+  .lst .views span{height:28px;font-size:12px;padding:0 10px}
+  .cv{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;padding:9px 10px;border-radius:12px;text-decoration:none;color:inherit;align-items:start}
+  .cv.on{background:var(--active-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+  .cv .lg-av{width:34px;height:34px}
+  .cv b{display:block;font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cv small{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cv .tm2{font-size:11px;color:var(--muted);font-weight:700;text-align:right}
+  .who2{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;letter-spacing:.04em;padding:2px 7px;border-radius:999px;margin-top:4px}
+  .who2.ai{color:var(--ai-ink);background:var(--ai-bg);border:1px solid var(--ai-line)}
+  .who2.p{color:#B4483A;background:#FBECE9}
+  .who2.c{color:var(--blue);background:var(--blue-bg)}
+  .conv{display:flex;flex-direction:column;min-height:0}
+  .convh{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line-soft)}
+  .convh b{font-weight:700;font-size:14px;display:block}
+  .convh small{font-size:12px;color:var(--muted)}
+  .convh .r{margin-left:auto;display:flex;gap:8px}
+  .msgs{flex:1;min-height:0;padding:14px 18px;display:flex;flex-direction:column;justify-content:safe flex-end;gap:8px;overflow:hidden;background:var(--card-2)}
+  .m8{max-width:84%;padding:9px 12px;border-radius:14px;font-size:12.5px;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .m8 small{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:var(--muted);margin-bottom:3px}
+  .m8.in{background:var(--card);align-self:flex-start;border-radius:4px 14px 14px 14px}
+  .m8.ai{background:linear-gradient(135deg,#E6FBF1,#E5F4FB);align-self:flex-end;border-radius:14px 4px 14px 14px;border:1px solid var(--ai-line)}
+  .m8.ours{background:#1C3D36;color:#fff;align-self:flex-end;border-radius:14px 4px 14px 14px}
+  .m8.ours small{color:rgba(255,255,255,.7)}
+  .sys3{align-self:center;font-size:11.5px;font-weight:600;color:var(--muted);padding:3px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line-soft);display:inline-flex;gap:6px;align-items:center}
+  .sys3 svg{width:13px;height:13px}
+  .sys3.al{color:#B4483A;border-color:#F3CFC8;background:#FBECE9}
+  .rep{padding:10px 14px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px}
+  .rep .inp3{min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--muted)}
+  .rep .rw{display:flex;gap:8px;align-items:center}
+  .rep .rw .btn.solid{margin-left:auto}
+  .dp{padding:14px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+  .dp h3{font-family:Sora,sans-serif;font-weight:600;font-size:14.5px}
+  .kv9{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 10px;font-size:12.5px}
+  .kv9 span{color:var(--muted)}
+  .kv9 b{font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="live">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Live chat</h1>
+          <p>Chatbot conversations on WhatsApp and the website, as they happen. Take over any time and hand back when you are done.</p>
+        </div>
+        <div class="acts"><span class="chip c-amber">1 waiting for a person</span><span class="chip c-ink">5 open · 11 answered by AI today</span><a class="btn lg" href="chatbot-settings.html" style="text-decoration:none"><i data-i="gear"></i>Chatbot settings</a></div>
+      </div>
+      <div class="lc">
+        <div class="card lst">
+          <div class="views"><span class="on">All <em class="count">5</em></span><span>Person <em class="count">1</em></span><span>AI</span><span>Mine</span></div>
+          <a class="cv on" href="live-chat.html"><span class="lg-av" style="--av:#0E7490">AO</span><div><b>Arvind Opticals</b><small>"Any discount if we take SEO too?"</small><span class="who2 p">PERSON · KARTHIK</span></div><span class="tm2">10:06 am</span></a>
+          <a class="cv" href="live-chat.html"><span class="lg-av" style="--av:#BE185D">AR</span><div><b>Anitha R</b><small>Website chat · Digital Marketing batch fees</small><span class="who2 ai">AI · BOOKED A CALL</span></div><span class="tm2">9:58 am</span></a>
+          <a class="cv" href="support-request.html"><span class="lg-av" style="--av:#1D4ED8">VM</span><div><b>Velocity Motors · Ravi</b><small>"The enquiry form is still not sending…"</small><span class="who2 c">CLIENT · TO SUPPORT SR-0142</span></div><span class="tm2">10:31 am</span></a>
+          <a class="cv" href="live-chat.html"><span class="lg-av" style="--av:#64748B">+91</span><div><b>+91 99620 •••41</b><small>WhatsApp · asked about Instagram ads</small><span class="who2 ai">AI · ANSWERING</span></div><span class="tm2">10:40 am</span></a>
+          <a class="cv" href="live-chat.html"><span class="lg-av" style="--av:#64748B">+91</span><div><b>+91 90031 •••77</b><small>Website chat · reached 20 messages</small><span class="who2 p">PERSON · LIMIT REACHED</span></div><span class="tm2">9:12 am</span></a>
+        </div>
+        <div class="card conv">
+          <div class="convh"><span class="lg-av" style="--av:#0E7490">AO</span><div><b>Arvind Opticals · Mr. Arvind</b><small>WhatsApp · Hello number · new lead made by the chatbot at 9:52 am</small></div><div class="r"><span class="btn"><i data-i="spark"></i>Hand back to AI</span><span class="btn"><i data-i="check"></i>Close chat</span></div></div>
+          <div class="msgs">
+            <div class="m8 in"><small>Mr. Arvind · 9:50 am</small>Hello, how much for a website and a Google listing for my optical shop in Velachery?</div>
+            <div class="m8 ai"><small><i data-i="spark" style="width:12px;height:12px"></i>AI · YTP Assist · 9:50 am</small>Hello! I'm YTP Assist, the AI assistant of YouTooPreneur. Prices depend on what your shop needs, so a person from our team will give you the exact price. May I have your name and a good time to call?</div>
+            <div class="m8 in"><small>Mr. Arvind · 9:52 am</small>Arvind. Arvind Opticals. After 4 pm is fine. Any discount if we take SEO too?</div>
+            <div class="m8 ai"><small><i data-i="spark" style="width:12px;height:12px"></i>AI · YTP Assist · 9:52 am</small>Thank you, Mr. Arvind! I have passed your details to Karthik. Our team is in from 10:00 am, and he will reply here.</div>
+            <div class="sys3"><i data-i="target"></i>Lead made · Arvind Opticals · Website + local SEO (AI suggestion) · to Karthik</div>
+            <div class="sys3 al"><i data-i="bell"></i>Handed to Karthik · reason: price and discount · alert sent at 10:00 am, when the office opened</div>
+            <div class="sys3"><i data-i="user"></i>Karthik took over · the AI is paused in this chat · 10:06 am</div>
+            <div class="m8 ours"><small>Karthik · 10:06 am</small>Hi Mr. Arvind, Karthik here. Yes, we have a combined price for a website with SEO. Can I call you at 4:30 today to understand the shop?</div>
+          </div>
+          <div class="rep">
+            <div class="inp3">Write as Karthik… (test mode: goes to the owner's test number)</div>
+            <div class="rw"><span class="ai-btn sm" data-ai="Draft a reply: short, friendly, in the language the person writes in. Arrives as a draft; you send it."><i data-i="spark"></i>Draft a reply</span><span class="ai-btn sm" data-ai="Turn your reply into Tamil. Arrives as a draft."><i data-i="spark"></i>Tamil</span><span class="btn solid"><i data-i="send"></i>Send</span></div>
+          </div>
+        </div>
+        <div class="card dp">
+          <h3>Lead made from this chat</h3>
+          <div class="kv9"><span>Business</span><b>Arvind Opticals</b><span>Person</span><b>Mr. Arvind</b><span>Number</span><b>+91 98845 •••20</b><span>Source</span><b>WhatsApp · chatbot</b><span>Service</span><b>Website + local SEO <span class="ai-tag">AI</span></b><span>Best time</span><b>After 4 pm</b><span>Owner</span><b>Karthik</b></div>
+          <a class="btn" href="pipeline.html" style="text-decoration:none;align-self:flex-start"><i data-i="target"></i>Open the lead</a>
+          <div style="border-top:1px solid var(--line-soft);padding-top:10px;display:flex;flex-direction:column;gap:6px">
+            <h3>This chat</h3>
+            <div class="kv9"><span>Messages</span><b>5 of 20</b><span>AI cost</span><b>₹0.30</b><span>Duplicate check</span><b>New number · no match</b></div>
+          </div>
+          <span class="manual">Every message shows whether the AI or a person wrote it. Handing back lets the AI answer again within its limits.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

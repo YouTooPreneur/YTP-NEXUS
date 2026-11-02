@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Security</title>
+<!-- Batch 1 · SCR-190 Security: two-step rules, sessions, Google sign-in list, limits, passwords rule -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Security</b></div>
+          <h1 class="serif">Security</h1>
+          <p>Who must use two-step login, how long sessions last, which Google accounts may sign in, and the limits that keep Nexus fast and safe.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg">Save changes</span></div>
+      </div>
+      <div class="banner info"><i data-i="lock"></i>Nexus never stores client or tool passwords. Logins are links to items in your Vaultwarden vault.</div>
+
+      <div class="g2" style="align-items:start">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif">Two-step login</h2></div>
+            <table class="tbl"><thead><tr><th>Role</th><th>Two-step</th></tr></thead><tbody>
+              <tr><td>Owner, LLP partner, Accounts, HR</td><td><span class="chip c-green">Required</span> <span class="sm">they can see money or salaries</span></td></tr>
+              <tr><td>Manager</td><td><span class="chip c-green">Required</span></td></tr>
+              <tr><td>Staff, Trainer</td><td><span class="chip c-ink">Optional</span></td></tr>
+            </tbody></table>
+            <p class="help" style="margin-top:8px">Each person picks authenticator app, email code, or WhatsApp code (sent through AiSensy).</p>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif">Sessions</h2></div>
+            <div class="srow"><div class="txt"><b>Sign out after no activity</b><span>Staff 8 hours · money roles 30 minutes</span></div><span class="btn">Change</span></div>
+            <div class="srow"><div class="txt"><b>Wrong passwords</b><span>After 5 tries, the account locks for 15 minutes and the owner is told</span></div><span class="btn">Change</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif">AI guardrails</h2><span class="ai-tag"><i data-i="spark"></i>Always on</span><a class="link" href="ai-settings.html#guard">AI settings<i data-i="right"></i></a></div>
+            <p class="sm" style="font-size:12.5px;line-height:1.8">AI has the same permissions as the person asking · never sees passwords · ignores instructions hidden in emails and files · masks personal details · money and client messages need approval · never deletes · every AI action is logged.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif">Google sign-in</h2><span class="chip c-green">On</span></div>
+            <div class="srow"><div class="txt"><b>Allowed emails</b><span>Taken from Users and roles: 8 people (personal Gmail and company accounts)</span></div><a class="btn" href="users-roles.html" style="text-decoration:none">Open list</a></div>
+            <div class="srow"><div class="txt"><b>Allow everyone @youtoopreneur.com</b><span>Use once YTP has company Google accounts (Google Workspace)</span></div><i class="toggle"></i></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif">Limits</h2><span class="sm" style="color:var(--muted)">Protect speed and stop misuse</span></div>
+            <table class="tbl"><tbody>
+              <tr><td>Requests per person</td><td class="r sm">600 a minute</td></tr>
+              <tr><td>Heavy jobs (imports, exports, reports, AI)</td><td class="r sm">2 at a time per person; others wait</td></tr>
+              <tr><td>Portal login codes</td><td class="r sm">5 an hour per contact</td></tr>
+              <tr><td>API and MCP keys</td><td class="r sm">60 a minute · 10,000 a day</td></tr>
+              <tr><td>Outgoing email</td><td class="r sm">Kept under the provider's daily limit</td></tr>
+            </tbody></table>
+            <p class="help" style="margin-top:8px">When a limit is hit, people see "Try again in a few seconds". Repeated hits alert the owner.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

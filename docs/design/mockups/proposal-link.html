@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal Q-2026-024 · YouTooPreneur</title>
+<!-- Batch 7 · SCR-230 Secret-link document, proposal view (public, no login): the client reads the proposal, sees prices, payment stages and terms, and accepts with the Accept button (name, date and time recorded) or an online signature, asks a question on WhatsApp, or downloads the PDF; English or Tamil (CRM-015, CRM-016, NFR-022, D-062). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:linear-gradient(180deg,#1C3D36 0 300px,var(--bg) 300px);min-height:100vh}
+  :root[data-look="N"] body{background:linear-gradient(180deg,#10273A 0 300px,var(--bg) 300px)}
+  .wrapq{max-width:1040px;margin:0 auto;padding:22px 16px 40px;display:flex;flex-direction:column;gap:16px}
+  .topb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;color:#fff}
+  .topb .mark{width:28px;height:31px;color:#03FF96}
+  .topb b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .topb .pvw{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#FEF3C7;color:#92400E;margin-left:8px}
+  .topb .lang{margin-left:auto;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
+  .topb .lang span{padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.75)}
+  .topb .lang span.on{background:#fff;color:#1C3D36}
+  .hero3{color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:10px 0 4px}
+  .hero3 h1{font-family:Sora,sans-serif;font-weight:600;font-size:clamp(26px,4vw,36px);line-height:1.12;max-width:720px}
+  .hero3 p{color:rgba(255,255,255,.8);font-size:14px}
+  .gq{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
+  @media (max-width:800px){.gq{grid-template-columns:1fr}}
+/* on a phone the header can wrap (language switch) and the title takes more lines: the dark band reaches further down */
+@media (max-width:600px){body{background:linear-gradient(180deg,#1C3D36 0 520px,var(--bg) 520px)}:root[data-look="N"] body{background:linear-gradient(180deg,#10273A 0 520px,var(--bg) 520px)}}
+  .qbox{background:var(--card);border-radius:20px;box-shadow:0 10px 34px rgba(16,39,58,.12);padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+  .qbox h2{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .it2{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:10px 0;border-top:1px solid var(--line-soft);font-size:13.5px}
+  .it2:first-of-type{border-top:0}
+  .it2 b{font-weight:700}
+  .it2 small{grid-column:1;color:var(--muted);font-size:12.5px}
+  .tot4{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:space-between;align-items:baseline;padding-top:10px;border-top:1.5px solid var(--line);font-family:Sora,sans-serif;font-weight:600;font-size:22px}
+  .tot4 small{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--muted);font-weight:500}
+  .pay3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pay3 div{padding:10px 12px;border-radius:12px;background:var(--card-2);font-size:12.5px}
+  .pay3 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:16px}
+  .how4{display:flex;flex-direction:column;gap:8px;font-size:13px}
+  .how4 div{display:flex;gap:8px;align-items:flex-start}
+  .how4 svg{width:15px;height:15px;color:var(--green);flex:none;margin-top:2px}
+  .acc2{display:flex;flex-direction:column;gap:10px}
+  .acc2 .nm2{height:44px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;padding:0 14px;font-size:14px}
+  .acc2 .agree{display:flex;gap:10px;align-items:flex-start;font-size:12.5px}
+  .bigb{height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14.5px}
+  .bigb.s{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigb.l{border:1px solid var(--line);color:var(--ink)}
+  .work{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--card-2);font-size:12.5px}
+  .work i{width:64px;height:48px;border-radius:10px;background:linear-gradient(135deg,#6D28D9,#C4B5FD);flex:none}
+  .foot7{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Telugu:wght@600&display=swap" rel="stylesheet">
+<style>.lang{flex-wrap:wrap;justify-content:flex-end}</style>
+</head>
+<body>
+<div class="wrapq">
+  <div class="topb"><span class="mark"></span><b>YouTooPreneur</b><span class="pvw">Preview · how Mr. Senthil will see it</span><div class="lang"><span class="on">English</span><span>தமிழ்</span></div></div>
+  <div class="hero3"><h1>A website that takes your wholesale orders on WhatsApp</h1><p>Proposal for Sri Lakshmi Traders · Q-2026-024 · prepared by YouTooPreneur, Chennai · valid until 16 Oct 2026</p></div>
+  <div class="gq">
+    <div class="qbox">
+      <h2>What you get</h2>
+      <div class="it2"><b>Website · 8 pages + product catalogue</b><b>₹65,000</b><small>Your full grocery range with prices; customers send orders straight to your WhatsApp. Works fast on phones.</small></div>
+      <div class="it2"><b>Local SEO set-up</b><b>₹10,000</b><small>Google Business profile, 20 business listings and a plan to collect reviews.</small></div>
+      <div class="it2"><b>SEO care · 3 months</b><b>₹15,000</b><small>Monthly work to bring more local searches to you, with a short report each month.</small></div>
+      <div class="tot4"><span>Total</span><span>₹90,000 <small>· no GST now (not registered yet)</small></span></div>
+      <h2 style="margin-top:4px">How you pay</h2>
+      <div class="pay3"><div><b>₹36,000</b>When you accept</div><div><b>₹36,000</b>When you approve the designs</div><div><b>₹18,000</b>At launch</div></div>
+      <h2 style="margin-top:4px">How we work</h2>
+      <div class="how4"><div><i data-i="check"></i>Two rounds of changes on each page design.</div><div><i data-i="check"></i>Anything new is quoted first; you decide.</div><div><i data-i="check"></i>Three months of free maintenance after launch.</div><div><i data-i="check"></i>You see progress and approve designs in your own client portal.</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+      <div class="qbox">
+        <h2>Accept this proposal</h2>
+        <div class="acc2">
+          <div class="nm2">Senthil Kumar</div>
+          <div class="agree"><i class="chk on"></i><span>I have read the proposal and the terms, and I agree on behalf of Sri Lakshmi Traders.</span></div>
+          <span class="bigb s">Accept · ₹90,000</span>
+          <span class="bigb l"><i data-i="edit"></i>Sign online instead</span>
+          <span class="bigb l"><i data-i="chat"></i>Ask a question on WhatsApp</span>
+          <span class="sm" style="font-size:12px;text-align:center">Your name, the date and the time are recorded when you accept.</span>
+        </div>
+      </div>
+      <div class="qbox">
+        <h2>Our recent work</h2>
+        <div class="work"><i></i><div><b>Bright Minds Tuition, Trichy</b><br><span class="sm">18 → 41 enquiries a month after the new page</span></div></div>
+        <a class="bigb l" href="docs-pdf.html#proposal" style="text-decoration:none"><i data-i="download"></i>Download as PDF</a>
+      </div>
+    </div>
+  </div>
+  <p class="foot7">This private link shows only this proposal. After 16 Oct 2026 it still opens but shows <b>Expired</b>: these prices can no longer be accepted, and a button lets you ask us for a new proposal.<br>Questions? WhatsApp +91 98400 00001 or write to hello@youtoopreneur.com.</p>
+</div>
+</body>
+</html>

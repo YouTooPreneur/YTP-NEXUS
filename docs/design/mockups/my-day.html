@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · My day</title>
+<!-- Batch 5 · SCR-021 My day (employee dashboard), shown as Arun (Staff): header with employee code, work mode and leave balances; task and to-do counters; priority tasks; meetings; leave; alerts; check-in. Staff see only their own work and no money (CC-007, CC-005, TEAM check-in, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:14px;padding-top:18px}
+  .who-row{display:grid;grid-template-columns:1fr 390px;gap:16px;align-items:stretch}
+  .me2{display:flex;gap:18px;align-items:center;padding:18px 22px}
+  .me2 h1{font-size:34px;line-height:1.1}
+  .me2 .main2{flex:1;min-width:0}
+  .me2 .facts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .me2 .facts span{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);color:var(--muted)}
+  .me2 .facts span b{color:var(--ink)}
+  .me2 .facts svg{width:13px;height:13px}
+  .bal{margin-left:auto;display:grid;grid-template-columns:repeat(5,auto);gap:4px 0;border-left:1px solid var(--line-soft);padding-left:18px}
+  .bal div{display:flex;flex-direction:column;align-items:center;padding:0 9px}
+  .bal b{font-family:Sora,sans-serif;font-weight:600;font-size:22px;white-space:nowrap}
+  .bal small{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .bal .lbl2{grid-column:1 / -1;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 12px 2px}
+  .chk-card{padding:16px 20px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(135deg,color-mix(in srgb,var(--on) 9%,var(--card)),var(--card))}
+  .chk-card .t{display:flex;align-items:center;gap:12px}
+  .chk-card .ring3{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--green-bg);color:var(--green);box-shadow:0 0 0 6px var(--on-ring);flex:none}
+  .chk-card .ring3 svg{width:20px;height:20px;stroke-width:2}
+  .chk-card b{font-weight:700;font-size:15px;display:block}
+  .chk-card small{font-size:12px;color:var(--muted)}
+  .chk-card .t .btn{margin-left:auto}
+  .chk-card .note3{font-size:12.5px;padding:9px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line-soft);line-height:1.45}
+  .chk-card .note3 em{font-style:normal;font-weight:700;color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px}
+  .ctrs{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+  .cgrp{padding:12px 18px 14px}
+  .cgrp .gh{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .cgrp .gh a{margin-left:auto;letter-spacing:0;text-transform:none;font-size:12px;color:var(--muted);text-decoration:none}
+  .cnts{display:grid;gap:8px}
+  .cnts a{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:12px;background:var(--card-2);text-decoration:none;color:inherit;border:1px solid transparent}
+  .cnts a b{font-family:Sora,sans-serif;font-weight:600;font-size:21px;line-height:1.1}
+  .cnts a span{font-size:11.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .cnts a.red{background:var(--red-bg)} .cnts a.red b,.cnts a.red span{color:var(--red)}
+  .cnts a.on{border-color:var(--ink);background:var(--card)}
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:16px;flex:1;min-height:0}
+  .col{display:flex;flex-direction:column;gap:16px;min-height:0}
+  .plan2{display:flex;align-items:center;gap:10px;margin:0 22px 6px;padding:9px 12px;border-radius:12px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px}
+  .plan2 b{font-weight:700}
+  .plan2 .ai-h{margin:0}
+  .plan2 .ai-btn{margin-left:auto}
+  .tt{padding:0 22px 6px}
+  .tt td{padding-top:9px;padding-bottom:9px}
+  .tt td:first-child{width:30px}
+  .tt b{font-weight:700}
+  .tt .rel{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+  .tt a.tk{color:var(--ink);text-decoration:none}
+  .pr{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600}
+  .pr i{width:8px;height:8px;border-radius:50%}
+  .pr.u i{background:var(--red)} .pr.h i{background:var(--amber)} .pr.m i{background:var(--blue)} .pr.l i{background:var(--faint)}
+  .due.late{color:var(--red);font-weight:700}
+  .todo{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .todo:first-child{border-top:0}
+  .todo .star{color:#E2A93B;display:flex}
+  .todo .star svg{width:14px;height:14px;fill:#E2A93B}
+  .todo small{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+  .todo.dn span{color:var(--muted);text-decoration:line-through}
+  .mt{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--line-soft)}
+  .mt:first-child{border-top:0}
+  .mt .time{width:auto;font-size:19px;font-family:Sora,sans-serif;font-weight:600}
+  .mt b{display:block;font-weight:700;font-size:13px}
+  .mt small{font-size:12px;color:var(--muted)}
+  .mt .btn{margin-left:auto;height:30px}
+  .al{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .al:first-child{border-top:0}
+  .al .ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none}
+  .al .ic svg{width:15px;height:15px}
+  .al .ic.r{background:var(--red-bg);color:var(--red)} .al .ic.a{background:var(--amber-bg);color:var(--amber)} .al .ic.b{background:var(--blue-bg);color:var(--blue)}
+  .al b{font-weight:700;display:block;font-size:13px}
+  .al small{color:var(--muted);font-size:12px}
+  .cb3{padding:0 22px 14px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Command Centre" data-me="AK|Arun Kumar|Web developer|#1D4ED8" data-hide="Contracts & Renewals,Finance,Academy,Reports,Settings" data-badge="2">
+  <main>
+    <section class="pg">
+      <!-- Header: who, code, work mode, leave balances (CC-007) and check-in -->
+      <div class="who-row">
+        <div class="card me2">
+          <span class="lg-av xl" style="--av:#1D4ED8">AK</span>
+          <div class="main2">
+            <p class="eyebrow" style="margin-bottom:4px">Thursday, 1 October 2026</p>
+            <h1 class="serif">Good morning, Arun</h1>
+            <div class="facts"><span><i data-i="hash"></i><b>YTP-003</b></span><span><i data-i="briefcase"></i>Web developer</span><span><i data-i="home"></i>Hybrid · <b>from home today</b></span></div>
+          </div>
+          <a class="bal" href="my-hr.html" style="text-decoration:none;color:inherit">
+            <span class="lbl2">Leave left</span>
+            <div><b>5</b><small>Casual</small></div><div><b>6</b><small>Sick</small></div><div><b>10</b><small>Earned</small></div><div><b>0</b><small>Comp-off</small></div><div><b>2</b><small>Saturdays</small></div>
+          </a>
+        </div>
+        <div class="card chk-card">
+          <div class="t"><span class="ring3"><i data-i="check"></i></span><div><b>Checked in at 9:58 am</b><small>On time · from home · 1 h 04 m</small></div><a class="btn" href="phone-team.html">Check out</a></div>
+          <div class="note3"><em>Today I will</em>Fix the Velocity contact form, review the Kaveri homepage with Divya, renew Sharma's SSL.</div>
+        </div>
+      </div>
+
+      <!-- Task and to-do counters (CC-007) -->
+      <div class="ctrs">
+        <div class="card cgrp">
+          <div class="gh">My tasks<a href="tasks.html">All my tasks</a></div>
+          <div class="cnts" style="grid-template-columns:repeat(6,1fr)">
+            <a class="on" href="tasks.html"><b>4</b><span>Today</span></a>
+            <a href="tasks.html"><b>1</b><span>Done today</span></a>
+            <a href="tasks.html"><b>2</b><span>In progress</span></a>
+            <a href="tasks.html"><b>12</b><span>Assigned</span></a>
+            <a class="red" href="task.html"><b>1</b><span>Overdue</span></a>
+            <a href="tasks.html"><b>1</b><span>Done in Oct</span></a>
+          </div>
+        </div>
+        <div class="card cgrp">
+          <div class="gh">My to-dos<a href="todos.html">All my to-dos</a></div>
+          <div class="cnts" style="grid-template-columns:repeat(5,1fr)">
+            <a href="todos.html"><b>3</b><span>Today</span></a>
+            <a href="todos.html"><b>2</b><span>Important</span></a>
+            <a href="todos.html"><b>1</b><span>Assigned</span></a>
+            <a href="todos.html"><b>0</b><span>Overdue</span></a>
+            <a href="todos.html"><b>5</b><span>Done</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lay">
+        <div class="col">
+          <!-- Priority tasks -->
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif" style="font-size:22px">Priority tasks</h2><span class="count">6</span><a class="link" href="tasks.html" style="text-decoration:none">Tasks<i data-i="right"></i></a></div>
+            <div class="plan2"><span class="ai-h"><i data-i="spark"></i>Suggested order</span><span><b>1</b> Contact form (late) · <b>2</b> Kaveri review 12:30 pm · <b>3</b> SSL before 3:00 pm · <b>4</b> Blog plugins</span><span class="ai-btn sm" data-ai="Use this order: the 4 tasks are put in this order on your list. You can drag them back any time.">Use this order</span></div>
+            <div class="tt">
+              <table class="tbl">
+                <thead><tr><th></th><th>Task</th><th>Priority</th><th>Due</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Fix contact form</b></a><span class="rel">Velocity Motors · website support</span></td><td><span class="pr u"><i></i>Urgent</span></td><td class="due late">Yesterday</td><td><span class="chip c-blue">In progress</span></td></tr>
+                  <tr><td><i class="chk"></i></td><td><b>Homepage design review</b><span class="rel">Kaveri Hospitals · website project · with Divya</span></td><td><span class="pr h"><i></i>High</span></td><td>Today 12:30 pm</td><td><span class="chip c-amber">In review</span></td></tr>
+                  <tr><td><i class="chk"></i></td><td><b>Check SSL auto-renewal</b><span class="rel">Sharma Dental Care · sharmadental.in</span></td><td><span class="pr h"><i></i>High</span></td><td>Today 3:00 pm</td><td><span class="chip c-ink">To do</span></td></tr>
+                  <tr><td><i class="chk"></i></td><td><b>Update blog plugins</b><span class="rel">Aroma Bakes · annual maintenance (made by the AMC schedule)</span></td><td><span class="pr m"><i></i>Medium</span></td><td>Today 5:30 pm</td><td><span class="chip c-ink">To do</span></td></tr>
+                  <tr><td><i class="chk"></i></td><td><b>Move sites to the new server</b><span class="rel">YTP · internal · on the holiday, with overtime pay</span></td><td><span class="pr h"><i></i>High</span></td><td>Tomorrow</td><td><span class="chip c-ink">To do</span></td></tr>
+                  <tr><td><i class="chk on"></i></td><td><b style="color:var(--muted);text-decoration:line-through">Set up Priya's laptop</b><span class="rel">YTP · onboarding</span></td><td><span class="pr l"><i></i>Low</span></td><td class="sm">Done 10:40 am</td><td><span class="chip c-green">Done</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Meetings -->
+          <div class="card">
+            <div class="ch" style="padding-bottom:4px"><h2 class="serif" style="font-size:20px">Meetings</h2><a class="link" href="calendar.html" style="text-decoration:none">Calendar<i data-i="right"></i></a></div>
+            <div class="cb3">
+              <div class="mt"><span class="time">11:00 am</span><div><b>Discovery call</b><small>Sri Lakshmi Traders · Google Meet</small></div><a class="btn solid" href="meetings.html" style="text-decoration:none">Join</a></div>
+              <div class="mt"><span class="time">3:30 pm</span><div><b>Weekly review</b><small>Team · office or Meet</small></div></div>
+            </div>
+          </div>
+          <!-- To-dos -->
+          <div class="card">
+            <div class="ch" style="padding-bottom:4px"><h2 class="serif" style="font-size:20px">To-dos today</h2><a class="link" href="todos.html" style="text-decoration:none">To-dos<i data-i="right"></i></a></div>
+            <div class="cb3">
+              <div class="todo"><i class="box"></i><span class="star"><i data-i="star"></i></span><span>Send Divya the hero image sizes</span><small>Important</small></div>
+              <div class="todo"><i class="box"></i><span class="star"><i data-i="star"></i></span><span>Review Priya's first change</span><small>From Karthik</small></div>
+              <div class="todo"><i class="box"></i><span>Check last night's backup note</span><small>Today</small></div>
+            </div>
+          </div>
+          <!-- Leave and alerts -->
+          <div class="card" style="flex:1">
+            <div class="ch" style="padding-bottom:4px"><h2 class="serif" style="font-size:20px">Alerts and leave</h2><span class="count">3</span></div>
+            <div class="cb3">
+              <div class="al"><span class="ic r"><i data-i="clock"></i></span><div><b>Fix contact form is 1 day late</b><small>Reminder at 9:05 am · tell Karthik if stuck</small></div></div>
+              <div class="al"><span class="ic a"><i data-i="at"></i></span><div><b>Divya mentioned you</b><small>"The hero image is ready for review"</small></div></div>
+              <div class="al"><span class="ic b"><i data-i="cal"></i></span><div><b>Tomorrow is Gandhi Jayanti</b><small>Server move, overtime pay · WFH request with Karthik</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

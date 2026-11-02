@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone: calendar, meeting and support</title>
+<!-- Batch 6 on a phone · SCR-083 Calendar (today's agenda), SCR-085 Meeting in progress with recording only after everyone agrees (D-160), SCR-066 Support request reply with an AI draft (CORE-053, CORE-051, PRJ-013, AI-009, AI-010). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .p-body{gap:12px}
+  .wk2{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+  .wk2 div{display:flex;flex-direction:column;gap:3px;align-items:center;font-size:10.5px;font-weight:700;color:var(--muted);padding:6px 0;border-radius:12px}
+  .wk2 div b{font-family:Sora,sans-serif;font-size:16px;color:var(--ink)}
+  .wk2 div.on{background:var(--primary-bg)} .wk2 div.on b,.wk2 div.on{color:var(--primary-ink)}
+  .wk2 div i{width:5px;height:5px;border-radius:50%;background:var(--on)}
+  .ev2{display:flex;gap:10px;padding:10px 12px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft);border-left:4px solid var(--t);font-size:12.5px;text-decoration:none;color:inherit}
+  .ev2 .tm2{font-family:Sora,sans-serif;font-weight:600;font-size:15px;width:46px;flex:none}
+  .ev2 b{display:block;font-weight:700;font-size:13px}
+  .ev2 small{color:var(--muted);font-size:11.5px}
+  .ev2 .btn{margin-left:auto;align-self:center;height:28px;font-size:12px}
+  .recbar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:#2A0F0F;color:#fff}
+  .recbar .dot2{width:10px;height:10px;border-radius:50%;background:#EF4444;box-shadow:0 0 0 4px rgba(239,68,68,.25)}
+  .recbar b{font-family:Sora,sans-serif;font-size:18px}
+  .recbar small{display:block;font-size:11px;opacity:.75}
+  .recbar .stop{margin-left:auto;padding:7px 12px;border-radius:10px;background:#fff;color:#2A0F0F;font-weight:800;font-size:12px}
+  .cons{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:var(--green-bg);font-size:12px;color:var(--green)}
+  .cons div{display:flex;align-items:center;gap:8px;font-weight:600}
+  .cons svg{width:14px;height:14px}
+  .nt{padding:12px;border-radius:14px;border:1px solid var(--line);font-size:12.5px;line-height:1.6;min-height:110px}
+  .nt::after{content:"";display:inline-block;width:1.5px;height:14px;background:var(--accent);vertical-align:-2px;margin-left:2px}
+  .bub2{max-width:86%;padding:8px 11px;border-radius:12px;font-size:12.5px;line-height:1.45}
+  .bub2.c{background:#E7F8EE;color:#0B3B30;border-top-left-radius:4px;align-self:flex-start}
+  .bub2.u{background:var(--primary-bg);color:#fff;border-top-right-radius:4px;align-self:flex-end}
+  .meta4{font-size:10.5px;color:var(--muted);font-weight:600}
+  .meta4.r{align-self:flex-end}
+  .draft{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:14px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px}
+  .draft .ta3{font-family:"Noto Sans Tamil","DM Sans",sans-serif;line-height:1.55}
+  .rowb{display:flex;gap:8px}
+  .rowb span{flex:1;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px;border:1px solid var(--line)}
+  .rowb span.s{background:var(--primary-bg);color:var(--primary-ink);border-color:transparent}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 · Calendar, today -->
+  <div class="phone">
+    <div class="status"><span>10:44</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Calendar</span><a class="icon-btn" href="meeting-new.html" style="margin-left:auto"><i data-i="plus"></i></a></div>
+    <div class="p-body">
+      <div class="wk2"><div>M<b>28</b></div><div>T<b>29</b><i></i></div><div>W<b>30</b><i></i></div><div class="on">T<b>1</b></div><div>F<b>2</b></div><div>S<b>3</b><i></i></div><div>S<b>4</b></div></div>
+      <p class="eyebrow" style="margin:4px 0 0">Thursday, 1 October</p>
+      <a class="ev2" href="meetings.html" style="--t:#0E7490"><span class="tm2">11:00 am</span><div><b>Discovery call</b><small>Sri Lakshmi Traders · Meet</small></div><span class="btn solid">Join</span></a>
+      <a class="ev2" href="deliverable.html" style="--t:#E2A93B"><span class="tm2">12:30 pm</span><div><b>Homepage review</b><small>Deadline · Kaveri Hospitals</small></div></a>
+      <div class="ev2" style="--t:#475569"><span class="tm2">3:30 pm</span><div><b>Weekly review</b><small>Team · office</small></div></div>
+      <div class="ev2" style="--t:#BE185D"><span class="tm2" style="font-size:12px">All day</span><div><b>Rahul on leave</b><small>Back Sat 3 Oct</small></div></div>
+      <p class="eyebrow" style="margin:6px 0 0">Tomorrow · Gandhi Jayanti</p>
+      <div class="ev2" style="--t:#0EA5A4"><span class="tm2">9:00 am</span><div><b>Sharma renewal invoice</b><small>Sends by itself · ₹8,850</small></div></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a class="on" href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 2 · Meeting in progress: recording only after everyone agreed -->
+  <div class="phone">
+    <div class="status"><span>4:12</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif" style="font-size:19px">Homepage feedback</span></div>
+    <div class="p-body">
+      <div class="recbar"><span class="dot2"></span><div><b>11:42 am</b><small>Recording for AI minutes</small></div><span class="stop">Stop</span></div>
+      <div class="cons"><div><i data-i="check"></i>Dr. Rao agreed · 4:01 pm</div><div><i data-i="check"></i>Owner, Divya agreed · 4:01 pm</div><div><i data-i="check"></i>Arun agreed when he joined · 4:10 pm</div></div>
+      <span class="sm" style="font-size:12px">Your notes (optional) · AI adds them to the minutes</span>
+      <div class="nt">Doctors first on the homepage. 24×7 number at the top. Online booking: quote separately.</div>
+      <div class="ai-card" style="padding:10px 12px;gap:4px"><div class="ai-h"><i data-i="spark"></i>After the call</div><span style="font-size:12px">A draft of the minutes, decisions and action items is ready in about 2 minutes. You check it before anything is shared.</span></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a class="on" href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 3 · Support request: reply with an AI draft -->
+  <div class="phone">
+    <div class="status"><span>10:36</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif" style="font-size:19px">Contact form</span><span class="chip c-red" style="margin-left:auto">1 day late</span></div>
+    <div class="p-body" style="gap:8px">
+      <span class="meta4">Ravi · WhatsApp · 27 Sep</span>
+      <span class="bub2 c">Our website enquiry form is not sending emails since yesterday.</span>
+      <span class="meta4 r">Arun · 29 Sep</span>
+      <span class="bub2 u">Please add our team email to your Google account so we can set up the form again.</span>
+      <span class="meta4">Ravi · today 10:31 am</span>
+      <span class="bub2 c">The enquiry form is still not sending emails to us.</span>
+      <div class="draft"><div class="ai-h"><i data-i="spark"></i>Draft reply · Tamil<span class="r">Check, then send</span></div><span class="ta3 ta" lang="ta">ரவி சார், மன்னிக்கவும். இன்று மாலை 5 மணிக்குள் சரி செய்து உங்களுக்கு தெரிவிக்கிறோம்.</span><span class="sm" style="font-size:11.5px">"Sorry Ravi, we will fix it by 5 pm today and let you know."</span></div>
+      <div class="rowb"><span>Edit</span><span class="s">Send</span></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a class="on" href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+</div>
+</body>
+</html>

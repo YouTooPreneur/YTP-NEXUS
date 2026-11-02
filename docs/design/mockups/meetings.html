@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Meetings</title>
+<!-- Batch 6 · SCR-086 Meeting history: search and filter past meetings by client, person, date and type; status (completed, cancelled, no-show), minutes, open action items, recordings; export one meeting's summary; AI answers questions across past minutes (CORE-052, CORE-051, AI-001, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .bar7{display:flex;align-items:center;gap:10px}
+  .bar7 .search{width:300px;height:36px}
+  .bar7 .r{margin-left:auto;display:flex;gap:8px}
+  .fsel{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:12.5px;font-weight:600;color:var(--muted)}
+  .fsel svg{width:14px;height:14px}
+  .tbl td{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl a{color:inherit;text-decoration:none}
+  .dt4{font-weight:700;white-space:nowrap}
+  .dt4 small{font-weight:500}
+  .min2{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
+  .min2 svg{width:13px;height:13px}
+  .min2.fin{color:var(--green)} .min2.dr2{color:var(--amber)} .min2.no{color:var(--muted)}
+  .rec2{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--ai-ink);background:var(--ai-bg);border:1px solid var(--ai-line);padding:1px 7px;border-radius:999px;margin-left:6px}
+  .rec2 svg{width:11px;height:11px}
+  .avs{display:inline-flex}
+  .avs .lg-av{width:24px;height:24px;font-size:8.5px;margin-left:-5px;box-shadow:0 0 0 2px var(--card)}
+  .avs .lg-av:first-child{margin-left:0}
+</style>
+</head>
+<body>
+<div class="app" data-active="Calendar" data-sec="calendar" data-sec-on="meetings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Meetings</h1>
+          <p>Every client and team meeting with its minutes, decisions and action items. Search by client, person, date or topic; export one meeting's summary as a PDF.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Ask about past meetings, for example: What did Kaveri ask for in September? The answer quotes the minutes with links. Read only."><i data-i="spark"></i>Ask about past meetings</span><a class="btn solid lg" href="meeting-new.html" style="text-decoration:none"><i data-i="plus"></i>Schedule meeting</a></div>
+      </div>
+
+      <div class="bar7">
+        <div class="search"><i data-i="search"></i><span class="q">Client, person or topic…</span></div>
+        <div class="views"><span class="on">All <em class="count">10</em></span><span>Client <em class="count">7</em></span><span>Team <em class="count">3</em></span><span>Open actions <em class="count">3</em></span><span>Recorded <em class="count">2</em></span></div>
+        <div class="r"><span class="fsel"><i data-i="cal"></i>Last 30 days</span><span class="fsel"><i data-i="users"></i>Anyone</span></div>
+      </div>
+
+      <div class="card" style="padding:4px 18px 12px">
+        <table class="tbl">
+          <thead><tr><th>When</th><th>Meeting</th><th>Client</th><th>People</th><th>Status</th><th>Minutes</th><th>Open actions</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="dt4">Today<small>3:30 pm</small></td><td><b>Weekly review</b><small>Team · office</small></td><td class="sm">—</td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span><span class="lg-av" style="--av:#0F766E">KR</span><span class="lg-av" style="--av:#1D4ED8">AK</span><span class="lg-av" style="--av:#BE185D">DS</span></span></td><td><span class="chip c-blue">Today</span></td><td><span class="min2 no">—</span></td><td class="sm">—</td><td></td></tr>
+            <tr><td class="dt4">Today<small>11:00 am</small></td><td><b>Discovery call</b><small>Client · discovery · Google Meet</small></td><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:24px;height:24px;font-size:8.5px">SL</span>Sri Lakshmi Traders</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span><span class="lg-av" style="--av:#1D4ED8">AK</span></span></td><td><span class="chip c-blue">Today</span></td><td><span class="min2 no">—</span></td><td class="sm">—</td><td></td></tr>
+            <tr><td class="dt4">30 Sep<small>3:00 pm</small></td><td><b>Interview · video editor</b><small>Team · HR · office</small></td><td class="sm">—</td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span><span class="lg-av" style="--av:#7C3AED">RM</span></span></td><td><span class="chip c-green">Completed</span></td><td><span class="min2 fin"><i data-i="check"></i>Final</span></td><td class="sm">0</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">29 Sep<small>4:00 pm</small></td><td><a href="meeting.html"><b>Homepage feedback<span class="rec2"><i data-i="mic"></i>Recorded</span></b></a><small>Client · project review · Meet</small></td><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:24px;height:24px;font-size:8.5px">KH</span>Kaveri Hospitals</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#1D4ED8">AK</span></span></td><td><span class="chip c-green">Completed</span></td><td><span class="min2 dr2"><i data-i="spark"></i>AI draft to check</span></td><td>1 of 3</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">29 Sep<small>11:00 am</small></td><td><b>Final proposal call</b><small>Client · proposal · phone</small></td><td><div class="nmc"><span class="lg-av" style="--av:#EA580C;width:24px;height:24px;font-size:8.5px">SC</span>Sunrise Clinic</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span></span></td><td><span class="chip c-green">Completed · won</span></td><td><span class="min2 fin"><i data-i="check"></i>Final</span></td><td>1 of 1</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">28 Sep<small>2:00 pm</small></td><td><b>October plan</b><small>Client · follow-up · Meet</small></td><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9;width:24px;height:24px;font-size:8.5px">ML</span>Meridian Logistics</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">KR</span><span class="lg-av" style="--av:#BE185D">DS</span></span></td><td><span class="chip c-green">Completed</span></td><td><span class="min2 fin"><i data-i="check"></i>Final</span></td><td class="sm">0</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">24 Sep<small>3:30 pm</small></td><td><b>Weekly review<span class="rec2"><i data-i="mic"></i>Recorded</span></b><small>Team · office</small></td><td class="sm">—</td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">YP</span><span class="lg-av" style="--av:#0F766E">KR</span><span class="lg-av" style="--av:#1D4ED8">AK</span><span class="lg-av" style="--av:#BE185D">DS</span></span></td><td><span class="chip c-green">Completed</span></td><td><span class="min2 fin"><i data-i="check"></i>Final</span></td><td>1 of 6</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">23 Sep<small>12:00 pm</small></td><td><b>SEO discussion</b><small>Lead · discovery · Meet</small></td><td><div class="nmc"><span class="lg-av" style="--av:#0E7490;width:24px;height:24px;font-size:8.5px">PD</span>Pearl Dental</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">KR</span></span></td><td><span class="chip c-red">No-show</span></td><td><span class="min2 no">—</span></td><td class="sm">Follow-up late</td><td></td></tr>
+            <tr><td class="dt4">21 Sep<small>11:00 am</small></td><td><b>Handover call</b><small>Client · project review · phone</small></td><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9;width:24px;height:24px;font-size:8.5px">BM</span>Bright Minds Tuition</div></td><td><span class="avs"><span class="lg-av" style="--av:#1D4ED8">AK</span></span></td><td><span class="chip c-green">Completed</span></td><td><span class="min2 fin"><i data-i="check"></i>Final</span></td><td class="sm">0</td><td><span class="btn" style="height:28px;padding:0 9px"><i data-i="download"></i></span></td></tr>
+            <tr><td class="dt4">17 Sep<small>11:00 am</small></td><td><b>Monthly SEO review</b><small>Client · follow-up</small></td><td><div class="nmc"><span class="lg-av" style="--av:#7C2D12;width:24px;height:24px;font-size:8.5px">CR</span>Coastal Realty</div></td><td><span class="avs"><span class="lg-av" style="--av:#0F766E">KR</span></span></td><td><span class="chip c-ink">Cancelled</span></td><td><span class="min2 no">—</span></td><td class="sm">Client on hold</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

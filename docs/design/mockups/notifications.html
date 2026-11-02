@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Notifications</title>
+<!-- Batch 2 · SCR-006 Notification centre: unread, all, snoozed; snooze and dismiss; AI summary of what is unread -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .nt{display:grid;grid-template-columns:10px 40px 1fr auto;gap:14px;align-items:center;padding:12px 22px;border-top:1px solid var(--line-soft)}
+  .nt .u{width:8px;height:8px;border-radius:50%;background:var(--on)}
+  .nt.read .u{background:transparent}
+  .nt .lic{width:40px;height:40px}
+  .nt .lic.r{background:var(--red-bg);color:var(--red)} .nt .lic.a{background:var(--amber-bg);color:var(--amber)} .nt .lic.g{background:var(--green-bg);color:var(--green)} .nt .lic.b{background:var(--blue-bg);color:var(--blue)}
+  .nt b{font-weight:700}
+  .nt .m{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .nt .acts{display:flex;gap:8px;align-items:center}
+  .nt .t{font-size:12px;color:var(--muted);min-width:64px;text-align:right}
+  .nt.read b{font-weight:600}
+  .ch-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .ch-row:first-of-type{border-top:0}
+</style>
+</head>
+<body>
+<div class="app" data-active="">
+  <main>
+    <section class="pg" style="gap:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Notifications</h1>
+          <p>Everything that needs you, in one place. Snooze what can wait; choose what reaches you, and how, in My profile.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: reads your unread notifications and writes a short summary. Uses a little of today's AI budget."><i data-i="spark"></i>Summarise unread</span><span class="btn lg"><i data-i="check"></i>Mark all read</span></div>
+      </div>
+      <div class="views"><span class="on">Unread <em class="count">6</em></span><span>All</span><span>Snoozed <em class="count">2</em></span><span>Dismissed</span><span>Mentions <em class="count">1</em></span></div>
+
+      <div class="lay">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Summary of 6 unread<span class="r">AI draft · check before acting</span></div>
+            <div style="font-size:14px;line-height:1.55">2 approvals wait for you (an expense of ₹4,200 and a 15% discount for Bloom Florists). <b>greenleaforganics.com</b> renews in 7 days and is not paid. Divya mentioned you on the homepage review. The rest can wait.</div>
+            <div class="ai-acts"><a class="btn solid" href="approvals.html" style="text-decoration:none">Open approvals</a><span class="btn">Dismiss summary</span></div>
+          </div>
+          <div class="card">
+            <div class="sect" style="padding:14px 22px 8px">Today</div>
+            <div class="nt"><i class="u"></i><div class="lic a"><i data-i="inbox"></i></div><div><b>Discount for Bloom Florists needs your approval</b><span class="m">Karthik asked for 15% on SEO · every discount comes to you</span></div><div class="acts"><span class="t">10:42 am</span><a class="btn" href="approvals.html" style="text-decoration:none">Open</a><span class="btn" title="Snooze"><i data-i="clock"></i></span><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+            <div class="nt"><i class="u"></i><div class="lic r"><i data-i="globe"></i></div><div><b>greenleaforganics.com renews in 7 days</b><span class="m">Not paid yet · registrar auto-renew is off · WhatsApp to Meena waits for your tap</span></div><div class="acts"><span class="t">9:00 am</span><a class="btn" href="expiry.html" style="text-decoration:none">Open</a><span class="btn" title="Snooze"><i data-i="clock"></i></span><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+            <div class="nt"><i class="u"></i><div class="lic b"><i data-i="at"></i></div><div><b>Divya mentioned you</b><span class="m">"@Owner the hero image is ready for review" · Homepage design review</span></div><div class="acts"><span class="t">8:55 am</span><a class="btn" href="task.html" style="text-decoration:none">Reply</a><span class="btn" title="Snooze"><i data-i="clock"></i></span><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+            <div class="nt"><i class="u"></i><div class="lic a"><i data-i="wallet"></i></div><div><b>Expense claim ₹4,200 from Arun</b><span class="m">Client visit travel · bill attached</span></div><div class="acts"><span class="t">8:30 am</span><a class="btn" href="approvals.html" style="text-decoration:none">Open</a><span class="btn" title="Snooze"><i data-i="clock"></i></span><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+            <div class="sect" style="padding:14px 22px 8px;border-top:1px solid var(--line-soft)">Yesterday</div>
+            <div class="nt"><i class="u"></i><div class="lic g"><i data-i="check"></i></div><div><b>Payment received: ₹12,000 from Velocity Motors</b><span class="m">Annual maintenance · receipt sent by WhatsApp</span></div><div class="acts"><span class="t">6:20 pm</span><a class="btn" href="payments.html" style="text-decoration:none">Open</a><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+            <div class="nt"><i class="u"></i><div class="lic b"><i data-i="target"></i></div><div><b>New lead: Bloom Florists (Instagram)</b><span class="m">Not contacted for 6 hours</span></div><div class="acts"><span class="t">4:05 pm</span><a class="btn" href="pipeline.html" style="text-decoration:none">Open</a><span class="btn" title="Dismiss"><i data-i="x"></i></span></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Snoozed</h2><em class="count">2</em></div>
+            <div class="ch-row"><span>Send quote to Urban Nest Interiors</span><span class="sm">until 2:00 pm</span></div>
+            <div class="ch-row"><span>Weekly report for Kaveri Hospitals</span><span class="sm">until Monday</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Waiting for your tap</h2><em class="count">1</em></div>
+            <div style="font-size:13px;line-height:1.45;padding:2px 0 10px"><b>WhatsApp to Meena (Accounts)</b><br><span class="sm">greenleaforganics.com renews in 7 days and is not paid · ready since 9:00 am</span></div>
+            <div style="display:flex;gap:8px"><span class="btn solid"><i data-i="send"></i>Send</span><span class="btn">Edit</span><span class="btn">Don't send</span></div>
+            <p class="help" style="margin-top:8px">Ask first: you set this company-wide alert, so its WhatsApp waits for you. The alert in Nexus has already reached Meena.</p>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">How alerts reach you</h2></div>
+            <div class="ch-row"><span>In Nexus</span><span class="sm">Always</span></div>
+            <div class="ch-row"><span>Email</span><i class="toggle on"></i></div>
+            <div class="ch-row"><span>WhatsApp (urgent only)</span><i class="toggle on"></i></div>
+            <div class="ch-row"><span>Ask first (you tap Send)</span><span class="sm">1 alert</span></div>
+            <div class="ch-row"><span>Phone alerts</span><span class="sm">Later</span></div>
+            <a class="lk" href="my-profile.html#notifications" style="font-size:12.5px;font-weight:600;display:inline-block;margin-top:8px">Change in My profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

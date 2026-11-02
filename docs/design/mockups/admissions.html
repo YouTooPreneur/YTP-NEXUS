@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Admissions</title>
+<!-- Batch 9 · SCR-152 Admissions: Academy enquiries come in as CRM leads for an Academy service (website form, chat, Instagram, walk-in); called, form sent, admitted; the admission form the student fills (fee plan chosen by the student, Aadhaar last 4 digits only, consent); admitting creates the student record and the first YTA invoice (ACD-003, ACD-012, ACD-005, CRM-026). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay12{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:14px;align-items:start}
+  .cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .cl4{display:flex;flex-direction:column;gap:8px;padding:10px;border-radius:18px;background:var(--card-2);border:1px solid var(--line-soft);min-width:0}
+  .cl4 .h8{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;padding:2px 4px}
+  .cl4 .h8 .count{margin-left:auto}
+  .adm{background:var(--card);border-radius:13px;border:1px solid var(--line-soft);padding:9px 10px;display:flex;flex-direction:column;gap:7px;box-shadow:0 1px 2px rgba(16,39,58,.05)}
+  .adm.on{box-shadow:0 0 0 2px var(--ink)}
+  .adm .t{display:flex;align-items:center;gap:8px;min-width:0}
+  .adm .t > div{min-width:0}
+  .adm b{display:block;font-weight:700;font-size:12.5px}
+  .adm small{display:block;font-size:11px;color:var(--muted)}
+  .adm .f{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11px;font-weight:600;color:var(--muted)}
+  .adm .f .late{color:var(--red)}
+  .src2{display:inline-flex;align-items:center;gap:4px;padding:1px 7px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft)}
+  .src2 svg{width:11px;height:11px}
+  .frm{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .frm h3{font-family:Sora,sans-serif;font-weight:600;font-size:16px;display:flex;align-items:center;gap:8px}
+  .frm h3 .chip{margin-left:auto}
+  .kv11{display:grid;grid-template-columns:120px minmax(0,1fr);gap:7px 12px;font-size:12.5px}
+  .kv11 span{color:var(--muted)}
+  .kv11 b{font-weight:700}
+  .plan2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .plan2 div{padding:9px 11px;border-radius:12px;border:1.5px solid var(--line);font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+  .plan2 div.on{border-color:var(--ink);color:var(--ink)}
+  .plan2 b{display:block;font-size:13px;color:var(--ink)}
+  .rad{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--edge);flex:none;margin-top:1px}
+  .on .rad{border:5px solid var(--on)}
+  .chkl{display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+  .chkl span{display:flex;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="admissions">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Admissions</h1>
+          <p>Academy enquiries are CRM leads for an Academy course. Call, send the admission form, and admit: that makes the student record and the first fee invoice.</p>
+        </div>
+        <div class="acts"><span class="chip c-amber">2 not called back</span><a class="btn lg" href="leads.html" style="text-decoration:none"><i data-i="users"></i>In CRM</a><span class="btn solid lg"><i data-i="plus"></i>Add enquiry</span></div>
+      </div>
+      <div class="lay12">
+        <div class="cols4">
+          <div class="cl4"><div class="h8">Enquiry<span class="count">5</span></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#BE185D;width:28px;height:28px;font-size:9.5px">AR</span><div><b>Anitha R</b><small>DMM-Oct26 · fees and timings</small></div></div><div class="f"><span class="src2"><i data-i="chat"></i>Website chat</span><span>Call 4:30 pm</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#0369A1;width:28px;height:28px;font-size:9.5px">SP</span><div><b>Sowmya P</b><small>AI-Nov26</small></div></div><div class="f"><span class="src2"><i data-i="globe"></i>Form</span><span>Today 9:30 am</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#047857;width:28px;height:28px;font-size:9.5px">HP</span><div><b>Hari Prasad</b><small>DMM-Oct26</small></div></div><div class="f"><span class="src2"><i data-i="globe"></i>Form</span><span class="late">3 days, not called</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#7C3AED;width:28px;height:28px;font-size:9.5px">VK</span><div><b>Vignesh K</b><small>DMM-Oct26</small></div></div><div class="f"><span class="src2"><i data-i="camera"></i>Instagram</span><span class="late">2 days, not called</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#B45309;width:28px;height:28px;font-size:9.5px">MJ</span><div><b>Meera J</b><small>WordPress · next batch</small></div></div><div class="f"><span class="src2"><i data-i="building"></i>Walk-in</span><span>Waitlist</span></div></div>
+          </div>
+          <div class="cl4"><div class="h8">Called<span class="count">2</span></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#0F766E;width:28px;height:28px;font-size:9.5px">KV</span><div><b>Karan V</b><small>DMM-Oct26 · thinking it over</small></div></div><div class="f"><span class="src2"><i data-i="phone"></i>Call</span><span>Call again Sat</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#9F1239;width:28px;height:28px;font-size:9.5px">DN</span><div><b>Deepa N</b><small>AI-Nov26 · pays on Monday</small></div></div><div class="f"><span class="src2"><i data-i="phone"></i>Call</span></div></div>
+          </div>
+          <div class="cl4"><div class="h8">Form sent<span class="count">2</span></div>
+            <div class="adm on"><div class="t"><span class="lg-av" style="--av:#1D4ED8;width:28px;height:28px;font-size:9.5px">RM</span><div><b>Rakesh M</b><small>DMM-Oct26 · instalments</small></div></div><div class="f"><span class="src2"><i data-i="check"></i>Filled today 10:15 am</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#A21CAF;width:28px;height:28px;font-size:9.5px">PS</span><div><b>Pooja S</b><small>DMM-Oct26</small></div></div><div class="f"><span class="src2"><i data-i="send"></i>Sent 30 Sep</span><span>Not opened</span></div></div>
+          </div>
+          <div class="cl4"><div class="h8">Admitted · fee due<span class="count">2</span></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#334155;width:28px;height:28px;font-size:9.5px">BV</span><div><b>Bharathi V</b><small>DMM-Oct26 · instalment 1</small></div></div><div class="f"><span class="src2"><i data-i="wallet"></i>₹12,000</span><span>Due 5 Oct</span></div></div>
+            <div class="adm"><div class="t"><span class="lg-av" style="--av:#0E7490;width:28px;height:28px;font-size:9.5px">NR</span><div><b>Naveen R</b><small>DMM-Oct26 · instalment 1</small></div></div><div class="f"><span class="src2"><i data-i="wallet"></i>₹12,000</span><span>Due 5 Oct</span></div></div>
+            <span class="manual" style="padding:2px 4px">14 admitted in September</span>
+          </div>
+        </div>
+        <div class="card frm">
+          <h3>Admission form · Rakesh M <span class="chip c-amber">Check and admit</span></h3>
+          <span class="sm" style="font-size:12px;margin-top:-6px">Sent on WhatsApp 30 Sep · filled by Rakesh today at 10:15 am</span>
+          <div class="kv11"><span>Course</span><b>Digital Marketing Mastery · DMM-Oct26</b><span>Phone</span><b>+91 97890 •••12 · WhatsApp</b><span>Date of birth</span><b>14 Mar 2001</b><span>Studies</span><b>B.Com, 2022</b><span>Now</span><b>Working · sales executive</b><span>City</span><b>Chennai · Porur</b><span>ID proof</span><b>Aadhaar · last 4 digits only: 4821</b><span>Photo</span><b>Uploaded</b></div>
+          <span class="manual">We keep only the last 4 digits of the Aadhaar number, never the full number or a copy of the card.</span>
+          <span class="sm" style="font-size:12px;font-weight:700">Fee plan · chosen by the student</span>
+          <div class="plan2"><div class="on"><span class="rad"></span><span><b>3 instalments</b>₹12,000 × 3 · now, 5 Nov, 5 Dec</span></div><div><span class="rad"></span><span><b>In full</b>₹35,000 now</span></div></div>
+          <div class="chkl"><span><i class="chk on"></i>Class and fee reminders on WhatsApp</span><span><i class="chk"></i>Offers and new courses (optional)</span><span><i class="chk on"></i>Agreed to the Academy terms · today 10:15 am</span></div>
+          <div style="display:flex;gap:8px"><a class="btn solid lg" href="students.html" style="text-decoration:none"><i data-i="check"></i>Admit</a><span class="btn lg">Ask for a change</span></div>
+          <span class="manual">Admitting makes the student record and the first instalment invoice (YTA series), and adds Rakesh to the batch's reminders.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

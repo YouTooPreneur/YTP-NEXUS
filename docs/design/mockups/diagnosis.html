@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Business diagnosis</title>
+<!-- Batch 3 · SCR-036 Business diagnosis (clarity session): editable questionnaire, notes, recommended services, free or paid (paid creates a draft invoice); AI recommends services and summarises notes (CRM-012, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:18px;align-items:start}
+  .qs{display:flex;flex-direction:column}
+  .dq{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line-soft)}
+  .dq:first-of-type{border-top:0}
+  .dq em{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--card-2);border:1px solid var(--line);color:var(--muted)}
+  .dq b{font-weight:700;display:block;margin-bottom:4px}
+  .dq p{font-size:13.5px;line-height:1.5}
+  .opts2{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+  .opts2 span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .opts2 span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+  .rec{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .rec:first-of-type{border-top:0}
+  .rec b{font-weight:700;display:block}
+  .rec small{font-size:12px;color:var(--muted);line-height:1.45}
+  .sec-h{display:flex;gap:10px;align-items:center;padding:14px 0 6px}
+  .sec-h .sect{padding:0}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="pipeline.html">Pipeline</a><span>/</span><a href="pipeline.html">Sri Lakshmi Traders</a><span>/</span><b style="color:var(--ink)">Discovery call</b></div>
+          <h1 class="serif">Business diagnosis</h1>
+          <p>Clarity first, structure second, execution last. Ask, listen, then recommend. Questions are edited in Settings.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span class="on">Free</span><span>Paid</span></div><span class="btn lg">Save draft</span><span class="btn solid lg">Finish and recommend</span></div>
+      </div>
+      <div class="banner info"><i data-i="wallet"></i>This session is free. A paid session creates a draft invoice that waits in the approval inbox.</div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:8px">
+          <div class="sec-h"><span class="sect">Business today</span></div>
+          <div class="qs">
+            <div class="dq"><em>1</em><div><b>What does the business do, and for whom?</b><p>Rice and provisions wholesaler in Kothavalsavadi since 1994. Sells to 300 shops across Chennai; a second branch opened in Tambaram.</p></div></div>
+            <div class="dq"><em>2</em><div><b>Where do new customers come from today?</b><div class="opts2"><span class="on">Word of mouth</span><span class="on">Phone orders</span><span>Website</span><span>Instagram</span><span class="on">WhatsApp groups</span><span>Ads</span></div></div></div>
+          </div>
+          <div class="sec-h"><span class="sect">Goals</span></div>
+          <div class="qs">
+            <div class="dq"><em>3</em><div><b>What should be different in 6 months?</b><p>Shops should see prices and order on WhatsApp without calling. New shops in Tambaram should find them on Google.</p></div></div>
+            <div class="dq"><em>4</em><div><b>What stops it today?</b><p>No website. Price lists are typed into WhatsApp every morning by hand. Not on Google Maps for the new branch.</p></div></div>
+          </div>
+          <div class="sec-h"><span class="sect">Budget and timeline</span></div>
+          <div class="qs">
+            <div class="dq"><em>5</em><div><b>Budget range</b><div class="opts2"><span>Under ₹50k</span><span class="on">₹50k–1L</span><span>₹1L–2L</span><span>Above ₹2L</span></div></div></div>
+            <div class="dq"><em>6</em><div><b>Notes from the call</b><p>Mr. Ganesan decides; his son Senthil runs the WhatsApp groups. Wants it before Pongal (mid-January). Prefers Tamil.</p></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Recommended from the answers<span class="r">You decide</span></div>
+            <div class="rec"><i class="chk on"></i><div><b>Website with a price list and WhatsApp ordering</b><small>Shops want prices without calling; daily lists are typed by hand today. Tamil and English.</small></div></div>
+            <div class="rec"><i class="chk on"></i><div><b>Local SEO and Google Maps for both branches</b><small>New Tambaram branch is not on Maps; new shops search there.</small></div></div>
+            <div class="rec"><i class="chk on"></i><div><b>WhatsApp broadcast set-up</b><small>They already sell through WhatsApp groups; a consent-based broadcast list is cleaner.</small></div></div>
+            <div class="rec"><i class="chk"></i><div><b>Ads</b><small>Not yet: get the website and Maps right first so ad money isn't wasted.</small></div></div>
+            <div class="ai-acts"><span class="btn solid">Use these 3</span><span class="btn">Summarise for Mr. Ganesan (Tamil)</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Session</h2></div>
+            <div class="srow" style="padding:8px 0"><div class="txt"><b>Today, 11:00 am · Google Meet</b><span>Owner with Mr. Ganesan and his son</span></div></div>
+            <div class="srow" style="padding:8px 0"><div class="txt"><b>Next step</b><span>Proposal by 3 Oct; website before Pongal</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

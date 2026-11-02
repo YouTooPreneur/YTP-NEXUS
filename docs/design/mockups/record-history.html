@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Record history</title>
+<!-- Batch 1 · SCR-010 Record history (shown here for one client) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><span>CRM</span><span>/</span><a href="client-profile.html">Sharma Dental Care</a><span>/</span><b style="color:var(--ink)">History</b></div>
+          <h1 class="serif">Record history</h1>
+          <p>Every change to Sharma Dental Care: who made it, when, and what it was before. Staff can edit the clients given to them but never delete them; every edit shows here. Available on every record from its "History" button.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="client-profile.html" style="text-decoration:none">Back to the client</a></div>
+      </div>
+      <section class="filters" style="padding-bottom:0">
+        <div class="fsel"><span>Who</span>Everyone<i data-i="down"></i></div>
+        <div class="fsel"><span>Field</span>All<i data-i="down"></i></div>
+        <div class="fsel"><span>When</span>All time<i data-i="down"></i></div>
+      </section>
+      <div class="card cb" style="padding-top:14px">
+        <table class="tbl">
+          <thead><tr><th>When</th><th>Who</th><th>Field</th><th>Before</th><th>After</th></tr></thead>
+          <tbody>
+            <tr><td class="sm">Today, 10:42 am</td><td><b>Arun</b> <span class="chip c-ink">Staff · his client</span></td><td>Phone</td><td class="sm"><s>+91 98400 11111</s></td><td><b>+91 98400 12345</b></td></tr>
+            <tr><td class="sm">29 Sep, 9:00 am</td><td><b>Nexus</b> <span class="chip c-ink">Automatic</span></td><td>Renewal alert</td><td class="sm">—</td><td>30 days before 29 Oct</td></tr>
+            <tr><td class="sm">29 Sep, 6:05 am</td><td><b>Nexus</b> <span class="chip c-ink">Automatic</span></td><td>Renewal invoice</td><td class="sm">—</td><td>Draft created for ₹8,850</td></tr>
+            <tr><td class="sm">2 Sep, 4:20 pm</td><td><b>Owner</b></td><td>Tags</td><td class="sm">Healthcare</td><td>Healthcare, Referral</td></tr>
+            <tr><td class="sm">1 Aug 2025, 12:05 pm</td><td><b>Meena</b></td><td>Payment</td><td class="sm">Outstanding ₹70,800</td><td>Paid · UPI</td></tr>
+            <tr><td class="sm">18 Jul 2025, 11:30 am</td><td><b>Karthik</b></td><td>Stage</td><td class="sm">Lead</td><td>Client</td></tr>
+            <tr><td class="sm">10 Jul 2025, 11:15 am</td><td><b>Nexus AI</b> <span class="ai-tag"><i data-i="spark"></i>Approved by Owner</span></td><td>Notes</td><td class="sm">—</td><td>Added a meeting summary</td></tr>
+            <tr><td class="sm">2 Jul 2025, 10:00 am</td><td><b>Karthik</b></td><td>Record</td><td class="sm">—</td><td>Created from a website form (Referral)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

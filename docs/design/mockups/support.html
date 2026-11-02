@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Support</title>
+<!-- Batch 6 · SCR-065 Support inbox: requests from the portal, email, WhatsApp and phone with reply and fix deadlines counting down from each client's terms; WhatsApp messages that look like a problem are flagged by AI and become a request with one tap, never by themselves (D-161) (PRJ-013, CON-014, AUTO-027, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .lay7{display:grid;grid-template-columns:1fr 380px;gap:14px;flex:1;min-height:0}
+  .tbl td{padding-top:9px;padding-bottom:9px;font-size:12.5px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl a{color:inherit;text-decoration:none}
+  .ch2{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--muted)}
+  .ch2 svg{width:14px;height:14px}
+  .cd{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .cd svg{width:12px;height:12px}
+  .cd.ok{background:var(--green-bg);color:var(--green)} .cd.soon{background:var(--amber-bg);color:var(--amber)} .cd.late{background:var(--red-bg);color:var(--red)} .cd.n{background:var(--card-2);color:var(--muted)}
+  .pr{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600}
+  .pr i{width:8px;height:8px;border-radius:50%}
+  .pr.u i{background:var(--red)} .pr.h i{background:var(--amber)} .pr.m i{background:var(--blue)} .pr.l i{background:var(--faint)}
+  .wa{display:flex;flex-direction:column;gap:10px;padding:14px 16px;flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin}
+  .wa h2{font-size:17px}
+  .msg2{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:14px;border:1px solid var(--line-soft);background:var(--card)}
+  .msg2 .who3{display:flex;align-items:center;gap:8px;font-size:12px}
+  .msg2 .who3 b{font-size:12.5px}
+  .msg2 .who3 small{margin-left:auto;color:var(--muted)}
+  .bub{align-self:flex-start;max-width:92%;padding:8px 11px;border-radius:12px 12px 12px 4px;background:#E7F8EE;color:#0B3B30;font-size:12.5px;line-height:1.45}
+  .flag{display:flex;gap:7px;align-items:flex-start;font-size:12px;color:var(--ai-ink);background:var(--ai-bg);border:1px solid var(--ai-line);padding:7px 10px;border-radius:10px}
+  .flag svg{width:14px;height:14px;flex:none;margin-top:1px}
+  .acts4{display:flex;gap:6px}
+  .acts4 .btn{height:30px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="support">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Support</h1>
+          <p>Requests from the client portal, email, WhatsApp and phone calls. Reply and fix deadlines come from each client's terms: active clients get a reply within 24 hours and a fix within 3 days.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="phone"></i>Log a phone call</span><span class="btn solid lg"><i data-i="plus"></i>New request</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>6</b><span>Open</span></div>
+        <div class="ctr warn"><b>1</b><span>Reply due within 6 hours</span></div>
+        <div class="ctr" style="background:var(--red-bg);border-color:transparent"><b style="color:var(--red)">1</b><span style="color:var(--red)">Fix late</span></div>
+        <div class="ctr"><b>1</b><span>Waiting on the client</span></div>
+        <div class="ctr"><b>100%</b><span>Replied within 24 h · September</span></div>
+      </div>
+
+      <div class="lay7">
+        <div class="card" style="padding:4px 18px 12px">
+          <table class="tbl">
+            <thead><tr><th>Request</th><th>From</th><th>Priority</th><th>Who</th><th>Reply</th><th>Fix</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><a href="support-request.html"><b>Contact form not working</b></a><small>Velocity Motors · website support</small></td><td><span class="ch2"><i data-i="chat"></i>WhatsApp</span></td><td><span class="pr u"><i></i>Urgent</span></td><td><span class="lg-av" style="--av:#1D4ED8;width:26px;height:26px;font-size:9px">AK</span></td><td><span class="cd ok"><i data-i="check"></i>In 2 h</span></td><td><span class="cd late"><i data-i="clock"></i>1 day late</span></td><td><span class="chip c-blue">In progress</span></td></tr>
+              <tr><td><b>Old phone number on the appointment page</b><small>Kaveri Hospitals · website care · from WhatsApp, 10:20 am</small></td><td><span class="ch2"><i data-i="chat"></i>WhatsApp</span></td><td><span class="pr m"><i></i>Medium</span></td><td><span class="lg-av" style="--av:#0369A1;width:26px;height:26px;font-size:9px">PN</span></td><td><span class="cd soon"><i data-i="clock"></i>Due in 5 h</span></td><td><span class="cd n">By Mon 5 Oct</span></td><td><span class="chip c-ink">New</span></td></tr>
+              <tr><td><b>Checkout button slow on phones</b><small>Anbu Textiles · free maintenance</small></td><td><span class="ch2"><i data-i="globe"></i>Portal</span></td><td><span class="pr h"><i></i>High</span></td><td><span class="lg-av" style="--av:#1D4ED8;width:26px;height:26px;font-size:9px">AK</span></td><td><span class="cd ok"><i data-i="check"></i>In 3 h</span></td><td><span class="cd n">By 3 Oct</span></td><td><span class="chip c-blue">In progress</span></td></tr>
+              <tr><td><b>Instagram login stopped working</b><small>Royal Caterers · social media</small></td><td><span class="ch2"><i data-i="phone"></i>Phone</span></td><td><span class="pr h"><i></i>High</span></td><td><span class="lg-av" style="--av:#0F766E;width:26px;height:26px;font-size:9px">KR</span></td><td><span class="cd ok"><i data-i="check"></i>On the call</span></td><td><span class="cd n">By 3 Oct</span></td><td><span class="chip c-amber">Waiting on client</span></td></tr>
+              <tr><td><b>Update clinic timings</b><small>Sharma Dental Care · AMC change hours</small></td><td><span class="ch2"><i data-i="mail"></i>Email</span></td><td><span class="pr l"><i></i>Low</span></td><td><span class="lg-av" style="--av:#BE185D;width:26px;height:26px;font-size:9px">DS</span></td><td><span class="cd ok"><i data-i="check"></i>In 1 h</span></td><td><span class="cd n">8 Oct · agreed</span></td><td><span class="chip c-blue">In progress</span></td></tr>
+              <tr><td><b>Add new batch timings to the page</b><small>Bright Minds Tuition · no AMC since 1 Oct</small></td><td><span class="ch2"><i data-i="chat"></i>WhatsApp</span></td><td><span class="pr l"><i></i>Low</span></td><td><span class="sm">—</span></td><td><span class="cd soon"><i data-i="clock"></i>Due in 20 h</span></td><td><span class="cd n">Quote first</span></td><td><span class="chip c-ink">Not covered</span></td></tr>
+            </tbody>
+          </table>
+          <span class="manual" style="display:block;margin-top:10px">Not covered by an AMC or free maintenance? The request follows that client's change-request rule (quote first, decide each time, or small changes free up to a limit). A fix deadline on a Sunday moves to Monday; a fixed request closes by itself after 3 days if the client doesn't reply.</span>
+        </div>
+
+        <!-- WhatsApp messages flagged by AI (D-161) -->
+        <div class="card wa">
+          <div style="display:flex;align-items:center;gap:8px"><h2 class="serif">From WhatsApp</h2><span class="count">3</span><span class="manual" style="margin-left:auto">AI flags · you decide</span></div>
+          <div class="msg2">
+            <div class="who3"><span class="lg-av" style="--av:#6D28D9;width:26px;height:26px;font-size:9px">BM</span><b>Bright Minds Tuition</b><small>9:55 am</small></div>
+            <span class="bub">Sir, please add the new evening batch (6 to 8 pm) to our page.</span>
+            <div class="flag"><i data-i="spark"></i><span>Looks like a website change. Their free maintenance ended today, so it needs a quote. <b>Made into a request at 10:02 am by Karthik.</b></span></div>
+          </div>
+          <div class="msg2">
+            <div class="who3"><span class="lg-av" style="--av:#1D4ED8;width:26px;height:26px;font-size:9px">VM</span><b>Velocity Motors · Ravi</b><small>10:31 am</small></div>
+            <span class="bub">The enquiry form is still not sending emails to us.</span>
+            <div class="flag"><i data-i="spark"></i><span>Same problem as the open request "Contact form not working" (fix 1 day late).</span></div>
+            <div class="acts4"><a class="btn solid" href="support-request.html" style="text-decoration:none">Add to that request</a><span class="btn">Not a problem</span></div>
+          </div>
+          <div class="msg2">
+            <div class="who3"><span class="lg-av" style="--av:#047857;width:26px;height:26px;font-size:9px">KH</span><b>Kaveri Hospitals · Dr. Rao</b><small>10:12 am</small></div>
+            <span class="bub">Old site appointment page still shows the old phone number.</span>
+            <div class="flag"><i data-i="spark"></i><span>Looks like a website problem. Kaveri has website care: reply in 24 h, fix in 3 days. <b>Made into a request at 10:20 am by Priya.</b></span></div>
+          </div>
+          <span class="manual">14 other client messages today went straight to their timelines. Nothing becomes a request without a person.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

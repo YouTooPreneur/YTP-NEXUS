@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · AI quality</title>
+<!-- Batch 2 · SCR-258 AI quality: the question set that must pass before any AI change goes live, speed checks, and poor answers to review (AI-008, AI-018, NFR-024) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .runs{display:flex;align-items:flex-end;gap:14px;height:120px;padding:6px 4px 0}
+  .runs div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+  .runs i{display:block;width:100%;max-width:44px;border-radius:8px 8px 3px 3px;background:var(--on)}
+  .runs i.low{background:#E2A93B}
+  .runs b{font-size:12px;color:var(--ink)}
+  .line95{position:relative}
+  .rv b{font-weight:700;display:block}
+  .rv small{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="ai-settings.html">AI and voice</a><span>/</span><b style="color:var(--ink)">Quality</b></div>
+          <h1 class="serif">AI quality</h1>
+          <p>Before any AI change goes live, a set of real questions must pass. Poor answers are reviewed every week and fixed by improving knowledge, not by guessing.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="plus"></i>Add a test question</span><span class="btn solid lg"><i data-i="refresh"></i>Run the set now</span></div>
+      </div>
+
+      <div class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">Question set</div><div class="num serif" style="font-size:34px">96%</div><div class="sub"><span class="up">Passes</span>115 of 120 · needs 95%</div></div>
+        <div class="card kpi"><div class="lab">First words</div><div class="num serif" style="font-size:34px">0.9 s</div><div class="sub">Average · goal under 2 s</div></div>
+        <div class="card kpi"><div class="lab">Thumbs up</div><div class="num serif" style="font-size:34px">91%</div><div class="sub">of 214 rated answers</div></div>
+        <div class="card kpi"><div class="lab">To review</div><div class="num serif" style="font-size:34px">6</div><div class="sub">Thumbs-down this week</div></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 10px"><h2 class="serif" style="font-size:20px">Last 6 runs</h2><span class="sm" style="font-size:12px">Each change to prompts, models or knowledge runs the set</span></div>
+          <div class="runs">
+            <div><b>94%</b><i class="low" style="height:68px"></i>12 Sep</div>
+            <div><b>95%</b><i style="height:72px"></i>18 Sep</div>
+            <div><b>96%</b><i style="height:76px"></i>22 Sep</div>
+            <div><b>93%</b><i class="low" style="height:64px"></i>26 Sep</div>
+            <div><b>96%</b><i style="height:76px"></i>29 Sep</div>
+            <div><b>96%</b><i style="height:76px"></i>Today</div>
+          </div>
+          <p class="help" style="margin-top:12px">Runs under 95% (amber) were not allowed to go live; the earlier version kept working.</p>
+          <div class="sect" style="padding:14px 0 6px">Failed today · 2 of 5 shown</div>
+          <table class="tbl"><tbody>
+            <tr><td><b>"Which renewals are at risk this month?"</b></td><td class="sm">Missed one domain with auto-renew off</td></tr>
+            <tr><td><b>"Payslip for Divya, September"</b></td><td class="sm">Should refuse for Staff role; did not</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Poor answers to review</h2><em class="count">6</em></div>
+          <table class="tbl rv"><tbody>
+            <tr><td><b>"What did we quote Bloom Florists?"</b><small>Karthik · "used an old quote"</small></td><td class="r"><span class="btn">Fix knowledge</span></td></tr>
+            <tr><td><b>"Draft a Tamil reminder for Kaveri"</b><small>Divya · "too formal"</small></td><td class="r"><span class="btn">Update brand voice</span></td></tr>
+            <tr><td><b>"Who is on leave next week?"</b><small>Owner · "missed Rahul's leave"</small></td><td class="r"><span class="btn">Add test question</span></td></tr>
+            <tr><td><b>"Summarise the Velocity Motors task"</b><small>Arun · "too long"</small></td><td class="r"><span class="btn">Mark reviewed</span></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">4 of 6 shown. Every thumbs-down can become a new test question, so the same mistake is caught next time.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone check-in, new lead and My HR</title>
+<!-- Batch 3 on a phone · SCR-123 Check in (with work from home and the daily note), SCR-031 Quick add lead (four fields, AI fill), SCR-138 My HR (balances, apply for leave) (TEAM-009, TEAM-010, TEAM-022, TEAM-027, CRM-006, CORE-113) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .big{height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px}
+  .big.solid{background:var(--primary-bg);color:var(--primary-ink)}
+  .big.line{border:1px solid var(--line)}
+  .seg2{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border-radius:14px;background:var(--card-2)}
+  .seg2 span{height:40px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--muted)}
+  .seg2 span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+  .pnote{min-height:70px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .bals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .bals div{padding:10px;border-radius:12px;background:var(--card);border:1px solid var(--line-soft);text-align:center}
+  .bals b{display:block;font-family:Sora,sans-serif;font-size:20px}
+  .bals span{font-size:11px;color:var(--muted);font-weight:600}
+  .chips2{display:flex;gap:6px;flex-wrap:wrap}
+  .chips2 span{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .chips2 span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+  .pin{display:flex;flex-direction:column;gap:5px}
+  .pin label{font-size:12px;font-weight:600;color:var(--muted)}
+  .pin .input{height:46px}
+  .lr2{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .lr2:first-of-type{border-top:0}
+  .lr2 .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone">
+    <div class="status"><span>9:57</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Check in</span><span class="av" style="margin-left:auto">AK</span></div>
+    <div class="p-body">
+      <div><p class="eyebrow">Thursday, 1 October</p><h1 class="serif" style="font-size:30px">Good morning, Arun</h1></div>
+      <div class="seg2"><span>Office</span><span class="on">Work from home</span></div>
+      <div class="banner info" style="font-size:12.5px"><i data-i="check"></i>Your WFH for today was approved by Karthik.</div>
+      <div class="pin"><label>Today I will work on (one line)</label><div class="pnote">Fix the Velocity Motors contact form</div></div>
+      <div class="big solid"><i data-i="login"></i>Check in · 9:57 am</div>
+      <div class="lr2"><i data-i="cal"></i>Saturdays this month<span class="r sm">2 off left</span></div>
+      <div class="lr2"><i data-i="clock"></i>Office hours<span class="r sm">10:00 am – 7:00 pm</span></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a class="on" href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>11:20</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">New lead</span><a class="btn" href="leads.html" style="margin-left:auto;text-decoration:none"><i data-i="x"></i></a></div>
+    <div class="p-body">
+      <div class="ai-card" style="padding:10px 12px;flex-direction:row;align-items:center;gap:10px"><i data-i="spark" style="color:var(--ai-ink);width:16px;height:16px"></i><span style="font-size:12.5px;flex:1">Paste a message, snap a visiting card, or speak</span><span class="mic"><i data-i="mic"></i></span></div>
+      <div class="pin"><label>Name or business</label><div class="input">Nila Textiles · Mr. Bala</div></div>
+      <div class="pin"><label>Phone</label><div class="input">+91 98402 66103</div></div>
+      <div class="pin"><label>Interested in</label><div class="chips2"><span>Website</span><span>SEO</span><span class="on">Ads</span><span>Social</span><span>Not sure</span></div></div>
+      <div class="pin"><label>Source</label><div class="chips2"><span>Instagram</span><span class="on">WhatsApp</span><span>Referral</span><span>Walk-in</span><span>Other</span></div></div>
+      <div class="big solid" style="margin-top:4px">Save lead</div>
+      <span class="manual" style="text-align:center">Goes to Karthik by the ads rule</span>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>6:40</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">My HR</span><span class="av" style="margin-left:auto">AK</span></div>
+    <div class="p-body">
+      <div class="bals"><div><b>5</b><span>Casual</span></div><div><b>6</b><span>Sick</span></div><div><b>10</b><span>Earned</span></div></div>
+      <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+        <b style="font-weight:700">Apply for leave</b>
+        <div class="chips2"><span class="on">Casual</span><span>Sick</span><span>Earned</span><span>Emergency</span></div>
+        <div class="seg2"><span>Full day</span><span class="on">Half · morning</span></div>
+        <div class="input">Mon 12 Oct</div>
+        <div class="big solid" style="height:46px">Send to Karthik</div>
+      </div>
+      <div class="lr2"><i data-i="doc"></i>September payslip<span class="r"><span class="btn"><i data-i="download"></i></span></span></div>
+      <div class="lr2"><i data-i="home"></i>WFH tomorrow<span class="chip c-amber r">Waiting</span></div>
+      <div class="lr2"><i data-i="upload"></i>My documents<span class="chip c-green r">All verified</span></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html" class="on"><i data-i="more"></i>More</a></nav>
+  </div>
+</div>
+</body>
+</html>

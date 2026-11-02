@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Schedule a meeting</title>
+<!-- Batch 6 · SCR-084 Schedule a meeting (dialog over the calendar): client or team meeting, client and contact from the record, type, date and time, mode and provider (the link is made when the person's account is connected), attendees checked against calendars, leave and Saturdays off, agenda (AI can draft it), reminders, repeat, and asking to record for AI minutes (D-160) (CORE-050, CORE-054, CORE-056, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .ov-dlg{width:760px;gap:12px;padding:20px 24px}
+  .ghost-wk{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+  .ghost-wk i{height:600px}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+  .f3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px 14px}
+  .field > label{font-size:11.5px}
+  .input{height:38px}
+  .seg3{display:flex;gap:4px;padding:3px;border-radius:12px;background:var(--card-2);width:max-content}
+  .seg3 span{padding:6px 14px;border-radius:9px;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .seg3 span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .att2{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:38px;padding:4px 8px;border:1px solid var(--line);border-radius:var(--radius-sm)}
+  .att2 span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px 3px 4px;border-radius:999px;background:var(--card-2)}
+  .att2 span .lg-av{width:20px;height:20px;font-size:8px}
+  .att2 span.warn2{background:var(--amber-bg);color:var(--amber)}
+  .att2 span.ok4{background:var(--green-bg);color:var(--green)}
+  .agenda{padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:12.5px;line-height:1.6}
+  .rec{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px}
+  .rec b{font-weight:700}
+  .rec small{display:block;color:var(--muted);font-size:11.5px}
+  .rec .toggle{margin-left:auto}
+  .lk4{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+  .lk4 svg{width:14px;height:14px;color:var(--green)}
+</style>
+</head>
+<body>
+<div class="app ov" data-active="Calendar" data-sec="calendar" data-sec-on="calendar">
+  <main>
+    <div class="ov-ghost"><i style="height:64px;width:40%"></i><i style="height:40px;width:60%"></i><div class="ghost-wk"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  </main>
+  <div class="ov-dim">
+    <div class="ov-dlg" role="dialog" aria-label="Schedule a meeting">
+      <div class="dh"><h2 class="serif">Schedule a meeting</h2><div class="seg3"><span class="on">Client meeting</span><span>Team meeting</span></div><a class="btn x" href="calendar.html" style="text-decoration:none" title="Close"><i data-i="x"></i></a></div>
+      <div class="f2">
+        <div class="field"><label>Title</label><div class="input">Clarity session · Kaveri Hospitals (paid)</div></div>
+        <div class="field"><label>Client and contact</label><div class="input"><span class="lg-av" style="--av:#047857;width:22px;height:22px;font-size:8px">KH</span>Kaveri Hospitals · Dr. Rao</div></div>
+      </div>
+      <div class="f3">
+        <div class="field"><label>Date and time</label><div class="input"><i data-i="cal"></i>Sat 3 Oct · 11:00 am – 12:00 pm</div></div>
+        <div class="field"><label>Type</label><div class="input">Discovery<span class="end"><i data-i="down"></i></span></div></div>
+        <div class="field"><label>Mode</label><div class="input"><i data-i="video"></i>Google Meet</div></div>
+      </div>
+      <div class="lk4"><i data-i="check"></i>Your Google account is connected, so the Meet link is made when you schedule. Zoom and Teams work the same once connected; or paste any link.</div>
+      <div class="field"><label>People</label>
+        <div class="att2"><span><span class="lg-av" style="--av:#0F766E">YP</span>Owner</span><span class="ok4"><span class="lg-av" style="--av:#0F766E">KR</span>Karthik · free</span><span class="warn2"><span class="lg-av" style="--av:#1D4ED8">AK</span>Arun · his Saturday off</span><span><span class="lg-av" style="--av:#047857">DR</span>Dr. Rao · client</span><span class="sm" style="font-size:12px">+ add</span></div>
+      </div>
+      <div class="field"><label style="display:flex;align-items:center;gap:8px">Agenda<span class="ai-btn sm" style="margin-left:auto" data-ai="Draft the agenda: from Kaveri's diagnosis answers and open items (website project, booking request). Draft only.">✦ Draft from the diagnosis</span></label>
+        <div class="agenda">1. Your goals for the next year · 2. Website and Google listing today · 3. How patients find and book you · 4. What we recommend and the next steps</div>
+      </div>
+      <div class="f2">
+        <div class="field"><label>Reminders</label><div class="input"><i data-i="bell"></i>1 day and 30 min before · email + WhatsApp</div></div>
+        <div class="field"><label>Repeat</label><div class="input">Does not repeat<span class="end"><i data-i="down"></i></span></div></div>
+      </div>
+      <div class="rec"><i data-i="mic" style="color:var(--ai-ink)"></i><div><b>Ask to record for AI minutes</b><small>Everyone is asked at the start. Minutes are written from the recording only if all agree. About 60 voice minutes of the AI limit.</small></div><span class="toggle on"></span></div>
+      <div style="display:flex;gap:10px;align-items:center"><span class="btn solid lg">Schedule and send invites</span><a class="btn lg" href="calendar.html" style="text-decoration:none">Cancel</a><span class="manual" style="margin-left:auto;text-align:right">Test mode: invites go to the owner's test inbox.<br>Paid session invoice ₹2,500 waits for your approval.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

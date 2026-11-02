@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Integrations</title>
+<!-- Batch 2 · SCR-188 Integrations: a card per outside service (connected, test mode, ready slot, planned); connect, test, on/off; several WhatsApp providers (CORE-120, CORE-121, CORE-123, INT-001 to INT-024, D-154) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .grp-h{display:flex;align-items:center;gap:10px;margin-top:2px}
+  .grp-h .sect{padding:0}
+  .ig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .ic{display:flex;flex-direction:column;gap:8px;padding:14px 16px}
+  .ic .top2{display:flex;align-items:center;gap:10px}
+  .ic .lg{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;flex:none}
+  .ic b{font-weight:700;display:block}
+  .ic small{font-size:12px;color:var(--muted);display:block}
+  .ic .st{margin-left:auto;align-self:center}
+  .ic .acts2{display:flex;gap:8px;margin-top:auto;align-items:center}
+  .ic.hl{box-shadow:inset 0 0 0 1.5px var(--on),var(--shadow)}
+  .ic.slot{background:var(--card-2);box-shadow:none;border-style:dashed;border-color:var(--line)}
+  .more{display:flex;gap:10px;flex-wrap:wrap}
+  .more span{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px dashed var(--line);color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Integrations</b></div>
+          <h1 class="serif">Integrations</h1>
+          <p>Every outside service Nexus talks to. Each planned service already has a ready slot; it is switched on when its account exists. Keys are stored locked and never shown again.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="monitoring.html" style="text-decoration:none"><i data-i="activity"></i>Health</a></div>
+      </div>
+      <div class="views"><span class="on">All <em class="count">31</em></span><span>Connected <em class="count">6</em></span><span>Ready slots <em class="count">23</em></span><span>Planned <em class="count">2</em></span></div>
+
+      <div class="grp-h"><div class="sect">Messages</div></div>
+      <div class="ig">
+        <div class="card ic hl"><div class="top2"><span class="lg" style="background:#1B9C85">A</span><div><b>AiSensy · WhatsApp</b><small>Billing and Support numbers</small></div></div><small>Test mode · templates synced 10:40 am · replies once Nexus is online</small><div class="acts2"><span class="btn">Test</span><span class="btn">Settings</span><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#EA4335">G</span><div><b>Gmail</b><small>Billing and Hello senders</small></div></div><small>500 a day limit · 31 sent today</small><div class="acts2"><span class="btn">Test</span><span class="btn">Settings</span><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic slot"><div class="top2"><span class="lg" style="background:#0866FF">M</span><div><b>Meta Cloud API</b><small>WhatsApp, direct</small></div></div><small>Another WhatsApp provider, if needed</small><div class="acts2"><span class="btn">Connect</span><span class="btn">Guide</span><span class="chip c-ink st">Ready slot</span></div></div>
+        <div class="card ic slot"><div class="top2"><span class="lg" style="background:#5B5BD6">+</span><div><b>Other WhatsApp providers</b><small>Interakt · Wati · Gupshup</small></div></div><small>Several providers can run at once</small><div class="acts2"><span class="btn">Choose</span><span class="chip c-ink st">Ready slots</span></div></div>
+      </div>
+
+      <div class="grp-h"><div class="sect">AI and voice</div></div>
+      <div class="ig">
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#C96442">C</span><div><b>Claude</b><small>Main AI provider</small></div></div><small>Does not train on your data · key checked today</small><div class="acts2"><span class="btn">Test</span><a class="btn" href="ai-settings.html" style="text-decoration:none">Settings</a><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#111">O</span><div><b>OpenAI · Gemini</b><small>Backups if the main one is down</small></div></div><small>OpenAI connected · Gemini ready slot</small><div class="acts2"><span class="btn">Test</span><span class="chip c-green st">Backup on</span></div></div>
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#2DB8E8"><i data-i="mic"></i></span><div><b>Speech services</b><small>Voice assistant, Tamil and English</small></div></div><small>Sarvam AI · test mode · 46 of 300 minutes used in September</small><div class="acts2"><span class="btn">Test</span><span class="btn">Settings</span><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic"><div class="top2"><span class="lg" style="background:var(--primary-bg);color:var(--accent)"><i data-i="spark"></i></span><div><b>AI limits</b><small>Budget, per person, per feature</small></div></div><small>Monthly budget · ₹1,240 of ₹3,000 used</small><div class="acts2"><a class="btn" href="ai-usage.html" style="text-decoration:none">Usage and limits</a><span class="chip c-green st">On</span></div></div>
+      </div>
+
+      <div class="grp-h"><div class="sect">Money, storage and calendar</div></div>
+      <div class="ig">
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#0C2451">R</span><div><b>Razorpay</b><small>Payment links and UPI</small></div></div><small>Test mode until go-live · Stripe, Instamojo, Cashfree, PayU also ready</small><div class="acts2"><span class="btn">Test</span><a class="btn" href="finance-settings.html" style="text-decoration:none">Settings</a><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic"><div class="top2"><span class="lg" style="background:#1E7149"><i data-i="cloud"></i></span><div><b>Backup storage</b><small>Daily copy off the computer</small></div></div><small>Last copy 2:00 am · restore tested 1 Sep</small><div class="acts2"><span class="btn">Test</span><span class="chip c-green st">Connected</span></div></div>
+        <div class="card ic slot"><div class="top2"><span class="lg" style="background:#1A73E8">G</span><div><b>Google Calendar and Meet</b><small>Meetings and links</small></div></div><small>Zoom and Teams also ready</small><div class="acts2"><span class="btn">Connect</span><span class="chip c-ink st">Ready slot</span></div></div>
+        <div class="card ic slot"><div class="top2"><span class="lg" style="background:#00897B">G</span><div><b>Google Chat</b><small>Team alerts</small></div></div><small>Needs company Google accounts</small><div class="acts2"><span class="btn">Guide</span><span class="chip c-amber st">Planned</span></div></div>
+      </div>
+
+      <div class="more"><span>Meta ads and pages</span><span>Google Ads</span><span>LinkedIn · YouTube · Google Business</span><span>Calendly</span><span>Google Drive</span><span>Search Console · Analytics</span><span>Tally · Zoho Books</span><span>E-signature</span><span>Job portals</span><span>Bunny Stream (Academy)</span><span>Webhooks · Zapier · Make · n8n</span><span>Email receiving</span><span>Browser push</span></div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

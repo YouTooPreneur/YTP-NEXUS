@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Lists</title>
+<!-- Batch 2 · SCR-185 Lists: lead sources, stages, reasons, categories, tags and other choices, all settings with no code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+  .nav2{display:flex;flex-direction:column;gap:2px}
+  .nav2 .list-item{padding:9px 12px}
+  .nav2 .count{margin-left:auto}
+  .li{display:grid;grid-template-columns:20px 14px 1fr 140px 120px 44px 40px;gap:14px;align-items:center;padding:11px 22px;border-top:1px solid var(--line-soft)}
+  .li .grip svg{width:16px;height:16px;color:var(--muted)}
+  .li .cd{width:12px;height:12px;border-radius:50%}
+  .li b{font-weight:600}
+  .li .m{font-size:12.5px;color:var(--muted)}
+  .li.off b{color:var(--muted)}
+  .hd{display:grid;grid-template-columns:20px 14px 1fr 140px 120px 44px 40px;gap:14px;padding:10px 22px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .add{display:flex;align-items:center;gap:10px;margin:12px 22px 18px;height:44px;padding:0 14px;border:1px dashed var(--edge);border-radius:var(--radius-sm);color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Lists and fields</b></div>
+          <h1 class="serif">Lists and fields</h1>
+          <p>The choices people pick from in forms and filters. Change them here; no developer needed. Turning a choice off hides it from new records; old records keep it.</p>
+        </div>
+      </div>
+      <div class="tabs-x"><a class="on" href="lists.html">Lists</a><a href="custom-fields.html">Custom fields</a></div>
+
+      <div class="lay">
+        <div class="card" style="padding:12px 10px">
+          <div class="nav2">
+            <div class="sect" style="padding:4px 12px 6px">CRM</div>
+            <a class="list-item on">Lead sources<em class="count">9</em></a>
+            <a class="list-item">Pipeline stages<em class="count">6</em></a>
+            <a class="list-item">Lost reasons<em class="count">6</em></a>
+            <a class="list-item">Client categories<em class="count">8</em></a>
+            <div class="sect" style="padding:12px 12px 6px">Work</div>
+            <a class="list-item">Tags<em class="count">14</em></a>
+            <a class="list-item">Follow-up types<em class="count">5</em></a>
+            <a class="list-item">Follow-up outcomes<em class="count">4</em></a>
+            <a class="list-item">Reminder categories<em class="count">4</em></a>
+            <div class="sect" style="padding:12px 12px 6px">WebCare</div>
+            <a class="list-item">Asset types<em class="count">14</em></a>
+            <div class="sect" style="padding:12px 12px 6px">Team</div>
+            <a class="list-item">Leave types<em class="count">5</em></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch" style="padding:18px 22px 8px"><h2 class="serif" style="font-size:24px">Lead sources</h2><span class="sm" style="font-size:12.5px">Used on leads, reports and the pipeline filters</span><span class="link"><span class="btn"><i data-i="sort"></i>Sort A–Z</span></span></div>
+          <div class="hd"><span></span><span></span><span>Name</span><span>Used on</span><span>Comes in from</span><span>On</span><span></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#E1306C"></i><b>Instagram</b><span class="m">48 leads</span><span class="m">Meta lead ads</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#2F5E8C"></i><b>Website form</b><span class="m">36 leads</span><span class="m">Website forms</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#12A15E"></i><b>Referral</b><span class="m">29 leads</span><span class="m">Typed in</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#25D366"></i><b>WhatsApp</b><span class="m">21 leads</span><span class="m">AiSensy</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#4285F4"></i><b>Google Ads</b><span class="m">12 leads</span><span class="m">Google lead forms</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#0A66C2"></i><b>LinkedIn</b><span class="m">7 leads</span><span class="m">Typed in</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#8F6512"></i><b>Walk-in or call</b><span class="m">6 leads</span><span class="m">Typed in</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:#7A5AF8"></i><b>Calendly booking</b><span class="m">3 leads</span><span class="m">Calendly (planned)</span><i class="toggle on"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="li off"><span class="grip"><i data-i="grip"></i></span><i class="cd" style="background:var(--faint)"></i><b>JustDial</b><span class="m">2 old leads</span><span class="m">Typed in</span><i class="toggle"></i><span class="btn" title="Edit"><i data-i="edit"></i></span></div>
+          <div class="add"><i data-i="plus"></i>Add a lead source</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

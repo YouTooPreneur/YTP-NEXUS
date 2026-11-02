@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screen check</title>
+<style>
+body{font:14px/1.5 system-ui,sans-serif;margin:20px;background:#FAF8F3;color:#1C3D36}
+h1{font-size:20px;margin:0 0 6px}
+p{max-width:80ch}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+button{padding:6px 14px;border-radius:8px;border:1px solid #bbb;background:#fff;cursor:pointer}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}
+th,td{border-bottom:1px solid #E6E2D7;padding:6px 8px;text-align:left;vertical-align:top}
+.ok{color:#1E7149;font-weight:600}.bad{color:#9b1c1c;font-weight:600}
+#stage{position:absolute;left:-20000px;top:0}
+#result{font:600 15px system-ui,sans-serif}
+code{font-size:12px}
+</style>
+</head>
+<body>
+<h1>Screen check (D-181)</h1>
+<p>Loads every screen in <code>docs/design/mockups/</code> in both colours (Emerald and Navy) at the design size (1600 × 1000), opens every tab, and lists any problem. Client and student portal pages and public link pages are also checked at phone width (390). Run it through the preview server: <code>http://localhost:8765/tools/mockups/check.html</code>, press <b>Run all checks</b>, and show a batch only with zero problems.</p>
+<p>Without a window (the app's browser pane pauses hidden pages), run it headless, in parts: <code>msedge --headless=new --disable-gpu --user-data-dir=&lt;new temp folder&gt; --virtual-time-budget=900000 --dump-dom "http://localhost:8765/tools/mockups/check.html?auto=1&amp;from=0&amp;to=40"</code> and read the line <code>CHECKED n pages · m problems</code>.</p>
+<p>What it looks for: script errors, icons that failed to draw, a page wider than its screen, content cut off at the bottom of a fixed (non-scrolling) page, text spilling out of its box, clipped button or heading text, overlapping buttons and chips, missing images, low text contrast, links to pages that don't exist, page styles that reuse menu and top-bar class names, leftover "comes in batch" notices, 12-digit numbers that look like a full Aadhaar, and 24-hour clock times (screens use 12-hour, 3:30 pm). New pages go in <code>PAGES</code> below; the check also lists any page in the folder that is missing from it.</p>
+<div class="bar"><button id="run" type="button">Run all checks</button><span id="status"></span></div>
+<div id="result"></div>
+<div id="out"></div>
+<div id="stage"></div>
+<script>
+const BASE = '../../docs/design/mockups/';
+// Every page in docs/design/mockups (preview-hub.src.html is the source of preview-hub.html and index.html, so it is not checked).
+window.PAGES = [
+  'index.html', 'preview-hub.html', 'viewer.html',
+  // batch 1 · foundation
+  'login.html', 'dashboard.html', 'my-profile.html', 'record-history.html', 'trash.html', 'settings.html', 'company-profile.html', 'users-roles.html',
+  'numbering.html', 'security.html', 'languages.html', 'feature-switches.html', 'monitoring.html', 'logs.html', 'phone-foundation.html',
+  // batch 2 · core
+  'search.html', 'notifications.html', 'quick-add.html', 'approvals.html', 'tasks.html', 'task.html', 'todos.html', 'files.html', 'services.html',
+  'custom-fields.html', 'lists.html', 'messaging.html', 'integrations.html', 'data.html', 'storage.html', 'email-templates.html', 'whatsapp-templates.html',
+  'ask-nexus.html', 'ai-usage.html', 'ai-settings.html', 'ai-knowledge.html', 'ai-quality.html', 'phone-core.html', 'phone.html',
+  // batch 3 · CRM + Team
+  'leads.html', 'lead-quick.html', 'client-profile.html', 'client-edit.html', 'pipeline.html', 'deal.html', 'diagnosis.html', 'merge.html', 'lead-rules.html',
+  'client-pdf.html', 'people.html', 'person.html', 'org-chart.html', 'attendance.html', 'leave.html', 'workload.html', 'hiring.html', 'applicant.html',
+  'joining.html', 'letters.html', 'policies.html', 'assets.html', 'goals.html', 'my-hr.html', 'doc-check.html', 'hr-settings.html', 'phone-team.html',
+  // batch 4 · WebCare + Finance
+  'webcare.html', 'asset.html', 'servers.html', 'expiry.html', 'handover.html', 'dossier.html', 'providers.html', 'expiry-fix.html', 'docs-pdf.html',
+  'finance.html', 'invoices.html', 'invoice-edit.html', 'invoice.html', 'payment-record.html', 'credit-note.html', 'statement.html', 'payments.html',
+  'collections.html', 'vendors.html', 'expenses.html', 'subscriptions.html', 'partners.html', 'partner-statement.html', 'partner-dashboard.html',
+  'finance-settings.html', 'pay-link.html', 'advances.html', 'phone-money.html',
+  // batch 5 · Contracts + Command Centre
+  'manager-dashboard.html', 'my-day.html', 'renewals.html', 'renewal-confirm.html', 'services-sold.html', 'service-sold.html', 'agreements.html', 'amc.html',
+  'subscriptions-sold.html', 'ad-spend.html', 'automations.html', 'run-history.html',
+  // batch 6 · Projects + meetings
+  'projects.html', 'project.html', 'deliverable.html', 'project-handover.html', 'content-calendar.html', 'post-editor.html', 'support.html',
+  'support-request.html', 'change-requests.html', 'client-inputs.html', 'testimonials.html', 'testimonial-form.html', 'case-studies.html', 'calendar.html',
+  'meetings.html', 'meeting.html', 'meeting-new.html', 'phone-work.html',
+  // batch 7 · Sales + Payroll
+  'proposals.html', 'proposal-edit.html', 'proposal-link.html', 'campaigns.html', 'broadcasts.html', 'unsubscribe.html', 'payouts.html', 'payroll.html',
+  'salary.html', 'phone-sales.html',
+  // batch 8 · Portals, Reports, API, AI
+  'reports.html', 'report.html', 'client-results.html', 'client-reports.html', 'portal-login.html', 'portal-home.html', 'portal-invoices.html',
+  'portal-services.html', 'portal-projects.html', 'portal-content.html', 'portal-support.html', 'portal-inputs.html', 'portal-proposals.html',
+  'portal-settings.html', 'portal-docs.html', 'portal-profile.html', 'automation-builder.html', 'voice.html', 'chatbot-settings.html', 'live-chat.html',
+  'api-keys.html', 'forms.html', 'phone-ai.html',
+  // batch 9 · Academy
+  'academy.html', 'courses.html', 'batches.html', 'admissions.html', 'students.html', 'assessments.html', 'certificates.html', 'academy-fees.html',
+  'student-login.html', 'student-home.html', 'student-courses.html', 'student-fees.html', 'student-results.html', 'student-certificates.html',
+  'certificate-check.html', 'phone-academy.html',
+];
+const NOT_CHECKED = ['preview-hub.src.html'];
+const LOOKS = ['E', 'N'];
+// Class names built by mockup.js (menu, top bar) or shared rows in mockup.css: a page style rule must never START with
+// one of them, or it restyles the shared part (HANDOVER lessons learned). Scoped rules such as ".tm .av" are fine.
+const SHELL = /^\s*\.(q|mic|search|top|side|brand|me|av|badge|r2|ag[0-3]|stack|who|tags|phead|row|g2|amt)(?![\w-])/;
+
+const lum = (rgb) => { const f = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(rgb[0]) + 0.7152 * f(rgb[1]) + 0.0722 * f(rgb[2]); };
+const parse = (s) => { const m = s.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return { rgb: p.slice(0, 3), a: p[3] == null ? 1 : p[3] }; };
+const blend = (top, bottom) => top.rgb.map((c, i) => c * top.a + bottom[i] * (1 - top.a));
+// Colour of a top-to-bottom linear gradient with px stops at height y (null for other gradients or images).
+const bandAt = (img, y) => {
+  if (!/^linear-gradient\(\s*rgba?\(/.test(img) || /,\s*linear-gradient|url\(/.test(img)) return null;
+  const stops = [...img.matchAll(/(rgba?\([^)]*\))\s*(-?[\d.]+px)?/g)].map((m) => ({ c: parse(m[1]), pos: m[2] ? parseFloat(m[2]) : null }));
+  if (stops.some((s) => s.pos === null)) return null;
+  let pick = stops[0].c; stops.forEach((s) => { if (s.pos <= y) pick = s.c; });
+  return pick;
+};
+const exists = {};
+async function pageExists(name) {
+  if (!(name in exists)) exists[name] = fetch(BASE + name, { method: 'HEAD' }).then((r) => r.ok).catch(() => false);
+  return exists[name];
+}
+
+function check(win, w, info) {
+  const d = win.document; const issues = [];
+  const desc = (el) => { if (!el || !el.tagName) return ''; const t = (el.innerText || el.value || el.getAttribute('aria-label') || el.getAttribute('title') || '').trim().replace(/\s+/g, ' ').slice(0, 32); const cls = typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''; return `${el.tagName.toLowerCase()}${cls}${t ? ` "${t}"` : ''}`; };
+  const add = (kind, el, extra = '') => issues.push(`${kind}: ${desc(el)}${extra ? ' ' + extra : ''}`);
+  const visible = (el) => { const r = el.getBoundingClientRect(); if (r.width <= 0 || r.height <= 0) return false; const cs = win.getComputedStyle(el); return cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0 && !el.closest('.nx-toast,.switcher,[hidden]'); };
+  const scrollerX = (el) => { for (let p = el.parentElement; p && p !== d.body; p = p.parentElement) { const ox = win.getComputedStyle(p).overflowX; if (['auto', 'scroll'].includes(ox)) return p; } return null; };
+  const scrollerY = (el) => { for (let p = el.parentElement; p && p !== d.body; p = p.parentElement) { const oy = win.getComputedStyle(p).overflowY; if (['auto', 'scroll'].includes(oy) && p.scrollHeight > p.clientHeight + 1) return p; } return null; };
+  const ownText = (el) => [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+  (win.__errs || []).forEach((e) => issues.push(`script error: ${e}`));
+  if (d.querySelector('i[data-i]')) add('icon not drawn (mockup.js did not run?)', d.querySelector('i[data-i]'));
+  d.querySelectorAll('svg.i').forEach((s) => { if (!s.childElementCount && visible(s)) add('icon failed to draw (unknown icon name)', s.parentElement); });
+  const vw = d.documentElement.clientWidth;
+  if (d.documentElement.scrollWidth > vw + 1) issues.push(`page wider than the screen: ${d.documentElement.scrollWidth}px > ${vw}px`);
+  const all = [...d.body.querySelectorAll('*')].filter((el) => !(el instanceof win.SVGElement) && visible(el));
+  // off screen sideways
+  all.forEach((el) => { const r = el.getBoundingClientRect(); if ((r.right > vw + 1 || r.left < -1) && !scrollerX(el) && win.getComputedStyle(el).position !== 'fixed') add('off screen', el, `(${Math.round(r.left)}–${Math.round(r.right)})`); });
+  // cut off at the bottom of a fixed page: main hides what doesn't fit in 1000 px
+  const app = d.querySelector('.app');
+  if (app && !app.classList.contains('long') && w >= 1600) {
+    const main = app.querySelector('main');
+    if (main) {
+      const mb = main.getBoundingClientRect().bottom;
+      const cut = all.filter((el) => main.contains(el) && (ownText(el) || el.matches('img,button,input,select,textarea')) && el.getBoundingClientRect().bottom > mb + 2 && !scrollerY(el) && !el.closest('.ovl,.overlay,.modal,.dlg,.drawer,[role=dialog]'));
+      if (cut.length) add('cut off at the bottom of the page', cut[0], `(${cut.length} item${cut.length > 1 ? 's' : ''} below ${Math.round(mb)}px)`);
+    }
+  }
+  // text spilling out of its box (the nearest parent with a border or background)
+  all.filter(ownText).forEach((el) => {
+    const rg = d.createRange(); rg.selectNodeContents(el); const tr = rg.getBoundingClientRect();
+    if (!tr.width) return;
+    for (let p = el; p && p !== d.body; p = p.parentElement) {
+      const cs = win.getComputedStyle(p);
+      const boxed = parseFloat(cs.borderLeftWidth) > 0 || parseFloat(cs.borderRightWidth) > 0 || (parse(cs.backgroundColor) || { a: 0 }).a > 0 || cs.boxShadow !== 'none';
+      if (!boxed) continue;
+      const pr = p.getBoundingClientRect();
+      if (pr.width < 4) return;
+      if ((tr.right > pr.right + 1.5 || tr.left < pr.left - 1.5) && !scrollerX(el)) {
+        let clip = null;
+        for (let q = el; q; q = q.parentElement) { if (['hidden', 'clip'].includes(win.getComputedStyle(q).overflowX)) { clip = q; break; } if (q === p) break; }
+        if (!clip) add('text spills out of its box', el, `(box ${desc(p)})`);
+        else if (win.getComputedStyle(clip).textOverflow !== 'ellipsis' && win.getComputedStyle(el).textOverflow !== 'ellipsis') add('text cut off without "…"', el);
+      }
+      return;
+    }
+  });
+  // text squeezed into a very narrow column (words broken letter by letter)
+  all.filter(ownText).forEach((el) => {
+    const txt = el.textContent.trim(); if (txt.length < 8) return;
+    const rg = d.createRange(); rg.selectNodeContents(el);
+    const tops = new Set([...rg.getClientRects()].map((r) => Math.round(r.top)));
+    if (tops.size >= 4 && el.getBoundingClientRect().width < 70) add('text squeezed into a very narrow column', el, `(${tops.size} lines)`);
+  });
+  // clipped text on buttons, chips and headings (ellipsis on names in lists is allowed)
+  all.filter((el) => el.matches('button,.btn,.primary,.ghost,.chip,.pill,.tag,h1,h2,h3,th')).forEach((el) => {
+    const cs = win.getComputedStyle(el);
+    if (el.scrollWidth > el.clientWidth + 1 && cs.overflowX !== 'visible' && cs.textOverflow !== 'ellipsis') add('text clipped', el);
+  });
+  // overlapping buttons and chips
+  const boxes = all.filter((el) => el.matches('button,a.primary,a.ghost,.btn,.chip,.pill,.icon-btn')).map((el) => [el, el.getBoundingClientRect()]);
+  for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+    const [a, ra] = boxes[i], [b, rb] = boxes[j]; if (a.contains(b) || b.contains(a)) continue;
+    const ox = Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left), oy = Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top);
+    if (ox > 2 && oy > 2) add('overlaps', a, `with ${desc(b)}`);
+  }
+  // missing images
+  d.querySelectorAll('img').forEach((im) => { if (im.complete && !im.naturalWidth) add('image missing', im, im.getAttribute('src')); });
+  // contrast of text against its background
+  all.filter(ownText).forEach((el) => {
+    if (el.closest('[disabled],[aria-disabled="true"],.switcher')) return;
+    if (el.textContent.trim().length <= 2 && /background/.test(el.getAttribute('style') || '')) return; // a brand logo stand-in
+    const cs = win.getComputedStyle(el); if (cs.color === 'transparent' || /text/.test(cs.webkitBackgroundClip || cs.backgroundClip)) return;
+    const fg = parse(cs.color); if (!fg) return;
+    let bg = [255, 255, 255]; const layers = [];
+    const er = el.getBoundingClientRect(); const y = er.top + er.height / 2 + win.scrollY;
+    for (let p = el; p; p = p.parentElement) {
+      const pc = win.getComputedStyle(p);
+      if (pc.backgroundImage && pc.backgroundImage !== 'none') {
+        if (p !== d.body && p !== d.documentElement) return;
+        // public pages paint a dark top band with a straight top-to-bottom body gradient: use its colour at this height
+        const g = bandAt(pc.backgroundImage, y);
+        if (g) { layers.push(g); if (g.a >= 1) break; continue; }
+      }
+      const b = parse(pc.backgroundColor); if (b && b.a > 0) { layers.push(b); if (b.a >= 1) break; }
+    }
+    for (let k = layers.length - 1; k >= 0; k--) bg = blend(layers[k], bg);
+    let op = 1; for (let p = el; p; p = p.parentElement) op *= +win.getComputedStyle(p).opacity;
+    const col = blend({ rgb: fg.rgb, a: fg.a * op }, bg);
+    const L1 = lum(col), L2 = lum(bg); const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+    const size = parseFloat(cs.fontSize), bold = +cs.fontWeight >= 700; const large = size >= 24 || (size >= 18.66 && bold);
+    // symbols with no letters or digits (★, ✓, ●) are graphics: they need 3:1, like icons
+    const symbol = !/[\p{L}\p{N}]/u.test(el.textContent);
+    const hex = (c) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
+    if (ratio < (large || symbol ? 3 : 4.5) - 0.01) add('low contrast', el, `${ratio.toFixed(2)}:1 (${hex(fg.rgb)} on ${hex(bg)})`);
+  });
+  // wording and data rules
+  const text = d.body.innerText || '';
+  if (/comes in batch \d/i.test(text) || d.querySelector('[data-soon]:not([data-msg])')) issues.push('leftover "comes in batch" notice');
+  // a 12-digit number next to the word Aadhaar (12-digit UPI references are fine)
+  all.filter(ownText).forEach((el) => {
+    const m = el.textContent.match(/\b\d{4}[ -]?\d{4}[ -]?\d{4}\b/);
+    if (!m) return;
+    const near = (el.closest('tr,li,.row,.kv,dl,p') || el.parentElement || el).textContent;
+    if (/aadhaar|ஆதார்|आधार/i.test(near)) add('full Aadhaar number shown (last 4 digits only)', el);
+  });
+  // clock times are 12-hour (choice 4, 22 Oct): a time like 09:00 or 15:30 needs am/pm (phone status bars and video lengths aside)
+  const clock = /(?<![\d:.])(?:[01]\d|2[0-3]):[0-5]\d(?![\d:])(?!\s?[ap]m)(?!\s?[–-]\s?\d{1,2}:\d\d\s?[ap]m)/;
+  all.filter(ownText).forEach((el) => {
+    if (el.closest('.status,.vth')) return;
+    const own = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join(' ');
+    const m = own.match(clock);
+    if (m && !new RegExp(m[0] + '\\s?[ap]m').test((el.parentElement || el).textContent)) add('24-hour time (screens use 12-hour, 3:30 pm)', el, m[0]);
+  });
+  return issues;
+}
+
+function pageRules(page, html) {
+  const issues = [];
+  if (/class="(app|portal)[ "]/.test(html)) {
+    const styles = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map((m) => m[1]).join('\n').replace(/\/\*[\s\S]*?\*\//g, '');
+    const rules = styles.split('}').map((r) => r.split('{')[0]);
+    rules.flatMap((sel) => sel.split(',')).forEach((sel) => { const m = sel.match(SHELL); if (m && !/^\s*@/.test(sel)) issues.push(`page style reuses the shared class "${m[0].trim()}" (${sel.trim().slice(0, 60)})`); });
+  }
+  return issues;
+}
+
+async function links(win) {
+  const out = []; const seen = new Set();
+  win.document.querySelectorAll('a[href],[data-go]').forEach((el) => {
+    const raw = el.getAttribute('data-go') || el.getAttribute('href');
+    if (!raw || /^(https?:|mailto:|tel:|#|javascript:|data:)/i.test(raw)) return;
+    const name = raw.split('#')[0].split('?')[0];
+    if (!name || !/\.html$/i.test(name) || seen.has(name)) return;
+    seen.add(name); out.push(name);
+  });
+  const missing = [];
+  for (const n of out) if (!(await pageExists(n))) missing.push(n);
+  return missing.map((n) => `link to a page that does not exist: ${n}`);
+}
+
+async function loadPage(page, look, w) {
+  const html = await (await fetch(BASE + page)).text();
+  const base = new URL(BASE, location.href).href;
+  const inject = `<base href="${base}"><script>window.__errs=[];addEventListener('error',function(e){__errs.push((e.message||'error')+(e.filename?' ('+e.filename.split('/').pop()+':'+e.lineno+')':''));});<\/script>`;
+  const doc = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, (m) => m + inject) : inject + html;
+  try { localStorage.setItem('nx-look', look); } catch { /* storage may be blocked */ }
+  const f = document.createElement('iframe');
+  f.style.cssText = `width:${w}px;height:${w >= 1600 ? 1000 : 844}px;border:0`;
+  document.getElementById('stage').appendChild(f);
+  await new Promise((res) => { f.onload = res; f.srcdoc = doc; });
+  try { await Promise.race([f.contentDocument.fonts.ready, new Promise((r) => setTimeout(r, 1500))]); } catch { /* ignore */ }
+  await new Promise((r) => setTimeout(r, 120));
+  return { f, html };
+}
+
+async function runOne(page, look, w) {
+  let res = [];
+  const { f, html } = await loadPage(page, look, w);
+  if (html.trim().length < 400) { f.remove(); return { issues: [`page is empty or nearly empty (${html.trim().length} characters): restore it`], phoneToo: false }; }
+  const win = f.contentWindow;
+  try {
+    res = res.concat(check(win, w));
+    // open every tab and check what it shows
+    const tabs = [...win.document.querySelectorAll('[data-tabs] button[data-tab]')];
+    for (const t of tabs.slice(1)) {
+      t.click();
+      await new Promise((r) => setTimeout(r, 60));
+      res = res.concat(check(win, w).map((i) => `${i} (tab "${t.textContent.trim().slice(0, 24)}")`));
+    }
+    if (look === LOOKS[0] && w >= 1600) res = res.concat(pageRules(page, html), await links(win));
+  } catch (e) { res.push('checker failed: ' + e.message); }
+  const phoneToo = !win.document.querySelector('.app,.stage,.auth') && !/pdf/.test(page) && !['index.html', 'preview-hub.html', 'viewer.html'].includes(page);
+  f.remove();
+  return { issues: [...new Set(res)], phoneToo };
+}
+
+async function missingFromList() {
+  try {
+    const listing = await (await fetch(BASE)).text();
+    const files = [...listing.matchAll(/href="([^"?#]+\.html)"/g)].map((m) => decodeURIComponent(m[1]));
+    return files.filter((n) => !window.PAGES.includes(n) && !NOT_CHECKED.includes(n)).map((n) => ({ page: n, issue: 'page is in the folder but not in the check list (add it to PAGES)', where: ['list'] }));
+  } catch { return []; }
+}
+
+async function runAll(pages = window.PAGES) {
+  const out = []; const st = document.getElementById('status');
+  for (const page of pages) for (const look of LOOKS) {
+    if (st) st.textContent = `${page} · ${look === 'E' ? 'Emerald' : 'Navy'}`;
+    const r = await runOne(page, look, 1600);
+    r.issues.forEach((i) => out.push({ page, look, w: 1600, issue: i }));
+    if (r.phoneToo) {
+      const p = await runOne(page, look, 390);
+      p.issues.forEach((i) => out.push({ page, look, w: 390, issue: i }));
+    }
+  }
+  const g = {}; out.forEach((o) => { const k = `${o.page}|${o.issue}`; (g[k] = g[k] || { page: o.page, issue: o.issue, where: [] }).where.push(`${o.look === 'E' ? 'Emerald' : 'Navy'} ${o.w}`); });
+  const rows = Object.values(g).concat(pages === window.PAGES || new URLSearchParams(location.search).get('from') === '0' ? await missingFromList() : []);
+  if (st) st.textContent = rows.length ? `${rows.length} problems found` : 'No problems found';
+  document.getElementById('result').textContent = `CHECKED ${pages.length} pages · ${rows.length} problems`;
+  document.getElementById('out').innerHTML = rows.length ? `<table><tr><th>Page</th><th>Problem</th><th>Where (colour, width)</th></tr>${rows.map((r) => `<tr><td>${r.page}</td><td class="bad">${r.issue.replace(/</g, '&lt;')}</td><td>${r.where.length > 4 ? r.where.slice(0, 4).join(', ') + ` … +${r.where.length - 4}` : r.where.join(', ')}</td></tr>`).join('')}</table>` : '<p class="ok">No problems found.</p>';
+  return rows;
+}
+window.runAll = runAll;
+document.getElementById('run').onclick = () => runAll();
+const Q = new URLSearchParams(location.search);
+if (Q.get('auto')) {
+  const from = +(Q.get('from') || 0), to = Q.get('to') ? +Q.get('to') : window.PAGES.length;
+  const only = Q.get('pages') ? Q.get('pages').split(',') : window.PAGES.slice(from, to);
+  runAll(only);
+}
+</script>
+</body>
+</html>

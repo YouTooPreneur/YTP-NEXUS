@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client inputs</title>
+<!-- Batch 6 · SCR-056 Client inputs: what each client must send before work starts, per client and service, also shown in their portal (they can upload there); reminders on or off per client or checklist (CON-013, AUTO-018, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .g3b{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+  .ckl{display:flex;flex-direction:column}
+  .ckl .ch{padding:12px 16px 4px}
+  .ckl .ch h2{font-size:17px}
+  .ckl .sub5{padding:0 16px 8px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .ckl .sub5 .meter{flex:1;height:6px}
+  .ckl .sub5 .meter i{background:var(--on)}
+  .it{display:flex;align-items:center;gap:10px;padding:8px 16px;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .it b{font-weight:700;display:block;font-size:13px}
+  .it small{font-size:11.5px;color:var(--muted)}
+  .it .r{margin-left:auto;text-align:right;white-space:nowrap}
+  .it.miss .ic5{background:var(--red-bg);color:var(--red)}
+  .it .ic5{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--green-bg);color:var(--green)}
+  .it .ic5 svg{width:13px;height:13px;stroke-width:2}
+  .rem{display:flex;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid var(--line-soft);background:var(--card-2);font-size:12.5px}
+  .rem b{font-weight:700}
+  .rem .toggle{margin-left:auto}
+  .done3{display:flex;gap:10px;flex-wrap:wrap}
+  .done3 span{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line-soft);font-size:12.5px;font-weight:600}
+  .done3 svg{width:14px;height:14px;color:var(--green)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="inputs">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Client inputs</h1>
+          <p>What each client must send before work can start: logos, photos, text, access. Clients see the same list in their portal and can upload there. Reminders can be on or off for each client; they go every 3 days to start, and you can set a longer gap for a client.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Write a friendly reminder: lists what is still missing, in the client's language, for WhatsApp or email. Arrives as a draft; sending needs your OK."><i data-i="spark"></i>Write a reminder</span><span class="btn solid lg"><i data-i="plus"></i>Add checklist</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr warn"><b>6</b><span>Items missing</span></div>
+        <div class="ctr"><b>3</b><span>Clients waiting on</span></div>
+        <div class="ctr"><b>1</b><span>Project blocked</span></div>
+        <div class="ctr"><b>2</b><span>Reminders sent this week</span></div>
+      </div>
+
+      <div class="g3b">
+        <div class="card ckl">
+          <div class="ch"><span class="lg-av" style="--av:#B7791F;width:28px;height:28px;font-size:10px">AB</span><h2 class="serif">Aroma Bakes</h2><span class="link">Website</span></div>
+          <div class="sub5"><span>2 of 4 received</span><span class="meter"><i style="width:50%"></i></span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>Logo files</b><small>Asked 26 Sep · 5 days</small></div><span class="r chip c-red">Missing</span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>"About us" text</b><small>Or a call; we write it</small></div><span class="r chip c-red">Missing</span></div>
+          <div class="it"><span class="ic5"><i data-i="check"></i></span><div><b>Menu photos</b><small>24 Sep · portal upload</small></div><span class="r sm">36 files</span></div>
+          <div class="it"><span class="ic5"><i data-i="check"></i></span><div><b>Domain access</b><small>Vault link · 25 Sep</small></div><span class="r sm">Vault</span></div>
+          <div class="rem"><i data-i="bell"></i><div><b>Reminders on</b><br><small class="sm">Every 3 days on WhatsApp (gap set per client) · last 28 Sep</small></div><span class="toggle on"></span></div>
+        </div>
+
+        <div class="card ckl">
+          <div class="ch"><span class="lg-av" style="--av:#EA580C;width:28px;height:28px;font-size:10px">SC</span><h2 class="serif">Sunrise Clinic</h2><span class="link">Website and booking</span></div>
+          <div class="sub5"><span>1 of 4 received</span><span class="meter"><i style="width:25%"></i></span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>Doctor photos</b><small>Or book our photo shoot</small></div><span class="r chip c-amber">Not yet</span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>Doctors' timings</b><small>For the booking calendar</small></div><span class="r chip c-amber">Not yet</span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>Clinic registration</b><small>Shown in the footer</small></div><span class="r chip c-amber">Not yet</span></div>
+          <div class="it"><span class="ic5"><i data-i="check"></i></span><div><b>Logo</b><small>29 Sep · email</small></div><span class="r sm">SVG</span></div>
+          <div class="rem"><i data-i="bell"></i><div><b>Reminders start after signing</b><br><small class="sm">The agreement was sent on 29 Sep</small></div><span class="toggle on"></span></div>
+        </div>
+
+        <div class="card ckl">
+          <div class="ch"><span class="lg-av" style="--av:#2F5E8C;width:28px;height:28px;font-size:10px">GV</span><h2 class="serif">Green Valley School</h2><span class="link">October social</span></div>
+          <div class="sub5"><span>1 of 2 received</span><span class="meter"><i style="width:50%"></i></span></div>
+          <div class="it miss"><span class="ic5"><i data-i="x"></i></span><div><b>Sports day photos</b><small>Blocks the October posts</small></div><span class="r chip c-red">Blocking</span></div>
+          <div class="it"><span class="ic5"><i data-i="check"></i></span><div><b>Principal's message</b><small>28 Sep · WhatsApp</small></div><span class="r sm">Text</span></div>
+          <div class="rem"><i data-i="bell"></i><div><b>Reminders off</b><br><small class="sm">The school asked us not to remind; Karthik calls instead</small></div><span class="toggle"></span></div>
+        </div>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">Complete</div>
+      <div class="done3"><span><i data-i="check"></i>Kaveri Hospitals · website redesign · 6 of 6</span><span><i data-i="check"></i>Royal Caterers · social + ads launch · 5 of 5</span><span><i data-i="check"></i>Meridian Logistics · October social · 3 of 3</span><span><i data-i="check"></i>Velocity Motors · October ads · 2 of 2</span></div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

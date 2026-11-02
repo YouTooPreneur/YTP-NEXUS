@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Data</title>
+<!-- Batch 2 · SCR-191 Data: import wizard (AI column matching, dry run, undo), exports, retention (CORE-102, CORE-103, AI-007) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .steps{display:flex;gap:10px;align-items:center}
+  .steps .s{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--muted);font-size:13px}
+  .steps .s em{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;border:1.5px solid var(--edge);color:var(--muted);background:var(--card)}
+  .steps .s.done em{background:var(--on);border-color:var(--on);color:#fff}
+  .steps .s.now{color:var(--ink)}
+  .steps .s.now em{border-color:var(--ink);color:var(--ink)}
+  .steps .ln{flex:1;height:1.5px;background:var(--line);max-width:90px}
+  .mt td{padding-top:9px;padding-bottom:9px}
+  .mt .col b{font-weight:700}
+  .mt .col small{font-size:12px;color:var(--muted)}
+  .sel{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--card);font-weight:600;min-width:200px}
+  .sel svg{width:14px;height:14px;color:var(--muted);margin-left:auto}
+  .sel.need{border-color:var(--amber);background:var(--amber-bg)}
+  .lay{display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start}
+  .hist{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .hist:first-of-type{border-top:0}
+  .hist small{display:block;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Data and storage</b></div>
+          <h1 class="serif">Data and storage</h1>
+          <p>Bring data in from Excel, take it out any time, and decide how long things are kept.</p>
+        </div>
+      </div>
+      <div class="tabs-x" data-tabs="d"><button data-tab="import">Import</button><button data-tab="export">Export</button><button data-tab="keep">Keeping data</button><a href="storage.html">Storage</a></div>
+
+      <section data-group="d" data-panel="import" class="lay">
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:14px">
+          <div class="steps"><span class="s done"><em>✓</em>Upload</span><span class="ln"></span><span class="s now"><em>2</em>Match columns</span><span class="ln"></span><span class="s"><em>3</em>Check rows</span><span class="ln"></span><span class="s"><em>4</em>Import</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span class="ftype doc">XLS</span><div><b>old-clients-list.xlsx</b><span class="sm" style="display:block;font-size:12px">Clients · 112 rows · 11 columns</span></div></div>
+          <div class="ai-card" style="padding:10px 14px;flex-direction:row;align-items:center"><div class="ai-h"><i data-i="spark"></i>AI matched 9 of 11 columns</div><span style="font-size:13px">Check the 2 marked in amber. You can change any match.</span></div>
+          <table class="tbl mt">
+            <thead><tr><th>Column in your file</th><th>Example</th><th>Goes into Nexus field</th><th></th></tr></thead>
+            <tbody>
+              <tr><td class="col"><b>Company</b></td><td class="sm">Sharma Dental Care</td><td><div class="sel">Client name<i data-i="down"></i></div></td><td><span class="ai-tag"><i data-i="spark"></i>Sure</span></td></tr>
+              <tr><td class="col"><b>Contact Person</b></td><td class="sm">Dr. Priya Sharma</td><td><div class="sel">Main contact<i data-i="down"></i></div></td><td><span class="ai-tag"><i data-i="spark"></i>Sure</span></td></tr>
+              <tr><td class="col"><b>Mob</b></td><td class="sm">98400 12345</td><td><div class="sel">Phone (adds +91)<i data-i="down"></i></div></td><td><span class="ai-tag"><i data-i="spark"></i>Sure</span></td></tr>
+              <tr><td class="col"><b>Mail ID</b></td><td class="sm">priya@sharmadental.in</td><td><div class="sel">Email<i data-i="down"></i></div></td><td><span class="ai-tag"><i data-i="spark"></i>Sure</span></td></tr>
+              <tr><td class="col"><b>Type</b></td><td class="sm">Hospital</td><td><div class="sel need">Industry (custom field)<i data-i="down"></i></div></td><td><span class="chip c-amber">Check</span></td></tr>
+              <tr><td class="col"><b>Remarks</b></td><td class="sm">Prefers WhatsApp</td><td><div class="sel need">Notes<i data-i="down"></i></div></td><td><span class="chip c-amber">Check</span></td></tr>
+              <tr><td class="col"><b>Sl No</b></td><td class="sm">14</td><td><div class="sel" style="color:var(--muted)">Don't import<i data-i="down"></i></div></td><td></td></tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:10px;align-items:center"><span class="btn lg">Back</span><span class="btn solid lg">Next: check rows</span><span style="flex:1"></span><span class="manual">Matches are saved for next time. Every import can be undone in one click.</span></div>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Recent imports</h2></div>
+          <div class="hist"><div><b>Domains list</b><small>48 rows · 29 Sep · Arun</small></div><span class="btn">Undo</span></div>
+          <div class="hist"><div><b>Leads from expo</b><small>36 rows · 2 duplicates skipped · 21 Sep</small></div><span class="btn">Undo</span></div>
+          <div class="hist"><div><b>Team members</b><small>9 rows · 2 Sep · Owner</small></div><span class="btn">Undo</span></div>
+          <div class="sect" style="padding:16px 0 6px">Templates</div>
+          <div class="hist"><span>Clients · Leads · Websites · People</span><span class="btn"><i data-i="download"></i>Get</span></div>
+        </div>
+      </section>
+
+      <section data-group="d" data-panel="export" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>Export</th><th>What</th><th>Format</th><th>When</th><th></th></tr></thead><tbody>
+          <tr><td><b>Everything</b></td><td class="sm">Every module's data</td><td class="sm">CSV and JSON (zip)</td><td class="sm">Any time</td><td class="r"><span class="btn solid">Export now</span></td></tr>
+          <tr><td><b>Overdue invoices</b></td><td class="sm">Saved view, with its filters</td><td class="sm">Excel</td><td class="sm">Every Monday 8:00 am, to Accounts</td><td class="r"><span class="btn">Edit</span></td></tr>
+          <tr><td><b>Leads this month</b></td><td class="sm">CRM leads</td><td class="sm">CSV</td><td class="sm">1st of each month</td><td class="r"><span class="btn">Edit</span></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Exports need permission and are written to the security log.</p>
+      </section>
+
+      <section data-group="d" data-panel="keep" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>What</th><th>Kept for</th><th>Then</th></tr></thead><tbody>
+          <tr><td><b>Trash</b></td><td class="sm">30 days</td><td class="sm">Deleted for good</td></tr>
+          <tr><td><b>Activity log</b></td><td class="sm">3 years</td><td class="sm">Moved to the archive</td></tr>
+          <tr><td><b>Security log</b></td><td class="sm">8 years</td><td class="sm">Never edited</td></tr>
+          <tr><td><b>Invoices and tax records</b></td><td class="sm">8 years (CA to confirm)</td><td class="sm">Never deleted</td></tr>
+          <tr><td><b>Meeting recordings</b></td><td class="sm">Until someone deletes them</td><td class="sm">Never removed automatically</td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Every period is a setting. These are starting suggestions until your CA confirms them.</p>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

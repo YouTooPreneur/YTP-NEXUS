@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Services and templates</title>
+<!-- Batch 2 · SCR-183 Services and templates: 8 capabilities, service types, a delivery template per service, GST and SAC; no fixed prices (CORE-020 to CORE-027, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+  .cap{padding:10px 16px;border-top:1px solid var(--line-soft)}
+  .cap:first-child{border-top:0}
+  .cap > b{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+  .cap > b em{margin-left:auto}
+  .cap .svcs{display:flex;flex-direction:column;gap:1px;margin-top:6px}
+  .cap .svcs a{padding:7px 10px;border-radius:9px;font-size:13px;color:var(--muted);text-decoration:none;display:flex;justify-content:space-between}
+  .cap .svcs a.on{background:var(--active-bg);color:var(--ink);font-weight:700}
+  .cap .svcs a span{font-size:11px;color:var(--muted);font-weight:600}
+  .stages{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .stg{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card)}
+  .stg small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .stg b{display:block;font-weight:700;margin:2px 0 6px}
+  .stg ul{list-style:none;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+  .stg .appr{margin-top:8px;font-size:11px;font-weight:700;color:var(--blue)}
+  .kv{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .kv div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .kv small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+  .kv b{font-weight:700}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .chk-row{display:flex;gap:10px;align-items:center;padding:6px 0;font-size:13px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Services and templates</b></div>
+          <h1 class="serif">Services and templates</h1>
+          <p>What YTP sells and how each service is delivered. Prices are not fixed here; every quote sets its own price.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="plus"></i>New bundle</span><span class="btn solid lg"><i data-i="plus"></i>New service</span></div>
+      </div>
+      <div class="views"><span class="on">All <em class="count">42</em></span><span>Projects <em class="count">24</em></span><span>Monthly retainers <em class="count">11</em></span><span>Bundles <em class="count">3</em></span><span>Products <em class="count">2</em></span><span>Subscriptions <em class="count">2</em></span></div>
+
+      <div class="lay">
+        <div class="card" style="padding:4px 0">
+          <div class="cap"><b>Entry services<em class="count">2</em></b></div>
+          <div class="cap"><b>1 · Growth and customer acquisition<em class="count">5</em></b></div>
+          <div class="cap"><b>2 · Web and digital experience<em class="count">5</em></b>
+            <div class="svcs"><a class="on">Website development<span>Project</span></a><a>Landing pages<span>Project</span></a><a>Conversion optimisation<span>Retainer</span></a><a>UI/UX design<span>Project</span></a><a>Maintenance and support<span>Retainer</span></a></div>
+          </div>
+          <div class="cap"><b>3 · Customer lifecycle and conversations<em class="count">5</em></b></div>
+          <div class="cap"><b>4 · Automation and business systems<em class="count">5</em></b></div>
+          <div class="cap"><b>5 · Custom business technology<em class="count">5</em></b></div>
+          <div class="cap"><b>6 · Data and decision intelligence<em class="count">5</em></b></div>
+          <div class="cap"><b>7 · Brand, content and authority<em class="count">5</em></b></div>
+          <div class="cap"><b>8 · Startup and launch systems<em class="count">5</em></b></div>
+        </div>
+
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:12px"><h2 class="serif" style="font-size:26px">Website development</h2><span class="chip c-ink">Project</span><span style="flex:1"></span><span class="ai-btn" data-ai="AI helper: reads a client brief and drafts stages, checklists and client inputs for this template. You edit and save."><i data-i="spark"></i>Draft from a brief</span><span class="btn"><i data-i="copy"></i>Duplicate</span></div>
+          <div class="kv">
+            <div><small>Price</small><b>Set in each quote</b></div>
+            <div><small>GST and SAC</small><b>18% · 998314</b></div>
+            <div><small>Payment stages</small><b style="color:var(--muted);font-weight:600">No suggestion</b></div>
+            <div><small>Revision rounds</small><b style="color:var(--muted);font-weight:600">No suggestion</b></div>
+          </div>
+          <div>
+            <div class="sect" style="padding:0 0 8px">Delivery stages · checklists · approvals</div>
+            <div class="stages">
+              <div class="stg"><small>1</small><b>Brief</b><ul><li>Goals and pages</li><li>Competitor sites</li></ul></div>
+              <div class="stg"><small>2</small><b>Design</b><ul><li>Homepage design</li><li>Inner pages</li></ul><div class="appr">Client approval</div></div>
+              <div class="stg"><small>3</small><b>Build</b><ul><li>Pages and forms</li><li>Speed and SEO basics</li></ul></div>
+              <div class="stg"><small>4</small><b>Review</b><ul><li>Internal check</li><li>Phone check</li></ul><div class="appr">Client approval</div></div>
+              <div class="stg"><small>5</small><b>Launch</b><ul><li>Domain and SSL</li><li>Forms tested</li></ul></div>
+              <div class="stg"><small>6</small><b>Handover</b><ul><li>Handover document</li><li>Logins as vault links</li></ul></div>
+            </div>
+          </div>
+          <div class="two">
+            <div class="card cb" style="padding-top:14px;box-shadow:none">
+              <div class="sect" style="padding:0 0 6px">Client inputs we need</div>
+              <div class="chk-row"><i class="chk on"></i>Logo and brand colours</div>
+              <div class="chk-row"><i class="chk on"></i>Page text or a call to write it</div>
+              <div class="chk-row"><i class="chk on"></i>Photos</div>
+              <div class="chk-row"><i class="chk on"></i>Domain access (as a vault link)</div>
+            </div>
+            <div class="card cb" style="padding-top:14px;box-shadow:none">
+              <div class="sect" style="padding:0 0 6px">Results and aftercare</div>
+              <div class="chk-row"><i class="chk on"></i>Track enquiries per month</div>
+              <div class="chk-row"><i class="chk on"></i>Track page speed score</div>
+              <div class="chk-row"><i class="chk on"></i>30 days of free fixes after launch</div>
+              <div class="chk-row"><i class="chk"></i>Offer maintenance and support at handover</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

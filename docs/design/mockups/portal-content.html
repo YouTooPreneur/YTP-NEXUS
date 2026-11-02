@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>பதிவுகள் · வாடிக்கையாளர் தளம் · YouTooPreneur</title>
+<!-- Batch 8 · SCR-205 Content approvals, shown in Tamil (Royal Caterers · Mr. Ganesh): the post waiting for approval with its Tamil caption and preview, approve or ask for changes with a comment, and the month list of published, scheduled and coming posts; the portal follows the contact's language (POR-008, POR-009, PRJ-012). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .po-grid{--po-side:410px}
+  .post{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start}
+  .reel{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:linear-gradient(170deg,#F6B24A 0%,#E2722B 48%,#8E2A12 100%);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:6px;box-shadow:0 10px 24px rgba(142,42,18,.25)}
+  .reel::before{content:"";position:absolute;left:50%;top:30%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#FFF4DC 0 34%,#F7D9A2 35% 52%,#FFFFFF 53% 58%,transparent 59%);opacity:.95}
+  .reel .play{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.35);display:grid;place-items:center}
+  .reel .play svg{width:18px;height:18px;fill:#fff;margin-left:2px}
+  .reel b{font-size:15px;line-height:1.3;position:relative}
+  .reel small{font-size:11px;opacity:.9;position:relative}
+  .reel .hd{position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700}
+  .reel .hd i{width:22px;height:22px;border-radius:50%;background:#fff;color:#A16207;display:grid;place-items:center;font-style:normal;font-size:9px;font-weight:800}
+  .meta4{display:flex;flex-wrap:wrap;gap:6px}
+  .meta4 span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card-2);color:var(--ink)}
+  .meta4 svg{width:13px;height:13px}
+  .cap{padding:12px 14px;border-radius:14px;background:var(--card-2);font-size:13.5px;line-height:1.75}
+  .cap .hs{display:block;margin-top:6px;color:#1D4ED8;font-size:12.5px}
+  .capt{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700}
+  .capt .pill-sel{margin-left:auto}
+  .say2{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--muted);min-height:56px}
+  .acts5{display:flex;gap:8px;flex-wrap:wrap}
+  .acts5 .po-btn{height:42px;padding:0 18px;font-size:13.5px}
+  .mon{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .mon:first-of-type{border-top:0}
+  .mon .d6{display:flex;flex-direction:column;align-items:center;justify-content:center;height:44px;border-radius:12px;background:var(--card-2);font-weight:700;font-size:10.5px;color:var(--muted);line-height:1.15}
+  .mon .d6 b{font-family:Sora,sans-serif;font-size:16px;color:var(--ink)}
+  .mon b{font-weight:700;font-size:13px}
+  .mon small{display:block;color:var(--muted);font-size:11.5px}
+  .mon.now{background:var(--amber-bg);margin:0 -10px;padding:8px 10px;border-radius:12px;border-top-color:transparent}
+  .st5{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .st5.pub{background:var(--green-bg);color:var(--green)} .st5.sch{background:var(--blue-bg);color:var(--blue)} .st5.wait{background:#fff;color:var(--amber);box-shadow:inset 0 0 0 1px currentColor} .st5.mk{background:var(--card-2);color:var(--muted)}
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .how div{padding:10px;border-radius:12px;background:var(--card-2);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+  .how b{color:var(--ink);font-size:12.5px}
+  .how em{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--primary-bg);color:var(--primary-ink);font-size:10.5px;font-weight:800}
+  /* on a phone: the reel above its details, rows and buttons wrap, long Tamil words break */
+  @media (max-width:600px){.post{grid-template-columns:minmax(0,1fr)}.reel{max-width:240px}.capt{flex-wrap:wrap}.capt .pill-sel{margin-left:0}.how{grid-template-columns:minmax(0,1fr)}.mon{grid-template-columns:44px minmax(0,1fr)}.mon > :last-child{grid-column:2;justify-self:start}.cap,.cap .hs,.say2,.meta4 span{overflow-wrap:anywhere;min-width:0}.meta4 span{white-space:normal}.acts5 .po-btn{height:auto;min-height:42px}}
+</style>
+</head>
+<body>
+<div class="portal ta" data-pon="content" data-who="RC|Royal Caterers|Mr. Ganesh|#A16207" data-lang="ta">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>சமூக ஊடகப் பதிவுகள்</h1><p class="lead2">நாங்கள் தயாரித்த பதிவுகளைப் பாருங்கள். சரி என்றால் ஒப்புதல் தாருங்கள்; மாற்றம் வேண்டுமென்றால் எழுதுங்கள்.</p></div>
+    <div class="acts"><span class="po-btn"><i data-i="chat"></i>WhatsApp-இல் கேளுங்கள்</span></div>
+  </div>
+  <div class="po-kpis">
+    <div class="po-k warn"><small>ஒப்புதல் தேவை</small><b>1</b><span>திங்கள் மாலை பதிவிட வேண்டியது</span></div>
+    <div class="po-k"><small>திட்டமிடப்பட்டவை</small><b>2</b><span>நீங்கள் ஒப்புதல் தந்தவை</span></div>
+    <div class="po-k"><small>வெளியானவை</small><b>6</b><span>12 அறிமுகப் பதிவுகளில்</span></div>
+    <div class="po-k"><small>தயாராகின்றன</small><b>3</b><span>8, 11, 14 அக்டோபர்</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>நவராத்திரி சிறப்பு சாப்பாடு · ரீல் <span class="chip c-amber" style="margin-left:auto">உங்கள் ஒப்புதல் தேவை</span></h2>
+        <div class="post">
+          <div class="reel"><div class="hd"><i>RC</i>royalcaterers.madurai</div><span class="play"><i data-i="play"></i></span><b>நவராத்திரி சிறப்பு சாப்பாடு</b><small>சுண்டல் · புளியோதரை · சர்க்கரைப் பொங்கல்</small><small>0:28</small></div>
+          <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+            <div class="meta4"><span><i data-i="camera"></i>Instagram ரீல்</span><span><i data-i="globe"></i>Facebook</span><span><i data-i="cal"></i>திங்கள், 5 அக்டோபர் · மாலை 6:00</span></div>
+            <div class="capt">பதிவின் வாசகம்<div class="pill-sel"><span class="on">தமிழ்</span><span>English</span></div></div>
+            <div class="cap">ஒன்பது இரவுகள், ஒன்பது சுவைகள். 🌼 எங்கள் நவராத்திரி சிறப்பு சாப்பாட்டில் சுண்டல், புளியோதரை, சர்க்கரைப் பொங்கல் மற்றும் பல உணவுகள் — ஒவ்வொரு மாலையும் எங்கள் மதுரை சமையலறையில் புதிதாகச் சமைக்கிறோம். உங்கள் கொலு விருந்தினர்களுக்கு ஆர்டர் செய்ய அழையுங்கள்: 98404 55210<span class="hs">#Navaratri2026 #MaduraiFood #RoyalCaterers #Golu</span></div>
+            <div class="say2">என்ன மாற்ற வேண்டும்? உதாரணம்: விலையைச் சேர்க்கவும்</div>
+            <div class="acts5"><span class="po-btn ok"><i data-i="check"></i>ஒப்புதல் தருகிறேன்</span><span class="po-btn">மாற்றம் கேட்கிறேன்</span></div>
+            <div class="po-note"><i data-i="info"></i><span>திவ்யா 30 செப்டம்பர் அன்று அனுப்பினார். நீங்கள் ஒப்புதல் தந்த பிறகு, <b>திங்கள் மாலை 6 மணிக்கு</b> நாங்கள் பதிவிடுவோம்.</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="pcard2">
+        <h2>எப்படி வேலை செய்கிறது</h2>
+        <div class="how"><div><em>1</em><b>நாங்கள் தயாரிக்கிறோம்</b>படம், வீடியோ, வாசகம்</div><div><em>2</em><b>நீங்கள் ஒப்புதல் தருகிறீர்கள்</b>இங்கே அல்லது WhatsApp-இல்</div><div><em>3</em><b>நாங்கள் பதிவிடுகிறோம்</b>சொன்ன நேரத்தில்</div></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>இந்த மாதப் பதிவுகள்</h2>
+        <div class="mon"><span class="d6"><b>29</b>செப்</span><div><b>எங்கள் சமையலறை · ஒரு பார்வை</b><small>Instagram ரீல்</small></div><span class="st5 pub">வெளியானது</span></div>
+        <div class="mon"><span class="d6"><b>30</b>செப்</span><div><b>வாடிக்கையாளர் பாராட்டு</b><small>Instagram · Facebook</small></div><span class="st5 pub">வெளியானது</span></div>
+        <div class="mon"><span class="d6"><b>3</b>அக்</span><div><b>கொலு சுண்டல் பேக்</b><small>மாலை 6:00</small></div><span class="st5 sch">திட்டமிடப்பட்டது</span></div>
+        <div class="mon"><span class="d6"><b>4</b>அக்</span><div><b>ஞாயிறு டிபன் மெனு</b><small>காலை 8:00</small></div><span class="st5 sch">திட்டமிடப்பட்டது</span></div>
+        <div class="mon now"><span class="d6"><b>5</b>அக்</span><div><b>நவராத்திரி சிறப்பு சாப்பாடு</b><small>ரீல் · மாலை 6:00</small></div><span class="st5 wait">உங்கள் ஒப்புதலுக்கு</span></div>
+        <div class="mon"><span class="d6"><b>8</b>அக்</span><div><b>திருமண கேட்டரிங் ரீல்</b><small>திவ்யா தயாரிக்கிறார்</small></div><span class="st5 mk">தயாராகிறது</span></div>
+        <div class="mon"><span class="d6"><b>11</b>அக்</span><div><b>2 பதிவுகள்</b><small>11 மற்றும் 14 அக்டோபர்</small></div><span class="st5 mk">தயாராகிறது</span></div>
+        <div class="po-note"><i data-i="clock"></i><span>முந்தைய 4 வெளியான பதிவுகளையும் பார்க்கலாம்.</span></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">மொழி: தமிழ் · மேலே உள்ள பொத்தானில் English-க்கு மாற்றலாம். ஒவ்வொரு ஒப்புதலும் உங்கள் பெயர் மற்றும் நேரத்துடன் சேமிக்கப்படும்.</p>
+</main>
+</div>
+</body>
+</html>

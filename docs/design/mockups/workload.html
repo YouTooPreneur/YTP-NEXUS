@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Workload</title>
+<!-- Batch 3 · SCR-088 Workload: each person's open and late work against their capacity, aware of leave; AI suggests how to rebalance (CORE-046, TEAM-024, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .wl{display:grid;grid-template-columns:240px 1fr 90px 80px 130px;gap:16px;align-items:center;padding:13px 22px;border-top:1px solid var(--line-soft)}
+  .wl.hd{border-top:0;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:14px;padding-bottom:8px}
+  .cap{position:relative;height:14px;border-radius:999px;background:var(--bar);overflow:hidden}
+  .cap i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--on)}
+  .cap i.hi{background:#E2A93B} .cap i.over{background:var(--red)}
+  .cap em{position:absolute;top:0;bottom:0;border-left:2px dashed var(--ink);opacity:.35}
+  .pct{font-size:12px;font-weight:700;margin-top:4px;display:block;color:var(--muted)}
+  .num{font-weight:700;text-align:center}
+  .num.late{color:var(--red)}
+  .wk{display:flex;gap:3px}
+  .wk span{width:16px;height:16px;border-radius:4px;background:var(--on);opacity:.85}
+  .wk span.off{background:#A78BFA} .wk span.half{background:linear-gradient(135deg,var(--on) 50%,var(--bar) 50%)} .wk span.soff{background:var(--bar)} .wk span.wait{background:repeating-linear-gradient(135deg,#A78BFA 0 3px,var(--bar) 3px 6px)} .wk span.wait.hf{background:linear-gradient(135deg,var(--on) 50%,transparent 50%),repeating-linear-gradient(135deg,#A78BFA 0 3px,var(--bar) 3px 6px)}
+  .wkey{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)} .wkey>span{display:inline-flex;gap:6px;align-items:center} .wkey .wk span{width:14px;height:14px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Workload</b></div>
+          <h1 class="serif">Workload</h1>
+          <p>Open and late work for each person against how much they can take this week. Capacity comes from office hours in HR settings: 10:00 am to 7:00 pm, Monday to Saturday, 9 h a day (54 h a week). Saturdays off and approved leave count as zero; a half Saturday counts as 4 h.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>This week</span><span class="on">Next week · 5–10 Oct</span></div><a class="btn lg" href="tasks.html" style="text-decoration:none"><i data-i="tasks"></i>Tasks</a></div>
+      </div>
+
+      <div class="ai-card" style="flex-direction:row;align-items:center;gap:14px;padding:12px 16px"><div class="ai-h" style="flex:none"><i data-i="spark"></i>Suggested rebalance</div><div style="flex:1;font-size:13.5px;line-height:1.5">Karthik is at 107% with 2 late tasks while Priya is at 26%. Move "Keyword report, September" (Pearl Dental) to Priya with Karthik reviewing. If Rahul's leave (6–9 Oct, waiting for approval) is approved, his capacity drops to 18 h for 22 h of work: give Sanjay the Royal Caterers reel.</div><span class="btn">Review moves</span></div>
+
+      <div class="card">
+        <div class="wl hd"><span>Person</span><span>Load next week (dashed line = capacity)</span><span style="text-align:center">Open</span><span style="text-align:center">Late</span><span>Mon–Sat</span></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#0F766E">KR</span><div><b>Karthik Raman</b><small>Capacity 54 h</small></div></div><div><div class="cap"><i class="over" style="width:83%"></i><em style="left:77%"></em></div><span class="pct">58 h of 54 h · 107%</span></div><span class="num">9</span><span class="num late">2</span><div class="wk"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Capacity 54 h</small></div></div><div><div class="cap"><i class="hi" style="width:71%"></i><em style="left:77%"></em></div><span class="pct">50 h of 54 h · 93%</span></div><span class="num">6</span><span class="num late">1</span><div class="wk"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Capacity 54 h</small></div></div><div><div class="cap"><i style="width:44%"></i><em style="left:77%"></em></div><span class="pct">31 h of 54 h · 57%</span></div><span class="num">4</span><span class="num">0</span><div class="wk"><span></span><span></span><span class="wait hf"></span><span></span><span></span><span></span></div></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><small>Capacity 54 h · leave 6–9 Oct waiting</small></div></div><div><div class="cap"><i style="width:31%"></i><em style="left:77%"></em></div><span class="pct">22 h of 54 h · 41%</span></div><span class="num">5</span><span class="num">0</span><div class="wk"><span></span><span class="wait"></span><span class="wait"></span><span class="wait"></span><span class="wait"></span><span></span></div></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Capacity 54 h · new</small></div></div><div><div class="cap"><i style="width:20%"></i><em style="left:77%"></em></div><span class="pct">14 h of 54 h · 26%</span></div><span class="num">3</span><span class="num late">1</span><div class="wk"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <div class="wl"><div class="nmc"><span class="lg-av" style="--av:#334155">SJ</span><div><b>Sanjay J</b><small>Freelancer · 20 h set for him</small></div></div><div><div class="cap"><i style="width:6%"></i><em style="left:29%"></em></div><span class="pct">4 h of 20 h · 20%</span></div><span class="num">1</span><span class="num">0</span><div class="wk"><span></span><span></span><span></span><span></span><span></span><span class="soff"></span></div></div>
+      </div>
+      <div class="wkey"><span><span class="wk"><span></span></span>Working</span><span><span class="wk"><span class="off"></span></span>Approved leave</span><span><span class="wk"><span class="wait"></span></span>Leave waiting for approval (not counted yet)</span><span><span class="wk"><span class="soff"></span></span>Saturday off</span><span>October has five Saturdays, so there are no half Saturdays this month.</span></div>
+      <p class="help">Staff capacity follows the office hours in HR settings; a freelancer's weekly hours are set per person. Hours come from each task's estimate; the default estimate is also a setting.</p>
+    </section>
+  </main>
+</div>
+</body>
+</html>

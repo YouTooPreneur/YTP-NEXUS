@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Company assets</title>
+<!-- Batch 3 · SCR-136 Company assets: laptops, cameras and other items issued to people, returned, or in store (TEAM-008) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .as td{padding-top:11px;padding-bottom:11px}
+  .as b{font-weight:700;display:block}
+  .as small{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Company assets</b></div>
+          <h1 class="serif">Company assets</h1>
+          <p>Everything YTP owns that people use. Issuing or returning an item shows on the person's profile and in their leaving checklist.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span><span class="btn solid lg"><i data-i="plus"></i>Add item</span></div>
+      </div>
+      <div class="counters"><div class="ctr"><b>14</b><span>Items</span></div><div class="ctr"><b>9</b><span>Issued</span></div><div class="ctr"><b>4</b><span>In store</span></div><div class="ctr warn"><b>1</b><span>Needs repair</span></div></div>
+      <div class="views"><span class="on">All</span><span>Laptops <em class="count">6</em></span><span>Cameras and audio <em class="count">3</em></span><span>Phones and SIMs <em class="count">2</em></span><span>Cards <em class="count">3</em></span></div>
+      <div class="card cb" style="padding-top:8px">
+        <table class="tbl as"><thead><tr><th>Item</th><th>Serial or tag</th><th>With</th><th>Issued</th><th>Condition</th><th>Status</th><th></th></tr></thead><tbody>
+          <tr><td><b>Dell Latitude 5440</b><small>Laptop · bought Aug 2026</small></td><td class="sm">YTP-LT-06</td><td><div class="nmc"><span class="lg-av" style="--av:#0369A1;width:26px;height:26px;font-size:9px">PN</span>Priya N</div></td><td class="sm">29 Sep 2026</td><td class="sm">New</td><td><span class="chip c-blue">Issued</span></td><td class="r"><span class="btn">Return</span></td></tr>
+          <tr><td><b>MacBook Air M2</b><small>Laptop</small></td><td class="sm">YTP-LT-03</td><td><div class="nmc"><span class="lg-av" style="--av:#BE185D;width:26px;height:26px;font-size:9px">DS</span>Divya S</div></td><td class="sm">2 Jan 2025</td><td class="sm">Good</td><td><span class="chip c-blue">Issued</span></td><td class="r"><span class="btn">Return</span></td></tr>
+          <tr><td><b>Sony ZV-E10 with lens kit</b><small>Camera</small></td><td class="sm">YTP-CM-01</td><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED;width:26px;height:26px;font-size:9px">RM</span>Rahul M</div></td><td class="sm">10 Mar 2025</td><td class="sm">Good</td><td><span class="chip c-blue">Issued</span></td><td class="r"><span class="btn">Return</span></td></tr>
+          <tr><td><b>Rode Wireless Go II</b><small>Microphones</small></td><td class="sm">YTP-AU-01</td><td class="sm">Store</td><td class="sm">—</td><td class="sm">Good</td><td><span class="chip c-green">In store</span></td><td class="r"><span class="btn">Issue</span></td></tr>
+          <tr><td><b>Lenovo ThinkPad E14</b><small>Laptop · spare</small></td><td class="sm">YTP-LT-02</td><td class="sm">Store</td><td class="sm">—</td><td class="sm">Battery weak</td><td><span class="chip c-amber">Needs repair</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+          <tr><td><b>Office SIM · Jio</b><small>Support line</small></td><td class="sm">+91 98400 00001</td><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:26px;height:26px;font-size:9px">MV</span>Meena V</div></td><td class="sm">1 Apr 2026</td><td class="sm">—</td><td><span class="chip c-blue">Issued</span></td><td class="r"><span class="btn">Return</span></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

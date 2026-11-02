@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Automation builder</title>
+<!-- Batch 8 · SCR-171 Automation builder: When → If → Do with no code, across modules and outside tools; the example rule "when a deal is won and includes SEO, create a Search Console access task"; messages to clients from a new rule wait for a person to OK them by default (a setting per rule); dry run before turning on; versions, limits, retries and the run history; AI can draft a rule from a sentence (CORE-071, AUTO-001, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:28px}
+  .pg-head p{margin-top:4px}
+  .bl{display:grid;grid-template-columns:250px minmax(0,1fr) 330px;gap:14px;align-items:start}
+  .pal{padding:12px;display:flex;flex-direction:column;gap:4px}
+  .pal .search{width:100%;height:36px;margin-bottom:6px}
+  .pal .gh{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:8px 4px 4px}
+  .pi{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;font-size:12.5px;font-weight:600;cursor:grab}
+  .pi:hover{background:var(--card-2)}
+  .pi svg{width:15px;height:15px;color:var(--muted)}
+  .pi small{margin-left:auto;font-size:10.5px;color:var(--muted);font-weight:700}
+  .canvas{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:16px 18px;background:repeating-linear-gradient(0deg,transparent 0 23px,color-mix(in srgb,var(--line) 45%,transparent) 23px 24px),repeating-linear-gradient(90deg,transparent 0 23px,color-mix(in srgb,var(--line) 45%,transparent) 23px 24px),var(--card-2);border-radius:var(--radius);border:1px solid var(--line-soft)}
+  .blk{background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(16,39,58,.06);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .blk .bh{display:flex;align-items:center;gap:9px}
+  .blk .bh em{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.12em;padding:3px 9px;border-radius:999px;color:#fff}
+  .blk.w .bh em{background:#0E7490} .blk.i .bh em{background:#9A6416} .blk.d .bh em{background:#0E874D}
+  .blk .bh b{font-weight:700;font-size:14px}
+  .blk .bh .tg{margin-left:auto}
+  .cond{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px}
+  .tok{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border-radius:8px;border:1px solid var(--line);background:var(--card-2);font-weight:600;font-size:12.5px}
+  .tok.v{background:var(--active-bg);border-color:transparent}
+  .andl{font-size:10.5px;font-weight:800;color:var(--muted);letter-spacing:.08em}
+  .step{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .step:first-of-type{border-top:0;padding-top:2px}
+  .step .n7{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--green-bg);color:var(--green);font-weight:800;font-size:11.5px}
+  .step b{font-weight:700;font-size:13px}
+  .step small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+  .step .appr3{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--amber-bg);color:var(--amber);white-space:nowrap}
+  .addl{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);padding-top:6px}
+  .addl svg{width:14px;height:14px}
+  .conn{width:2px;height:22px;background:var(--edge);margin:0 auto;position:relative}
+  .conn::after{content:"";position:absolute;left:-4px;bottom:-2px;border:5px solid transparent;border-top-color:var(--edge)}
+  .rp{display:flex;flex-direction:column;gap:12px}
+  .rc{padding:13px 15px;display:flex;flex-direction:column;gap:8px}
+  .rc h3{font-family:Sora,sans-serif;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .rc h3 .r{margin-left:auto;font-family:"DM Sans",sans-serif;font-size:11.5px;font-weight:700;color:var(--muted)}
+  .dr{display:flex;gap:8px;align-items:flex-start;font-size:12.5px}
+  .dr svg{width:15px;height:15px;color:var(--green);flex:none;margin-top:2px}
+  .dr.w svg{color:var(--amber)}
+  .opt3{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;font-size:12.5px;align-items:center}
+  .opt3 span{color:var(--muted)}
+  .opt3 b{font-weight:700;text-align:right}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="automations.html">Automations</a><span>/</span><b style="color:var(--ink)">New rule</b></div>
+          <h1 class="serif">SEO deal won → Search Console access</h1>
+          <p>When → If → Do, with no code. Drag a trigger and actions from the left. A dry run shows what would happen before you turn it on.</p>
+        </div>
+        <div class="acts"><span class="chip c-ink">Draft · version 1</span><span class="btn lg"><i data-i="play"></i>Dry run</span><span class="btn lg">Save draft</span><span class="btn solid lg"><i data-i="toggle"></i>Turn on</span></div>
+      </div>
+      <div class="bl">
+        <div class="card pal">
+          <div class="search"><i data-i="search"></i>Find a trigger or action…</div>
+          <span class="gh">When</span>
+          <span class="pi"><i data-i="target"></i>A deal is won<small>CRM</small></span>
+          <span class="pi"><i data-i="users"></i>A lead comes in<small>CRM</small></span>
+          <span class="pi"><i data-i="doc"></i>A proposal is accepted<small>CRM</small></span>
+          <span class="pi"><i data-i="wallet"></i>An invoice is overdue<small>Finance</small></span>
+          <span class="pi"><i data-i="folder"></i>A project stage is done<small>Projects</small></span>
+          <span class="pi"><i data-i="globe"></i>Something will expire<small>WebCare</small></span>
+          <span class="pi"><i data-i="chat"></i>A WhatsApp comes in<small>Outside</small></span>
+          <span class="pi"><i data-i="clock"></i>On a schedule<small>Time</small></span>
+          <span class="gh">Do</span>
+          <span class="pi"><i data-i="tasks"></i>Create a task</span>
+          <span class="pi"><i data-i="send"></i>Send a message</span>
+          <span class="pi"><i data-i="bell"></i>Notify someone</span>
+          <span class="pi"><i data-i="edit"></i>Change a field</span>
+          <span class="pi"><i data-i="shield"></i>Ask for approval</span>
+          <span class="pi"><i data-i="clock"></i>Wait</span>
+        </div>
+        <div class="canvas">
+          <div class="blk w"><div class="bh"><em>WHEN</em><b>A deal is won</b><div class="tg"><span>CRM</span></div></div><div class="cond"><span class="tok">Any deal</span><span class="tok">Any owner</span></div></div>
+          <div class="conn"></div>
+          <div class="blk i"><div class="bh"><em>IF</em><b>All of these are true</b></div>
+            <div class="cond"><span class="tok">Services in the deal</span><span class="andl">INCLUDE</span><span class="tok v">SEO</span></div>
+            <div class="cond"><span class="andl">AND</span><span class="tok">Client status</span><span class="andl">IS NOT</span><span class="tok v">On hold</span></div>
+            <span class="addl"><i data-i="plus"></i>Add a condition · otherwise do nothing</span></div>
+          <div class="conn"></div>
+          <div class="blk d"><div class="bh"><em>DO</em><b>3 steps, in order</b></div>
+            <div class="step"><span class="n7">1</span><div><b>Create a task · "Get Search Console access for {client}"</b><small>For the SEO lead (Karthik) · due in 2 working days · checklist "SEO onboarding"</small></div><span></span></div>
+            <div class="step"><span class="n7">2</span><div><b>Send WhatsApp to the client contact</b><small>Template "Search Console access", approved by Meta · in the client's language</small></div><span class="appr3">Waits for a person's OK</span></div>
+            <div class="step"><span class="n7">3</span><div><b>Notify Karthik</b><small>In Nexus and on WhatsApp</small></div><span></span></div>
+            <span class="addl"><i data-i="plus"></i>Add a step</span></div>
+        </div>
+        <div class="rp">
+          <div class="card rc">
+            <h3>Dry run <span class="r">Nothing was changed</span></h3>
+            <span class="sm" style="font-size:12px">Tested with Q-2026-023 · Bloom Florists · SEO 6 months, as if won today</span>
+            <div class="dr"><i data-i="check"></i><span>When: the deal is won</span></div>
+            <div class="dr"><i data-i="check"></i><span>If: includes SEO · client is not on hold</span></div>
+            <div class="dr"><i data-i="check"></i><span>Would create 1 task for Karthik, due Mon 5 Oct</span></div>
+            <div class="dr w"><i data-i="clock"></i><span>Would wait for an OK before the WhatsApp goes</span></div>
+            <div class="dr"><i data-i="check"></i><span>Would notify Karthik</span></div>
+          </div>
+          <div class="card rc">
+            <h3>Rule settings</h3>
+            <div class="opt3"><span>Runs</span><b>Once per deal</b><span>Ask before messaging a client</span><span class="toggle on"></span><span>Ask before every run</span><span class="toggle"></span><span>Most runs a day</span><b>20</b><span>If a step fails</span><b>Retry 3 times, then tell the Owner</b><span>Versions</span><b>v1 · draft · earlier ones kept</b></div>
+            <a class="src" href="run-history.html" style="align-self:flex-start"><i data-i="refresh"></i>Run history</a>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Describe it in words</div>
+            <span style="font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:10px;background:var(--card);border:1px solid var(--line-soft)">"When we win an SEO deal, give Karthik a task to get Search Console access and ask the client on WhatsApp."</span>
+            <span class="ai-btn sm" style="align-self:flex-start" data-ai="Builds the When, If and Do blocks from your sentence as a draft. You check it, run a dry run, then turn it on.">Build the blocks</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

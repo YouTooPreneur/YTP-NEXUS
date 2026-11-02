@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Leads and clients</title>
+<!-- Batch 3 · SCR-030 Leads and clients: one list for leads and clients; status, agreement type, renewal date, outstanding, list totals; saved views; duplicates banner; AI "ask about this list" (CRM-001, CRM-004, CRM-005, CRM-008, CRM-023, CRM-028, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lc td{padding-top:10px;padding-bottom:10px}
+  .money{font-weight:700;text-align:right}
+  .money.due{color:var(--red)}
+  tfoot td{font-weight:700;border-top:1.5px solid var(--line);background:var(--card-2)}
+  .exp{color:var(--red);font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="leads">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><span>CRM</span><span>/</span><b style="color:var(--ink)">Leads and clients</b></div>
+          <h1 class="serif">Leads and clients</h1>
+          <p>One record from first enquiry to long-time client. Converting a lead keeps all its history.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: answers questions about the clients in this list (who has no AMC, who renews soon), within your permissions."><i data-i="spark"></i>Ask about this list</span><a class="btn lg" href="pipeline.html" style="text-decoration:none"><i data-i="target"></i>Pipeline</a><a class="btn solid lg" href="lead-quick.html" style="text-decoration:none"><i data-i="plus"></i>New lead</a></div>
+      </div>
+      <div class="views"><span>Leads <em class="count">16</em></span><span class="on">Clients <em class="count">42</em></span><span>Past <em class="count">9</em></span><span>Lost <em class="count">12</em></span><span>Renewing in 30 days <em class="count">5</em></span><span>No AMC <em class="count">11</em></span><span><i data-i="plus"></i>Save view</span><a href="lead-rules.html" style="margin-left:auto"><i data-i="gear"></i>Lead rules</a></div>
+      <div class="banner warn" style="justify-content:space-between"><span style="display:flex;gap:10px;align-items:center"><i data-i="users2"></i>2 possible duplicates: the same phone number on two records.</span><a class="btn" href="merge.html" style="text-decoration:none">Review</a></div>
+      <section class="filters" style="padding:0"><div class="fsel"><span>Status</span>All<i data-i="down"></i></div><div class="fsel"><span>Service</span>All<i data-i="down"></i></div><div class="fsel"><span>Source</span>All<i data-i="down"></i></div><div class="fsel"><span>Owner</span>Everyone<i data-i="down"></i></div><div class="fsel"><span>Tag</span>Any<i data-i="down"></i></div><div class="search"><i data-i="search"></i>Search name, phone, domain…</div></section>
+
+      <div class="card cb" style="padding-top:8px">
+        <table class="tbl lc">
+          <thead><tr><th>Client</th><th>Status</th><th>Services</th><th>Agreement</th><th>Renews</th><th>Source</th><th>Owner</th><th class="r">Outstanding</th></tr></thead>
+          <tbody>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490">SD</span><a href="client-profile.html"><b>Sharma Dental Care</b><small>Healthcare · Chennai</small></a></div></td><td><span class="chip c-green">Active</span></td><td><div class="tg"><span>Website</span><span>Domain + hosting</span><span>AMC</span></div></td><td class="sm"><a href="agreements.html" style="color:inherit;text-decoration-color:var(--line)">Annual AMC</a></td><td class="sm">29 Oct</td><td class="sm">Referral</td><td><span class="av s">YP</span></td><td class="money">₹0</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#15803D">GO</span><a href="client-profile.html"><b>Greenleaf Organics</b><small>Food · Coimbatore</small></a></div></td><td><span class="chip c-green">Active</span></td><td><div class="tg"><span>Website</span><span>Domain</span></div></td><td class="sm"><a href="agreements.html" style="color:inherit;text-decoration-color:var(--line)">Project + renewals</a></td><td class="sm">8 Oct</td><td class="sm">Referral</td><td><span class="av s">YP</span></td><td class="money due">₹1,416</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857">KH</span><a href="client-profile.html"><b>Kaveri Hospitals</b><small>Healthcare · Chennai</small></a></div></td><td><span class="chip c-green">Active</span></td><td><div class="tg"><span>Website</span><span>+ new deal</span></div></td><td class="sm">Project</td><td class="sm">—</td><td class="sm">Referral</td><td><span class="av s">DS</span></td><td class="money due">₹23,600</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">VM</span><a href="client-profile.html"><b>Velocity Motors</b><small>Automobile · Chennai</small></a></div></td><td><span class="chip c-green">Active</span></td><td><div class="tg"><span>AMC</span><span>Ads</span></div></td><td class="sm"><a href="agreements.html" style="color:inherit;text-decoration-color:var(--line)">Annual AMC</a></td><td class="sm">21 Oct</td><td class="sm">Website form</td><td><span class="av s">AK</span></td><td class="money">₹15,000</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#A16207">RC</span><a href="client-profile.html"><b>Royal Caterers</b><small>Food · Madurai · onboarding</small></a></div></td><td><span class="chip c-green">Active</span></td><td><div class="tg"><span>Social</span><span>Ads</span></div></td><td class="sm"><a href="agreements.html" style="color:inherit;text-decoration-color:var(--line)">Monthly retainer</a></td><td class="sm">28 Sep 2027</td><td class="sm">Instagram</td><td><span class="av s">DS</span></td><td class="money">₹0</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#7C2D12">CR</span><a href="client-profile.html"><b>Coastal Realty</b><small>Real estate · Chennai</small></a></div></td><td><span class="chip c-amber">On hold</span></td><td><div class="tg"><span>SEO</span></div></td><td class="sm"><a href="agreements.html" style="color:inherit;text-decoration-color:var(--line)">Monthly retainer</a></td><td class="exp">Expired 15 Sep</td><td class="sm">LinkedIn</td><td><span class="av s">KR</span></td><td class="money due">₹12,000</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#475569">CB</span><a href="client-profile.html"><b>Chennai Book House</b><small>Retail · Chennai</small></a></div></td><td><span class="chip c-ink">Inactive</span></td><td><div class="tg"><span>Website</span></div></td><td class="sm">Project</td><td class="sm">—</td><td class="sm">Walk-in</td><td><span class="av s">YP</span></td><td class="money">₹0</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">BM</span><a href="client-profile.html"><b>Bright Minds Tuition</b><small>Education · Trichy</small></a></div></td><td><span class="chip c-blue">Completed</span></td><td><div class="tg"><span>Landing page</span></div></td><td class="sm">Project</td><td class="sm">—</td><td class="sm">Google Ads</td><td><span class="av s">KR</span></td><td class="money">₹0</td></tr>
+          </tbody>
+          <tfoot><tr><td>42 clients · 8 shown</td><td colspan="3" class="sm">Agreement value ₹38,60,000 · unbilled ₹6,40,000</td><td colspan="3" class="sm">5 renew in 30 days</td><td class="money">₹1,39,016</td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

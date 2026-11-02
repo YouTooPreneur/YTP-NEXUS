@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoices · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-202 Invoices and payments (Kaveri Hospitals): every invoice with its status and receipt, pay by UPI QR, online (gateway, test mode) or bank transfer, TDS and Form 16A, and the statement of account; amounts match the Finance records (POR-002, POR-011, FIN-001). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .tbl td{font-size:13px}
+  .tbl td small{display:block;font-size:12px;color:var(--muted)}
+  .tbl tr.sel td{background:color-mix(in srgb,var(--red-bg) 55%,transparent)}
+  .tbl td .acts3{display:flex;gap:6px;justify-content:flex-end}
+  .payamt{display:flex;align-items:baseline;gap:8px}
+  .payamt b{font-family:Sora,sans-serif;font-weight:600;font-size:30px}
+  .payamt small{font-size:12.5px;color:var(--red);font-weight:700}
+  .upi3{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:center;padding:12px;border-radius:14px;background:var(--card-2)}
+  .upi3 .upi-qr{width:112px;height:112px}
+  .upi3 b{display:block;font-weight:700;font-size:13.5px}
+  .upi3 small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .tdsn{font-size:12.5px;padding:10px 12px;border-radius:12px;background:var(--amber-bg);color:var(--amber);font-weight:600}
+  .bank3{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12.5px}
+  .bank3 span{color:var(--muted)}
+  .bank3 b{font-weight:700}
+  .stm{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .stm div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .stm small{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stm b{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="invoices" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Invoices and payments</h1><p class="lead2">Pay, download invoices and receipts, and get your statement. Amounts are the same as in our books.</p></div>
+    <div class="acts"><span class="po-btn" data-soon="x" data-msg="Downloads your statement of account as a PDF, in the same layout as the statement in our Finance records."><i data-i="download"></i>Statement (PDF)</span><span class="po-btn"><i data-i="upload"></i>Upload a TDS certificate</span></div>
+  </div>
+  <div class="po-kpis">
+    <div class="po-k warn"><small>To pay</small><b>₹23,600</b><span>1 invoice · 3 days past due</span></div>
+    <div class="po-k"><small>Paid this year</small><b>₹90,100</b><span>3 invoices · April to September</span></div>
+    <div class="po-k"><small>TDS you deducted</small><b>₹9,010</b><span>Jul–Sep certificate due by 15 Nov</span></div>
+    <div class="po-k"><small>Next bill</small><b>31 Dec</b><span>Website care, Oct–Dec · ₹23,600</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Invoices <span class="count">4</span></h2>
+        <table class="tbl">
+          <thead><tr><th>Invoice</th><th>For</th><th>Date</th><th class="num">Amount</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr class="sel"><td><span class="inv">YTP/26-27/0038</span></td><td><b>Website care, Jul–Sep</b><small>Current site</small></td><td class="sm">13 Sep</td><td class="num">₹23,600</td><td><span class="chip c-red">Overdue</span><small>Was due 28 Sep</small></td><td><div class="acts3"><a class="po-btn sm" href="docs-pdf.html#invoice">PDF</a><span class="po-btn sm solid">Pay</span></div></td></tr>
+            <tr><td><span class="inv">YTP/26-27/0037</span></td><td><b>Doctor photo shoot</b><small>8 Sep, at the hospital</small></td><td class="sm">8 Sep</td><td class="num">₹18,500</td><td><span class="chip c-green">Paid 12 Sep</span><small>₹16,650 + TDS ₹1,850</small></td><td><div class="acts3"><a class="po-btn sm" href="docs-pdf.html#invoice">PDF</a><a class="po-btn sm" href="docs-pdf.html#receipt">Receipt</a></div></td></tr>
+            <tr><td><span class="inv">YTP/26-27/0016</span></td><td><b>New website · 40% advance</b><small>Website redesign, stage 1 of 3</small></td><td class="sm">14 Jul</td><td class="num">₹48,000</td><td><span class="chip c-green">Paid 18 Jul</span><small>₹43,200 + TDS ₹4,800</small></td><td><div class="acts3"><a class="po-btn sm" href="docs-pdf.html#invoice">PDF</a><a class="po-btn sm" href="docs-pdf.html#receipt">Receipt</a></div></td></tr>
+            <tr><td><span class="inv">YTP/26-27/0011</span></td><td><b>Website care, Apr–Jun</b><small>Current site</small></td><td class="sm">15 Jun</td><td class="num">₹23,600</td><td><span class="chip c-green">Paid 28 Jun</span><small>₹21,240 + TDS ₹2,360</small></td><td><div class="acts3"><a class="po-btn sm" href="docs-pdf.html#invoice">PDF</a><a class="po-btn sm" href="docs-pdf.html#receipt">Receipt</a></div></td></tr>
+          </tbody>
+        </table>
+        <div class="po-note"><i data-i="clock"></i><span>Coming next: <b>₹48,000</b> (40%) when you approve the designs, and <b>₹24,000</b> (20%) at launch. We bill each stage when it is reached.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Statement of account <span class="r" style="font-weight:600;color:var(--muted)">1 Apr – 30 Sep 2026</span></h2>
+        <div class="stm"><div><small>Billed</small><b>₹1,13,700</b></div><div><small>Paid, with TDS</small><b>₹90,100</b></div><div><small>Balance</small><b style="color:var(--red)">₹23,600</b></div></div>
+        <div class="prow"><span class="po-ic grn"><i data-i="file"></i></span><div><b>TDS certificate · Apr–Jun · ₹2,360</b><small>Form 16A received 2 Aug</small></div><span class="r"><span class="chip c-green">Received</span></span></div>
+        <div class="prow"><span class="po-ic amb"><i data-i="file"></i></span><div><b>TDS certificate · Jul–Sep · ₹6,650</b><small>Please upload Form 16A by 15 Nov</small></div><span class="r"><span class="po-btn sm"><i data-i="upload"></i>Upload</span></span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Pay YTP/26-27/0038</h2>
+        <div class="payamt"><b>₹23,600</b><small>3 days past due</small></div>
+        <div class="tdsn">Deducting TDS (10%)? Pay ₹21,240 and upload the certificate later; we mark it settled.</div>
+        <div class="upi3"><span class="upi-qr" data-qr="ytp-0038-23600"></span><div><b>Scan with any UPI app</b><small>GPay, PhonePe, Paytm or your bank app</small><small>UPI ID ytp@hdfcbank · note YTP/26-27/0038</small></div></div>
+        <span class="po-btn solid" style="height:44px">Pay online · cards, net banking, UPI</span>
+        <span class="manual" style="text-align:center">Through Razorpay. A receipt comes by email and WhatsApp straight away. Test mode in this preview.</span>
+        <div class="bank3"><span>Bank transfer</span><b>YouTooPreneur</b><span>Account</span><b>50200012344321</b><span>IFSC</span><b>HDFC0001234 · HDFC Bank</b></div>
+        <span class="po-btn"><i data-i="upload"></i>Already paid? Send us the proof</span>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">Questions about a bill? WhatsApp Meena in Accounts on +91 98400 00001 or write to accounts@youtoopreneur.com.</p>
+</main>
+</div>
+</body>
+</html>

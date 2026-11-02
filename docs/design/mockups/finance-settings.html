@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Finance settings</title>
+<!-- Batch 4 · SCR-198 Finance settings: bank and UPI accounts, payment terms, sending rule, round off, reminders and escalation, GST rates and the registration date, payment gateways, currencies (RULE-001 to RULE-009, FIN-004, FIN-008, FIN-018, FIN-020) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .g2x{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .bank{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--on);background:color-mix(in srgb,var(--on) 5%,var(--card))}
+  .bank .lg{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#fff;background:#004C8F;flex:none}
+  .bank b{display:block;font-weight:700}
+  .bank small{font-size:12px;color:var(--muted)}
+  .bank .r{margin-left:auto}
+  .lockd{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted)}
+  .lockd svg{width:14px;height:14px}
+  .daysel{display:flex;gap:6px}
+  .daysel span{min-width:52px;height:34px;padding:0 10px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:12.5px;color:var(--muted)}
+  .daysel span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="settings">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Finance settings</h1>
+          <p>How invoices are numbered, sent, paid and chased. Every change is logged and applies from the date you choose.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="numbering.html" style="text-decoration:none"><i data-i="hash"></i>Numbering and layouts</a><span class="btn solid lg">Save</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="f"><button data-tab="bank">Bank and UPI</button><button data-tab="invoices">Invoices</button><button data-tab="reminders">Reminders</button><button data-tab="gst">GST</button><button data-tab="payments">Online payments</button></div>
+
+      <section data-group="f" data-panel="bank" class="g2x">
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Accounts money is paid into</h2></div>
+          <div class="bank"><span class="lg">H</span><div><b>HDFC Bank · current account</b><small>•••• •••• 4321 · IFSC HDFC0001234 · Adyar branch</small><small style="display:block">UPI: ytp@hdfcbank · shown as a QR on every invoice</small></div><span class="chip c-green r">Default</span></div>
+          <span class="btn" style="align-self:flex-start"><i data-i="plus"></i>Add another account</span>
+          <p class="help">One account now. Later, each invoice or business line (for example the Academy) can choose its own account.</p>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Who can see bank details</h2></div>
+          <div class="srow"><div class="txt"><b>Full account number</b><span>Owner and Accounts; every view is logged</span></div><span class="lockd"><i data-i="lock"></i>Restricted</span></div>
+          <div class="srow"><div class="txt"><b>On invoices</b><span>Account number, IFSC and UPI are printed for clients to pay</span></div><i class="toggle on"></i></div>
+        </div>
+      </section>
+
+      <section data-group="f" data-panel="invoices" class="g2x">
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>Financial year</b><span>April to March · numbers restart each April</span></div><span class="lockd"><i data-i="lock"></i>Fixed</span></div>
+          <div class="srow"><div class="txt"><b>Payment terms</b><span>Default for new clients; each client can have their own</span></div><div class="input" style="width:180px">Due on receipt<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="srow"><div class="txt"><b>Round off</b><span>Totals to the nearest rupee, shown as a Round off line</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Amounts</b><span>Stored exactly, in paise</span></div><span class="lockd"><i data-i="lock"></i>Fixed</span></div>
+        </div>
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>Renewals and monthly bills</b><span>Issued and sent by themselves</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Send time</b><span>Every day, Sundays and holidays included · set by the Owner</span></div><div class="input" style="width:120px">9:00 am<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="srow"><div class="txt"><b>New and one-time work</b><span>Waits in the approval inbox before it is issued</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Clients with their own terms</b><span>Kaveri Hospitals 15 days · Meridian Logistics 15 days · Lakshmi Silks 15 days</span></div><span class="btn">Edit</span></div>
+        </div>
+      </section>
+
+      <section data-group="f" data-panel="reminders" class="g2x">
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:12px">
+          <div class="field"><label>Payment reminders, days after the invoice date</label><div class="daysel"><span>3</span><span class="on">7</span><span>10</span><span class="on">15</span><span>30</span></div></div>
+          <div class="field"><label>Escalation to the Owner (default; set per client)</label><div class="daysel"><span>14</span><span class="on">21</span><span>30</span><span>45</span></div></div>
+          <div class="srow"><div class="txt"><b>Late fees or interest</b><span>Never charged</span></div><span class="lockd"><i data-i="lock"></i>Off, always</span></div>
+        </div>
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>Channel</b><span>Email and WhatsApp, in the client's language; a client's own preference wins</span></div><span class="lockd">From the contact</span></div>
+          <div class="srow"><div class="txt"><b>Send time</b><span>Same as bills: every day, holidays included</span></div><span class="lockd">9:00 am</span></div>
+          <div class="srow"><div class="txt"><b>Per-client escalation</b><span>Kaveri Hospitals day 30 · Greenleaf day 21 · Anbu Textiles day 21</span></div><span class="btn">Edit</span></div>
+          <div class="srow"><div class="txt"><b>Paused</b><span>Coastal Realty (on hold) · since 16 Sep · by Owner</span></div><span class="btn">Resume</span></div>
+        </div>
+      </section>
+
+      <section data-group="f" data-panel="gst" class="g2x">
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>GST registration</b><span>Applied, waiting. Set the date in Company profile when the certificate arrives.</span></div><a class="btn" href="company-profile.html" style="text-decoration:none">Company profile</a></div>
+          <div class="srow"><div class="txt"><b>Our state</b><span>Tamil Nadu: CGST 9% + SGST 9% for Tamil Nadu clients, IGST 18% for other states</span></div><span class="lockd">From the company profile</span></div>
+          <div class="srow"><div class="txt"><b>Foreign clients</b><span>As advised by the CA (export of services)</span></div><span class="chip c-amber">CA to confirm</span></div>
+        </div>
+        <div class="card cb" style="padding-top:12px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:18px">Rates by service</h2><span class="sm" style="font-size:12px">Used only from the registration date</span></div>
+          <table class="tbl"><tbody>
+            <tr><td><b>Default for new services</b></td><td class="sm">SAC by service</td><td class="num">18%</td></tr>
+            <tr><td><b>Website and software work</b></td><td class="sm">998314</td><td class="num">18%</td></tr>
+            <tr><td><b>Domains and hosting</b></td><td class="sm">998319</td><td class="num">18%</td></tr>
+            <tr><td><b>SEO, social and ads management</b></td><td class="sm">998365</td><td class="num">18%</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section data-group="f" data-panel="payments" class="g2x">
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>Razorpay</b><span>Payment link on invoices · test mode until go-live · paid invoices mark themselves paid</span></div><span class="chip c-amber">Test mode</span></div>
+          <div class="srow"><div class="txt"><b>Other gateways</b><span>Stripe, Instamojo, Cashfree, PayU: ready slots in Integrations</span></div><a class="btn" href="integrations.html" style="text-decoration:none">Integrations</a></div>
+          <div class="srow"><div class="txt"><b>Part payments</b><span>Allowed; the rest stays as the balance</span></div><i class="toggle on"></i></div>
+        </div>
+        <div class="card cb" style="padding-top:8px">
+          <div class="srow"><div class="txt"><b>Main currency</b><span>Indian rupee (₹), Indian number format</span></div><span class="lockd"><i data-i="lock"></i>Fixed</span></div>
+          <div class="srow"><div class="txt"><b>Other currencies</b><span>Converted at the rate on the invoice or bill date; bills stay provisional until the statement</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>TDS</b><span>Recorded with the payment, with the certificate when it arrives</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Staff claims</b><span>Paid back by bank transfer, within this many days of approval</span></div><div class="input" style="width:120px">7 days<span class="end"><i data-i="down"></i></span></div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

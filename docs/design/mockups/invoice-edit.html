@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Invoice editor</title>
+<!-- Batch 4 · SCR-102 Invoice editor: lines from services with SAC, GST by the registration date and the client's state, round off, bank or UPI, payment link, agreement value / invoiced / remaining, live preview, submit for approval or send (FIN-001 to FIN-006, FIN-008, FIN-020, RULE-002 to RULE-006, RULE-009, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 470px;gap:16px;align-items:start}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .lines td{padding-top:8px;padding-bottom:8px;vertical-align:top}
+  .lines .svc b{display:block;font-weight:700}
+  .lines .svc small{font-size:12px;color:var(--muted)}
+  .sumbox{display:flex;justify-content:flex-end}
+  .sumbox table{width:300px;border-collapse:collapse}
+  .sumbox td{padding:5px 0;font-size:13px;border:0}
+  .sumbox td:last-child{text-align:right;font-weight:700}
+  .sumbox tr.g td{border-top:1.5px solid var(--line);padding-top:8px;font-size:16px;font-family:Sora,sans-serif}
+  .sumbox .gst td{color:var(--muted);font-weight:500}
+  .agr{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .agr div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .agr div.this{background:color-mix(in srgb,var(--on) 10%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--on) 35%,transparent)}
+  .agr small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .agr b{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .pv{background:var(--stage);border-radius:18px;padding:16px;display:flex;justify-content:center}
+  .mini{width:100%;background:#fff;color:#1C3D36;border-radius:3px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:22px 24px;font-size:10px;line-height:1.55;display:flex;flex-direction:column;gap:10px}
+  .mini .top{display:flex;justify-content:space-between;border-bottom:1.5px solid #1C3D36;padding-bottom:8px;align-items:center}
+  .mini .top b{font-family:Sora,sans-serif;font-size:13px;display:flex;gap:6px;align-items:center}
+  .mini .top svg{width:18px;height:20px}
+  .mini h4{font-family:Sora,sans-serif;font-size:12px;letter-spacing:.1em}
+  .mini table{width:100%;border-collapse:collapse;margin:0}
+  .mini td,.mini th{padding:4px 4px;border-bottom:1px solid #EFEBE2;font-size:9.5px;text-align:left}
+  .mini th{color:#5F6B65;font-size:8px;letter-spacing:.1em;text-transform:uppercase}
+  .mini .n{text-align:right}
+  .mini .pay{display:flex;gap:10px;align-items:center;border:1px solid #E7E3D8;border-radius:6px;padding:8px}
+  .mini .pay .upi-qr{width:62px;height:62px}
+  .ck{display:flex;flex-direction:column;gap:5px;font-size:12.5px}
+  .ck span{display:flex;gap:7px;align-items:flex-start}
+  .ck svg{width:14px;height:14px;flex:none;margin-top:2px}
+  .ck .ok svg{color:var(--green)} .ck .warn svg{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="invoices">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif" style="font-size:34px">New invoice · Sunrise Clinic</h1>
+          <p style="display:flex;gap:8px;align-items:center;margin-top:8px"><span class="chip c-ink">Draft</span><span>No number yet: it is given when the invoice is issued · series YTP (clients)</span></p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: fills the lines from the client's agreement and its payment stages. You check and change anything before saving."><i data-i="spark"></i>Fill from the agreement</span><span class="btn lg">Save draft</span><a class="btn solid lg" href="approvals.html" style="text-decoration:none"><i data-i="send"></i>Submit for approval</a></div>
+      </div>
+
+      <div class="lay">
+        <div class="col">
+          <div class="card cb" style="padding-top:14px">
+            <div class="fields" style="grid-template-columns:1.3fr 1fr 1fr 1fr">
+              <div class="field"><label>Client</label><div class="input">Sunrise Clinic · Velachery<span class="end"><i data-i="down"></i></span></div></div>
+              <div class="field"><label>Place of supply</label><div class="input">Tamil Nadu</div></div>
+              <div class="field"><label>Payment terms</label><div class="input">15 days<span class="end"><i data-i="down"></i></span></div></div>
+              <div class="field"><label>Send to</label><div class="input">Dr. Kavitha Rajan</div></div>
+            </div>
+          </div>
+          <div class="card cb" style="padding-top:8px">
+            <table class="tbl lines"><thead><tr><th>Service</th><th>SAC</th><th class="num">Qty</th><th class="num">Rate</th><th class="num">Amount</th></tr></thead><tbody>
+              <tr><td class="svc"><b>Website design and development</b><small>50% advance on signing · 6 pages, Tamil and English</small></td><td class="sm">998314</td><td class="num mut">1</td><td class="num mut">₹55,000</td><td class="num">₹55,000</td></tr>
+              <tr><td class="svc"><b>Online appointment booking set-up</b><small>50% advance on signing</small></td><td class="sm">998314</td><td class="num mut">1</td><td class="num mut">₹5,000</td><td class="num">₹5,000</td></tr>
+              <tr><td colspan="5"><span class="btn"><i data-i="plus"></i>Add a line from services</span></td></tr>
+            </tbody></table>
+            <div class="sumbox"><table>
+              <tr><td>Subtotal</td><td>₹60,000</td></tr>
+              <tr class="gst"><td>GST · not registered yet</td><td>—</td></tr>
+              <tr class="gst"><td>Round off</td><td>₹0</td></tr>
+              <tr class="g"><td>Total</td><td>₹60,000</td></tr>
+            </table></div>
+          </div>
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Agreement</h2><span class="sm" style="font-size:12px">Proposal accepted 29 Sep · website with booking</span></div>
+            <div class="agr"><div><small>Agreement value</small><b>₹1,20,000</b></div><div><small>Invoiced before</small><b>₹0</b></div><div class="this"><small>This invoice</small><b>₹60,000</b></div><div><small>Remaining after</small><b>₹60,000</b></div></div>
+          </div>
+          <div class="card cb" style="padding-top:14px">
+            <div class="fields" style="grid-template-columns:1fr 1fr">
+              <div class="field"><label>Paid into</label><div class="input">HDFC current ••••4321 · UPI ytp@hdfcbank<span class="end"><i data-i="down"></i></span></div></div>
+              <div class="srow" style="padding:18px 0 0;border-top:0"><div class="txt"><b>Online payment link</b><span>Razorpay · test mode until go-live</span></div><i class="toggle on"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="pv"><div class="mini">
+            <div class="top"><b><span class="mark"></span>YouTooPreneur</b><span style="color:#5F6B65">Adyar, Chennai</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end"><h4>INVOICE</h4><span style="color:#5F6B65">Number given when issued</span></div>
+            <div style="display:flex;justify-content:space-between"><span><b>Sunrise Clinic</b><br>Velachery, Chennai, Tamil Nadu</span><span style="text-align:right">Due in 15 days<br>Place of supply: Tamil Nadu</span></div>
+            <table><tr><th>Service</th><th>SAC</th><th class="n">Amount</th></tr><tr><td>Website design and development · 50% advance</td><td>998314</td><td class="n">₹55,000</td></tr><tr><td>Online booking set-up · 50% advance</td><td>998314</td><td class="n">₹5,000</td></tr><tr><td colspan="2"><b>Total</b></td><td class="n"><b>₹60,000</b></td></tr></table>
+            <div class="pay"><span class="upi-qr" data-qr="sunrise-60000"></span><div>Scan with any UPI app<br><b>ytp@hdfcbank</b><br>or pay online with the secure link</div></div>
+            <span style="color:#5F6B65">Not registered under GST yet. From the registration date, invoices show CGST 9% + SGST 9% for Tamil Nadu clients.</span>
+          </div></div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Checked before sending</div>
+            <div class="ck"><span class="ok"><i data-i="check"></i>Lines match the 50% advance stage in the agreement.</span><span class="ok"><i data-i="check"></i>Client is in Tamil Nadu: after GST registration this would be CGST + SGST.</span><span class="warn"><i data-i="flag"></i>New work: it goes to the approval inbox before it is issued and sent.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

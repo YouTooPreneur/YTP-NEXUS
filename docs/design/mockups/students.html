@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Students</title>
+<!-- Batch 9 · SCR-153 Students: the list with batch, fee, attendance, result and certificate, and the student detail (Harini S): batches and courses, fees and YTA invoices, attendance, results, certificates, documents (Aadhaar last 4 digits only) and the student portal (ACD-003, ACD-005 to ACD-010). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay13{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+  .rc3{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+  .rc3 h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .rc3 h3 .chip,.rc3 h3 .r{margin-left:auto}
+  .kv12{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:12.5px}
+  .kv12 span{color:var(--muted)}
+  .kv12 b{font-weight:700}
+  .sct{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .ln5{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
+  .ln5 b{font-weight:700}
+  .ln5 .r{margin-left:auto;font-weight:700;white-space:nowrap}
+  .ln5 small{color:var(--muted);font-size:11.5px}
+
+  .tbl td.lowr{color:var(--red);font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="students">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Students</h1>
+          <p>Everyone who has joined a course. Each student sees only their own batches, fees and records in the student portal.</p>
+        </div>
+        <div class="acts"><div class="search" style="width:260px;height:40px"><i data-i="search"></i>Name or phone…</div><span class="btn lg"><i data-i="download"></i>Export</span></div>
+      </div>
+      <div class="views"><span class="on">All <em class="count">116</em></span><span>DMM-Oct26 <em class="count">18</em></span><span>WP-Sep26 <em class="count">12</em></span><span>AI-Nov26 <em class="count">8</em></span><span>Reels <em class="count">64</em></span><span>DMM-Jul26 <em class="count">16</em></span><span>Fee due <em class="count">5</em></span><span>Attendance below 75% <em class="count">2</em></span></div>
+      <div class="lay13">
+        <div class="card" style="padding:4px 16px 10px">
+          <table class="tbl">
+            <thead><tr><th>Student</th><th>Batch</th><th>Fee</th><th class="num">Attendance</th><th>Result</th><th>Certificate</th></tr></thead>
+            <tbody>
+              <tr class="sel"><td><div class="nmc"><span class="lg-av" style="--av:#BE185D;width:28px;height:28px;font-size:9.5px">HS</span><b>Harini S</b></div></td><td>DMM-Oct26<small>and Reels, done</small></td><td><span class="chip c-green">1 of 3 paid</span></td><td class="num mut">Starts Mon</td><td class="sm">Reels: A</td><td class="sm">Reels · YTA-C/2026/0009</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#334155;width:28px;height:28px;font-size:9.5px">BV</span><b>Bharathi V</b></div></td><td>DMM-Oct26</td><td><span class="chip c-amber">Due 5 Oct</span></td><td class="num mut">—</td><td class="sm">—</td><td class="sm">—</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490;width:28px;height:28px;font-size:9.5px">MA</span><b>Mohammed Arif</b></div></td><td>WP-Sep26</td><td><span class="chip c-green">Paid</span></td><td class="num">100%</td><td class="sm">Assignment 1: 18/20</td><td class="sm">After 17 Oct</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:28px;height:28px;font-size:9.5px">SK</span><b>Sathish Kumar</b></div></td><td>WP-Sep26</td><td><span class="chip c-green">Paid</span></td><td class="num lowr">60%</td><td class="sm">Assignment 1: not in</td><td class="sm">At risk</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:28px;height:28px;font-size:9.5px">KR</span><b>Keerthana R</b></div></td><td>DMM-Jul26</td><td><span class="chip c-green">Paid</span></td><td class="num">94%</td><td class="sm">Final project: A</td><td><a class="sm" href="certificate-check.html" style="color:var(--ink)">YTA-C/2026/0018</a></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239;width:28px;height:28px;font-size:9.5px">AP</span><b>Arjun P</b></div></td><td>DMM-Jul26</td><td><span class="chip c-green">Paid</span></td><td class="num lowr">70%</td><td class="sm">Final project: B</td><td class="sm">After a make-up class, 10 Oct</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED;width:28px;height:28px;font-size:9.5px">PL</span><b>Priyanka L</b></div></td><td>AI-Nov26</td><td><span class="chip c-amber">Due 20 Oct</span></td><td class="num mut">—</td><td class="sm">—</td><td class="sm">—</td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8;width:28px;height:28px;font-size:9.5px">RG</span><b>Ramesh G</b></div></td><td>Reels · recorded</td><td><span class="chip c-green">Paid</span></td><td class="num">40%<small>watched</small></td><td class="sm">Quiz 1: 14/20</td><td class="sm">When finished</td></tr>
+            </tbody>
+          </table>
+          <span class="manual">8 of 116 shown.</span>
+        </div>
+        <div class="card rc3">
+          <h3><span class="lg-av" style="--av:#BE185D">HS</span>Harini S <span class="chip c-green">Active</span></h3>
+          <div class="kv12"><span>Phone</span><b>+91 94449 •••45 · WhatsApp</b><span>Joined</span><b>12 Aug (Reels) · DMM 28 Sep</b><span>Portal</span><b>Signed in yesterday</b></div>
+          <span class="sct">Courses</span>
+          <div class="ln5"><b>DMM-Oct26</b><small>Digital Marketing Mastery · starts Mon 5 Oct</small></div>
+          <div class="ln5"><b>Reels</b><small>Instagram Reels for Business · finished 14 Sep</small></div>
+          <span class="sct">Fees</span>
+          <div class="ln5"><span>Instalment 1 · YTA/26-27/0031</span><span class="r" style="color:var(--green)">₹12,000 paid 28 Sep</span></div>
+          <div class="ln5"><span>Instalment 2 · invoice on 29 Oct</span><span class="r">₹12,000 due 5 Nov</span></div>
+          <div class="ln5"><span>Instalment 3 · invoice on 28 Nov</span><span class="r">₹12,000 due 5 Dec</span></div>
+          <div class="ln5"><span>Reels · YTA/26-27/0019</span><span class="r" style="color:var(--green)">₹4,999 paid 12 Aug</span></div>
+          <span class="sct">Results and certificates</span>
+          <div class="ln5"><span>Reels quizzes 16/20 and 18/20 · final reel: A</span></div>
+          <div class="ln5"><span>Certificate YTA-C/2026/0009 · 14 Sep</span><span class="r"><a href="docs-pdf.html#certificate" style="color:var(--ink)">PDF</a></span></div>
+          <span class="sct">Documents</span>
+          <div class="ln5"><i class="chk on"></i><span>Photo</span><i class="chk on" style="margin-left:12px"></i><span>Aadhaar · last 4 digits: 7310</span></div>
+          <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap"><span class="btn"><i data-i="chat"></i>Message</span><span class="btn"><i data-i="wallet"></i>Record payment</span><a class="btn" href="student-home.html" style="text-decoration:none"><i data-i="eye"></i>Her portal</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

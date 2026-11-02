@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Numbering and templates</title>
+<!-- Batch 1 · SCR-186 Numbering and document templates. Tabs: #series, #templates -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Numbering and templates</b></div>
+          <h1 class="serif">Numbering and templates</h1>
+          <p>How documents are numbered and how they look. A number is given only when a document is issued, never to a draft.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New series</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="n"><button data-tab="series">Number series</button><button data-tab="templates">Document templates</button></div>
+
+      <section data-group="n" data-panel="series" style="display:flex;flex-direction:column;gap:14px">
+        <div class="banner warn"><i data-i="shield"></i>Numbers run in order with no gaps, are unique in each financial year (April to March), and stay within 16 characters. Your CA confirms the format before go-live.</div>
+        <div class="card cb" style="padding-top:14px">
+          <table class="tbl">
+            <thead><tr><th>Document</th><th>Format</th><th>Last issued</th><th>Next number</th><th>Starts again</th><th>Used by</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>Client invoices</b></td><td class="mono">YTP/{FY}/{0000}</td><td class="mono">YTP/26-27/0045</td><td class="mono"><b>YTP/26-27/0046</b></td><td class="sm">Every 1 April</td><td class="sm">Finance</td><td class="r"><span class="btn">Edit</span></td></tr>
+              <tr><td><b>Academy invoices</b></td><td class="mono">YTA/{FY}/{0000}</td><td class="mono">YTA/26-27/0040</td><td class="mono"><b>YTA/26-27/0041</b></td><td class="sm">Every 1 April</td><td class="sm">Academy</td><td class="r"><span class="btn">Edit</span></td></tr>
+              <tr><td><b>Credit notes</b></td><td class="mono">CN/{FY}/{000}</td><td class="mono">CN/26-27/003</td><td class="mono"><b>CN/26-27/004</b></td><td class="sm">Every 1 April</td><td class="sm">Finance</td><td class="r"><span class="btn">Edit</span></td></tr>
+              <tr><td><b>Payment receipts</b></td><td class="mono">RC/{FY}/{0000}</td><td class="mono">RC/26-27/0057</td><td class="mono"><b>RC/26-27/0058</b></td><td class="sm">Every 1 April</td><td class="sm">Finance</td><td class="r"><span class="btn">Edit</span></td></tr>
+              <tr><td><b>Proposals</b></td><td class="mono">Q-{YYYY}-{000}</td><td class="mono">Q-2026-024</td><td class="mono"><b>Q-2026-025</b></td><td class="sm">Every 1 January</td><td class="sm">CRM</td><td class="r"><span class="btn">Edit</span></td></tr>
+              <tr><td><b>Certificates</b></td><td class="mono">YTA-C/{YYYY}/{0000}</td><td class="mono">YTA-C/2026/0018</td><td class="mono"><b>YTA-C/2026/0019</b></td><td class="sm">Never</td><td class="sm">Academy</td><td class="r"><span class="btn">Edit</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif">Format parts</h2></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="tag">{FY} = 26-27</span><span class="tag">{YYYY} = 2026</span><span class="tag">{0000} = running number</span><span class="tag">Fixed text, e.g. YTP/</span></div>
+        </div>
+      </section>
+
+      <section data-group="n" data-panel="templates" class="g4">
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Invoice and tax invoice</b><span>With UPI QR and bank details · 5 languages</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Payment receipt</b><span>Sent automatically after payment</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Credit note</b><span>Corrects an issued invoice</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Proposal and agreement</b><span>Branded PDF with secret link</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>HR letters</b><span>Offer, appointment, experience, relieving</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Payslip</b><span>After the CA check</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Certificate</b><span>With QR code check</span></div><span class="btn">Edit layout</span></div>
+        <div class="card tile" style="flex-direction:column"><div class="doc-pv"><i></i><i></i><i></i><i></i></div><div><b>Handover document</b><span>Given to the client at handover</span></div><span class="btn">Edit layout</span></div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

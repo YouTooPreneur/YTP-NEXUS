@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Finance</title>
+<!-- Batch 4 · SCR-100 Finance overview: to collect, overdue, collected, waiting for approval, ageing, money in and out, what needs you; AI explains the month (FIN-009, FIN-004, RULE-008, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+  .chart{display:grid;grid-template-columns:44px 1fr;gap:8px}
+  .yax{display:flex;flex-direction:column;justify-content:space-between;height:170px;font-size:10.5px;color:var(--muted);text-align:right;padding-bottom:2px}
+  .plot{position:relative;height:170px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);align-items:end;padding:0 10px}
+  .plot::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to top,transparent 0 41.5px,var(--line-soft) 41.5px 42.5px)}
+  .mo{position:relative;display:flex;gap:5px;justify-content:center;align-items:end;height:100%}
+  .mo i{display:block;width:16px;border-radius:5px 5px 2px 2px}
+  .mo i.in{background:var(--on)} .mo i.out{background:#94A3B8}
+  .xax{display:grid;grid-template-columns:repeat(6,1fr);padding:6px 10px 0 54px;font-size:11px;color:var(--muted);text-align:center;font-weight:600}
+  .legend2{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+  .legend2 span{display:inline-flex;gap:6px;align-items:center}
+  .legend2 i{width:10px;height:10px;border-radius:3px}
+  .need{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft)}
+  .need:first-of-type{border-top:0}
+  .need b{font-weight:700;display:block;font-size:13px}
+  .need small{font-size:12px;color:var(--muted)}
+  .need .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .need .amt3{font-weight:700;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="overview">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Finance</h1>
+          <p>Money owed, money in, and what needs you. GST is applied for but not yet registered, so invoices are plain invoices until the registration date.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: explains this month's money in plain words (who is late, what changed, what to do first). Read-only; uses a little of the AI budget."><i data-i="spark"></i>Explain this month</span><a class="btn lg" href="payment-record.html" style="text-decoration:none"><i data-i="wallet"></i>Record payment</a><a class="btn solid lg" href="invoice-edit.html" style="text-decoration:none"><i data-i="plus"></i>New invoice</a></div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">To collect</div><div class="num serif" style="font-size:34px">₹1,39,016</div><div class="sub">7 unpaid invoices</div></div>
+        <div class="card kpi"><div class="lab">Overdue</div><div class="num serif" style="font-size:34px">₹65,016</div><div class="sub"><span class="over">4 invoices</span>oldest 34 days</div></div>
+        <div class="card kpi"><div class="lab">Collected in September</div><div class="num serif" style="font-size:34px">₹1,51,650</div><div class="sub">7 payments · plus ₹1,850 TDS</div></div>
+        <div class="card kpi"><div class="lab">Waiting for your approval</div><div class="num serif" style="font-size:34px">₹15,650</div><div class="sub">2 invoices · 1 claim · 1 vendor bill</div></div>
+      </div>
+
+      <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Ageing of unpaid invoices</h2><span class="sm" style="font-size:12px">Days since the invoice was issued · no late fees</span><a class="link" href="collections.html">Collections<i data-i="right"></i></a></div>
+        <div class="ageing"><i class="ag0" style="width:28%"></i><i class="ag1" style="width:26.2%"></i><i class="ag2" style="width:25.6%"></i><i class="ag3" style="width:20.2%"></i></div>
+        <div class="ag-key">
+          <div><small><i class="ag0"></i>0–7 days</small><b>₹39,000</b><span>2 invoices</span></div>
+          <div><small><i class="ag1"></i>8–15 days</small><b>₹36,416</b><span>2 invoices</span></div>
+          <div><small><i class="ag2"></i>16–30 days</small><b>₹35,600</b><span>2 invoices</span></div>
+          <div><small><i class="ag3"></i>Over 30 days</small><b>₹28,000</b><span>1 invoice · escalated</span></div>
+        </div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Money in and out</h2><span class="legend2" style="margin-left:auto"><span><i style="background:var(--on)"></i>Collected</span><span><i style="background:#94A3B8"></i>Paid out (bills, claims, tools; salaries are in Payroll)</span></span></div>
+          <div class="chart"><div class="yax"><span>₹2L</span><span>₹1.5L</span><span>₹1L</span><span>₹50k</span><span>0</span></div>
+            <div class="plot">
+              <div class="mo" title="April: in ₹1,38,000 · out ₹92,000"><i class="in" style="height:69%"></i><i class="out" style="height:46%"></i></div>
+              <div class="mo" title="May: in ₹1,42,500 · out ₹88,500"><i class="in" style="height:71%"></i><i class="out" style="height:44%"></i></div>
+              <div class="mo" title="June: in ₹1,49,000 · out ₹94,200"><i class="in" style="height:74.5%"></i><i class="out" style="height:47%"></i></div>
+              <div class="mo" title="July: in ₹1,58,200 · out ₹96,800"><i class="in" style="height:79%"></i><i class="out" style="height:48.4%"></i></div>
+              <div class="mo" title="August: in ₹1,63,400 · out ₹1,01,300"><i class="in" style="height:81.7%"></i><i class="out" style="height:50.6%"></i></div>
+              <div class="mo" title="September: in ₹1,51,650 · out ₹98,400"><i class="in" style="height:75.8%"></i><i class="out" style="height:49.2%"></i></div>
+            </div>
+          </div>
+          <div class="xax"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
+          <div class="ai-card" style="padding:10px 14px;margin-top:4px"><div class="ai-h"><i data-i="spark"></i>September in short</div><div style="font-size:13px;line-height:1.5">Collections dipped 7% after two strong months. Anbu Textiles (₹28,000) and Kaveri Hospitals (₹23,600) are 80% of what is overdue; Kaveri usually pays after the second reminder, Anbu has not answered calls.</div></div>
+        </div>
+
+        <div class="card cb" style="padding-top:14px">
+          <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:19px">Needs you</h2><em class="count">6</em></div>
+          <div class="need"><span class="chip c-amber">Approve</span><div><b>2 invoices · Kaveri, Meridian</b><small>Clarity session ₹2,500 · extra posts ₹6,000</small></div><span class="r"><span class="amt3">₹8,500</span><a class="btn" href="approvals.html" style="text-decoration:none">Open</a></span></div>
+          <div class="need"><span class="chip c-amber">Approve</span><div><b>Expense claim · Arun</b><small>Coimbatore client visit</small></div><span class="r"><span class="amt3">₹4,200</span><a class="btn" href="expenses.html" style="text-decoration:none">Open</a></span></div>
+          <div class="need"><span class="chip c-amber">Approve</span><div><b>Vendor bill · Shutterstock</b><small>Stock photos · Divya</small></div><span class="r"><span class="amt3">₹2,950</span><a class="btn" href="vendors.html#bills" style="text-decoration:none">Open</a></span></div>
+          <div class="need"><span class="chip c-red">Call</span><div><b>Anbu Textiles · 34 days</b><small>Escalated to you · 2 reminders sent</small></div><span class="r"><span class="amt3">₹28,000</span><a class="btn" href="collections.html" style="text-decoration:none">Open</a></span></div>
+          <div class="need"><span class="chip c-red">Risk</span><div><b>Greenleaf: invoice unpaid, domain ends 8 Oct</b><small>YTP/26-27/0042</small></div><span class="r"><span class="amt3">₹1,416</span><a class="btn" href="invoice.html" style="text-decoration:none">Open</a></span></div>
+          <div class="need"><span class="chip c-blue">Tomorrow</span><div><b>Renewal invoice sends itself</b><small>Sharma Dental Care · 9:00 am</small></div><span class="r"><span class="amt3">₹8,850</span><a class="btn" href="invoices.html" style="text-decoration:none">Hold?</a></span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

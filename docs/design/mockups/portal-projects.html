@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-204 Projects and approvals (Kaveri Hospitals): progress shown as this client is set to see it (stages only), deliverables to approve or send back with comments, earlier approvals, messages the client can see, the change they asked for, and the YTP people working on it (POR-004, PRJ-005, PRJ-006, CON-011, CON-012). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .vid{display:flex;flex-direction:column;gap:9px;padding:10px;border-radius:16px;border:1px solid var(--line-soft);background:var(--card);min-width:0}
+  .thumb{position:relative;aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#0F3D33,#1C5C4C 55%,#3B8C73);display:grid;place-items:center;color:#fff;overflow:hidden}
+  .thumb::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)}
+  .thumb .play{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.94);color:#1C3D36;display:grid;place-items:center;position:relative;z-index:1}
+  .thumb .play svg{width:17px;height:17px;fill:currentColor;margin-left:2px}
+  .thumb .dur{position:absolute;right:8px;bottom:8px;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(0,0,0,.5)}
+  .thumb .nm2{position:absolute;left:10px;bottom:8px;font-size:11px;font-weight:700;opacity:.92}
+  .vid b{font-weight:700;font-size:13px;display:block}
+  .vid small{display:block;font-size:12px;color:var(--muted)}
+  .two4{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .two4 .po-btn{padding:0 8px}
+  .cbox{border:1.5px solid var(--ink);border-radius:10px;padding:8px 10px;font-size:12.5px;line-height:1.45;background:var(--card)}
+  .cbox small{display:block;margin-top:6px;color:var(--muted);font-size:11px}
+  .appr2{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--green)}
+  .appr2 svg{width:15px;height:15px}
+  .msg3{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+  .msg3 .bub{padding:9px 12px;border-radius:4px 14px 14px 14px;background:var(--card-2);font-size:12.5px;line-height:1.45;min-width:0}
+  .msg3 .bub small{display:block;font-size:11px;color:var(--muted);margin-bottom:2px;font-weight:700}
+  .msg3.mine{flex-direction:row-reverse}
+  .msg3.mine .bub{border-radius:14px 4px 14px 14px;background:#E7F8EE}
+  .say{display:flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 12px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:13px}
+  .say .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+/* on a phone: one video card per row */
+@media (max-width:600px){.vgrid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="projects" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Projects and approvals</h1><p class="lead2">How your work is going, what needs your OK, and who at YouTooPreneur is working on it.</p></div>
+    <div class="acts"><span class="po-btn"><i data-i="msg"></i>Message the team</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Waiting for your approval <span class="count">3</span><span class="r" style="font-weight:600;color:var(--muted)">Doctor intro videos</span></h2>
+        <div class="vgrid">
+          <div class="vid"><div class="thumb"><span class="play"><i data-i="play"></i></span><span class="nm2">Dr. S. Meenakshi</span><span class="dur">1:12</span></div><div><b>Dr. S. Meenakshi</b><small>Cardiology · version 1</small></div><div class="two4"><span class="po-btn sm ok"><i data-i="check"></i>Approve</span><span class="po-btn sm">Ask for changes</span></div></div>
+          <div class="vid"><div class="thumb"><span class="play"><i data-i="play"></i></span><span class="nm2">Dr. K. Ravi Shankar</span><span class="dur">0:58</span></div><div><b>Dr. K. Ravi Shankar</b><small>Orthopaedics · version 1</small></div><div class="two4"><span class="po-btn sm ok"><i data-i="check"></i>Approve</span><span class="po-btn sm">Ask for changes</span></div></div>
+          <div class="vid"><div class="thumb"><span class="play"><i data-i="play"></i></span><span class="nm2">Dr. Fathima Begum</span><span class="dur">1:05</span></div><div><b>Dr. Fathima Begum</b><small>Paediatrics · version 1</small></div><div class="cbox">Please add her clinic hours (Mon to Sat, 10 to 1) at the end.<small>Your comment · goes to Rahul</small></div><div class="two4"><span class="po-btn sm">Cancel</span><span class="po-btn sm solid">Send</span></div></div>
+        </div>
+        <div class="po-note"><i data-i="info"></i><span>Rahul sent these on 29 Sep. Videos 4 to 6 come by 8 Oct. Each video includes <b>2 rounds of changes</b>; this would be round 1 for Dr. Fathima's video.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Website redesign <span class="chip c-green" style="margin-left:auto">On track</span></h2>
+        <div class="po-stages"><div class="d"><i></i><b>Discovery</b>Done 22 Jul</div><div class="d"><i></i><b>Content</b>Done 12 Sep</div><div class="n"><i></i><b>Design</b>In progress</div><div><i></i><b>Build</b>From 13 Oct</div><div><i></i><b>Launch</b>5 Nov</div></div>
+        <div class="prow"><span class="po-ic amb"><i data-i="image"></i></span><div><b>Homepage design · version 2</b><small>With your 24×7 emergency number at the top and the doctor photos</small></div><span class="r"><span class="chip c-amber">Coming by 3 Oct</span></span></div>
+        <div class="prow"><span class="po-ic"><i data-i="image"></i></span><div><b>Homepage design · version 1</b><small>You asked for changes on 24 Sep · round 1 of 2 used</small></div><span class="r"><span class="chip c-ink">Changes asked</span></span></div>
+        <div class="prow"><span class="po-ic grn"><i data-i="file"></i></span><div><b>Colours and fonts</b><small>Approved by you on 5 Sep</small></div><span class="r"><span class="appr2"><i data-i="check"></i>Approved</span></span></div>
+        <div class="prow"><span class="po-ic grn"><i data-i="file"></i></span><div><b>Sitemap</b><small>Approved by you on 2 Sep</small></div><span class="r"><span class="appr2"><i data-i="check"></i>Approved</span></span></div>
+        <div class="po-note"><i data-i="eye"></i><span>You see the stages and what needs you. Ask us if you would like to see the task list too.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Doctor intro videos <span class="chip c-blue" style="margin-left:auto">In progress</span></h2>
+        <div class="po-kv" style="grid-template-columns:auto 1fr auto"><span>Sent</span><div class="meter" style="align-self:center"><i style="width:50%"></i></div><b>3 of 6</b><span>Approved</span><div class="meter" style="align-self:center"><i style="width:0%"></i></div><b>0 of 6</b></div>
+        <div class="po-note"><i data-i="clock"></i><span>Shot at the hospital on 8 Sep. The last 3 videos come by <b>8 Oct</b>.</span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Messages on the website</h2>
+        <div class="msg3 mine"><span class="lg-av" style="--av:#047857">DR</span><div class="bub"><small>You · 30 Sep</small>Please show the 24×7 emergency number at the top.</div></div>
+        <div class="msg3"><span class="lg-av" style="--av:#0F766E">YP</span><div class="bub"><small>Owner · YouTooPreneur · 30 Sep</small>Noted. It will be in version 2, along with the doctor photos.</div></div>
+        <div class="say">Write a message…<span class="po-btn sm solid"><i data-i="send"></i>Send</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Changes you asked for</h2>
+        <div class="prow"><span class="po-ic blu"><i data-i="doc"></i></span><div><b>Online appointment booking</b><small>Quote ₹15,000 · sent 30 Sep</small></div><span class="r"><a class="po-btn sm solid" href="portal-proposals.html">See quote</a></span></div>
+        <div class="po-note"><i data-i="info"></i><span>Work outside your agreement is quoted first and starts only after your OK.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Working on your projects</h2>
+        <div class="tm"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Design lead · website redesign</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Builds the website · from 13 Oct</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><small>Videos · shoot and edit</small></div></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">Approving a design or a video lets us use it as it is. Every approval is saved with your name and the time.</p>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Provider accounts</title>
+<!-- Batch 4 · SCR-097 Provider accounts: hosting and domain provider accounts with owner, recovery email, MFA status, vault reference and the assets in each (WEB-016, WEB-009, RULE-025) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pa td{padding-top:11px;padding-bottom:11px}
+  .pv2{display:flex;align-items:center;gap:10px}
+  .pv2 .lg{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;flex:none}
+  .pv2 b{display:block;font-weight:700}
+  .pv2 small{font-size:12px;color:var(--muted)}
+  .mfa{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700}
+  .mfa svg{width:15px;height:15px}
+  .mfa.on{color:var(--green)} .mfa.off{color:var(--red)} .mfa.unk{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="providers">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Provider accounts</h1>
+          <p>The registrar, hosting and DNS accounts our assets live in: who owns each, its recovery email, whether two-step sign-in (MFA) is on, and the vault item that holds its login.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>Add provider account</span></div>
+      </div>
+      <div class="banner" style="background:var(--red-bg);color:var(--red);justify-content:space-between"><span style="display:flex;gap:10px;align-items:center"><i data-i="shield"></i>Cloudflare (YTP) has two-step sign-in off. It controls DNS for 14 client domains.</span><span class="btn">Create a task for Arun</span></div>
+      <div class="views"><span class="on">All <em class="count">7</em></span><span>YTP accounts <em class="count">5</em></span><span>Client accounts <em class="count">2</em></span><span>MFA off or unknown <em class="count">2</em></span></div>
+      <div class="card cb" style="padding-top:8px">
+        <table class="tbl pa">
+          <thead><tr><th>Account</th><th>Owner</th><th>Recovery email</th><th>MFA</th><th>Assets inside</th><th>Login</th></tr></thead>
+          <tbody>
+            <tr><td><div class="pv2"><span class="lg" style="background:#111">G</span><div><b>GoDaddy · YTP</b><small>Registrar</small></div></div></td><td class="sm">Owner</td><td class="sm">accounts@youtoopreneur.com</td><td><span class="mfa on"><i data-i="shield"></i>On · app</span></td><td class="sm">22 domains</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#673DE6">H</span><div><b>Hostinger · YTP</b><small>Hosting</small></div></div></td><td class="sm">Owner</td><td class="sm">accounts@youtoopreneur.com</td><td><span class="mfa on"><i data-i="shield"></i>On · app</span></td><td class="sm"><a class="lk" href="servers.html">YTP-HS-01, YTP-HS-02</a> · 18 sites</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#0080FF">D</span><div><b>DigitalOcean · YTP</b><small>Servers · paid in USD</small></div></div></td><td class="sm">Owner</td><td class="sm">accounts@youtoopreneur.com</td><td><span class="mfa on"><i data-i="shield"></i>On · app</span></td><td class="sm">YTP-VPS-01 · 2 sites</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#F38020">C</span><div><b>Cloudflare · YTP</b><small>DNS</small></div></div></td><td class="sm">Arun</td><td class="sm">arun.dev@gmail.com</td><td><span class="mfa off"><i data-i="x"></i>Off</span></td><td class="sm">DNS for 14 domains</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#EA4335">G</span><div><b>Google Workspace · YTP</b><small>Staff Google accounts (planned)</small></div></div></td><td class="sm">Owner</td><td class="sm">—</td><td><span class="chip c-ink">Not set up</span></td><td class="sm">Company sign-in emails</td><td class="sm">—</td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#DE3723">N</span><div><b>Namecheap · Velocity Motors</b><small>Client's own account · we are a manager</small></div></div></td><td class="sm">Client (Ravi)</td><td class="sm">Client's email</td><td><span class="mfa unk"><i data-i="flag"></i>Unknown</span></td><td class="sm">velocitymotors.in · SSL</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+            <tr><td><div class="pv2"><span class="lg" style="background:#111">G</span><div><b>GoDaddy · Kaveri Hospitals</b><small>Client's own account</small></div></div></td><td class="sm">Client (Dr. Rao)</td><td class="sm">Client's email</td><td><span class="mfa on"><i data-i="shield"></i>On · SMS</span></td><td class="sm">Domain and cPanel hosting</td><td><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+          </tbody>
+        </table>
+        <p class="help" style="margin-top:10px">Recovery emails should be company addresses, not personal ones. Cloudflare's recovery email is Arun's Gmail: change it to accounts@youtoopreneur.com.</p>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Policies</title>
+<!-- Batch 3 · SCR-135 Policies: company policies, versions, who acknowledged and who has not; staff can ask AI questions answered from the policies (TEAM-007, AI-016) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .pl td{padding-top:12px;padding-bottom:12px}
+  .pl b{font-weight:700;display:block}
+  .pl small{font-size:12px;color:var(--muted)}
+  .ack{display:flex;align-items:center;gap:10px}
+  .ack .meter{width:120px}
+  .ack span{font-size:12.5px;font-weight:700}
+  .tq{display:flex;flex-direction:column;gap:8px}
+  .tq .q{align-self:flex-end;background:var(--primary-bg);color:#fff;padding:9px 12px;border-radius:14px 14px 4px 14px;font-size:13px;max-width:90%}
+  .tq .a{background:var(--card);padding:9px 12px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.5;border:1px solid var(--line-soft)}
+  .tq small{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Policies</b></div>
+          <h1 class="serif">Policies</h1>
+          <p>Company policies with versions. When a policy changes, everyone is asked to read and acknowledge it again, and you can see who hasn't.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New policy</span></div>
+      </div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:8px">
+          <table class="tbl pl"><thead><tr><th>Policy</th><th>Version</th><th>Acknowledged</th><th>Not yet</th><th></th></tr></thead><tbody>
+            <tr><td><b>Leave policy</b><small>Casual, sick, earned, emergency; Saturdays</small></td><td class="sm">v3 · 1 Apr 2026</td><td><div class="ack"><span class="meter"><i style="width:100%;background:var(--on)"></i></span><span>6 / 6</span></div></td><td class="sm">—</td><td class="r"><span class="btn">Open</span></td></tr>
+            <tr><td><b>IT and passwords policy</b><small>Vaultwarden only; no passwords in chats or files</small></td><td class="sm">v2 · 15 Sep 2026</td><td><div class="ack"><span class="meter"><i style="width:67%;background:#E2A93B"></i></span><span>4 / 6</span></div></td><td class="sm">Priya N, Rahul M</td><td class="r"><span class="btn">Remind</span></td></tr>
+            <tr><td><b>Code of conduct</b><small>Clients, social media, behaviour</small></td><td class="sm">v1 · 1 Jan 2026</td><td><div class="ack"><span class="meter"><i style="width:100%;background:var(--on)"></i></span><span>6 / 6</span></div></td><td class="sm">—</td><td class="r"><span class="btn">Open</span></td></tr>
+            <tr><td><b>Work from home</b><small>When it is allowed and how to ask</small></td><td class="sm">v1 · 1 Jun 2026</td><td><div class="ack"><span class="meter"><i style="width:83%;background:#E2A93B"></i></span><span>5 / 6</span></div></td><td class="sm">Priya N</td><td class="r"><span class="btn">Remind</span></td></tr>
+            <tr><td><b>Client data and privacy</b><small>What may be shared, with whom</small></td><td class="sm">v1 · 1 Jan 2026</td><td><div class="ack"><span class="meter"><i style="width:100%;background:var(--on)"></i></span><span>6 / 6</span></div></td><td class="sm">—</td><td class="r"><span class="btn">Open</span></td></tr>
+          </tbody></table>
+        </div>
+        <div class="ai-card">
+          <div class="ai-h"><i data-i="spark"></i>Staff can ask about policies<span class="r">Team knowledge</span></div>
+          <div class="tq"><span class="q">Can I work from home on a Saturday?</span><span class="a">Yes, if your manager approves it in Nexus at least a day before. <small>· from "Work from home" v1</small></span></div>
+          <span class="manual">Answers come only from these policies, and say which one.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

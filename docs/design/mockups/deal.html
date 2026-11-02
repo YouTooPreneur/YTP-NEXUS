@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Deal</title>
+<!-- Batch 3 · SCR-035 Deal: stage, value, expected close, services, lead details, overdue follow-up banner, quick call / WhatsApp / email, activity, next follow-up; AI score with reasons and a drafted follow-up (CRM-009, CRM-011, CRM-013, CRM-027, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
+  .col{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .over-b{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:var(--red-bg);color:var(--red);font-weight:600}
+  .over-b svg{width:18px;height:18px}
+  .over-b .r{margin-left:auto;display:flex;gap:8px}
+  .stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .stp{height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);background:var(--card-2);border:1px solid var(--line-soft)}
+  .stp.done{background:color-mix(in srgb,#38BDF8 14%,var(--card));color:var(--ink);border-color:transparent}
+  .stp.now{background:var(--primary-bg);color:var(--primary-ink)}
+  .quick{display:flex;gap:8px}
+  .quick .btn{flex:1;height:40px}
+  .kv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .kv div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .kv small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .kv b{font-weight:700;font-size:13px}
+  .act{display:grid;grid-template-columns:36px 1fr auto;gap:12px;padding:10px 0;border-top:1px solid var(--line-soft);align-items:start}
+  .act:first-of-type{border-top:0}
+  .act .lic{width:36px;height:36px}
+  .act b{font-weight:700}
+  .act p{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.45}
+  .act .t{font-size:12px;color:var(--muted)}
+  .why{display:flex;flex-direction:column;gap:5px;font-size:12.5px}
+  .why span{display:flex;justify-content:space-between}
+  .why .p{color:var(--green);font-weight:700} .why .n{color:var(--red);font-weight:700}
+  .scorebig{font-family:Sora,sans-serif;font-weight:600;font-size:34px;line-height:1}
+  .draft{font-size:13px;line-height:1.5;padding:10px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line-soft)}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="pipeline.html">Pipeline</a><span>/</span><b style="color:var(--ink)">Pearl Dental · SEO</b></div>
+          <h1 class="serif">Pearl Dental</h1>
+          <p style="display:flex;gap:8px;align-items:center;margin-top:10px"><span class="chip c-amber">Warm</span><span class="chip c-ink">SEO · ₹40,000</span><span class="sm">Instagram · lead for 5 days · owner Karthik · expected close 20 Oct</span></p>
+        </div>
+        <div class="acts"><span class="btn lg">Mark lost</span><a class="btn lg" href="diagnosis.html" style="text-decoration:none">Clarity session</a><a class="btn solid lg" href="proposal-edit.html" style="text-decoration:none">Create proposal</a></div>
+      </div>
+
+      <div class="over-b"><i data-i="flag"></i>Follow-up was due yesterday (30 Sep). Dr. Anand asked for a price on 26 Sep.<span class="r"><span class="btn">Log a call</span><span class="btn">Move to tomorrow</span></span></div>
+
+      <div class="lay">
+        <div class="col">
+          <div class="stepper"><span class="stp done">New</span><span class="stp now">Contacted</span><span class="stp">Clarity session</span><span class="stp">Proposal sent</span><span class="stp">Won / Lost</span></div>
+          <div class="quick"><span class="btn"><i data-i="phone"></i>Call</span><span class="btn"><i data-i="chat"></i>WhatsApp</span><span class="btn"><i data-i="mail"></i>Email</span><span class="btn"><i data-i="globe"></i>pearldental.in</span></div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 10px"><h2 class="serif" style="font-size:20px">Lead details</h2><span class="link"><span class="btn"><i data-i="edit"></i>Edit</span></span></div>
+            <div class="kv">
+              <div><small>Contact</small><b>Dr. Anand · +91 98411 20450</b></div>
+              <div><small>Industry</small><b>Dental clinic</b></div>
+              <div><small>City</small><b>Velachery, Chennai</b></div>
+              <div><small>Budget</small><b>₹30,000–50,000</b></div>
+              <div><small>Timeline</small><b>Within a month</b></div>
+              <div><small>Priority</small><b>Medium</b></div>
+              <div><small>Last contacted</small><b>26 Sep · call</b></div>
+              <div><small>Interested in</small><b>SEO (local)</b></div>
+            </div>
+            <div class="field" style="margin-top:12px"><label>Requirement</label><div class="input" style="height:auto;padding:10px 12px;white-space:normal;line-height:1.5">Wants to come up when people search "dentist in Velachery". Has 40 Google reviews; website is 5 years old.</div></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Activity</h2><span class="link"><span class="btn"><i data-i="plus"></i>Log activity</span></span></div>
+            <div class="act"><span class="lic" style="color:var(--red)"><i data-i="flag"></i></span><div><b>Follow-up missed</b><p>Was due 30 Sep · Karthik</p></div><span class="t">Yesterday</span></div>
+            <div class="act"><span class="lic"><i data-i="phone"></i></span><div><b>Call · 6 minutes · Interested</b><p>Asked for a price. Wants to see results from another dental client first.</p></div><span class="t">26 Sep</span></div>
+            <div class="act"><span class="lic"><i data-i="camera"></i></span><div><b>Lead came in from Instagram</b><p>"Do you do Google ranking for clinics?" · assigned to Karthik by the SEO rule</p></div><span class="t">26 Sep</span></div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Lead score<a class="r lk" href="lead-rules.html">Rules + AI · see the rules</a></div>
+            <div style="display:flex;align-items:baseline;gap:10px"><span class="scorebig">48</span><span class="chip c-amber">Warm</span></div>
+            <div class="why"><span>Budget fits SEO <em class="p">+15</em></span><span>Healthcare, our strongest industry <em class="p">+12</em></span><span>Came from Instagram <em class="p">+8</em></span><span>No reply for 5 days <em class="n">−12</em></span><span>Follow-up missed <em class="n">−5</em></span></div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Suggested next step<span class="r">Share a dental case study</span></div>
+            <div class="draft">Hello Dr. Anand, sorry for the delay. Here is the website we built for another dental clinic in Adyar, one its patients actually use. Shall we do a 20-minute clarity call this week to plan your SEO? – Karthik, YouTooPreneur</div>
+            <div class="ai-acts"><span class="btn solid">Send on WhatsApp</span><span class="btn">Edit</span><span class="manual">Sent only when you press Send</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Next follow-up</h2></div>
+            <div class="fields"><div class="field"><label>When</label><div class="input">Sat 3 Oct, 11:00 am</div></div><div class="field"><label>How</label><div class="input">WhatsApp<span class="end"><i data-i="down"></i></span></div></div></div>
+            <span class="btn solid" style="align-self:flex-start">Set follow-up</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

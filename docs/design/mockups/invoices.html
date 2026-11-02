@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Invoices</title>
+<!-- Batch 4 · SCR-101 Invoices: drafts (no number), waiting for approval, sent, part paid, overdue and paid; by series and client; ageing; totals (FIN-001 to FIN-005, FIN-009, RULE-003, RULE-004, RULE-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .it td{padding-top:6px;padding-bottom:6px}
+  .it .w b{display:block;font-weight:700}
+  .it .w small{font-size:12px;color:var(--muted)}
+  .it a{color:inherit;text-decoration:none}
+  .age{font-size:12px;font-weight:700;color:var(--muted)}
+  .age.late{color:var(--red)}
+  .nonum{font-size:12px;color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="invoices">
+  <main>
+    <section class="pg" style="gap:10px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Invoices</h1>
+          <p>Drafts have no number; the number is given when an invoice is issued. Renewals and monthly bills send themselves; new and one-time work waits for approval.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span><a class="btn solid lg" href="invoice-edit.html" style="text-decoration:none"><i data-i="plus"></i>New invoice</a></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center"><div class="views"><span class="on">All</span><span>Drafts <em class="count">2</em></span><span>Waiting for approval <em class="count">2</em></span><span>Unpaid <em class="count">7</em></span><span>Overdue <em class="count">4</em></span><span>Paid</span><a href="credit-note.html">Credit notes <em class="count">3</em></a></div><div class="fsel" style="margin-left:auto"><span>Series</span>YTP (clients)<i data-i="down"></i></div><div class="search" style="width:220px;height:36px"><i data-i="search"></i>Number or client…</div></div>
+
+      <div class="card cb" style="padding-top:6px">
+        <table class="tbl it">
+          <thead><tr><th>Number</th><th>Client and work</th><th>Issued</th><th>Due</th><th class="num">Amount</th><th class="num">Balance</th><th>Status</th><th>Age</th></tr></thead>
+          <tbody>
+            <tr><td><span class="nonum">No number yet</span></td><td class="w"><b>Sharma Dental Care</b><small>Domain + hosting renewal</small></td><td class="sm">—</td><td class="sm">On receipt</td><td class="num">₹8,850</td><td class="num mut">—</td><td><span class="chip c-blue">Sends itself 2 Oct</span></td><td></td></tr>
+            <tr><td><a href="invoice-edit.html"><span class="nonum">No number yet</span></a></td><td class="w"><a href="invoice-edit.html"><b>Sunrise Clinic</b><small>Website and booking · 50% advance</small></a></td><td class="sm">—</td><td class="sm">15 days</td><td class="num">₹60,000</td><td class="num mut">—</td><td><span class="chip c-ink">Draft</span></td><td></td></tr>
+            <tr><td><span class="nonum">No number yet</span></td><td class="w"><b>Kaveri Hospitals</b><small>Paid clarity session, 3 Oct</small></td><td class="sm">—</td><td class="sm">On receipt</td><td class="num">₹2,500</td><td class="num mut">—</td><td><span class="chip c-amber">Waiting for approval</span></td><td></td></tr>
+            <tr><td><a href="change-requests.html"><span class="nonum">No number yet</span></a></td><td class="w"><a href="change-requests.html"><b>Meridian Logistics</b><small>4 extra Diwali posts · own bill, client approved 29 Sep</small></a></td><td class="sm">—</td><td class="sm">15 days</td><td class="num">₹6,000</td><td class="num mut">—</td><td><span class="chip c-amber">Waiting for approval</span></td><td></td></tr>
+            <tr><td><span class="inv">YTP/26-27/0045</span></td><td class="w"><b>Velocity Motors</b><small>Ads management, October · sent by itself 9:00 am</small></td><td class="sm">1 Oct</td><td class="sm">On receipt</td><td class="num">₹15,000</td><td class="num">₹15,000</td><td><span class="chip c-blue">Sent</span></td><td class="age">Today</td></tr>
+            <tr><td><span class="inv">YTP/26-27/0044</span></td><td class="w"><b>Lakshmi Silks</b><small>Instagram reels package</small></td><td class="sm">30 Sep</td><td class="sm">15 Oct</td><td class="num">₹24,000</td><td class="num">₹24,000</td><td><span class="chip c-blue">Sent</span></td><td class="age">1 day</td></tr>
+            <tr><td><span class="inv">YTP/26-27/0043</span></td><td class="w"><b>Royal Caterers</b><small>Social + ads launch · 50% advance</small></td><td class="sm">28 Sep</td><td class="sm">On receipt</td><td class="num">₹35,000</td><td class="num mut">₹0</td><td><span class="chip c-green">Paid · Razorpay</span></td><td></td></tr>
+            <tr><td><a href="invoice.html"><span class="inv">YTP/26-27/0042</span></a></td><td class="w"><a href="invoice.html"><b>Greenleaf Organics</b><small>Domain renewal · greenleaforganics.com</small></a></td><td class="sm">22 Sep</td><td class="sm">On receipt</td><td class="num">₹1,416</td><td class="num due">₹1,416</td><td><span class="chip c-red">Overdue</span></td><td class="age late">9 days</td></tr>
+                        <tr><td><span class="inv">YTP/26-27/0040</span></td><td class="w"><b>Meridian Logistics</b><small>Social media retainer, October</small></td><td class="sm">18 Sep</td><td class="sm">3 Oct</td><td class="num">₹35,000</td><td class="num">₹35,000</td><td><span class="chip c-blue">Sent</span></td><td class="age">13 days</td></tr>
+            <tr><td><span class="inv">YTP/26-27/0038</span></td><td class="w"><b>Kaveri Hospitals</b><small>Old website care, Jul–Sep</small></td><td class="sm">13 Sep</td><td class="sm">28 Sep</td><td class="num">₹23,600</td><td class="num due">₹23,600</td><td><span class="chip c-red">Overdue</span></td><td class="age late">18 days</td></tr>
+            <tr><td><span class="inv">YTP/26-27/0036</span></td><td class="w"><b>Coastal Realty</b><small>SEO retainer, September · client on hold</small></td><td class="sm">2 Sep</td><td class="sm">On receipt</td><td class="num">₹12,000</td><td class="num due">₹12,000</td><td><span class="chip c-red">Overdue</span></td><td class="age late">29 days</td></tr>
+            <tr><td><span class="inv">YTP/26-27/0033</span></td><td class="w"><b>Anbu Textiles</b><small>Website, final 40% · ₹20,000 paid 10 Sep</small></td><td class="sm">28 Aug</td><td class="sm">On receipt</td><td class="num">₹48,000</td><td class="num due">₹28,000</td><td><span class="chip c-red">Part paid · overdue</span></td><td class="age late">34 days</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="4">Latest 12 · drafts first</td><td class="num"></td><td class="num">₹1,39,016</td><td colspan="2" class="sm">unpaid · ₹65,016 overdue</td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

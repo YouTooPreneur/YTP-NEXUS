@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Quick add</title>
+<!-- Batch 2 · SCR-007 Quick add: type or say what to add (AI fills the form, you confirm), or pick a form by hand -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .app{position:relative}
+  .ghostpage{display:flex;flex-direction:column;gap:18px;padding-top:26px}
+  .ghostpage i{display:block;border-radius:var(--radius);background:var(--card);border:1px solid var(--line-soft)}
+  .dim{position:absolute;inset:0;background:rgba(9,22,19,.42);backdrop-filter:blur(2px);display:grid;place-items:center}
+  .dlg{width:760px;background:var(--card);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.28);padding:26px 28px;display:flex;flex-direction:column;gap:16px}
+  .dlg-h{display:flex;align-items:center;gap:12px}
+  .dlg-h h2{font-size:26px}
+  .dlg-h .x{margin-left:auto}
+  .say{display:flex;align-items:center;gap:12px;min-height:58px;padding:8px 8px 8px 16px;border-radius:16px;border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--ai-a),var(--ai-b)) border-box;font-size:15px;font-weight:600}
+  .say > svg{width:18px;height:18px;color:var(--ai-ink);flex:none}
+  .say span.t{flex:1;min-width:0}
+  .got{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .got div{padding:10px 12px;border-radius:12px;background:var(--card-2);border:1px solid var(--line-soft)}
+  .got small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .got b{font-weight:700}
+  .or2{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;font-weight:600}
+  .or2::before,.or2::after{content:"";flex:1;height:1px;background:var(--line)}
+  .kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .kind{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:700}
+  .kind .lic{width:34px;height:34px}
+  .kind kbd{margin-left:auto;font:600 11px 'DM Sans',sans-serif;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+  .foot{display:flex;align-items:center;gap:10px}
+  .foot .manual{flex:1}
+</style>
+</head>
+<body>
+<div class="app" data-active="Command Centre">
+  <main>
+    <div class="ghostpage"><i style="height:70px;width:55%"></i><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px"><i style="height:130px"></i><i style="height:130px"></i><i style="height:130px"></i><i style="height:130px"></i></div><div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px"><i style="height:420px"></i><i style="height:420px"></i></div></div>
+  </main>
+  <div class="dim">
+    <div class="dlg" role="dialog" aria-label="Quick add">
+      <div class="dlg-h"><h2 class="serif">Quick add</h2><span class="ai-tag"><i data-i="spark"></i>AI fills it in, you confirm</span><a class="btn x" href="dashboard.html" title="Close" style="text-decoration:none"><i data-i="x"></i></a></div>
+      <div class="say"><i data-i="spark"></i><span class="t">Call Ravi at Velocity Motors on Saturday 11 am about the contact form</span><span class="mic lg" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span></div>
+      <div class="ai-card" style="padding:14px">
+        <div class="ai-h"><i data-i="spark"></i>Nexus understood: a task<span class="r">Nothing is saved until you confirm</span></div>
+        <div class="got">
+          <div><small>Task</small><b>Call Ravi about the contact form</b></div>
+          <div><small>Client</small><b>Velocity Motors</b></div>
+          <div><small>When</small><b>Sat 3 Oct, 11:00 am</b></div>
+          <div><small>Assigned to</small><b>You</b></div>
+          <div><small>Reminder</small><b>10:45 am, in Nexus</b></div>
+          <div><small>Related</small><b>Website support</b></div>
+        </div>
+        <div class="ai-acts"><span class="btn solid lg">Confirm and add</span><a class="btn lg" href="task.html" style="text-decoration:none"><i data-i="edit"></i>Change in the form</a><span class="btn lg">Cancel</span></div>
+      </div>
+      <div class="or2">or pick a form and fill it in by hand</div>
+      <div class="kinds">
+        <a class="kind" href="lead-quick.html"><span class="lic"><i data-i="target"></i></span>Lead<kbd>L</kbd></a>
+        <a class="kind" href="task.html"><span class="lic"><i data-i="tasks"></i></span>Task<kbd>T</kbd></a>
+        <a class="kind" href="todos.html"><span class="lic"><i data-i="check"></i></span>To-do<kbd>D</kbd></a>
+        <a class="kind" href="client-edit.html"><span class="lic"><i data-i="users"></i></span>Client<kbd>C</kbd></a>
+        <a class="kind" href="meeting-new.html"><span class="lic"><i data-i="cal"></i></span>Meeting<kbd>M</kbd></a>
+        <a class="kind" href="payment-record.html"><span class="lic"><i data-i="wallet"></i></span>Payment<kbd>P</kbd></a>
+        <a class="kind" href="expenses.html"><span class="lic"><i data-i="doc"></i></span>Expense<kbd>E</kbd></a>
+        <a class="kind" href="files.html"><span class="lic"><i data-i="upload"></i></span>File<kbd>F</kbd></a>
+      </div>
+      <div class="foot"><span class="manual">The forms always work by hand. With AI off or at its limit, Quick add shows only the forms.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

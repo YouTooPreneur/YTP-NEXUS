@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My settings · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-210 Contact settings (Dr. Rao): language for the portal and messages, which messages come by email or WhatsApp (account messages always on), consent records with dates, signing in and trusted devices, and the people from the company with their access (POR-001, POR-009, CRM-026, NFR-022). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .langs5 span{font-family:"DM Sans","Noto Sans Tamil","Noto Sans Devanagari","Noto Sans Malayalam","Noto Sans Telugu",sans-serif}
+  .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .fld > span{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .inp{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13.5px;color:var(--ink);min-width:0}
+  .inp.ph{color:var(--muted)}
+  .inp.area{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.5}
+  .inp svg{width:16px;height:16px;color:var(--muted)}
+  .drop3{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--edge);border-radius:14px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .drop3 b{display:block;color:var(--ink);font-size:13px}
+  .drop3 .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+
+  .pref3{display:grid;grid-template-columns:minmax(0,1fr) 90px 90px;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .pref3.h{border-top:0;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 0 4px}
+  .pref3 b{display:block;font-weight:700}
+  .pref3 small{display:block;font-size:12px;color:var(--muted)}
+  .pref3 > span:not(:first-child){justify-self:center}
+  .lock4{font-size:11px;font-weight:700;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+  .lock4 svg{width:13px;height:13px}
+  .cons{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .cons:first-of-type{border-top:0}
+  .cons b{display:block;font-weight:700;font-size:13px}
+  .cons small{display:block;color:var(--muted)}
+  .cons .chip{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><div class="crumbs"><a href="portal-profile.html">Company profile</a><span>/</span><b style="color:var(--ink)">My settings</b></div><h1>My settings</h1><p class="lead2">Your language, how we reach you, and what you have agreed to.</p></div>
+  </div>
+  <div class="po-grid" style="--po-side:420px">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Language</h2>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div class="pill-sel langs5"><span class="on">English</span><span lang="ta">தமிழ்</span></div><span class="sm" style="font-size:12.5px">The portal, emails and WhatsApp messages come in this language. Hindi, Malayalam and Telugu are coming soon.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Messages from us</h2>
+        <div class="pref3 h"><span>Message</span><span>Email</span><span>WhatsApp</span></div>
+        <div class="pref3"><div><b>Invoices, receipts and reminders</b><small>About your account, so always on</small></div><span class="lock4"><i data-i="lock"></i>On</span><span class="lock4"><i data-i="lock"></i>On</span></div>
+        <div class="pref3"><div><b>Renewals</b><small>30, 15, 7 and 1 day before</small></div><span class="lock4"><i data-i="lock"></i>On</span><span class="lock4"><i data-i="lock"></i>On</span></div>
+        <div class="pref3"><div><b>Approvals and project updates</b><small>Designs, videos, stages</small></div><span class="toggle on"></span><span class="toggle on"></span></div>
+        <div class="pref3"><div><b>Support replies</b><small>On your requests</small></div><span class="toggle on"></span><span class="toggle on"></span></div>
+        <div class="pref3"><div><b>Monthly website report</b><small>On the 1st of each month</small></div><span class="toggle on"></span><span class="toggle"></span></div>
+        <div class="pref3"><div><b>Offers and newsletters</b><small>Only if you agree</small></div><span class="toggle"></span><span class="toggle"></span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Signing in</h2>
+        <div class="po-kv"><span>Codes go to</span><b>rao@kaverihospitals.com · WhatsApp +91 98410 •••56</b></div>
+        <div class="prow"><span class="po-ic"><i data-i="globe"></i></span><div><b>Chrome on Windows · this device</b><small>Trusted until 31 Oct · Chennai</small></div><span class="r"><span class="chip c-green">Now</span></span></div>
+        <div class="prow"><span class="po-ic"><i data-i="phone"></i></span><div><b>Safari on iPhone</b><small>Last used 30 Sep · trusted until 28 Oct</small></div><span class="r"><span class="po-btn sm">Sign out</span></span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>What you agreed to</h2>
+        <div class="cons"><i data-i="mail"></i><div><b>Offers and newsletters</b><small>You said no · 12 Jul 2026, in the portal</small></div><span class="chip c-ink">No</span></div>
+        <div class="cons"><i data-i="mic"></i><div><b>Recording a call for meeting notes</b><small>You agreed for the 29 Sep call only · asked again each time</small></div><span class="chip c-green">Per call</span></div>
+        <div class="cons"><i data-i="star"></i><div><b>Your feedback on the photo shoot</b><small>Kept private: not on our website or social pages · 16 Sep</small></div><span class="chip c-ink">Private</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>People from Kaveri Hospitals</h2>
+        <div class="tm"><span class="lg-av" style="--av:#047857">DR</span><div><b>Dr. Rao · you</b><small>Invoices, projects, approvals, support</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#9F1239">LV</span><div><b>Ms. Lavanya</b><small>Accounts · invoices only</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#334155">SR</span><div><b>Mr. Suresh</b><small>IT · support only</small></div></div>
+        <div class="po-note"><i data-i="info"></i><span>To add a person or change what they see, ask us. We confirm with you before anything changes.</span></div>
+      </section>
+    </div>
+  </div>
+</main>
+</div>
+</body>
+</html>

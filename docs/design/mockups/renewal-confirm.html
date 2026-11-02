@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Confirm renewal</title>
+<!-- Batch 5 · SCR-098 Confirm renewal: check the proof (provider invoice, portal screenshot or client proof) and confirm; only the Owner, a Manager or Accounts can; the expiry date moves and the renewal history gets the entry. AI can read the proof; typing it in stays possible (CON-008, CON-009, WEB-014, AUTO-008, RULE-024, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .ov-dlg{width:660px;gap:13px}
+  .ghost-lanes{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .ghost-lanes i{height:560px}
+  .ev{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;border:1px dashed var(--edge)}
+  .ev .ftype{width:40px;height:40px}
+  .ev b{display:block;font-weight:700}
+  .ev small{font-size:12px;color:var(--muted)}
+  .ev .r{margin-left:auto}
+  .read{display:grid;grid-template-columns:repeat(4,auto);gap:4px 18px;font-size:12.5px}
+  .read span{color:var(--muted)}
+  .read b{font-weight:700}
+  .dates{display:grid;grid-template-columns:1fr auto 1fr auto;gap:12px;align-items:center}
+  .dates .d{padding:10px 14px;border-radius:14px;border:1px solid var(--line)}
+  .dates .d small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .dates .d b{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .dates .d.old b{color:var(--muted)}
+  .dates .d.new{border:1.5px solid var(--on);background:color-mix(in srgb,var(--on) 6%,var(--card))}
+  .no{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;padding:12px 14px;border-radius:12px;background:var(--card-2);font-size:12.5px}
+  .no span{display:flex;gap:8px;align-items:flex-start}
+  .no svg{width:14px;height:14px;color:var(--green);flex:none;margin-top:2px}
+  .lbl4{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
+  .row2{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end}
+</style>
+</head>
+<body>
+<div class="app ov" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="renewals">
+  <main>
+    <div class="ov-ghost"><i style="height:64px;width:40%"></i><i style="height:84px"></i><div class="ghost-lanes"><i></i><i></i><i></i><i></i><i></i></div></div>
+  </main>
+  <div class="ov-dim">
+    <div class="ov-dlg" role="dialog" aria-label="Confirm renewal">
+      <div class="dh"><h2 class="serif">Confirm renewal</h2><span class="chip c-ink">Kaveri Hospitals · hosting</span><a class="btn x" href="renewals.html" style="text-decoration:none" title="Close"><i data-i="x"></i></a></div>
+      <p class="sm" style="font-size:13px;line-height:1.5;margin-top:-4px">The client renews this hosting at GoDaddy in their own account. Check the proof, then confirm. The expiry date moves only when you confirm.</p>
+
+      <div>
+        <span class="lbl4">Proof</span>
+        <div class="pill-sel" style="margin-bottom:8px"><span>Provider invoice</span><span>Portal screenshot</span><span class="on">Client's proof</span></div>
+        <div class="ev"><span class="ftype pdf">PDF</span><div><b>godaddy-receipt-kaveri.pdf</b><small>Sent by Dr. Rao on WhatsApp, 30 Sep · added by Divya</small></div><span class="btn r"><i data-i="eye"></i>View</span></div>
+      </div>
+
+      <div class="ai-card" style="gap:8px">
+        <div class="ai-h"><i data-i="spark"></i>Read from the proof<span class="r">AI · check before you use it</span></div>
+        <div class="read"><span>Provider</span><b>GoDaddy</b><span>Plan</span><b>cPanel Business, 12 months</b><span>Paid on</span><b>29 Sep 2026</b><span>Order</span><b>3349127</b><span>Account</span><b>kaverihospitals.com</b><span>Valid until</span><b>14 Oct 2027</b></div>
+        <div class="ai-acts"><span class="ai-btn sm" data-ai="The details below are filled in from the proof. Nothing is saved until you press Confirm renewal."><i data-i="check"></i>Use these details</span><span class="manual">Matches this account and the date in Nexus</span></div>
+      </div>
+
+      <div class="row2">
+        <div class="dates"><div class="d old"><small>Expires now</small><b>14 Oct 2026</b></div><i data-i="right" style="color:var(--muted)"></i><div class="d new"><small>New expiry date</small><b>14 Oct 2027</b></div><span></span></div>
+        <div><span class="lbl4">Renewed for</span><div class="pill-sel"><span class="on">1 year</span><span>2 years</span><span>Other</span></div></div>
+      </div>
+
+      <div class="no">
+        <span><i data-i="check"></i>The expiry date moves to 14 Oct 2027.</span>
+        <span><i data-i="check"></i>Renewal history gets this entry with the proof.</span>
+        <span><i data-i="check"></i>Alerts for 2027 are set: 30, 15, 7 and 1 days.</span>
+        <span><i data-i="check"></i>The "confirm the client renewed" task closes.</span>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center"><a class="btn solid lg" href="renewals.html" style="text-decoration:none">Confirm renewal</a><a class="btn lg" href="renewals.html" style="text-decoration:none">Cancel</a><span class="manual" style="margin-left:auto;text-align:right;line-height:1.4">You are the Owner. Owners, Managers and Accounts<br>can confirm; anyone else can only add proof.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

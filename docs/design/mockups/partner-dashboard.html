@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Partner dashboard</title>
+<!-- Batch 4 · SCR-118 Partner financial dashboard: revenue, expenses and profit by quarter and year, bank and cash, receivables, payables, each partner's capital and current account; the same figures for both partners; provisional (FIN-030, FIN-031, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;align-items:start}
+  .qtr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;height:200px;padding:0 6px;border-bottom:1px solid var(--line)}
+  .qtr .b{display:flex;gap:6px;align-items:end;justify-content:center;height:100%;position:relative}
+  .qtr .b i{display:block;width:26px;border-radius:6px 6px 2px 2px}
+  .qtr .b i.r{background:var(--primary-bg)} .qtr .b i.e{background:#94A3B8} .qtr .b i.p{background:var(--on)}
+  .qtr .b.fut i{background:var(--bar)!important}
+  .qx{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:6px 6px 0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:600}
+  .qx b{display:block;color:var(--ink);font-size:12.5px}
+  .legend2{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+  .legend2 span{display:inline-flex;gap:6px;align-items:center}
+  .legend2 i{width:10px;height:10px;border-radius:3px}
+  .pp2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pp2 > div{padding:14px 16px;border-radius:16px;background:var(--card-2);display:flex;flex-direction:column;gap:6px}
+  .pp2 .h{display:flex;align-items:center;gap:10px;font-weight:700}
+  .pp2 .ln{display:flex;justify-content:space-between;font-size:13px}
+  .pp2 .ln b{font-weight:700}
+  .bal3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .bal3 div{padding:12px 14px;border-radius:14px;background:var(--card-2)}
+  .bal3 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .bal3 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .bal3 span{font-size:11.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="partners">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Partner dashboard</h1>
+          <p>The same figures for both LLP partners, from Nexus records. Profit is shared by the agreed split each quarter and is provisional until the CA confirms it.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: explains the quarter in plain words (what grew, what cost more, what to watch). Read-only; it never changes money records."><i data-i="spark"></i>Explain the quarter</span><div class="pill-sel"><span class="on">Jul–Sep</span><span>This year</span></div></div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">Revenue · Jul–Sep</div><div class="num serif" style="font-size:32px">₹10,25,000</div><div class="sub"><span class="up">↑ 13%</span>on Apr–Jun · services and Academy</div></div>
+        <div class="card kpi"><div class="lab">Expenses · Jul–Sep</div><div class="num serif" style="font-size:32px">₹8,25,000</div><div class="sub">↑ 9% on Apr–Jun · salaries included</div></div>
+        <div class="card kpi"><div class="lab">Profit · Jul–Sep</div><div class="num serif" style="font-size:32px">₹2,00,000</div><div class="sub"><span class="chip c-amber" style="padding:2px 8px">Provisional</span></div></div>
+        <div class="card kpi"><div class="lab">Profit · this year so far</div><div class="num serif" style="font-size:32px">₹3,50,000</div><div class="sub">Apr–Sep · 2 quarters</div></div>
+      </div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">By quarter, 2026–27</h2><span class="legend2" style="margin-left:auto"><span><i style="background:var(--primary-bg)"></i>Revenue</span><span><i style="background:#94A3B8"></i>Expenses</span><span><i style="background:var(--on)"></i>Profit</span></span></div>
+          <div class="qtr">
+            <div class="b" title="Apr–Jun: revenue ₹9,05,000 · expenses ₹7,55,000 · profit ₹1,50,000"><i class="r" style="height:85%"></i><i class="e" style="height:71%"></i><i class="p" style="height:14%"></i></div>
+            <div class="b" title="Jul–Sep: revenue ₹10,25,000 · expenses ₹8,25,000 · profit ₹2,00,000"><i class="r" style="height:97%"></i><i class="e" style="height:78%"></i><i class="p" style="height:19%"></i></div>
+            <div class="b fut"><i class="r" style="height:6%"></i><i class="e" style="height:6%"></i><i class="p" style="height:6%"></i></div>
+            <div class="b fut"><i class="r" style="height:6%"></i><i class="e" style="height:6%"></i><i class="p" style="height:6%"></i></div>
+          </div>
+          <div class="qx"><span><b>Apr–Jun</b>profit ₹1,50,000</span><span><b>Jul–Sep</b>profit ₹2,00,000</span><span><b>Oct–Dec</b>in progress</span><span><b>Jan–Mar</b>—</span></div>
+          <div class="bal3" style="margin-top:6px"><div><small>Bank · HDFC current</small><b>₹3,42,600</b><span>From the 30 Sep statement</span></div><div><small>Cash</small><b>₹8,400</b><span>Petty cash, counted 30 Sep</span></div><div><small>To receive</small><b>₹1,39,016</b><span>7 unpaid invoices</span></div><div><small>To pay</small><b>₹38,500</b><span>4 vendor bills</span></div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Jul–Sep profit shared</h2><span class="chip c-amber">Provisional</span></div>
+            <div class="pp2">
+              <div><span class="h"><span class="lg-av" style="--av:#0F766E">YP</span>Owner · 60%</span><div class="ln"><span>Share of profit</span><b>₹1,20,000</b></div><div class="ln"><span>Capital</span><b>₹6,00,000</b></div><div class="ln"><span>Current account</span><b>₹1,17,000</b></div></div>
+              <div><span class="h"><span class="lg-av" style="--av:#7C3AED">P2</span>Partner 2 · 40%</span><div class="ln"><span>Share of profit</span><b>₹80,000</b></div><div class="ln"><span>Capital</span><b>₹4,00,000</b></div><div class="ln"><span>Current account</span><b>₹98,000</b></div></div>
+            </div>
+            <div style="display:flex;gap:8px"><a class="btn" href="partner-statement.html" style="text-decoration:none"><i data-i="doc"></i>Statements</a><a class="btn" href="partners.html#money" style="text-decoration:none">1 withdrawal waiting for you</a></div>
+          </div>
+          <div class="ai-card"><div class="ai-h"><i data-i="spark"></i>The quarter in short</div><div style="font-size:13px;line-height:1.55">Revenue grew 13% (₹1,20,000): client services added ₹60,000 (the Royal Caterers advance, the Kaveri photo shoot and Anbu Textiles' website) and Academy fees ₹60,000. Expenses rose 9%, mostly Academy trainer fees and office costs; salaries are ₹4,80,208 of them. Watch: ₹65,016 is overdue, and ₹38,500 of bills are due in the next week.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

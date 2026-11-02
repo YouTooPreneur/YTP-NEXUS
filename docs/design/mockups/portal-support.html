@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-206 Support (Kaveri Hospitals): raise a request with a page link and a screenshot, follow it through received → being fixed → fixed → closed, add details, and see past requests; reply and fix times come from the client's website care terms (POR-005, PRJ-013, CON-014). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .fld > span{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .inp{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13.5px;color:var(--ink);min-width:0}
+  .inp.ph{color:var(--muted)}
+  .inp.area{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.5}
+  .inp svg{width:16px;height:16px;color:var(--muted)}
+  .drop3{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--edge);border-radius:14px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .drop3 b{display:block;color:var(--ink);font-size:13px}
+  .drop3 .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+
+  .flow4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+  .flow4 div{display:flex;flex-direction:column;gap:5px;font-size:11.5px;color:var(--muted)}
+  .flow4 i{height:6px;border-radius:999px;background:var(--bar)}
+  .flow4 .d i{background:var(--on)}
+  .flow4 b{font-size:12.5px;color:var(--ink);font-weight:700}
+  .msg3{display:flex;gap:10px;align-items:flex-start;padding:4px 0}
+  .msg3 .bub{padding:9px 12px;border-radius:4px 14px 14px 14px;background:#E7F8EE;font-size:12.5px;line-height:1.45;min-width:0}
+  .msg3 .bub small{display:block;font-size:11px;color:var(--muted);margin-bottom:2px;font-weight:700}
+  .sysl{font-size:11.5px;color:var(--muted);text-align:center;padding:4px 0;display:flex;align-items:center;gap:8px}
+  .sysl::before,.sysl::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  .dl3{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .dl3 div{padding:9px 12px;border-radius:12px;background:var(--card-2);font-size:12px;color:var(--muted)}
+  .dl3 b{display:block;font-size:13px;color:var(--ink)}
+  .views{margin-top:-2px}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="support" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Support</h1><p class="lead2">Raise a request, follow it and reply. Your website care: we reply within 24 hours and fix within 3 days.</p></div>
+    <div class="acts"><span class="po-btn"><i data-i="chat"></i>WhatsApp us instead</span></div>
+  </div>
+  <div class="po-grid" style="--po-side:440px">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Raise a request</h2>
+        <label class="fld"><span>What is wrong, or what do you need?</span><div class="inp">The doctors page loads slowly on phones</div></label>
+        <label class="fld"><span>Which page? (if you know)</span><div class="inp"><i data-i="link"></i>kaverihospitals.com/doctors</div></label>
+        <label class="fld"><span>More details</span><div class="inp area ph">Tell us what you saw and when. A screenshot helps.</div></label>
+        <div class="drop3"><i data-i="image"></i><div><b>Add a screenshot or file</b>Up to 25 MB each; for bigger files paste a Google Drive link</div><span class="po-btn sm"><i data-i="upload"></i>Choose</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="sm" style="font-size:12.5px;font-weight:700">How urgent?</span><div class="pill-sel"><span class="on">Normal</span><span>Urgent: the site is down</span></div><span class="po-btn solid" style="margin-left:auto"><i data-i="send"></i>Send request</span></div>
+        <div class="po-note"><i data-i="info"></i><span>Covered by your website care. Anything outside it gets a quote first, before we start.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Your requests</h2>
+        <div class="views"><span class="on">Open <em class="count">1</em></span><span>Closed <em class="count">12</em></span></div>
+        <div class="prow"><span class="po-ic amb"><i data-i="msg"></i></span><div><b>Old phone number on the appointment page</b><small>SR-0151 · from your WhatsApp, today 10:12 am · Priya N</small></div><span class="r"><span class="chip c-amber">Received</span></span></div>
+        <div class="prow"><span class="po-ic grn"><i data-i="check"></i></span><div><b>Add Dr. Fathima Begum's profile</b><small>SR-0138 · fixed 18 Sep · closed by itself 21 Sep · Arun</small></div><span class="r"><span class="chip c-green">Closed</span></span></div>
+        <div class="prow"><span class="po-ic grn"><i data-i="check"></i></span><div><b>Change the visiting hours on the contact page</b><small>SR-0127 · fixed 9 Sep, same day · Arun</small></div><span class="r"><span class="chip c-green">Closed</span></span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Old phone number on the appointment page</h2>
+        <div class="flow4"><div class="d"><i></i><b>Received</b>Today 10:20 am</div><div><i></i><b>Being fixed</b>Priya N</div><div><i></i><b>Fixed</b>By Mon 5 Oct</div><div><i></i><b>Closed</b>When you say OK, or 3 days later</div></div>
+        <div class="msg3"><span class="lg-av" style="--av:#047857">DR</span><div class="bub"><small>You · WhatsApp · today 10:12 am</small>The appointment page still shows our old number 044 2480 1100. Please change it to 044 2480 2200.</div></div>
+        <div class="sysl">Made into request SR-0151 by Priya · 10:20 am</div>
+        <div class="po-note"><i data-i="clock"></i><span>Priya N is looking at it. We reply within <b>24 hours</b> and fix it by <b>Monday 5 Oct</b> (4 Oct is a Sunday). Once fixed, it closes by itself after 3 days if we don't hear from you; you can reopen it.</span></div>
+        <div class="dl3"><div>Reply<b>Within 24 hours</b></div><div>Fix<b>By Mon 5 Oct</b></div></div>
+        <label class="fld"><span>Add something</span><div class="inp area ph">Write here, or add a screenshot…</div></label>
+        <div style="display:flex;gap:8px"><span class="po-btn sm"><i data-i="clip"></i>Attach</span><span class="po-btn sm solid" style="margin-left:auto"><i data-i="send"></i>Send</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Who helps you</h2>
+        <div class="tm"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Support · first reply</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Developer · fixes on your website</small></div></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">Messages you send us on WhatsApp about a problem also show here once we make them a request.</p>
+</main>
+</div>
+</body>
+</html>

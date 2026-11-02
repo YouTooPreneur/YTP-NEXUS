@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · HR settings</title>
+<!-- Batch 3 · SCR-197 HR settings: work schedule, Saturday rules, leave quotas and approval chains, holidays, required documents, payroll rules (CA check), pay day, late rules, probation by role (RULE-013 to RULE-016, TEAM-006, TEAM-009 to TEAM-012, TEAM-028) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .g2x{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .days{display:flex;gap:6px}
+  .days span{width:40px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:12.5px;border:1px solid var(--line);color:var(--muted)}
+  .days span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">HR settings</b></div>
+          <h1 class="serif">HR settings</h1>
+          <p>Work hours, Saturdays, leave, holidays, documents and payroll rules. Changes apply from the date you choose and are logged.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg">Save</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="s"><button data-tab="work">Work schedule</button><button data-tab="leave">Leave</button><button data-tab="docs">Documents</button><button data-tab="pay">Payroll rules</button></div>
+
+      <section data-group="s" data-panel="work" class="g2x">
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Work hours</h2></div>
+          <div class="field"><label>Working days</label><div class="days"><span class="on">Mon</span><span class="on">Tue</span><span class="on">Wed</span><span class="on">Thu</span><span class="on">Fri</span><span class="on">Sat</span><span>Sun</span></div></div>
+          <div class="fields"><div class="field"><label>Start</label><div class="input">10:00 am</div></div><div class="field"><label>End</label><div class="input">7:00 pm</div></div></div>
+          <p class="help" style="margin:0">These hours also set workload capacity: 9 h a day, 54 h in a full week, less Saturdays off, half days and leave.</p>
+          <div class="srow"><div class="txt"><b>Ask for location at check-in</b><span>Off by default</span></div><i class="toggle"></i></div>
+          <div class="srow"><div class="txt"><b>Late rules</b><span>Late minutes are only counted, never penalised, until you add a rule</span></div><span class="btn">Add a rule</span></div>
+          <div class="srow"><div class="txt"><b>Probation for new joiners</b><span>Length set per role (Junior developer: 3 months); can be changed for a person, or set to none</span></div><span class="btn">By role</span></div>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Saturdays</h2></div>
+          <div class="fields"><div class="field"><label>Saturdays off a month</label><div class="input">1</div></div><div class="field"><label>Half days a month</label><div class="input">1 · 9:00 am to 1:00 pm</div></div></div>
+          <div class="srow"><div class="txt"><b>Five-Saturday months</b><span>2 Saturdays off instead</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Each person chooses their Saturdays</b><span>A third one off is warned, not blocked</span></div><i class="toggle on"></i></div>
+        </div>
+      </section>
+
+      <section data-group="s" data-panel="leave" class="g2x">
+        <div class="card cb" style="padding-top:12px">
+          <table class="tbl"><thead><tr><th>Leave type</th><th>Days a year</th><th>Carry forward</th><th>Half days</th></tr></thead><tbody>
+            <tr><td><b>Casual</b></td><td>12</td><td class="sm">Yes</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Sick</b></td><td>8</td><td class="sm">Yes</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Earned</b></td><td>15</td><td class="sm">Yes</td><td><i class="toggle"></i></td></tr>
+            <tr><td><b>Emergency</b></td><td class="sm">From casual</td><td class="sm">—</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Comp-off</b></td><td class="sm">Earned by work</td><td class="sm">Expires in 30 days</td><td><i class="toggle on"></i></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">Sample quotas: your numbers go here. Unused casual, sick and earned days carry forward to next year, up to 90 days in all. Leave beyond the balance becomes loss of pay.</p>
+        </div>
+        <div class="card cb" style="padding-top:12px">
+          <div class="ch" style="padding:4px 0 6px"><h2 class="serif" style="font-size:19px">Approval chains</h2></div>
+          <table class="tbl"><tbody>
+            <tr><td><b>Up to 3 days</b></td><td class="sm">Reporting manager</td></tr>
+            <tr><td><b>More than 3 days</b></td><td class="sm">Reporting manager, then Owner</td></tr>
+            <tr><td><b>Managers' own leave</b></td><td class="sm">Owner</td></tr>
+          </tbody></table>
+          <div class="srow" style="margin-top:6px"><div class="txt"><b>Holidays</b><span>Tamil Nadu list for 2026 · 14 days · editable</span></div><span class="btn">Edit list</span></div>
+        </div>
+      </section>
+
+      <section data-group="s" data-panel="docs" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>Document</th><th>Required</th><th>Who uploads</th><th>Stored</th></tr></thead><tbody>
+          <tr><td><b>Aadhaar</b></td><td><i class="chk on"></i></td><td class="sm">Employee or HR</td><td class="sm">Masked · last 4 digits only</td></tr>
+          <tr><td><b>PAN</b></td><td><i class="chk on"></i></td><td class="sm">Employee or HR</td><td class="sm">Restricted</td></tr>
+          <tr><td><b>Bank passbook or cheque</b></td><td><i class="chk on"></i></td><td class="sm">Employee or HR</td><td class="sm">Restricted</td></tr>
+          <tr><td><b>Education certificate</b></td><td><i class="chk on"></i></td><td class="sm">Employee or HR</td><td class="sm">Restricted</td></tr>
+          <tr><td><b>Resume</b></td><td><i class="chk on"></i></td><td class="sm">From the application</td><td class="sm">Restricted</td></tr>
+          <tr><td><b>Passport, experience certificate, last 3 payslips, relieving letter, skill certificates</b></td><td><i class="chk"></i></td><td class="sm">Employee or HR</td><td class="sm">Restricted</td></tr>
+        </tbody></table>
+      </section>
+
+      <section data-group="s" data-panel="pay" class="card cb" style="padding-top:12px;display:flex;flex-direction:column;gap:10px">
+        <div class="banner warn"><i data-i="shield"></i>PF, ESI and professional tax rules must be checked by your CA before payroll goes live (step 3.7).</div>
+        <div class="srow"><div class="txt"><b>Pay day</b><span>Salaries are paid on this day each month; if it is a Sunday or holiday, on the next working day after it</span></div><div class="input" style="width:160px">1st</div></div>
+        <div class="srow"><div class="txt"><b>PF</b><span>Employee and employer share</span></div><span class="chip c-amber">CA to check</span></div>
+        <div class="srow"><div class="txt"><b>ESI</b><span>For salaries under the limit</span></div><span class="chip c-amber">CA to check</span></div>
+        <div class="srow"><div class="txt"><b>Professional tax (Tamil Nadu)</b><span>Half-yearly slabs</span></div><span class="chip c-amber">CA to check</span></div>
+        <div class="srow"><div class="txt"><b>Overtime pay</b><span>Chosen per case instead of comp-off</span></div><div class="input" style="width:190px;flex:none">Your rate (CA to check)</div></div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

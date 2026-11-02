@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Attendance</title>
+<!-- Batch 3 · SCR-124 Attendance register (live board, month view, late and overtime minutes, half days, WFH, Saturday use) and SCR-140 Attendance and WFH requests (TEAM-009, TEAM-010, TEAM-027) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .live{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .lv{padding:14px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+  .lv .h{display:flex;align-items:center;gap:8px;font-weight:700}
+  .lv .h b{font-family:Sora,sans-serif;font-size:22px;margin-left:auto}
+  .lv .who{display:flex;gap:4px}
+  .at td{padding-top:10px;padding-bottom:10px}
+  .late{color:var(--amber);font-weight:700}
+  .ot{color:var(--green);font-weight:700}
+  .mgrid{display:grid;grid-template-columns:150px repeat(30,1fr) 140px;gap:3px;align-items:center;font-size:11px}
+  .mgrid .d{height:24px;border-radius:5px;display:grid;place-items:center;font-weight:700;color:#fff;font-size:10px}
+  .mgrid .hd{color:var(--muted);text-align:center;font-weight:700}
+  .p{background:#12A15E} .lt{background:#E2A93B} .hf{background:linear-gradient(135deg,#12A15E 50%,var(--bar) 50%)} .w{background:#38BDF8} .lvd{background:#A78BFA} .so{background:var(--bar);color:var(--muted)!important} .sun{background:transparent;color:var(--muted)!important;border:1px dashed var(--line)} .fut{background:var(--card-2)}
+  .mgrid .nm{font-weight:700;font-size:12.5px}
+  .mgrid .sum{font-size:11.5px;color:var(--muted);padding-left:8px}
+  .key{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .key span{display:inline-flex;gap:6px;align-items:center}
+  .key i{width:14px;height:14px;border-radius:4px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Attendance</b></div>
+          <h1 class="serif">Attendance</h1>
+          <p>Check in, check out and a one-line work note. Late and overtime are counted in minutes, with no penalty unless you add late rules in HR settings.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: writes a short attendance summary for the month (late patterns, WFH use, Saturdays) for the Owner. Uses a little of the AI budget."><i data-i="spark"></i>Summarise the month</span><span class="btn lg"><i data-i="download"></i>Export</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="t"><button data-tab="live">Live board</button><button data-tab="month">Month</button><button data-tab="requests">Requests <em class="count" style="font-style:normal">3</em></button></div>
+
+      <section data-group="t" data-panel="live" style="display:flex;flex-direction:column;gap:12px">
+        <div class="live">
+          <div class="lv"><div class="h"><span class="today-st in"><i></i>In office</span><b>3</b></div><div class="who"><span class="av s">KR</span><span class="av s">DS</span><span class="av s">PN</span></div></div>
+          <div class="lv"><div class="h"><span class="today-st wfh"><i></i>Working from home</span><b>1</b></div><div class="who"><span class="av s">AK</span></div></div>
+          <div class="lv"><div class="h"><span class="today-st no"><i></i>Not checked in</span><b>1</b></div><div class="who"><span class="av s">MV</span></div></div>
+          <div class="lv"><div class="h"><span class="today-st leave"><i></i>On leave</span><b>1</b></div><div class="who"><span class="av s">RM</span></div></div>
+        </div>
+        <div class="card cb" style="padding-top:8px">
+          <table class="tbl at"><thead><tr><th>Person</th><th>Check in</th><th>Late</th><th>Where</th><th>Today's note</th><th>Check out</th><th>Saturdays left</th></tr></thead><tbody>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0F766E">KR</span><b>Karthik Raman</b></div></td><td>9:51 am</td><td class="sm">—</td><td class="sm">Office</td><td class="sm">Pearl Dental follow-up, SEO reports</td><td class="sm">—</td><td class="sm">2 off</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">AK</span><b>Arun Kumar</b></div></td><td>9:58 am</td><td class="sm">—</td><td><span class="chip c-blue">WFH</span></td><td class="sm">Fix the Velocity Motors contact form</td><td class="sm">—</td><td class="sm">2 off</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><b>Divya S</b></div></td><td>10:02 am</td><td class="late">2 min</td><td class="sm">Office</td><td class="sm">Kaveri hero image, October calendar</td><td class="sm">—</td><td class="sm">2 off</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td>10:05 am</td><td class="late">5 min</td><td class="sm">Office</td><td class="sm">Laptop set-up, Nexus training</td><td class="sm">—</td><td class="sm">2 off</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309">MV</span><b>Meena V</b></div></td><td class="sm" style="color:var(--red);font-weight:700">Not yet</td><td class="sm">—</td><td class="sm">—</td><td class="sm">—</td><td class="sm">—</td><td class="sm">2 off</td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">October has five Saturdays, so each person gets 2 Saturdays off this month instead of 1 off and 1 half day.</p>
+        </div>
+      </section>
+
+      <section data-group="t" data-panel="month" class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:10px"><h2 class="serif" style="font-size:20px">September 2026</h2><div class="pill-sel" style="margin-left:auto"><span>August</span><span class="on">September</span><span>October</span></div></div>
+        <div class="mgrid" id="mgrid"></div>
+        <div class="key"><span><i class="p"></i>Present</span><span><i class="lt"></i>Late</span><span><i class="hf"></i>Half day</span><span><i class="w"></i>WFH</span><span><i class="lvd"></i>Leave</span><span><i class="so"></i>Saturday off</span><span><i class="sun"></i>Sunday or holiday</span></div>
+      </section>
+
+      <section data-group="t" data-panel="requests" class="card cb" style="padding-top:8px">
+        <table class="tbl at"><thead><tr><th>Person</th><th>Request</th><th>Day</th><th>Reason</th><th>WFH this month</th><th></th></tr></thead><tbody>
+          <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">AK</span><b>Arun Kumar</b></div></td><td><span class="chip c-blue">Work from home</span></td><td class="sm">Fri 2 Oct · holiday</td><td class="sm">Server move on the holiday · plumber visit at home</td><td class="sm">3 days</td><td class="r"><span class="btn solid">Approve</span> <span class="btn">Reject</span></td></tr>
+          <tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><b>Divya S</b></div></td><td><span class="chip c-amber">Regularise</span></td><td class="sm">26 Sep</td><td class="sm">Forgot to check out; left at 7:10 pm</td><td class="sm">0 days</td><td class="r"><span class="btn solid">Approve</span> <span class="btn">Reject</span></td></tr>
+          <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td><span class="chip c-amber">Regularise</span></td><td class="sm">29 Sep</td><td class="sm">First day: checked in late after HR forms</td><td class="sm">0 days</td><td class="r"><span class="btn solid">Approve</span> <span class="btn">Reject</span></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">An approved regularisation corrects that day. WFH days are counted separately from office days.</p>
+      </section>
+    </section>
+  </main>
+</div>
+<script>
+  // Sample month grid: Sept 2026 starts on a Tuesday. One letter per date (1 to 30); '-' marks the Sundays (6, 13, 20, 27), which are drawn dashed.
+  // Saturdays are 5, 12, 19 and 26: each person has 1 Saturday off (s) and 1 half day (H) on a Saturday; the other two are full days. A half day counts as ½ in the totals.
+  const people = [
+    ['Karthik', 'ppppp-ppplpH-pplppp-pwppps-ppp', '24½ days · 6 late min'],
+    ['Arun', 'ppwps-ppwppp-ppwpvH-pppwpp-ppp', '23½ days · 4 WFH'],
+    ['Divya', 'pplpH-ppppps-ppplpp-pppppp-ppp', '24½ days · 14 late min'],
+    ['Rahul', 'wwwww-vvvvvs-wwwwww-wwwwwH-www', 'Remote · 5 leave'],
+    ['Meena', 'ppppp-pppppp-ppppps-pppppH-plp', '24½ days · 3 late min'],
+  ];
+  const map = { p: 'p', l: 'lt', H: 'hf', w: 'w', v: 'lvd', s: 'so', P: 'p' };
+  const g = document.getElementById('mgrid');
+  let html = '<span></span>';
+  for (let d = 1; d <= 30; d++) html += `<span class="hd">${d}</span>`;
+  html += '<span></span>';
+  for (const [name, pattern, sum] of people) {
+    html += `<span class="nm">${name}</span>`;
+    for (let d = 1; d <= 30; d++) {
+      const dow = (d + 1) % 7; // 0 = Sunday for Sept 2026 (1 Sep is a Tuesday)
+      if (dow === 0) { html += '<span class="d sun">S</span>'; continue; }
+      const c = pattern[d - 1] || 'p';
+      html += `<span class="d ${map[c] || 'p'}">${c === 'H' ? '½' : ''}</span>`;
+    }
+    html += `<span class="sum">${sum}</span>`;
+  }
+  g.innerHTML = html;
+</script>
+</body>
+</html>

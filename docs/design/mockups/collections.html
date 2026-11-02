@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Collections</title>
+<!-- Batch 4 · SCR-108 Collections: who to chase, reminders sent and next, escalation point per client, pause, no late fees; AI orders the calls and drafts messages in the client's language (FIN-009, AUTO-004, AUTO-005, RULE-008, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:start}
+  .ch2{display:grid;grid-template-columns:44px 1.2fr 1.3fr 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-top:1px solid var(--line-soft)}
+  .ch2:first-child{border-top:0}
+  .ch2 .who b{display:block;font-weight:700;font-size:14px}
+  .ch2 .who small{font-size:12px;color:var(--muted)}
+  .ch2 .amt4{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .ch2 .amt4 small{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:var(--red)}
+  .dots{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .dots i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:10px;font-weight:800;border:1.5px solid var(--edge);color:var(--muted);background:var(--card)}
+  .dots i.d{background:var(--on);border-color:var(--on);color:#fff}
+  .dots i.e{background:var(--red);border-color:var(--red);color:#fff}
+  .dots i.p{background:var(--bar);border-color:var(--bar)}
+  .dots .ln3{width:12px;height:2px;background:var(--line)}
+  .acts2{display:flex;gap:6px}
+  .rk{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--red-bg);color:var(--red)}
+  .rk.a{background:var(--amber-bg);color:var(--amber)} .rk.g{background:var(--card-2);color:var(--muted)}
+  .up td{padding-top:8px;padding-bottom:8px}
+  .rules{display:flex;flex-direction:column;gap:7px;font-size:12.5px}
+  .rules span{display:flex;gap:8px;align-items:flex-start}
+  .rules svg{width:14px;height:14px;color:var(--muted);flex:none;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="collections">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Collections</h1>
+          <p>Who owes us, what has been sent, and who to call. Reminders go out by themselves on day 7 and day 15; at each client's escalation point the Owner gets a "call the client" task. No late fees, ever.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: orders the calls by amount, age and risk, and drafts a polite message in each client's language. Nothing is sent without your approval."><i data-i="spark"></i>Plan today's calls</span></div>
+      </div>
+      <div class="lay">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <div class="ch2"><span class="rk">1</span><div class="who"><b>Anbu Textiles</b><small>YTP/26-27/0033 · Mr. S. Ramesh · Tamil</small></div><div class="dots"><i class="d">7</i><span class="ln3"></span><i class="d">15</i><span class="ln3"></span><i class="e">21</i><span>Escalated 18 Sep · call not answered 29 Sep</span></div><div class="amt4">₹28,000<small>34 days</small></div><div class="acts2"><span class="btn"><i data-i="phone"></i></span><span class="btn"><i data-i="chat"></i></span></div></div>
+            <div class="ch2"><span class="rk">2</span><div class="who"><b>Kaveri Hospitals</b><small>YTP/26-27/0038 · 15-day terms · Dr. Rao</small></div><div class="dots"><i class="d">7</i><span class="ln3"></span><i class="d">15</i><span class="ln3"></span><i>30</i><span>Usually pays after the 2nd reminder</span></div><div class="amt4">₹23,600<small>3 days past due</small></div><div class="acts2"><a class="btn" href="payment-record.html" style="text-decoration:none">Paid today?</a></div></div>
+            <div class="ch2"><span class="rk a">3</span><div class="who"><b>Greenleaf Organics</b><small>YTP/26-27/0042 · domain ends 8 Oct</small></div><div class="dots"><i class="d">7</i><span class="ln3"></span><i>15</i><span class="ln3"></span><i>21</i><span>AI reminder waiting for approval</span></div><div class="amt4">₹1,416<small>9 days</small></div><div class="acts2"><a class="btn" href="invoice.html" style="text-decoration:none">Open</a></div></div>
+            <div class="ch2"><span class="rk g">4</span><div class="who"><b>Coastal Realty</b><small>YTP/26-27/0036 · client on hold</small></div><div class="dots"><i class="d">7</i><span class="ln3"></span><i class="p"></i><span>Reminders paused by the Owner on 16 Sep</span></div><div class="amt4">₹12,000<small>29 days</small></div><div class="acts2"><a class="btn" href="credit-note.html" style="text-decoration:none">Credit note draft</a></div></div>
+          </div>
+          <div class="card cb" style="padding-top:12px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:18px">Coming due</h2><span class="sm" style="font-size:12px">Not late yet</span></div>
+            <table class="tbl up"><tbody>
+              <tr><td><b>Meridian Logistics</b> <span class="sm">· YTP/26-27/0040</span></td><td class="sm">Due 3 Oct</td><td class="num">₹35,000</td></tr>
+              <tr><td><b>Velocity Motors</b> <span class="sm">· YTP/26-27/0045 · sent today</span></td><td class="sm">On receipt</td><td class="num">₹15,000</td></tr>
+              <tr><td><b>Lakshmi Silks</b> <span class="sm">· YTP/26-27/0044</span></td><td class="sm">Due 15 Oct</td><td class="num">₹24,000</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Draft for Mr. Ramesh<span class="r">Tamil · WhatsApp</span></div>
+            <div style="font-size:13px;line-height:1.55;font-family:'Noto Sans Tamil','DM Sans',sans-serif">வணக்கம் ரமேஷ் சார், உங்கள் இணையதளத்தின் இறுதி தொகை ₹28,000 இன்னும் நிலுவையில் உள்ளது. இந்த வாரம் செலுத்த முடியுமா? ஏதாவது சந்தேகம் இருந்தால் சொல்லுங்கள். – YouTooPreneur</div>
+            <div class="ai-acts"><span class="btn solid">Send for approval</span><span class="btn">Edit</span></div>
+          </div>
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:8px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Rules</h2><a class="link" href="finance-settings.html#reminders">Change<i data-i="right"></i></a></div>
+            <div class="rules"><span><i data-i="clock"></i>Reminders on day 7 and day 15 after the invoice date</span><span><i data-i="flag"></i>Escalation point per client (default day 21)</span><span><i data-i="chat"></i>Email and WhatsApp, in the client's language</span><span><i data-i="x"></i>No late fees or interest</span><span><i data-i="shield"></i>Test mode is on: reminders go to the test number</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

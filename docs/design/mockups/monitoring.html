@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Monitoring</title>
+<!-- Batch 1 · SCR-194 Monitoring -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Monitoring</b></div>
+          <h1 class="serif">Monitoring</h1>
+          <p>Is everything running? Background jobs, messages, connections, backups and errors, checked every minute.</p>
+        </div>
+        <div class="acts"><span class="pill-sel"><span class="on">Today</span><span>7 days</span><span>30 days</span></span></div>
+      </div>
+      <section class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">Last backup</div><div class="num serif" style="font-size:34px">2:00 am</div><div class="sub"><span class="up">Safe off-site</span><span>restore tested 1 Sep</span></div></div>
+        <div class="card kpi"><div class="lab">Background jobs today</div><div class="num serif" style="font-size:34px">128</div><div class="sub">0 waiting · <span class="over">1 failed</span></div></div>
+        <div class="card kpi"><div class="lab">Messages sent today</div><div class="num serif" style="font-size:34px">46</div><div class="sub">Email 31 · WhatsApp 15</div></div>
+        <div class="card kpi"><div class="lab">Uptime, 30 days</div><div class="num serif" style="font-size:34px">99.98%</div><div class="sub"><span class="up">Above the 99.5% target</span></div></div>
+      </section>
+      <div class="g2" style="grid-template-columns:1fr 440px;align-items:start">
+        <div class="card">
+          <div class="ch"><h2 class="serif">Needs a look</h2><span class="count">2</span></div>
+          <ul class="att">
+            <li><span class="chip c-red">Failed</span><div><b>Renewal reminder email · Sharma Dental Care</b><span>Gmail's daily sending limit was reached at 6:40 pm</span></div><div class="amt none">3 tries</div><div class="btn solid">Retry now</div></li>
+            <li><span class="chip c-amber">Slow</span><div><b>Monthly report for Kaveri Hospitals</b><span>Took 48 seconds; the usual is under 10</span></div><div class="amt none">—</div><div class="btn">Open</div></li>
+          </ul>
+          <div class="sect" style="margin-top:8px">Recent errors</div>
+          <table><tbody>
+            <tr><td class="sm">5:02 pm</td><td>Domain check could not reach the registry for aromabakes.in</td><td class="r sm">Retried, fixed</td></tr>
+            <tr><td class="sm">11:20 am</td><td>Import of 2 client rows skipped: phone number missing</td><td class="r sm">Shown to Arun</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card">
+          <div class="ch"><h2 class="serif">Connections</h2><span class="link">Integrations<i data-i="right"></i></span></div>
+          <ul class="team">
+            <li><div class="lic"><i data-i="mail"></i></div><div><b>Gmail (sending)</b><span>Connected · 31 sent today</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+            <li><div class="lic"><i data-i="phone"></i></div><div><b>WhatsApp (AiSensy)</b><span>Connected · test mode · one-tap as backup</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+            <li><div class="lic"><i data-i="storage"></i></div><div><b>Backup storage</b><span>Last copy 2:00 am</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+            <li><div class="lic"><i data-i="globe"></i></div><div><b>Domain and SSL checks</b><span>46 domains and 40 SSL checked today</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+            <li><div class="lic"><i data-i="spark"></i></div><div><b>AI (Claude, backup OpenAI)</b><span>First words 0.9 s · ₹38 today · 41% of the month</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+            <li><div class="lic"><i data-i="wallet"></i></div><div><b>Razorpay</b><span>Connected · test mode until go-live</span></div><div class="load"><span class="chip c-green">OK</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

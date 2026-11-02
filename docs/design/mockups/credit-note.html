@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Credit note</title>
+<!-- Batch 4 · SCR-105 Credit note: the only way to correct an issued invoice; own series (CN), number on issue, reduce the balance or refund; list of credit notes (FIN-003, RULE-005, RULE-003) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:16px;align-items:start}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .against{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--card-2)}
+  .against b{display:block;font-weight:700}
+  .against small{font-size:12px;color:var(--muted)}
+  .against .r{margin-left:auto;text-align:right}
+  .choice{display:flex;gap:8px}
+  .choice span{flex:1;padding:12px 14px;border-radius:14px;border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;font-size:12.5px;color:var(--muted)}
+  .choice span b{color:var(--ink);font-size:13px}
+  .choice span.on{border:1.5px solid var(--on);background:color-mix(in srgb,var(--on) 6%,var(--card))}
+  .eff{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .eff div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .eff small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .eff b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .cn td{padding-top:9px;padding-bottom:9px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="invoices">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif" style="font-size:34px">New credit note · Coastal Realty</h1>
+          <p style="display:flex;gap:8px;align-items:center;margin-top:8px"><span class="chip c-ink">Draft</span><span>Credit notes have their own series; this one becomes CN/26-27/004 when issued.</span></p>
+        </div>
+        <div class="acts"><a class="btn lg" href="docs-pdf.html#credit" style="text-decoration:none"><i data-i="eye"></i>Preview PDF</a><span class="btn lg">Save draft</span><span class="btn solid lg">Issue credit note</span></div>
+      </div>
+      <div class="lay">
+        <div class="col">
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:12px">
+            <div class="against"><span class="lic"><i data-i="doc"></i></span><div><b>Against YTP/26-27/0036</b><small>SEO retainer, September · issued 2 Sep · unpaid</small></div><div class="r"><b>₹12,000</b><small>balance ₹12,000</small></div></div>
+            <div class="field"><label>Why</label><div class="input">Service paused<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>Note for the client</label><div class="input" style="height:auto;padding:10px 12px;white-space:normal;line-height:1.5">SEO work was paused from 16 September while your account is on hold, so we are crediting the second half of the month.</div></div>
+            <table class="tbl"><thead><tr><th>Line</th><th>SAC</th><th class="num">Amount</th></tr></thead><tbody>
+              <tr><td><b>SEO retainer, 16–30 September (paused)</b></td><td class="sm">998365</td><td class="num">₹6,000</td></tr>
+            </tbody><tfoot><tr><td colspan="2">Credit · GST not registered yet · round off ₹0</td><td class="num">₹6,000</td></tr></tfoot></table>
+            <div class="field"><label>What it does</label><div class="choice"><span class="on"><b>Reduce what they owe</b>The invoice balance goes down</span><span><b>Refund money paid</b>Record a refund payment</span></div></div>
+            <div class="eff"><div><small>Invoice balance now</small><b>₹12,000</b></div><div><small>This credit</small><b>₹6,000</b></div><div><small>Balance after</small><b>₹6,000</b></div></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="banner info" style="align-items:flex-start"><i data-i="lock"></i><span>Issued invoices never change. A credit note keeps the original invoice and its number, and both stay in the client's statement.</span></div>
+          <div class="card cb" style="padding-top:12px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:18px">Credit notes this year</h2><em class="count">3</em></div>
+            <table class="tbl cn"><tbody>
+              <tr><td><span class="inv">CN/26-27/003</span><br><span class="sm" style="font-size:12px">Anbu Textiles · 2 pages dropped</span></td><td class="num">₹6,000</td><td class="sm">18 Sep</td></tr>
+              <tr><td><span class="inv">CN/26-27/002</span><br><span class="sm" style="font-size:12px">Lakshmi Silks · ad spend refunded</span></td><td class="num">₹3,200</td><td class="sm">2 Aug</td></tr>
+              <tr><td><span class="inv">CN/26-27/001</span><br><span class="sm" style="font-size:12px">Chennai Book House · double billed</span></td><td class="num">₹4,500</td><td class="sm">20 May</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Custom fields</title>
+<!-- Batch 2 · SCR-184 Custom fields: extra fields on any module's records, with no code; they appear in forms, lists, filters, exports and imports (CORE-030) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:18px;align-items:start}
+  .tp{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);color:var(--muted)}
+  .on-chips{display:flex;gap:6px;flex-wrap:wrap}
+  .on-chips span{font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+  .opts{display:flex;gap:6px;flex-wrap:wrap}
+  .opts span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Lists and fields</b></div>
+          <h1 class="serif">Lists and fields</h1>
+          <p>Add your own fields to any kind of record. They appear in forms, lists, filters, imports, exports and reports at once.</p>
+        </div>
+      </div>
+      <div class="tabs-x"><a href="lists.html">Lists</a><a class="on" href="custom-fields.html">Custom fields</a></div>
+      <div style="display:flex;gap:12px;align-items:center"><span class="sm" style="font-size:12.5px;font-weight:600">Fields on</span><div class="pill-sel"><span class="on">Clients</span><span>Leads</span><span>Projects</span><span>Websites</span><span>People</span><span>Invoices</span><span>Students</span></div></div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:12px">
+          <table class="tbl">
+            <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Shown on</th><th>Who can see</th><th>Filled</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>Industry</b></td><td><span class="tp">Dropdown</span></td><td><i class="chk on"></i></td><td><div class="on-chips"><span>Form</span><span>Profile</span><span>List</span></div></td><td class="sm">Everyone</td><td class="sm">96%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Number of branches</b></td><td><span class="tp">Number</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span></div></td><td class="sm">Everyone</td><td class="sm">41%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Preferred meeting day</b></td><td><span class="tp">Dropdown</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span></div></td><td class="sm">Everyone</td><td class="sm">22%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Google Business Profile link</b></td><td><span class="tp">Link</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span><span>List</span></div></td><td class="sm">Everyone</td><td class="sm">58%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Credit limit</b></td><td><span class="tp">Number (₹)</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span></div></td><td class="sm">Owner, Accounts</td><td class="sm">10%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Signed NDA</b></td><td><span class="tp">File</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span></div></td><td class="sm">Owner, Manager</td><td class="sm">15%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+              <tr><td><b>Was a referral partner</b></td><td><span class="tp">Yes / no</span></td><td><i class="chk"></i></td><td><div class="on-chips"><span>Profile</span><span>List</span></div></td><td class="sm">Everyone</td><td class="sm">100%</td><td class="r"><span class="btn" title="Edit"><i data-i="edit"></i></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:14px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:22px">Edit field</h2><span class="link"><span class="btn" title="Close"><i data-i="x"></i></span></span></div>
+          <div class="field"><label>Name</label><div class="input">Industry</div></div>
+          <div class="field"><label>Type</label><div class="input">Dropdown<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="field"><label>Choices</label><div class="opts"><span>Healthcare</span><span>Education</span><span>Retail</span><span>Food</span><span>Real estate</span><span>Automobile</span><span>Other</span><span style="background:transparent;border-style:dashed;color:var(--muted)">+ Add</span></div></div>
+          <div class="srow" style="padding:6px 0"><div class="txt"><b>Required</b><span>People must fill it in to save a client</span></div><i class="toggle on"></i></div>
+          <div class="srow" style="padding:6px 0"><div class="txt"><b>Show in the client list</b><span>Adds a column and a filter</span></div><i class="toggle on"></i></div>
+          <div class="field"><label>Who can see it</label><div class="input">Everyone who can see clients<span class="end"><i data-i="down"></i></span></div></div>
+          <div style="display:flex;gap:10px"><span class="btn solid lg">Save field</span><span class="btn lg">Cancel</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

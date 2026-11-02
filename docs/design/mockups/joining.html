@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Joining and leaving</title>
+<!-- Batch 3 · SCR-133 Joining and leaving: checklists per person (documents, accounts, equipment, policies; asset return, access removal, full and final settlement) (TEAM-004, TEAM-008, TEAM-028, TEAM-029) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+  .who2{display:flex;flex-direction:column;gap:4px}
+  .who2 a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--ink)}
+  .who2 a.on{background:var(--active-bg)}
+  .who2 a b{display:block;font-weight:700;font-size:13px}
+  .who2 a small{font-size:12px;color:var(--muted)}
+  .who2 .meter{width:60px;margin-left:auto}
+  .grp4{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ci{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .ci:first-of-type{border-top:0}
+  .ci .r{margin-left:auto;font-size:12px;color:var(--muted)}
+  .ci.done span.t{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Joining and leaving</b></div>
+          <h1 class="serif">Joining and leaving</h1>
+          <p>A checklist for every new joiner and every leaver, made from templates in HR settings. Nothing is forgotten: documents, accounts, equipment, policies, and the final settlement.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span class="on">Joining <em class="count" style="font-style:normal;height:18px;min-width:18px">2</em></span><span>Leaving <em class="count" style="font-style:normal;height:18px;min-width:18px">0</em></span></div></div>
+      </div>
+      <div class="lay">
+        <div class="card" style="padding:10px">
+          <div class="who2">
+            <a class="on"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Joined 29 Sep</small></div><span class="meter"><i style="width:65%;background:var(--on)"></i></span></a>
+            <a><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Monica L</b><small>Joins 15 Oct · if she accepts</small></div><span class="meter"><i style="width:0%"></i></span></a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:12px"><h2 class="serif" style="font-size:22px">Priya N · joining</h2><span class="chip c-blue">11 of 17 done</span><span class="sm" style="margin-left:auto;font-size:12.5px">Owner: Arun (reporting manager) and HR</span></div>
+          <div class="grp4">
+            <div class="card cb" style="padding-top:14px"><div class="sect" style="padding:0 0 6px">Documents</div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Aadhaar (last 4 digits only)</span><span class="r">Verified</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">PAN</span><span class="r">Waiting for HR</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">Bank passbook or cheque</span><span class="r" style="color:var(--red)">Missing</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">Education certificate</span><span class="r" style="color:var(--red)">Missing</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Resume</span><span class="r">Verified</span></div>
+            </div>
+            <div class="card cb" style="padding-top:14px"><div class="sect" style="padding:0 0 6px">Accounts and access</div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Nexus sign-in (Google)</span><span class="r">29 Sep</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">Company email, then switch sign-in</span><span class="r">Within 10 days</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Vaultwarden: Tech collection</span><span class="r">29 Sep</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">GitHub and hosting panel (through the vault)</span><span class="r">30 Sep</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Google Chat space</span><span class="r">29 Sep</span></div>
+            </div>
+            <div class="card cb" style="padding-top:14px"><div class="sect" style="padding:0 0 6px">Equipment</div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Laptop: Dell Latitude 5440</span><span class="r">Issued 29 Sep</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">ID card</span><span class="r">Issued 30 Sep</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">Office access card</span><span class="r">Pending</span></div>
+            </div>
+            <div class="card cb" style="padding-top:14px"><div class="sect" style="padding:0 0 6px">Agreements and policies</div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Offer and appointment letters signed</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">NDA signed</span></div>
+              <div class="ci"><i class="chk"></i><span class="t">IT policy acknowledged</span><span class="r">Pending</span></div>
+              <div class="ci done"><i class="chk on"></i><span class="t">Leave policy acknowledged</span></div>
+            </div>
+          </div>
+          <div class="card cb" style="padding-top:14px"><div class="sect" style="padding:0 0 6px">When someone leaves (template)</div><div style="font-size:13px;color:var(--muted);line-height:1.6">Return laptop and cards · remove Nexus, vault and tool access the same day · hand over open tasks · experience and relieving letters · full and final settlement with Accounts.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

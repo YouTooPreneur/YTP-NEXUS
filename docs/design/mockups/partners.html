@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · LLP partners</title>
+<!-- Batch 4 · SCR-115 LLP partners and shares (contribution % and profit-sharing % by date, provisional until the LLP agreement) and SCR-116 Partner money (investments, withdrawals and distributions with proof and both partners' approval) (FIN-025 to FIN-028, RULE-026) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pbanner{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:var(--amber-bg);color:var(--amber);font-weight:600;font-size:13px}
+  .pbanner svg{width:18px;height:18px}
+  .pbanner .r{margin-left:auto;display:flex;gap:8px}
+  .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start}
+  .pc{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+  .pc .h{display:flex;align-items:center;gap:12px}
+  .pc .h b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .pc .h small{font-size:12px;color:var(--muted)}
+  .pct2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .pct2 div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .pct2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .pct2 b{font-family:Sora,sans-serif;font-weight:600;font-size:24px}
+  .ring2{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--primary-bg) 0 60%,#7FB89E 60% 100%);position:relative;margin:4px auto}
+  .ring2::after{content:"";position:absolute;inset:26px;border-radius:50%;background:var(--card)}
+  .ring2 .lbl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:1}
+  .ring2 .lbl b{font-family:Sora,sans-serif;font-weight:600;font-size:20px}
+  .ring2 .lbl small{font-size:11.5px;font-weight:600;color:var(--muted)}
+  .key2{display:flex;justify-content:center;gap:14px;font-size:12px;color:var(--muted)}
+  .key2 span{display:inline-flex;gap:6px;align-items:center}
+  .key2 i{width:10px;height:10px;border-radius:3px}
+  .pm td{padding-top:10px;padding-bottom:10px}
+  .pm .w b{display:block;font-weight:700}
+  .pm .w small{font-size:12px;color:var(--muted)}
+  .apv{display:flex;gap:6px;align-items:center;font-size:12px;font-weight:600}
+  .apv span{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:var(--card-2)}
+  .apv span.ok{background:var(--green-bg);color:var(--green)}
+  .apv span.wait{background:var(--amber-bg);color:var(--amber)}
+  .apv svg{width:12px;height:12px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="partners">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">LLP partners</h1>
+          <p>The two LLP partners, their agreed shares, and every rupee they put in or take out. Only the LLP partners can open this section; "LLP partner" never means a referral partner.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="partner-statement.html" style="text-decoration:none"><i data-i="doc"></i>Statements</a><a class="btn solid lg" href="partner-dashboard.html" style="text-decoration:none"><i data-i="chart"></i>Partner dashboard</a></div>
+      </div>
+      <div class="pbanner"><i data-i="flag"></i>LLP registration is in progress. Shares are provisional until the LLP agreement date is entered; profit is provisional until the CA confirms it.<span class="r"><span class="btn">Set LLP agreement date</span></span></div>
+      <div class="tabs-x" data-tabs="p"><button data-tab="shares">Partners and shares</button><button data-tab="money">Partner money <em class="count" style="font-style:normal">1</em></button></div>
+
+      <section data-group="p" data-panel="shares" class="two">
+        <div class="card pc"><div class="h"><span class="lg-av xl" style="--av:#0F766E;width:52px;height:52px;font-size:16px">YP</span><div><b>Owner</b><small>Founder · signs in as Owner + LLP partner</small></div></div><div class="pct2"><div><small>Contribution</small><b>60%</b></div><div><small>Profit share</small><b>60%</b></div></div><div class="kvc" style="grid-template-columns:1fr 1fr"><div><small>Capital</small><b>₹6,00,000</b></div><div><small>Current account</small><b>₹1,17,000</b></div></div><span class="chip c-amber" style="align-self:flex-start">Provisional</span></div>
+        <div class="card pc"><div class="h"><span class="lg-av xl" style="--av:#7C3AED;width:52px;height:52px;font-size:16px">P2</span><div><b>Partner 2</b><small>Sample name · real details to add at this step</small></div></div><div class="pct2"><div><small>Contribution</small><b>40%</b></div><div><small>Profit share</small><b>40%</b></div></div><div class="kvc" style="grid-template-columns:1fr 1fr"><div><small>Capital</small><b>₹4,00,000</b></div><div><small>Current account</small><b>₹98,000</b></div></div><span class="chip c-amber" style="align-self:flex-start">Provisional</span></div>
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Shares by date</h2><span class="link"><span class="btn"><i data-i="plus"></i>New split from a date</span></span></div>
+          <div class="ring2"><div class="lbl"><b>60 / 40</b><small>profit share</small></div></div>
+          <div class="key2"><span><i style="background:var(--primary-bg)"></i>Owner 60%</span><span><i style="background:#7FB89E"></i>Partner 2 40%</span></div>
+          <table class="tbl" style="margin-top:4px"><tbody>
+            <tr><td><b>From 1 Apr 2026</b><br><span class="sm" style="font-size:12px">60 / 60 and 40 / 40 · until the agreement</span></td><td><span class="chip c-amber">Provisional</span></td></tr>
+            <tr><td><b>From the LLP agreement date</b><br><span class="sm" style="font-size:12px">Not set yet · earlier periods keep their split</span></td><td><span class="chip c-ink">To set</span></td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section data-group="p" data-panel="money" class="card cb" style="padding-top:6px">
+        <table class="tbl pm">
+          <thead><tr><th>Date</th><th>What</th><th>Partner</th><th class="num">Amount</th><th>Proof</th><th>Approvals (both partners)</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="sm">1 Oct</td><td class="w"><b>Withdrawal</b><small>Bank transfer · personal use</small></td><td class="sm">Partner 2</td><td class="num">₹25,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td><div class="apv"><span class="ok"><i data-i="check"></i>Partner 2</span><span class="wait"><i data-i="clock"></i>Owner</span></div></td><td class="r"><span class="btn solid">Approve</span></td></tr>
+            <tr><td class="sm">30 Sep</td><td class="w"><b>Withdrawal</b><small>Bank transfer</small></td><td class="sm">Owner</td><td class="num">₹30,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td><div class="apv"><span class="ok"><i data-i="check"></i>Owner</span><span class="ok"><i data-i="check"></i>Partner 2</span></div></td><td class="r"><span class="chip c-green">Paid</span></td></tr>
+            <tr><td class="sm">15 Jul</td><td class="w"><b>Distribution of Apr–Jun profit</b><small>Half of the quarter's provisional profit</small></td><td class="sm">Owner ₹45,000 · Partner 2 ₹30,000</td><td class="num">₹75,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td><div class="apv"><span class="ok"><i data-i="check"></i>Owner</span><span class="ok"><i data-i="check"></i>Partner 2</span></div></td><td class="r"><span class="chip c-green">Paid</span></td></tr>
+            <tr><td class="sm">20 Jun</td><td class="w"><b>Withdrawal</b><small>Bank transfer</small></td><td class="sm">Owner</td><td class="num">₹18,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td><div class="apv"><span class="ok"><i data-i="check"></i>Owner</span><span class="ok"><i data-i="check"></i>Partner 2</span></div></td><td class="r"><span class="chip c-green">Paid</span></td></tr>
+            <tr><td class="sm">18 Jun</td><td class="w"><b>Withdrawal</b><small>Bank transfer</small></td><td class="sm">Partner 2</td><td class="num">₹12,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td><div class="apv"><span class="ok"><i data-i="check"></i>Partner 2</span><span class="ok"><i data-i="check"></i>Owner</span></div></td><td class="r"><span class="chip c-green">Paid</span></td></tr>
+            <tr><td class="sm">1 Apr</td><td class="w"><b>Investment (capital)</b><small>Bank transfer · bank advice attached</small></td><td class="sm">Owner</td><td class="num">₹6,00,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td class="sm">Recorded by Owner</td><td class="r"><span class="chip c-green">Received</span></td></tr>
+            <tr><td class="sm">1 Apr</td><td class="w"><b>Investment (capital)</b><small>Bank transfer · bank advice attached</small></td><td class="sm">Partner 2</td><td class="num">₹4,00,000</td><td><span class="btn"><i data-i="eye"></i></span></td><td class="sm">Recorded by Partner 2</td><td class="r"><span class="chip c-green">Received</span></td></tr>
+          </tbody>
+        </table>
+        <p class="help" style="margin-top:10px">Withdrawals and distributions need both partners' approval in Nexus, and proof. Investments are recorded by the LLP partners now, and by Accounts once given permission.</p>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone: My day</title>
+<!-- Batch 5 · SCR-021 My day on a phone (style round 2 screen, updated): header with code, work mode and leave; task and to-do counters; priority tasks; meetings; leave; alerts; check-in status. Staff see only their own work (CC-007, CC-005, AI-009, AI-010). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .p-body{gap:12px}
+  .p-body h1{font-size:30px}
+  .inpill{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb,var(--on) 9%,var(--card));border:1px solid color-mix(in srgb,var(--on) 22%,var(--line-soft));font-size:12.5px}
+  .inpill i.lv{width:9px;height:9px;border-radius:50%;background:var(--on);box-shadow:0 0 0 3px var(--on-ring);flex:none}
+  .inpill b{font-weight:700}
+  .inpill a{margin-left:auto;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+  .facts2{display:flex;gap:6px;flex-wrap:wrap}
+  .facts2 span{font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--card);border:1px solid var(--line-soft);color:var(--muted);white-space:nowrap}
+  .facts2 b{color:var(--ink)}
+  .cn3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .cn3 a{display:flex;flex-direction:column;gap:1px;padding:9px 11px;border-radius:13px;background:var(--card);border:1px solid var(--line-soft);text-decoration:none;color:inherit}
+  .cn3 a b{font-family:Sora,sans-serif;font-weight:600;font-size:20px;line-height:1.15}
+  .cn3 a span{font-size:11px;color:var(--muted);font-weight:600}
+  .cn3 a.red{background:var(--red-bg);border-color:transparent} .cn3 a.red b,.cn3 a.red span{color:var(--red)}
+  .lbl3{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .lbl3 a{margin-left:auto;letter-spacing:0;text-transform:none;font-size:12px;color:var(--muted);text-decoration:none;font-weight:600}
+  .ptask{padding:9px 0}
+  .ptask .chk{width:18px;height:18px}
+  .ptask a{color:inherit;text-decoration:none}
+  .nextm{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--primary-bg);color:var(--primary-ink)}
+  .nextm .time{font-family:Sora,sans-serif;font-weight:600;font-size:24px;width:auto;white-space:nowrap}
+  .nextm .time small{font-size:13px;margin-left:3px}
+  .nextm b{display:block;font-weight:700}
+  .nextm small{font-size:12px;opacity:.8}
+  .nextm .btn{margin-left:auto;background:#fff;color:#1C3D36;border-color:transparent}
+  .td2{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .td2:first-of-type{border-top:0}
+  .td2 small{margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .td2 .st{color:#E2A93B;display:flex}
+  .td2 .st svg{width:13px;height:13px;fill:#E2A93B}
+  .bal3{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .bal3 div{padding:8px 4px;border-radius:12px;background:var(--card);border:1px solid var(--line-soft);text-align:center}
+  .bal3 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .bal3 span{font-size:10.5px;color:var(--muted);font-weight:600}
+  .al2{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;padding:8px 0;border-top:1px solid var(--line-soft)}
+  .al2:first-of-type{border-top:0}
+  .al2 .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .al2 .ic svg{width:14px;height:14px}
+  .al2 .ic.r{background:var(--red-bg);color:var(--red)} .al2 .ic.b{background:var(--blue-bg);color:var(--blue)} .al2 .ic.a{background:var(--amber-bg);color:var(--amber)}
+  .al2 b{display:block;font-weight:700}
+  .al2 small{color:var(--muted);font-size:11.5px}
+  .askbar{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:999px;border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--ai-a),var(--ai-b)) border-box;font-size:12.5px;color:var(--muted)}
+  .askbar svg{width:15px;height:15px;color:var(--ai-ink)}
+  .askbar .mic{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 · My day: header, check-in status, counters, priority tasks -->
+  <div class="phone">
+    <div class="status"><span>10:12</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark" role="img" aria-label="YouTooPreneur"></span><span class="word serif">Nexus</span><a class="icon-btn" href="notifications.html"><i data-i="bell"></i><span class="dot"></span></a><a class="av" href="my-hr.html" style="text-decoration:none;background:color-mix(in srgb,#1D4ED8 16%,#fff);color:#1D4ED8;border-color:transparent">AK</a></div>
+    <div class="p-body">
+      <div>
+        <p class="eyebrow">Thursday, 1 October</p>
+        <h1 class="serif">Good morning, Arun</h1>
+      </div>
+      <div class="facts2"><span><b>YTP-003</b></span><span>Hybrid · <b>from home</b></span><span>Leave: <b>5</b> casual · <b>6</b> sick · <b>10</b> earned</span></div>
+      <div class="inpill"><i class="lv"></i><span><b>Checked in 9:58 am</b> · on time · 14 m</span><a href="phone-team.html">Check out</a></div>
+      <div class="lbl3">My tasks<a href="tasks.html">All</a></div>
+      <div class="cn3">
+        <a href="tasks.html"><b>4</b><span>Today</span></a>
+        <a class="red" href="task.html"><b>1</b><span>Overdue</span></a>
+        <a href="tasks.html"><b>2</b><span>In progress</span></a>
+        <a href="tasks.html"><b>1</b><span>Done today</span></a>
+        <a href="tasks.html"><b>12</b><span>Assigned</span></a>
+        <a href="tasks.html"><b>1</b><span>Done in Oct</span></a>
+      </div>
+      <div class="card pcard" style="padding:12px 14px 4px">
+        <div class="phead"><h3 class="serif" style="font-size:19px">Priority tasks</h3><span>4 today</span></div>
+        <div class="ptask"><i class="chk"></i><div><a href="task.html"><b>Fix contact form</b></a><div class="meta"><span class="dotp hi"></span>Velocity Motors</div></div><span class="chip c-red">Late</span></div>
+        <div class="ptask"><i class="chk"></i><div><b>Homepage design review</b><div class="meta"><span class="dotp md"></span>Kaveri Hospitals</div></div><span class="due">12:30 pm</span></div>
+        <div class="ptask"><i class="chk"></i><div><b>Check SSL auto-renewal</b><div class="meta"><span class="dotp md"></span>Sharma Dental Care</div></div><span class="due">3:00 pm</span></div>
+        <div class="ptask"><i class="chk"></i><div><b>Update blog plugins</b><div class="meta"><span class="dotp lo"></span>Aroma Bakes · AMC</div></div><span class="due">5:30 pm</span></div>
+      </div>
+    </div>
+    <nav class="p-nav"><a class="on" href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 2 · My day, further down: next meeting, to-dos, leave, alerts, ask by voice -->
+  <div class="phone">
+    <div class="status"><span>10:40</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark" role="img" aria-label="YouTooPreneur"></span><span class="word serif">Nexus</span><a class="icon-btn" href="notifications.html"><i data-i="bell"></i><span class="dot"></span></a><a class="av" href="my-hr.html" style="text-decoration:none;background:color-mix(in srgb,#1D4ED8 16%,#fff);color:#1D4ED8;border-color:transparent">AK</a></div>
+    <div class="p-body">
+      <div class="nextm"><span class="time">11:00<small>am</small></span><div><b>Discovery call</b><small>Sri Lakshmi Traders · Meet · in 20 min</small></div><a class="btn" href="meetings.html" style="text-decoration:none">Join</a></div>
+      <div class="card pcard" style="padding:12px 14px 6px">
+        <div class="lbl3" style="margin-bottom:4px">To-dos today · 3<a href="todos.html">All</a></div>
+        <div class="td2"><i class="box"></i><span class="st"><i data-i="star"></i></span>Send Divya the hero image sizes</div>
+        <div class="td2"><i class="box"></i><span class="st"><i data-i="star"></i></span>Review Priya's first change<small>Karthik</small></div>
+        <div class="td2"><i class="box"></i>Check last night's backup note</div>
+      </div>
+      <div class="card pcard" style="padding:12px 14px">
+        <div class="lbl3" style="margin-bottom:8px">Leave left<a href="my-hr.html">Apply</a></div>
+        <div class="bal3"><div><b>5</b><span>Casual</span></div><div><b>6</b><span>Sick</span></div><div><b>10</b><span>Earned</span></div><div><b>2</b><span>Saturdays</span></div></div>
+      </div>
+      <div class="card pcard" style="padding:12px 14px 6px">
+        <div class="lbl3" style="margin-bottom:2px">Alerts · 3</div>
+        <div class="al2"><span class="ic r"><i data-i="clock"></i></span><div><b>Contact form is 1 day late</b><small>Tell Karthik if you are stuck</small></div></div>
+        <div class="al2"><span class="ic a"><i data-i="at"></i></span><div><b>Divya mentioned you</b><small>"The hero image is ready for review"</small></div></div>
+        <div class="al2"><span class="ic b"><i data-i="cal"></i></span><div><b>Tomorrow: Gandhi Jayanti</b><small>Server move, overtime pay · WFH request with Karthik</small></div></div>
+      </div>
+      <div class="askbar" data-go="phone-ai.html" title="Voice assistant: press to talk"><i data-i="spark"></i>"What is next for me?"<span class="mic"><i data-i="mic"></i></span></div>
+    </div>
+    <nav class="p-nav"><a class="on" href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 3 · Checked in (style round 2 screen, kept) -->
+  <div class="phone">
+    <div class="status"><span>9:58</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark" role="img" aria-label="YouTooPreneur"></span><span class="word serif">Nexus</span><a class="icon-btn" href="notifications.html"><i data-i="bell"></i></a><a class="av" href="my-hr.html" style="text-decoration:none;background:color-mix(in srgb,#1D4ED8 16%,#fff);color:#1D4ED8;border-color:transparent">AK</a></div>
+    <div class="p-body">
+      <div class="card done-hero">
+        <div class="done-ring"><i data-i="check"></i></div>
+        <h2 class="serif">Checked in at 9:58 am</h2>
+        <p>On time · working from home</p>
+        <span class="timer"><i></i>Working for 0 h 01 m</span>
+      </div>
+      <div class="card pcard">
+        <span class="note-lab">What will you work on today?</span>
+        <div class="note">Fix the Velocity Motors contact form, review the Kaveri Hospitals homepage, renew SSL for Sharma Dental.</div>
+      </div>
+      <div class="pbtns"><span class="btn solid">Save note</span><span class="btn">Check out</span></div>
+      <div class="card pcard">
+        <div class="phead" style="margin-bottom:12px"><h3 class="serif">This week</h3><span>4 of 4 days on time</span></div>
+        <div class="week">
+          <div><i class="ok"><i data-i="check"></i></i>Mon</div>
+          <div><i class="ok"><i data-i="check"></i></i>Tue</div>
+          <div><i class="ok"><i data-i="check"></i></i>Wed</div>
+          <div><i class="ok today"><i data-i="check"></i></i>Thu</div>
+          <div><i>H</i>Fri</div>
+          <div><i>½</i>Sat</div>
+        </div>
+      </div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a class="on" href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+</div>
+</body>
+</html>

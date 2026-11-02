@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Logs</title>
+<!-- Batch 1 · SCR-195 Logs (activity log and security log). Tabs: #activity, #security -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Logs</b></div>
+          <h1 class="serif">Logs</h1>
+          <p>Every change and every automatic action, with who, what, when, and the old and new value. Logs can't be edited or deleted.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="upload"></i>Export</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="l"><button data-tab="activity">Activity log</button><button data-tab="security">Security log</button></div>
+      <section class="filters" style="padding-bottom:0">
+        <div class="fsel"><span>Who</span>Everyone<i data-i="down"></i></div>
+        <div class="fsel"><span>Done by</span>People, Nexus or AI<i data-i="down"></i></div><div class="fsel"><span>Area</span>All<i data-i="down"></i></div>
+        <div class="fsel"><span>When</span>Today<i data-i="down"></i></div>
+        <div class="search"><i data-i="search"></i>Search a name, record or value…</div>
+      </section>
+
+      <section data-group="l" data-panel="activity" class="card cb" style="padding-top:14px">
+        <table class="tbl">
+          <thead><tr><th>Time</th><th>Who</th><th>What</th><th>Record</th><th>Change</th></tr></thead>
+          <tbody>
+            <tr><td class="sm">10:42 am</td><td><b>Arun</b></td><td>Edited</td><td><a class="lk" href="record-history.html">Client · Sharma Dental Care</a></td><td class="sm">Phone: <s>+91 98400 11111</s> → <b style="color:var(--ink)">+91 98400 12345</b></td></tr>
+            <tr><td class="sm">10:05 am</td><td><b>Nexus</b> <span class="chip c-ink">Automatic</span></td><td>Sent</td><td>Lead alert · Bloom Florists</td><td class="sm">Rule "New lead not contacted" · to Karthik and you</td></tr>
+            <tr><td class="sm">10:02 am</td><td><b>Divya</b></td><td>Checked in</td><td>Attendance</td><td class="sm">10:02 am · office</td></tr>
+            <tr><td class="sm">9:58 am</td><td><b>Arun</b></td><td>Checked in</td><td>Attendance</td><td class="sm">9:58 am · from home</td></tr>
+            <tr><td class="sm">9:52 am</td><td><b>Nexus AI</b> <span class="ai-tag"><i data-i="spark"></i>Approved by Karthik</span></td><td>Created 3 tasks</td><td>Meeting notes · Kaveri Hospitals</td><td class="sm">Asked in Ask Nexus · cost ₹1.20</td></tr>
+            <tr><td class="sm">9:40 am</td><td><b>Owner</b></td><td>Changed a setting</td><td>Security</td><td class="sm">Money roles sign out after: <s>60</s> → <b style="color:var(--ink)">30 minutes</b></td></tr>
+            <tr><td class="sm">9:05 am</td><td><b>Nexus</b> <span class="chip c-ink">Automatic</span></td><td>Sent</td><td>Late task reminder · Arun</td><td class="sm">Task "Fix contact form" · Velocity Motors</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section data-group="l" data-panel="security" class="card cb" style="padding-top:14px">
+        <table class="tbl">
+          <thead><tr><th>Time</th><th>Who</th><th>Event</th><th>Details</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td class="sm">9:41 am</td><td><b>Owner</b></td><td>Signed in with Google</td><td class="sm">Two-step: app</td><td class="sm">Chennai · Chrome</td></tr>
+            <tr><td class="sm">9:30 am</td><td><b>meena.accounts@…</b></td><td><span class="chip c-red">Failed sign-in</span></td><td class="sm">Wrong password, 3 times</td><td class="sm">Chennai · Edge</td></tr>
+            <tr><td class="sm">9:12 am</td><td><b>LLP partner</b></td><td>Viewed bank details</td><td class="sm">Team · Divya</td><td class="sm">Chennai · Safari</td></tr>
+            <tr><td class="sm">Yesterday</td><td><b>Owner</b></td><td>Exported</td><td class="sm">Invoices · 312 rows · CSV</td><td class="sm">Chennai · Chrome</td></tr>
+            <tr><td class="sm">Yesterday</td><td><b>Owner</b></td><td>Opened a vault link</td><td class="sm">WebCare · sharmadental.in hosting login</td><td class="sm">Chennai · Chrome</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

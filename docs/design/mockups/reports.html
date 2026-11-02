@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Reports</title>
+<!-- Batch 8 · SCR-160 Reports home: every report by area (company, sales, revenue and profitability for the Owner and LLP partners only, billing and collections for Accounts too (choice 81, 22 Oct), renewals, projects, support, infrastructure, HR, Academy), each with its key figure and who may open it; scheduled reports; client results and client reports; ask a question about any report (RPT-001 to RPT-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .rgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px;align-items:start}
+  .areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .ar{padding:14px 16px 13px;display:flex;flex-direction:column;gap:7px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+  .ar:hover{transform:translateY(-2px)}
+  .ar .h{display:flex;align-items:center;gap:10px}
+  .ar .h .lic{width:34px;height:34px}
+  .ar .h b{font-weight:700;font-size:14px}
+  .ar .h small{display:block;font-size:11.5px;color:var(--muted)}
+  .ar .lk4{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:var(--muted);padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
+  .ar .lk4 svg{width:11px;height:11px}
+  .ar .fig{font-family:Sora,sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:8px}
+  .ar .fig small{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;color:var(--green)}
+  .ar .fig small.dn{color:var(--red)}
+  .ar .sub{font-size:12px;color:var(--muted);margin-top:-4px}
+  .ar .ls{display:flex;flex-wrap:wrap;gap:4px;padding-top:7px;border-top:1px dashed var(--line)}
+  .ar .ls span{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--card-2);color:var(--muted)}
+  .side4{display:flex;flex-direction:column;gap:12px}
+  .sc{padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+  .sc h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .sc h3 a{margin-left:auto;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none}
+  .srow2{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px;text-decoration:none;color:inherit}
+  .srow2:first-of-type{border-top:0}
+  .srow2 .lic{width:30px;height:30px}
+  .srow2 .lic svg{width:15px;height:15px}
+  .srow2 b{display:block;font-weight:700;font-size:13px}
+  .srow2 small{display:block;color:var(--muted);font-size:11.5px}
+  .srow2 .r{font-size:11.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="app long" data-active="Reports" data-sec="reports" data-sec-on="home">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Reports</h1>
+          <p>Every report by area, for any period, compared with any other. Reports only read data, and each person sees only the reports their role allows.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Ask about any report, for example: Why did SEO revenue fall this quarter? The answer quotes the report with links and uses only reports you may open. Read only."><i data-i="spark"></i>Ask about a report</span><span class="btn lg"><i data-i="cal"></i>Jul–Sep 2026</span></div>
+      </div>
+      <div class="rgrid">
+        <div class="areas">
+          <a class="card ar" href="report.html"><div class="h"><span class="lic"><i data-i="grid"></i></span><div><b>Company performance</b><small>Revenue, collections, renewals, leads</small></div></div><div class="fig">₹10,25,000<small>↑ 13%</small></div><div class="sub">Services and Academy, against Apr–Jun</div><div class="ls"><span>One-page summary</span><span>By month</span></div></a>
+          <a class="card ar" href="campaigns.html"><div class="h"><span class="lic"><i data-i="target"></i></span><div><b>Sales</b><small>Pipeline, conversions, forecast</small></div></div><div class="fig">₹2,70,000<small>3 deals</small></div><div class="sub">Won in September · forecast ₹3,58,000</div><div class="ls"><span>By source</span><span>By service</span><span>Lost reasons</span><span>Campaign return</span></div></a>
+          <a class="card ar" href="report.html"><div class="h"><span class="lic"><i data-i="wallet"></i></span><div><b>Revenue and profitability</b><small>By service, client and month</small></div><span class="lk4"><i data-i="lock"></i>Partners</span></div><div class="fig">87%<small>margin</small></div><div class="sub">Owner and LLP partners only · profit after salaries</div><div class="ls"><span>Recurring revenue</span><span>Margins by client</span><span>Vendor costs</span></div></a>
+          <a class="card ar" href="collections.html"><div class="h"><span class="lic"><i data-i="doc"></i></span><div><b>Billing and collections</b><small>Invoices, payments, who owes what</small></div><span class="lk4"><i data-i="lock"></i>Finance</span></div><div class="fig">₹1,39,016<small class="dn">₹65,016 overdue</small></div><div class="sub">To collect · Owner, partners and Accounts</div><div class="ls"><span>Invoices issued</span><span>Payments</span><span>Collections</span><span>Ageing</span></div></a>
+          <a class="card ar" href="renewals.html"><div class="h"><span class="lic"><i data-i="repeat"></i></span><div><b>Renewals</b><small>Upcoming, renewed, lost</small></div></div><div class="fig">92%<small>renewed</small></div><div class="sub">Renewal rate this year · 6 due in 30 days</div><div class="ls"><span>Rate by month</span><span>Lost and why</span></div></a>
+          <a class="card ar" href="projects.html"><div class="h"><span class="lic"><i data-i="folder"></i></span><div><b>Projects</b><small>Progress, on time, revisions</small></div></div><div class="fig">83%<small>on time</small></div><div class="sub">Milestones met this quarter · 1 project blocked</div><div class="ls"><span>Late, with days late</span><span>Change requests</span></div></a>
+          <a class="card ar" href="support.html"><div class="h"><span class="lic"><i data-i="msg"></i></span><div><b>Support</b><small>Volume, reply and fix times</small></div></div><div class="fig">94%<small>in 24 h</small></div><div class="sub">Replied within 24 hours · 1 fix late (Velocity)</div><div class="ls"><span>By client</span><span>By person</span><span>Against targets</span></div></a>
+          <a class="card ar" href="expiry.html"><div class="h"><span class="lic"><i data-i="server"></i></span><div><b>Infrastructure</b><small>Assets, expiry, uptime</small></div></div><div class="fig">9<small class="dn">expiring</small></div><div class="sub">Domains, hosting and SSL in the next 60 days</div><div class="ls"><span>By type</span><span>Uptime</span></div></a>
+          <a class="card ar" href="people.html"><div class="h"><span class="lic"><i data-i="user"></i></span><div><b>HR</b><small>Attendance, leave, payroll, hiring</small></div><span class="lk4"><i data-i="lock"></i>HR</span></div><div class="fig">6<small>people</small></div><div class="sub">Headcount by department · 1 opening</div><div class="ls"><span>Attendance</span><span>Payroll summary</span><span>Hiring funnel</span></div></a>
+          <a class="card ar" href="academy.html"><div class="h"><span class="lic"><i data-i="cap"></i></span><div><b>Academy</b><small>Admissions, fees, completion</small></div></div><div class="fig">18 of 25<small>seats</small></div><div class="sub">DMM-Oct26 starts 5 Oct · completion by batch</div><div class="ls"><span>Fees due</span><span>Attendance</span><span>Completion</span></div></a>
+        </div>
+        <div class="side4">
+          <div class="card sc">
+            <h3>Scheduled reports <a href="report.html">Add</a></h3>
+            <div class="srow2"><span class="lic"><i data-i="mail"></i></span><div><b>Weekly company summary</b><small>Mondays 8:00 am · email · Owner</small></div><span class="r">Mon</span></div>
+            <div class="srow2"><span class="lic"><i data-i="wallet"></i></span><div><b>Revenue and profitability</b><small>1st of each month · PDF · both LLP partners</small></div><span class="r">1 Nov</span></div>
+            <div class="srow2"><span class="lic"><i data-i="msg"></i></span><div><b>Support times</b><small>Fridays 5:00 pm · Karthik</small></div><span class="r">Fri</span></div>
+          </div>
+          <div class="card sc">
+            <h3>For clients</h3>
+            <a class="srow2" href="client-results.html"><span class="lic"><i data-i="activity"></i></span><div><b>Client results</b><small>Leads, rankings, reach per client and month</small></div><span class="r">6 clients</span></a>
+            <a class="srow2" href="client-reports.html"><span class="lic"><i data-i="file"></i></span><div><b>Client reports</b><small>Built from results, sent on a schedule</small></div><span class="r">1 to check</span></a>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>From this quarter</div>
+            <span style="font-size:12.5px;line-height:1.5">Revenue grew 14%, mostly from the Royal Caterers advance, the Kaveri photo shoot and Anbu Textiles' website. SEO fell 17% because Coastal Realty paused.</span>
+            <a class="ai-btn sm" style="align-self:flex-start" href="report.html">Open the report</a>
+          </div>
+          <span class="manual">Any report can be compared with another period, exported as PDF or Excel, and scheduled.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Payments and receipts</title>
+<!-- Batch 4 · SCR-107 Payments and receipts: every payment received with mode, reference, TDS, the invoice it settles and its receipt; payments still to be matched; AI suggests the match (FIN-007, FIN-008, FIN-011, AUTO-006, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pt td{padding-top:9px;padding-bottom:9px}
+  .pt .c b{display:block;font-weight:700}
+  .pt .c small{font-size:12px;color:var(--muted)}
+  .mode{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+  .mode i{min-width:22px;width:auto;padding:0 4px;height:22px;border-radius:7px;display:grid;place-items:center;font-style:normal;font-size:9.5px;font-weight:800;color:#fff}
+  .ref{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted)}
+  .unm{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:16px;background:var(--amber-bg)}
+  .unm b{font-weight:700}
+  .unm .t{flex:1;font-size:13px}
+  .unm .t small{display:block;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="payments">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Payments and receipts</h1>
+          <p>Every rupee received, the invoice it settles, and the receipt that went out by itself. Razorpay payments mark their invoice paid on their own.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>October</span><span class="on">September</span><span>August</span></div><a class="btn solid lg" href="payment-record.html" style="text-decoration:none"><i data-i="plus"></i>Record payment</a></div>
+      </div>
+      <div class="unm"><span class="lic" style="background:var(--card)"><i data-i="wallet"></i></span><div class="t"><b>₹5,000 by UPI from "S RAMESH" is not matched to an invoice yet</b><small>Seen on the bank statement for 30 Sep · reference 427319886512</small></div><span class="ai-tag"><i data-i="spark"></i>Likely Anbu Textiles (owner S. Ramesh)</span><span class="btn">Match</span></div>
+      <div class="card cb" style="padding-top:6px">
+        <table class="tbl pt">
+          <thead><tr><th>Received</th><th>Receipt</th><th>Client and invoice</th><th>How</th><th>Reference</th><th class="num">Amount</th><th class="num">TDS</th></tr></thead>
+          <tbody>
+            <tr><td class="sm">30 Sep</td><td><span class="inv">RC/26-27/0057</span></td><td class="c"><b>Velocity Motors</b><small>YTP/26-27/0041 · annual maintenance · settled</small></td><td><span class="mode"><i style="background:#5F259F">UPI</i>UPI</span></td><td class="ref">427319880044</td><td class="num">₹12,000</td><td class="num mut">—</td></tr>
+            <tr><td class="sm">29 Sep</td><td><span class="inv">RC/26-27/0056</span></td><td class="c"><b>Royal Caterers</b><small>YTP/26-27/0043 · 50% advance · settled</small></td><td><span class="mode"><i style="background:#0C2451">R</i>Razorpay</span></td><td class="ref">pay_P7xQ2mK9aZ</td><td class="num">₹35,000</td><td class="num mut">—</td></tr>
+            <tr><td class="sm">16 Sep</td><td><span class="inv">RC/26-27/0055</span></td><td class="c"><b>Bright Minds Tuition</b><small>YTP/26-27/0039 · landing page, final · settled</small></td><td><span class="mode"><i style="background:#475569">NEFT</i>Bank transfer</span></td><td class="ref">SBIN426091532</td><td class="num">₹18,000</td><td class="num mut">—</td></tr>
+            <tr><td class="sm">12 Sep</td><td><span class="inv">RC/26-27/0054</span></td><td class="c"><b>Kaveri Hospitals</b><small>YTP/26-27/0037 · photo shoot · settled with TDS</small></td><td><span class="mode"><i style="background:#5F259F">UPI</i>UPI</span></td><td class="ref">425521774310</td><td class="num">₹16,650</td><td class="num">₹1,850</td></tr>
+            <tr><td class="sm">10 Sep</td><td><span class="inv">RC/26-27/0053</span></td><td class="c"><b>Anbu Textiles</b><small>YTP/26-27/0033 · part payment · ₹28,000 still due</small></td><td><span class="mode"><i style="background:#B45309">CHQ</i>Cheque</span></td><td class="ref">Cheque 004512 · cleared 12 Sep</td><td class="num">₹20,000</td><td class="num mut">—</td></tr>
+            <tr><td class="sm">9 Sep</td><td><span class="inv">RC/26-27/0052</span></td><td class="c"><b>Meridian Logistics</b><small>YTP/26-27/0031 · social retainer, September · settled</small></td><td><span class="mode"><i style="background:#5F259F">UPI</i>UPI</span></td><td class="ref">425210093318</td><td class="num">₹35,000</td><td class="num mut">—</td></tr>
+            <tr><td class="sm">6 Sep</td><td><span class="inv">RC/26-27/0051</span></td><td class="c"><b>Velocity Motors</b><small>YTP/26-27/0035 · ads management, September · settled</small></td><td><span class="mode"><i style="background:#475569">NEFT</i>Bank transfer</span></td><td class="ref">HDFCN52026090612</td><td class="num">₹15,000</td><td class="num mut">—</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="5">September · 7 payments · receipts sent by email and WhatsApp</td><td class="num">₹1,51,650</td><td class="num">₹1,850</td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

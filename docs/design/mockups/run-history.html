@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Run history</title>
+<!-- Batch 5 · SCR-172 Run history: each run, what it did, retries and errors, with the steps of one run; every action happens exactly once (a run key), skipped runs are shown, and AI can explain an error in plain words (CORE-070, AUTO-003, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:11px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .bar4{display:flex;align-items:center;gap:10px}
+  .bar4 .day{margin-left:auto;display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px}
+  .bar4 .day .btn{width:32px;padding:0;height:32px}
+  .lay3{display:grid;grid-template-columns:1fr 430px;gap:14px;flex:1;min-height:0}
+  .tbl td{padding-top:6px;padding-bottom:6px;font-size:12.5px}
+  .tbl .t2{font-weight:700;color:var(--muted);white-space:nowrap}
+  .tbl b{font-weight:700}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl tr.sel td:first-child{box-shadow:inset 3px 0 0 #E2A93B}
+  .tbl .took{color:var(--muted);white-space:nowrap;text-align:right}
+  .tbl tr.skip td{color:var(--muted)}
+  .tbl tr.skip b{color:var(--muted);font-weight:600}
+  .det2{display:flex;flex-direction:column;gap:12px;padding:16px 18px}
+  .det2 h2{font-size:20px}
+  .det2 .hd3{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .steps2{display:flex;flex-direction:column}
+  .stp{display:grid;grid-template-columns:62px 16px 1fr;gap:10px;padding:6px 0;font-size:12.5px;position:relative}
+  .stp .tm{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);padding-top:1px}
+  .stp .dt3{width:12px;height:12px;border-radius:50%;background:var(--on);margin-top:3px;position:relative;z-index:1}
+  .stp .dt3.w{background:#E2A93B}
+  .stp::before{content:"";position:absolute;left:77px;top:18px;bottom:-6px;width:2px;background:var(--line)}
+  .stp:last-child::before{display:none}
+  .stp b{font-weight:700}
+  .stp small{display:block;color:var(--muted);font-size:11.5px}
+  .key2{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--card-2);font-size:12.5px}
+  .key2 svg{width:16px;height:16px;flex:none;color:var(--green);margin-top:1px}
+  .key2 code{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;font-weight:700;background:var(--card);padding:1px 6px;border-radius:6px;border:1px solid var(--line-soft)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="automations.html">Automations</a><span>/</span><b style="color:var(--ink)">Run history</b></div>
+          <h1 class="serif">Run history</h1>
+          <p>Every run of every automation: what it did, what it skipped, and anything that went wrong. Kept until you set a period in Settings → Data.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span></div>
+      </div>
+
+      <div class="tabs-x"><a href="automations.html">Automations</a><a class="on" href="run-history.html">Run history</a></div>
+
+      <div class="bar4">
+        <div class="views"><span class="on">Today <em class="count">14</em></span><span>Done <em class="count">10</em></span><span>Retried <em class="count">1</em></span><span>Failed <em class="count">0</em></span><span>Skipped <em class="count">4</em></span></div>
+        <span class="manual" style="margin-left:10px">Last 30 days: 412 runs · 2 failed, both fixed</span>
+        <div class="day"><span class="btn flip"><i data-i="right"></i></span>Thursday, 1 Oct<span class="btn"><i data-i="right"></i></span></div>
+      </div>
+
+      <div class="lay3">
+        <div class="card" style="padding:4px 18px 10px">
+          <table class="tbl">
+            <thead><tr><th>Time</th><th>Rule</th><th>What it did</th><th>Result</th><th style="text-align:right">Took</th></tr></thead>
+            <tbody>
+              <tr><td class="t2">10:05 am</td><td><b>New lead not contacted</b></td><td>Bloom Florists, 6 hours · alert to Karthik and you</td><td><span class="chip c-green">Done</span></td><td class="took">1 s</td></tr>
+              <tr><td class="t2">9:05 am</td><td><b>Late task reminder</b></td><td>Fix contact form · reminder to Arun</td><td><span class="chip c-green">Done</span></td><td class="took">1 s</td></tr>
+              <tr class="skip"><td class="t2">9:00 am</td><td><b>Payment reminders</b></td><td>No invoice on day 7 or day 15 today</td><td><span class="chip c-ink">Skipped</span></td><td class="took">&lt;1 s</td></tr>
+              <tr class="sel"><td class="t2">9:00 am</td><td><b>Monthly and recurring bills</b></td><td>YTP/26-27/0045 · Velocity Motors · ₹15,000</td><td><span class="chip c-amber">Retried once</span></td><td class="took">2 m 06 s</td></tr>
+              <tr><td class="t2">8:30 am</td><td><b>Follow-up reminders</b></td><td>3 reminders · Karthik 2, you 1</td><td><span class="chip c-green">Done</span></td><td class="took">1 s</td></tr>
+              <tr><td class="t2">7:30 am</td><td><b>Daily summary</b></td><td>6 sent · Rahul skipped, on leave</td><td><span class="chip c-green">Done</span></td><td class="took">22 s</td></tr>
+              <tr><td class="t2">6:10 am</td><td><b>AMC maintenance tasks</b></td><td>Update blog plugins · Aroma Bakes · to Arun</td><td><span class="chip c-green">Done</span></td><td class="took">1 s</td></tr>
+              <tr class="skip"><td class="t2">6:10 am</td><td><b>Free maintenance ending</b></td><td>Nothing ends in 30 days today</td><td><span class="chip c-ink">Skipped</span></td><td class="took">&lt;1 s</td></tr>
+              <tr class="skip"><td class="t2">6:05 am</td><td><b>Renewal invoice</b></td><td>No renewal is 30 days away today</td><td><span class="chip c-ink">Skipped</span></td><td class="took">&lt;1 s</td></tr>
+              <tr class="skip"><td class="t2">6:05 am</td><td><b>Did the client renew?</b></td><td>No client renewal falls today</td><td><span class="chip c-ink">Skipped</span></td><td class="took">&lt;1 s</td></tr>
+              <tr><td class="t2">6:05 am</td><td><b>Renewal alerts</b></td><td>greenleaforganics.com, 7 days · to you and Greenleaf</td><td><span class="chip c-green">Done</span></td><td class="took">3 s</td></tr>
+              <tr><td class="t2">6:01 am</td><td><b>Expiry date moved</b></td><td>brightmindstuition.in → 3 Nov 2027 · by the check</td><td><span class="chip c-green">Done</span></td><td class="took">1 s</td></tr>
+              <tr><td class="t2">6:00 am</td><td><b>Domain and SSL check</b></td><td>46 domains, 40 SSL · 1 date changed</td><td><span class="chip c-green">Done</span></td><td class="took">1 m 48 s</td></tr>
+              <tr><td class="t2">2:00 am</td><td><b>Daily backup</b></td><td>1.2 GB copied to Google Drive</td><td><span class="chip c-green">Done</span></td><td class="took">2 m 10 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- One run, step by step -->
+        <div class="card det2">
+          <div class="hd3"><h2 class="serif">Monthly and recurring bills</h2><span class="chip c-amber">Done after 1 retry</span></div>
+          <span class="sm" style="font-size:12.5px;margin-top:-6px">Thursday 1 Oct · started 9:00:02 am · took 2 m 06 s</span>
+          <div class="steps2">
+            <div class="stp"><span class="tm">9:00:02 am</span><i class="dt3"></i><div><b>Found 1 bill due today</b><small>Velocity Motors · ads management, October</small></div></div>
+            <div class="stp"><span class="tm">9:00:03 am</span><i class="dt3"></i><div><b>Invoice YTP/26-27/0045 made</b><small>₹15,000 · monthly bills send themselves</small></div></div>
+            <div class="stp"><span class="tm">9:00:04 am</span><i class="dt3"></i><div><b>PDF made and emailed</b><small>To the client's billing contact</small></div></div>
+            <div class="stp"><span class="tm">9:00:25 am</span><i class="dt3 w"></i><div><b>WhatsApp through AiSensy: no answer</b><small>Waited 20 seconds, then planned a retry</small></div></div>
+            <div class="stp"><span class="tm">9:02:08 am</span><i class="dt3"></i><div><b>Tried again: sent</b><small>The client got one message, not two</small></div></div>
+          </div>
+          <div class="key2"><i data-i="shield"></i><span>Run key <code>VM-ADS-2026-10</code>. If this rule runs again for October, nothing is made or sent twice.</span></div>
+          <div class="ai-card" style="gap:6px">
+            <div class="ai-h"><i data-i="spark"></i>In plain words<span class="r">AI · from this run</span></div>
+            <span style="font-size:12.5px;line-height:1.5">AiSensy was slow to answer, so Nexus waited 2 minutes and tried again. It worked. If this happens often, check AiSensy's status page.</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:auto"><a class="btn" href="invoices.html" style="text-decoration:none"><i data-i="doc"></i>Open the invoice</a><a class="btn" href="automations.html" style="text-decoration:none"><i data-i="bolt"></i>Open the rule</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Record payment</title>
+<!-- Batch 4 · SCR-104 Record payment: mode, reference, amount (part payments allowed), TDS with certificate, duplicate check, receipt sent by itself; AI reads a pasted bank or UPI message (FIN-007, FIN-011, FIN-013 duplicates, AUTO-006, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .ov-dlg{width:680px}
+  .modes{display:flex;gap:6px;flex-wrap:wrap}
+  .modes span{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:13px;color:var(--muted)}
+  .modes span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+  .sms{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:10px;background:var(--card);border:1px solid var(--line-soft);color:var(--muted)}
+  .split3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .split3 div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .split3 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .split3 b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .split3 .z b{color:var(--green)}
+  .okline{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--green);font-weight:600}
+  .okline svg{width:15px;height:15px}
+</style>
+</head>
+<body>
+<div class="app ov" data-active="Finance" data-sec="finance" data-sec-on="payments">
+  <main>
+    <div class="ov-ghost"><i style="height:70px;width:45%"></i><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><i style="height:120px"></i><i style="height:120px"></i><i style="height:120px"></i><i style="height:120px"></i></div><i style="height:440px"></i></div>
+  </main>
+  <div class="ov-dim">
+    <div class="ov-dlg" role="dialog" aria-label="Record payment">
+      <div class="dh"><h2 class="serif">Record payment</h2><span class="chip c-red">YTP/26-27/0038 · Kaveri Hospitals</span><a class="btn x" href="finance.html" style="text-decoration:none" title="Close"><i data-i="x"></i></a></div>
+      <div class="ai-card" style="padding:10px 14px;gap:6px">
+        <div class="ai-h"><i data-i="spark"></i>Read from a pasted bank message<span class="r">Check before saving</span></div>
+        <div class="sms">HDFC Bank: Rs 21,240.00 credited to a/c **4321 on 01-10-26 by NEFT from KAVERI HOSPITALS PVT LTD. UTR HDFCN52026100112345</div>
+        <span style="font-size:12.5px">Matched to <b>YTP/26-27/0038</b>: ₹21,240 received + ₹2,360 TDS (10%) = ₹23,600, the full balance.</span>
+      </div>
+      <div class="field"><label>How it was paid</label><div class="modes"><span>UPI</span><span class="on">Bank transfer</span><span>Cash</span><span>Cheque</span><span>Razorpay</span></div></div>
+      <div class="fields" style="grid-template-columns:1fr 1.4fr">
+        <div class="field"><label>Date received</label><div class="input">1 Oct 2026</div></div>
+        <div class="field"><label>Reference (UTR)</label><div class="input">HDFCN52026100112345</div></div>
+        <div class="field"><label>Amount received</label><div class="input">₹21,240</div></div>
+        <div class="field"><label>TDS deducted by the client</label><div class="input">₹2,360 · 10% · section 194J</div></div>
+      </div>
+      <div class="split3"><div><small>Invoice balance</small><b>₹23,600</b></div><div><small>Received + TDS</small><b>₹23,600</b></div><div class="z"><small>Balance after</small><b>₹0</b></div></div>
+      <div class="srow" style="padding:6px 0;border-top:0"><div class="txt"><b>TDS certificate (Form 16A)</b><span>Not received yet · a reminder task for Meena after the quarter</span></div><span class="btn"><i data-i="upload"></i>Upload</span></div>
+      <div class="okline"><i data-i="check"></i>This reference has not been used before, so it is not a duplicate.</div>
+      <div style="display:flex;gap:10px;align-items:center"><span class="btn solid lg">Save payment</span><a class="btn lg" href="finance.html" style="text-decoration:none">Cancel</a><span class="manual" style="margin-left:auto">Receipt RC/26-27/0058 goes out by itself; reminders stop.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

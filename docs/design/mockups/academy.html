@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Academy</title>
+<!-- Batch 9 · SCR-158 Academy dashboard: admissions, seats filled and free per batch, fees due and collected, attendance, the next sessions and enquiries waiting for a call; feeds the Academy report (ACD-013, ACD-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay9{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:12px;align-items:start}
+  .ses{display:grid;grid-template-columns:68px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .ses:first-of-type{border-top:0}
+  .ses .d6{display:flex;flex-direction:column;align-items:center;justify-content:center;height:44px;border-radius:12px;background:var(--card-2);font-weight:700;font-size:10.5px;color:var(--muted);line-height:1.15}
+  .ses .d6 b{font-family:Sora,sans-serif;font-size:15px;color:var(--ink)}
+  .ses .d6.now{background:var(--active-bg);box-shadow:inset 0 0 0 1px var(--on)}
+  .ses b{font-weight:700}
+  .ses small{display:block;color:var(--muted);font-size:11.5px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="dash">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Academy</h1>
+          <p>YouTooPreneur Academy: courses, batches, students and fees. Fees use their own YTA invoice series under the same company.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Explain the month: admissions, seats, fees and attendance against August, with the batches behind each number. Read only."><i data-i="spark"></i>Explain the month</span><a class="btn lg" href="admissions.html" style="text-decoration:none"><i data-i="plus"></i>New admission</a><a class="btn solid lg" href="batches.html" style="text-decoration:none"><i data-i="cal"></i>New batch</a></div>
+      </div>
+      <div class="k5">
+        <a class="card" href="admissions.html"><small>Admissions · September</small><b>14</b><span>9 in August · 11 web enquiries</span></a>
+        <a class="card" href="batches.html"><small>Seats filled</small><b>38 of 60</b><span>In the 3 open batches</span></a>
+        <a class="card" href="academy-fees.html"><small>Fees collected · Sep</small><b>₹3,46,989</b><span>Receipts sent for all</span></a>
+        <a class="card warn" href="academy-fees.html"><small>Fees to collect</small><b>₹53,997</b><span>5 students · reminders on</span></a>
+        <a class="card" href="students.html"><small>Attendance · 30 days</small><b>89%</b><span>2 students below 75%</span></a>
+      </div>
+      <div class="lay9">
+        <div class="card">
+          <div class="ch"><h2 class="serif">Batches</h2><a class="link" href="batches.html" style="text-decoration:none">All batches<i data-i="right"></i></a></div>
+          <div class="cbx">
+            <table class="tbl">
+              <thead><tr><th>Batch</th><th>Mode</th><th>Dates</th><th>Seats</th><th class="num">Fees collected</th><th class="num">Attendance</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><a href="batches.html" style="color:inherit;text-decoration:none"><b>DMM-Oct26</b></a><small>Digital Marketing Mastery</small></td><td><span class="mode"><i data-i="repeat"></i>Mixed</span></td><td class="sm">5 Oct – 26 Dec</td><td><div class="seat"><span class="meter"><i style="width:72%"></i></span><b>18/25</b></div></td><td class="num">₹3,30,000<small>of ₹6,42,000</small></td><td class="num mut">—</td><td><span class="chip c-blue">Starts Mon</span></td></tr>
+                <tr><td><b>WP-Sep26</b><small>WordPress Website Building</small></td><td><span class="mode"><i data-i="building"></i>Classroom</span></td><td class="sm">8 Sep – 17 Oct</td><td><div class="seat"><span class="meter"><i style="width:80%"></i></span><b>12/15</b></div></td><td class="num">₹2,16,000<small>all paid</small></td><td class="num">88%</td><td><span class="chip c-green">Session 11 today</span></td></tr>
+                <tr><td><b>AI-Nov26</b><small>AI for Small Business</small></td><td><span class="mode"><i data-i="video"></i>Online live</span></td><td class="sm">3 Nov – 26 Nov</td><td><div class="seat"><span class="meter"><i style="width:40%"></i></span><b>8/20</b></div></td><td class="num">₹49,995<small>of ₹79,992</small></td><td class="num mut">—</td><td><span class="chip c-ink">Admissions open</span></td></tr>
+                <tr><td><b>DMM-Jul26</b><small>Digital Marketing Mastery</small></td><td><span class="mode"><i data-i="repeat"></i>Mixed</span></td><td class="sm">6 Jul – 26 Sep</td><td><div class="seat"><span class="meter"><i style="width:80%;background:#94A3B8"></i></span><b>16/20</b></div></td><td class="num">₹5,66,000<small>all paid</small></td><td class="num">91%</td><td><span class="chip c-green">Done · 14 certificates</span></td></tr>
+                <tr><td><b>Reels · recorded</b><small>Instagram Reels for Business</small></td><td><span class="mode"><i data-i="play"></i>Recorded</span></td><td class="sm">Join any time</td><td class="sm">64 enrolled</td><td class="num">₹44,991<small>in September</small></td><td class="num">72%<small>watched</small></td><td><span class="chip c-green">Open</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Next sessions</h2><a class="link" href="calendar.html" style="text-decoration:none">Calendar<i data-i="right"></i></a></div>
+            <div class="cbx">
+              <div class="ses"><span class="d6 now"><b>6:30 pm</b>Today</span><div><b>WP-Sep26 · session 11 of 18</b><small>Arun · classroom, Adyar · 12 students</small></div><a class="btn" href="phone-academy.html" style="text-decoration:none;height:30px">Attendance</a></div>
+              <div class="ses"><span class="d6"><b>3</b>Oct</span><div><b>WP-Sep26 · session 12</b><small>Sat 10:00 am · classroom</small></div><span></span></div>
+              <div class="ses"><span class="d6"><b>5</b>Oct</span><div><b>DMM-Oct26 · session 1 · welcome</b><small>Mon 7:00 pm · online · Nandhini K</small></div><span></span></div>
+            </div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Worth doing today</div>
+            <span style="font-size:12.5px;line-height:1.5">DMM-Oct26 starts Monday with 7 seats left. 2 enquiries for it have waited 2 days or more for a call, and 2 admitted students still owe the first instalment.</span>
+            <div class="ai-acts"><a class="src" href="admissions.html"><i data-i="users"></i>Enquiries</a><a class="src" href="academy-fees.html"><i data-i="wallet"></i>Fees due</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

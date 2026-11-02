@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Leave</title>
+<!-- Batch 3 · SCR-125 Leave (requests with balance shown, bulk approve, team calendar, balances with adjustment) and SCR-126 Comp-off and overtime (TEAM-011, TEAM-012, RULE-014, RULE-015) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
+  .lt td{padding-top:11px;padding-bottom:11px}
+  .bal{font-size:12px;color:var(--muted)}
+  .bal b{color:var(--ink)}
+  .cal{display:grid;grid-template-columns:150px repeat(14,1fr);gap:3px;font-size:11px;align-items:center}
+  .cal .hd{text-align:center;color:var(--muted);font-weight:700}
+  .cal .hd.we{color:var(--muted)}
+  .cal .c{height:28px;border-radius:6px;background:var(--card-2)}
+  .cal .c.l{background:#A78BFA} .cal .c.h{background:linear-gradient(135deg,#A78BFA 50%,var(--card-2) 50%)} .cal .c.p{background:repeating-linear-gradient(45deg,#E2A93B33 0 6px,#E2A93B66 6px 12px)} .cal .c.hol{background:#FDE68A} .cal .c.sun{background:transparent;border:1px dashed var(--line)}
+  .cal .nm{font-weight:700;font-size:12.5px}
+  .bt td{padding-top:9px;padding-bottom:9px}
+  .tbl.bt .num{font-weight:700;text-align:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Leave</b></div>
+          <h1 class="serif">Leave</h1>
+          <p>Casual, sick, earned and emergency leave; half days (morning or afternoon); approvals follow each person's chain. Leave beyond the balance becomes loss of pay.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="my-hr.html#leave" style="text-decoration:none"><i data-i="plus"></i>Apply for leave</a></div>
+      </div>
+      <div class="tabs-x" data-tabs="l"><button data-tab="requests">Requests <em class="count" style="font-style:normal">3</em></button><button data-tab="calendar">Team calendar</button><button data-tab="balances">Balances</button><button data-tab="compoff">Comp-off and overtime</button></div>
+
+      <section data-group="l" data-panel="requests" class="lay">
+        <div class="card cb" style="padding-top:8px">
+          <table class="tbl lt"><thead><tr><th></th><th>Person</th><th>Type</th><th>Days</th><th>Balance after</th><th>Reason</th><th></th></tr></thead><tbody>
+            <tr><td><i class="chk on"></i></td><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED">RM</span><b>Rahul M</b></div></td><td><span class="chip c-ink">Earned</span></td><td class="sm">6–9 Oct · 4 days</td><td class="bal">Earned <b>8 → 4</b></td><td class="sm">Sister's wedding</td><td class="r"><span class="btn solid">Approve</span></td></tr>
+            <tr><td><i class="chk on"></i></td><td><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><b>Divya S</b></div></td><td><span class="chip c-ink">Casual · half day AM</span></td><td class="sm">7 Oct · 0.5</td><td class="bal">Casual <b>4 → 3.5</b></td><td class="sm">Bank work</td><td class="r"><span class="btn solid">Approve</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><div class="nmc"><span class="lg-av" style="--av:#B45309">MV</span><b>Meena V</b></div></td><td><span class="chip c-red">Emergency</span></td><td class="sm">Today · 1 day</td><td class="bal">Casual <b>0</b> · <span style="color:var(--red);font-weight:700">loss of pay 1</span></td><td class="sm">Child unwell</td><td class="r"><span class="btn solid">Approve</span></td></tr>
+          </tbody></table>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:12px"><span class="btn solid">Approve 2 selected</span><span class="btn">Reject selected</span><span class="manual" style="margin-left:auto">Rahul's 4 days come to you because they are over 3 days.</span></div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-h"><i data-i="spark"></i>Before you approve</div>
+          <div style="font-size:13.5px;line-height:1.55">While Rahul is away (6–9 Oct), 2 video tasks are due: the Kaveri doctor videos and the Royal Caterers reel. Sanjay (freelance video) is free that week.</div>
+          <div class="ai-acts"><a class="btn" href="workload.html" style="text-decoration:none">Open workload</a><span class="btn">Suggest handover</span></div>
+        </div>
+      </section>
+
+      <section data-group="l" data-panel="calendar" class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center"><h2 class="serif" style="font-size:20px">1 – 14 October</h2><span class="sm" style="margin-left:auto;font-size:12px">Purple: approved · striped: waiting · yellow: holiday</span></div>
+        <div class="cal" id="cal"></div>
+      </section>
+
+      <section data-group="l" data-panel="balances" class="card cb" style="padding-top:8px">
+        <table class="tbl bt"><thead><tr><th>Person</th><th style="text-align:center">Casual</th><th style="text-align:center">Sick</th><th style="text-align:center">Earned</th><th style="text-align:center">Comp-off</th><th style="text-align:center">Loss of pay this year</th><th></th></tr></thead><tbody>
+          <tr><td><b>Karthik Raman</b></td><td class="num">6</td><td class="num">5</td><td class="num">12</td><td class="num">1</td><td class="num">0</td><td class="r"><span class="btn">Adjust</span></td></tr>
+          <tr><td><b>Arun Kumar</b></td><td class="num">5</td><td class="num">6</td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="r"><span class="btn">Adjust</span></td></tr>
+          <tr><td><b>Divya S</b></td><td class="num">4</td><td class="num">6</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="r"><span class="btn">Adjust</span></td></tr>
+          <tr><td><b>Rahul M</b></td><td class="num">3</td><td class="num">4</td><td class="num">8</td><td class="num">2</td><td class="num">0</td><td class="r"><span class="btn">Adjust</span></td></tr>
+          <tr><td><b>Meena V</b></td><td class="num">0</td><td class="num">2</td><td class="num">6</td><td class="num">0</td><td class="num">1</td><td class="r"><span class="btn">Adjust</span></td></tr>
+          <tr><td><b>Priya N</b></td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="r"><span class="btn">Adjust</span></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Every adjustment needs a reason and is saved in the log. Quotas are set in HR settings. Unused casual, sick and earned days carry forward to next year, up to 90 days in all.</p>
+      </section>
+
+      <section data-group="l" data-panel="compoff" class="card cb" style="padding-top:8px">
+        <table class="tbl bt"><thead><tr><th>Person</th><th>Worked on</th><th>Why</th><th>Chosen</th><th>Expires</th><th>Status</th></tr></thead><tbody>
+          <tr><td><b>Rahul M</b></td><td class="sm">Sun 13 Sep</td><td class="sm">Kaveri shoot</td><td class="sm">Comp-off</td><td class="sm">14 Oct</td><td><span class="chip c-amber">13 days left</span></td></tr>
+          <tr><td><b>Rahul M</b></td><td class="sm">Sun 20 Sep</td><td class="sm">Royal Caterers event</td><td class="sm">Comp-off</td><td class="sm">21 Oct</td><td><span class="chip c-green">Available</span></td></tr>
+          <tr><td><b>Karthik Raman</b></td><td class="sm">Sun 27 Sep</td><td class="sm">Website launch support</td><td class="sm">Comp-off</td><td class="sm">28 Oct</td><td><span class="chip c-green">Available</span></td></tr>
+          <tr><td><b>Arun Kumar</b></td><td class="sm">Gandhi Jayanti, 2 Oct</td><td class="sm">Server move (planned)</td><td class="sm">Overtime pay</td><td class="sm">—</td><td><span class="chip c-blue">Added to October pay</span></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Comp-off expires after 30 days; overtime pay is the other choice, made for each case.</p>
+      </section>
+    </section>
+  </main>
+</div>
+<script>
+  // Sample team calendar for 1–14 October 2026 (1 Oct is a Thursday; 2 Oct Gandhi Jayanti).
+  const days = ['Th','Fr','Sa','Su','Mo','Tu','We','Th','Fr','Sa','Su','Mo','Tu','We'];
+  const rows = [
+    ['Karthik', '..............'],
+    ['Arun', '..............'],
+    ['Divya', '......p.......'],
+    ['Rahul', 'l....pppp.....'],
+    ['Meena', 'p.............'],
+    ['Priya', '..............'],
+  ];
+  let html = '<span></span>' + days.map((d, i) => `<span class="hd${d === 'Su' ? ' we' : ''}">${d}<br>${i + 1}</span>`).join('');
+  for (const [name, pat] of rows) {
+    html += `<span class="nm">${name}</span>`;
+    [...pat].forEach((c, i) => {
+      const cls = days[i] === 'Su' ? 'sun' : i === 1 ? 'hol' : c === 'l' ? 'l' : c === 'h' ? 'h' : c === 'p' ? 'p' : '';
+      html += `<span class="c ${cls}"></span>`;
+    });
+  }
+  document.getElementById('cal').innerHTML = html;
+</script>
+</body>
+</html>

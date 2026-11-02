@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Languages</title>
+<!-- Batch 1 · SCR-192 Languages -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@500&family=Noto+Sans+Devanagari:wght@500&family=Noto+Sans+Malayalam:wght@500&family=Noto+Sans+Telugu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>.say{font-size:22px;font-family:"Noto Sans Tamil","Noto Sans Devanagari","Noto Sans Malayalam","Noto Sans Telugu","DM Sans",sans-serif}</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Languages</b></div>
+          <h1 class="serif">Languages</h1>
+          <p>Screens, emails, WhatsApp messages and PDFs in five languages, all built from the start. Each one opens to people only after a native speaker has checked it.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="upload"></i>Add a language</span></div>
+      </div>
+      <div class="card cb" style="padding-top:14px">
+        <table class="tbl">
+          <thead><tr><th>Language</th><th>Sample</th><th>Screens</th><th>Messages and PDFs</th><th>Checked by a native speaker</th><th>Voice</th><th>Open to people</th></tr></thead>
+          <tbody>
+            <tr><td><b>English</b> <span class="chip c-ink">Default</span></td><td class="say">Good morning</td><td>100%</td><td>100%</td><td class="sm">Not needed</td><td class="vc"><span class="ai-tag"><i data-i="mic"></i>Speak and listen</span></td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Tamil</b></td><td class="say">காலை வணக்கம்</td><td>100%</td><td>100%</td><td><span class="chip c-green">Checked 28 Sep</span></td><td class="vc"><span class="ai-tag"><i data-i="mic"></i>Speak and listen</span></td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Hindi</b></td><td class="say">सुप्रभात</td><td>Draft</td><td>Draft</td><td><span class="chip c-amber">Waiting</span></td><td class="vc"><span class="ai-tag"><i data-i="mic"></i>Speak</span></td><td><i class="toggle"></i> <span class="sm">After the check</span></td></tr>
+            <tr><td><b>Malayalam</b></td><td class="say">സുപ്രഭാതം</td><td>Draft</td><td>Draft</td><td><span class="chip c-amber">Waiting</span></td><td class="vc"><span class="ai-tag"><i data-i="mic"></i>Speak</span></td><td><i class="toggle"></i> <span class="sm">After the check</span></td></tr>
+            <tr><td><b>Telugu</b></td><td class="say">శుభోదయం</td><td>Draft</td><td>Draft</td><td><span class="chip c-amber">Waiting</span></td><td class="vc"><span class="ai-tag"><i data-i="mic"></i>Speak</span></td><td><i class="toggle"></i> <span class="sm">After the check</span></td></tr>
+          </tbody>
+        </table>
+        <p class="help" style="margin-top:10px">A language's switch unlocks only when its native-speaker check is marked done. Until then nobody can pick it, and clients who prefer it get English.</p>
+      </div>
+      <div class="g2">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif">How a new language is added</h2></div>
+          <div class="srow"><div class="txt"><b>1. Download the English file</b><span>Every word on every screen, in one spreadsheet</span></div></div>
+          <div class="srow"><div class="txt"><b>2. Translate it</b><span>AI can draft it; a native speaker checks it</span></div></div>
+          <div class="srow"><div class="txt"><b>3. Upload it here</b><span>Nexus shows any missing words. After the native speaker's check, switch it on. No developer needed.</span></div></div>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif">Check a screen</h2></div>
+          <p class="sm" style="color:var(--muted)">Longer words can break a layout. Open any screen in another language to check it fits.</p>
+          <a class="btn" href="login.html#tamil" style="text-decoration:none;margin-top:12px">Open the sign-in screen in Tamil</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Sales pipeline</title>
+<!-- SCR-034 Sales pipeline (batch 3), premium board (owner, 1 Oct 2026): summary band, AI tip, stage lanes, cards with source, AI lead score and next step (CRM-007, CRM-009, CRM-011, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  main{padding-bottom:18px}
+  .dl-top b,.dl-top .fr{white-space:normal}
+  .band2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 1.9fr;gap:12px;flex:none}
+  .st2{padding:12px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+  .st2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .st2 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:23px;line-height:1.25;margin-top:3px;letter-spacing:-.01em}
+  .st2 span{font-size:12px;color:var(--muted)}
+  .st2 .up{color:var(--green);font-weight:700}
+  .st2.lead{background:linear-gradient(140deg,var(--primary-bg),color-mix(in srgb,var(--primary-bg) 78%,#03FF96));border-color:transparent;color:#fff}
+  .st2.lead small{color:rgba(255,255,255,.7)}
+  .st2.lead span{color:rgba(255,255,255,.8)}
+  .tip{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--ai-bg);border:1px solid var(--ai-line)}
+  .tip .tx{flex:1;font-size:13px;line-height:1.45;min-width:0}
+  .tip .tx b{font-weight:700}
+  .need{display:flex;flex-wrap:wrap;gap:6px}
+  .need span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line-soft)}
+  .nd{width:7px;height:7px;border-radius:50%}
+  .nd.r{background:var(--red)} .nd.a{background:#E2A93B}
+
+  .filters2{display:flex;gap:8px;align-items:center;flex:none}
+  .filters2 .search{width:260px;height:36px;margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="pipeline">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="leads.html">CRM</a><span>/</span><b style="color:var(--ink)">Sales pipeline</b></div>
+          <h1 class="serif">Sales pipeline</h1>
+        </div>
+        <div class="acts"><div class="seg-tg"><span class="on">Board</span><span>List</span></div><span class="btn lg"><i data-i="download"></i>Export</span><a class="btn solid lg" href="quick-add.html" style="text-decoration:none"><i data-i="plus"></i>New lead</a></div>
+      </div>
+
+      <div class="band2">
+        <div class="st2 lead"><small>Open pipeline</small><b>₹9,40,000</b><span>13 deals in 4 stages</span></div>
+        <div class="st2"><small>Likely to close</small><b>₹3,58,000</b><span>Value × each stage's chance</span></div>
+        <div class="st2"><small>Won · last 30 days</small><b>₹2,70,000</b><span><span class="up">3 deals</span> · Greenleaf, Royal, Sunrise</span></div>
+        <div class="st2"><small>Win rate · 90 days</small><b>38%</b><span><span class="up">↑ 4%</span> vs the 90 days before</span></div>
+        <div class="tip"><div class="tx"><div class="ai-h" style="margin-bottom:8px"><i data-i="spark"></i>3 deals need you today<span class="r"><span class="lk" style="font-weight:700;color:var(--ink)">Show them</span></span></div><div class="need"><span><i class="nd r"></i>Pearl Dental · overdue</span><span><i class="nd a"></i>Lotus Yoga · unopened</span><span><i class="nd a"></i>Bloom Florists · call</span></div></div></div>
+      </div>
+
+      <div class="filters2"><div class="views"><span class="on">All <em class="count">17</em></span><span>Mine</span><span>Hot <em class="count">4</em></span><span>Follow-up today <em class="count">3</em></span><span>Meeting today <em class="count">1</em></span><span>Converted <em class="count">2</em></span><span>Lost <em class="count">1</em></span></div><div class="fsel"><i data-i="filter"></i><span>Service</span>All<i data-i="down"></i></div><div class="fsel"><span>Source</span>All<i data-i="down"></i></div><div class="search"><i data-i="search"></i>Search deals…</div></div>
+
+      <div class="lanes">
+        <div class="lane" style="--c:#94A3B8">
+          <div class="ln-h"><b>New</b><em class="count">4</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹2,15,000</span><small>10% chance</small></div>
+          <div class="ln-bar"><i style="width:23%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#C2185B">BF</span><div class="nm"><b>Bloom Florists</b><span class="fr"><i data-i="camera"></i>Instagram · 6 h</span></div></div><div class="tags"><span>SEO</span></div><div class="dl-mid"><span class="amt2">₹45,000</span><span class="score hot"><i data-i="spark"></i>86 Hot</span></div><div class="dl-foot today"><i data-i="phone"></i>Call today<span class="av s">KR</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#B7791F">TS</span><div class="nm"><b>Thendral Sweets</b><span class="fr"><i data-i="globe"></i>Website form · 1 day</span></div></div><div class="tags"><span>Website</span><span>Social</span></div><div class="dl-mid"><span class="amt2">₹85,000</span><span class="score"><i data-i="spark"></i>71</span></div><div class="dl-foot"><i data-i="clock"></i>Follow up 3 Oct<span class="av s">AK</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#2F5E8C">GV</span><div class="nm"><b>Green Valley School</b><span class="fr"><i data-i="users2"></i>Referral · 2 days</span></div></div><div class="tags"><span>Website</span></div><div class="dl-mid"><span class="amt2">₹60,000</span><span class="score"><i data-i="spark"></i>64</span></div><div class="dl-foot"><i data-i="clock"></i>Follow up 3 Oct<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#6D28D9">NT</span><div class="nm"><b>Nila Textiles</b><span class="fr"><i data-i="chat"></i>WhatsApp · 1 day</span></div></div><div class="tags"><span>Ads</span></div><div class="dl-mid"><span class="amt2">₹25,000</span><span class="score"><i data-i="spark"></i>52</span></div><div class="dl-foot"><i data-i="clock"></i>Follow up 5 Oct<span class="av s">KR</span></div></div>
+          </div>
+          <div class="addd"><i data-i="plus"></i>Add deal</div>
+        </div>
+
+        <div class="lane" style="--c:#38BDF8">
+          <div class="ln-h"><b>Contacted</b><em class="count">3</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹1,90,000</span><small>25% chance</small></div>
+          <div class="ln-bar"><i style="width:20%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#B45309">SL</span><div class="nm"><b>Sri Lakshmi Traders</b><span class="fr"><i data-i="users2"></i>Referral · 3 days</span></div></div><div class="tags"><span>Website</span><span>SEO</span></div><div class="dl-mid"><span class="amt2">₹90,000</span><span class="score hot"><i data-i="spark"></i>81 Hot</span></div><div class="dl-foot ok"><i data-i="cal"></i>Call today 11:00 am<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#0E7490">PD</span><div class="nm"><b>Pearl Dental</b><span class="fr"><i data-i="camera"></i>Instagram · 5 days</span></div></div><div class="tags"><span>SEO</span></div><div class="dl-mid"><span class="amt2">₹40,000</span><span class="score"><i data-i="spark"></i>48</span></div><div class="dl-foot late2"><i data-i="flag"></i>Follow-up overdue<span class="av s">KR</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#BE123C">MF</span><div class="nm"><b>Metro Fitness</b><span class="fr"><i data-i="globe"></i>Website form · 2 days</span></div></div><div class="tags"><span>Video</span></div><div class="dl-mid"><span class="amt2">₹60,000</span><span class="score"><i data-i="spark"></i>59</span></div><div class="dl-foot"><i data-i="clock"></i>Follow up 5 Oct<span class="av s">RM</span></div></div>
+          </div>
+          <div class="addd"><i data-i="plus"></i>Add deal</div>
+        </div>
+
+        <div class="lane" style="--c:#818CF8">
+          <div class="ln-h"><b>Clarity session</b><em class="count">2</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹2,15,000</span><small>45% chance</small></div>
+          <div class="ln-bar"><i style="width:23%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#047857">KH</span><div class="nm"><b>Kaveri Hospitals</b><span class="fr"><i data-i="user"></i>Existing client · 4 days</span></div></div><div class="tags"><span>Booking</span><span>SEO</span><span>Video</span></div><div class="dl-mid"><span class="amt2">₹1,65,000</span><span class="score hot"><i data-i="spark"></i>88 Hot</span></div><div class="dl-foot ok"><i data-i="cal"></i>Session 3 Oct · paid<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#C2410C">CS</span><div class="nm"><b>Chennai Spice Co</b><span class="fr"><i data-i="camera"></i>Instagram · 2 days</span></div></div><div class="tags"><span>Branding</span></div><div class="dl-mid"><span class="amt2">₹50,000</span><span class="score"><i data-i="spark"></i>62</span></div><div class="dl-foot"><i data-i="cal"></i>Session 6 Oct · free<span class="av s">DS</span></div></div>
+            <div class="drop">Drop here to move</div>
+          </div>
+          <div class="addd"><i data-i="plus"></i>Add deal</div>
+        </div>
+
+        <div class="lane" style="--c:#F59E0B">
+          <div class="ln-h"><b>Proposal sent</b><em class="count">4</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹3,20,000</span><small>60% chance</small></div>
+          <div class="ln-bar"><i style="width:34%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#9A3412">UN</span><div class="nm"><b>Urban Nest Interiors</b><span class="fr"><i data-i="users2"></i>Referral · 6 days</span></div></div><div class="tags"><span>Website</span></div><div class="dl-mid"><span class="amt2">₹85,000</span><span class="score"><i data-i="spark"></i>74</span></div><div class="dl-foot"><i data-i="clock"></i>Quote valid to 10 Oct<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#1D4ED8">VM</span><div class="nm"><b>Velocity Motors</b><span class="fr"><i data-i="globe"></i>Website form · 3 days</span></div></div><div class="tags"><span>Ads</span><span>Video</span></div><div class="dl-mid"><span class="amt2">₹1,20,000</span><span class="score hot"><i data-i="spark"></i>83 Hot</span></div><div class="dl-foot ok"><i data-i="eye"></i>Viewed 2 times<span class="av s">AK</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#7C3AED">LY</span><div class="nm"><b>Lotus Yoga Studio</b><span class="fr"><i data-i="camera"></i>Instagram · 8 days</span></div></div><div class="tags"><span>Social</span></div><div class="dl-mid"><span class="amt2">₹45,000</span><span class="score"><i data-i="spark"></i>41</span></div><div class="dl-foot today"><i data-i="eye"></i>Not opened yet<span class="av s">DS</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#334155">BT</span><div class="nm"><b>Bharat Tools</b><span class="fr"><i data-i="target"></i>Google Ads · 2 days</span></div></div><div class="tags"><span>SEO</span></div><div class="dl-mid"><span class="amt2">₹70,000</span><span class="score"><i data-i="spark"></i>66</span></div><div class="dl-foot"><i data-i="clock"></i>Follow up 5 Oct<span class="av s">KR</span></div></div>
+          </div>
+          <div class="addd"><i data-i="plus"></i>Add deal</div>
+        </div>
+
+        <div class="lane won" style="--c:#12A15E">
+          <div class="ln-h"><b>Won</b><em class="count">3</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹2,70,000</span><small>last 30 days</small></div>
+          <div class="ln-bar"><i style="width:100%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#15803D">GO</span><div class="nm"><b>Greenleaf Organics</b><span class="fr"><i data-i="users2"></i>Referral · won 24 Sep</span></div></div><div class="tags"><span>Website</span></div><div class="dl-mid"><span class="amt2">₹80,000</span><span class="won-r"><i data-i="check"></i>Won</span></div><div class="dl-foot ok"><i data-i="folder"></i>Project created<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#A16207">RC</span><div class="nm"><b>Royal Caterers</b><span class="fr"><i data-i="camera"></i>Instagram · won 28 Sep</span></div></div><div class="tags"><span>Social</span><span>Ads</span></div><div class="dl-mid"><span class="amt2">₹70,000</span><span class="won-r"><i data-i="check"></i>Won</span></div><div class="dl-foot ok"><i data-i="wallet"></i>Advance paid<span class="av s">DS</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#EA580C">SC</span><div class="nm"><b>Sunrise Clinic</b><span class="fr"><i data-i="users2"></i>Referral · won 29 Sep</span></div></div><div class="tags"><span>Website</span><span>Booking</span></div><div class="dl-mid"><span class="amt2">₹1,20,000</span><span class="won-r"><i data-i="check"></i>Won</span></div><div class="dl-foot ok"><i data-i="doc"></i>Advance invoice draft<span class="av s">YP</span></div></div>
+          </div>
+          <div class="addd"><i data-i="plus"></i>Add deal</div>
+        </div>
+
+        <div class="lane lost" style="--c:#CBD5E1">
+          <div class="ln-h"><b>Lost</b><em class="count">1</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹40,000</span><small>last 30 days</small></div>
+          <div class="ln-bar"><i style="width:100%"></i></div>
+          <div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#64748B">SM</span><div class="nm"><b>Star Mobiles</b><span class="fr"><i data-i="globe"></i>Website form · lost 20 Sep</span></div></div><div class="tags"><span>SEO</span></div><div class="dl-mid"><span class="amt2">₹40,000</span></div><div class="dl-foot"><i data-i="x"></i>Reason: budget<span class="av s">KR</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

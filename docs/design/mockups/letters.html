@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Letters</title>
+<!-- Batch 3 · SCR-134 Letters (generate offer, appointment, experience, relieving letters) and SCR-246 HR letters PDF (TEAM-005, CORE-010 company version) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:380px 1fr;gap:18px;align-items:start;min-height:0}
+  .types{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .types span{padding:12px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:13px;display:flex;gap:8px;align-items:center}
+  .types span.on{border:1.5px solid var(--on);background:color-mix(in srgb,var(--on) 6%,var(--card))}
+  .types svg{width:16px;height:16px;color:var(--muted)}
+  .pv{background:var(--stage);border-radius:18px;padding:18px;display:flex;justify-content:center;max-height:760px;overflow:hidden}
+  .a4{width:560px;background:#fff;color:#1C3D36;box-shadow:0 12px 40px rgba(0,0,0,.12);border-radius:3px;padding:36px 42px;font-size:11.5px;line-height:1.65;display:flex;flex-direction:column;gap:12px}
+  .a4 .top{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #1C3D36;padding-bottom:12px}
+  .a4 .brand{display:flex;align-items:center;gap:8px;font-family:Sora,sans-serif;font-weight:600;font-size:15px}
+  .a4 .brand svg{width:24px;height:27px;color:#1C3D36}
+  .a4 h3{font-family:Sora,sans-serif;font-size:14px;text-align:center;letter-spacing:.06em}
+  .a4 .f{background:rgba(45,184,232,.14);color:#0E6F8E;border-radius:3px;padding:0 3px;font-weight:600}
+  .a4 table{width:100%;border-collapse:collapse;margin:0}
+  .a4 td{padding:4px 6px;border:1px solid #E7E3D8;font-size:11px}
+  .sig{display:flex;justify-content:space-between;margin-top:14px}
+  .sig div{border-top:1px solid #9ca3af;padding-top:4px;width:160px;font-size:10.5px;color:#6b7280}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Letters</b></div>
+          <h1 class="serif">Letters</h1>
+          <p>Offer, appointment, experience and relieving letters from templates, filled from the person's record. Layouts are edited in Numbering and templates.</p>
+        </div>
+        <div class="acts"><span class="btn lg" data-soon="8" data-msg="E-signature comes with the integrations (step 3.9). Until then, print, sign and upload."><i data-i="send"></i>Send for e-sign</span><span class="btn solid lg"><i data-i="download"></i>Make PDF</span></div>
+      </div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:14px">
+          <div class="field"><label>Letter</label><div class="types"><span><i data-i="mail"></i>Offer</span><span class="on"><i data-i="doc"></i>Appointment</span><span><i data-i="check"></i>Experience</span><span><i data-i="login"></i>Relieving</span></div></div>
+          <div class="field"><label>Person</label><div class="input"><span class="lg-av" style="--av:#0369A1;width:24px;height:24px;font-size:9px">PN</span>Priya N · YTP-007<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="fields"><div class="field"><label>Designation</label><div class="input">Junior developer</div></div><div class="field"><label>Joining date</label><div class="input">29 Sep 2026</div></div><div class="field"><label>Monthly salary</label><div class="input">₹30,000</div></div><div class="field"><label>Probation</label><div class="input">3 months</div></div></div>
+          <div class="field"><label>Signed by</label><div class="input">Owner · YouTooPreneur<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="field"><label>Language</label><div class="pill-sel" style="align-self:flex-start"><span class="on">English</span><span>Tamil</span></div></div>
+          <p class="help">The letterhead uses the company details in force on the letter's date. After the LLP date, new letters show the LLP name automatically. Probation comes from the person's record: set per role, changeable per person, or none.</p>
+        </div>
+        <div class="pv">
+          <div class="a4">
+            <div class="top"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div style="text-align:right;color:var(--muted)">No. 12, Sample Street, Adyar<br>Chennai 600020</div></div>
+            <div style="display:flex;justify-content:space-between"><span>Ref: YTP/HR/26-27/014</span><span>29 September 2026</span></div>
+            <h3>APPOINTMENT LETTER</h3>
+            <div>Dear <span class="f">Priya N</span>,</div>
+            <div>We are pleased to appoint you as <span class="f">Junior developer</span> in the Tech team of YouTooPreneur, from <span class="f">29 September 2026</span>. You will report to <span class="f">Arun Kumar</span>.</div>
+            <table><tr><td>Monthly salary</td><td><span class="f">₹30,000</span></td></tr><tr><td>Probation</td><td><span class="f">3 months, until 29 December 2026</span></td></tr><tr><td>Work hours</td><td>Monday to Saturday, 10:00 am to 7:00 pm, with your monthly Saturday allowance</td></tr><tr><td>Leave</td><td>As per the leave policy you acknowledged</td></tr></table>
+            <div>Please read and acknowledge the company policies in Nexus within your first week. We look forward to working with you.</div>
+            <div class="sig"><div>For YouTooPreneur<br>Owner</div><div>Accepted by<br>Priya N</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

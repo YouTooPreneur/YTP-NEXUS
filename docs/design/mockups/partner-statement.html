@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Partner statement</title>
+<!-- Batch 4 · SCR-117 Partner statement and SCR-253 Partner statement PDF: opening balance, investments, share of profit, withdrawals, distributions and closing balance for any period (FIN-029, FIN-031, RULE-026) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:330px 1fr;gap:16px;align-items:start}
+  .side3{display:flex;flex-direction:column;gap:12px}
+  .side3 .pill-sel span{padding:6px 9px}
+  .wf{display:flex;flex-direction:column;gap:6px}
+  .wf div{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:var(--card-2);font-size:13px}
+  .wf div b{font-weight:800}
+  .wf .pl b{color:var(--green)} .wf .mi b{color:var(--red)}
+  .wf .tt{background:var(--primary-bg);color:#fff}
+  .a4doc .bal td{font-size:12px}
+  .a4doc .bal tr.sub td{font-weight:700;background:#F7F5EF}
+  .a4doc .bal tr.grand td{font-weight:800;font-size:13px;border-top:1.5px solid #1C3D36;background:#F7F5EF}
+  .a4doc .prov{display:inline-block;padding:2px 8px;border-radius:999px;background:#FEF3C7;color:#92400E;font-size:9.5px;font-weight:800;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="partners">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif" style="font-size:34px">Partner statement</h1>
+          <p>Each partner's account for any period, adding up from the opening balance to the closing balance. Both partners can open both statements.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="mail"></i>Email to both partners</span><span class="btn solid lg"><i data-i="download"></i>Download PDF</span></div>
+      </div>
+      <div class="lay">
+        <div class="side3">
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:12px">
+            <div class="field"><label>Partner</label><div class="pill-sel" style="align-self:flex-start"><span class="on">Owner</span><span>Partner 2</span></div></div>
+            <div class="field"><label>Period</label><div class="pill-sel" style="align-self:flex-start"><span>Apr–Jun</span><span class="on">Jul–Sep</span><span>This year</span><span>Custom</span></div></div>
+          </div>
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:8px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Adds up</h2></div>
+            <div class="wf"><div><span>Opening, 1 Jul</span><b>₹6,72,000</b></div><div class="pl"><span>+ Investments</span><b>₹0</b></div><div class="pl"><span>+ Share of profit (60%)</span><b>₹1,20,000</b></div><div class="mi"><span>− Withdrawals</span><b>₹30,000</b></div><div class="mi"><span>− Distributions</span><b>₹45,000</b></div><div class="tt"><span>Closing, 30 Sep</span><b>₹7,17,000</b></div></div>
+          </div>
+        </div>
+        <div class="doc-stage" style="padding:18px">
+          <div class="a4doc" style="width:600px;padding:34px 40px;gap:12px">
+            <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">Partner account statement<br>1 Jul – 30 Sep 2026</div></div>
+            <div class="meta2"><div><small>Partner</small><b>Owner</b><br>Contribution 60% · profit share 60%</div><div style="text-align:right"><small>Status</small><span class="prov">PROVISIONAL</span><br>Until the LLP agreement and the CA's confirmation</div></div>
+            <table class="bal">
+              <thead><tr><th>Date</th><th>Item</th><th class="n">Capital</th><th class="n">Current</th><th class="n">Total</th></tr></thead>
+              <tbody>
+                <tr class="sub"><td>1 Jul</td><td>Opening balance</td><td class="n">₹6,00,000</td><td class="n">₹72,000</td><td class="n">₹6,72,000</td></tr>
+                <tr><td>15 Jul</td><td>Distribution of Apr–Jun profit</td><td class="n"></td><td class="n">− ₹45,000</td><td class="n">₹6,27,000</td></tr>
+                <tr><td>30 Sep</td><td>Withdrawal · approved by both partners</td><td class="n"></td><td class="n">− ₹30,000</td><td class="n">₹5,97,000</td></tr>
+                <tr><td>30 Sep</td><td>Share of Jul–Sep profit: 60% of ₹2,00,000</td><td class="n"></td><td class="n">+ ₹1,20,000</td><td class="n">₹7,17,000</td></tr>
+                <tr class="grand"><td>30 Sep</td><td>Closing balance</td><td class="n">₹6,00,000</td><td class="n">₹1,17,000</td><td class="n">₹7,17,000</td></tr>
+              </tbody>
+            </table>
+            <div style="color:var(--muted)">Profit for the quarter comes from Nexus records: revenue ₹10,25,000 (services and Academy) less expenses ₹8,25,000 (salaries included). It is provisional until the CA confirms it.</div>
+            <div class="foot"><span>YouTooPreneur · Chennai</span><span>Confidential · for the LLP partners only · page 1 of 1</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

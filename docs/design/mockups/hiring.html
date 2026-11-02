@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Hiring</title>
+<!-- Batch 3 · SCR-130 Hiring openings and SCR-131 Applicants board (Applied → Screening → Interview → Offer → Hired / Rejected); AI match from the job description, never the decision (TEAM-021, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .op td{padding-top:12px;padding-bottom:12px}
+  .dl-top .fr{white-space:normal}
+  .op b{font-weight:700;display:block}
+  .op small{font-size:12px;color:var(--muted)}
+  .funnel{display:flex;gap:4px;align-items:center}
+  .funnel span{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);color:var(--muted)}
+  .lanes{grid-template-columns:repeat(6,minmax(0,1fr))}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Hiring</b></div>
+          <h1 class="serif">Hiring</h1>
+          <p>Open roles and everyone who applied: from the careers page, email, job portals or added by hand. A hired applicant becomes a team member with a joining checklist.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="plus"></i>Add applicant</span><span class="btn solid lg"><i data-i="plus"></i>New opening</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="h"><button data-tab="board">Applicants</button><button data-tab="openings">Openings <em class="count" style="font-style:normal">3</em></button></div>
+
+      <section data-group="h" data-panel="board" style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0">
+        <div style="display:flex;gap:10px;align-items:center"><div class="fsel"><span>Opening</span>Social media executive<i data-i="down"></i></div><div class="fsel"><span>Source</span>All<i data-i="down"></i></div><span class="manual" style="margin-left:auto">✦ Match scores compare skills with the job description only. People decide; AI never rejects anyone.</span></div>
+        <div class="lanes">
+          <div class="lane" style="--c:#94A3B8"><div class="ln-h"><b>Applied</b><em class="count">4</em></div><div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#9333EA">NK</span><div class="nm"><b>Nithya K</b><span class="fr"><i data-i="globe"></i>Careers page · today</span></div></div><div class="tags"><span>2 yrs</span><span>Canva</span><span>Reels</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Chennai</span><span class="score"><i data-i="spark"></i>81</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#0E7490">AR</span><div class="nm"><b>Abdul R</b><span class="fr"><i data-i="briefcase"></i>Naukri · 1 day</span></div></div><div class="tags"><span>1 yr</span><span>Meta ads</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Ambattur</span><span class="score"><i data-i="spark"></i>66</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#B45309">SV</span><div class="nm"><b>Swetha V</b><span class="fr"><i data-i="mail"></i>Email · 2 days</span></div></div><div class="tags"><span>Fresher</span><span>Writing</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Tambaram</span><span class="score"><i data-i="spark"></i>58</span></div></div>
+            <div style="text-align:center;font-size:12px;font-weight:600;color:var(--muted);padding:4px 0">+ 1 more</div>
+          </div></div>
+          <div class="lane" style="--c:#38BDF8"><div class="ln-h"><b>Screening</b><em class="count">2</em></div><div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#BE123C">HM</span><div class="nm"><b>Harini M</b><span class="fr"><i data-i="users2"></i>Referral · Divya</span></div></div><div class="tags"><span>3 yrs</span><span>Content</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Phone call</span><span class="score hot"><i data-i="spark"></i>88</span></div><div class="dl-foot today"><i data-i="phone"></i>Call today<span class="av s">DS</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#1D4ED8">JP</span><div class="nm"><b>Joel P</b><span class="fr"><i data-i="link"></i>LinkedIn</span></div></div><div class="tags"><span>2 yrs</span><span>Analytics</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Remote OK</span><span class="score"><i data-i="spark"></i>72</span></div></div>
+          </div></div>
+          <div class="lane" style="--c:#818CF8"><div class="ln-h"><b>Interview</b><em class="count">2</em></div><div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#047857">FA</span><div class="nm"><b>Fathima A</b><span class="fr"><i data-i="globe"></i>Careers page</span></div></div><div class="tags"><span>4 yrs</span><span>Strategy</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Round 2</span><span class="score hot"><i data-i="spark"></i>90</span></div><div class="dl-foot ok"><i data-i="cal"></i>Fri 9 Oct, 11:00 am · Owner<span class="av s">YP</span></div></div>
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#C2410C">VS</span><div class="nm"><b>Vignesh S</b><span class="fr"><i data-i="briefcase"></i>Indeed</span></div></div><div class="tags"><span>2 yrs</span><span>Video</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Round 1</span><span class="score"><i data-i="spark"></i>69</span></div><div class="dl-foot"><i data-i="cal"></i>Mon 3:00 pm<span class="av s">KR</span></div></div>
+          </div></div>
+          <div class="lane" style="--c:#F59E0B"><div class="ln-h"><b>Offer</b><em class="count">1</em></div><div class="cards">
+            <a class="dl" href="applicant.html" style="text-decoration:none;color:inherit"><div class="dl-top"><span class="lg-av" style="--av:#6D28D9">ML</span><div class="nm"><b>Monica L</b><span class="fr"><i data-i="users2"></i>Referral · Karthik</span></div></div><div class="tags"><span>3 yrs</span><span>Social</span></div><div class="dl-mid"><span class="sm" style="font-size:12px">Joins 15 Oct?</span><span class="score hot"><i data-i="spark"></i>86</span></div><div class="dl-foot today"><i data-i="doc"></i>Offer sent · no reply<span class="av s">YP</span></div></a>
+          </div></div>
+          <div class="lane won" style="--c:#12A15E"><div class="ln-h"><b>Hired</b><em class="count">0</em></div><div class="cards"><div class="drop">Drag here to hire · creates the joining checklist</div></div></div>
+          <div class="lane lost" style="--c:#CBD5E1"><div class="ln-h"><b>Rejected</b><em class="count">3</em></div><div class="cards">
+            <div class="dl"><div class="dl-top"><span class="lg-av" style="--av:#64748B">RT</span><div class="nm"><b>Ravi T</b><span class="fr">Naukri</span></div></div><div class="dl-foot"><i data-i="x"></i>Wanted remote only</div></div>
+            <div style="text-align:center;font-size:12px;font-weight:600;color:var(--muted);padding:4px 0">+ 2 more</div>
+          </div></div>
+        </div>
+      </section>
+
+      <section data-group="h" data-panel="openings" class="card cb" style="padding-top:8px">
+        <table class="tbl op"><thead><tr><th>Opening</th><th>Team</th><th>Posted on</th><th>Applicants</th><th>Status</th><th></th></tr></thead><tbody>
+          <tr><td><b>Social media executive</b><small>Full time · office · 2–4 years</small></td><td class="sm">Design and content</td><td class="sm">Careers page, Naukri, LinkedIn</td><td><div class="funnel"><span>12 applied</span><span>4 in progress</span><span>1 offer</span></div></td><td><span class="chip c-green">Open</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+          <tr><td><b>Video editor intern</b><small>6 months · hybrid</small></td><td class="sm">Content</td><td class="sm">Careers page</td><td><div class="funnel"><span>7 applied</span></div></td><td><span class="chip c-green">Open</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+          <tr><td><b>Junior developer</b><small>Full time · office</small></td><td class="sm">Tech</td><td class="sm">Careers page, Indeed</td><td><div class="funnel"><span>18 applied</span><span>Priya N hired</span></div></td><td><span class="chip c-ink">Filled</span></td><td class="r"><span class="btn">View</span></td></tr>
+        </tbody></table>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

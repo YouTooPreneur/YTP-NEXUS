@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Projects</title>
+<!-- Batch 6 · SCR-060 Projects: one board for every project, one-time (websites, videos) and monthly (SEO, social media, ads are ongoing projects with a monthly cycle, D-162); stages come from each service's template; filters by client, service and owner; board or list (PRJ-001 to PRJ-004, PRJ-008, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  main{padding-bottom:18px}
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .band3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 1.7fr;gap:12px;flex:none}
+  .st2{padding:11px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+  .st2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .st2 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:22px;line-height:1.25;margin-top:2px}
+  .st2 span{font-size:12px;color:var(--muted)}
+  .st2.lead{background:linear-gradient(140deg,var(--primary-bg),color-mix(in srgb,var(--primary-bg) 78%,#03FF96));border-color:transparent;color:#fff}
+  .st2.lead small{color:rgba(255,255,255,.7)} .st2.lead span{color:rgba(255,255,255,.82)}
+  .st2.warn b{color:var(--amber)}
+  .tip{display:flex;flex-direction:column;justify-content:center;gap:7px;padding:11px 14px;border-radius:16px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px;line-height:1.45}
+  .tip .ai-h{margin:0}
+  .tip a{color:var(--ink);font-weight:700}
+  .filters3{display:flex;gap:10px;align-items:center;flex:none}
+  .fsel{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:12.5px;font-weight:600;color:var(--muted)}
+  .fsel svg{width:14px;height:14px}
+  .filters3 .r{margin-left:auto;display:flex;gap:8px}
+  .lanes{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .cards{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--c) 55%,transparent) transparent}
+  .more3{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;border-radius:12px;border:1.5px dashed color-mix(in srgb,var(--c) 35%,var(--line));color:var(--muted);font-size:12px;font-weight:600;flex:none}
+  .more3 svg{width:14px;height:14px}
+  .dl{cursor:default;gap:8px}
+  .dl a{color:inherit;text-decoration:none}
+  .prog{display:flex;flex-direction:column;gap:4px}
+  .prog .pl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);font-weight:600}
+  .prog .pl b{color:var(--ink)}
+  .prog .meter{height:6px}
+  .prog .meter i{background:var(--c)}
+  .stg2{display:flex;gap:3px}
+  .stg2 i{flex:1;height:5px;border-radius:999px;background:var(--bar)}
+  .stg2 i.d{background:var(--on)} .stg2 i.n{background:#38BDF8}
+  .mon{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#4338CA;background:#EEF2FF;padding:2px 8px;border-radius:999px}
+  .mon svg{width:11px;height:11px}
+  .dl-foot .av-stack{margin-left:auto}
+  .dl-foot .av-stack .lg-av{width:22px;height:22px;font-size:8.5px;box-shadow:0 0 0 2px var(--card);margin-left:-5px}
+  .dl-foot .ft{flex:1;min-width:0}
+  .lnote{border:1.5px dashed color-mix(in srgb,var(--c) 40%,var(--line));border-radius:14px;padding:10px 12px;font-size:11.5px;color:var(--muted);line-height:1.45}
+  .lnote b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="projects">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Projects</h1>
+          <p>Every piece of client work in one place. One-time work (websites, videos) moves through its service's stages; monthly services (SEO, social media, ads) are ongoing projects with a new cycle each month.</p>
+        </div>
+        <div class="acts"><div class="seg-tg"><span class="on">Board</span><span>List</span></div><span class="btn solid lg"><i data-i="plus"></i>New project</span></div>
+      </div>
+
+      <div class="band3">
+        <div class="st2 lead"><small>Active</small><b>9 projects</b><span>6 one-time · 3 monthly</span></div>
+        <div class="st2 warn"><small>Waiting on clients</small><b>2</b><span>Inputs missing</span></div>
+        <div class="st2"><small>Milestones this week</small><b>3</b><span>1 is at risk</span></div>
+        <div class="st2"><small>Ready to close</small><b>1</b><span>Lakshmi Silks reels</span></div>
+        <div class="tip"><div class="ai-h"><i data-i="spark"></i>2 projects need you<span class="r">AI · from this board</span></div><span>Aroma Bakes has not sent logo files for 5 days: remind, or start with a placeholder? <a href="project-handover.html">Lakshmi Silks</a> is delivered and ready to close.</span></div>
+      </div>
+
+      <div class="filters3">
+        <div class="views"><span class="on">All <em class="count">13</em></span><span>One-time <em class="count">9</em></span><span>Monthly <em class="count">4</em></span><span>Mine</span><span>On hold <em class="count">1</em></span></div>
+        <div class="r"><span class="fsel"><i data-i="users"></i>Client: all</span><span class="fsel"><i data-i="briefcase"></i>Service: all</span><span class="fsel"><i data-i="user"></i>Owner: all</span></div>
+      </div>
+
+      <div class="lanes">
+        <!-- Waiting on client -->
+        <div class="lane" style="--c:#E2A93B">
+          <div class="ln-h"><b>Waiting on client</b><em class="count">2</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">2 checklists</span><small>inputs missing</small></div>
+          <div class="ln-bar"><i style="width:22%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#B7791F">AB</span><div class="nm"><b>Website</b><span class="fr">Aroma Bakes · 5 pages + menu</span></div></div>
+              <div class="prog"><div class="pl"><span>Client inputs</span><b>2 of 4</b></div><span class="meter"><i style="width:50%"></i></span></div>
+              <div class="dl-foot late2"><i data-i="clock"></i><span class="ft">Logo files missing 5 days · reminder sent</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#1D4ED8">AK</span></span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#2F5E8C">GV</span><div class="nm"><b>Social media</b><span class="fr">Green Valley School · monthly</span></div><span class="mon"><i data-i="repeat"></i>Oct</span></div>
+              <div class="prog"><div class="pl"><span>October posts</span><b>0 of 12</b></div><span class="meter"><i style="width:3%"></i></span></div>
+              <div class="dl-foot today"><i data-i="flag"></i><span class="ft">Blocked: waiting for event photos · reminders off</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#0F766E">KR</span></span></div>
+            </div>
+            <a class="lnote" href="client-inputs.html" style="text-decoration:none">Work waits here until the client's <b>inputs checklist</b> is complete. Reminders to the client are on or off per client.</a>
+          </div>
+        </div>
+
+        <!-- Planning -->
+        <div class="lane" style="--c:#94A3B8">
+          <div class="ln-h"><b>Planning</b><em class="count">2</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">2 kick-offs</span><small>won in Sep</small></div>
+          <div class="ln-bar"><i style="width:10%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#EA580C">SC</span><div class="nm"><b>Website and booking</b><span class="fr">Sunrise Clinic · from the won deal</span></div></div>
+              <div class="stg2"><i class="n"></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="tags"><span>Discovery</span><span>Agreement sent to sign</span></div>
+              <div class="dl-foot"><i data-i="cal"></i><span class="ft">Kick-off call 5 Oct, 11:00 am</span><span class="av-stack"><span class="lg-av" style="--av:#1D4ED8">AK</span><span class="lg-av" style="--av:#0369A1">PN</span></span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#15803D">GO</span><div class="nm"><b>Website refresh</b><span class="fr">Greenleaf Organics · ₹80,000</span></div></div>
+              <div class="stg2"><i class="n"></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="dl-foot today"><i data-i="doc"></i><span class="ft">Agreement sent 25 Sep · advance invoice when signed</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span></span></div>
+            </div>
+            <div class="lnote">A won deal opens its project by itself, with the stages, checklists and approval steps from the service's template. Each can be changed for this client.</div>
+          </div>
+        </div>
+
+        <!-- In progress -->
+        <div class="lane" style="--c:#38BDF8">
+          <div class="ln-h"><b>In progress</b><em class="count">4</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">2 one-time</span><small>2 monthly</small></div>
+          <div class="ln-bar"><i style="width:45%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#047857">KH</span><div class="nm"><a href="project.html"><b>Website redesign</b></a><span class="fr">Kaveri Hospitals · ₹1,20,000</span></div></div>
+              <div class="stg2"><i class="d"></i><i class="d"></i><i class="n"></i><i></i><i></i><i></i><i></i></div>
+              <div class="tags"><span>Design · stage 3 of 7</span><span>Launch 5 Nov</span></div>
+              <div class="dl-foot today"><i data-i="clock"></i><span class="ft">Homepage review today 12:30 pm</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#1D4ED8">AK</span><span class="lg-av" style="--av:#7C3AED">RM</span></span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#A16207">RC</span><div class="nm"><b>Social + ads launch</b><span class="fr">Royal Caterers · ₹70,000</span></div></div>
+              <div class="prog"><div class="pl"><span>Launch posts</span><b>8 of 12</b></div><span class="meter"><i style="width:67%"></i></span></div>
+              <div class="dl-foot"><i data-i="bolt"></i><span class="ft">Meta ads live since 28 Sep</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#334155">SJ</span></span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#1D4ED8">VM</span><div class="nm"><b>Ads management</b><span class="fr">Velocity Motors · monthly</span></div><span class="mon"><i data-i="repeat"></i>Oct</span></div>
+              <div class="prog"><div class="pl"><span>October tasks</span><b>3 of 9</b></div><span class="meter"><i style="width:33%"></i></span></div>
+              <div class="dl-foot"><i data-i="file"></i><span class="ft">Report due 5 Nov</span><span class="av-stack"><span class="lg-av" style="--av:#0F766E">KR</span></span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#6D28D9">ML</span><div class="nm"><b>Social media</b><span class="fr">Meridian Logistics · monthly</span></div><span class="mon"><i data-i="repeat"></i>Oct</span></div>
+              <div class="prog"><div class="pl"><span>October posts</span><b>6 of 16</b></div><span class="meter"><i style="width:38%"></i></span></div>
+              <div class="dl-foot"><i data-i="file"></i><span class="ft">Report due 5 Nov</span><span class="av-stack"><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#0F766E">KR</span></span></div>
+            </div>
+          </div>
+          <div class="more3"><i data-i="down"></i>1 more card: scroll this column</div>
+        </div>
+
+        <!-- Client review -->
+        <div class="lane" style="--c:#8B5CF6">
+          <div class="ln-h"><b>Client review</b><em class="count">1</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">3 files</span><small>sent for approval</small></div>
+          <div class="ln-bar"><i style="width:12%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#047857">KH</span><div class="nm"><b>Doctor intro videos</b><span class="fr">Kaveri Hospitals · 6 videos</span></div></div>
+              <div class="prog"><div class="pl"><span>Approved</span><b>0 of 3 sent</b></div><span class="meter"><i style="width:4%"></i></span></div>
+              <div class="dl-foot"><i data-i="eye"></i><span class="ft">Sent to Dr. Rao 29 Sep · opened twice</span><span class="av-stack"><span class="lg-av" style="--av:#7C3AED">RM</span></span></div>
+            </div>
+            <div class="lnote">Clients approve or ask for changes in their portal. Each "changes" answer counts as a revision round for that client.</div>
+          </div>
+        </div>
+
+        <!-- Done -->
+        <div class="lane won" style="--c:#12A15E">
+          <div class="ln-h"><b>Done</b><em class="count">3</em><span class="won-r" style="margin-left:auto"><i data-i="check"></i>Last 60 days</span></div>
+          <div class="ln-v"><span class="serif">1 to close</span><small>2 closed</small></div>
+          <div class="ln-bar"><i style="width:100%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#A21CAF">LS</span><div class="nm"><b>Instagram reels package</b><span class="fr">Lakshmi Silks · 12 reels</span></div></div>
+              <div class="prog"><div class="pl"><span>Delivered</span><b>12 of 12</b></div><span class="meter"><i style="width:100%"></i></span></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">Delivered 30 Sep</span><a class="btn solid" href="project-handover.html" style="height:26px;padding:0 10px;font-size:11.5px">Close</a></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#6D28D9">BM</span><div class="nm"><b>Landing page</b><span class="fr">Bright Minds Tuition</span></div></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">Closed 2 Sep · testimonial received</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#9F1239">AT</span><div class="nm"><a href="service-sold.html"><b>Website · shop</b></a><span class="fr">Anbu Textiles</span></div></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">Closed 28 Aug · free care till 27 Nov</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Agreements</title>
+<!-- Batch 5 · SCR-052 Agreements: list and detail with key terms, signature status, versions and amendments; either the accepted proposal is the agreement or a separate agreement is made from a template and signed after acceptance; auto-renewing agreements remind before the notice deadline (CON-002, CON-003, CON-015, CON-016, D-062, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .split{grid-template-columns:360px 1fr;gap:14px;flex:1;min-height:0;align-items:stretch}
+  .lst{padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px;min-height:0}
+  .lst .views{padding:0 2px 4px}
+  .lst .views{flex-wrap:nowrap;gap:4px}
+  .lst .views span{height:28px;padding:0 9px;font-size:12px}
+  .ag{display:flex;gap:10px;align-items:flex-start;padding:10px 10px;border-radius:14px;text-decoration:none;color:inherit;border:1px solid transparent}
+  .ag.on{background:var(--active-bg);border-color:color-mix(in srgb,var(--ink) 10%,transparent)}
+  .ag .lg-av{width:30px;height:30px;font-size:10px}
+  .ag b{display:block;font-weight:700;font-size:13px}
+  .ag small{display:block;font-size:11.5px;color:var(--muted)}
+  .ag .chip{margin-top:5px}
+  .ag .vv{margin-left:auto;font-size:11px;font-weight:800;color:var(--muted);white-space:nowrap}
+  .det{display:flex;flex-direction:column;gap:12px;min-height:0}
+  .dh2{display:flex;gap:14px;align-items:center;padding:16px 20px}
+  .dh2 h2{font-size:24px}
+  .dh2 .sub4{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:12.5px;color:var(--muted)}
+  .dh2 .acts{margin-left:auto;display:flex;gap:8px}
+  .terms2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 20px 16px}
+  .terms2 > div{padding:9px 12px;border-radius:12px;background:var(--card-2)}
+  .terms2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .terms2 b{font-weight:700;font-size:13px;display:block}
+  .terms2 span{font-size:11.5px;color:var(--muted)}
+  .terms2 .warn{background:var(--amber-bg)}
+  .terms2 .warn b,.terms2 .warn span{color:var(--amber)}
+  .two3{display:grid;grid-template-columns:1fr 1.2fr;gap:12px;flex:1;min-height:0}
+  .card .ch{padding:12px 18px 6px}
+  .card .ch h2{font-size:18px}
+  .cb5{padding:0 18px 14px}
+  .sigr{display:flex;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .sigr:first-of-type{border-top:0}
+  .sigr .ok2{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--green-bg);color:var(--green);flex:none}
+  .sigr .ok2 svg{width:14px;height:14px;stroke-width:2}
+  .sigr b{display:block;font-weight:700;font-size:13px}
+  .sigr small{font-size:11.5px;color:var(--muted)}
+  .how{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .vers{position:relative;display:flex;flex-direction:column;gap:0}
+  .ver{display:grid;grid-template-columns:18px 1fr auto;gap:10px;padding:9px 0;position:relative}
+  .ver::before{content:"";position:absolute;left:8px;top:24px;bottom:-9px;width:2px;background:var(--line)}
+  .ver:last-child::before{display:none}
+  .ver i.dt2{width:18px;height:18px;border-radius:50%;border:2px solid var(--edge);background:var(--card);margin-top:2px;position:relative;z-index:1}
+  .ver i.dt2.cur{border:0;background:var(--on);box-shadow:0 0 0 4px var(--on-ring)}
+  .ver b{font-weight:700;font-size:13px}
+  .ver small{display:block;font-size:11.5px;color:var(--muted)}
+  .ver .acts2{display:flex;gap:6px;align-items:flex-start}
+  .ver .acts2 .btn{height:28px;padding:0 10px;font-size:12px}
+  .lnk2{display:flex;gap:8px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="agreements">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Agreements</h1>
+          <p>Each client's terms. Either the accepted proposal is the agreement, or a separate agreement is made from a template and signed after it. Every change is a new version; earlier ones are kept.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="doc"></i>Templates</span><span class="btn solid lg"><i data-i="plus"></i>New agreement</span></div>
+      </div>
+
+      <div class="split">
+        <!-- List -->
+        <div class="card lst">
+          <div class="views"><span class="on">All <em class="count">38</em></span><span>To sign <em class="count">1</em></span><span>Renews <em class="count">6</em></span><span>Ended <em class="count">4</em></span></div>
+          <a class="ag on" href="agreements.html"><span class="lg-av" style="--av:#1D4ED8">VM</span><div><b>Velocity Motors</b><small>Ads management · separate agreement</small><span class="chip c-green">Signed by both</span></div><span class="vv">v2</span></a>
+          <a class="ag" href="agreements.html"><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Meridian Logistics</b><small>Social media · auto-renews 18 Nov</small><span class="chip c-amber">Notice by 18 Oct</span></div><span class="vv">v1</span></a>
+          <a class="ag" href="agreements.html"><span class="lg-av" style="--av:#EA580C">SC</span><div><b>Sunrise Clinic</b><small>Website and booking · sent 29 Sep</small><span class="chip c-blue">Waiting to sign</span></div><span class="vv">v1</span></a>
+          <a class="ag" href="agreements.html"><span class="lg-av" style="--av:#A16207">RC</span><div><b>Royal Caterers</b><small>Social media and ads · until 28 Sep 2027</small><span class="chip c-green">Signed 27 Sep</span></div><span class="vv">v1</span></a>
+          <a class="ag" href="service-sold.html"><span class="lg-av" style="--av:#9F1239">AT</span><div><b>Anbu Textiles</b><small>Website · the proposal is the agreement</small><span class="chip c-green">Accepted 2 Jun</span></div><span class="vv">v1</span></a>
+          <a class="ag" href="agreements.html"><span class="lg-av" style="--av:#0E7490">SD</span><div><b>Sharma Dental Care</b><small>Annual maintenance · signed copy uploaded</small><span class="chip c-green">Signed</span></div><span class="vv">v3</span></a>
+          <a class="ag" href="agreements.html"><span class="lg-av" style="--av:#7C2D12">CR</span><div><b>Coastal Realty</b><small>SEO retainer · not renewed</small><span class="chip c-ink">Ended 15 Sep</span></div><span class="vv">v2</span></a>
+        </div>
+
+        <!-- Detail -->
+        <div class="det">
+          <div class="card">
+            <div class="dh2">
+              <span class="lg-av" style="--av:#1D4ED8;width:46px;height:46px;font-size:13px">VM</span>
+              <div>
+                <h2 class="serif">Ads management agreement</h2>
+                <div class="sub4"><span class="chip c-green">Signed by both</span><span class="chip c-ink">Version 2</span><span>Velocity Motors · AGR/VM/02 · in force from 1 Jul 2026</span></div>
+              </div>
+              <div class="acts"><a class="btn" href="docs-pdf.html#agreement" style="text-decoration:none"><i data-i="file"></i>PDF</a><span class="btn"><i data-i="edit"></i>Amend</span><a class="btn" href="services-sold.html" style="text-decoration:none"><i data-i="briefcase"></i>Service</a></div>
+            </div>
+            <div class="terms2">
+              <div><small>Fee</small><b>₹15,000 a month</b><span>Was ₹12,000 in version 1</span></div>
+              <div><small>Billing</small><b>1st of the month, in advance</b><span>Sends itself · Oct sent today</span></div>
+              <div><small>Ad spend</small><b>Client pays the platforms</b><span>No fee on the spend</span></div>
+              <div><small>Term</small><b>1 Jan – 31 Dec 2026</b><span>Then renews by itself for 12 months</span></div>
+              <div class="warn"><small>Notice deadline</small><b>1 Dec 2026 · 30 days</b><span>You are reminded on 1, 16 and 24 Nov</span></div>
+              <div><small>Support and changes</small><b>Reply 24 h · fix 3 days</b><span>Changes: decide each time</span></div>
+            </div>
+          </div>
+
+          <div class="two3">
+            <div class="card">
+              <div class="ch"><h2 class="serif">Signature</h2><span class="chip c-green" style="margin-left:auto">Complete</span></div>
+              <div class="cb5">
+                <div class="sigr"><span class="ok2"><i data-i="check"></i></span><div><b>Ravi · Velocity Motors</b><small>Signed online 28 Jun 2026, 6:42 pm · code sent to the client's phone</small></div></div>
+                <div class="sigr"><span class="ok2"><i data-i="check"></i></span><div><b>Owner · YouTooPreneur</b><small>Signed online 29 Jun 2026, 10:15 am</small></div></div>
+                <span class="manual" style="display:block;margin-top:8px">Ways to accept: the Accept button, an online signature, or marked by hand with the signed copy as proof.</span>
+                <div class="how"><span class="tg"><span>Accept button</span></span><span class="tg"><span>Online signature</span></span><span class="tg"><span>Signed copy</span></span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ch"><h2 class="serif">Versions</h2><span class="count">2</span><span class="ai-btn sm" style="margin-left:auto" data-ai="Compare versions: a short list of what changed between version 1 and version 2 (Google Ads added, fee ₹12,000 → ₹15,000), with the clause numbers. Read only."><i data-i="spark"></i>Compare</span></div>
+              <div class="cb5">
+                <div class="vers">
+                  <div class="ver"><i class="dt2 cur"></i><div><b>Version 2 · amendment 1</b><small>From 1 Jul 2026 · Google Ads added; fee ₹12,000 → ₹15,000</small><small>Signed 28–29 Jun · current</small></div><div class="acts2"><a class="btn" href="docs-pdf.html#agreement" style="text-decoration:none">PDF</a></div></div>
+                  <div class="ver"><i class="dt2"></i><div><b>Version 1 · original</b><small>1 Jan 2026 · Meta only · ₹12,000 a month</small><small>Signed 30 Dec 2025 · kept, read only</small></div><div class="acts2"><span class="btn">PDF</span></div></div>
+                </div>
+                <div class="lnk2" style="margin-top:10px"><a class="src" href="services-sold.html"><i data-i="briefcase"></i>Ads management · ₹15,000 a month</a><a class="src" href="invoices.html"><i data-i="doc"></i>YTP/26-27/0045</a><a class="src" href="leads.html"><i data-i="users"></i>Velocity Motors</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

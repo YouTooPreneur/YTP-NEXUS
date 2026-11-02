@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client results</title>
+<!-- Batch 8 · SCR-067 Client results (Velocity Motors · ads): results per client, service and month (spend, leads, cost per lead against the target, test drives, cars sold as reported by the client), the platform split, who entered each month and from where; typed in until the ad, analytics and social doors are connected in step 3.9 (PRJ-014, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:32px}
+  .pg-head p{margin-top:4px}
+  .split{grid-template-columns:270px minmax(0,1fr);gap:14px;align-items:start}
+  .cl3{padding:10px;display:flex;flex-direction:column;gap:2px}
+  .cl3 .list-item{padding:9px 10px;gap:10px;font-size:13px}
+  .cl3 .list-item b{display:block;font-weight:700;font-size:13px}
+  .cl3 .list-item small{display:block;font-size:11.5px;color:var(--muted);font-weight:500}
+  .cl3 .list-item .lg-av{width:30px;height:30px;font-size:10px}
+  .cl3 .list-item .n{font-weight:700}
+  .det{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .dh2{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .dh2 h2{font-size:22px}
+  .dh2 .tg{margin-left:4px}
+  .dh2 .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .k4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .k4 .card{padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+  .k4 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k4 b{font-family:Sora,sans-serif;font-weight:600;font-size:24px}
+  .k4 span{font-size:11.5px;color:var(--muted)}
+  .k4 .ok2{color:var(--green);font-weight:700}
+  .two5{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:12px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16px}
+  .cb8{padding:6px 16px 14px}
+  .lb{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:end;height:150px;border-bottom:1px solid var(--line);padding:0 26px;position:relative}
+  .lb div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%}
+  .lb i{display:block;width:100%;max-width:56px;border-radius:9px 9px 3px 3px;background:color-mix(in srgb,var(--on) 38%,var(--card-2))}
+  .lb .cur i{background:var(--on)}
+  .lb small{font-size:12px;font-weight:700}
+  .lbx{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding:6px 26px 0;text-align:center;font-size:11.5px;color:var(--muted);font-weight:600}
+  .lbx b{display:block;color:var(--ink);font-size:12px}
+  .lbx b.g{color:var(--green)}
+  .tline{position:absolute;left:0;right:0;border-top:1.5px dashed #E2A93B}
+  .tline span{position:absolute;right:0;top:-18px;font-size:10.5px;font-weight:700;color:var(--amber);background:var(--card);padding:0 4px}
+  .pl{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .pl:first-of-type{border-top:0}
+  .pl b{font-weight:700}
+  .pl .meter{height:8px}
+  .pl .r{text-align:right;font-weight:700}
+  .pl .r small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+  .tbl td,.tbl th{padding-top:7px;padding-bottom:7px;font-size:12.5px}
+  .tbl small{display:block;font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Reports" data-sec="reports" data-sec-on="results">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Client results</h1>
+          <p>Results for each client, service and month. Typed in for now; filled in by themselves once the ad, analytics and social accounts are connected.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Summary for the client: a short, plain note on this month's results and one suggestion, for the monthly report. Arrives as a draft; a person checks it."><i data-i="spark"></i>Summary for the client</span><span class="btn solid lg"><i data-i="plus"></i>Enter results</span></div>
+      </div>
+      <div class="split">
+        <div class="card cl3">
+          <a class="list-item on" href="client-results.html"><span class="lg-av" style="--av:#1D4ED8">VM</span><div><b>Velocity Motors</b><small>Ads · Meta + Google</small></div><span class="n">Sep</span></a>
+          <a class="list-item" href="client-results.html"><span class="lg-av" style="--av:#A21CAF">LS</span><div><b>Lakshmi Silks</b><small>Ads · Meta</small></div><span class="n">Sep</span></a>
+          <a class="list-item" href="client-results.html"><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Meridian Logistics</b><small>Social · LinkedIn ads</small></div><span class="n">Sep</span></a>
+          <a class="list-item" href="client-results.html"><span class="lg-av" style="--av:#047857">KH</span><div><b>Kaveri Hospitals</b><small>Website · visits, calls</small></div><span class="n">Sep</span></a>
+          <a class="list-item" href="client-results.html"><span class="lg-av" style="--av:#2F5E8C">GV</span><div><b>Green Valley School</b><small>Social · reach, followers</small></div><span class="n" style="color:var(--amber)">Due</span></a>
+          <a class="list-item" href="client-results.html"><span class="lg-av" style="--av:#7C2D12">CR</span><div><b>Coastal Realty</b><small>SEO · on hold</small></div><span class="n" style="color:var(--muted)">Aug</span></a>
+          <span class="manual" style="padding:8px 10px 2px">What each service measures is a setting: leads and cost per lead for ads, rankings and visits for SEO, reach and followers for social.</span>
+        </div>
+        <div class="det">
+          <div class="dh2"><span class="lg-av" style="--av:#1D4ED8">VM</span><h2 class="serif">Velocity Motors · ads</h2><div class="tg"><span>Meta + Google</span><span>Client's own ad accounts</span></div><div class="r"><div class="pill-sel"><span>Month</span><span class="on">3 months</span><span>Year</span></div></div></div>
+          <div class="k4">
+            <div class="card"><small>Spend · September</small><b>₹46,000</b><span>Paid by the client · ↑ 5%</span></div>
+            <div class="card"><small>Leads</small><b>131</b><span><span class="ok2">↑ 21%</span> on August</span></div>
+            <div class="card"><small>Cost per lead</small><b>₹351</b><span><span class="ok2">Within target</span> · under ₹400</span></div>
+            <div class="card"><small>Test drives booked</small><b>29</b><span>7 cars sold, from the client</span></div>
+          </div>
+          <div class="two5">
+            <div class="card">
+              <div class="ch"><h2 class="serif">Leads and cost per lead</h2></div>
+              <div class="cb8">
+                <div class="lb">
+                  <div><small>92</small><i style="height:63%"></i></div>
+                  <div><small>108</small><i style="height:74%"></i></div>
+                  <div class="cur"><small>131</small><i style="height:90%"></i></div>
+                </div>
+                <div class="lbx"><span>July<b>₹435 a lead</b></span><span>August<b>₹407 a lead</b></span><span>September<b class="g">₹351 a lead</b></span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ch"><h2 class="serif">September by platform</h2></div>
+              <div class="cb8">
+                <div class="pl"><b>Meta</b><span class="meter"><i style="width:75%"></i></span><span class="r">98 leads<small>₹31,200 · ₹318 each</small></span></div>
+                <div class="pl"><b>Google</b><span class="meter"><i style="width:25%;background:#94A3B8"></i></span><span class="r">33 leads<small>₹14,800 · ₹448 each</small></span></div>
+                <div class="ai-card" style="margin-top:8px;padding:10px 12px">
+                  <div class="ai-h"><i data-i="spark"></i>Worth trying</div>
+                  <span style="font-size:12px;line-height:1.5">Google costs ₹130 more per lead. Moving ₹5,000 from Google to Meta in October could bring about 5 more leads for the same money. A suggestion for the client's report.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:6px 16px 10px">
+            <table class="tbl">
+              <thead><tr><th>Month</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">Cost per lead</th><th class="num">Test drives</th><th class="num">Cars sold</th><th>Entered</th></tr></thead>
+              <tbody>
+                <tr><td><b>September</b></td><td class="num">₹46,000</td><td class="num">131</td><td class="num" style="color:var(--green)">₹351</td><td class="num">29</td><td class="num">7</td><td class="sm">Karthik · 1 Oct · from the Meta and Google invoices<small>Cars sold: Ravi on WhatsApp, 1 Oct</small></td></tr>
+                <tr><td><b>August</b></td><td class="num">₹44,000</td><td class="num">108</td><td class="num">₹407</td><td class="num">22</td><td class="num">5</td><td class="sm">Karthik · 2 Sep</td></tr>
+                <tr><td><b>July</b></td><td class="num">₹40,000</td><td class="num">92</td><td class="num" style="color:var(--amber)">₹435</td><td class="num">18</td><td class="num">4</td><td class="sm">Karthik · 3 Aug</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

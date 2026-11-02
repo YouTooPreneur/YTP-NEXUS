@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Quick add lead</title>
+<!-- Batch 3 · SCR-031 Quick add lead: name, phone, service, source in about 10 seconds; AI fills it from a pasted message, a card photo or voice; duplicate check (CRM-006, CRM-008, AI-009, AI-010) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .app{position:relative}
+  .ghostpage{display:flex;flex-direction:column;gap:16px;padding-top:26px}
+  .ghostpage i{display:block;border-radius:var(--radius);background:var(--card);border:1px solid var(--line-soft)}
+  .dim{position:absolute;inset:0;background:rgba(9,22,19,.42);backdrop-filter:blur(2px);display:grid;place-items:center}
+  .dlg{width:640px;background:var(--card);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.28);padding:24px 26px;display:flex;flex-direction:column;gap:14px}
+  .dlg-h{display:flex;align-items:center;gap:12px}
+  .dlg-h h2{font-size:24px}
+  .dlg-h .x{margin-left:auto}
+  .fill{display:flex;gap:8px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px}
+  .fill .t{flex:1;color:var(--muted)}
+  .fill .t b{color:var(--ink)}
+  .afill{position:relative}
+  .afill .input{border-color:var(--ai-line);background:linear-gradient(135deg,rgba(3,255,150,.05),transparent)}
+  .afill::after{content:"✦ filled";position:absolute;right:10px;top:31px;font-size:10.5px;font-weight:700;color:var(--ai-ink)}
+  .afill.arrowed::after{right:36px}
+  .svcs{display:flex;gap:6px;flex-wrap:wrap}
+  .svcs span{font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .svcs span.on{background:var(--primary-bg);border-color:var(--primary-bg);color:var(--primary-ink)}
+  .dup{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--amber-bg);color:var(--amber);font-size:12.5px;font-weight:600}
+  .dup svg{width:16px;height:16px}
+  .dup .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <div class="ghostpage"><i style="height:70px;width:45%"></i><i style="height:40px;width:70%"></i><i style="height:600px"></i></div>
+  </main>
+  <div class="dim">
+    <div class="dlg" role="dialog" aria-label="Quick add lead">
+      <div class="dlg-h"><h2 class="serif">New lead</h2><span class="sm" style="font-size:12.5px">4 fields, about 10 seconds</span><a class="btn x" href="leads.html" style="text-decoration:none" title="Close"><i data-i="x"></i></a></div>
+      <div class="fill"><i data-i="spark" style="color:var(--ai-ink)"></i><span class="t"><b>Filled from a pasted WhatsApp message:</b> "Hi, I'm Meera from Lotus Yoga Studio, need Instagram help…" Check before saving.</span><span class="btn">Undo</span><span class="mic" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span></div>
+      <div class="fields">
+        <div class="field afill"><label>Name or business</label><div class="input">Meera · Lotus Yoga Studio</div></div>
+        <div class="field afill"><label>Phone</label><div class="input">+91 98410 55210</div></div>
+      </div>
+      <div class="field"><label>Interested in</label><div class="svcs"><span class="on">Social media</span><span>Website</span><span>SEO</span><span>Ads</span><span>Video</span><span>Not sure · needs diagnosis</span></div></div>
+      <div class="fields">
+        <div class="field afill arrowed"><label>Source</label><div class="input">WhatsApp<span class="end"><i data-i="down"></i></span></div></div>
+        <div class="field"><label>Owner (by rules)</label><div class="input">Divya · social media leads<span class="end"><i data-i="down"></i></span></div></div>
+      </div>
+      <div class="dup"><i data-i="users2"></i>This number already belongs to "Lotus Yoga Studio" (lead, 8 days old).<a class="btn r" href="merge.html" style="text-decoration:none">Open it instead</a></div>
+      <div style="display:flex;gap:10px;align-items:center"><span class="btn solid lg">Save lead</span><span class="btn lg">Save and add details</span><span style="flex:1"></span><span class="manual">Type it, paste a message, snap a visiting card, or speak.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

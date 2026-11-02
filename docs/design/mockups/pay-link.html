@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice YTP/26-27/0042 · YouTooPreneur</title>
+<!-- Batch 4 · SCR-230 Secret-link document (public, no login): the client views and pays one invoice by UPI QR, Razorpay or bank transfer, downloads the PDF, or says they already paid. The same page type shows a proposal with Accept in batch 7 (FIN-001, FIN-008, CRM-016, NFR-022) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:linear-gradient(180deg,#1C3D36 0 260px,var(--bg) 260px);min-height:100vh}
+  :root[data-look="N"] body{background:linear-gradient(180deg,#10273A 0 260px,var(--bg) 260px)}
+  .wrapp{max-width:980px;margin:0 auto;padding:22px 16px 40px;display:flex;flex-direction:column;gap:16px}
+  .topb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;color:#fff}
+  .topb .mark{width:28px;height:31px;color:#03FF96}
+  .topb b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .topb .lang{margin-left:auto;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
+  .topb .lang span{padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.75)}
+  .topb .lang span.on{background:#fff;color:#1C3D36}
+  .hello{color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:8px 0 4px}
+  .hello h1{font-family:Sora,sans-serif;font-weight:600;font-size:clamp(24px,4vw,32px);line-height:1.15}
+  .hello p{color:rgba(255,255,255,.78);font-size:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  @media (max-width:760px){.grid2{grid-template-columns:1fr}}
+  .pbox{background:var(--card);border-radius:20px;box-shadow:0 10px 34px rgba(16,39,58,.12);padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+  .amt5{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .amt5 b{font-family:Sora,sans-serif;font-weight:600;font-size:36px}
+  .lines2{display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+  .lines2 div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft)}
+  .lines2 div:first-child{border-top:0}
+  .warn2{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--amber-bg);color:var(--amber);font-size:13px;font-weight:600}
+  .warn2 svg{width:18px;height:18px;flex:none}
+  .opt{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;border:1px solid var(--line)}
+  .opt .h{display:flex;align-items:center;gap:8px;font-weight:700}
+  .opt .h .chip{margin-left:auto}
+  .upi{display:flex;gap:14px;align-items:center}
+  .upi .upi-qr{width:112px;height:112px;flex:none;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+  .upi .id{font-family:ui-monospace,Consolas,monospace;font-size:13px;font-weight:700}
+  .bigbtn{height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14.5px;text-decoration:none}
+  .bigbtn.solid{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigbtn.line{border:1px solid var(--line);color:var(--ink)}
+  .bank2{display:grid;grid-template-columns:auto 1fr auto;gap:6px 12px;font-size:13px;align-items:center}
+  .bank2 span{color:var(--muted)}
+  .bank2 b{font-weight:700;font-family:ui-monospace,Consolas,monospace}
+  .bank2 .btn{height:26px;padding:0 8px}
+  .foot2{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Telugu:wght@600&display=swap" rel="stylesheet">
+<style>.lang{flex-wrap:wrap;justify-content:flex-end}</style>
+</head>
+<body>
+<div class="wrapp">
+  <div class="topb"><span class="mark"></span><b>YouTooPreneur</b><div class="lang"><span class="on">English</span><span>தமிழ்</span></div></div>
+  <div class="hello"><h1>Hello Mr. Prakash, here is your invoice</h1><p>Greenleaf Organics · invoice YTP/26-27/0042 · issued 22 Sep 2026</p></div>
+  <div class="grid2">
+    <div class="pbox">
+      <div class="amt5"><span class="sm" style="font-weight:600">Amount due now</span><b>₹1,416</b></div>
+      <div class="warn2"><i data-i="globe"></i>greenleaforganics.com expires on 8 October. Pay before then so your website and email keep working.</div>
+      <div class="lines2"><div><span>Domain renewal · greenleaforganics.com<br><small class="sm">8 Oct 2026 – 8 Oct 2027</small></span><b>₹1,416</b></div><div><span>Total (not registered under GST yet)</span><b>₹1,416</b></div></div>
+      <a class="bigbtn line" href="docs-pdf.html#invoice"><i data-i="download"></i>Download the invoice (PDF)</a>
+      <span class="bigbtn line"><i data-i="upload"></i>Already paid? Send us the proof</span>
+    </div>
+    <div class="pbox">
+      <div class="opt">
+        <div class="h"><i data-i="phone"></i>Pay with any UPI app<span class="chip c-green">No fee</span></div>
+        <div class="upi"><span class="upi-qr" data-qr="ytp-0042-1416"></span><div style="display:flex;flex-direction:column;gap:6px"><span class="sm" style="font-size:12.5px">Scan with GPay, PhonePe, Paytm or your bank app</span><span class="id">ytp@hdfcbank</span><span class="sm" style="font-size:12px">Amount ₹1,416 · note YTP/26-27/0042</span></div></div>
+      </div>
+      <div class="opt">
+        <div class="h"><i data-i="wallet"></i>Pay online<span class="chip c-amber">Test mode</span></div>
+        <span class="bigbtn solid">Pay ₹1,416 securely · cards, net banking, UPI</span>
+        <span class="sm" style="font-size:12px">Through Razorpay. You get a receipt by email and WhatsApp straight away.</span>
+      </div>
+      <div class="opt">
+        <div class="h"><i data-i="building"></i>Bank transfer</div>
+        <div class="bank2"><span>Name</span><b>YouTooPreneur</b><span></span><span>Account</span><b>50200012344321</b><span class="btn"><i data-i="copy"></i></span><span>IFSC</span><b>HDFC0001234</b><span class="btn"><i data-i="copy"></i></span></div>
+      </div>
+    </div>
+  </div>
+  <p class="foot2">This secure link shows only this invoice and stops working on 31 Oct 2026.<br>Questions? WhatsApp us on +91 98400 00001 or write to accounts@youtoopreneur.com.</p>
+</div>
+</body>
+</html>

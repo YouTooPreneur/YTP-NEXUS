@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Files</title>
+<!-- Batch 2 · SCR-087 Files and client resources: folders per client, previews, versions, private links, logins as Vaultwarden links only; AI "find a file" (CORE-080 to CORE-084, INT-020, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}
+  .nav2{display:flex;flex-direction:column;gap:2px}
+  .nav2 .list-item{padding:9px 12px}
+  .nav2 .list-item svg{width:16px;height:16px;color:var(--muted)}
+  .nav2 .count{margin-left:auto}
+  .ft td{padding-top:10px;padding-bottom:10px}
+  .ft .nm{display:flex;align-items:center;gap:12px}
+  .ft .nm b{font-weight:700;display:block}
+  .ft .nm small{font-size:12px;color:var(--muted)}
+  .ver{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin-left:6px}
+  .askf{display:flex;align-items:center;gap:10px;height:40px;padding:0 6px 0 12px;border-radius:999px;border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--ai-a),var(--ai-b)) border-box;width:420px;color:var(--muted);font-weight:500}
+  .askf svg{width:15px;height:15px;color:var(--ai-ink)}
+  .askf .sp{flex:1}
+  .usage{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted);padding:12px 22px;border-top:1px solid var(--line-soft)}
+  .usage .meter{width:200px}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="client-profile.html">CRM</a><span>/</span><a href="client-profile.html">Sharma Dental Care</a><span>/</span><b style="color:var(--ink)">Files</b></div>
+          <h1 class="serif">Files and client resources</h1>
+          <p>Every file for Sharma Dental Care in one place. Files are private; links expire in minutes and every download is logged.</p>
+        </div>
+        <div class="acts"><div class="askf"><i data-i="spark"></i><span class="sp">Find a file… "the logo we sent in July"</span><span class="mic" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span></div><span class="btn solid lg"><i data-i="upload"></i>Upload</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="card" style="padding:12px 10px">
+          <div class="nav2">
+            <div class="sect" style="padding:4px 12px 6px">Folders</div>
+            <a class="list-item on"><i data-i="folder"></i>All files<em class="count">18</em></a>
+            <a class="list-item"><i data-i="image"></i>Brand assets<em class="count">6</em></a>
+            <a class="list-item"><i data-i="globe"></i>Website<em class="count">5</em></a>
+            <a class="list-item"><i data-i="camera"></i>Social media<em class="count">3</em></a>
+            <a class="list-item"><i data-i="doc"></i>Agreements<em class="count">2</em></a>
+            <a class="list-item"><i data-i="chart"></i>Reports<em class="count">2</em></a>
+            <div class="sect" style="padding:14px 12px 6px">Also</div>
+            <a class="list-item"><i data-i="key"></i>Logins (vault links)<em class="count">3</em></a>
+            <a class="list-item"><i data-i="cloud"></i>Google Drive folder</a>
+            <a class="list-item"><i data-i="trash"></i>Trash</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="padding:14px 22px 4px;display:flex;gap:10px;align-items:center"><div class="fsel"><span>Type</span>All<i data-i="down"></i></div><div class="fsel"><span>Added by</span>Anyone<i data-i="down"></i></div><div class="fsel"><span>Client can see</span>All<i data-i="down"></i></div><span style="flex:1"></span><span class="sm" style="font-size:12px">Files over 25 MB are added as a Google Drive link</span></div>
+          <div class="cb" style="padding-top:6px">
+            <table class="tbl ft">
+              <thead><tr><th>Name</th><th>Folder</th><th>Size</th><th>Added</th><th>Client can see</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div class="nm"><span class="ftype img">SVG</span><div><b>sharma-dental-logo.svg<span class="ver">v3</span></b><small>Earlier versions kept</small></div></div></td><td class="sm">Brand assets</td><td class="sm">48 KB</td><td class="sm">Divya · 12 Jul</td><td><i class="toggle on"></i></td><td class="r"><span class="btn"><i data-i="eye"></i>Preview</span></td></tr>
+                <tr><td><div class="nm"><span class="ftype fig">FIG</span><div><b>homepage-v2.fig</b><small>Design file</small></div></div></td><td class="sm">Website</td><td class="sm">6.4 MB</td><td class="sm">Divya · 2 Sep</td><td><i class="toggle"></i></td><td class="r"><span class="btn"><i data-i="download"></i>Get</span></td></tr>
+                <tr><td><div class="nm"><span class="ftype pdf">PDF</span><div><b>website-agreement-signed.pdf</b><small>Signed 1 Jul 2025</small></div></div></td><td class="sm">Agreements</td><td class="sm">320 KB</td><td class="sm">Owner · 1 Jul</td><td><i class="toggle on"></i></td><td class="r"><span class="btn"><i data-i="eye"></i>Preview</span></td></tr>
+                <tr><td><div class="nm"><span class="ftype pdf">PDF</span><div><b>seo-report-september.pdf</b><small>Monthly report</small></div></div></td><td class="sm">Reports</td><td class="sm">1.1 MB</td><td class="sm">Karthik · 30 Sep</td><td><i class="toggle on"></i></td><td class="r"><span class="btn"><i data-i="eye"></i>Preview</span></td></tr>
+                <tr><td><div class="nm"><span class="ftype doc"><i data-i="cloud"></i></span><div><b>clinic-video-raw (Google Drive)</b><small>Link · 2.3 GB on Drive</small></div></div></td><td class="sm">Social media</td><td class="sm">Link</td><td class="sm">Rahul · 18 Sep</td><td><i class="toggle"></i></td><td class="r"><span class="btn"><i data-i="link"></i>Open</span></td></tr>
+                <tr><td><div class="nm"><span class="ftype vlt"><i data-i="key"></i></span><div><b>Hosting control panel login</b><small>Vaultwarden link · no password in Nexus</small></div></div></td><td class="sm">Logins</td><td class="sm">—</td><td class="sm">Arun · 3 Jul</td><td class="sm">Never</td><td class="r"><span class="btn"><i data-i="lock"></i>Open in vault</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="usage"><i data-i="storage"></i>Sharma Dental Care uses 212 MB<span class="meter"><i style="width:22%"></i></span><a class="lk" href="storage.html" style="font-weight:600">Storage</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

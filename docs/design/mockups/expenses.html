@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Expenses and claims</title>
+<!-- Batch 4 · SCR-111 Expenses and claims: staff claims with receipts and approval, company expenses by category; AI reads the receipt photo (FIN-014, FIN-022, CORE-075, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:16px;align-items:start}
+  .ex td{padding-top:10px;padding-bottom:10px}
+  .ex .w b{display:block;font-weight:700}
+  .ex .w small{font-size:12px;color:var(--muted)}
+  .ex tr.on td{background:var(--active-bg)}
+  .rcpt{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:start}
+  .photo{height:180px;border-radius:12px;background:linear-gradient(160deg,#EDEAE3,#D9D4C8);padding:12px;display:flex;justify-content:center;align-items:center}
+  .slip{width:96px;background:#fff;border-radius:3px;box-shadow:0 6px 16px rgba(0,0,0,.15);transform:rotate(-4deg);padding:9px 8px;font-family:ui-monospace,Consolas,monospace;font-size:7px;line-height:1.5;color:#333;display:flex;flex-direction:column;gap:2px}
+  .slip b{font-size:9px}
+  .fl{position:relative}
+  .fl .input{border-color:var(--ai-line)}
+  .fl::after{content:"✦";position:absolute;right:10px;top:30px;font-size:11px;color:var(--ai-ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="expenses">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Expenses and claims</h1>
+          <p>Money spent for YTP. Staff claim back what they paid with a receipt; every claim goes to the Owner's approval inbox. Company expenses are recorded the same way, by category.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span><span class="btn solid lg"><i data-i="plus"></i>New claim</span></div>
+      </div>
+      <div class="views"><span class="on">All</span><span>Waiting for approval <em class="count">1</em></span><span>To pay back <em class="count">1</em></span><span>Company expenses</span><span>My claims</span></div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:6px">
+          <table class="tbl ex">
+            <thead><tr><th>Date</th><th>What</th><th>Category</th><th>Who</th><th class="num">Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr class="on"><td class="sm">30 Sep</td><td class="w"><b>Coimbatore client visit</b><small>Greenleaf Organics · train and 2 cabs · 3 bills</small></td><td class="sm">Travel</td><td><span class="av s">AK</span></td><td class="num">₹4,200</td><td><span class="chip c-amber">Waiting</span></td></tr>
+              <tr><td class="sm">1 Oct</td><td class="w"><b>Office rent, October</b><small>Paid by bank transfer</small></td><td class="sm">Rent</td><td class="sm">Company</td><td class="num">₹35,000</td><td><span class="chip c-green">Paid</span></td></tr>
+              <tr><td class="sm">28 Sep</td><td class="w"><b>Electricity, September</b><small>TNEB · paid by UPI</small></td><td class="sm">Utilities</td><td class="sm">Company</td><td class="num">₹4,320</td><td><span class="chip c-green">Paid</span></td></tr>
+              <tr><td class="sm">26 Sep</td><td class="w"><b>Printer ink and paper</b><small>Office supplies</small></td><td class="sm">Office</td><td><span class="av s">MV</span></td><td class="num">₹1,180</td><td><span class="chip c-green">Paid back 30 Sep</span></td></tr>
+              <tr><td class="sm">26 Sep</td><td class="w"><b>Lunch with a lead</b><small>Pearl Dental · Velachery</small></td><td class="sm">Client meeting</td><td><span class="av s">KR</span></td><td class="num">₹860</td><td><span class="chip c-blue">Approved · to pay back</span></td></tr>
+              <tr><td class="sm">30 Sep</td><td class="w"><b>Tea and snacks, September</b><small>Petty cash</small></td><td class="sm">Pantry</td><td class="sm">Company</td><td class="num">₹1,450</td><td><span class="chip c-green">Paid</span></td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="4">September and October so far</td><td class="num">₹47,010</td><td></td></tr></tfoot>
+          </table>
+        </div>
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Arun's claim</h2><span class="chip c-amber">Waiting for you</span></div>
+          <div class="rcpt">
+            <div class="photo"><div class="slip"><b>UBER</b><span>30 Sep 2026 · 11:42 am</span><span>Coimbatore Jn →</span><span>RS Puram</span><span>-----------</span><b>₹612.00</b><span>UPI · paid</span></div></div>
+            <div class="ai-card" style="padding:10px 12px;gap:6px"><div class="ai-h"><i data-i="spark"></i>Read from the 3 bills</div><div style="font-size:12.5px;line-height:1.55">Train Chennai–Coimbatore return ₹2,980 · Uber ₹612 · Uber ₹608. Total ₹4,200 matches the claim. All dated 30 Sep, the day of the Greenleaf visit.</div></div>
+          </div>
+          <div class="fields">
+            <div class="field fl"><label>Category</label><div class="input">Travel · client visit</div></div>
+            <div class="field fl"><label>Client</label><div class="input">Greenleaf Organics</div></div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="btn solid">Approve ₹4,200</span><span class="btn">Ask a question</span><span class="btn" style="color:var(--red)">Reject</span></div>
+          <p class="help">You approve every claim. Approved claims are paid back by bank transfer within 7 days (a setting).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

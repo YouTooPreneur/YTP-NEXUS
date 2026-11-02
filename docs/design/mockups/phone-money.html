@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone money</title>
+<!-- Batch 4 on a phone · SCR-230 client pays an invoice from the secret link, SCR-111 staff claim with a receipt photo (AI reads it), SCR-100 owner's money at a glance with approvals (CORE-113, FIN-007, FIN-014, FIN-028, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .cli{background:linear-gradient(180deg,#1C3D36 0 210px,var(--bg) 210px)}
+  :root[data-look="N"] .cli{background:linear-gradient(180deg,#10273A 0 210px,var(--bg) 210px)}
+  .cli .status{color:#fff}
+  .ch3{color:#fff;padding:6px 22px 0;display:flex;flex-direction:column;gap:4px}
+  .ch3 .brand{display:flex;align-items:center;gap:8px;font-family:Sora,sans-serif;font-weight:600;font-size:16px}
+  .ch3 .brand svg{width:22px;height:24px;color:#03FF96}
+  .ch3 small{color:rgba(255,255,255,.75)}
+  .ch3 b.amt{font-family:Sora,sans-serif;font-weight:600;font-size:34px}
+  .pbody{flex:1;padding:14px 18px 0;display:flex;flex-direction:column;gap:12px;min-height:0}
+  .pcard{background:var(--card);border-radius:18px;box-shadow:0 8px 24px rgba(16,39,58,.1);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .apps span{height:52px;border-radius:14px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:700}
+  .apps i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;color:#fff;font-size:10px;font-weight:800}
+  .big{height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14.5px}
+  .big.solid{background:var(--primary-bg);color:var(--primary-ink)}
+  .big.line{border:1px solid var(--line)}
+  .warn3{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--amber-bg);color:var(--amber);font-size:12.5px;font-weight:600}
+  .warn3 svg{width:16px;height:16px;flex:none}
+  .snap{height:150px;border-radius:16px;background:linear-gradient(160deg,#3a3a3a,#1f1f1f);display:grid;place-items:center;position:relative;overflow:hidden}
+  .snap .slip{width:110px;background:#fff;border-radius:3px;transform:rotate(-5deg);padding:8px;font-family:ui-monospace,Consolas,monospace;font-size:7.5px;line-height:1.5;color:#333;display:flex;flex-direction:column;gap:1px}
+  .snap .slip b{font-size:9px}
+  .snap .frame{position:absolute;inset:16px 60px;border:2px solid #03FF96;border-radius:10px}
+  .fld{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:12px;background:var(--card-2);font-size:13px}
+  .fld span{color:var(--muted)}
+  .fld b{font-weight:700}
+  .fld em{font-style:normal;font-size:10.5px;color:var(--ai-ink);font-weight:700;margin-left:6px}
+  .kp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .kp div{padding:12px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft)}
+  .kp small{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .kp b{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .kp .od b{color:var(--red)}
+  .apr{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft)}
+  .apr .t{display:flex;justify-content:space-between;gap:8px}
+  .apr b{font-weight:700;font-size:13px}
+  .apr small{font-size:11.5px;color:var(--muted)}
+  .apr .row{display:flex;gap:8px}
+  .apr .row span{flex:1;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:700;font-size:12.5px}
+  .apr .yes{background:var(--primary-bg);color:var(--primary-ink)}
+  .apr .no{border:1px solid var(--line);color:var(--red)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone cli">
+    <div class="status"><span>10:12</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="ch3"><span class="brand"><span class="mark"></span>YouTooPreneur</span><small>Invoice YTP/26-27/0042 · Greenleaf Organics</small><b class="amt">₹1,416</b><small>Due now · domain renewal</small></div>
+    <div class="pbody">
+      <div class="warn3"><i data-i="globe"></i>Your domain expires on 8 October. Pay now to keep the website online.</div>
+      <div class="pcard"><b style="font-weight:700">Pay with a UPI app</b><div class="apps"><span><i style="background:#1A73E8">G</i>GPay</span><span><i style="background:#5F259F">P</i>PhonePe</span><span><i style="background:#00BAF2">P</i>Paytm</span></div><span class="sm" style="font-size:12px;text-align:center">Opens your app with ₹1,416 and the invoice number filled in</span></div>
+      <div class="big solid">Pay online · cards, net banking</div>
+      <div class="big line"><i data-i="download"></i>Invoice PDF</div>
+      <span class="manual" style="text-align:center">Secure link · shows only this invoice</span>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>7:05</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">New claim</span><a class="btn" href="expenses.html" style="margin-left:auto;text-decoration:none"><i data-i="x"></i></a></div>
+    <div class="pbody" style="padding-top:6px">
+      <div class="snap"><div class="slip"><b>UBER</b><span>30 Sep 2026 · 11:42 am</span><span>Coimbatore Jn →</span><span>RS Puram</span><span>----------</span><b>₹612.00</b></div><span class="frame"></span></div>
+      <div class="ai-card" style="padding:9px 12px;flex-direction:row;align-items:center;gap:8px"><i data-i="spark" style="width:15px;height:15px;color:var(--ai-ink)"></i><span style="font-size:12.5px">Read from the photo. Check, then send.</span></div>
+      <div class="fld"><span>Amount</span><b>₹612<em>✦</em></b></div>
+      <div class="fld"><span>Date</span><b>30 Sep<em>✦</em></b></div>
+      <div class="fld"><span>Category</span><b>Travel · client visit<em>✦</em></b></div>
+      <div class="fld"><span>Client</span><b>Greenleaf Organics</b></div>
+      <div class="big solid">Send for approval</div>
+      <span class="manual" style="text-align:center">Goes to the Owner · paid back by bank transfer within 7 days</span>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html" class="on"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>11:30</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Money</span><span class="av" style="margin-left:auto">YP</span></div>
+    <div class="pbody" style="padding-top:6px">
+      <div class="kp"><div><small>To collect</small><b>₹1,39,016</b></div><div class="od"><small>Overdue</small><b>₹65,016</b></div></div>
+      <div class="sect" style="padding:4px 2px 0">Needs your approval</div>
+      <div class="apr"><div class="t"><div><b>Partner 2 · withdrawal</b><br><small>Partner 2 approved · needs you too</small></div><b>₹25,000</b></div><div class="row"><span class="yes">Approve</span><span class="no">Reject</span></div></div>
+      <div class="apr"><div class="t"><div><b>Arun · Coimbatore visit</b><br><small>3 bills read by AI · total matches</small></div><b>₹4,200</b></div><div class="row"><span class="yes">Approve</span><span class="no">Reject</span></div></div>
+      <div class="apr"><div class="t"><div><b>Invoice · Kaveri Hospitals</b><br><small>Paid clarity session, 3 Oct</small></div><b>₹2,500</b></div><div class="row"><span class="yes">Approve</span><span class="no">Reject</span></div></div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html" class="on"><i data-i="more"></i>More</a></nav>
+  </div>
+</div>
+</body>
+</html>

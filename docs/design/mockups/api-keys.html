@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · API keys and MCP</title>
+<!-- Batch 8 · SCR-189 API keys and MCP: keys tied to a person and role with a limited scope, an expiry date and usage limits, shown once and stored scrambled, revocable, with the last use; every call logged; the versioned public API (/v1); the MCP server offers module windows as tools to AI apps, and actions that change data need approval (CORE-130, CORE-131, CORE-132). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .ak{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;align-items:start}
+  .col8{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb9{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:7px;padding-bottom:7px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.off td{background:var(--card-2)} .tbl tr.off b{text-decoration:line-through}
+  .sc4{display:inline-flex;gap:4px;flex-wrap:wrap}
+  .sc4 span{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);color:var(--ink);white-space:nowrap}
+  .sc4 span.w{background:var(--amber-bg);color:var(--amber);border-color:transparent}
+  .tool{display:grid;grid-template-columns:minmax(0,1fr) 90px 150px;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .tool:first-of-type{border-top:0}
+  .tool code{font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700}
+  .tool small{display:block;color:var(--muted);font-size:11.5px}
+  .nk{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .nk h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px}
+  .scp{display:grid;grid-template-columns:minmax(0,1fr) 52px 52px;gap:6px 8px;font-size:12.5px;align-items:center}
+  .scp .h{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .scp > :nth-child(3n+2),.scp > :nth-child(3n){justify-self:center}
+  .once{padding:12px;border-radius:14px;background:#0C1110;color:#E7F8EE;display:flex;flex-direction:column;gap:8px}
+  .once code{font-family:ui-monospace,Consolas,monospace;font-size:13px;letter-spacing:.02em;color:#03FF96;word-break:break-all}
+  .once small{font-size:11.5px;color:rgba(255,255,255,.7)}
+  .once .r{display:flex;gap:8px;align-items:center}
+  .once .btn{border-color:rgba(255,255,255,.25);color:#fff;height:30px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">API keys and MCP</b></div>
+          <h1 class="serif">API keys and MCP</h1>
+          <p>Let other tools and AI apps use Nexus safely. Each key acts as one person with a limited scope, expires, has limits, and every call is logged.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="code"></i>API documentation · /v1</span><a class="btn lg" href="logs.html" style="text-decoration:none"><i data-i="history"></i>Call log</a><span class="btn solid lg"><i data-i="plus"></i>New key</span></div>
+      </div>
+      <div class="ak">
+        <div class="col8">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Keys</h2><span class="count">3 active</span></div>
+            <div class="cb9">
+              <table class="tbl">
+                <thead><tr><th>Key</th><th>Acts as</th><th>Can do</th><th>Limits</th><th>Expires</th><th>Last used</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Website forms</b><small>nx_…41c7</small></td><td class="sm">Forms (system)</td><td><span class="sc4"><span class="w">Leads: create</span><span class="w">Applicants: create</span></span></td><td class="sm">60 a minute</td><td class="sm">31 Mar 2027</td><td class="sm">Today 8:14 am</td><td><span class="chip c-green">Active</span></td></tr>
+                  <tr><td><b>Google Sheets · new leads</b><small>nx_…9b02 · through Zapier</small></td><td class="sm">Owner</td><td><span class="sc4"><span>Leads: read</span></span></td><td class="sm">1,000 a day</td><td class="sm">31 Dec 2026</td><td class="sm">Today 9:12 am</td><td><span class="chip c-green">Active</span></td></tr>
+                  <tr><td><b>Tally export</b><small>nx_…d5e8</small></td><td class="sm">Meena · Accounts</td><td><span class="sc4"><span>Invoices: read</span><span>Payments: read</span></span></td><td class="sm">200 a day</td><td class="sm">31 Mar 2027</td><td class="sm">30 Sep 6:05 pm</td><td><span class="chip c-green">Active</span></td></tr>
+                  <tr class="off"><td><b>Old test key</b><small>nx_…77aa</small></td><td class="sm">Arun</td><td><span class="sc4"><span>Tasks: read</span></span></td><td class="sm">—</td><td class="sm">—</td><td class="sm">2 Sep</td><td><span class="chip c-ink">Revoked 12 Sep</span></td></tr>
+                </tbody>
+              </table>
+              <div class="po-note" style="margin-top:8px"><i data-i="shield"></i><span>A key can never do more than the person it acts as. A read-only key that tries to create a record is refused, and the attempt is logged. Today: 1 refused call (Google Sheets key tried to change a lead).</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">MCP server for AI apps</h2><span class="chip c-green" style="margin-left:auto">On</span></div>
+            <div class="cb9">
+              <span class="sm" style="font-size:12.5px;display:block;margin-bottom:6px">AI apps such as Claude or ChatGPT can use Nexus as tools, with the same permissions as the person who connects them. Anything that changes data waits for approval in Nexus.</span>
+              <div class="tool"><div><code>list_overdue_invoices</code><small>Finance · read</small></div><span class="chip c-green">Read</span><span class="sm">Runs straight away</span></div>
+              <div class="tool"><div><code>find_client</code> · <code>project_status</code><small>CRM, Projects · read</small></div><span class="chip c-green">Read</span><span class="sm">Runs straight away</span></div>
+              <div class="tool"><div><code>create_task</code><small>Tasks · change</small></div><span class="chip c-amber">Change</span><span class="sm">Waits for approval</span></div>
+              <div class="tool"><div><code>mark_invoice_paid</code><small>Finance · money</small></div><span class="chip c-red">Money</span><span class="sm">Always waits for approval</span></div>
+              <div class="prow" style="margin-top:4px"><span class="po-ic"><i data-i="spark"></i></span><div><b>Claude Desktop · Owner</b><small>Connected 28 Sep · 34 calls this week · 2 approvals asked, 1 given</small></div><span class="r"><span class="btn" style="height:30px">Disconnect</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card nk">
+          <h3>New key</h3>
+          <div class="field"><label>Name</label><div class="input">Google Sheets · monthly report</div></div>
+          <div class="field"><label>Acts as</label><div class="input">Owner<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="scp"><span class="h">What it can do</span><span class="h">Read</span><span class="h">Change</span>
+            <span>Leads and clients</span><i class="chk on"></i><i class="chk"></i>
+            <span>Projects and tasks</span><i class="chk on"></i><i class="chk"></i>
+            <span>Invoices and payments</span><i class="chk"></i><i class="chk"></i>
+            <span>Team</span><span class="sm">—</span><span class="sm">—</span></div>
+          <div class="fields" style="gap:10px"><div class="field"><label>Expires</label><div class="input">31 Dec 2026</div></div><div class="field"><label>Limit</label><div class="input">1,000 a day</div></div></div>
+          <div class="once"><small>Your new key · copy it now; it is shown only once and stored scrambled</small><code>nx_7Kq2vP9sW4mT1xZ8cR6bN3yH5fJ0aL</code><div class="r"><span class="btn"><i data-i="copy"></i>Copy</span><small>Shown once · 10:42 am</small></div></div>
+          <span class="manual">Keys and calls are in the security log. Revoke a key and it stops at once.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

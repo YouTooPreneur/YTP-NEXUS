@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-203 Services and renewals (Kaveri Hospitals): what the client has, who renews each item and when, what website care covers and its dates, and a short maintenance summary with the monthly report (POR-003, CON-003, WEB-001). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .svc3{display:grid;grid-template-columns:44px minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) 150px;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .svc3:first-of-type{border-top:0}
+  .svc3 b{display:block;font-weight:700}
+  .svc3 small{display:block;font-size:12px;color:var(--muted)}
+  .svc3 .chip,.svc3 .who{justify-self:start}
+  .svh{display:grid;grid-template-columns:44px minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) 150px;gap:14px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-bottom:4px}
+  .cov3{display:flex;flex-wrap:wrap;gap:6px}
+  .cov3 span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--green-bg);color:var(--green)}
+  .mt3{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .mt3 div{padding:10px 12px;border-radius:12px;background:var(--card-2)}
+  .mt3 small{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .mt3 b{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .mt3 span{display:block;font-size:12px;color:var(--muted)}
+  .hrs{display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+  .hrs .meter{height:10px}
+  /* on a phone: icon and name on top, then dates, who renews and the status in one wrapped line */
+  @media (max-width:600px){.svh{display:none}.svc3{grid-template-columns:38px minmax(0,1fr);row-gap:6px}.svc3 > :nth-child(n+3){grid-column:2}.mt3{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="services" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Services and renewals</h1><p class="lead2">What you have with us, who renews each item and when, and what your website care covers.</p></div>
+    <div class="acts"><a class="po-btn" href="portal-support.html"><i data-i="msg"></i>Ask about a service</a></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>What you have <span class="count">6</span></h2>
+        <div class="svh"><span></span><span>Service</span><span>Renews or ends</span><span>Who renews</span><span>Status</span></div>
+        <div class="svc3"><span class="po-ic grn"><i data-i="shield"></i></span><div><b>Website care · current site</b><small>kaverihospitals.com · ₹23,600 a quarter</small></div><div><b>No end date</b><small>Next bill 31 Dec</small></div><span class="who ytp"><i data-i="repeat"></i>We bill you</span><span class="chip c-green">Active</span></div>
+        <div class="svc3"><span class="po-ic"><i data-i="server"></i></span><div><b>Hosting</b><small>cPanel · your GoDaddy account</small></div><div><b>14 Oct 2026</b><small>In 13 days</small></div><span class="who"><i data-i="user"></i>You renew</span><span class="chip c-amber">Proof received</span></div>
+        <div class="svc3"><span class="po-ic"><i data-i="globe"></i></span><div><b>Domain · kaverihospitals.com</b><small>Your GoDaddy account</small></div><div><b>22 Mar 2027</b><small>Reminders from 20 Feb</small></div><span class="who"><i data-i="user"></i>You renew</span><span class="chip c-green">Active</span></div>
+        <div class="svc3"><span class="po-ic"><i data-i="lock"></i></span><div><b>SSL certificate</b><small>The padlock on your website</small></div><div><b>19 Dec 2026</b><small>Free certificate</small></div><span class="who self"><i data-i="refresh"></i>Renews itself</span><span class="chip c-green">Active</span></div>
+        <div class="svc3"><span class="po-ic blu"><i data-i="folder"></i></span><div><b>Website redesign</b><small>Project · ₹1,20,000</small></div><div><b>Launch 5 Nov</b><small>Then joins website care</small></div><span class="who ytp"><i data-i="folder"></i>Our project</span><span class="chip c-blue">In progress</span></div>
+        <div class="svc3"><span class="po-ic blu"><i data-i="video"></i></span><div><b>Doctor intro videos</b><small>Project · 6 videos</small></div><div><b>By 8 Oct</b><small>3 of 6 sent</small></div><span class="who ytp"><i data-i="folder"></i>Our project</span><span class="chip c-blue">In progress</span></div>
+        <div class="po-note"><i data-i="bell"></i><span>For items you renew, we remind you 30, 15, 7 and 1 day before. Send us the proof here and we confirm it, so nothing lapses.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Hosting renewal · 14 Oct <span class="chip c-amber" style="margin-left:auto">We are checking</span></h2>
+        <div class="prow"><span class="po-ic grn"><i data-i="file"></i></span><div><b>Your proof: GoDaddy receipt, 12 months</b><small>Uploaded by you on 30 Sep</small></div><span class="r"><span class="po-btn sm">View</span></span></div>
+        <div class="po-note"><i data-i="clock"></i><span>Arun checks the new date in your hosting account and confirms today. You will get a message when it is done.</span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Your website care</h2>
+        <div class="cov3"><span>Updates</span><span>Daily backups</span><span>6 hours of changes a month</span><span>Uptime watch</span></div>
+        <div class="po-kv"><span>Covers</span><b>kaverihospitals.com</b><span>From</span><b>1 Apr 2025 · no end date</b><span>We reply</span><b>Within 24 hours</b><span>We fix</span><b>Within 3 days</b><span>Next visit</span><b>7 Oct · monthly updates · Arun</b></div>
+        <div class="po-note"><i data-i="info"></i><span>The new website joins this plan on launch day, 5 Nov. Work outside the plan is quoted first.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>September in short <a class="r" href="docs-pdf.html#report">Report</a></h2>
+        <div class="mt3"><div><small>Uptime</small><b>99.9%</b><span>One 40-minute outage, 14 Sep</span></div><div><small>Backups</small><b>30 of 30</b><span>Last one today, 2:00 am</span></div><div><small>Updates</small><b>7</b><span>Plugins and theme</span></div><div><small>Requests</small><b>3 fixed</b><span>All within 3 days</span></div></div>
+        <div class="hrs"><span>Changes used: <b>2 h 40 min</b> of 6 hours</span><div class="meter"><i style="width:44%"></i></div></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">Logins for your hosting and domain stay with you. We use them only through our secure vault link and never ask for them here.</p>
+</main>
+</div>
+</body>
+</html>

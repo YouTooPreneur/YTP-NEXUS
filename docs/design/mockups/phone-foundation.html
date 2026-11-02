@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone sign-in and menu</title>
+<!-- Batch 1 · SCR-001 Login and SCR-004 App shell on a phone: no side menu; a dark bottom menu that changes by role (staff such as Arun get Attendance instead of Leads; choice 13, 22 Oct); "More" holds every other area the role allows (shown as Arun, Staff: no Contracts, Finance, Academy, Reports or Settings) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .p-login{flex:1;display:flex;flex-direction:column;gap:14px;padding:18px 22px 0}
+  .p-login .gbtn{height:50px}
+  .more-list{display:flex;flex-direction:column;padding:0 6px}
+  .more-list a{display:flex;align-items:center;gap:14px;padding:11px 10px;border-radius:12px;color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px}
+  .more-list a svg{width:20px;height:20px;color:var(--muted)}
+  .more-list .sect{padding:12px 10px 4px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone">
+    <div class="status"><span>9:41</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-login">
+      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px"><span class="mark" style="width:32px;height:35px"></span><span class="word serif" style="font-size:28px">Nexus</span></div>
+      <h1 class="serif" style="font-size:30px">Sign in</h1>
+      <p style="color:var(--muted);margin-top:-6px">Use your Google account or your email.</p>
+      <a class="gbtn" href="phone.html" style="text-decoration:none"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.2l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.6 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.2 0-11.5-4.1-13.4-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Continue with Google</a>
+      <div class="or">or</div>
+      <div class="field"><label>Email</label><div class="input" style="height:48px">arun.dev@gmail.com</div></div>
+      <div class="field"><label>Password</label><div class="input" style="height:48px">••••••••••<span class="end"><i data-i="eye"></i></span></div></div>
+      <a href="login.html#forgot" style="color:var(--ink);font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:3px;align-self:flex-end">Forgot password?</a>
+      <a class="btn solid" href="phone.html" style="text-decoration:none;height:50px;border-radius:var(--radius);font-size:15px">Sign in</a>
+    </div>
+    <div style="height:30px"></div>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>9:58</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">More</span><a class="av" href="my-profile.html" style="margin-left:auto;text-decoration:none">AK</a></div>
+    <div class="p-body" style="gap:0;padding:0 14px;overflow:hidden">
+      <div class="more-list">
+        <div class="sect">Daily work</div>
+        <a href="phone.html"><i data-i="grid"></i>My day</a>
+        <a href="tasks.html"><i data-i="tasks"></i>Tasks and to-dos</a>
+        <a href="calendar.html"><i data-i="cal"></i>Calendar</a>
+        <div class="sect">Business</div>
+        <a href="leads.html"><i data-i="users"></i>CRM</a>
+        <a href="projects.html"><i data-i="folder"></i>Projects</a>
+        <a href="webcare.html"><i data-i="globe"></i>WebCare</a>
+        <a href="my-hr.html"><i data-i="user"></i>My HR: leave, payslips, documents</a>
+        <div class="sect">You</div>
+        <a href="my-profile.html"><i data-i="user"></i>My profile</a>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px"><span style="font-weight:600;font-size:14.5px">Colour</span><div class="colour-switch" role="radiogroup" aria-label="Colour"><button role="radio" data-look="E" title="Emerald"><span class="pv pv-E"><i></i></span><span class="nm">Emerald</span></button><button role="radio" data-look="N" title="Navy"><span class="pv pv-N"><i></i></span><span class="nm">Navy</span></button></div></div>
+        <a href="login.html"><i data-i="login"></i>Sign out</a>
+      </div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a class="on"><i data-i="more"></i>More</a></nav>
+  </div>
+</div>
+</body>
+</html>

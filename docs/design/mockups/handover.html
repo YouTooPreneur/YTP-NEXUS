@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Asset handover</title>
+<!-- Batch 4 · SCR-095 Asset handover: choose assets, checklist, transfer ownership or access to the client, then the handover document (WEB-012, RULE-025) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .grp{padding:4px 0}
+  .ci{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .ci:first-of-type{border-top:0}
+  .ci .r{margin-left:auto;font-size:12px;color:var(--muted)}
+  .ci.wait .r{color:var(--amber);font-weight:700}
+  .ci.done span.t{color:var(--muted)}
+  .assets2{display:flex;gap:8px;flex-wrap:wrap}
+  .assets2 span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+  .assets2 svg{width:14px;height:14px;color:var(--muted)}
+  .mini-doc{border-radius:12px;background:var(--stage);padding:14px;display:flex;justify-content:center}
+  .mini-doc div{width:220px;height:290px;background:#fff;border-radius:3px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:16px;display:flex;flex-direction:column;gap:6px}
+  .mini-doc i{display:block;height:5px;border-radius:3px;background:#E7E3D8}
+  .mini-doc i.h{height:9px;width:60%;background:#1C3D36}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="handover">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Handover · Bright Minds Tuition</h1>
+          <p>The project is finished and paid. We are moving everything into the client's own accounts. When the checklist is done, Nexus makes the handover document.</p>
+        </div>
+        <div class="acts"><span class="btn lg">Save and close</span><span class="btn solid lg">Next: handover document</span></div>
+      </div>
+      <div class="flow">
+        <div class="st done"><b><em>✓</em>Choose assets</b>3 assets</div>
+        <div class="st done"><b><em>✓</em>Before the transfer</b>Backup, payment, client login</div>
+        <div class="st now"><b><em>3</em>Transfer</b>2 of 5 done</div>
+        <div class="st"><b><em>4</em>Handover document</b>PDF for the client</div>
+      </div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="assets2"><span><i data-i="globe"></i>brightmindstuition.in · domain</span><span><i data-i="globe"></i>Landing page · WordPress</span><span><i data-i="chart"></i>Google Analytics</span></div>
+          <div class="grp"><div class="sect" style="padding:0 0 4px">Before the transfer</div>
+            <div class="ci done"><i class="chk on"></i><span class="t">Final full backup taken and kept for 90 days</span><span class="r">29 Sep · Arun</span></div>
+            <div class="ci done"><i class="chk on"></i><span class="t">All invoices paid (YTP/26-27/0039)</span><span class="r">16 Sep</span></div>
+            <div class="ci done"><i class="chk on"></i><span class="t">Client admin login created; the client set their own password</span><span class="r">20 Sep</span></div>
+          </div>
+          <div class="grp"><div class="sect" style="padding:0 0 4px">Transfer</div>
+            <div class="ci done"><i class="chk on"></i><span class="t">Domain moved into the client's GoDaddy account</span><span class="r">20 Sep · 3 Nov 2027 confirmed by today's check</span></div>
+            <div class="ci done"><i class="chk on"></i><span class="t">Google Analytics: client made owner, YTP removed</span><span class="r">21 Sep</span></div>
+            <div class="ci wait"><i class="chk"></i><span class="t">Website moved to the client's own hosting</span><span class="r">Waiting for the client's hosting</span></div>
+            <div class="ci wait"><i class="chk"></i><span class="t">Placement on YTP-HS-02 ended (history kept)</span><span class="r">After the move</span></div>
+            <div class="ci wait"><i class="chk"></i><span class="t">YTP's WordPress access removed; vault items archived</span><span class="r">After the move</span></div>
+          </div>
+          <p class="help">Logins are never written in the handover document. The client keeps their own passwords; ours are archived in the vault.</p>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Handover document</h2><span class="chip c-ink">Draft</span></div>
+          <div class="mini-doc"><div><i class="h"></i><i style="width:80%"></i><i style="width:70%"></i><i style="margin-top:10px;width:90%"></i><i style="width:85%"></i><i style="width:60%"></i><i style="margin-top:10px;width:90%"></i><i style="width:75%"></i></div></div>
+          <p class="sm" style="font-size:12.5px;line-height:1.5">Lists what was handed over, where it now lives, who owns each account, the last backup, and what support continues (none: no AMC).</p>
+          <a class="btn" href="docs-pdf.html#handover" style="text-decoration:none"><i data-i="eye"></i>Preview the document</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · AI usage and limits</title>
+<!-- Batch 2 · SCR-174 AI usage and limits: monthly budget (the Owner types the amount, no fixed levels; Top up any time, choice 20, 22 Oct), limits per role, person and feature (voice minutes, chatbot), alerts, usage and savings (AI-005, AI-006, AI-011, AI-020, D-156) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:start}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .tier{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card)}
+  .tier b{display:block;font-family:Sora,sans-serif;font-size:20px;margin-top:2px}
+  .tier small{font-size:11px;color:var(--muted)}
+  .tier span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .tier.on{border:1.5px solid var(--on);box-shadow:0 0 0 4px var(--on-ring)}
+  .alerts{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+  .alerts .pct{font-weight:700;color:var(--ink);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+  .bigmeter{height:14px;border-radius:999px;background:var(--bar);overflow:hidden;position:relative}
+  .bigmeter i{position:absolute;left:0;top:0;bottom:0;width:41%;background:linear-gradient(90deg,var(--on),#2DB8E8);border-radius:999px}
+  .bigmeter em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--faint)}
+  .pp{display:grid;grid-template-columns:150px 1fr 90px;gap:12px;align-items:center;padding:8px 0;font-size:13px}
+  .pp b{font-weight:600}
+  .pp .v{text-align:right;color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="ai-settings.html">AI and voice</a><span>/</span><b style="color:var(--ink)">Usage and limits</b></div>
+          <h1 class="serif">AI usage and limits</h1>
+          <p>Every AI feature has a limit, so tokens are never wasted and the bill never surprises you. At a limit only AI pauses; everything can still be done by hand.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>October</span><span class="on">September</span><span>August</span></div></div>
+      </div>
+
+      <div class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">Spent in September</div><div class="num serif" style="font-size:34px">₹1,240</div><div class="sub">of ₹3,000 · 41%</div></div>
+        <div class="card kpi"><div class="lab">Saved by memory and cheaper models</div><div class="num serif" style="font-size:34px">₹486</div><div class="sub"><span class="up">28% less</span>than without savers</div></div>
+        <div class="card kpi"><div class="lab">Questions and drafts</div><div class="num serif" style="font-size:34px">1,284</div><div class="sub">312 answered from memory, free</div></div>
+        <div class="card kpi"><div class="lab">Voice minutes</div><div class="num serif" style="font-size:34px">46</div><div class="sub">of 300 in September</div></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:14px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Monthly budget</h2><span class="link" style="display:flex;gap:8px"><span class="btn">Change amount</span><span class="btn solid"><i data-i="plus"></i>Top up</span></span></div>
+          <div class="tiers">
+            <div class="tier on"><span>Each month</span><b>₹3,000</b><small>The amount you typed · starts again on the 1st</small></div>
+            <div class="tier"><span>Top-ups</span><b>₹0</b><small>None in September · add any amount, any day</small></div>
+            <div class="tier"><span>Left</span><b>₹1,760</b><small>Of ₹3,000 for September</small></div>
+          </div>
+          <div class="bigmeter"><i></i><em style="left:50%"></em><em style="left:80%"></em></div>
+          <div class="alerts">Alerts to the owner at <span class="pct">50%</span><span class="pct">80%</span><span class="pct">100%</span> · at 100% AI and voice pause until a top-up or the 1st</div>
+          <div class="sect" style="padding:6px 0 0">Limits per feature</div>
+          <table class="tbl"><thead><tr><th>Feature</th><th>Limit</th><th>Used</th></tr></thead><tbody>
+            <tr><td><b>Ask Nexus chat</b></td><td class="sm">₹1,200 a month · 40 messages a chat</td><td class="sm">₹610</td></tr>
+            <tr><td><b>AI helpers (draft, summarise, fill in)</b></td><td class="sm">₹900 a month</td><td class="sm">₹402</td></tr>
+            <tr><td><b>Voice assistant</b></td><td class="sm">300 minutes a month</td><td class="sm">46 min</td></tr>
+            <tr><td><b>Client chatbot</b></td><td class="sm">₹100 a day · 20 messages a chat</td><td class="sm">Off until step 3.8</td></tr>
+            <tr><td><b>Imports and reports</b></td><td class="sm">₹300 a month</td><td class="sm">₹228</td></tr>
+          </tbody></table>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Limits per role</h2></div>
+            <table class="tbl"><thead><tr><th>Role</th><th>Each person, a month</th><th>Can use</th></tr></thead><tbody>
+              <tr><td><b>Owner, LLP partner</b></td><td class="sm">₹1,500</td><td class="sm">Everything</td></tr>
+              <tr><td><b>Manager</b></td><td class="sm">₹500</td><td class="sm">Chat, helpers, voice</td></tr>
+              <tr><td><b>Accounts, HR</b></td><td class="sm">₹300</td><td class="sm">Chat, helpers</td></tr>
+              <tr><td><b>Staff, Trainer</b></td><td class="sm">₹150</td><td class="sm">Helpers, voice</td></tr>
+            </tbody></table>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:20px">Who used it</h2><span class="link">By provider: Claude 94% · backup 6%</span></div>
+            <div class="pp"><b>Owner</b><span class="meter"><i style="width:62%;background:var(--on)"></i></span><span class="v">₹412</span></div>
+            <div class="pp"><b>Karthik</b><span class="meter"><i style="width:48%;background:var(--on)"></i></span><span class="v">₹318</span></div>
+            <div class="pp"><b>Divya</b><span class="meter"><i style="width:30%;background:var(--on)"></i></span><span class="v">₹196</span></div>
+            <div class="pp"><b>Arun</b><span class="meter"><i style="width:26%;background:var(--on)"></i></span><span class="v">₹171</span></div>
+            <div class="pp"><b>Others (3)</b><span class="meter"><i style="width:21%;background:var(--on)"></i></span><span class="v">₹143</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

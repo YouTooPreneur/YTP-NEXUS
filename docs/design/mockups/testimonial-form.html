@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your feedback · YouTooPreneur</title>
+<!-- Batch 6 · SCR-233 Testimonial form (public, no login): the client rates the work, writes a few lines, adds private feedback, and chooses what YTP may show (website and social, name, photo); English or Tamil; secret link (CRM-022, NFR-022). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:linear-gradient(180deg,#1C3D36 0 250px,var(--bg) 250px);min-height:100vh}
+  :root[data-look="N"] body{background:linear-gradient(180deg,#10273A 0 250px,var(--bg) 250px)}
+  .wrapt{max-width:720px;margin:0 auto;padding:22px 16px 40px;display:flex;flex-direction:column;gap:16px}
+  .topb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;color:#fff}
+  .topb .mark{width:28px;height:31px;color:#03FF96}
+  .topb b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .topb .lang{margin-left:auto;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
+  .topb .lang span{padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.75)}
+  .topb .lang span.on{background:#fff;color:#1C3D36}
+  .hello{color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:8px 0 4px}
+  .hello h1{font-family:Sora,sans-serif;font-weight:600;font-size:clamp(24px,4vw,30px);line-height:1.15}
+  .hello p{color:rgba(255,255,255,.8);font-size:14px}
+  .fbox{background:var(--card);border-radius:20px;box-shadow:0 10px 34px rgba(16,39,58,.12);padding:22px;display:flex;flex-direction:column;gap:16px}
+  .fq{display:flex;flex-direction:column;gap:8px}
+  .fq label{font-weight:700;font-size:14px}
+  .fq small{color:var(--muted);font-size:12.5px}
+  .rate{display:flex;gap:8px}
+  .rate span{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;color:var(--amber);background:var(--amber-bg)}
+  .rate span.off{color:var(--muted);background:var(--card-2)}
+  .ta2{min-height:92px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;font-size:14px;line-height:1.55}
+  .ta2.ph{color:var(--muted)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:600px){.two{grid-template-columns:1fr}}
+  .inp2{height:46px;padding:0 14px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;font-size:14px}
+  .perm3{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:14px;background:var(--card-2)}
+  .perm3 div{display:flex;gap:10px;align-items:flex-start;font-size:13.5px}
+  .perm3 small{display:block;color:var(--muted);font-size:12px}
+  .send2{height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;background:var(--primary-bg);color:var(--primary-ink)}
+  .foot6{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Telugu:wght@600&display=swap" rel="stylesheet">
+<style>.lang{flex-wrap:wrap;justify-content:flex-end}</style>
+</head>
+<body>
+<div class="wrapt">
+  <div class="topb"><span class="mark"></span><b>YouTooPreneur</b><div class="lang"><span class="on">English</span><span class="ta" lang="ta">தமிழ்</span></div></div>
+  <div class="hello"><h1>How did we do, Mrs. Revathi?</h1><p>Lakshmi Silks · Instagram reels package · 12 reels delivered on 30 Sep. It takes about 2 minutes.</p></div>
+  <div class="fbox">
+    <div class="fq"><label>How happy are you with the work?</label><div class="rate"><span>★</span><span>★</span><span>★</span><span>★</span><span class="off">☆</span></div></div>
+    <div class="fq"><label>What would you tell another business about us?</label><div class="ta2">The reels brought many new customers to our Kanchipuram silk collection. The team understood our style quickly.</div></div>
+    <div class="fq"><label>Anything we could do better? <small>(only our team sees this)</small></label><div class="ta2 ph">Optional</div></div>
+    <div class="two"><div class="fq"><label>Your name</label><div class="inp2">Revathi S</div></div><div class="fq"><label>Your role</label><div class="inp2">Owner, Lakshmi Silks</div></div></div>
+    <div class="fq"><label>Add a photo or a short video <small>(optional)</small></label><div class="inp2" style="border-style:dashed;color:var(--muted)">Choose a file · up to 25 MB</div></div>
+    <div class="fq"><label>What may we show?</label>
+      <div class="perm3">
+        <div><i class="chk on"></i><span>Your words on our website and social media</span></div>
+        <div><i class="chk on"></i><span>Your name and business name</span></div>
+        <div><i class="chk"></i><span>Your photo or video<small>Only if you added one</small></span></div>
+      </div>
+    </div>
+    <span class="send2">Send my feedback</span>
+  </div>
+  <p class="foot6">You can change your mind any time: write to hello@youtoopreneur.com and we will remove it.<br>This private link works only for Lakshmi Silks and stops working on 8 Nov 2026.</p>
+</div>
+</body>
+</html>

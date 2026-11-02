@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Proposals</title>
+<!-- Batch 7 · SCR-037 Proposals: every quote with status (draft, waiting for discount approval, sent, opened, accepted, expired, lost), value, validity and who owns it; versions; acceptance by button, online signature or a manual mark with proof; accepting wins the deal; a sales forecast (CRM-015, CRM-016, CRM-017, CRM-021, FIN-023, RULE-011, AUTO-036, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .lay12{display:grid;grid-template-columns:1fr 300px;gap:14px;align-items:start}
+  .tbl td{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:20px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl a{color:inherit;text-decoration:none}
+  .qn{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+  .vld{white-space:nowrap}
+  .vld.soon{color:var(--amber);font-weight:700}
+  .seen{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--muted)}
+  .seen svg{width:13px;height:13px}
+  .fc{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .fc h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px}
+  .fc .big3 b{font-family:Sora,sans-serif;font-weight:600;font-size:26px;display:block}
+  .fc .big3 span{font-size:12px;color:var(--muted)}
+  .fbar{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:12px}
+  .fbar .meter{height:8px}
+  .fbar .meter i{background:var(--on)}
+  .fbar b{font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="proposals">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Proposals</h1>
+          <p>Every quote, its value and how long it is valid. Clients open it from a secret link and accept with a button, an online signature, or you mark it with their message as proof. Accepting wins the deal.</p>
+        </div>
+        <div class="acts"><a class="btn solid lg" href="proposal-edit.html" style="text-decoration:none"><i data-i="plus"></i>New proposal</a></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>₹3,20,000</b><span>Sent, waiting · 4</span></div>
+        <div class="ctr"><b>2</b><span>Drafts</span></div>
+        <div class="ctr warn"><b>1</b><span>Discount waiting for approval</span></div>
+        <div class="ctr"><b>₹2,70,000</b><span>Accepted in September · 3</span></div>
+        <div class="ctr"><b>1</b><span>Expires this week</span></div>
+      </div>
+
+      <div class="lay12">
+        <div class="card" style="padding:4px 18px 12px">
+          <table class="tbl">
+            <thead><tr><th></th><th>Client and work</th><th class="num">Value</th><th>Status</th><th>Seen</th><th>Valid until</th><th>Owner</th></tr></thead>
+            <tbody>
+              <tr><td class="qn">Q-2026-024</td><td><a href="proposal-edit.html"><b>Sri Lakshmi Traders</b></a><small>Website + local SEO · ✦ drafted from today's call</small></td><td class="num">₹90,000</td><td><span class="chip c-ink">Draft</span></td><td class="sm">—</td><td class="vld sm">15 days from sending</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">YP</span></td></tr>
+              <tr><td class="qn">Q-2026-023</td><td><a href="approvals.html"><b>Bloom Florists</b></a><small>SEO · 6 months · draft, not sent · 15% off asked</small></td><td class="num">₹38,250<small style="text-decoration:line-through">₹45,000</small></td><td><span class="chip c-amber">Discount to approve</span></td><td class="sm">—</td><td class="vld sm">—</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">KR</span></td></tr>
+              <tr><td class="qn">Q-2026-022</td><td><b>Ganga Jewellers</b><small>Ads management</small></td><td class="num">₹60,000</td><td><span class="chip c-blue">Sent 30 Sep</span></td><td><span class="seen"><i data-i="eye"></i>Opened today</span></td><td class="vld">15 Oct</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">KR</span></td></tr>
+              <tr><td class="qn">Q-2026-021</td><td><b>Lotus Yoga Studio</b><small>Social media · 3 months</small></td><td class="num">₹55,000</td><td><span class="chip c-blue">Sent 23 Sep</span></td><td><span class="seen" style="color:var(--red)"><i data-i="eye"></i>Not opened</span></td><td class="vld soon">8 Oct · reminder 6 Oct</td><td><span class="lg-av" style="--av:#BE185D;width:24px;height:24px;font-size:8.5px">DS</span></td></tr>
+              <tr><td class="qn">Q-2026-020</td><td><b>Velocity Motors</b><small>Ads + 4 product videos</small></td><td class="num">₹1,20,000</td><td><span class="chip c-blue">Sent 26 Sep</span></td><td><span class="seen"><i data-i="eye"></i>Opened 2 times</span></td><td class="vld">11 Oct</td><td><span class="lg-av" style="--av:#1D4ED8;width:24px;height:24px;font-size:8.5px">AK</span></td></tr>
+              <tr><td class="qn">Q-2026-019</td><td><b>Urban Nest Interiors</b><small>Website · version 2 goes today 2:00 pm</small></td><td class="num">₹85,000</td><td><span class="chip c-blue">Sent · v2 ready</span></td><td><span class="seen"><i data-i="eye"></i>Opened 4 times</span></td><td class="vld">10 Oct</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">YP</span></td></tr>
+              <tr><td class="qn">Q-2026-018</td><td><b>Sunrise Clinic</b><small>Website and booking · Accept button</small></td><td class="num">₹1,20,000</td><td><span class="chip c-green">Accepted 29 Sep</span></td><td><span class="seen"><i data-i="check"></i>Deal won</span></td><td class="vld sm">—</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">YP</span></td></tr>
+              <tr><td class="qn">Q-2026-017</td><td><b>Royal Caterers</b><small>Social + ads launch · online signature</small></td><td class="num">₹70,000</td><td><span class="chip c-green">Accepted 27 Sep</span></td><td><span class="seen"><i data-i="check"></i>Deal won</span></td><td class="vld sm">—</td><td><span class="lg-av" style="--av:#BE185D;width:24px;height:24px;font-size:8.5px">DS</span></td></tr>
+              <tr><td class="qn">Q-2026-016</td><td><b>Greenleaf Organics</b><small>Website refresh · marked by hand, WhatsApp proof</small></td><td class="num">₹80,000</td><td><span class="chip c-green">Accepted 24 Sep</span></td><td><span class="seen"><i data-i="check"></i>Deal won</span></td><td class="vld sm">—</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">YP</span></td></tr>
+              <tr><td class="qn">Q-2026-012</td><td><b>Star Mobiles</b><small>SEO · reason: budget</small></td><td class="num mut">₹40,000</td><td><span class="chip c-ink">Lost</span></td><td class="sm">—</td><td class="vld sm">—</td><td><span class="lg-av" style="--av:#0F766E;width:24px;height:24px;font-size:8.5px">KR</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card fc">
+            <h3>Forecast · October</h3>
+            <div class="big3"><b>₹3,58,000</b><span>likely to close · value × each stage's chance</span></div>
+            <div class="fbar"><span>Proposal</span><span class="meter"><i style="width:54%"></i></span><b>₹1,92,000</b></div>
+            <div class="fbar"><span>Session</span><span class="meter"><i style="width:27%"></i></span><b>₹96,750</b></div>
+            <div class="fbar"><span>Contacted</span><span class="meter"><i style="width:13%"></i></span><b>₹47,500</b></div>
+            <div class="fbar"><span>New</span><span class="meter"><i style="width:6%"></i></span><b>₹21,500</b></div>
+            <a class="src" href="pipeline.html" style="align-self:flex-start"><i data-i="target"></i>Pipeline</a>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Worth a look</div>
+            <span style="font-size:12.5px;line-height:1.5">Lotus Yoga has not opened their proposal in 8 days and it ends on 8 Oct. A short WhatsApp from Divya usually works better than another email.</span>
+            <span class="ai-btn sm" style="align-self:flex-start" data-ai="Draft the WhatsApp: a short, friendly message from Divya with the proposal link. Arrives as a draft; sending needs a person.">Draft the message</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

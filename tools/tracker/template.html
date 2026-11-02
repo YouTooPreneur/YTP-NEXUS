@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YTP Nexus Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Sora:wght@600;700&display=swap">
+<style>
+:root{
+  /* Layout: one column, max 1100px. Brand header, tab row, then the tab's content. Dark-first to match the YouTooPreneur logo. */
+  --bg:#0A0F0D;
+  --surface:#111916;
+  --surface-2:#17221E;
+  --line:#23332D;
+  --ink:#E6F2EC;
+  --muted:#8FA59B;
+  --accent:#03FF96;
+  --accent-ink:#03140C;
+  --accent-soft:#0F2D21;
+  --accent-text:#03FF96;
+  --warn:#F2B84B;
+  --warn-soft:#2E2412;
+  --bar-bg:#1E2B26;
+  --font-display:"Sora","Segoe UI",system-ui,sans-serif;
+  --font-body:"DM Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#F3F7F5;--surface:#FFFFFF;--surface-2:#E9F1ED;--line:#D5E1DB;--ink:#0F1F19;--muted:#5B6E66;
+    --accent:#00995A;--accent-ink:#FFFFFF;--accent-soft:#DDF3E8;--accent-text:#007A48;--warn:#9A5B06;--warn-soft:#FBEFD6;--bar-bg:#DCE7E1;
+    color-scheme:light;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:clamp(16px,4vw,36px);padding-block:0 64px}
+a{color:var(--accent-text)}
+code{font-family:var(--font-mono);font-size:.86em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+header.top{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;padding-block:22px 16px}
+.logo{width:36px;height:40px;fill:var(--accent);flex:none}
+.brand h1{font-family:var(--font-display);font-size:22px;margin:0;letter-spacing:-.01em;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:13px}
+.updated{margin-left:auto;text-align:right;font-size:12.5px;color:var(--muted)}
+.updated b{color:var(--ink);font-weight:500}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:22px;scrollbar-width:thin}
+.tab{font:inherit;font-size:14.5px;font-weight:500;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .n{font-family:var(--font-mono);font-size:11px;background:var(--surface-2);border-radius:999px;padding:1px 7px;margin-left:6px;color:var(--muted)}
+button:focus-visible,summary:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.eyebrow{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:10px}
+.resume{border-color:var(--accent);background:linear-gradient(0deg,var(--surface),var(--surface))}
+.resume .eyebrow{color:var(--accent-text)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px 22px;margin:0}
+.kv dt{font-size:12.5px;color:var(--muted)}
+.kv dd{margin:2px 0 0;font-weight:500}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.big{font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.big span{font-size:22px;color:var(--muted);margin-left:2px}
+.bar{display:block;height:8px;background:var(--bar-bg);border-radius:99px;overflow:hidden;margin:12px 0 8px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.bar.sm{height:6px;margin:0;width:110px}
+.muted{color:var(--muted);margin:0;font-size:14px}
+.nexttext{font-size:17px;font-weight:500;margin:0 0 14px}
+.btn{font:inherit;font-size:13.5px;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:9px;padding:9px 14px;cursor:pointer}
+.btn.sm{font-size:12.5px;padding:6px 11px}
+.btn.ghost{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+h2.sech,h3.sech{font-family:var(--font-display);font-size:16px;margin:10px 0 0;letter-spacing:-.005em}
+.phases{display:flex;flex-direction:column;gap:10px}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.phase[open]{border-color:var(--accent)}
+.phase summary{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;list-style:none}
+.phase summary::-webkit-details-marker{display:none}
+.pn{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;background:var(--surface-2);color:var(--muted)}
+.phase.progress .pn{background:var(--accent);color:var(--accent-ink)}
+.phase.done .pn{background:var(--accent-soft);color:var(--accent-text)}
+.pt b{display:block;font-weight:600}
+.pt small{color:var(--muted);font-size:13px}
+.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.chip.progress{background:var(--accent-soft);color:var(--accent-text)}
+.chip.done{background:var(--accent-soft);color:var(--accent-text)}
+.chip.blocked{background:var(--warn-soft);color:var(--warn)}
+.steps,.todo{list-style:none;margin:0;padding:0 18px 12px}
+.steps li,.todo li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line)}
+.tick{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--muted);margin-top:2px;position:relative}
+li.on .tick{background:var(--accent);border-color:var(--accent)}
+li.on .tick::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+li.on > span:not(.tick):not(.chip){color:var(--muted)}
+.steps li.on{color:var(--muted)}
+.note{margin:0;padding:4px 18px 14px;color:var(--muted);font-size:14px}
+.todo{padding:0}
+.todo li{grid-template-columns:20px minmax(0,1fr) auto;align-items:center;padding:12px 4px}
+.todo li:first-child{border-top:0}
+.phead h2{font-family:var(--font-display);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.phead p{margin:0;color:var(--muted);max-width:70ch}
+.tools{display:flex;flex-direction:column;gap:10px}
+input[type=search]{font:inherit;width:100%;max-width:440px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.fchip{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.fchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.fchip:disabled{opacity:.5;cursor:not-allowed}
+.dec{display:flex;flex-direction:column;gap:8px}
+.decision{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.did{font-family:var(--font-mono);font-size:12.5px;color:var(--accent-text);padding-top:2px}
+.dt{font-weight:500}
+.dr{color:var(--muted);font-size:13.5px;margin-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:18px 20px;margin:0}
+.prose{max-width:860px}
+.prose h1{font-family:var(--font-display);font-size:26px;margin:0 0 8px}
+.prose h2{font-family:var(--font-display);font-size:19px;margin:26px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+.prose h3{font-size:16px;margin:18px 0 6px}
+.prose p{margin:8px 0}
+.prose hr{display:none}
+.prose .tw{margin:10px 0}
+.prose ol,.prose ul{padding-left:22px}
+.prose pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:pre-wrap;font-family:var(--font-mono);font-size:13px;line-height:1.5}
+.prose pre code{background:none;border:0;padding:0}
+.copy-pre{display:block;margin:10px 0 -4px auto}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px}
+.ghead{font-family:var(--font-display);font-size:16px;margin:22px 0 10px}
+.ghead:first-child{margin-top:4px}
+.glinks{font-size:14px;color:var(--muted);margin:4px 0 6px}
+.shot{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.shot img{display:block;width:100%;height:auto;max-width:100%;background:var(--surface-2)}
+.shot figcaption{padding:10px 12px;font-size:13.5px;font-weight:500}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;max-width:calc(100% - 32px);z-index:10}
+.help{font-size:13px;color:var(--muted);border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
+.links3{display:flex;flex-wrap:wrap;gap:8px}
+.hnote{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:14.5px}
+.versions{display:flex;flex-direction:column;gap:14px}
+.version{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.version.latest{border-left:4px solid var(--accent)}
+.version p{margin:6px 0}
+.vhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.vhead strong{font-family:var(--font-display)}
+.vlinks{margin-left:auto;font-size:14px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:10px;margin:10px 0 2px}
+.thumbs a{display:block;color:var(--muted);text-decoration:none;font-size:12px;min-width:0}
+.thumbs img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);margin-bottom:4px}
+.thumbs a:hover img{border-color:var(--accent)}
+.thumbs span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ul.files{columns:2 320px;margin:6px 0 4px;padding-left:20px}
+ul.files li{break-inside:avoid;margin:3px 0}
+.hist-tools{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;background:var(--bg);padding-block:10px}
+.hist-tools input[type=search]{flex:1 1 320px;min-width:0;max-width:none}
+.hist-tools label{display:flex;gap:6px;align-items:center;font-size:14px}
+.hist{display:flex;flex-direction:column;gap:14px}
+.hist.old{flex-direction:column-reverse}
+.turn{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-width:0;overflow-wrap:anywhere}
+.turn>summary{cursor:pointer;color:var(--muted)}
+.turn p{margin:6px 0}
+.turn pre{white-space:pre-wrap;font-family:var(--font-mono);font-size:12.5px;background:var(--surface-2);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.turn .tw{margin:8px 0}
+.who{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin-bottom:2px}
+.msg.mine{border-left:3px solid var(--accent);padding-left:12px}
+.msg.claude{border-top:1px dashed var(--line);margin-top:12px;padding-top:10px}
+.work{margin-top:10px;font-size:14px}
+.work>summary{cursor:pointer;color:var(--muted)}
+.work .wn{border-left:2px solid var(--line);padding-left:10px;margin:8px 0}
+.hsteps{margin:4px 0 8px;padding-left:20px;color:var(--muted);font-size:13px}
+.lastmsg{margin:8px 0 12px;font-size:14.5px}
+@media (max-width:620px){
+  .phase summary{grid-template-columns:auto minmax(0,1fr) auto}
+  .phase summary .bar.sm{grid-column:2 / 4;width:100%}
+  .updated{margin-left:0;text-align:left}
+  .todo li{grid-template-columns:20px minmax(0,1fr)}
+  .todo li .btn,.todo li .chip{grid-column:2;justify-self:start}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    __ICON_SVG__
+    <div class="brand"><h1>YTP Nexus</h1><small>Project tracker</small></div>
+    <div class="updated">Updated from the project docs<br><b>__GENERATED_AT__ IST</b></div>
+  </header>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Tracker sections"></nav>
+  <main id="main"></main>
+  <p class="help">This page is built from the project documents in <code>docs/</code>, the saved conversation in <code>history/</code> and the project folders. It rebuilds itself after every reply from Claude; to refresh it by hand, run <code>node tools/tracker/build-tracker.mjs</code> in the project folder, then reload.</p>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script id="data" type="application/json">__DATA_JSON__</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const UI = { q: '', sec: 'all', status: 'all' };
+
+  const openTodos = D.todo.filter((t) => !t.done).length;
+  const qCount = D.questions.length + D.changes.length;
+  const decCount = D.decisions.reduce((n, s) => n + s.rows.length, 0);
+  const TABS = [
+    ['overview', 'Overview', ''],
+    ['todo', 'My to-do', openTodos],
+    ['plan', 'Documents', ''],
+    ['reqs', 'Requirements', ''],
+    ['screens', 'Screens', ''],
+    ['design', 'Design', D.versionCount],
+    ['choices', 'Choices', D.openChoices],
+    ['decisions', 'Decisions', decCount],
+    ['tasks', 'Tasks', D.tasks.length],
+    ['inbox', 'Questions & ideas', qCount],
+    ['history', 'History', D.historyCount],
+    ['handover', 'Handover', ''],
+    ['files', 'Files', '']
+  ].filter((t) => !D.share || !['history', 'handover', 'files'].includes(t[0])); // the share version has no private tabs
+  let tab = (location.hash || '#overview').slice(1);
+  if (!TABS.some((t) => t[0] === tab)) tab = 'overview';
+
+  function stats(p) {
+    const total = p.steps.length, done = p.steps.filter((s) => s.done).length;
+    let state;
+    if (!total) state = 'ongoing';
+    else if (done === total) state = 'done';
+    else if (done > 0 || p.n === D.currentPhase) state = 'progress';
+    else state = 'todo';
+    return { total, done, pct: total ? Math.round(done * 100 / total) : 0, state };
+  }
+  const LABEL = { done: 'Done', progress: 'In progress', todo: 'Not started', ongoing: 'Ongoing' };
+  const head = (title, sub) => `<div class="phead"><h2>${title}</h2><p>${sub}</p></div>`;
+  const table = (h, rows) => `<div class="tw"><table><thead><tr>${h.map((c) => `<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const empty = (msg) => `<p class="empty">${msg}</p>`;
+  const copyBtn = (text, label, cls) => `<button class="btn ${cls || ''}" data-copy="${esc(text)}">${label}</button>`;
+
+  function phaseCard(p) {
+    const s = stats(p);
+    const sub = s.total ? `${s.done} of ${s.total} steps done` : 'Runs continuously after launch';
+    return `<details class="phase ${s.state}"${p.n === D.currentPhase ? ' open' : ''}>
+      <summary><span class="pn">${p.n}</span><span class="pt"><b>${esc(p.name)}</b><small>${sub}</small></span><span class="chip ${s.state}">${LABEL[s.state]}</span>${s.total ? `<span class="bar sm"><i style="width:${s.pct}%"></i></span>` : ''}</summary>
+      ${s.total ? `<ul class="steps">${p.steps.map((x) => `<li class="${x.done ? 'on' : ''}"><span class="tick" aria-hidden="true"></span><span>${x.html}</span><span></span></li>`).join('')}</ul>` : ''}
+      ${p.notes.map((n) => `<p class="note">${n}</p>`).join('')}
+    </details>`;
+  }
+
+  function vOverview() {
+    const all = D.phases.flatMap((p) => p.steps);
+    const done = all.filter((s) => s.done).length;
+    const pct = all.length ? Math.round(done * 100 / all.length) : 0;
+    const nextRow = D.resume.find((x) => /your next action/i.test(x.key));
+    const nextTodo = D.todo.find((t) => !t.done && !/^optional/i.test(t.text)) || D.todo.find((t) => !t.done);
+    const nextHtml = nextRow ? nextRow.html : (nextTodo ? nextTodo.html : 'Nothing is waiting on you.');
+    return `
+      <section class="card resume" aria-label="Resume here">
+        <div class="eyebrow">▶ Resume here</div>
+        <dl class="kv">${D.resume.filter((x) => x !== nextRow).map((x) => `<div><dt>${esc(x.key)}</dt><dd>${x.html}</dd></div>`).join('')}</dl>
+      </section>
+      <div class="row">
+        <section class="card">
+          <div class="eyebrow">Overall progress</div>
+          <div class="big">${pct}<span>%</span></div>
+          <span class="bar"><i style="width:${pct}%"></i></span>
+          <p class="muted">${done} of ${all.length} steps done in phases 1–4</p>
+        </section>
+        <section class="card">
+          <div class="eyebrow">Your next action</div>
+          <p class="nexttext">${nextHtml}</p>
+          <button class="btn ghost" data-tab="todo">See my to-do list (${openTodos} open)</button>
+        </section>
+      </div>
+      <section class="card">
+        <div class="eyebrow">Everything in one place</div>
+        ${D.lastMsg ? `<p class="lastmsg"><strong>Your last message (#${D.lastMsg.n}, ${esc(D.lastMsg.when)}):</strong> ${esc(D.lastMsg.text)}</p>` : ''}
+        <div class="links3">${D.share ? '' : `<button class="btn ghost" data-tab="history">History: everything said (${D.historyCount})</button><button class="btn ghost" data-tab="handover">Handover: continue anywhere</button><button class="btn ghost" data-tab="files">Files: every file</button>`}${D.openChoices ? `<button class="btn ghost" data-tab="choices">Choices waiting for you (${D.openChoices})</button>` : ''}</div>
+      </section>
+      <h2 class="sech">The 5 phases</h2>
+      <div class="phases">${D.phases.map(phaseCard).join('')}</div>
+      ${D.reviewRounds.length ? `<h2 class="sech">Review rounds</h2><p class="muted">Requirements, screens, preview and fields repeat in rounds until you approve. Then they are frozen and building starts.</p>${table(D.reviewHead, D.reviewRounds)}` : ''}`;
+  }
+
+  function vTodo() {
+    return head('My to-do', `${openTodos} open, ${D.todo.length - openTodos} done. When you finish one, tell Claude (the copy button writes the message for you) and it gets ticked.`) +
+      `<section class="card"><ul class="todo">${D.todo.map((t) => `<li class="${t.done ? 'on' : ''}"><span class="tick" aria-hidden="true"></span><span>${t.html}</span>${t.done ? '<span class="chip done">Done</span>' : copyBtn('Done: ' + t.text, 'Copy “done” message', 'sm ghost')}</li>`).join('')}</ul></section>`;
+  }
+
+  function vPlan() {
+    const docs = [['plan', 'The plan (process)', D.planHtml], ['releases', 'The 18 releases', D.releasesHtml], ['scope', 'Scope and quality', D.scopeHtml], ['estimate', 'Hours estimate', D.estimateHtml], ['tech', 'Tech design', D.techHtml], ['datamodel', 'Data model', D.dataModelHtml]];
+    if (!UI.doc) UI.doc = 'plan';
+    const chips = `<div class="chips" role="group" aria-label="Which document">${docs.map(([k, l, h]) => `<button class="fchip" data-doc="${k}" aria-pressed="${UI.doc === k}"${h ? '' : ' disabled'}>${l}</button>`).join('')}</div>`;
+    const body = (docs.find((d) => d[0] === UI.doc) || docs[0])[2];
+    return chips + (body ? `<article class="prose">${body}</article>` : empty('Not written yet.'));
+  }
+
+  const vDesign = () => head('Design', 'The rules every screen follows, and every design version with its pictures. A new version gets a new folder; old pictures are never overwritten.') +
+    (D.designHtml || empty('No design versions recorded yet.'));
+  const vChoices = () => {
+    if (!UI.chv) UI.chv = 'list';
+    const opts = [['list', 'The list'], ['explained', 'Explained in plain words (for the manager)']];
+    const chips = D.choicesExplainedHtml ? `<div class="chips" role="group" aria-label="Which view">${opts.map(([k, l]) => `<button class="fchip" data-chv="${k}" aria-pressed="${UI.chv === k}">${l}</button>`).join('')}</div>` +
+      `<p class="glinks">To send: <a href="share/YTP%20Nexus%20-%20Choices%20explained%20(for%20the%20manager).docx" target="_blank" rel="noopener">the guide as a Word file</a> · <a href="share/YTP%20Nexus%20-%20Choices%20answer%20sheet.xlsx" target="_blank" rel="noopener">the Excel answer sheet</a></p>` : '';
+    const body = UI.chv === 'explained' && D.choicesExplainedHtml ? D.choicesExplainedHtml : D.choicesHtml;
+    return head('Choices', D.openChoices ? `${D.openChoices} small choices made while building, waiting for your answer. Reply in one line, for example “3: Keep · 9: change”.` : 'Small choices made while building. All answered.') +
+      chips + (body ? `<article class="prose">${body}</article>` : empty('No choices yet.'));
+  };
+  const vHistory = () => D.historyHtml || empty('Nothing saved yet. Run python tools/history/export-session.py');
+  const vHandover = () => D.handoverHtml;
+  const vFiles = () => D.filesHtml;
+
+  function wireHistory() {
+    const q = $('#hq'), mine = $('#h-mine'), old = $('#h-old'), list = $('#hist'), count = $('#h-count');
+    if (!q || !list) return;
+    const turns = [...list.children];
+    const apply = () => {
+      const t = q.value.trim().toLowerCase();
+      let shown = 0;
+      turns.forEach((el) => {
+        const own = el.querySelector('.msg.mine');
+        const text = (mine.checked ? (own || el) : el).textContent.toLowerCase();
+        const ok = (!mine.checked || own) && (!t || text.includes(t));
+        el.hidden = !ok;
+        if (ok) shown++;
+        if (t && ok) el.querySelectorAll('details.work').forEach((d) => { d.open = d.textContent.toLowerCase().includes(t); });
+      });
+      list.classList.toggle('old', old.checked);
+      count.textContent = t || mine.checked ? `${shown} shown` : '';
+    };
+    q.value = UI.hq || ''; mine.checked = !!UI.hmine; old.checked = !!UI.hold;
+    q.addEventListener('input', () => { UI.hq = q.value; apply(); });
+    mine.addEventListener('change', () => { UI.hmine = mine.checked; apply(); });
+    old.addEventListener('change', () => { UI.hold = old.checked; apply(); });
+    apply();
+  }
+
+  function vReqs() {
+    const hasFinal = !!D.requirementsHtml;
+    if (!UI.req) UI.req = hasFinal ? 'final' : 'raw';
+    const chips = `<div class="chips" role="group" aria-label="Which document">
+      <button class="fchip" data-req="final" aria-pressed="${UI.req === 'final'}"${hasFinal ? '' : ' disabled'}>Requirements (final)${hasFinal ? '' : ': written in step 1.3'}</button>
+      <button class="fchip" data-req="raw" aria-pressed="${UI.req === 'raw'}">Raw requirements</button>${D.round16Html ? `
+      <button class="fchip" data-req="r16" aria-pressed="${UI.req === 'r16'}">Round 16 change list (applied)</button>` : ''}</div>`;
+    const body = UI.req === 'r16' && D.round16Html ? D.round16Html : UI.req === 'final' && hasFinal ? D.requirementsHtml : D.rawRequirementsHtml;
+    return chips + (body ? `<article class="prose">${body}</article>` : empty('Not written yet.'));
+  }
+
+  function decisionResults() {
+    const q = UI.q.trim().toLowerCase();
+    const list = D.decisions
+      .filter((s) => UI.sec === 'all' || s.section === UI.sec)
+      .map((s) => ({ section: s.section, rows: s.rows.filter((r) => !q || r.text.toLowerCase().includes(q)) }))
+      .filter((s) => s.rows.length);
+    if (!list.length) return empty('No decision matches your search.');
+    return list.map((s) => `<h3 class="sech">${esc(s.section)}</h3><div class="dec">${s.rows.map((r) => `<article class="decision"><span class="did">${esc(r.id)}</span><div><div class="dt">${r.html}</div><div class="dr">Why: ${r.reason}</div></div></article>`).join('')}</div>`).join('');
+  }
+  function vDecisions() {
+    const secs = ['all'].concat(D.decisions.map((s) => s.section));
+    return head('Decisions', `${decCount} locked decisions, each with its reason. Only the owner can unlock one.`) +
+      `<div class="tools"><input id="q" type="search" placeholder="Search decisions (e.g. GST, WhatsApp, payroll)" value="${esc(UI.q)}" aria-label="Search decisions">
+      <div class="chips" role="group" aria-label="Filter by section">${secs.map((s) => `<button class="fchip" data-sec="${esc(s)}" aria-pressed="${UI.sec === s}">${s === 'all' ? 'All' : esc(s)}</button>`).join('')}</div></div>
+      <div id="decres">${decisionResults()}</div>`;
+  }
+
+  function vTasks() {
+    const opts = ['all', 'to do', 'in progress', 'done', 'blocked'];
+    const rows = D.tasks.filter((t) => UI.status === 'all' || t.status === UI.status).map((t) => t.cells);
+    return head('Tasks', 'Every task card in build order, and a log of finished tasks. Task cards are written in step 1.8.') +
+      (D.tasks.length
+        ? `<div class="chips" role="group" aria-label="Filter by status">${opts.map((s) => `<button class="fchip" data-status="${s}" aria-pressed="${UI.status === s}">${s === 'all' ? 'All' : s[0].toUpperCase() + s.slice(1)}</button>`).join('')}</div>` + (rows.length ? table(D.indexHead, rows) : empty('No tasks with this status.'))
+        : empty('No task cards yet. They are written in step 1.8.')) +
+      `<h3 class="sech">Task log</h3>` + (D.taskLog.length ? table(D.taskLogHead, D.taskLog) : empty('No tasks finished yet.'));
+  }
+
+  function vInbox() {
+    return head('Questions & ideas', 'Questions raised by the AIs while working, and new ideas waiting their turn.') +
+      `<h3 class="sech">Questions</h3>` + (D.questions.length ? table(D.qHead, D.questions) : empty('No open questions.')) +
+      `<h3 class="sech">New ideas and requests</h3>` + (D.changes.length ? table(D.cHead, D.changes) : empty('No new ideas waiting.'));
+  }
+
+  const PROMPT_NAMES = { '1': 'Dashboard', '2': 'Client profile', '3': 'Sales pipeline', '4': 'Phone' };
+  const STYLE_NAMES = { A: 'Style A · Dark', B: 'Style B · Light', C: 'Style C · Dark menu + light' };
+  const DIRECTION_NAMES = { E: 'Emerald Luxe', N: 'Midnight Navy', M: 'Monochrome Neon' };
+  // Image names: round 1 "1A" (prompt + style); later rounds "R2-1-E-dark" (round, screen, look, theme: dark, light or mixed),
+  // ending "-claude" when built by Claude as a coded screen.
+  function shotLabel(name) {
+    let m = name.match(/^(\d)([A-Z])$/);
+    if (m) return `${name} · ${PROMPT_NAMES[m[1]] || 'Prompt ' + m[1]} · ${STYLE_NAMES[m[2]] || 'Style ' + m[2]}`;
+    m = name.match(/^R(\d+)-(\d)-([A-Z])-(dark|light|mixed)(-claude)?$/i);
+    if (m) return `${PROMPT_NAMES[m[2]] || 'Prompt ' + m[2]} · ${DIRECTION_NAMES[m[3].toUpperCase()] || 'Direction ' + m[3]} · ${m[4][0].toUpperCase() + m[4].slice(1).toLowerCase()}${m[5] ? ' · built by Claude' : ''}`;
+    return name;
+  }
+  const shotRound = (name) => { const m = name.match(/^R(\d+)-/i); return m ? +m[1] : 1; };
+  // Round 2+ images are grouped by screen, in look order E, N, M and dark before light.
+  const shotScreen = (name) => { const m = name.match(/^R\d+-(\d)-/i); return m ? +m[1] : 0; };
+  const shotOrder = (name) => { const m = name.match(/^R\d+-\d-([A-Z])-(dark|light)/i); return m ? 'ENM'.indexOf(m[1].toUpperCase()) * 2 + (m[2].toLowerCase() === 'light' ? 1 : 0) : 0; };
+  function gallery() {
+    if (!D.styleImages.length) return empty(D.share ? 'The early style pictures are kept in the project folder, not in this copy.' : 'No style images yet. Save them in docs/design/style/.');
+    const fig = (img) => {
+      const label = shotLabel(img.name);
+      return `<figure class="shot"><a href="${esc(img.file)}" target="_blank" rel="noopener"><img src="${esc(img.file)}" alt="${esc(label)}" loading="lazy"></a><figcaption>${esc(label)}</figcaption></figure>`;
+    };
+    const groups = [];
+    [...new Set(D.styleImages.map((i) => shotRound(i.name)))].sort((a, b) => b - a).forEach((r) => {
+      const imgs = D.styleImages.filter((i) => shotRound(i.name) === r);
+      if (r === 1) { groups.push([`Round 1`, imgs]); return; }
+      const screens = [...new Set(imgs.map((i) => shotScreen(i.name)))].sort((a, b) => a - b);
+      // One image per screen (e.g. the chosen style): show the round as one group.
+      if (screens.length === imgs.length) { groups.push([`Round ${r}`, imgs.sort((a, b) => shotScreen(a.name) - shotScreen(b.name))]); return; }
+      screens.forEach((s) => {
+        groups.push([`Round ${r} · ${PROMPT_NAMES[s] || 'Screen ' + s}`, imgs.filter((i) => shotScreen(i.name) === s).sort((a, b) => shotOrder(a.name) - shotOrder(b.name))]);
+      });
+    });
+    return groups.map(([title, imgs]) => `<h3 class="ghead">${esc(title)}</h3><div class="gallery">${imgs.map(fig).join('')}</div>`).join('');
+  }
+  function vScreens() {
+    if (!UI.scr) UI.scr = 'list';
+    const opts = [['list', 'Screen list'], ['gallery', `Early style rounds (${D.styleImages.length})`], ['review', 'Style review'], ['prompts', 'Round 1 prompts'], ['prompts2', 'Round 2 prompts']];
+    const chips = `<div class="chips" role="group" aria-label="Which view">${opts.map(([k, l]) => `<button class="fchip" data-scr="${k}" aria-pressed="${UI.scr === k}">${l}</button>`).join('')}</div>`;
+    const live = `<p class="glinks">Clickable screens: <a href="docs/design/mockups/index.html" target="_blank" rel="noopener">Preview home (all 184, by batch)</a> · <a href="docs/design/mockups/viewer.html" target="_blank" rel="noopener">Screen viewer (any screen, either colour)</a> · <a href="http://localhost:8765/tools/mockups/check.html" target="_blank" rel="noopener">Screen check</a> (needs the preview server) · <a href="#design" data-tab="design">Design versions</a></p>`;
+    if (UI.scr === 'gallery') return chips + live + gallery();
+    const body = { list: D.screensHtml, prompts: D.stylePromptsHtml, prompts2: D.stylePrompts2Html, review: D.styleReviewHtml }[UI.scr];
+    return chips + live + (body ? `<article class="prose">${body}</article>` : empty('Not written yet.'));
+  }
+
+  const VIEWS = { overview: vOverview, todo: vTodo, plan: vPlan, reqs: vReqs, screens: vScreens, design: vDesign, choices: vChoices, decisions: vDecisions, tasks: vTasks, inbox: vInbox, history: vHistory, handover: vHandover, files: vFiles };
+
+  function render() {
+    $('#tabs').innerHTML = TABS.map(([id, label, n]) => `<button class="tab" role="tab" id="tab-${id}" data-tab="${id}" aria-selected="${tab === id}">${label}${n !== '' && n !== 0 ? `<span class="n">${n}</span>` : ''}</button>`).join('');
+    $('#main').innerHTML = VIEWS[tab]();
+    document.querySelectorAll('.prose pre').forEach((pre) => {
+      const b = document.createElement('button');
+      b.className = 'btn sm ghost copy-pre';
+      b.textContent = 'Copy';
+      b.dataset.copy = pre.innerText;
+      b.dataset.msg = 'Copied. Paste it into ChatGPT.';
+      pre.parentNode.insertBefore(b, pre);
+    });
+    const q = $('#q');
+    if (q) q.addEventListener('input', () => { UI.q = q.value; $('#decres').innerHTML = decisionResults(); });
+    if (tab === 'history') wireHistory();
+  }
+
+  let tt;
+  function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => { t.hidden = true; }, 3200); }
+  function copy(text, msg) {
+    const done = () => toast(msg || 'Copied. Paste it to Claude.');
+    const fallback = () => {
+      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove(); ok ? done() : toast('Copy this and send it to Claude: ' + text);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+  }
+
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-tab],[data-copy],[data-sec],[data-status],[data-req],[data-scr],[data-doc],[data-chv]');
+    if (!el || el.disabled) return;
+    if (el.dataset.tab) e.preventDefault();
+    if (el.dataset.doc) { UI.doc = el.dataset.doc; render(); return; }
+    if (el.dataset.req) { UI.req = el.dataset.req; render(); return; }
+    if (el.dataset.scr) { UI.scr = el.dataset.scr; render(); return; }
+    if (el.dataset.chv) { UI.chv = el.dataset.chv; render(); return; }
+    if (el.dataset.tab) { tab = el.dataset.tab; try { history.replaceState(null, '', '#' + tab); } catch (err) {} render(); window.scrollTo(0, 0); }
+    else if (el.dataset.copy !== undefined) copy(el.dataset.copy, el.dataset.msg);
+    else if (el.dataset.sec) { UI.sec = el.dataset.sec; render(); }
+    else if (el.dataset.status) { UI.status = el.dataset.status; render(); }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Salary structures</title>
+<!-- Batch 7 · SCR-128 Salary structures and revisions: each person's breakdown (Basic, HRA, allowances; split confirmed by the CA, D-164), statutory deductions off until the CA confirms (D-165), revision and appraisal history with effective dates; only the Owner, HR and Accounts (and the person) can see salaries, and every opening is logged (TEAM-013, TEAM-014, RULE-016). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:32px}
+  .split{grid-template-columns:300px 1fr;gap:14px;flex:1;min-height:0;align-items:stretch}
+  .ppl2{padding:12px;display:flex;flex-direction:column;gap:6px}
+  .pp{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;text-decoration:none;color:inherit;font-size:12.5px}
+  .pp.on{background:var(--active-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+  .pp b{display:block;font-weight:700;font-size:13px}
+  .pp small{color:var(--muted);font-size:11.5px}
+  .pp .r{margin-left:auto;text-align:right;font-weight:700}
+  .pp .r small{display:block;font-weight:500}
+  .det3{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:0}
+  .card .ch{padding:12px 18px 6px}
+  .card .ch h2{font-size:18px}
+  .cb16{padding:0 18px 14px;display:flex;flex-direction:column;gap:10px}
+  .comp{display:grid;grid-template-columns:minmax(160px,1.7fr) minmax(90px,1fr) 80px;gap:8px 14px;font-size:13px;align-items:center}
+  .comp span{color:var(--muted);font-size:12px}
+  .comp b{font-weight:700;text-align:right}
+  .comp .gross{border-top:1.5px solid var(--line);padding-top:8px;font-size:14px}
+  .stack3{display:flex;height:12px;border-radius:999px;overflow:hidden;gap:2px}
+  .stack3 i{display:block;height:100%}
+  .stat2{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--card-2);font-size:12.5px}
+  .stat2 .r{margin-left:auto;font-weight:700;color:var(--muted)}
+  .rev{display:grid;grid-template-columns:16px 1fr auto;gap:10px;padding:9px 0;position:relative;font-size:12.5px}
+  .rev::before{content:"";position:absolute;left:7px;top:24px;bottom:-9px;width:2px;background:var(--line)}
+  .rev:last-child::before{display:none}
+  .rev i.d5{width:16px;height:16px;border-radius:50%;background:var(--card);border:2px solid var(--edge);margin-top:2px;position:relative;z-index:1}
+  .rev i.d5.cur{border:0;background:var(--on);box-shadow:0 0 0 4px var(--on-ring)}
+  .rev b{font-weight:700}
+  .rev small{display:block;color:var(--muted);font-size:11.5px}
+  .rev .r{font-weight:700;text-align:right;white-space:nowrap}
+  .rev .r small{color:var(--green);font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><a href="payroll.html">Payroll</a><span>/</span><b style="color:var(--ink)">Salary structures</b></div>
+          <h1 class="serif">Salary structures</h1>
+          <p>What each person is paid, split into Basic, HRA and allowances, and every change with its date. Only the Owner, HR and Accounts can open these, and each opening is logged.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="file"></i>Structure template</span><span class="btn solid lg"><i data-i="plus"></i>New revision</span></div>
+      </div>
+
+      <div class="split">
+        <div class="card ppl2">
+          <a class="pp" href="salary.html"><span class="lg-av" style="--av:#0F766E;width:30px;height:30px;font-size:10px">KR</span><div><b>Karthik Raman</b><small>SEO lead · Manager</small></div><span class="r">₹48,500<small>Oct 2025</small></span></a>
+          <a class="pp on" href="salary.html"><span class="lg-av" style="--av:#1D4ED8;width:30px;height:30px;font-size:10px">AK</span><div><b>Arun Kumar</b><small>Web developer</small></div><span class="r">₹31,400<small>Jun 2026</small></span></a>
+          <a class="pp" href="salary.html"><span class="lg-av" style="--av:#BE185D;width:30px;height:30px;font-size:10px">DS</span><div><b>Divya S</b><small>Designer</small></div><span class="r">₹28,600<small>Aug 2026</small></span></a>
+          <a class="pp" href="salary.html"><span class="lg-av" style="--av:#7C3AED;width:30px;height:30px;font-size:10px">RM</span><div><b>Rahul M</b><small>Video editor</small></div><span class="r">₹27,200<small>Jan 2026</small></span></a>
+          <a class="pp" href="salary.html"><span class="lg-av" style="--av:#B45309;width:30px;height:30px;font-size:10px">MV</span><div><b>Meena V</b><small>Accounts</small></div><span class="r">₹22,800<small>Apr 2026</small></span></a>
+          <a class="pp" href="salary.html"><span class="lg-av" style="--av:#0369A1;width:30px;height:30px;font-size:10px">PN</span><div><b>Priya N</b><small>Junior developer · probation</small></div><span class="r">₹30,000<small>Joined 29 Sep</small></span></a>
+          <span class="manual" style="padding:4px 10px">Monthly gross. Freelancers are paid through Payouts.</span>
+        </div>
+
+        <div class="det3">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Arun Kumar · now</h2><span class="chip c-green" style="margin-left:auto">From 3 Jun 2026</span></div>
+            <div class="cb16">
+              <div class="stack3"><i style="width:50%;background:#0F766E"></i><i style="width:20%;background:#38BDF8"></i><i style="width:30%;background:#94A3B8"></i></div>
+              <div class="comp">
+                <span style="color:var(--ink);font-size:13px">Basic</span><span>50% of gross</span><b>₹15,700</b>
+                <span style="color:var(--ink);font-size:13px">House rent allowance (HRA)</span><span>40% of Basic</span><b>₹6,280</b>
+                <span style="color:var(--ink);font-size:13px">Special allowance</span><span>The rest</span><b>₹9,420</b>
+                <span class="gross" style="color:var(--ink);font-size:14px;font-weight:700">Monthly gross</span><span class="gross">₹3,76,800 a year</span><b class="gross">₹31,400</b>
+              </div>
+              <span class="sm" style="font-size:12px;margin-top:2px">Deductions</span>
+              <div class="stat2">Provident fund (PF)<span class="r">Off</span></div>
+              <div class="stat2">ESI<span class="r">Off · not needed above ₹21,000</span></div>
+              <div class="stat2">Professional tax<span class="r">Off</span></div>
+              <div class="banner info" style="font-size:12px;align-items:flex-start"><i data-i="shield"></i>The split follows the "Standard" template. Your CA confirms the split and the deductions before go-live.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Revisions and appraisals</h2></div>
+            <div class="cb16">
+              <div class="rev"><i class="d5 cur"></i><div><b>Second-year review</b><small>3 Jun 2026 · rating 4 of 5 · approved by the Owner</small></div><span class="r">₹31,400<small>+12.1%</small></span></div>
+              <div class="rev"><i class="d5"></i><div><b>First-year review</b><small>3 Jun 2025 · rating 4 of 5</small></div><span class="r">₹28,000<small>+16.7%</small></span></div>
+              <div class="rev"><i class="d5"></i><div><b>Joined</b><small>3 Jun 2024 · probation 6 months</small></div><span class="r">₹24,000</span></div>
+              <div class="stat2" style="margin-top:6px"><i data-i="cal"></i>Next review<span class="r">3 Jun 2027 · joining anniversary</span></div>
+              <div class="stat2"><i data-i="eye"></i>Last opened<span class="r">Owner · today 11:40 am</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

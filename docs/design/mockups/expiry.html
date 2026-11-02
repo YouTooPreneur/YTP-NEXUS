@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Expiry monitor</title>
+<!-- Batch 4 · SCR-094 Expiry monitor: domains and SSL checked every morning, what expires next, who renews it, changes found by the check; uptime comes with the integrations (WEB-004, WEB-005, WEB-014, AUTO-029, RULE-007, RULE-024) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .strip{display:grid;grid-template-columns:repeat(31,1fr);gap:3px;align-items:end}
+  .strip .d{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--muted);font-weight:700}
+  .strip .d i{width:100%;height:34px;border-radius:6px;background:var(--card-2);display:flex;flex-direction:column-reverse;gap:2px;padding:3px;box-sizing:border-box}
+  .strip .d i b{display:block;height:8px;border-radius:3px}
+  .strip .d.today{color:var(--ink)}
+  .strip .d.today i{box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .r-red{background:var(--red)} .r-amb{background:#E2A93B} .r-blu{background:#38BDF8} .r-grn{background:var(--on)}
+  .lay{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .ring{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--bar) 0);position:relative}
+  .ring::before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--card)}
+  .ring span{position:relative}
+  .ex td{padding-top:9px;padding-bottom:9px}
+  .ex b{font-weight:700;display:block}
+  .ex small{font-size:12px;color:var(--muted)}
+  .chg{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .chg:first-of-type{border-top:0}
+  .chg .ft{display:flex;align-items:center;gap:8px;font-weight:700}
+  .chg s{color:var(--muted);font-weight:500}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="expiry">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Expiry monitor</h1>
+          <p>Every domain and SSL certificate is checked at 6:00 am each morning. Alerts go out 30, 15, 7 and 1 days before; a date moves only by evidence or by this check.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="refresh"></i>Check now</span></div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi"><div class="lab">Domains checked today</div><div class="num serif" style="font-size:32px">46</div><div class="sub"><span class="up">All answered</span>6:00 am</div></div>
+        <div class="card kpi"><div class="lab">SSL checked today</div><div class="num serif" style="font-size:32px">40</div><div class="sub">2 renew themselves this month</div></div>
+        <div class="card kpi"><div class="lab">Expire in 30 days</div><div class="num serif" style="font-size:32px">5</div><div class="sub">1 at risk · 2 client renews</div></div>
+        <div class="card kpi"><div class="lab">Changes found today</div><div class="num serif" style="font-size:32px">1</div><div class="sub">Dates updated by themselves</div></div>
+      </div>
+
+      <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Next 30 days</h2><span class="sm" style="font-size:12px;margin-left:auto">Red: at risk · amber: client renews · blue: invoice ready · green: renews itself</span></div>
+        <div class="strip" id="strip"></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:8px">
+          <table class="tbl ex"><thead><tr><th></th><th>What</th><th>Client</th><th>Who renews</th><th>Next step</th></tr></thead><tbody>
+            <tr><td><span class="ring" style="--c:var(--red);--p:23"><span>7</span></span></td><td><b>greenleaforganics.com</b><small>Domain · GoDaddy · YTP account · 8 Oct</small></td><td class="sm">Greenleaf Organics</td><td class="sm">YTP, after payment</td><td><a class="btn" href="invoice.html" style="text-decoration:none">Invoice unpaid</a></td></tr>
+            <tr><td><span class="ring" style="--c:#E2A93B;--p:40"><span>12</span></span></td><td><b>velocitymotors.in SSL</b><small>SSL · client's Namecheap · 13 Oct</small></td><td class="sm">Velocity Motors</td><td class="sm">Client</td><td><a class="btn" href="renewals.html" style="text-decoration:none">Reminder sent · board</a></td></tr>
+            <tr><td><span class="ring" style="--c:#E2A93B;--p:43"><span>13</span></span></td><td><b>Kaveri Hospitals hosting</b><small>cPanel · client's GoDaddy · 14 Oct</small></td><td class="sm">Kaveri Hospitals</td><td class="sm">Client</td><td><a class="btn solid" href="renewal-confirm.html" style="text-decoration:none">Proof received · confirm</a></td></tr>
+            <tr><td><span class="ring" style="--c:#38BDF8;--p:93"><span>28</span></span></td><td><b>sharmadental.in</b><small>Domain + hosting · YTP account · 29 Oct</small></td><td class="sm">Sharma Dental Care</td><td class="sm">YTP, after payment</td><td><a class="btn" href="asset.html" style="text-decoration:none">Invoice sends 2 Oct</a></td></tr>
+            <tr><td><span class="ring" style="--c:var(--on);--p:97"><span>29</span></span></td><td><b>royalcaterers.in SSL</b><small>SSL · Let's Encrypt · 30 Oct</small></td><td class="sm">Royal Caterers</td><td class="sm">Renews itself</td><td class="sm">Nothing to do</td></tr>
+          </tbody></table>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:14px">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:18px">Changed by today's check</h2></div>
+            <div class="chg"><span class="ft"><i data-i="refresh"></i>brightmindstuition.in</span><span><s>3 Nov 2026</s> → <b>3 Nov 2027</b></span><span class="sm" style="font-size:12px">Renewed by the client at GoDaddy. The registry date is the evidence; no invoice or payment was created.</span></div>
+          </div>
+          <div class="card cb" style="padding-top:14px;background:var(--card-2);box-shadow:none">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:18px">Uptime</h2><span class="chip c-ink">Ready slot</span></div>
+            <p class="sm" style="font-size:12.5px;line-height:1.55">Uptime checks and "site is down" alerts are switched on with the integrations (step 3.9). Each website will show its uptime here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+  // 1–31 October 2026 with the items above (1 Oct is a Thursday).
+  const marks = { 8: ['r-red'], 13: ['r-amb'], 14: ['r-amb'], 29: ['r-blu'], 30: ['r-grn'] };
+  const days = ['Th','Fr','Sa','Su','Mo','Tu','We'];
+  let html = '';
+  for (let d = 1; d <= 31; d++) {
+    const bars = (marks[d] || []).map((c) => `<b class="${c}"></b>`).join('');
+    html += `<span class="d${d === 1 ? ' today' : ''}"><i>${bars}</i>${d}<br>${days[(d - 1) % 7]}</span>`;
+  }
+  document.getElementById('strip').innerHTML = html;
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Post editor</title>
+<!-- Batch 6 · SCR-064 Post editor (Royal Caterers · Navaratri thali reel): caption in English and Tamil, media, platforms, date and time, the approval steps (internal review, then the client in the portal), and a live preview; AI writes, translates and suggests hashtags and a time, as drafts (PRJ-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .hd{display:flex;gap:14px;align-items:center}
+  .hd h1{font-size:28px;line-height:1.1}
+  .hd .sub3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:12.5px;color:var(--muted)}
+  .hd .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .lay6{display:grid;grid-template-columns:1fr 360px;gap:14px;flex:1;min-height:0}
+  .ed{padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-height:0}
+  .row4{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .lbl5{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
+  .pfs{display:flex;gap:6px;flex-wrap:wrap}
+  .pfs span{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--muted);background:var(--card)}
+  .pfs span i{width:9px;height:9px;border-radius:3px}
+  .pfs span.on{border-color:var(--ink);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+  .cap{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .cap .tb{display:flex;gap:2px;padding:6px;background:var(--card-2);border-bottom:1px solid var(--line-soft)}
+  .cap .tb span{padding:5px 12px;border-radius:9px;font-size:12px;font-weight:700;color:var(--muted)}
+  .cap .tb span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .cap .tb .ai-acts{margin-left:auto}
+  .cap .tx{padding:12px 14px;font-size:13.5px;line-height:1.6;min-height:110px}
+  .cap .tx .hs{color:#2563EB}
+  .cap .ft2{display:flex;justify-content:space-between;padding:6px 14px 10px;font-size:11.5px;color:var(--muted)}
+  .media{display:flex;gap:10px;align-items:flex-start}
+  .vid{width:96px;height:150px;border-radius:12px;background:linear-gradient(170deg,#7C2D12,#C2410C 45%,#FBBF24);position:relative;flex:none;overflow:hidden}
+  .vid::after{content:"0:28";position:absolute;right:6px;bottom:6px;font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.45);padding:1px 5px;border-radius:5px}
+  .vid i{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(255,255,255,.9)}
+  .vid i::after{content:"";position:absolute;left:12px;top:9px;border-left:9px solid #7C2D12;border-top:6px solid transparent;border-bottom:6px solid transparent}
+  .addm{width:96px;height:150px;border-radius:12px;border:1.5px dashed var(--edge);display:grid;place-items:center;color:var(--muted);font-size:11.5px;font-weight:600;text-align:center}
+  .side6{display:flex;flex-direction:column;gap:12px;min-height:0}
+  .ig{border-radius:18px;border:1px solid var(--line);background:#fff;color:#111;overflow:hidden;font-family:"DM Sans",sans-serif}
+  .ig .top3{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:12px;font-weight:700}
+  .ig .top3 i{width:26px;height:26px;border-radius:50%;background:linear-gradient(45deg,#F59E0B,#E1306C);display:block}
+  .ig .img{height:250px;background:linear-gradient(170deg,#7C2D12,#C2410C 45%,#FBBF24);position:relative}
+  .ig .img b{position:absolute;left:14px;bottom:16px;color:#fff;font-family:Sora,sans-serif;font-size:20px;line-height:1.15;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+  .ig .cp{padding:8px 10px 10px;font-size:11.5px;line-height:1.45}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb9{padding:0 16px 12px}
+  .flow.v{flex-direction:column}
+  .flow.v .st{border-top:0;border-left:3px solid var(--line);padding:5px 10px}
+  .flow.v .st.done{border-left-color:var(--on)}
+  .flow.v .st.now{border-left-color:#E2A93B}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="content">
+  <main>
+    <section class="pg">
+      <div>
+        <div class="crumbs"><a href="content-calendar.html">Content calendar</a><span>/</span><span>Royal Caterers</span><span>/</span><b style="color:var(--ink)">Navaratri thali reel</b></div>
+        <div class="hd">
+          <span class="lg-av" style="--av:#A16207;width:46px;height:46px;font-size:13px">RC</span>
+          <div>
+            <h1 class="serif">Navaratri thali reel</h1>
+            <div class="sub3"><span class="chip c-amber">With the client</span><span>Royal Caterers · social + ads launch · made by Divya · sent to Mr. Ganesh yesterday</span></div>
+          </div>
+          <div class="acts"><span class="btn lg"><i data-i="bell"></i>Remind the client</span><span class="btn lg" data-ai="Mark approved by hand: for when the client says yes on a call or WhatsApp. You attach the proof (a screenshot or a note), and it is saved in the log.">Approved elsewhere?</span><span class="btn solid lg">Save</span></div>
+        </div>
+      </div>
+
+      <div class="lay6">
+        <div class="card ed">
+          <div class="row4">
+            <div><span class="lbl5">Platforms</span><div class="pfs"><span class="on"><i style="background:#E1306C"></i>Instagram reel</span><span class="on"><i style="background:#1877F2"></i>Facebook</span><span><i style="background:#FF0000"></i>YouTube Short</span></div></div>
+            <div><span class="lbl5">Date and time</span><div class="input"><i data-i="cal"></i>Mon 5 Oct 2026 · 6:00 pm<span class="end"><span class="ai-btn sm" data-ai="Best time: from this page's last 30 posts, 6–8 pm on weekdays gets the most views. Suggestion only.">✦ Best time</span></span></div></div>
+            <div><span class="lbl5">Campaign</span><div class="input"><i data-i="tag"></i>Navaratri 2026 · launch</div></div>
+          </div>
+
+          <div><span class="lbl5">Caption</span>
+            <div class="cap">
+              <div class="tb"><span class="on">English</span><span>தமிழ்</span><span class="ai-acts"><span class="ai-btn sm" data-ai="Write a caption: a short caption in Royal Caterers' brand voice from the post's idea. Arrives as a draft for you to edit.">✦ Write</span><span class="ai-btn sm" data-ai="Tamil version: translates this caption into Tamil, keeping the brand voice. You check it before saving.">✦ Tamil version</span><span class="ai-btn sm" data-ai="Hashtags: suggests 6–8 local hashtags for Madurai food and Navaratri.">✦ Hashtags</span></span></div>
+              <div class="tx">Nine nights, nine flavours. 🌼 Our Navaratri special thali brings sundal, puliyodharai, sakkarai pongal and more, made fresh in our Madurai kitchen every evening. Order for your golu guests: call 98404 55210.<br><span class="hs">#Navaratri2026 #MaduraiFood #RoyalCaterers #Golu #FestiveThali</span></div>
+              <div class="ft2"><span>Tamil version saved · checked by Divya</span><span>312 of 2,200 characters</span></div>
+            </div>
+          </div>
+
+          <div><span class="lbl5">Media</span>
+            <div class="media"><span class="vid"><i></i></span><span class="addm">+ Add<br>photo or video</span><div style="font-size:12.5px;line-height:1.6"><b>thali-reel-final.mp4</b><br><span class="sm">0:28 · 9:16 · 18 MB · music: licensed from the library</span><br><span class="sm">Shot by Sanjay on 27 Sep</span></div></div>
+          </div>
+
+          <div class="row4">
+            <div><span class="lbl5">Location tag</span><div class="input"><i data-i="pin"></i>Royal Caterers, Madurai</div></div>
+            <div><span class="lbl5">First comment</span><div class="input"><i data-i="msg"></i>Order on WhatsApp: 98404 55210</div></div>
+            <div><span class="lbl5">Boost as an ad</span><div class="input"><i data-i="bolt"></i>Add to the Navaratri ad set<span class="end"><span class="toggle"></span></span></div></div>
+          </div>
+          <div class="field"><label>Note for the team (not shown to the client)</label><div class="input" style="height:auto;padding:10px 12px;white-space:normal;line-height:1.5">Post the Tamil caption on Facebook and the English one on Instagram. If the client does not answer by Saturday, call Mr. Ganesh.</div></div>
+        </div>
+
+        <div class="side6">
+          <div class="ig">
+            <div class="top3"><i></i>royalcaterers.madurai<span style="margin-left:auto;color:var(--muted);font-weight:600">Preview</span></div>
+            <div class="img"><b>Navaratri<br>special thali</b></div>
+            <div class="cp"><b>royalcaterers.madurai</b> Nine nights, nine flavours. 🌼 Our Navaratri special thali brings sundal, puliyodharai…</div>
+          </div>
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Approval</h2><span class="link">Steps from the social template</span></div>
+            <div class="cb9">
+              <div class="flow v">
+                <div class="st done"><b><em>1</em>Draft</b>Divya · 29 Sep</div>
+                <div class="st done"><b><em>2</em>Internal review</b>Karthik signed off · 30 Sep</div>
+                <div class="st now"><b><em>3</em>Client approval</b>Sent 30 Sep in the portal and on WhatsApp · opened</div>
+                <div class="st"><b><em>4</em>Approved · scheduled</b>Then the team posts it at 6:00 pm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

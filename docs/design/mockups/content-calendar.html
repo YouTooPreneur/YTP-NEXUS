@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Content calendar</title>
+<!-- Batch 6 · SCR-063 Content calendar: client posts by platform on a month or week view, coloured by status (draft, internal review, client approval, approved, scheduled, published); clients approve in their portal; publishing by hand now, directly once platform keys are connected (PRJ-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:11px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .bar5{display:flex;align-items:center;gap:10px;flex:none}
+  .bar5 .mo{display:flex;align-items:center;gap:6px;font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .bar5 .mo .btn{width:30px;height:30px;padding:0}
+  .bar5 .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .fsel{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:12.5px;font-weight:600;color:var(--muted)}
+  .fsel svg{width:14px;height:14px}
+  .key5{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;font-weight:600;color:var(--muted)}
+  .key5 span{display:inline-flex;align-items:center;gap:5px}
+  .key5 i{width:10px;height:10px;border-radius:3px}
+  .lay5{display:grid;grid-template-columns:1fr 300px;gap:12px;flex:1;min-height:0}
+  .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:auto repeat(5,1fr);gap:1px;background:var(--line-soft);border-radius:16px;overflow:hidden;border:1px solid var(--line-soft);min-height:0}
+  .cal .dh5{background:var(--card-2);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:7px 10px}
+  .cal .cell{background:var(--card);padding:6px 6px 4px;display:flex;flex-direction:column;gap:3px;min-height:0;overflow:hidden}
+  .cal .cell .dn{font-size:11.5px;font-weight:700;color:var(--muted);display:flex;justify-content:space-between}
+  .cal .cell.out{background:color-mix(in srgb,var(--card-2) 60%,var(--card))}
+  .cal .cell.out .dn{color:var(--muted)}
+  .cal .cell.today .dn b{background:var(--primary-bg);color:var(--primary-ink);border-radius:999px;padding:0 7px}
+  .cal .cell .hol{font-size:10px;font-weight:700;color:var(--amber)}
+  .post{display:block;font-size:10.5px;font-weight:600;padding:2px 5px;border-radius:6px;border-left:3px solid var(--s);background:color-mix(in srgb,var(--s) 11%,var(--card));overflow:hidden;color:var(--ink);text-decoration:none;line-height:1.35;flex:none}
+  .post .pf{display:inline-block;margin-right:4px;font-size:8.5px;font-weight:800;color:#fff;border-radius:4px;padding:1px 3px;flex:none;letter-spacing:.02em}
+  .post .cl{display:inline-block;margin-right:4px;font-weight:800;color:var(--muted);flex:none}
+  .more5{font-size:10.5px;color:var(--muted);font-weight:700;padding-left:4px}
+  .side5{display:flex;flex-direction:column;gap:12px;min-height:0}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb8{padding:0 16px 12px}
+  .na{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px solid var(--line-soft);font-size:12px}
+  .na:first-of-type{border-top:0}
+  .na .lg-av{width:26px;height:26px;font-size:9px}
+  .na b{display:block;font-weight:700;font-size:12.5px}
+  .na small{color:var(--muted);font-size:11px}
+  .na .r{margin-left:auto}
+  .grp{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 0 2px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="content">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Content calendar</h1>
+          <p>Every client's posts by platform. A post moves from draft to internal review, client approval, approved, scheduled and published. Clients approve in their portal.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Plan next month: drafts post ideas for one client from their brand voice, services and past posts. Arrives as drafts; uses a little of the AI limit."><i data-i="spark"></i>Plan next month</span><a class="btn solid lg" href="post-editor.html" style="text-decoration:none"><i data-i="plus"></i>New post</a></div>
+      </div>
+
+      <div class="bar5">
+        <div class="mo"><span class="btn flip"><i data-i="right"></i></span>October 2026<span class="btn"><i data-i="right"></i></span></div>
+        <div class="pill-sel"><span>Week</span><span class="on">Month</span><span>List</span></div>
+        <div class="key5" style="margin-left:8px"><span><i style="background:#94A3B8"></i>Draft</span><span><i style="background:#8B5CF6"></i>Internal review</span><span><i style="background:#E2A93B"></i>Client approval</span><span><i style="background:#12A15E"></i>Approved</span><span><i style="background:#38BDF8"></i>Scheduled</span><span><i style="background:#1C3D36"></i>Published</span></div>
+        <div class="r"><span class="fsel"><i data-i="users"></i>3 clients</span><span class="fsel"><i data-i="globe"></i>All platforms</span></div>
+      </div>
+
+      <div class="lay5">
+        <div class="cal" id="cal"></div>
+        <div class="side5">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Needs action</h2><span class="count">6</span></div>
+            <div class="cb8">
+              <div class="grp">With the client · 3</div>
+              <a class="na" href="post-editor.html" style="color:inherit;text-decoration:none"><span class="lg-av" style="--av:#A16207">RC</span><div><b>Navaratri thali reel</b><small>Royal Caterers · 5 Oct · sent yesterday</small></div><span class="r chip c-amber">Waiting</span></a>
+              <div class="na"><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Fleet safety carousel</b><small>Meridian · 9 Oct</small></div><span class="r chip c-amber">Waiting</span></div>
+              <div class="na"><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Ayudha Pooja greeting</b><small>Meridian · 19 Oct · opened, no answer</small></div><span class="r chip c-amber">Waiting</span></div>
+              <div class="grp">Internal review · 2</div>
+              <div class="na"><span class="lg-av" style="--av:#A16207">RC</span><div><b>Wedding catering reel</b><small>Royal Caterers · 8 Oct · Divya</small></div><span class="r chip" style="color:#7C3AED;background:#F3E8FF">Review</span></div>
+              <div class="na"><span class="lg-av" style="--av:#6D28D9">ML</span><div><b>Diwali offer post</b><small>Meridian · 12 Oct · Karthik</small></div><span class="r chip" style="color:#7C3AED;background:#F3E8FF">Review</span></div>
+              <div class="grp">Blocked · 1</div>
+              <a class="na" href="client-inputs.html" style="color:inherit;text-decoration:none"><span class="lg-av" style="--av:#2F5E8C">GV</span><div><b>October posts</b><small>Green Valley · waiting for event photos</small></div><span class="r chip c-red">Inputs</span></a>
+            </div>
+          </div>
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Publishing</h2></div>
+            <div class="cb8" style="display:flex;flex-direction:column;gap:8px">
+              <span class="sm" style="font-size:12.5px;line-height:1.5">For now the team posts by hand; Nexus reminds them at the planned time and they mark it published.</span>
+              <div class="banner info" style="font-size:12px;align-items:flex-start"><i data-i="plug"></i>Direct publishing to Instagram, Facebook, LinkedIn, YouTube and Google Business turns on when their keys are connected (step 3.9).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+  // October 2026 (1 Oct is a Thursday). Calendar starts on Monday 28 Sep.
+  const S = { d: '#94A3B8', ir: '#8B5CF6', ca: '#E2A93B', ap: '#12A15E', sc: '#38BDF8', pu: '#1C3D36' };
+  const PF = { IG: '#E1306C', FB: '#1877F2', LI: '#0A66C2', GB: '#34A853', YT: '#FF0000' };
+  const P = {
+    '9-29': [['ML', 'LI', 'Hiring drivers', 'pu']],
+    '9-30': [['RC', 'IG', 'Launch day reel', 'pu'], ['LS', 'IG', 'Reel 12 · festive saree', 'pu']],
+    1: [['ML', 'LI', 'Fleet safety tips', 'pu'], ['RC', 'FB', 'Menu teaser', 'pu']],
+    2: [['RC', 'IG', 'Gandhi Jayanti greeting', 'sc']],
+    3: [['ML', 'IG', 'Behind the warehouse', 'sc']],
+    5: [['RC', 'IG', 'Navaratri thali reel', 'ca'], ['ML', 'LI', 'Customer story', 'ap']],
+    6: [['GV', 'IG', 'Sports day photos', 'd']],
+    7: [['RC', 'FB', 'Navaratri menu', 'ap']],
+    8: [['RC', 'IG', 'Wedding catering reel', 'ir']],
+    9: [['ML', 'IG', 'Fleet safety carousel', 'ca']],
+    12: [['ML', 'LI', 'Diwali offer post', 'ir'], ['RC', 'IG', 'Ayudha Pooja offers', 'd']],
+    13: [['GV', 'FB', 'Admissions open', 'd']],
+    14: [['ML', 'LI', 'Team spotlight', 'd']],
+    16: [['ML', 'IG', 'Route map reel', 'd'], ['RC', 'IG', 'Chef special', 'd']],
+    19: [['ML', 'LI', 'Ayudha Pooja greeting', 'ca']],
+    20: [['RC', 'FB', 'Vijayadashami greeting', 'd'], ['GV', 'IG', 'Teachers corner', 'd']],
+    21: [['ML', 'LI', 'Industry update', 'd']],
+    23: [['ML', 'IG', 'Diwali gifting', 'd'], ['RC', 'IG', 'Diwali sweets box', 'd']],
+    26: [['ML', 'LI', 'Q3 milestones', 'd']],
+    27: [['GV', 'FB', 'Parent meet', 'd']],
+    28: [['ML', 'IG', 'Diwali delivery dates', 'd'], ['RC', 'IG', 'Party orders', 'd'], ['RC', 'FB', 'Party orders', 'd']],
+    30: [['ML', 'LI', 'Month in review', 'd']],
+  };
+  const HOL = { 2: 'Gandhi Jayanti', 19: 'Ayudha Pooja', 20: 'Vijayadashami' };
+  const AV = { ML: '#6D28D9', RC: '#86600F', GV: '#2F5E8C', LS: '#A21CAF' };
+  const cal = document.getElementById('cal');
+  let h = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => `<div class="dh5">${d}</div>`).join('');
+  const days = [];
+  for (let d = 28; d <= 30; d++) days.push(['9-' + d, d, true]);
+  for (let d = 1; d <= 31; d++) days.push([d, d, false]);
+  days.push(['11-1', 1, true]);
+  for (const [key, n, out] of days) {
+    const posts = P[key] || [];
+    const shown = posts.slice(0, 3).map(([c, pf, t, st]) => `<a class="post" href="post-editor.html" style="--s:${S[st]}" title="${t}"><span class="pf" style="background:${PF[pf]}">${pf}</span><span class="cl" style="color:${AV[c]}">${c}</span>${t}</a>`).join('');
+    const more = posts.length > 3 ? `<span class="more5">+${posts.length - 3} more</span>` : '';
+    const hol = !out && HOL[n] ? `<span class="hol">${HOL[n]}</span>` : '';
+    h += `<div class="cell${out ? ' out' : ''}${!out && n === 1 ? ' today' : ''}"><span class="dn"><b>${n}</b>${hol}</span>${shown}${more}</div>`;
+  }
+  cal.innerHTML = h;
+</script>
+</body>
+</html>

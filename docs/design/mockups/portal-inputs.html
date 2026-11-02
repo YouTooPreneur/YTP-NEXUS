@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Files we need · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-207 Inputs and uploads (Aroma Bakes · Ms. Nithya): the checklist for the website, the same list the team sees in Client inputs; upload against each item (25 MB a file, Drive links for bigger ones), logins only through the vault link, and the reminder schedule (POR-006, CON-013, RULE-025). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .fld > span{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .inp{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13.5px;color:var(--ink);min-width:0}
+  .inp.ph{color:var(--muted)}
+  .inp.area{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.5}
+  .inp svg{width:16px;height:16px;color:var(--muted)}
+  .drop3{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--edge);border-radius:14px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .drop3 b{display:block;color:var(--ink);font-size:13px}
+  .drop3 .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+
+  .ck{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid var(--line-soft)}
+  .ck:first-of-type{border-top:0}
+  .ck .n6{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px;background:var(--card-2);border:1.5px solid var(--edge);color:var(--muted)}
+  .ck.ok .n6{background:var(--on);border-color:var(--on);color:#fff}
+  .ck.miss .n6{border-color:#E2A93B;color:var(--amber);background:#FEF3C7}
+  .ck .hd2{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .ck .hd2 b{font-weight:700;font-size:14px}
+  .ck .hd2 .chip{margin-left:auto}
+  .ck .body6{display:flex;flex-direction:column;gap:8px;margin-top:6px;font-size:12.5px;color:var(--muted)}
+  .ck .or2{display:flex;align-items:center;gap:8px}
+  .ck .or2 .inp{flex:1}
+  .prog{display:flex;align-items:center;gap:12px}
+  .prog .meter{flex:1;height:10px}
+  .prog b{font-family:Sora,sans-serif;font-weight:600;font-size:20px}
+  .files4{display:flex;gap:6px;flex-wrap:wrap}
+  .files4 span{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#F3D9A4,#C98A3D);display:block}
+  .files4 span:nth-child(2){background:linear-gradient(135deg,#F7E3C3,#B5651D)}
+  .files4 span:nth-child(3){background:linear-gradient(135deg,#EFD2B0,#8B4513)}
+  .files4 span:nth-child(4){background:linear-gradient(135deg,#FBE7C6,#D9A066)}
+  .files4 em{font-style:normal;width:46px;height:46px;border-radius:10px;background:var(--card-2);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="inputs" data-who="AB|Aroma Bakes|Ms. Nithya|#B7791F" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Files we need</h1><p class="lead2">What we need from you to build your website. Upload here and we tick it off. Files up to 25 MB; for bigger files paste a Google Drive link.</p></div>
+    <div class="acts"><span class="po-btn"><i data-i="phone"></i>Book a 15-minute call</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Website · 5 pages and menu</h2>
+        <div class="prog"><b>2 of 4</b><div class="meter"><i style="width:50%"></i></div><span class="sm" style="font-size:12.5px">received</span></div>
+        <div class="ck miss"><span class="n6">1</span><div><div class="hd2"><b>Logo files</b><span class="chip c-amber">Asked 26 Sep · 5 days</span></div>
+          <div class="body6">The logo you use on your boxes and shop board. AI, SVG, PDF or a large PNG is best.
+            <div class="drop3"><i data-i="upload"></i><div><b>Drop your logo here</b>or choose from your phone or computer</div><span class="po-btn sm solid">Upload</span></div>
+            <div class="or2"><span>or</span><div class="inp ph"><i data-i="link"></i>Paste a Google Drive link</div></div>
+            <span>No logo files? We can design one; ask us for a quote.</span></div></div></div>
+        <div class="ck miss"><span class="n6">2</span><div><div class="hd2"><b>"About us" text</b><span class="chip c-amber">Not yet</span></div>
+          <div class="body6">A few lines on how Aroma Bakes started and what you are proud of. Type it here, or book a 15-minute call and we write it for you.
+            <div class="inp area ph">Type or paste your text here…</div></div></div></div>
+        <div class="ck ok"><span class="n6"><i data-i="check"></i></span><div><div class="hd2"><b>Menu photos</b><span class="chip c-green">Received 24 Sep</span></div>
+          <div class="body6"><div class="files4"><span></span><span></span><span></span><span></span><em>+32</em></div>36 photos, uploaded by you here in the portal.</div></div></div>
+        <div class="ck ok"><span class="n6"><i data-i="check"></i></span><div><div class="hd2"><b>Domain access</b><span class="chip c-green">Shared 25 Sep</span></div>
+          <div class="body6"><span style="display:flex;gap:8px;align-items:center"><i data-i="lock"></i>Shared through our secure vault link. We never ask for passwords in the portal or on WhatsApp.</span></div></div></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Send us something else</h2>
+        <div class="drop3"><i data-i="upload"></i><div><b>Photos, documents or videos</b>Up to 25 MB each</div><span class="po-btn sm">Choose</span></div>
+        <div class="po-note"><i data-i="info"></i><span>Everything you send is kept in your project's files, and only your team at YouTooPreneur can see it.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Reminders</h2>
+        <div class="po-note"><i data-i="bell"></i><span>We remind you <b>every 3 days on WhatsApp</b> until everything is in. Last reminder 28 Sep; next on 1 Oct.</span></div>
+        <div class="po-note"><i data-i="phone"></i><span>Too often? Tell us and we will remind you less often, or phone you instead.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Your website team</h2>
+        <div class="tm"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Design · waiting for your logo</small></div></div>
+        <div class="tm"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Builds the website</small></div></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">The design starts as soon as the logo arrives. Need more time? Tell us and we start with a placeholder.</p>
+</main>
+</div>
+</body>
+</html>

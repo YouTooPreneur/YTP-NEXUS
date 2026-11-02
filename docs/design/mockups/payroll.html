@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Payroll</title>
+<!-- Batch 7 · SCR-127 Payroll run (September 2026): calculate from attendance, leave, loss of pay, overtime, bonuses, incentives and advance recovery → review → owner approval → payslips → bank payment list for bulk upload → mark paid with references; salary breakdown (D-164); PF, ESI and professional tax off until the CA confirms (D-165); year-to-date per employee (TEAM-013, TEAM-015, TEAM-016, RULE-016, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:11px;padding-top:12px}
+  .pg-head h1{font-size:32px}
+  .tbl td{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:16px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tfoot td{font-size:13px}
+  .lay16{display:grid;grid-template-columns:1fr 300px;gap:14px;align-items:start}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb15{padding:0 16px 12px;display:flex;flex-direction:column;gap:8px}
+  .ytd{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:12.5px}
+  .ytd span{color:var(--muted)}
+  .ytd b{text-align:right;font-weight:700}
+  .flow .st{padding:8px 10px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Payroll</b></div>
+          <h1 class="serif">Payroll · September 2026</h1>
+          <p>Worked out from attendance, leave, overtime, bonuses, incentives and advance recovery. Payslips go by email and into My HR; salaries go by bank transfer, UPI if needed.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>August</span><span class="on">September</span><span>October</span></div><span class="ai-btn" data-ai="What changed from August: Karthik's incentive (+₹2,400), Rahul's advance recovery (−₹2,000) and Priya joining on 29 Sep. Read only."><i data-i="spark"></i>What changed?</span><a class="btn lg" href="salary.html" style="text-decoration:none">Salary structures</a></div>
+      </div>
+
+      <div class="flow">
+        <div class="st done"><b><em>1</em>Calculate</b>28 Sep · from attendance</div>
+        <div class="st done"><b><em>2</em>Review</b>29 Sep · Meena</div>
+        <div class="st done"><b><em>3</em>Approve</b>30 Sep · Owner</div>
+        <div class="st done"><b><em>4</em>Payslips</b>1 Oct 8:00 am · emailed</div>
+        <div class="st done"><b><em>5</em>Bank list</b>1 Oct · HDFC bulk file</div>
+        <div class="st now"><b><em>6</em>Mark paid</b>5 of 6 paid</div>
+      </div>
+
+      <div class="banner info" style="font-size:12.5px"><i data-i="shield"></i>PF, ESI and professional tax are switched off. Your CA confirms the salary split and any deductions before go-live.</div>
+
+      <div class="lay16">
+        <div class="card" style="padding:4px 18px 10px">
+          <table class="tbl">
+            <thead><tr><th>Employee</th><th>Paid days</th><th class="num">Gross</th><th class="num">Added</th><th class="num">Taken off</th><th class="num">Net pay</th><th>Paid</th></tr></thead>
+            <tbody>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#0F766E;width:28px;height:28px;font-size:9.5px">KR</span><b>Karthik Raman</b></div></td><td>26 of 26</td><td class="num">₹48,500</td><td class="num">₹2,400<small>incentive</small></td><td class="num mut">—</td><td class="num">₹50,900</td><td><span class="chip c-green">1 Oct</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8;width:28px;height:28px;font-size:9.5px">AK</span><a href="salary.html" style="color:inherit;text-decoration:none"><b>Arun Kumar</b></a></div></td><td>26 of 26<small>1 casual leave</small></td><td class="num">₹31,400</td><td class="num mut">—</td><td class="num mut">—</td><td class="num">₹31,400</td><td><span class="chip c-green">1 Oct</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D;width:28px;height:28px;font-size:9.5px">DS</span><b>Divya S</b></div></td><td>26 of 26</td><td class="num">₹28,600</td><td class="num mut">—</td><td class="num mut">—</td><td class="num">₹28,600</td><td><span class="chip c-green">1 Oct</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED;width:28px;height:28px;font-size:9.5px">RM</span><b>Rahul M</b></div></td><td>26 of 26</td><td class="num">₹27,200</td><td class="num mut">—</td><td class="num">₹2,000<small>advance</small></td><td class="num">₹25,200</td><td><span class="chip c-green">1 Oct</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:28px;height:28px;font-size:9.5px">MV</span><b>Meena V</b></div></td><td>26 of 26</td><td class="num">₹22,800</td><td class="num mut">—</td><td class="num mut">—</td><td class="num">₹22,800</td><td><span class="chip c-green">1 Oct</span></td></tr>
+              <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1;width:28px;height:28px;font-size:9.5px">PN</span><div><b>Priya N</b><small>Joined 29 Sep</small></div></div></td><td>2 of 26</td><td class="num">₹2,308</td><td class="num mut">—</td><td class="num mut">—</td><td class="num">₹2,308</td><td><a class="chip c-amber" href="doc-check.html" style="text-decoration:none">Bank proof missing</a></td></tr>
+            </tbody>
+            <tfoot><tr><td>6 employees</td><td></td><td class="num">₹1,60,808</td><td class="num">₹2,400</td><td class="num">₹2,000</td><td class="num">₹1,61,208</td><td></td></tr></tfoot>
+          </table>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Paying</h2></div>
+            <div class="cb15">
+              <div class="ytd"><span>Bank file · HDFC bulk upload</span><b>5 people · ₹1,58,900</b><span>Uploaded</span><b>1 Oct, 9:30 am</b><span>Priya · pay by UPI after her bank proof is checked</span><b>₹2,308</b></div>
+              <a class="btn" href="docs-pdf.html#payslip" style="text-decoration:none;align-self:flex-start"><i data-i="file"></i>See a payslip</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Year to date · Arun</h2><span class="link">Apr–Sep</span></div>
+            <div class="cb15">
+              <div class="ytd"><span>Net paid</span><b>₹1,81,338</b><span>Last net pay</span><b>₹31,400</b><span>Pending</span><b>₹0</b><span>Overtime planned</span><b>2 Oct · server move</b></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Next run</h2></div>
+            <div class="cb15"><span class="sm" style="font-size:12.5px;line-height:1.5">October pay day is the 1st (setting). 1 Nov is a Sunday, so pay goes out on Mon 2 Nov, the next working day. Already added: Diwali bonus (waiting for your OK), Arun's overtime on 2 Oct, Divya's launch bonus, Rahul's next advance recovery.</span><a class="btn" href="advances.html" style="text-decoration:none;align-self:flex-start">Advances and bonuses</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

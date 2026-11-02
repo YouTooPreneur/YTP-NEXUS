@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Broadcasts</title>
+<!-- Batch 7 · SCR-041 Broadcasts: offers, newsletters and announcements to chosen segments of YTP's own leads and clients, only to people who consented (recorded with date and source), by email and WhatsApp (AiSensy, approved templates); unsubscribe in every message; sending kept under provider limits; the estimated cost is shown and the owner approves before sending (D-167); results (CRM-026, AUTO-040, RULE-021, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .lay15{display:grid;grid-template-columns:1fr 470px;gap:14px;flex:1;min-height:0}
+  .bl{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .bc{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:14px;border:1px solid var(--line-soft)}
+  .bc.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+  .bc .t4{display:flex;align-items:center;gap:8px}
+  .bc .t4 b{font-weight:700}
+  .bc .t4 .chip{margin-left:auto}
+  .bc small{font-size:12px;color:var(--muted)}
+  .res4{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .res4 div{padding:6px 8px;border-radius:10px;background:var(--card-2);font-size:11px;color:var(--muted)}
+  .res4 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:15px;color:var(--ink)}
+  .cmp{padding:14px 18px;display:flex;flex-direction:column;gap:11px;min-height:0;overflow:hidden}
+  .cmp h2{font-size:19px}
+  .step5{display:flex;flex-direction:column;gap:6px}
+  .step5 .h5{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--muted)}
+  .step5 .h5 em{font-style:normal;width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;background:var(--primary-bg);color:var(--primary-ink);font-size:10.5px}
+  .aud{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px}
+  .aud .tg2{padding:4px 10px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);font-weight:600;font-size:12px}
+  .cnt3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .cnt3 div{padding:7px 10px;border-radius:10px;background:var(--card-2);font-size:11.5px;color:var(--muted)}
+  .cnt3 div b{display:block;font-family:Sora,sans-serif;font-size:16px;color:var(--ink)}
+  .cnt3 div.ok b{color:var(--green)} .cnt3 div.sk b{color:var(--muted)}
+  .wa2{align-self:flex-start;max-width:92%;padding:9px 12px;border-radius:12px 12px 12px 4px;background:#E7F8EE;color:#0B3B30;font-size:12.5px;line-height:1.5}
+  .wa2 .btn2{display:block;margin-top:8px;padding:6px;border-radius:8px;background:#fff;text-align:center;font-weight:700;color:#0E7490}
+  .wa2 .uns{display:block;margin-top:6px;font-size:11px;color:#46645B}
+  .cost{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:10px 12px;border-radius:12px;background:var(--amber-bg);font-size:12.5px}
+  .cost b{font-weight:700;text-align:right}
+  .cost .tt3{border-top:1px solid color-mix(in srgb,var(--amber) 30%,transparent);padding-top:5px;font-weight:800}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="broadcasts">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Broadcasts</h1>
+          <p>Offers, newsletters and announcements to your own leads and clients, only to people who agreed to receive them. Every message can be stopped with one tap. WhatsApp costs money, so you see the cost and approve before anything goes.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New broadcast</span></div>
+      </div>
+
+      <div class="lay15">
+        <div class="card bl">
+          <div class="views"><span class="on">All <em class="count">4</em></span><span>Waiting for OK <em class="count">1</em></span><span>Sent <em class="count">2</em></span><span>Drafts <em class="count">1</em></span></div>
+          <div class="bc on"><div class="t4"><i data-i="send" style="color:var(--amber)"></i><b>Diwali · free website check</b><span class="chip c-amber">Waiting for your OK</span></div><small>Email + WhatsApp · 51 people · Mon 5 Oct, 10:00 am · made by Karthik</small></div>
+          <div class="bc"><div class="t4"><i data-i="chat" style="color:var(--green)"></i><b>Clarity session slots for October</b><span class="chip c-green">Sent 28 Sep</span></div><small>WhatsApp · leads who asked about a diagnosis</small>
+            <div class="res4"><div><b>88</b>sent</div><div><b>85</b>delivered</div><div><b>41</b>read</div><div><b>6</b>replied</div><div><b>1</b>stopped</div></div></div>
+          <div class="bc"><div class="t4"><i data-i="mail" style="color:var(--green)"></i><b>September newsletter</b><span class="chip c-green">Sent 1 Sep</span></div><small>Email · all clients and leads who agreed</small>
+            <div class="res4"><div><b>212</b>sent</div><div><b>198</b>delivered</div><div><b>61</b>opened</div><div><b>9</b>clicked</div><div><b>2</b>stopped</div></div></div>
+          <div class="bc"><div class="t4"><i data-i="edit" style="color:var(--muted)"></i><b>Navaratri greetings</b><span class="chip c-ink">Draft</span></div><small>Email · clients only · no offer</small></div>
+          <span class="manual">Consent is recorded with the date and where it was given (form, WhatsApp reply, client agreement). Test mode: everything goes to the owner's test inbox.</span>
+        </div>
+
+        <div class="card cmp">
+          <div style="display:flex;align-items:center;gap:8px"><h2 class="serif">Diwali · free website check</h2><span class="ai-btn sm" style="margin-left:auto" data-ai="Write it: drafts the message and a subject line in English and Tamil from your offer. You edit it; WhatsApp still needs a template approved by Meta.">✦ Write</span></div>
+          <div class="step5"><span class="h5"><em>1</em>Who gets it</span>
+            <div class="aud"><span class="tg2">Leads and clients</span><span class="tg2">Interested in: Website</span><span class="tg2">Chennai, Coimbatore</span><span class="sm">+ filter</span></div>
+            <div class="cnt3"><div><b>64</b>match</div><div class="ok"><b>51</b>agreed · will get it</div><div class="sk"><b>13</b>no consent · skipped</div></div>
+          </div>
+          <div class="step5"><span class="h5"><em>2</em>Message · email and WhatsApp</span>
+            <div class="wa2">Hi {name}, Diwali is coming! 🪔 Until 8 Nov, YouTooPreneur checks your website for free: speed, Google and WhatsApp orders, with a short report.<span class="btn2">Book my free check</span><span class="uns">Reply STOP to stop offers</span></div>
+            <span class="sm" style="font-size:12px">WhatsApp template "diwali_website_check" · approved by Meta · email from hello@youtoopreneur.com</span>
+          </div>
+          <div class="step5"><span class="h5"><em>3</em>When and cost</span>
+            <div class="cost"><span>Mon 5 Oct, 10:00 am · sent over 30 minutes to stay within limits</span><b></b><span>Email · 51 people</span><b>₹0</b><span>WhatsApp · 38 people with WhatsApp consent · about ₹0.88 each</span><b>about ₹34</b><span class="tt3">Estimated cost</span><b class="tt3">about ₹34</b></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:auto"><span class="btn solid lg">Approve and schedule</span><span class="btn lg">Send me a test</span><span class="manual" style="margin-left:auto">Only the Owner can approve</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

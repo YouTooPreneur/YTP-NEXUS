@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Settings</title>
+<!-- Batch 1 · SCR-180 Settings home (batch 5 adds the Automations group: SCR-170 Automations, SCR-172 Run history; batch 8 adds the Connections group: SCR-189 API keys and MCP, SCR-234 Website forms, SCR-259 Client chatbot, and the client portal; the page now scrolls) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  /* 7 groups of 4 with slimmer tiles; the page scrolls (batch 8) */
+  .pg-head h1{font-size:34px}
+  .pg-head p{margin-top:4px}
+  .g4{gap:12px}
+  .tile{padding:11px 16px;align-items:center}
+  .tile .lic{width:34px;height:34px}
+  .tile b + span{margin-top:1px}
+  .tile > div:last-child{min-width:0}
+</style>
+</head>
+<body>
+<div class="app long" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:10px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Settings</h1>
+          <p>Everything you can change without a developer. Every change is saved in the activity log with who changed it and when.</p>
+        </div>
+        <div class="acts"><div class="search" style="width:320px"><i data-i="search"></i>Find a setting…</div></div>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">Company</div>
+      <div class="g4">
+        <a class="card tile" href="company-profile.html"><div class="lic"><i data-i="building"></i></div><div><b>Company profile</b><span>Name, address, GST switch, LLP date, logo</span></div></a>
+        <a class="card tile" href="numbering.html"><div class="lic"><i data-i="hash"></i></div><div><b>Numbering and templates</b><span>Invoice series, document layouts</span></div></a>
+        <a class="card tile" href="finance-settings.html"><div class="lic"><i data-i="wallet"></i></div><div><b>Finance settings</b><span>Bank and UPI, reminders, GST rates</span></div></a>
+        <a class="card tile" href="hr-settings.html"><div class="lic"><i data-i="user"></i></div><div><b>HR settings</b><span>Work hours, Saturdays, leave, payroll rules</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">People and access</div>
+      <div class="g4">
+        <a class="card tile" href="users-roles.html"><div class="lic"><i data-i="users2"></i></div><div><b>Users and roles</b><span>Who can sign in and what each role can do</span></div></a>
+        <a class="card tile" href="security.html"><div class="lic"><i data-i="lock"></i></div><div><b>Security</b><span>Two-step login, sign-in list, limits</span></div></a>
+        <a class="card tile" href="languages.html"><div class="lic"><i data-i="globe"></i></div><div><b>Languages</b><span>English, Tamil open · 3 waiting for a check</span></div></a>
+        <a class="card tile" href="feature-switches.html"><div class="lic"><i data-i="toggle"></i></div><div><b>Feature switches</b><span>Turn whole areas on or off</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">Work and messages</div>
+      <div class="g4">
+        <a class="card tile" href="services.html"><div class="lic"><i data-i="spark"></i></div><div><b>Services and templates</b><span>What YTP sells and how each is delivered</span></div></a>
+        <a class="card tile" href="lists.html"><div class="lic"><i data-i="list"></i></div><div><b>Lists and fields</b><span>Lead sources, stages, reasons, custom fields</span></div></a>
+        <a class="card tile" href="messaging.html"><div class="lic"><i data-i="mail"></i></div><div><b>Messaging</b><span>Senders, WhatsApp numbers, templates, test mode</span></div></a>
+        <a class="card tile" href="portal-home.html"><div class="lic"><i data-i="users"></i></div><div><b>Client portal</b><span>Preview it as a client; each contact's access is set on the client</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">Connections</div>
+      <div class="g4">
+        <a class="card tile" href="integrations.html"><div class="lic"><i data-i="plug"></i></div><div><b>Integrations</b><span>Gmail, AiSensy, AI, Razorpay and ready slots</span></div></a>
+        <a class="card tile" href="api-keys.html"><div class="lic"><i data-i="key"></i></div><div><b>API keys and MCP</b><span>Keys for other tools; AI apps with approval</span></div></a>
+        <a class="card tile" href="forms.html"><div class="lic"><i data-i="globe"></i></div><div><b>Website forms</b><span>Enquiry forms per service, careers form</span></div></a>
+        <a class="card tile" href="chatbot-settings.html"><div class="lic"><i data-i="chat"></i></div><div><b>Client chatbot</b><span>WhatsApp and website, hand-over, limits</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">AI and voice</div>
+      <div class="g4">
+        <a class="card tile" href="ai-settings.html"><div class="lic"><i data-i="spark"></i></div><div><b>AI settings</b><span>Providers, guardrails, what AI may do, memory</span></div></a>
+        <a class="card tile" href="ai-usage.html"><div class="lic"><i data-i="chart"></i></div><div><b>Usage and limits</b><span>Budget, limits per role, person and feature</span></div></a>
+        <a class="card tile" href="ai-knowledge.html"><div class="lic"><i data-i="doc"></i></div><div><b>AI knowledge</b><span>What AI may read; brand voice; FAQs</span></div></a>
+        <a class="card tile" href="ai-quality.html"><div class="lic"><i data-i="check"></i></div><div><b>AI quality</b><span>Test questions, speed, poor answers</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">Automations</div>
+      <div class="g4">
+        <a class="card tile" href="automations.html"><div class="lic"><i data-i="bolt"></i></div><div><b>Automations</b><span>Rules that run by themselves; on or off</span></div></a>
+        <a class="card tile" href="run-history.html"><div class="lic"><i data-i="refresh"></i></div><div><b>Run history</b><span>Each run, what it did, any errors</span></div></a>
+        <a class="card tile" href="my-profile.html#preferences"><div class="lic"><i data-i="mail"></i></div><div><b>Daily summaries</b><span>Each person picks the time and the channel</span></div></a>
+        <a class="card tile" href="finance-settings.html#reminders"><div class="lic"><i data-i="bell"></i></div><div><b>Reminders and escalation</b><span>Payment reminders, renewal alerts, call points</span></div></a>
+      </div>
+
+      <div class="sect" style="padding:4px 0 0">System</div>
+      <div class="g4">
+        <a class="card tile" href="monitoring.html"><div class="lic"><i data-i="activity"></i></div><div><b>Monitoring</b><span>Jobs, messages, backups, errors</span></div></a>
+        <a class="card tile" href="logs.html"><div class="lic"><i data-i="history"></i></div><div><b>Logs</b><span>Activity log and security log</span></div></a>
+        <a class="card tile" href="trash.html"><div class="lic"><i data-i="trash"></i></div><div><b>Trash</b><span>Restore anything deleted in the last 30 days</span></div></a>
+        <a class="card tile" href="data.html"><div class="lic"><i data-i="storage"></i></div><div><b>Data and storage</b><span>Import, export, keeping data, space used</span></div></a>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

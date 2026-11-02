@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone: Academy</title>
+<!-- Batch 9 on a phone · SCR-154 a trainer marks attendance for a session, SCR-221 the student home, SCR-231 the certificate check after scanning the QR code (ACD-006, ACD-010, ACD-008). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .p-body{gap:10px}
+  .sh{display:flex;flex-direction:column;gap:2px}
+  .sh b{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .sh small{font-size:12px;color:var(--muted)}
+  .cnt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .cnt div{padding:7px 8px;border-radius:11px;background:var(--card-2);font-size:11px;color:var(--muted);text-align:center}
+  .cnt b{display:block;font-family:Sora,sans-serif;font-size:17px;color:var(--ink)}
+  .st6{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .st6:first-of-type{border-top:0}
+  .st6 .lg-av{width:28px;height:28px;font-size:9.5px}
+  .st6 b{font-weight:700}
+  .pa{margin-left:auto;display:flex;gap:3px;padding:3px;border-radius:999px;background:var(--card-2)}
+  .pa span{padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700;color:var(--muted)}
+  .pa span.p{background:var(--on);color:#fff}
+  .pa span.a{background:#B4483A;color:#fff}
+  .pa span.l{background:#9A6416;color:#fff}
+  .bigb4{height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14px;text-decoration:none}
+  .bigb4.s{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigb4.l{border:1px solid var(--line);color:var(--ink)}
+  .ptop2{margin:-6px -20px 0;padding:12px 20px;background:#1C3D36;color:#fff;display:flex;align-items:center;gap:8px}
+  :root[data-look="N"] .ptop2{background:#10273A}
+  .ptop2 .mark{width:20px;height:22px;color:#03FF96}
+  .ptop2 b{font-family:Sora,sans-serif;font-weight:600;font-size:14px}
+  .ptop2 .lg-av{margin-left:auto;width:28px;height:28px;font-size:9.5px}
+  .nxt2{padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);display:flex;flex-direction:column;gap:6px}
+  .nxt2 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .nxt2 b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .nxt2 span{font-size:12.5px;color:var(--muted)}
+  .li5{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-top:1px solid var(--line-soft)}
+  .li5 b{font-weight:700}
+  .okp{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:18px 10px;border-radius:18px;background:var(--green-bg)}
+  .okp .ic{width:58px;height:58px;border-radius:50%;background:var(--on);color:#fff;display:grid;place-items:center}
+  .okp .ic svg{width:28px;height:28px;stroke-width:2.2}
+  .okp b{font-family:Sora,sans-serif;font-weight:600;font-size:19px;color:var(--green)}
+  .kv14{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 12px;font-size:12.5px;padding:4px 2px}
+  .kv14 span{color:var(--muted)}
+  .kv14 b{font-weight:700;text-align:right}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 · Trainer marks attendance -->
+  <div class="phone">
+    <div class="status"><span>6:42</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Attendance</span><span class="av" style="margin-left:auto;background:color-mix(in srgb,#1D4ED8 16%,#fff);color:#1D4ED8;border-color:transparent">AK</span></div>
+    <div class="p-body">
+      <div class="sh"><b>WP-Sep26 · session 11</b><small>Thu 1 Oct · 6:30 pm · classroom, Adyar</small></div>
+      <div class="cnt"><div><b>9</b>Present</div><div><b>1</b>Late</div><div><b>2</b>Absent</div></div>
+      <div>
+        <div class="st6"><span class="lg-av" style="--av:#0E7490">MA</span><b>Mohammed Arif</b><div class="pa"><span class="p">P</span><span>L</span><span>A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#B45309">SK</span><b>Sathish Kumar</b><div class="pa"><span>P</span><span>L</span><span class="a">A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#BE185D">JR</span><b>Janani R</b><div class="pa"><span class="p">P</span><span>L</span><span>A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#1D4ED8">PS</span><b>Pradeep S</b><div class="pa"><span>P</span><span class="l">L</span><span>A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#7C3AED">KM</span><b>Kavya M</b><div class="pa"><span class="p">P</span><span>L</span><span>A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#9F1239">GR</span><b>Gokul R</b><div class="pa"><span>P</span><span>L</span><span class="a">A</span></div></div>
+        <div class="st6"><span class="lg-av" style="--av:#047857">AT</span><b>Ashwin T</b><div class="pa"><span class="p">P</span><span>L</span><span>A</span></div></div>
+      </div>
+      <span class="manual">7 of 12 shown · everyone starts as present</span>
+      <span class="bigb4 s">Save attendance</span>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a class="on" href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 2 · Student home -->
+  <div class="phone">
+    <div class="status"><span>8:20</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-body">
+      <div class="ptop2"><span class="mark"></span><b>Academy</b><span class="lg-av" style="--av:#BE185D">HS</span></div>
+      <div class="sh"><b>Hi Harini</b><small>Your course starts on Monday</small></div>
+      <div class="nxt2"><small>Next class</small><b>Mon 5 Oct · 7:00 pm</b><span>Session 1 · Welcome and marketing basics · online with Nandhini K</span><span class="bigb4 l" style="height:40px">The join link opens at 6:50 pm</span></div>
+      <div class="nxt2" style="gap:2px"><small>Fees</small><div class="li5" style="border-top:0"><span>Instalment 1</span><b style="color:var(--green)">Paid 28 Sep</b></div><div class="li5"><span>Instalment 2 · ₹12,000</span><b>Due 5 Nov</b></div></div>
+      <a class="bigb4 s" href="student-home.html">Open the student portal</a>
+    </div>
+  </div>
+
+  <!-- 3 · Certificate check after scanning the QR -->
+  <div class="phone">
+    <div class="status"><span>4:05</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-body">
+      <div class="ptop2"><span class="mark"></span><b>Certificate check</b></div>
+      <div class="okp"><span class="ic"><i data-i="check"></i></span><b>Genuine certificate</b><span style="font-size:12.5px">YouTooPreneur Academy · not cancelled</span></div>
+      <div class="kv14"><span>Name</span><b>Keerthana R</b><span>Course</span><b>Digital Marketing Mastery</b><span>Batch</span><b>DMM-Jul26</b><span>Dates</span><b>6 Jul – 26 Sep 2026</b><span>Grade</span><b>A</b><span>Number</span><b>YTA-C/2026/0018</b></div>
+      <a class="bigb4 l" href="certificate-check.html">Check another certificate</a>
+      <span class="manual" style="text-align:center">Opened from the QR code on the certificate. No login needed.</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

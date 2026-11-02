@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Proposal builder</title>
+<!-- Batch 7 · SCR-038 Proposal builder (Sri Lakshmi Traders · Q-2026-024): AI drafts the first version from the discovery call and the service templates; a person sets the prices and sends (D-166). Services with custom prices, discount (needs approval), GST by date, payment stages, revision rounds and change-request handling per client, free maintenance, validity (15 days default), "the accepted proposal is the agreement" or a separate one, live preview (CRM-015, CRM-016, FIN-023, RULE-011, RULE-023, CON-002, CON-005, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:11px;padding-top:12px}
+  .hd{display:flex;gap:14px;align-items:center}
+  .hd h1{font-size:28px;line-height:1.1}
+  .hd .sub3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:12.5px;color:var(--muted)}
+  .hd .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .lay13{display:grid;grid-template-columns:1fr 380px;gap:14px;flex:1;min-height:0}
+  .edit{padding:14px 18px;display:flex;flex-direction:column;gap:11px;min-height:0;overflow:hidden}
+  .aiban{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px;line-height:1.45}
+  .aiban .acts5{margin-left:auto;display:flex;gap:6px;flex:none}
+  .row5{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+  .lbl6{font-size:11.5px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px}
+  .input{height:36px}
+  .tbl td{padding-top:7px;padding-bottom:7px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:12px}
+  .tbl b{font-weight:700;display:block;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tot3{display:grid;grid-template-columns:1fr auto;gap:4px 24px;justify-content:end;margin-left:auto;width:340px;font-size:12.5px}
+  .tot3 span{color:var(--muted)}
+  .tot3 b{text-align:right;font-weight:700}
+  .tot3 .g{border-top:1.5px solid var(--line);padding-top:6px;font-size:14px;color:var(--ink)}
+  .terms3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .terms3 > div{padding:9px 12px;border-radius:12px;background:var(--card-2);font-size:12.5px}
+  .terms3 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .terms3 b{font-weight:700}
+  .terms3 .stg3{display:flex;gap:3px;margin-top:6px}
+  .terms3 .stg3 i{height:6px;border-radius:999px;background:var(--on)}
+  .pv2{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .pv2 .ttl{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line-soft);font-size:12.5px;font-weight:700}
+  .pv2 .ttl a{margin-left:auto;font-weight:700;color:var(--ink)}
+  .mini{flex:1;min-height:0;background:var(--stage);padding:14px;overflow:hidden}
+  .mp{background:#fff;color:#1C3D36;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.1);overflow:hidden;font-size:11px;line-height:1.5}
+  .mp .mh2{background:#1C3D36;color:#fff;padding:14px 16px}
+  .mp .mh2 b{font-family:Sora,sans-serif;font-size:15px;display:block}
+  .mp .mh2 small{opacity:.75}
+  .mp .mb{padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+  .mp .mb h5{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5F6B65}
+  .mp .ln{display:flex;justify-content:space-between;border-bottom:1px solid #EFEBE2;padding:4px 0}
+  .mp .tt2{display:flex;justify-content:space-between;font-weight:800;font-size:13px;padding-top:4px}
+  .mp .acc{display:flex;gap:6px;margin-top:4px}
+  .mp .acc span{flex:1;text-align:center;padding:8px;border-radius:8px;font-weight:800}
+  .mp .acc .a{background:#1C3D36;color:#03FF96} .mp .acc .q{border:1px solid #D9D3C4}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM" data-sec="crm" data-sec-on="proposals">
+  <main>
+    <section class="pg">
+      <div>
+        <div class="crumbs"><a href="proposals.html">Proposals</a><span>/</span><b style="color:var(--ink)">Q-2026-024</b></div>
+        <div class="hd">
+          <span class="lg-av" style="--av:#B45309;width:46px;height:46px;font-size:13px">SL</span>
+          <div>
+            <h1 class="serif">Proposal · Sri Lakshmi Traders</h1>
+            <div class="sub3"><span class="chip c-ink">Draft · version 1</span><span>Website + local SEO · for Mr. Senthil · from today's discovery call</span></div>
+          </div>
+          <div class="acts"><span class="btn lg">Save draft</span><a class="btn lg" href="proposal-link.html" style="text-decoration:none"><i data-i="eye"></i>As the client sees it</a><span class="btn solid lg"><i data-i="send"></i>Send</span></div>
+        </div>
+      </div>
+
+      <div class="lay13">
+        <div class="card edit">
+          <div class="aiban"><i data-i="spark" style="color:var(--ai-ink);width:18px;height:18px;flex:none"></i><span><b>First version drafted by AI</b> from today's discovery call (11:00 am) and the website and SEO templates. Check the prices and terms; nothing goes to the client until you press Send.</span><span class="acts5"><span class="ai-btn sm" data-ai="Shows what the draft used: the discovery call minutes, Sri Lakshmi's lead record and the two service templates.">What it used</span><span class="ai-btn sm" data-ai="Redo with changes: tell it what to change (for example 'add WhatsApp catalogue', 'shorter'). A new draft version is made; the old one is kept.">Redo</span></span></div>
+
+          <div class="row5">
+            <div><span class="lbl6">Client and contact</span><div class="input">Sri Lakshmi Traders · Mr. Senthil</div></div>
+            <div><span class="lbl6">Valid for</span><div class="input">15 days · until 16 Oct</div></div>
+            <div><span class="lbl6">Language</span><div class="input">English, Tamil summary</div></div>
+          </div>
+
+          <table class="tbl">
+            <thead><tr><th>Service</th><th>Qty</th><th class="num">Price</th><th class="num">Amount</th></tr></thead>
+            <tbody>
+              <tr><td><b>Website · 8 pages + product catalogue</b><small>Wholesale grocery catalogue with WhatsApp ordering · from the website template</small></td><td>1</td><td class="num">₹65,000</td><td class="num">₹65,000</td></tr>
+              <tr><td><b>Local SEO set-up</b><small>Google Business profile, 20 business listings, reviews plan</small></td><td>1</td><td class="num">₹10,000</td><td class="num">₹10,000</td></tr>
+              <tr><td><b>SEO care</b><small>Monthly local SEO with a short report</small></td><td>3 months</td><td class="num">₹5,000</td><td class="num">₹15,000</td></tr>
+            </tbody>
+          </table>
+          <div class="tot3"><span>Subtotal</span><b>₹90,000</b><span>Discount <span class="manual">· any discount needs the Owner's approval</span></span><b>—</b><span>GST · not registered yet</span><b>—</b><span class="g">Total</span><b class="g">₹90,000</b></div>
+
+          <span class="lbl6" style="margin:2px 0 -4px">Terms for this client (the template only suggests)</span>
+          <div class="terms3">
+            <div><small>Payment stages</small><b>40 / 40 / 20%</b><br><span class="sm">Signing ₹36,000 · designs approved ₹36,000 · launch ₹18,000</span><div class="stg3"><i style="flex:4"></i><i style="flex:4;opacity:.6"></i><i style="flex:2;opacity:.35"></i></div></div>
+            <div><small>Revisions and changes</small><b>2 rounds a page</b><br><span class="sm">Change requests: decide each time</span></div>
+            <div><small>After launch</small><b>3 months free maintenance</b><br><span class="sm">The accepted proposal is the agreement</span></div>
+          </div>
+          <div class="row5" style="grid-template-columns:1.4fr 1fr">
+            <div><span class="lbl6">The client can accept by</span><div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;padding-top:4px"><span><i class="chk on"></i> Accept button</span><span><i class="chk on"></i> Online signature</span><span><i class="chk on"></i> Marked by you, with proof</span></div></div>
+            <div><span class="lbl6">Show with it</span><div style="display:flex;gap:6px;flex-wrap:wrap"><a class="src" href="case-studies.html"><i data-i="doc"></i>Bright Minds case study</a><a class="src" href="testimonials.html"><i data-i="star"></i>Sharma Dental video</a></div></div>
+          </div>
+          <span class="manual">Accepting wins the deal: the client, the services sold, the project and the advance invoice draft are made by themselves.</span>
+        </div>
+
+        <div class="card pv2">
+          <div class="ttl"><i data-i="eye"></i>Live preview<a href="proposal-link.html" style="text-decoration:none">Open full</a></div>
+          <div class="mini">
+            <div class="mp">
+              <div class="mh2"><b>A website that takes orders on WhatsApp</b><small>For Sri Lakshmi Traders · Q-2026-024 · valid until 16 Oct</small></div>
+              <div class="mb">
+                <h5>What you get</h5>
+                <div class="ln"><span>Website · 8 pages + catalogue</span><b>₹65,000</b></div>
+                <div class="ln"><span>Local SEO set-up</span><b>₹10,000</b></div>
+                <div class="ln"><span>SEO care · 3 months</span><b>₹15,000</b></div>
+                <div class="tt2"><span>Total</span><span>₹90,000</span></div>
+                <h5 style="margin-top:4px">How you pay</h5>
+                <span>₹36,000 to start · ₹36,000 when you approve the designs · ₹18,000 at launch</span>
+                <h5 style="margin-top:4px">Our recent work</h5>
+                <span>Bright Minds Tuition: 18 → 41 enquiries a month</span>
+                <div class="acc"><span class="a">Accept</span><span class="q">Ask a question</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

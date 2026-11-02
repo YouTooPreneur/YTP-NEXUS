@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Lead rules</title>
+<!-- Batch 3 · SCR-043 Lead rules: scoring rules with points and temperature bands, a limited AI adjustment, and assignment rules by service and source (CRM-009, CRM-010, AI-009, AI-006) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+  .pts{font-weight:800;text-align:right}
+  .pts.p{color:var(--green)} .pts.n{color:var(--red)}
+  .bands{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .band{padding:12px 14px;border-radius:14px;border:1px solid var(--line-soft)}
+  .band b{font-family:Sora,sans-serif;font-weight:600;font-size:18px;display:block}
+  .band small{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Lead rules</b></div>
+          <h1 class="serif">Lead rules</h1>
+          <p>How every new lead gets a score and an owner. Change the rules any time; new leads follow them at once.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="refresh"></i>Re-score open leads</span><span class="btn solid lg">Save</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="r"><button data-tab="score">Scoring</button><button data-tab="assign">Assignment</button></div>
+
+      <section data-group="r" data-panel="score" class="lay">
+        <div class="card cb" style="padding-top:12px">
+          <table class="tbl"><thead><tr><th>When a lead…</th><th class="r">Points</th><th>On</th></tr></thead><tbody>
+            <tr><td>Has a budget that fits the service</td><td class="pts p">+15</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Is in Healthcare or Education</td><td class="pts p">+12</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Came by referral</td><td class="pts p">+10</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Came from Instagram or WhatsApp</td><td class="pts p">+8</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Wants to start within a month</td><td class="pts p">+8</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Has not replied for 5 days</td><td class="pts n">−12</td><td><i class="toggle on"></i></td></tr>
+            <tr><td>Missed a follow-up</td><td class="pts n">−5</td><td><i class="toggle on"></i></td></tr>
+          </tbody></table>
+          <span class="btn" style="margin-top:12px"><i data-i="plus"></i>Add a rule</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Temperature</h2></div>
+            <div class="bands"><div class="band" style="background:var(--red-bg)"><b>Hot</b><small>75 and above</small></div><div class="band" style="background:var(--amber-bg)"><b>Warm</b><small>40 to 74</small></div><div class="band" style="background:var(--blue-bg)"><b>Cold</b><small>Below 40</small></div></div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>AI adjustment</div>
+            <div style="font-size:13.5px;line-height:1.5">AI reads the lead's first message and may add or take away up to 10 points, always with its reason on the lead. Uses the small, cheap model and counts in the "AI helpers" limit.</div>
+            <div class="srow" style="padding:6px 0;border-top:0"><div class="txt"><b>Use the AI adjustment</b><span>Rules still decide most of the score</span></div><i class="toggle on"></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section data-group="r" data-panel="assign" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>Service</th><th>Goes to</th><th>If they are on leave</th><th>Source exceptions</th></tr></thead><tbody>
+          <tr><td><b>SEO</b></td><td><div class="nmc"><span class="av s">KR</span>Karthik</div></td><td class="sm">Send to backup: Owner</td><td class="sm">—</td></tr>
+          <tr><td><b>Social media, branding</b></td><td><div class="nmc"><span class="av s">DS</span>Divya</div></td><td class="sm">Send to backup: Karthik</td><td class="sm">—</td></tr>
+          <tr><td><b>Website, AMC</b></td><td><div class="nmc"><span class="av s">AK</span>Arun</div></td><td class="sm">Keep with Arun, alert the Owner</td><td class="sm">Referrals go to the Owner</td></tr>
+          <tr><td><b>Video</b></td><td><div class="nmc"><span class="av s">RM</span>Rahul</div></td><td class="sm">Send to backup: Divya</td><td class="sm">—</td></tr>
+          <tr><td><b>Not sure · needs diagnosis</b></td><td><div class="nmc"><span class="av s">YP</span>Owner</div></td><td class="sm">Send to backup: Karthik</td><td class="sm">—</td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Each rule chooses what happens when the person is on leave: send the lead to a named backup, or keep it with them and alert the Owner. Anything not covered goes to the Owner. The person gets an alert at once.</p>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

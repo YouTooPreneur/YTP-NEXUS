@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Service sold</title>
+<!-- Batch 5 · SCR-051 Service sold (Anbu Textiles · website): billing, payment stages that make their own invoices, renewal, free maintenance and the AMC offer; revisions used, change requests, client inputs and support terms arrive with Projects in step 3.6 (CON-001, CON-004, CON-005, CON-011 to CON-014, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .hd{display:flex;gap:16px;align-items:center}
+  .hd .lg-av{width:52px;height:52px;font-size:15px}
+  .hd h1{font-size:30px;line-height:1.1}
+  .hd .sub3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:5px;font-size:12.5px;color:var(--muted)}
+  .hd .sub3 a{color:var(--ink);font-weight:700;text-decoration:none}
+  .hd .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .kv5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .kv5 > div{padding:9px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft)}
+  .kv5 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .kv5 b{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .kv5 span{font-size:11.5px;color:var(--muted);display:block}
+  .kv5 .due b,.kv5 .due span{color:var(--red)}
+  .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;flex:1;min-height:0}
+  .col{display:flex;flex-direction:column;gap:12px;min-height:0}
+  .card .ch{padding:12px 18px 6px}
+  .card .ch h2{font-size:18px}
+  .cb4{padding:0 18px 12px}
+  .stg td{padding:7px 8px 7px 0;font-size:12.5px}
+  .stg b{font-weight:700}
+  .stg small{display:block;font-size:11.5px;color:var(--muted)}
+  .stg .n0{width:24px}
+  .stg .n0 em{font-style:normal;width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font-size:11px;font-weight:800;background:var(--on);color:#fff}
+  .stg .n0 em.part{background:#FEF3C7;color:var(--amber);border:1.5px solid #E2A93B}
+  .note5{font-size:11.5px;color:var(--muted);margin-top:6px}
+  .srow{padding:8px 0}
+  .srow b{font-size:13px}
+  .srow .val{font-size:12.5px;font-weight:700;text-align:right;white-space:nowrap}
+  .srow .val small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+  .rv{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:12.5px;padding:4px 0}
+  .rv .pips{display:flex;gap:4px}
+  .rv .pips i{width:28px;height:8px;border-radius:999px;background:var(--bar)}
+  .rv .pips i.u{background:var(--on)} .rv .pips i.x{background:#E2A93B}
+  .rv span.r{font-weight:700;font-size:12px}
+  .cr{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .cr:first-of-type{border-top:0}
+  .cr .id{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;font-weight:700;color:var(--muted);padding-top:1px}
+  .cr b{font-weight:700;display:block}
+  .cr small{color:var(--muted);font-size:11.5px}
+  .cr .chip{margin-left:auto}
+  .inp{display:flex;flex-wrap:wrap;gap:6px}
+  .inp span{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--green-bg);color:var(--green)}
+  .inp svg{width:12px;height:12px}
+  .ch .later{margin-left:auto}
+  .ch .later + .link{margin-left:10px}
+  .sup{display:flex;gap:10px;align-items:center;font-size:12.5px;padding:7px 10px;border-radius:12px;background:var(--card-2);margin-top:6px}
+  .sup b{font-weight:700}
+  .sup .chip{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="services">
+  <main>
+    <section class="pg">
+      <div>
+        <div class="crumbs"><a href="services-sold.html">Services sold</a><span>/</span><a href="services-sold.html">Anbu Textiles</a><span>/</span><b style="color:var(--ink)">Website</b></div>
+        <div class="hd">
+          <span class="lg-av" style="--av:#9F1239">AT</span>
+          <div>
+            <h1 class="serif">Website · WooCommerce shop</h1>
+            <div class="sub3"><span class="chip c-ink">Project</span><span class="chip c-green">Launched 28 Aug</span><a href="leads.html">Anbu Textiles</a><span>· S. Ramesh ·</span><span>from proposal Q-2026-014, accepted online on 2 Jun</span></div>
+          </div>
+          <div class="acts"><span class="ai-btn" data-ai="Summarise for a call: a 5-line note on what is paid, what is due, what is still open and what to offer next. Arrives as a draft for you; nothing is sent."><i data-i="spark"></i>Summarise for a call</span><a class="btn lg" href="agreements.html" style="text-decoration:none"><i data-i="doc"></i>Agreement</a><span class="btn solid lg"><i data-i="edit"></i>Edit</span></div>
+        </div>
+      </div>
+
+      <div class="kv5">
+        <div><small>Price</small><b>₹1,20,000</b><span>3 payment stages</span></div>
+        <div><small>Billed</small><b>₹1,20,000</b><span>All 3 stages invoiced</span></div>
+        <div><small>Paid</small><b>₹92,000</b><span>Last payment 10 Sep</span></div>
+        <div class="due"><small>Due</small><b>₹28,000</b><span>34 days · escalated to you</span></div>
+        <div><small>Free care until</small><b>27 Nov</b><span>Date in the agreement</span></div>
+      </div>
+
+      <div class="cols">
+        <div class="col">
+          <!-- Payment stages (CON-004) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Payment stages</h2><span class="count">3</span><span class="link">Add stage</span></div>
+            <div class="cb4">
+              <table class="tbl stg">
+                <thead><tr><th></th><th>Stage</th><th>Tied to</th><th class="num">Amount</th><th>Invoice</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td class="n0"><em>1</em></td><td><b>Advance · 30%</b></td><td class="sm">Signing</td><td class="num">₹36,000</td><td><span class="inv">YTP/26-27/0012</span></td><td><span class="chip c-green">Paid 6 Jun</span></td></tr>
+                  <tr><td class="n0"><em>2</em></td><td><b>Design approved · 30%</b></td><td class="sm">Marked done 14 Jul</td><td class="num">₹36,000</td><td><span class="inv">YTP/26-27/0024</span></td><td><span class="chip c-green">Paid 20 Jul</span></td></tr>
+                  <tr><td class="n0"><em class="part">3</em></td><td><b>Launch · 40%</b><small>₹20,000 paid by cheque 10 Sep</small></td><td class="sm">Launch on 28 Aug</td><td class="num">₹48,000</td><td><a class="inv" href="collections.html" style="color:inherit">YTP/26-27/0033</a></td><td><span class="chip c-red">₹28,000 due</span></td></tr>
+                </tbody>
+              </table>
+              <div class="note5">A stage can be tied to a date, a project stage or marked by hand; reaching it makes the invoice, which waits for your approval because it is new work.</div>
+            </div>
+          </div>
+          <!-- Billing and renewal -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Billing and renewal</h2></div>
+            <div class="cb4">
+              <div class="srow"><div class="txt"><b>Payment terms</b><span>On receipt · reminders on day 7 and 15 · escalation at day 30</span></div><div class="val">Per client</div></div>
+              <div class="srow"><div class="txt"><b>Domain and hosting</b><span>anbutextiles.com on YTP-HS-01 · a separate renewal service</span></div><div class="val">₹6,000 a year<small>Next 12 Nov 2027</small></div></div>
+            </div>
+          </div>
+          <!-- Free maintenance and the AMC offer (CON-005, AUTO-010) -->
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Free maintenance</h2><a class="link" href="amc.html" style="text-decoration:none">AMC and free maintenance<i data-i="right"></i></a></div>
+            <div class="cb4">
+              <div class="srow"><div class="txt"><b>3 months from the handover</b><span>28 Aug to 27 Nov 2026, exactly as written in the agreement · shown to the client in their portal</span></div><span class="chip c-green">Covered</span></div>
+              <div class="srow"><div class="txt"><b>AMC offer · ₹18,000 a year</b><span>Sends itself on 28 Oct, 30 days before the end, with a follow-up task for you</span></div><span class="ai-btn sm" data-ai="Add a personal note: a short, friendly line for S. Ramesh in Tamil or English, added to the AMC offer. You check it before 28 Oct."><i data-i="spark"></i>Personal note</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Revisions (CON-011) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Revisions</h2><span class="later">Step 3.6</span></div>
+            <div class="cb4">
+              <div class="rv"><span>Home page</span><span class="pips"><i class="u"></i><i class="u"></i><i class="x"></i></span><span class="r" style="color:var(--amber)">1 extra · not charged</span></div>
+              <div class="rv"><span>Product page</span><span class="pips"><i class="u"></i><i class="u"></i></span><span class="r">2 of 2</span></div>
+              <div class="rv"><span>Checkout</span><span class="pips"><i class="u"></i><i></i></span><span class="r">1 of 2</span></div>
+              <div class="note5">2 rounds a page are included. A third round is flagged as extra; you choose to charge it or not.</div>
+            </div>
+          </div>
+          <!-- Change requests (CON-012) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Change requests</h2><span class="later">Step 3.6</span><span class="link">Add</span></div>
+            <div class="cb4">
+              <div class="cr"><span class="id">CR-1</span><div><b>Size chart on product pages</b><small>Small change · free, 1 of 2 in Sep · done 2 Sep</small></div><span class="chip c-green">Done</span></div>
+              <div class="cr"><span class="id">CR-2</span><div><b>Cash-on-delivery fee option</b><small>Quoted ₹4,500 on 25 Sep · own bill once the client approves</small></div><span class="chip c-amber">Waiting</span></div>
+            </div>
+          </div>
+          <!-- Client inputs (CON-013) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Client inputs</h2><span class="count">6 of 6</span><span class="later">Step 3.6</span></div>
+            <div class="cb4"><div class="inp"><span><i data-i="check"></i>Logo</span><span><i data-i="check"></i>120 product photos</span><span><i data-i="check"></i>Product list</span><span><i data-i="check"></i>Policies</span><span><i data-i="check"></i>Payment KYC</span><span><i data-i="check"></i>Domain access</span></div></div>
+          </div>
+          <!-- Support terms (CON-014) -->
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Support terms</h2><span class="later">Step 3.6</span></div>
+            <div class="cb4">
+              <span class="sm" style="font-size:12.5px">Active client: reply within 24 hours, fix within 3 days.</span>
+              <div class="sup"><span class="lg-av" style="--av:#1D4ED8;width:24px;height:24px;font-size:9px">AK</span><div><b>Checkout button slow on phones</b><br><small class="sm">Replied in 3 h · fix due 3 Oct</small></div><span class="chip c-blue">Open</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · WhatsApp templates</title>
+<!-- Batch 2 · SCR-251 WhatsApp message templates: Meta-approved templates from AiSensy (or another provider), linked to message types and languages, with buttons and fill-in words (CORE-063, CORE-064, INT-003, D-154) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 360px 330px;gap:18px;align-items:start}
+  .wt td{padding-top:10px;padding-bottom:10px}
+  .wt tr.on td{background:var(--active-bg)}
+  .wt b{font-weight:700;display:block}
+  .wt small{font-size:12px;color:var(--muted)}
+  .cat{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .wa{border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#EFE7DD}
+  .wa .bar{background:#075E54;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:13.5px}
+  .wa .bar .avw{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center}
+  .wa .bar .avw svg{width:18px;height:20px;color:#1C3D36}
+  .wa .bar small{display:block;font-weight:500;font-size:11px;opacity:.8}
+  .wa .chat{padding:18px 14px 22px;min-height:400px;display:flex;flex-direction:column;gap:8px}
+  .bub{align-self:flex-start;max-width:92%;background:#fff;border-radius:4px 14px 14px 14px;padding:10px 12px 6px;font-size:13px;line-height:1.5;color:#111;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  .bub .tm{display:block;text-align:right;font-size:10.5px;color:#667781;margin-top:2px}
+  .wbtn{align-self:flex-start;width:92%;background:#fff;border-radius:10px;padding:9px;text-align:center;color:#0062C9;font-weight:600;font-size:13px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+  .v{background:rgba(45,184,232,.18);color:#0E6F8E;border-radius:4px;padding:0 3px;font-weight:600}
+  .map{display:grid;grid-template-columns:50px 1fr;gap:8px 10px;font-size:13px;align-items:center}
+  .map .v{text-align:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="messaging.html#templates">Messaging</a><span>/</span><b style="color:var(--ink)">WhatsApp templates</b></div>
+          <h1 class="serif">WhatsApp templates</h1>
+          <p>Messages to clients outside a 24-hour chat must use a template approved by Meta. Templates are made in AiSensy and appear here; Nexus links each one to a message type and language.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="refresh"></i>Sync from AiSensy</span><span class="ai-btn" data-ai="AI helper: drafts a new template in Meta's rules (category, fill-in words, buttons). You submit it for approval in AiSensy."><i data-i="spark"></i>Draft a new template</span></div>
+      </div>
+      <div class="views"><span class="on">All <em class="count">7</em></span><span>Approved <em class="count">5</em></span><span>Waiting for Meta <em class="count">1</em></span><span>Rejected <em class="count">1</em></span></div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:10px">
+          <table class="tbl wt"><thead><tr><th>Template</th><th>Used for</th><th>Type</th><th>Meta</th></tr></thead><tbody>
+            <tr class="on"><td><b>invoice_due_v2</b><small>English · Tamil</small></td><td class="sm">Invoice sent, reminders</td><td><span class="cat">Utility</span></td><td><span class="chip c-green">Approved</span></td></tr>
+            <tr><td><b>payment_receipt</b><small>English · Tamil</small></td><td class="sm">Payment receipt</td><td><span class="cat">Utility</span></td><td><span class="chip c-green">Approved</span></td></tr>
+            <tr><td><b>renewal_notice_30</b><small>English</small></td><td class="sm">Renewal notice</td><td><span class="cat">Utility</span></td><td><span class="chip c-green">Approved</span></td></tr>
+            <tr><td><b>login_code</b><small>English</small></td><td class="sm">Client login code</td><td><span class="cat">Login code</span></td><td><span class="chip c-green">Approved</span></td></tr>
+            <tr><td><b>meeting_reminder</b><small>English · Tamil</small></td><td class="sm">Meeting reminder</td><td><span class="cat">Utility</span></td><td><span class="chip c-green">Approved</span></td></tr>
+            <tr><td><b>diwali_offer_2026</b><small>English</small></td><td class="sm">Broadcast</td><td><span class="cat">Marketing</span></td><td><span class="chip c-amber">Waiting</span></td></tr>
+            <tr><td><b>renewal_notice_7_ta</b><small>Tamil</small></td><td class="sm">Renewal notice</td><td><span class="cat">Utility</span></td><td><span class="chip c-red">Rejected</span></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">Approximate cost per message in India: utility and login codes about ₹0.15, marketing about ₹1.09; replies within 24 hours of a client's message are free.</p>
+        </div>
+
+        <div class="wa">
+          <div class="bar"><span class="avw"><span class="mark"></span></span><div>YouTooPreneur<small>Business account</small></div></div>
+          <div class="chat">
+            <div class="bub">Hello <span class="v">{{1}}</span>, your invoice <span class="v">{{2}}</span> for <span class="v">{{3}}</span> is due on <span class="v">{{4}}</span>. You can pay by UPI or the link below. Thank you! – Team YouTooPreneur<span class="tm">10:40 am</span></div>
+            <div class="wbtn">Pay now</div>
+            <div class="wbtn">Call me</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="sect" style="padding:0">Fill-in words</div>
+            <div class="map"><span class="v">{{1}}</span><span>Contact name</span><span class="v">{{2}}</span><span>Invoice number</span><span class="v">{{3}}</span><span>Amount (₹ Indian format)</span><span class="v">{{4}}</span><span>Due date</span></div>
+            <div class="sect" style="padding:6px 0 0">Buttons</div>
+            <div class="map" style="grid-template-columns:80px 1fr"><span class="sm">Pay now</span><span>Opens the payment link</span><span class="sm">Call me</span><span>Creates a follow-up task</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:8px">
+            <div class="srow" style="padding:4px 0"><div class="txt"><b>Provider</b><span>AiSensy · Billing number</span></div></div>
+            <div class="srow" style="padding:4px 0"><div class="txt"><b>If WhatsApp fails</b><span>The email copy goes anyway; one-tap send offered</span></div></div>
+            <div class="srow" style="padding:4px 0"><div class="txt"><b>Last synced</b><span>Today 10:40 am</span></div></div>
+          </div>
+          <div class="ai-card"><div class="ai-h"><i data-i="spark"></i>Why one was rejected</div><div style="font-size:13px;line-height:1.5">In renewal_notice_7_ta, Meta read the words "last chance" as marketing. A utility version without them is ready to submit.</div><div class="ai-acts"><span class="btn">See the new wording</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

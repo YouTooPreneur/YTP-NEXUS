@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Sign in</title>
+<!-- Batch 1 · SCR-001 Login, SCR-002 Two-step set-up, SCR-003 Forgot / reset password, plus "Google account not allowed" and the Tamil sample.
+     States are switched by #login, #twostep, #setup, #forgot, #sent, #reset, #denied, #tamil. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="auth">
+  <section class="auth-brand">
+    <div>
+      <div class="brand" style="padding:0"><span class="mark" role="img" aria-label="YouTooPreneur"></span><span class="word serif">Nexus</span></div>
+    </div>
+    <div>
+      <h2 class="serif" id="brandTitle">Everything YouTooPreneur runs, in one place.</h2>
+      <p id="brandText" data-ta="வாடிக்கையாளர்கள், புதுப்பித்தல்கள், திட்டங்கள், விலைப்பட்டியல்கள், குழு மற்றும் அகாடமி, அனைத்தும் ஒரே உள்நுழைவில்.">Clients, renewals, projects, invoices, the team and the Academy, behind one login.</p>
+      <div class="facts">
+        <div><i></i><span data-ta="எந்தப் புதுப்பித்தலும் தவறாது">No renewal missed</span></div>
+        <div><i></i><span data-ta="விலைப்பட்டியல்கள் 15 நாட்களுக்குள் செலுத்தப்படும்">Invoices paid within 15 days</span></div>
+        <div><i></i><span data-ta="ஒவ்வொரு விசாரணைக்கும் ஒரு நாளுக்குள் பதில்">Every lead answered within a day</span></div>
+      </div>
+    </div>
+    <small>YouTooPreneur · Digital Business &amp; Growth Ecosystem</small>
+  </section>
+
+  <section class="auth-main">
+    <a class="auth-lang pill-sel" href="#tamil" id="langPill" style="text-decoration:none"><span class="on" id="langNow">English</span><span id="langOther">தமிழ்</span></a>
+
+    <!-- Sign in -->
+    <div class="auth-card" data-step="login">
+      <h1 class="serif">Sign in to Nexus</h1>
+      <p class="lead">Use your Google account or your email.</p>
+      <a class="gbtn" href="dashboard.html" style="text-decoration:none"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.2l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.6 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.2 0-11.5-4.1-13.4-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Continue with Google</a>
+      <div class="or">or</div>
+      <div class="field"><label for="em">Email</label><div class="input" id="em">owner@youtoopreneur.com</div></div>
+      <div class="field"><label for="pw">Password</label><div class="input" id="pw">••••••••••<span class="end"><i data-i="eye"></i></span></div></div>
+      <div class="row-x"><span style="display:flex;gap:8px;align-items:center"><i class="chk on"></i>Keep me signed in on this computer</span><a href="#forgot">Forgot password?</a></div>
+      <a class="btn solid lg" href="#twostep" style="text-decoration:none">Sign in</a>
+      <p class="help">Only people YouTooPreneur has added can sign in. <a class="lk" href="#denied">What happens if I'm not added?</a></p>
+    </div>
+
+    <!-- Two-step code (SCR-001, second step) -->
+    <div class="auth-card" data-step="twostep">
+      <h1 class="serif">Enter your 6-digit code</h1>
+      <p class="lead">Open your authenticator app and type the code shown for Nexus.</p>
+      <div class="otp"><i>4</i><i>8</i><i>2</i><i>9</i><i class="cur"></i><i></i></div>
+      <span style="display:flex;gap:8px;align-items:center;font-size:12.5px"><i class="chk"></i>Trust this computer for 30 days</span>
+      <a class="btn solid lg" href="dashboard.html" style="text-decoration:none">Verify and continue</a>
+      <p class="sm" style="margin:0">Other ways: <a class="lk" href="#twostep">email code</a> · <a class="lk" href="#twostep">WhatsApp code</a></p>
+      <div class="row-x"><a href="#login">Back</a></div>
+    </div>
+
+    <!-- Two-step set-up (SCR-002) -->
+    <div class="auth-card" data-step="setup" style="width:520px">
+      <h1 class="serif">Turn on two-step login</h1>
+      <p class="lead">Your role can see money, so Nexus asks for a second step each time you sign in. Choose how you get the code.</p>
+      <div class="method on"><div class="lic"><i data-i="shield"></i></div><div><b>Authenticator app</b><span>Google Authenticator or Microsoft Authenticator. Works without internet.</span></div><span class="radio"></span></div>
+      <div style="display:flex;gap:18px;align-items:center;padding:4px 2px"><div class="qr" role="img" aria-label="QR code to scan"></div><div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:var(--muted)"><span>1. Open the app and scan this code.</span><span>2. Type the 6-digit code it shows.</span><span>Can't scan? Key: <span class="mono" style="color:var(--ink)">NXQ4 7KD2 M9TA 3PLE</span></span></div></div>
+      <div class="method"><div class="lic"><i data-i="mail"></i></div><div><b>Code by email</b><span>Sent to owner@youtoopreneur.com each time.</span></div><span class="radio"></span></div>
+      <div class="method"><div class="lic"><i data-i="phone"></i></div><div><b>Code by WhatsApp</b><span>A 6-digit code on your WhatsApp number.</span></div><span class="radio"></span></div>
+      <a class="btn solid lg" href="#twostep" style="text-decoration:none">Continue</a>
+    </div>
+
+    <!-- Forgot password (SCR-003) -->
+    <div class="auth-card" data-step="forgot">
+      <h1 class="serif">Reset your password</h1>
+      <p class="lead">Enter the email you sign in with. We'll send a link that works for 30 minutes.</p>
+      <div class="field"><label for="fe">Email</label><div class="input" id="fe">owner@youtoopreneur.com</div></div>
+      <a class="btn solid lg" href="#sent" style="text-decoration:none">Send reset link</a>
+      <div class="row-x"><a href="#login">Back to sign in</a><span class="sm">Signed in with Google? Reset it in Google instead.</span></div>
+    </div>
+    <div class="auth-card" data-step="sent">
+      <h1 class="serif">Check your email</h1>
+      <p class="lead">If owner@youtoopreneur.com can sign in to Nexus, a reset link is on its way. It works for 30 minutes.</p>
+      <div class="banner info"><i data-i="mail"></i>Didn't get it? Check spam, or ask the owner to check your sign-in email in Users and roles.</div>
+      <a class="btn lg" href="#reset" style="text-decoration:none;height:48px">Open the link (example)</a>
+      <div class="row-x"><a href="#login">Back to sign in</a></div>
+    </div>
+    <div class="auth-card" data-step="reset">
+      <h1 class="serif">Choose a new password</h1>
+      <div class="field"><label for="np">New password</label><div class="input" id="np">••••••••••••</div><div style="display:flex;gap:4px;margin-top:2px"><i style="flex:1;height:4px;border-radius:2px;background:var(--green)"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--green)"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--green)"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--bar)"></i></div><span class="help">Strong. At least 10 characters; avoid your name and common words.</span></div>
+      <div class="field"><label for="cp">Type it again</label><div class="input" id="cp">••••••••••••</div></div>
+      <a class="btn solid lg" href="#login" style="text-decoration:none">Save new password</a>
+      <p class="help">All your other sessions are signed out after a reset.</p>
+    </div>
+
+    <!-- Google account not on the allow-list -->
+    <div class="auth-card" data-step="denied">
+      <h1 class="serif">This account can't sign in yet</h1>
+      <div class="err"><i data-i="shield"></i><span>riya.k@gmail.com isn't on Nexus's list of people who can sign in. Ask the owner to add you in Users and roles, then try again.</span></div>
+      <a class="gbtn" href="#login" style="text-decoration:none">Try another Google account</a>
+      <p class="help">New joiners can start with a personal Gmail; the owner switches it to the company account later and nothing is lost.</p>
+    </div>
+
+    <!-- Tamil sample (text-fit check; wording to be checked by a native speaker) -->
+    <div class="auth-card ta" data-step="tamil">
+      <h1 class="serif">Nexus-இல் உள்நுழையவும்</h1>
+      <p class="lead">உங்கள் Google கணக்கு அல்லது மின்னஞ்சல் மூலம் உள்நுழையவும்.</p>
+      <a class="gbtn" href="dashboard.html" style="text-decoration:none"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.2l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC05" d="M10.6 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.2 0-11.5-4.1-13.4-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Google மூலம் தொடரவும்</a>
+      <div class="or">அல்லது</div>
+      <div class="field"><label for="tem">மின்னஞ்சல்</label><div class="input" id="tem">owner@youtoopreneur.com</div></div>
+      <div class="field"><label for="tpw">கடவுச்சொல்</label><div class="input" id="tpw">••••••••••</div></div>
+      <div class="row-x"><span style="display:flex;gap:8px;align-items:center"><i class="chk on"></i>என்னை உள்நுழைந்தபடியே வைத்திருக்கவும்</span><a href="#forgot">கடவுச்சொல் மறந்துவிட்டதா?</a></div>
+      <a class="btn solid lg" href="#twostep" style="text-decoration:none">உள்நுழைக</a>
+      <p class="help">YouTooPreneur சேர்த்தவர்கள் மட்டுமே உள்நுழைய முடியும்.</p>
+      <p class="help" style="font-family:'DM Sans',sans-serif!important">Tamil sample to check that longer words fit. Each language opens only after a native speaker has checked it.</p>
+    </div>
+  </section>
+</div>
+<script>
+  // Show one step at a time, chosen by the address (#login, #twostep, #setup, #forgot, #sent, #reset, #denied, #tamil).
+  const steps = [...document.querySelectorAll('[data-step]')];
+  const showStep = () => {
+    const want = location.hash.slice(1);
+    const name = steps.some((s) => s.dataset.step === want) ? want : 'login';
+    steps.forEach((s) => { s.hidden = s.dataset.step !== name; });
+    const ta = name === 'tamil';
+    document.getElementById('langNow').classList.toggle('on', !ta);
+    document.getElementById('langOther').classList.toggle('on', ta);
+    document.getElementById('langPill').setAttribute('href', ta ? '#login' : '#tamil');
+    document.getElementById('brandTitle').textContent = ta ? 'YouTooPreneur நடத்தும் அனைத்தும், ஒரே இடத்தில்.' : 'Everything YouTooPreneur runs, in one place.';
+    document.getElementById('brandTitle').classList.toggle('ta', ta);
+    document.querySelectorAll('.auth-brand [data-ta]').forEach((el) => {
+      if (!el.dataset.en) el.dataset.en = el.textContent;
+      el.textContent = ta ? el.dataset.ta : el.dataset.en;
+      el.classList.toggle('ta', ta);
+    });
+  };
+  addEventListener('hashchange', showStep);
+  showStep();
+</script>
+</body>
+</html>

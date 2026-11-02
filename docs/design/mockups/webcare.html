@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Digital assets</title>
+<!-- Batch 4 · SCR-090 Digital assets: every client asset (websites, domains, hosting, SSL, social pages, ad accounts, Google Business...) with owner account, provider, expiry and status (WEB-001, WEB-002, WEB-004, WEB-009, WEB-011, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .at td{padding-top:10px;padding-bottom:10px}
+  .an{display:flex;align-items:center;gap:10px}
+  .an .lic{width:34px;height:34px;flex:none}
+  .an b{display:block;font-weight:700}
+  .an small{font-size:12px;color:var(--muted)}
+  .an a{text-decoration:none;color:inherit}
+  .acct{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+  .acct i{width:8px;height:8px;border-radius:50%}
+  .acct.ytp i{background:var(--on)} .acct.cli i{background:#94A3B8}
+  .exp b{display:block;font-weight:700}
+  .exp small{font-size:12px;color:var(--muted)}
+  .exp.soon b{color:var(--amber)} .exp.risk b{color:var(--red)}
+  .vault{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--muted)}
+  .vault svg{width:13px;height:13px}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="assets">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Digital assets</h1>
+          <p>Every website, domain, hosting account, SSL certificate, social page and ad account we look after, whose account it sits in, and when it expires. Domain and SSL dates are checked automatically every morning.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: answers questions about assets (which domains are in client accounts, what renews in November), within your permissions. Never sees logins."><i data-i="spark"></i>Ask about assets</span><span class="btn solid lg"><i data-i="plus"></i>Add asset</span></div>
+      </div>
+      <div class="counters"><div class="ctr"><b>186</b><span>Assets</span></div><div class="ctr warn"><b>5</b><span>Expire in 30 days</span></div><div class="ctr" style="background:var(--red-bg);border-color:transparent"><b style="color:var(--red)">1</b><span style="color:var(--red)">At risk</span></div><div class="ctr"><b>2</b><span>Client renews: confirm</span></div><div class="ctr"><b>6:00 am</b><span>Last automatic check</span></div></div>
+      <div style="display:flex;gap:10px;align-items:center"><div class="views"><span class="on">All <em class="count">186</em></span><span>Websites <em class="count">38</em></span><span>Domains <em class="count">46</em></span><span>Hosting <em class="count">31</em></span><span>SSL <em class="count">40</em></span><span>Social pages <em class="count">18</em></span><span>Ad accounts <em class="count">6</em></span><span>Google Business <em class="count">7</em></span></div><span class="btn" style="margin-left:auto"><i data-i="filter"></i>Filters</span></div>
+
+      <div class="card cb" style="padding-top:8px">
+        <table class="tbl at">
+          <thead><tr><th>Asset</th><th>Client</th><th>Held in</th><th>Provider</th><th>Expires</th><th>Status</th><th>Login</th></tr></thead>
+          <tbody>
+            <tr><td><div class="an"><span class="lic"><i data-i="globe"></i></span><div><b>greenleaforganics.com</b><small>Domain · auto-renew off at the registrar</small></div></div></td><td class="sm">Greenleaf Organics</td><td><span class="acct ytp"><i></i>YTP account</span></td><td class="sm">GoDaddy</td><td class="exp risk"><b>8 Oct 2026</b><small>7 days · checked today</small></td><td><span class="chip c-red">At risk · not paid</span></td><td><span class="vault"><i data-i="key"></i>Vault link</span></td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="shield"></i></span><div><b>velocitymotors.in</b><small>SSL certificate</small></div></div></td><td class="sm">Velocity Motors</td><td><span class="acct cli"><i></i>Client account</span></td><td class="sm">Namecheap</td><td class="exp soon"><b>13 Oct 2026</b><small>12 days</small></td><td><a class="chip c-amber" href="renewals.html" style="text-decoration:none">Client renews · reminded</a></td><td><span class="vault"><i data-i="key"></i>Vault link</span></td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="server"></i></span><div><b>Kaveri Hospitals hosting</b><small>cPanel hosting · client's own account</small></div></div></td><td class="sm">Kaveri Hospitals</td><td><span class="acct cli"><i></i>Client account</span></td><td class="sm">GoDaddy</td><td class="exp soon"><b>14 Oct 2026</b><small>13 days</small></td><td><a class="chip c-blue" href="renewal-confirm.html" style="text-decoration:none">Proof received · confirm</a></td><td><span class="vault"><i data-i="key"></i>Vault link</span></td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="globe"></i></span><a href="asset.html"><b>sharmadental.in</b><small>Domain + website on YTP-HS-01</small></a></div></td><td class="sm">Sharma Dental Care</td><td><span class="acct ytp"><i></i>YTP account</span></td><td class="sm">GoDaddy · Hostinger</td><td class="exp soon"><b>29 Oct 2026</b><small>28 days · checked today</small></td><td><span class="chip c-blue">Invoice ready</span></td><td><span class="vault"><i data-i="key"></i>3 vault links</span></td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="globe"></i></span><div><b>brightmindstuition.in</b><small>Domain · handed over in Sep</small></div></div></td><td class="sm">Bright Minds Tuition</td><td><span class="acct cli"><i></i>Client account</span></td><td class="sm">GoDaddy</td><td class="exp"><b>3 Nov 2027</b><small>Updated by today's check</small></td><td><span class="chip c-green">Renewed by client</span></td><td class="sm">Client holds it</td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="target"></i></span><div><b>Velocity Motors · Meta ads</b><small>Ad account · budget ₹50,000 a month · spent ₹31,200</small></div></div></td><td class="sm">Velocity Motors</td><td><span class="acct cli"><i></i>Client account</span></td><td class="sm">Meta</td><td class="exp"><b>—</b><small>Monthly budget</small></td><td><span class="chip c-green">Active</span></td><td><span class="vault"><i data-i="key"></i>Vault link</span></td></tr>
+                        <tr><td><div class="an"><span class="lic"><i data-i="pin"></i></span><div><b>Sharma Dental Care, Adyar</b><small>Google Business profile</small></div></div></td><td class="sm">Sharma Dental Care</td><td><span class="acct cli"><i></i>Client account</span></td><td class="sm">Google</td><td class="exp"><b>—</b><small>No expiry</small></td><td><span class="chip c-green">Verified</span></td><td class="sm">YTP is a manager</td></tr>
+            <tr><td><div class="an"><span class="lic"><i data-i="globe"></i></span><div><b>anbutextiles.com</b><small>Website · WooCommerce shop on YTP-HS-01</small></div></div></td><td class="sm">Anbu Textiles</td><td><span class="acct ytp"><i></i>YTP account</span></td><td class="sm">Hostinger</td><td class="exp"><b>12 Nov 2027</b><small>Corrected 30 Sep</small></td><td><span class="chip c-amber">1 issue open</span></td><td><span class="vault"><i data-i="key"></i>2 vault links</span></td></tr>
+          </tbody>
+        </table>
+        <p class="help" style="margin-top:10px">Logins are links to Vaultwarden items; no password is ever stored or shown in Nexus. Asset types are a setting (Settings → Lists).</p>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

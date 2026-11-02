@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Courses</title>
+<!-- Batch 9 · SCR-150 Courses: the list and the editor (Digital Marketing Mastery): mode (online live, classroom, recorded or mixed), syllabus by week, duration, fee in full or instalments (the student chooses), trainers chosen from Team, recordings in Bunny Stream for enrolled students only, the certificate rule (ACD-001, ACD-004, ACD-005, ACD-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay10{display:grid;grid-template-columns:330px minmax(0,1fr);gap:14px;align-items:start}
+  .crs{padding:10px;display:flex;flex-direction:column;gap:4px}
+  .crs a{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;padding:10px;border-radius:12px;text-decoration:none;color:inherit}
+  .crs a.on{background:var(--active-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+  .crs .ci{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:11px;color:#fff}
+  .crs b{display:block;font-weight:700;font-size:13px}
+  .crs small{display:block;font-size:11.5px;color:var(--muted)}
+  .ed{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:12px}
+  .ecol{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .syl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}
+  .syl div{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .syl div:nth-child(-n+2){border-top:0}
+  .syl em{font-style:normal;font-size:10.5px;font-weight:800;color:var(--muted)}
+  .syl small{font-size:11px;color:var(--muted)}
+  .fee2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .fee2 div{padding:10px 12px;border-radius:12px;border:1.5px solid var(--line)}
+  .fee2 div.on{border-color:var(--ink)}
+  .fee2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .fee2 b{font-family:Sora,sans-serif;font-weight:600;font-size:18px}
+  .fee2 span{display:block;font-size:11.5px;color:var(--muted)}
+  .tr2{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:12.5px}
+  .tr2 b{display:block;font-weight:700}
+  .tr2 small{display:block;color:var(--muted);font-size:11.5px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="courses">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Courses</h1>
+          <p>What the Academy teaches. Each course sets its mode, syllabus, length, fee and trainers; batches run the course on dates.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Draft a syllabus: week-by-week topics from the course name, length and level. Arrives as a draft for the trainer to change."><i data-i="spark"></i>Draft a syllabus</span><span class="btn solid lg"><i data-i="plus"></i>New course</span></div>
+      </div>
+      <div class="lay10">
+        <div class="card crs">
+          <a class="on" href="courses.html"><span class="ci" style="background:#0F766E">DMM</span><div><b>Digital Marketing Mastery</b><small>Mixed · 12 weeks · ₹35,000 · 2 batches</small></div></a>
+          <a href="courses.html"><span class="ci" style="background:#1D4ED8">WP</span><div><b>WordPress Website Building</b><small>Classroom · 6 weeks · ₹18,000 · 1 batch</small></div></a>
+          <a href="courses.html"><span class="ci" style="background:#BE185D">IR</span><div><b>Instagram Reels for Business</b><small>Recorded · 12 lessons · ₹4,999 · 64 students</small></div></a>
+          <a href="courses.html"><span class="ci" style="background:#7C3AED">AI</span><div><b>AI for Small Business</b><small>Online live · 4 weeks · ₹9,999 · 1 batch</small></div></a>
+          <span class="manual" style="padding:6px 10px">The client chatbot can describe each course and its dates; questions about fees go to a person.</span>
+        </div>
+        <div class="ed">
+          <div class="ecol">
+            <div class="card">
+              <div class="ch"><h2 class="serif">Digital Marketing Mastery</h2><span class="mode" style="margin-left:auto"><i data-i="repeat"></i>Mixed: online live + classroom + recordings</span></div>
+              <div class="cbx" style="display:flex;flex-direction:column;gap:10px">
+                <div class="fields" style="grid-template-columns:repeat(3,1fr);gap:10px"><div class="field"><label>Length</label><div class="input">12 weeks · 36 sessions</div></div><div class="field"><label>Each week</label><div class="input" style="height:auto;min-height:40px;white-space:normal;padding-block:8px">Mon, Wed online · Sat class</div></div><div class="field"><label>Level</label><div class="input" style="height:auto;min-height:40px;white-space:normal;padding-block:8px">Beginners · no experience needed</div></div></div>
+                <span class="sm" style="font-size:12px;font-weight:700">Syllabus</span>
+                <div class="syl">
+                  <div><em>W1</em><span>Marketing basics and your customer</span><small>3</small></div><div><em>W7</em><span>Email and WhatsApp marketing</span><small>3</small></div>
+                  <div><em>W2</em><span>Brand and content that sells</span><small>3</small></div><div><em>W8</em><span>Analytics and reports</span><small>3</small></div>
+                  <div><em>W3</em><span>Social media that grows</span><small>3</small></div><div><em>W9</em><span>AI tools for marketers</span><small>3</small></div>
+                  <div><em>W4</em><span>Meta ads</span><small>3</small></div><div><em>W10</em><span>Landing pages that convert</span><small>3</small></div>
+                  <div><em>W5</em><span>Google ads</span><small>3</small></div><div><em>W11</em><span>Final project: a real campaign</span><small>3</small></div>
+                  <div><em>W6</em><span>SEO and Google Business</span><small>3</small></div><div><em>W12</em><span>Presentations and certificates</span><small>3</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ch"><h2 class="serif">Recordings and materials</h2></div>
+              <div class="cbx" style="display:flex;flex-direction:column;gap:8px">
+                <div class="prow" style="border-top:0"><span class="po-ic"><i data-i="play"></i></span><div><b>Session recordings in Bunny Stream</b><small>Added after every session, online or classroom · only students of the batch can play them · open until 12 months after the course ends · no downloads</small></div><span class="r"><span class="toggle on"></span></span></div>
+                <div class="prow"><span class="po-ic"><i data-i="file"></i></span><div><b>Materials</b><small>Slides and worksheets per week · 24 files</small></div><span class="r"><span class="btn" style="height:30px">Open</span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ecol">
+            <div class="card">
+              <div class="ch"><h2 class="serif">Fee</h2></div>
+              <div class="cbx" style="display:flex;flex-direction:column;gap:8px">
+                <div class="fee2"><div class="on"><small>In full</small><b>₹35,000</b><span>On admission</span></div><div class="on"><small>3 instalments</small><b>₹12,000 × 3</b><span>Admission, week 5, week 9</span></div></div>
+                <span class="manual">Set for this course; the student chooses. The extra ₹1,000 for paying in parts is optional per course. Each instalment is a YTA invoice with reminders and a receipt; no late fees; no GST until registration.</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ch"><h2 class="serif">Trainers</h2><span class="sm" style="margin-left:auto;font-size:11.5px">From Team</span></div>
+              <div class="cbx">
+                <div class="tr2"><span class="lg-av" style="--av:#4F46E5">NK</span><div><b>Nandhini K</b><small>Trainer · lead for this course</small></div></div>
+                <div class="tr2"><span class="lg-av" style="--av:#0F766E">KR</span><div><b>Karthik Raman</b><small>Weeks 4 to 6 · ads and SEO</small></div></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ch"><h2 class="serif">Certificate</h2></div>
+              <div class="cbx" style="font-size:12.5px;display:flex;flex-direction:column;gap:6px">
+                <span>This course: attendance <b>75% or more</b> and the final project <b>passed</b>. Each course sets its own rule; recorded courses use all lessons watched and the quiz passed.</span>
+                <span class="sm" style="font-size:12px">PDF with a QR code; anyone can check it on the public page.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

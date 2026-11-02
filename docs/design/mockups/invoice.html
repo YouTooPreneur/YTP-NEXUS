@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Invoice</title>
+<!-- Batch 4 · SCR-103 Invoice (issued): status, payments, reminders sent, secret link, linked asset, credit notes; issued invoices cannot be edited (FIN-001, FIN-003, FIN-007, FIN-009, AUTO-004, AUTO-005, RULE-005, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .ihead{display:flex;align-items:center;gap:14px}
+  .ihead h1{font-size:32px;line-height:1.1;font-family:Sora,sans-serif}
+  .ihead .meta{display:flex;gap:8px;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+  .ihead .r{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .lay{display:grid;grid-template-columns:1fr 380px;gap:16px;align-items:start}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .big3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .big3 div{padding:12px 14px;border-radius:14px;background:var(--card-2)}
+  .big3 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .big3 b{font-family:Sora,sans-serif;font-weight:600;font-size:22px}
+  .big3 .due b{color:var(--red)}
+  .tl2{display:flex;flex-direction:column}
+  .ev2{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:start;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .ev2:first-child{border-top:0}
+  .ev2 .lic{width:34px;height:34px}
+  .ev2 b{font-weight:700;font-size:13px}
+  .ev2 small{display:block;font-size:12px;color:var(--muted)}
+  .ev2 .t{font-size:12px;color:var(--muted)}
+  .ev2.next b{font-weight:600}
+  .ev2.next .lic{border:1.5px dashed var(--edge);background:transparent}
+  .lock{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .lock svg{width:16px;height:16px}
+  .lock .r{margin-left:auto}
+  .sl{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--card-2);font-family:ui-monospace,Consolas,monospace;font-size:12px}
+  .sl .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="invoices">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="ihead">
+        <span class="lic" style="width:52px;height:52px"><i data-i="doc"></i></span>
+        <div><h1>YTP/26-27/0042</h1><div class="meta"><span class="chip c-red">Overdue · 9 days</span><span>Invoice to <a class="lk" href="client-profile.html" style="font-weight:600">Greenleaf Organics</a> · issued 22 Sep · due on receipt · renewal, sent by itself</span></div></div>
+        <div class="r"><a class="btn" href="docs-pdf.html#invoice" style="text-decoration:none"><i data-i="download"></i>PDF</a><a class="btn" href="pay-link.html" style="text-decoration:none"><i data-i="link"></i>Client's view</a><span class="btn"><i data-i="chat"></i>Send reminder</span><a class="btn solid" href="payment-record.html" style="text-decoration:none"><i data-i="wallet"></i>Record payment</a></div>
+      </div>
+      <div class="lay">
+        <div class="col">
+          <div class="big3"><div><small>Amount</small><b>₹1,416</b></div><div><small>Paid</small><b>₹0</b></div><div class="due"><small>Balance</small><b>₹1,416</b></div></div>
+          <div class="card cb" style="padding-top:8px">
+            <table class="tbl"><thead><tr><th>Service</th><th>SAC</th><th>Period</th><th class="num">Amount</th></tr></thead><tbody>
+              <tr><td><b>Domain renewal · greenleaforganics.com</b></td><td class="sm">998319</td><td class="sm">8 Oct 2026 – 8 Oct 2027</td><td class="num">₹1,416</td></tr>
+            </tbody><tfoot><tr><td colspan="3">Total · plain invoice (GST not registered yet) · round off ₹0</td><td class="num">₹1,416</td></tr></tfoot></table>
+          </div>
+          <div class="lock"><i data-i="lock"></i>Issued invoices can't be changed. To correct one, create a credit note in its own series.<a class="btn r" href="credit-note.html" style="text-decoration:none">Credit note</a></div>
+          <div class="card cb" style="padding-top:14px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">What happened</h2></div>
+            <div class="tl2">
+              <div class="ev2"><span class="lic"><i data-i="send"></i></span><div><b>Issued and sent by itself</b><small>Email to Mr. Prakash and WhatsApp (Billing number) · renewal rule</small></div><span class="t">22 Sep 9:00 am</span></div>
+              <div class="ev2"><span class="lic"><i data-i="eye"></i></span><div><b>Opened by the client</b><small>Secret link, 2 times · last on a phone</small></div><span class="t">23 Sep</span></div>
+              <div class="ev2"><span class="lic"><i data-i="chat"></i></span><div><b>Reminder, day 7</b><small>Email and WhatsApp ("invoice_due_v2") · delivered, read</small></div><span class="t">29 Sep</span></div>
+              <div class="ev2"><span class="lic"><i data-i="spark"></i></span><div><b>A friendlier reminder drafted by AI</b><small>Waiting in the approval inbox · mentions the 8 Oct domain date</small></div><span class="t">Today 10:40 am</span></div>
+              <div class="ev2 next"><span class="lic"><i data-i="clock"></i></span><div><b>Reminder, day 15</b><small>Email and WhatsApp, by itself at 9:00 am unless paid</small></div><span class="t">7 Oct</span></div>
+              <div class="ev2 next"><span class="lic"><i data-i="flag"></i></span><div><b>Escalation to the Owner, with a "call the client" task</b><small>Greenleaf's escalation point: day 21</small></div><span class="t">13 Oct</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px;box-shadow:inset 0 0 0 1.5px var(--red),var(--shadow)">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Linked asset at risk</h2></div>
+            <div class="srow" style="padding:4px 0;border-top:0"><div class="lic"><i data-i="globe"></i></div><div class="txt"><b>greenleaforganics.com</b><span>GoDaddy · YTP account · expires 8 Oct · auto-renew off</span></div></div>
+            <p class="sm" style="font-size:12.5px;line-height:1.5">The renew-at-vendor task is created only after payment. If it is still unpaid near the date, the Owner decides whether to renew anyway.</p>
+            <a class="btn" href="expiry.html" style="text-decoration:none">Expiry monitor</a>
+          </div>
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:8px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">Secret link</h2><span class="sm" style="font-size:12px">Shows only this invoice</span></div>
+            <div class="sl">pay.youtoopreneur.com/i/7Kq2…X9<span class="btn r" style="height:28px"><i data-i="copy"></i>Copy</span></div>
+            <span class="help">Expires 31 Oct · opened 2 times · UPI, Razorpay and bank transfer</span>
+          </div>
+          <div class="card cb" style="padding-top:14px">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:18px">Payments and credit notes</h2></div>
+            <p class="sm" style="font-size:12.5px">None yet. A part payment leaves the rest as the balance; the receipt goes out by itself.</p>
+          </div>
+          <div class="ai-card"><div class="ai-h"><i data-i="spark"></i>Suggested</div><div style="font-size:13px;line-height:1.5">Call Mr. Prakash today: he opened the invoice twice but has not paid, and the domain ends in 7 days.</div><div class="ai-acts"><span class="btn"><i data-i="phone"></i>Call</span><a class="btn" href="approvals.html" style="text-decoration:none">See the AI draft</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

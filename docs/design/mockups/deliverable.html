@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Deliverable</title>
+<!-- Batch 6 · SCR-062 Deliverable (Kaveri Hospitals · homepage design v2): versions with comment pins, the internal quality check that must be signed off (by the project lead, a manager or the Owner; choice 59, 22 Oct) before anything goes to the client, the client's approval history, and revision rounds counted against this client's agreement (PRJ-005, PRJ-006, CON-011, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .hd{display:flex;gap:14px;align-items:center}
+  .hd h1{font-size:28px;line-height:1.1}
+  .hd .sub3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:12.5px;color:var(--muted)}
+  .hd .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .lay4{display:grid;grid-template-columns:1fr 400px;gap:14px;flex:1;min-height:0}
+  .pv{padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-height:0}
+  .pvbar{display:flex;align-items:center;gap:10px}
+  .pvbar .r{margin-left:auto;display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+  .shot{position:relative;flex:1;min-height:0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line);font-family:"DM Sans",sans-serif;color:#10302A}
+  .emg{background:#C62828;color:#fff;font-size:12px;font-weight:700;text-align:center;padding:6px}
+  .navx{display:flex;align-items:center;gap:18px;padding:12px 22px;font-size:12px;font-weight:600;border-bottom:1px solid #E6EFEC}
+  .navx b{font-family:Sora,sans-serif;font-size:16px;color:#047857;margin-right:auto}
+  .navx span.cta{background:#047857;color:#fff;padding:7px 12px;border-radius:8px}
+  .hero2{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;padding:22px}
+  .hero2 h2{font-family:Sora,sans-serif;font-size:30px;line-height:1.1;color:#0B3B30}
+  .hero2 p{font-size:13px;color:#4B635C;margin-top:10px;line-height:1.5}
+  .hero2 .b2{display:flex;gap:8px;margin-top:14px}
+  .hero2 .b2 span{font-size:12px;font-weight:700;padding:9px 14px;border-radius:9px;background:#047857;color:#fff}
+  .hero2 .b2 span.o{background:#fff;color:#047857;box-shadow:inset 0 0 0 1.5px #047857}
+  .photo{border-radius:14px;background:linear-gradient(160deg,#CDE8DF,#7FB8A6 55%,#3F8D77);position:relative;min-height:170px}
+  .photo::after{content:"Dr. Meena Rao · Chief physician";position:absolute;left:12px;bottom:10px;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.3);padding:3px 8px;border-radius:6px}
+  .docs2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px 22px}
+  .docs2 > div{border-radius:12px;border:1px solid #E6EFEC;padding:10px;display:flex;gap:10px;align-items:center;font-size:12px}
+  .docs2 i{width:38px;height:38px;border-radius:50%;background:linear-gradient(160deg,#D9EEE7,#93C7B6);flex:none}
+  .docs2 b{display:block;font-size:12.5px}
+  .depts{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:0 22px 18px}
+  .depts span{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;background:#F2F8F6;font-size:11.5px;font-weight:700;color:#0B3B30}
+  .depts span i{width:26px;height:26px;border-radius:8px;background:#CFE7DF}
+  .hc{margin:0 22px 18px;padding:14px 16px;border-radius:12px;background:#0B3B30;color:#fff;display:flex;align-items:center;gap:14px;font-size:12.5px}
+  .hc b{font-family:Sora,sans-serif;font-size:15px}
+  .hc span.c{margin-left:auto;background:#03FF96;color:#0B3B30;font-weight:800;padding:8px 12px;border-radius:8px}
+  .pin{position:absolute;width:24px;height:24px;border-radius:50%;background:#9A6416;color:#fff;font-size:11.5px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 3px rgba(226,169,59,.3)}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb7{padding:0 16px 12px}
+  .ck{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:12.5px}
+  .ck .r{margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .hist{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .hist:first-of-type{border-top:0}
+  .hist .ic{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .hist .ic svg{width:13px;height:13px}
+  .hist .ic.a{background:var(--amber-bg);color:var(--amber)} .hist .ic.b{background:var(--blue-bg);color:var(--blue)} .hist .ic.g{background:var(--green-bg);color:var(--green)}
+  .hist b{font-weight:700}
+  .hist small{display:block;color:var(--muted);font-size:11.5px}
+  .rounds{display:flex;gap:6px;align-items:center;font-size:12.5px}
+  .rounds i{width:34px;height:8px;border-radius:999px;background:var(--bar)}
+  .rounds i.u{background:var(--on)}
+  .side4{display:flex;flex-direction:column;gap:12px;min-height:0}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="projects">
+  <main>
+    <section class="pg">
+      <div>
+        <div class="crumbs"><a href="projects.html">Projects</a><span>/</span><a href="project.html">Kaveri Hospitals · website redesign</a><span>/</span><b style="color:var(--ink)">Homepage design</b></div>
+        <div class="hd">
+          <span class="ftype fig" style="width:46px;height:46px">FIG</span>
+          <div>
+            <h1 class="serif">Homepage design</h1>
+            <div class="sub3"><span class="chip c-ink">Version 2</span><span class="chip c-amber">Internal review today 12:30 pm</span><span>Design stage · made by Divya · today's reviewer: Owner</span></div>
+          </div>
+          <div class="acts"><span class="btn lg"><i data-i="upload"></i>New version</span><span class="btn lg" title="The quality check must be signed off first" aria-disabled="true" style="opacity:.55"><i data-i="lock"></i>Send to the client</span></div>
+        </div>
+      </div>
+
+      <div class="lay4">
+        <div class="card pv">
+          <div class="pvbar"><div class="pill-sel"><span>Version 1 · 22 Sep</span><span class="on">Version 2 · today</span></div><span class="ai-btn sm" data-ai="Compare with the client's comments: checks version 2 against what Dr. Rao asked for on 24 Sep. Both asks are done: the 24×7 number is at the top and the doctor photos are bigger."><i data-i="spark"></i>Check against the client's comments</span><span class="r"><i data-i="msg"></i>3 comments · pins on the design</span></div>
+          <div class="shot">
+            <div class="emg">24×7 Emergency · 044 2345 6789</div>
+            <div class="navx"><b>Kaveri Hospitals</b><span>Departments</span><span>Doctors</span><span>Health checks</span><span>Contact</span><span class="cta">Call to book</span></div>
+            <div class="hero2">
+              <div><h2>Care that feels like family, since 1998</h2><p>Multi-speciality care in Anna Nagar, Chennai. 42 doctors, 18 departments and a 24×7 emergency team.</p><div class="b2"><span>Find a doctor</span><span class="o">Health check packages</span></div></div>
+              <div class="photo"></div>
+            </div>
+            <div class="docs2"><div><i></i><div><b>Dr. Meena Rao</b>General medicine</div></div><div><i></i><div><b>Dr. S. Karthikeyan</b>Cardiology</div></div><div><i></i><div><b>Dr. Anitha P</b>Paediatrics</div></div></div>
+            <div class="depts"><span><i></i>Cardiology</span><span><i></i>Orthopaedics</span><span><i></i>Paediatrics</span><span><i></i>Gynaecology</span><span><i></i>ENT</span><span><i></i>Diabetes care</span></div>
+            <div class="hc"><div><b>Master health check · ₹2,999</b><br>Includes 62 tests and a doctor consultation</div><span class="c">Call 044 2345 6789</span></div>
+            <span class="pin" style="left:62%;top:4px">1</span>
+            <span class="pin" style="right:28%;top:150px">2</span>
+            <span class="pin" style="left:34%;bottom:140px">3</span>
+          </div>
+        </div>
+
+        <div class="side4">
+          <!-- Quality check before the client (PRJ-006) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Quality check</h2><span class="count">4 of 6</span><span class="link">Website design checklist</span></div>
+            <div class="cb7">
+              <div class="ck"><i class="chk on"></i>Brand colours and fonts</div>
+              <div class="ck"><i class="chk on"></i>Phone and tablet layouts</div>
+              <div class="ck"><i class="chk on"></i>Doctor names and photos checked</div>
+              <div class="ck"><i class="chk on"></i>24×7 number at the top (client asked)</div>
+              <div class="ck"><i class="chk"></i>Spelling, English and Tamil<span class="r">Divya</span></div>
+              <div class="ck"><i class="chk"></i>Text easy to read on photos<span class="r">Owner</span></div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:8px"><span class="btn solid" aria-disabled="true" style="opacity:.55">Sign off</span><span class="manual">The project lead, a manager or the Owner can sign off. Nothing goes to the client before that.</span></div>
+            </div>
+          </div>
+          <!-- Client approval history -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">With the client</h2><span class="link">Portal</span></div>
+            <div class="cb7">
+              <div class="hist"><span class="ic b"><i data-i="send"></i></span><div><b>Version 1 sent to Dr. Rao</b><small>22 Sep · through the client portal</small></div></div>
+              <div class="hist"><span class="ic a"><i data-i="msg"></i></span><div><b>Changes asked · round 1</b><small>24 Sep · "Show the emergency number at the top; bigger doctor photos."</small></div></div>
+              <div class="hist"><span class="ic g"><i data-i="check"></i></span><div><b>Version 2 ready</b><small>Today · goes to the client after sign-off</small></div></div>
+            </div>
+          </div>
+          <!-- Revisions (CON-011) -->
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Revision rounds</h2><span class="later">Per this client</span></div>
+            <div class="cb7">
+              <div class="rounds"><i class="u"></i><i></i><span style="margin-left:6px"><b>1 of 2 used</b></span></div>
+              <p class="sm" style="font-size:12px;margin-top:8px;line-height:1.5">Kaveri's agreement includes 2 rounds a page. A third "changes" answer is flagged as extra; you choose to charge it or not.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

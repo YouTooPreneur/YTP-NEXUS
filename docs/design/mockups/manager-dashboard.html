@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Manager dashboard</title>
+<!-- Batch 5 · SCR-022 Manager dashboard, shown as Karthik (Manager): the founder dashboard limited to his own area: his team's approvals, leads, late and blocked work, renewals of the clients his team looks after, bills and amounts owed for those clients only (choice 48, 22 Oct), workload and tasks by status. No company money totals (CC-009, CC-001 to CC-003, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .hello{padding:22px 0 18px}
+  .hello h1{font-size:46px}
+  .summary .pill{text-decoration:none;color:var(--muted)}
+  .area{display:flex;gap:6px;align-items:center}
+  .area .av-stack .lg-av{width:28px;height:28px;font-size:9.5px;margin-left:-6px;box-shadow:0 0 0 2px var(--bg)}
+  .area .av-stack .lg-av:first-child{margin-left:0}
+  .msrs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:none}
+  .msrs .msr.lead{border-top:2px solid var(--accent)}
+  .msr .lab{font-size:10.5px}
+  .d1{display:grid;grid-template-columns:1fr 420px;gap:16px;margin-top:16px}
+  .d2{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px;margin-top:16px}
+  .att-views{padding:0 22px 8px}
+  .att li{grid-template-columns:92px 1fr 96px 120px;padding:8px 0}
+  .att li .btn{height:30px;padding:0 12px}
+  .att a{color:inherit;text-decoration:none}
+  .right{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .right .today-card{flex:1}
+  .fu a{color:inherit;text-decoration:none}
+  .brief ol{padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.45}
+  .cb2{padding:2px 22px 18px;display:flex;flex-direction:column;gap:12px}
+  .tm li{grid-template-columns:34px 1fr 140px}
+  .big2{display:flex;gap:18px}
+  .big2 div small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .big2 div b{font-family:Sora,sans-serif;font-weight:600;font-size:24px;letter-spacing:-.01em}
+  .big2 div span{display:block;font-size:12px;color:var(--muted)}
+  .rn td{padding:8px 0}
+  .rn b{display:block;font-weight:700;font-size:13px}
+  .rn small{font-size:11.5px;color:var(--muted)}
+  .scope{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .scope svg{width:15px;height:15px;flex:none}
+</style>
+</head>
+<body>
+<div class="app long" data-active="Command Centre" data-me="KR|Karthik Raman|SEO lead · Manager|#0F766E" data-hide="Finance,Settings" data-badge="4">
+  <main>
+    <section class="hello">
+      <div>
+        <p class="eyebrow">Thursday, 1 October 2026 · your area: SEO, websites and video</p>
+        <h1 class="serif">Good morning, <em>Karthik</em></h1>
+      </div>
+      <div class="summary">
+        <span class="pill area"><span class="av-stack"><span class="lg-av" style="--av:#1D4ED8">AK</span><span class="lg-av" style="--av:#BE185D">DS</span><span class="lg-av" style="--av:#7C3AED">RM</span><span class="lg-av" style="--av:#0369A1">PN</span><span class="lg-av" style="--av:#334155">SJ</span></span>Your team · 5 people</span>
+        <span class="ai-btn" data-ai="Brief me: reads your team's day aloud in about a minute, from the summary already made at 7:30 am."><i data-i="spark"></i>Brief me</span>
+      </div>
+    </section>
+
+    <!-- The success measures, limited to his area -->
+    <section class="msrs">
+      <a class="card msr lead" href="renewals.html">
+        <div class="mh"><span class="lab">Missed renewals</span><span class="tgt ok">Target 0</span></div>
+        <div class="num serif" style="color:var(--key)">0</div>
+        <div class="track"><i style="width:100%"></i></div>
+        <div class="sub">Your clients · 1 proof waiting for you</div>
+      </a>
+      <a class="card msr" href="pipeline.html">
+        <div class="mh"><span class="lab">Leads contacted in 24 h</span><span class="tgt near">Target 95%</span></div>
+        <div class="num serif">92%</div>
+        <div class="track"><i class="amb" style="width:92%"></i><b style="left:95%"></b></div>
+        <div class="sub">Your leads · 12 of 13 in September</div>
+      </a>
+      <a class="card msr" href="workload.html">
+        <div class="mh"><span class="lab">Tasks done on time</span><span class="tgt near">Target 90%</span></div>
+        <div class="num serif">88%</div>
+        <div class="track"><i class="amb" style="width:88%"></i><b style="left:90%"></b></div>
+        <div class="sub">Your team · 44 of 50 in September</div>
+      </a>
+      <a class="card msr" href="task.html">
+        <div class="mh"><span class="lab">Support replies in 24 h</span><span class="tgt ok">Target 100%</span></div>
+        <div class="num serif">100%</div>
+        <div class="track"><i style="width:100%"></i></div>
+        <div class="sub">Your clients · 9 of 9 · 1 fix late</div>
+      </a>
+    </section>
+
+    <section class="d1">
+      <div class="card">
+        <div class="ch"><h2 class="serif">Needs you</h2><span class="count">9</span><a class="link" href="approvals.html" style="text-decoration:none">Approval inbox<i data-i="right"></i></a></div>
+        <div class="views att-views"><span class="on">All <em class="count">9</em></span><span>Approvals <em class="count">2</em></span><span>Money <em class="count">1</em></span><span>Leads <em class="count">2</em></span><span>Work <em class="count">3</em></span><span>Renewals <em class="count">1</em></span></div>
+        <ul class="att">
+          <li><span class="chip c-amber">Lead</span><a href="pipeline.html"><b>Bloom Florists · SEO</b><span>From Instagram · not contacted for 6 hours · yours</span></a><div class="amt none">—</div><a class="btn solid" href="pipeline.html">Call</a></li>
+          <li><span class="chip c-red">Support</span><a href="task.html"><b>Contact form not working</b><span>Velocity Motors · the 3-day fix was due yesterday · Arun</span></a><div class="amt none">—</div><a class="btn" href="task.html">Open</a></li>
+          <li><span class="chip c-red">Overdue</span><a href="statement.html"><b>YTP/26-27/0038 · 3 days past due</b><span>Kaveri Hospitals · your client · mention it on your next call</span></a><div class="amt">₹23,600</div><a class="btn" href="statement.html">Open</a></li>
+          <li><span class="chip c-ink">Approve</span><a href="leave.html"><b>Leave · Divya · half day, 7 Oct</b><span>Casual, morning · bank work · 3.5 days left after</span></a><div class="amt none">—</div><span class="btn solid" data-ai="Approved in the preview only. In Nexus it shows on the team calendar and in workload at once.">Approve</span></li>
+          <li><span class="chip c-ink">Approve</span><a href="my-hr.html"><b>Work from home · Arun · 2 Oct</b><span>Server move on the holiday · plumber visit at home</span></a><div class="amt none">—</div><span class="btn solid" data-ai="Approved in the preview only.">Approve</span></li>
+          <li><span class="chip c-blue">Renewal</span><a href="renewal-confirm.html"><b>Kaveri Hospitals hosting · proof received</b><span>Managers can confirm · the expiry date then moves to 14 Oct 2027</span></a><div class="amt none">—</div><a class="btn" href="renewal-confirm.html">Confirm</a></li>
+          <li><span class="chip c-amber">Blocked</span><a href="tasks.html"><b>October content calendar</b><span>Green Valley School · waiting on client photos · Divya</span></a><div class="amt none">—</div><a class="btn" href="client-inputs.html" style="text-decoration:none">Remind</a></li>
+          <li><span class="chip c-amber">Deal</span><a href="deal.html"><b>Pearl Dental · follow-up 1 day late</b><span>SEO · warm · expected to close 20 Oct</span></a><div class="amt none">—</div><a class="btn" href="deal.html">Open</a></li>
+          <li><span class="chip c-amber">Cover</span><a href="workload.html"><b>Rahul away 6–9 Oct, if the Owner approves</b><span>Kaveri doctor videos and the Royal Caterers reel are due · Sanjay is free</span></a><div class="amt none">—</div><a class="btn" href="workload.html">Plan</a></li>
+        </ul>
+        <div class="scope" style="margin:4px 22px 16px"><i data-i="eye"></i>You see your team, their clients, and those clients' bills and amounts owed. Other clients' money, company totals, salaries and LLP figures stay with the Owner.</div>
+      </div>
+
+      <div class="right">
+        <div class="ai-card brief">
+          <div class="ai-h"><i data-i="spark"></i>Your team today<span class="r">AI · made 7:30 am</span></div>
+          <ol>
+            <li><b>Call Bloom Florists first</b>; the Owner is deciding on your 15% discount.</li>
+            <li><b>Arun</b> is behind on the Velocity form; Priya could take the blog plugins at 5:30 pm.</li>
+            <li>If Rahul's leave is approved, give <b>Sanjay</b> the Royal Caterers reel.</li>
+          </ol>
+          <div class="ai-acts"><span class="ai-btn sm" data-ai="Read aloud: plays these 3 lines (voice minutes count towards your AI limit)."><i data-i="mic"></i>Read aloud</span><a class="ai-btn sm" href="ask-nexus.html" style="text-decoration:none"><i data-i="chat"></i>Ask more</a><span class="manual" style="margin-left:auto">Suggestions only</span></div>
+        </div>
+        <div class="card today-card">
+          <div class="ch"><h2 class="serif">Today</h2><a class="link" href="calendar.html" style="text-decoration:none">Calendar<i data-i="right"></i></a></div>
+          <div class="sect">Meetings</div>
+          <div class="meet"><div class="time serif">11:00 am</div><div><b>Discovery call</b><span>Sri Lakshmi Traders · website + SEO</span></div><a class="btn" href="meetings.html" style="text-decoration:none">Join</a></div>
+          <div class="meet"><div class="time serif">3:30 pm</div><div><b>Weekly review</b><span>You run it · team · office</span></div></div>
+          <div class="sect" style="margin-top:6px">Follow-ups</div>
+          <div class="fu"><i class="box"></i><a href="pipeline.html">Call Bloom Florists about SEO</a><span>11:30 am</span></div>
+          <div class="fu"><i class="box"></i><a href="deal.html">Pearl Dental: send the revised plan</a><span>12:00 pm</span></div>
+          <div class="fu"><i class="box on"></i><a href="tasks.html" style="color:var(--muted);text-decoration:line-through">Check Priya's laptop set-up</a><span>Done</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d2">
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Team workload</h2><span class="count">3 of 4 in</span><a class="link" href="workload.html" style="text-decoration:none">Workload<i data-i="right"></i></a></div>
+        <ul class="team tm">
+          <li><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><span class="today-st wfh"><i></i>In 9:58 am · from home · 1 late</span></div><div class="load">6 open<div class="bar"><i class="hi" style="width:75%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><span class="today-st in"><i></i>In 10:02 am · 1 blocked</span></div><div class="load">4 open<div class="bar"><i style="width:50%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><span class="today-st in"><i></i>In 10:05 am · on probation</span></div><div class="load">3 open<div class="bar"><i style="width:30%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><span class="today-st leave"><i></i>On leave today</span></div><div class="load">5 open<div class="bar"><i style="width:55%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#334155">SJ</span><div><b>Sanjay J</b><span class="today-st"><i></i>Freelancer · no login</span></div><div class="load">1 open<div class="bar"><i style="width:15%"></i></div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Team tasks by status</h2><a class="link" href="tasks.html" style="text-decoration:none">Tasks<i data-i="right"></i></a></div>
+        <div class="cb2">
+          <div class="big2"><div><small>Open</small><b>19</b><span>your team</span></div><div><small>Late</small><b style="color:var(--red)">2</b><span>Arun, Priya</span></div><div><small>Done this week</small><b>14</b><span>since Monday</span></div></div>
+          <div class="stack"><i style="width:42%;background:#94A3B8"></i><i style="width:26%;background:#38BDF8"></i><i style="width:16%;background:#8B5CF6"></i><i style="width:5%;background:#E2A93B"></i><i style="width:11%;background:var(--red)"></i></div>
+          <div class="skey" style="grid-template-columns:repeat(2,1fr)"><div><i style="background:#94A3B8"></i>To do<b>8</b></div><div><i style="background:#38BDF8"></i>In progress<b>5</b></div><div><i style="background:#8B5CF6"></i>In review<b>3</b></div><div><i style="background:#E2A93B"></i>Blocked<b>1</b></div><div><i style="background:var(--red)"></i>Late<b>2</b></div><div><i style="background:var(--on)"></i>Done this week<b>14</b></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Renewals · your clients</h2><a class="link" href="renewals.html" style="text-decoration:none">Board<i data-i="right"></i></a></div>
+        <div class="cb2" style="padding-top:0">
+          <table class="tbl rn">
+            <tbody>
+              <tr><td style="width:44px"><span class="dring sm" style="--c:#E2A93B;--p:40"><span>12</span></span></td><td><b>velocitymotors.in SSL</b><small>Velocity Motors · client renews</small></td><td><span class="chip c-amber">Reminder sent</span></td></tr>
+              <tr><td><span class="dring sm" style="--c:#8B5CF6;--p:43"><span>13</span></span></td><td><b>Kaveri Hospitals hosting</b><small>Proof received · you can confirm</small></td><td><a class="chip c-blue" href="renewal-confirm.html" style="text-decoration:none">Confirm</a></td></tr>
+              <tr><td><span class="dring sm" style="--c:var(--on);--p:97"><span>29</span></span></td><td><b>royalcaterers.in SSL</b><small>Royal Caterers · renews itself</small></td><td><span class="chip c-ink">Nothing to do</span></td></tr>
+            </tbody>
+          </table>
+          <span class="manual">You see bills and amounts owed for your own clients only.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

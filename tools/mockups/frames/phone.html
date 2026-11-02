@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone frame</title>
+<style>
+/* A 390 x 844 phone around one screen, for pictures (headless Edge can't open a window narrower than about 500 px).
+   Use: node tools/mockups/capture.mjs <folder> "name=../../../tools/mockups/frames/phone.html?p=portal-home.html@520x900" */
+html,body{margin:0;height:100%;background:#E8E4DA}
+body{display:grid;place-items:center}
+.ph{width:390px;height:844px;border-radius:34px;overflow:hidden;box-shadow:0 0 0 10px #10201B,0 24px 60px rgba(0,0,0,.3);background:#fff}
+iframe{width:390px;height:844px;border:0;display:block}
+</style>
+</head>
+<body>
+<div class="ph"><iframe id="f" title="Screen on a phone"></iframe></div>
+<script>
+  const p = new URLSearchParams(location.search).get('p') || 'portal-home.html';
+  document.getElementById('f').src = '../../../docs/design/mockups/' + p.replace(/^\/+/, '');
+</script>
+</body>
+</html>

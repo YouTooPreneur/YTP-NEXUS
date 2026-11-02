@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client reports</title>
+<!-- Batch 8 · SCR-068 Client reports: a report per client on a schedule, built from client results and the work done, checked by a person, then sent by email and to the portal (Tamil where the client reads Tamil); the builder shows the sections, language and approval; AI drafts the summary (PRJ-015, RPT-011, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:32px}
+  .pg-head p{margin-top:4px}
+  .lay6{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:14px;align-items:start}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .ch3{display:inline-flex;gap:4px}
+  .ch3 span{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--card-2);color:var(--muted);border:1px solid var(--line-soft)}
+  .bld{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .bld h3{font-family:Sora,sans-serif;font-weight:600;font-size:16px;display:flex;align-items:center;gap:8px}
+  .bld h3 .chip{margin-left:auto}
+  .secs{display:flex;flex-direction:column}
+  .sec2{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .sec2:first-child{border-top:0}
+  .sec2 .grip{color:var(--muted);display:flex}
+  .sec2 .grip svg{width:14px;height:14px}
+  .sec2 b{font-weight:700}
+  .sec2 small{color:var(--muted);font-size:11.5px}
+  .sec2 .toggle{margin-left:auto;transform:scale(.85)}
+  .opt{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:12.5px;align-items:center}
+  .opt span{color:var(--muted)}
+  .opt b{font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="Reports" data-sec="reports" data-sec-on="creports">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Client reports</h1>
+          <p>A report for each client on a schedule, built from their results and the work we did. A person checks each one before it goes out by email and to the client portal.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New report schedule</span></div>
+      </div>
+      <div class="counters">
+        <div class="ctr warn"><b>1</b><span>Waiting for your check</span></div>
+        <div class="ctr"><b>4</b><span>Due in the next 7 days</span></div>
+        <div class="ctr"><b>1</b><span>Sent this month</span></div>
+        <div class="ctr"><b>1</b><span>Paused</span></div>
+      </div>
+      <div class="lay6">
+        <div class="card" style="padding:4px 16px 10px">
+          <table class="tbl">
+            <thead><tr><th>Client and report</th><th>Schedule</th><th>Goes by</th><th>Next</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>Velocity Motors</b><small>Ads results</small></td><td class="sm">Monthly · 3rd</td><td><span class="ch3"><span>Email</span><span>Portal</span></span></td><td>3 Oct</td><td><span class="chip c-amber">Draft · check</span></td></tr>
+              <tr class="sel"><td><b>Kaveri Hospitals</b><small>Website report</small></td><td class="sm">Monthly · 1st</td><td><span class="ch3"><span>Portal</span><span>Email</span></span></td><td>1 Nov</td><td><span class="chip c-green">Sent today 9:00 am</span></td></tr>
+              <tr><td><b>Meridian Logistics</b><small>Social media and LinkedIn ads</small></td><td class="sm">Monthly · 5th</td><td><span class="ch3"><span>Email</span></span></td><td>5 Oct</td><td><span class="chip c-blue">Building</span></td></tr>
+              <tr><td><b>Lakshmi Silks</b><small>Ads results</small></td><td class="sm">Monthly · 5th</td><td><span class="ch3"><span>Email</span><span>WhatsApp PDF</span></span></td><td>5 Oct</td><td><span class="chip c-blue">Building</span></td></tr>
+              <tr><td><b>Green Valley School</b><small>Social media</small></td><td class="sm">Monthly · 7th</td><td><span class="ch3"><span>Email</span></span></td><td>7 Oct</td><td><span class="chip c-ink">Scheduled</span></td></tr>
+              <tr><td><b>Royal Caterers</b><small>Social and ads · in Tamil</small></td><td class="sm">Monthly · 1st</td><td><span class="ch3"><span>Portal</span><span>WhatsApp PDF</span></span></td><td>1 Nov</td><td><span class="chip c-ink">First report</span></td></tr>
+              <tr><td><b>Coastal Realty</b><small>SEO</small></td><td class="sm">Monthly · 10th</td><td><span class="ch3"><span>Email</span></span></td><td>—</td><td><span class="chip c-ink">Paused · on hold</span></td></tr>
+            </tbody>
+          </table>
+          <div class="ai-card" style="margin-top:8px">
+            <div class="ai-h"><i data-i="spark"></i>Velocity Motors · summary draft <span class="r">Check, then send on 3 Oct</span></div>
+            <span style="font-size:12.5px;line-height:1.5">"September was your best month so far: 131 leads at ₹351 each, 14% cheaper than August, and 29 test drives. Google costs more per lead than Meta, so we suggest moving ₹5,000 to Meta in October."</span>
+            <div class="ai-acts"><span class="btn" style="height:30px">Edit</span><span class="btn solid" style="height:30px">Looks right</span><a class="src" href="client-results.html"><i data-i="activity"></i>Results used</a></div>
+          </div>
+        </div>
+        <div class="card bld">
+          <h3>Kaveri Hospitals · website report <span class="chip c-green">Sent</span></h3>
+          <span class="sm" style="font-size:12px;margin-top:-6px">September 2026 · opened by Dr. Rao in the portal at 10:05 am</span>
+          <div class="secs">
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Summary</b> <small>· ✦ drafted, checked by Arun</small></div><span class="toggle on"></span></div>
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Uptime and backups</b> <small>· from monitoring</small></div><span class="toggle on"></span></div>
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Visits and calls</b> <small>· from client results</small></div><span class="toggle on"></span></div>
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Work done</b> <small>· 7 updates, 3 requests</small></div><span class="toggle on"></span></div>
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Next month</b> <small>· from the project plan</small></div><span class="toggle on"></span></div>
+            <div class="sec2"><span class="grip"><i data-i="grip"></i></span><div><b>Invoices</b> <small>· not in this report</small></div><span class="toggle"></span></div>
+          </div>
+          <div class="opt"><span>Language</span><b>English</b><span>Template</span><b>Website care · monthly</b><span>Checked by</span><b>Arun before sending</b><span>Sent to</span><b>Dr. Rao · portal and email</b></div>
+          <div style="display:flex;gap:8px"><a class="btn" href="docs-pdf.html#report" style="text-decoration:none"><i data-i="eye"></i>See the PDF</a><a class="btn" href="portal-docs.html" style="text-decoration:none"><i data-i="globe"></i>In the portal</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

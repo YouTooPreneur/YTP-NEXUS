@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Services sold</title>
+<!-- Batch 5 · SCR-050 Services sold: every service each client has bought, its type, price, how it bills, the next date and its status; from an accepted proposal or added by hand (CON-001, CON-003, CON-007, CON-010, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:14px;padding-top:16px}
+  .pg-head h1{font-size:34px}
+  .bar3{display:flex;gap:10px;align-items:center}
+  .bar3 .search{width:260px;height:36px;margin-left:auto}
+  .tbl td{padding-top:8px;padding-bottom:8px}
+  .tbl th.num,.tbl td.num{padding-right:22px}
+  .tbl .nmc b{font-size:13px}
+  .tbl .svc2 b{display:block;font-weight:700}
+  .tbl .svc2 small{font-size:12px;color:var(--muted)}
+  .tbl a{color:inherit;text-decoration:none}
+  .typ{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;border:1px solid var(--line-soft);background:var(--card-2);color:var(--muted)}
+  .typ.ret{background:#EEF2FF;color:#4338CA;border-color:transparent}
+  .typ.prj{background:#FDF2F8;color:#BE185D;border-color:transparent}
+  .typ.amc{background:var(--green-bg);color:var(--green);border-color:transparent}
+  .typ.ren{background:var(--blue-bg);color:var(--blue);border-color:transparent}
+  .typ.sub{background:var(--amber-bg);color:var(--amber);border-color:transparent}
+  .bill{font-size:12px;color:var(--muted)}
+  .nx b{display:block;font-weight:700;font-size:12.5px}
+  .nx small{font-size:11.5px;color:var(--muted)}
+  .agr{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--muted)}
+  .agr svg{width:14px;height:14px}
+  .tfoot2{display:flex;align-items:center;gap:18px;padding:12px 4px 0;font-size:12.5px;color:var(--muted)}
+  .tfoot2 b{color:var(--ink)}
+  .tfoot2 .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="services">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Services sold</h1>
+          <p>Every service each client has bought: what it costs, how it bills and what happens next. Each comes from an accepted proposal or is added by hand.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Ask about services, for example: Which website clients have no AMC? The answer lists the clients with links; nothing is changed."><i data-i="spark"></i>Ask about services</span><span class="btn lg"><i data-i="download"></i>Export</span><span class="btn solid lg"><i data-i="plus"></i>Add service</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>64</b><span>Active services</span></div>
+        <div class="ctr"><b>₹1,10,000</b><span>A month from 8 retainers</span></div>
+        <div class="ctr"><b>6</b><span>Projects in progress</span></div>
+        <div class="ctr"><b>6</b><span>Renew in 30 days</span></div>
+        <div class="ctr warn"><b>11</b><span>Website clients without AMC</span></div>
+      </div>
+
+      <div class="bar3">
+        <div class="views"><span class="on">All <em class="count">64</em></span><span>Retainers <em class="count">9</em></span><span>Projects <em class="count">8</em></span><span>AMC <em class="count">14</em></span><span>Domain and hosting <em class="count">19</em></span><span>SSL and email <em class="count">6</em></span><span>Subscriptions <em class="count">4</em></span><span>Products <em class="count">4</em></span></div>
+        <div class="search"><i data-i="search"></i><span class="q">Client or service…</span></div>
+      </div>
+
+      <div class="card" style="padding:6px 20px 14px">
+        <table class="tbl">
+          <thead><tr><th>Client</th><th>Service</th><th>Type</th><th class="num">Price</th><th>Billing</th><th>Next</th><th>Status</th><th>Agreement</th></tr></thead>
+          <tbody>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">VM</span><b>Velocity Motors</b></div></td><td class="svc2"><b>Ads management</b><small>Meta and Google · client pays the ad spend</small></td><td><span class="typ ret">Retainer</span></td><td class="num">₹15,000<br><small class="sm">a month</small></td><td class="bill">1st of the month, in advance</td><td class="nx"><b>Bill 1 Nov</b><small>Oct sent today</small></td><td><span class="chip c-green">Active</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>v2 · signed</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">ML</span><b>Meridian Logistics</b></div></td><td class="svc2"><b>Social media management</b><small>3 platforms · 16 posts a month</small></td><td><span class="typ ret">Retainer</span></td><td class="num">₹35,000<br><small class="sm">a month</small></td><td class="bill">On the 18th, for the next month</td><td class="nx"><b>Bill 18 Oct</b><small>Notice by 18 Oct</small></td><td><span class="chip c-amber">Auto-renews</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>v1 · signed</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#A16207">RC</span><b>Royal Caterers</b></div></td><td class="svc2"><b>Social media and ads</b><small>After the launch project</small></td><td><span class="typ ret">Retainer</span></td><td class="num">₹25,000<br><small class="sm">a month</small></td><td class="bill">Last day of the month</td><td class="nx"><b>First bill 31 Oct</b><small>Until 28 Sep 2027</small></td><td><span class="chip c-blue">Starting</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>v1 · signed</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239">AT</span><a href="service-sold.html"><b>Anbu Textiles</b></a></div></td><td class="svc2"><a href="service-sold.html"><b>Website · WooCommerce shop</b></a><small>Launched 28 Aug · free care till 27 Nov</small></td><td><span class="typ prj">Project</span></td><td class="num">₹1,20,000</td><td class="bill">3 stages · 30 / 30 / 40%</td><td class="nx"><b style="color:var(--red)">₹28,000 due</b><small>Final stage, 34 days</small></td><td><span class="chip c-red">Overdue</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>Proposal accepted</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#EA580C">SC</span><b>Sunrise Clinic</b></div></td><td class="svc2"><b>Website and booking</b><small>Won 29 Sep</small></td><td><span class="typ prj">Project</span></td><td class="num">₹1,20,000</td><td class="bill">3 stages · 50 / 30 / 20%</td><td class="nx"><b>Advance ₹60,000</b><small>Draft, after signing</small></td><td><span class="chip c-blue">Starting</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>Sent to sign</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857">KH</span><b>Kaveri Hospitals</b></div></td><td class="svc2"><b>Website care · current site</b><small>Updates, backups, 6 hours of changes a month</small></td><td><span class="typ amc">AMC</span></td><td class="num">₹23,600<br><small class="sm">a quarter</small></td><td class="bill">Last month of each quarter</td><td class="nx"><b>Bill 31 Dec</b><small>Jul–Sep is 3 days late</small></td><td><span class="chip c-green">Active</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>v1 · signed</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490">SD</span><b>Sharma Dental Care</b></div></td><td class="svc2"><a href="asset.html"><b>Domain and hosting</b></a><small>sharmadental.in · YTP account</small></td><td><span class="typ ren">Renewal</span></td><td class="num">₹8,850<br><small class="sm">a year</small></td><td class="bill">YTP bills, 30 days before</td><td class="nx"><b>Renews 29 Oct</b><small>Invoice sends 2 Oct</small></td><td><span class="chip c-blue">Invoice ready</span></td><td><span class="agr"><i data-i="doc"></i>Website terms</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">ML</span><b>Meridian Logistics</b></div></td><td class="svc2"><b>Google Workspace · 5 users</b><small>Business Starter · we buy it, they use it</small></td><td><span class="typ sub">Subscription</span></td><td class="num">₹8,400<br><small class="sm">a year</small></td><td class="bill">Invoice each year</td><td class="nx"><b>Renews 6 Nov</b><small>Invoice on 7 Oct</small></td><td><span class="chip c-green">Active</span></td><td><a class="agr" href="subscriptions-sold.html"><i data-i="doc"></i>Order form</a></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#7C2D12">CR</span><b>Coastal Realty</b></div></td><td class="svc2"><b>SEO retainer</b><small>Agreement ended 15 Sep · not renewed</small></td><td><span class="typ ret">Retainer</span></td><td class="num mut">₹12,000<br><small class="sm">a month</small></td><td class="bill">Paused since 16 Sep</td><td class="nx"><b>—</b><small>₹12,000 still due</small></td><td><span class="chip c-ink">On hold</span></td><td><a class="agr" href="agreements.html"><i data-i="doc"></i>Ended</a></td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot2"><span><b>64</b> services · 9 shown</span><span>Agreement value <b>₹38,60,000</b> · still to bill <b>₹6,40,000</b></span><span class="r">Types, billing timings and statuses are settings</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

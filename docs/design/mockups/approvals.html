@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Approval inbox</title>
+<!-- Batch 2 · SCR-009 Approval inbox: discounts, leave, expenses, vendor payments, invoices for new work, AI drafts and AI actions (CORE-075, AI-002, AI-003) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:500px 1fr;gap:18px;align-items:start}
+  .ap{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:13px 18px;border-top:1px solid var(--line-soft);text-decoration:none;color:inherit}
+  .ap:first-child{border-top:0}
+  .ap.on{background:var(--active-bg);box-shadow:inset 3px 0 0 var(--on)}
+  .ap b{font-weight:700}
+  .ap .m{font-size:12.5px;color:var(--muted)}
+  .ap .amt{font-weight:700;text-align:right}
+  .ap .row{display:flex;gap:8px;align-items:center;grid-column:1 / -1}
+  .kv{display:grid;grid-template-columns:170px 1fr;gap:10px 16px;font-size:13.5px}
+  .kv dt{color:var(--muted)}
+  .kv dd{font-weight:600}
+  .cbox{min-height:76px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;color:var(--muted);background:var(--card)}
+  .dec{display:flex;gap:10px;align-items:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="">
+  <main>
+    <section class="pg" style="gap:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Approval inbox</h1>
+          <p>Everything waiting for a yes or no: discounts, leave, expenses, vendor bills, new invoices, certificate cancellations, and anything AI has drafted or wants to do.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="users2"></i>Delegation and limits</span></div>
+      </div>
+      <div class="views"><span class="on">All <em class="count">8</em></span><span>Discounts <em class="count">1</em></span><span>Leave <em class="count">1</em></span><span>Expenses <em class="count">1</em></span><span>Vendor bills <em class="count">1</em></span><span>Invoices <em class="count">2</em></span><span>Certificate cancel</span><span><i data-i="spark"></i>AI drafts and actions <em class="count">2</em></span></div>
+
+      <div class="lay">
+        <div class="card">
+          <a class="ap on"><b>15% discount on SEO · Bloom Florists</b><span class="amt">−₹6,750</span><div class="row"><span class="chip c-amber">Discount</span><span class="m">Karthik · waiting 2 h</span></div></a>
+          <a class="ap"><b>Payment reminder · Greenleaf Organics</b><span class="amt">₹1,416</span><div class="row"><span class="ai-tag"><i data-i="spark"></i>AI draft</span><span class="m">Email and WhatsApp · mentions the domain date · waiting 1 h</span></div></a>
+          <a class="ap"><b>Expense claim · client visit travel</b><span class="amt">₹4,200</span><div class="row"><span class="chip c-blue">Expense</span><span class="m">Arun · bill attached · waiting 3 h</span></div></a>
+          <a class="ap" href="invoices.html" style="text-decoration:none;color:inherit"><b>Invoice for new work · Kaveri Hospitals</b><span class="amt">₹2,500</span><div class="row"><span class="chip c-blue">Invoice</span><span class="m">Paid clarity session · 3 Oct</span></div></a>
+          <a class="ap" href="change-requests.html" style="text-decoration:none;color:inherit"><b>Invoice for extra work · Meridian Logistics</b><span class="amt">₹6,000</span><div class="row"><span class="chip c-blue">Invoice</span><span class="m">4 extra Diwali posts · client approved 29 Sep</span></div></a>
+          <a class="ap"><b>Leave · Rahul · 6–9 Oct</b><span class="amt">4 days</span><div class="row"><span class="chip c-ink">Leave</span><span class="m">Over 3 days, so it comes to you</span></div></a>
+          <a class="ap"><b>Create 3 follow-up tasks from today's meetings</b><span class="amt"></span><div class="row"><span class="ai-tag"><i data-i="spark"></i>AI action</span><span class="m">Asked by Karthik</span></div></a>
+          <a class="ap"><b>Vendor bill · Shutterstock stock photos</b><span class="amt">₹2,950</span><div class="row"><span class="chip c-blue">Vendor bill</span><span class="m">Divya · added today</span></div></a>
+        </div>
+
+        <div class="card cb" style="padding-top:20px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:12px"><span class="chip c-amber">Discount</span><h2 class="serif" style="font-size:24px">15% discount on SEO for Bloom Florists</h2></div>
+          <dl class="kv">
+            <dt>Asked by</dt><dd>Karthik (Manager) · today 10:42 am</dd>
+            <dt>Service</dt><dd>SEO · 6 months · ₹45,000 → ₹38,250</dd>
+            <dt>Why it comes to you</dt><dd>You approve every discount, of any size</dd>
+            <dt>Karthik's note</dt><dd>"They will also take social media from January if we start SEO this month."</dd>
+          </dl>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Helpful context<span class="r">AI · from your own records</span></div>
+            <div style="font-size:13.5px;line-height:1.55">Bloom Florists came from Instagram 6 hours ago and is a new lead, so there is no payment history yet. Your last 4 SEO deals averaged a 7% discount. A middle option is 10% now and 5% more when social media starts.</div>
+            <div class="ai-acts"><a class="src" href="pipeline.html"><i data-i="target"></i>Lead · Bloom Florists</a><a class="src" href="reports.html"><i data-i="chart"></i>SEO deals this year</a></div>
+          </div>
+          <div class="field"><label>Comment (Karthik sees it)</label><div class="cbox">Add a comment…</div></div>
+          <div class="dec"><span class="btn solid lg"><i data-i="check"></i>Approve 15%</span><span class="btn lg">Approve with changes</span><span class="btn lg" style="color:var(--red)">Reject</span><span style="flex:1"></span><span class="manual">Decisions are saved in the log.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

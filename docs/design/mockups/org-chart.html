@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Org chart</title>
+<!-- Batch 3 · SCR-122 Org chart: who reports to whom; freelancers, partners and influencers shown dashed (TEAM-003) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .chart{position:relative;width:1220px;height:500px;margin:0 auto}
+  .chart svg{position:absolute;inset:0;width:100%;height:100%}
+  .chart svg path{fill:none;stroke:var(--edge);stroke-width:2;stroke-linecap:round}
+  .chart svg path.d{stroke-dasharray:5 6}
+  .node{position:absolute;width:200px;height:62px;margin-left:-100px;margin-top:-31px;display:flex;align-items:center;gap:10px;padding:0 14px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow);text-decoration:none;color:inherit}
+  .node b{display:block;font-weight:700;font-size:13.5px}
+  .node small{font-size:12px;color:var(--muted)}
+  .node.top{background:var(--primary-bg);color:#fff;border-color:transparent}
+  .node.top small{color:rgba(255,255,255,.75)}
+  .node.free{border-style:dashed;background:var(--card-2);box-shadow:none}
+  .node .st{position:absolute;top:-10px;right:10px}
+  .legend{display:flex;gap:16px;justify-content:center;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;gap:6px;align-items:center}
+  .legend i{width:22px;height:14px;border-radius:5px;border:1px solid var(--line);background:var(--card)}
+  .legend i.d{border-style:dashed;background:var(--card-2)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Org chart</b></div>
+          <h1 class="serif">Org chart</h1>
+          <p>Who reports to whom. Change it by setting a person's reporting manager; leave and approvals follow it.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span class="on">Everyone</span><span>Employees only</span></div><span class="btn lg"><i data-i="download"></i>Export</span></div>
+      </div>
+      <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:24px 0">
+        <div class="chart">
+          <svg viewBox="0 0 1220 500" aria-hidden="true">
+            <path d="M715 71 V105 M320 105 H1110 M320 105 V139 M650 105 V139"/>
+            <path class="d" d="M880 105 V139 M1110 105 V139"/>
+            <path d="M320 201 V235 M110 235 H530 M110 235 V269 M320 235 V269 M530 235 V269 M110 331 V399"/>
+            <path class="d" d="M530 331 V399"/>
+          </svg>
+          <div class="node top" style="left:715px;top:40px"><span class="lg-av" style="--av:#03FF96;background:rgba(255,255,255,.12);color:#03FF96">YP</span><div><b>Owner</b><small>Founder · LLP partner</small></div></div>
+          <a class="node" href="person.html" style="left:320px;top:170px"><span class="lg-av" style="--av:#0F766E">KR</span><div><b>Karthik Raman</b><small>SEO lead · Manager</small></div></a>
+          <a class="node" href="person.html" style="left:650px;top:170px"><span class="lg-av" style="--av:#B45309">MV</span><div><b>Meena V</b><small>Accounts</small></div></a>
+          <div class="node free" style="left:880px;top:170px"><span class="lg-av" style="--av:#047857">LR</span><div><b>Lakshmi R</b><small>Referral partner</small></div></div>
+          <div class="node free" style="left:1110px;top:170px"><span class="lg-av" style="--av:#C2410C">KV</span><div><b>Kavya</b><small>Influencer</small></div></div>
+          <a class="node" href="person.html" style="left:110px;top:300px"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Web developer</small></div></a>
+          <a class="node" href="person.html" style="left:320px;top:300px"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Designer</small></div></a>
+          <a class="node" href="person.html" style="left:530px;top:300px"><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><small>Video editor</small></div><span class="chip c-amber st">On leave</span></a>
+          <a class="node" href="person.html" style="left:110px;top:430px"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Junior developer</small></div><span class="chip c-amber st">Probation</span></a>
+          <div class="node free" style="left:530px;top:430px"><span class="lg-av" style="--av:#334155">SJ</span><div><b>Sanjay J</b><small>Freelancer · video</small></div></div>
+        </div>
+        <div class="legend"><span><i></i>Employee</span><span><i class="d"></i>Freelancer, partner or influencer</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

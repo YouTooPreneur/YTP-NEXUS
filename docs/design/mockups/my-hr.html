@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · My HR</title>
+<!-- Batch 3 · SCR-138 My HR (self-service): header with code, work mode and leave balances; requests; my documents; leave; payslips; policies; assets; attendance (TEAM-022, TEAM-027, TEAM-028) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .viewas{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;background:var(--blue-bg);color:var(--blue);font-weight:600;font-size:12.5px}
+  .viewas svg{width:16px;height:16px}
+  .hr-head{display:grid;grid-template-columns:auto 1fr repeat(4,auto);gap:18px;align-items:center;padding:16px 20px}
+  .hr-head h1{font-size:28px}
+  .hr-head .bal{text-align:center;padding:8px 14px;border-radius:12px;background:var(--card-2)}
+  .hr-head .bal b{display:block;font-family:Sora,sans-serif;font-size:20px}
+  .hr-head .bal span{font-size:11px;color:var(--muted);font-weight:600}
+  .g2x{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .rq{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .rq:first-of-type{border-top:0}
+  .rq b{font-weight:600}
+  .rq small{display:block;font-size:12px;color:var(--muted)}
+  .rq .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="viewas"><i data-i="eye"></i>Preview as Arun Kumar (Staff). This is exactly what Arun sees in My HR.<a class="lk" href="users-roles.html#roles" style="margin-left:auto">View as a role</a></div>
+      <div class="card hr-head">
+        <span class="lg-av xl" style="--av:#1D4ED8">AK</span>
+        <div><h1 class="serif">My HR</h1><div class="sm" style="font-size:13px;margin-top:4px">Arun Kumar · YTP-003 · Web developer · Hybrid · reports to Karthik</div></div>
+        <div class="bal"><b>5</b><span>Casual</span></div><div class="bal"><b>6</b><span>Sick</span></div><div class="bal"><b>10</b><span>Earned</span></div><div class="bal"><b>2 off</b><span>Saturdays left</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="m"><button data-tab="home">Overview</button><button data-tab="leave">Leave</button><button data-tab="docs">My documents</button><button data-tab="pay">Payslips</button><button data-tab="more">Policies and assets</button></div>
+
+      <section data-group="m" data-panel="home" class="g2x">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">My requests</h2><span class="link"><span class="btn"><i data-i="plus"></i>New request</span></span></div>
+          <div class="rq"><span class="lic"><i data-i="home"></i></span><div><b>Work from home · Fri 2 Oct (holiday)</b><small>Server move on the holiday · plumber visit at home</small></div><span class="chip c-amber r">Waiting</span></div>
+          <div class="rq"><span class="lic"><i data-i="edit"></i></span><div><b>Change of address</b><small>New flat in Velachery · needs HR approval</small></div><span class="chip c-amber r">Waiting</span></div>
+          <div class="rq"><span class="lic"><i data-i="cal"></i></span><div><b>Casual leave · 18 Sep</b><small>Approved by Karthik</small></div><span class="chip c-green r">Approved</span></div>
+          <div class="rq"><span class="lic"><i data-i="clock"></i></span><div><b>Regularise 4 Sep</b><small>Forgot to check out</small></div><span class="chip c-green r">Approved</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">This month</h2></div>
+            <div class="rq"><div><b>Attendance</b><small>1 of 1 day · checked in 9:58 am today (WFH)</small></div></div>
+            <div class="rq"><div><b>Last payslip</b><small>September 2026 · paid 1 Oct</small></div><span class="btn r"><i data-i="download"></i>PDF</span></div>
+            <div class="rq"><div><b>My documents</b><small>All 5 required verified</small></div><span class="chip c-green r">Complete</span></div>
+          </div>
+          <div class="ai-card"><div class="ai-h"><i data-i="spark"></i>Ask about my HR</div><div style="font-size:13px;line-height:1.5">"How many leave days can I carry forward?" Answers come from your own record and the company policies only.</div><div class="ai-acts"><a class="btn" href="ask-nexus.html" style="text-decoration:none">Ask</a></div></div>
+        </div>
+      </section>
+
+      <section data-group="m" data-panel="leave" class="g2x">
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Apply for leave</h2></div>
+          <div class="field"><label>Type</label><div class="pill-sel" style="align-self:flex-start"><span class="on">Casual</span><span>Sick</span><span>Earned</span><span>Emergency</span></div></div>
+          <div class="fields"><div class="field"><label>From</label><div class="input">12 Oct</div></div><div class="field"><label>To</label><div class="input">12 Oct</div></div></div>
+          <div class="field"><label>Half day</label><div class="pill-sel" style="align-self:flex-start"><span>Full day</span><span class="on">Morning</span><span>Afternoon</span></div></div>
+          <div class="field"><label>Reason</label><div class="input">Bank work</div></div>
+          <div class="banner info"><i data-i="check"></i>0.5 day · casual balance after: 4.5 · goes to Karthik</div>
+          <span class="btn solid lg" style="align-self:flex-start">Send request</span>
+        </div>
+        <div class="card cb" style="padding-top:16px"><div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Holidays this quarter</h2></div><div class="rq"><div><b>Gandhi Jayanti</b><small>Fri 2 Oct</small></div></div><div class="rq"><div><b>Ayudha Pooja and Vijayadashami</b><small>Mon 19 – Tue 20 Oct (sample dates)</small></div></div><div class="rq"><div><b>Deepavali</b><small>Sun 8 Nov (sample date)</small></div></div><div class="rq"><div><b>Christmas</b><small>Fri 25 Dec</small></div></div></div>
+      </section>
+
+      <section data-group="m" data-panel="docs" class="card cb" style="padding-top:8px">
+        <table class="tbl"><thead><tr><th>Document</th><th>Required</th><th>Status</th><th></th></tr></thead><tbody>
+          <tr><td><b>Aadhaar</b> <span class="sm">· shown as •••• 7712</span></td><td class="sm">Yes</td><td><span class="chip c-green">Verified</span></td><td class="r"><span class="btn">View</span></td></tr>
+          <tr><td><b>PAN</b></td><td class="sm">Yes</td><td><span class="chip c-green">Verified</span></td><td class="r"><span class="btn">View</span></td></tr>
+          <tr><td><b>Bank passbook or cheque</b></td><td class="sm">Yes</td><td><span class="chip c-green">Verified</span></td><td class="r"><span class="btn">View</span></td></tr>
+          <tr><td><b>Education certificate</b></td><td class="sm">Yes</td><td><span class="chip c-green">Verified</span></td><td class="r"><span class="btn">View</span></td></tr>
+          <tr><td><b>Resume</b></td><td class="sm">Yes</td><td><span class="chip c-green">Verified</span></td><td class="r"><span class="btn">View</span></td></tr>
+          <tr><td><b>Experience certificate</b></td><td class="sm">Optional</td><td><span class="chip c-ink">Not added</span></td><td class="r"><span class="btn"><i data-i="upload"></i>Upload</span></td></tr>
+        </tbody></table>
+      </section>
+
+      <section data-group="m" data-panel="pay" class="card cb" style="padding-top:8px">
+        <div style="display:flex;gap:8px;padding:6px 0 10px"><div class="fsel"><span>Year</span>2026<i data-i="down"></i></div><div class="fsel"><span>Status</span>All<i data-i="down"></i></div></div>
+        <table class="tbl"><thead><tr><th>Month</th><th>Net pay</th><th>Paid on</th><th>Status</th><th></th></tr></thead><tbody>
+          <tr><td><b>September 2026</b></td><td>₹31,400</td><td class="sm">1 Oct</td><td><span class="chip c-green">Paid</span></td><td class="r"><span class="btn"><i data-i="download"></i>PDF</span></td></tr>
+          <tr><td><b>August 2026</b></td><td>₹31,400</td><td class="sm">1 Sep</td><td><span class="chip c-green">Paid</span></td><td class="r"><span class="btn"><i data-i="download"></i>PDF</span></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">Payslips come from payroll (built in step 3.7). Only you, Accounts, HR and the Owner can see them.</p>
+      </section>
+
+      <section data-group="m" data-panel="more" class="g2x">
+        <a class="card tile" href="policies.html"><div class="lic"><i data-i="doc"></i></div><div><b>Policies</b><span>5 policies · IT and passwords v2 acknowledged</span></div></a>
+        <a class="card tile" href="assets.html"><div class="lic"><i data-i="server"></i></div><div><b>My assets</b><span>Lenovo laptop · YTP-LT-04 · issued Jun 2024</span></div></a>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

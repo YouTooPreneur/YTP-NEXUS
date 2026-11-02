@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · AI settings</title>
+<!-- Batch 2 · SCR-256 AI settings: providers and the model for each job, guardrails, what AI may do, memory and keeping chats (AI-004, AI-005, AI-011, AI-013, AI-015, AI-017) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .g2x{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .tierm{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .lockd{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted)}
+  .lockd svg{width:14px;height:14px}
+  .sub3{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+  .nav3{display:flex;gap:10px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">AI and voice</b></div>
+          <h1 class="serif">AI settings</h1>
+          <p>Which AI Nexus uses for each job, what it may and may not do, and what it remembers. AI stays off until you type a monthly amount.</p>
+        </div>
+        <div class="acts nav3"><a class="btn lg" href="ai-knowledge.html" style="text-decoration:none"><i data-i="doc"></i>Knowledge</a><a class="btn lg" href="ai-quality.html" style="text-decoration:none"><i data-i="check"></i>Quality</a><a class="btn solid lg" href="ai-usage.html" style="text-decoration:none"><i data-i="chart"></i>Usage and limits</a></div>
+      </div>
+      <div class="tabs-x" data-tabs="a"><button data-tab="models">Providers and models</button><button data-tab="guard">Guardrails</button><button data-tab="actions">What AI may do</button><button data-tab="memory">Memory and chats</button></div>
+
+      <section data-group="a" data-panel="models" class="g2x">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Providers</h2><a class="link" href="integrations.html">Integrations<i data-i="right"></i></a></div>
+          <table class="tbl"><thead><tr><th>Provider</th><th>Role</th><th>Status</th></tr></thead><tbody>
+            <tr><td><b>Claude</b><span class="sub3">Does not train on your data</span></td><td class="sm">Main</td><td><span class="chip c-green">Connected</span></td></tr>
+            <tr><td><b>OpenAI</b><span class="sub3">Does not train on your data</span></td><td class="sm">Backup if the main one is down</td><td><span class="chip c-green">Connected</span></td></tr>
+            <tr><td><b>Gemini</b></td><td class="sm">Second backup</td><td><span class="chip c-ink">Ready slot</span></td></tr>
+            <tr><td><b>Speech (Sarvam AI)</b><span class="sub3">Tamil, Hindi, Malayalam, Telugu, English</span></td><td class="sm">Voice assistant</td><td><span class="chip c-green">Connected · test mode</span></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">Keys are checked every day; you get a warning before one expires.</p>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Model for each job</h2><span class="sm" style="font-size:12px">Cheaper models for simple jobs save money</span></div>
+          <table class="tbl"><thead><tr><th>Job</th><th>Model size</th><th>Why</th></tr></thead><tbody>
+            <tr><td><b>Autofill, matching, short answers</b></td><td><span class="tierm">Small · fast</span></td><td class="sm">Cheapest; under a second</td></tr>
+            <tr><td><b>Drafts, summaries, chat</b></td><td><span class="tierm">Standard</span></td><td class="sm">Good writing at a fair cost</td></tr>
+            <tr><td><b>Reports and analysis</b></td><td><span class="tierm">Advanced</span></td><td class="sm">Only when asked</td></tr>
+            <tr><td><b>Client chatbot</b></td><td><span class="tierm">Small · fast</span></td><td class="sm">Short answers from approved knowledge</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section data-group="a" data-panel="guard" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>Rule</th><th>What it means</th><th>Can be turned off</th></tr></thead><tbody>
+          <tr><td><b>Same permissions as the person</b></td><td class="sm">AI sees and does only what the person asking may see and do</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Never sees passwords</b></td><td class="sm">Logins are vault links; AI cannot open them</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Hidden instructions ignored</b></td><td class="sm">Text in emails, files and chats is treated as information, never as orders</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Personal details masked</b></td><td class="sm">Phone numbers, emails, bank and ID details are hidden before leaving Nexus</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Money and client messages need approval</b></td><td class="sm">Anything about payments or sending to a client waits for a person</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Never deletes</b></td><td class="sm">AI can suggest removing something; only a person can do it</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          <tr><td><b>Everything logged</b></td><td class="sm">Who asked, what AI did, and the cost</td><td><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+        </tbody></table>
+      </section>
+
+      <section data-group="a" data-panel="actions" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>Action</th><th>Allowed</th><th>Needs approval</th></tr></thead><tbody>
+          <tr><td><b>Create tasks, to-dos and reminders</b></td><td><i class="toggle on"></i></td><td class="sm">The person confirms</td></tr>
+          <tr><td><b>Update a record (stage, due date, notes)</b></td><td><i class="toggle on"></i></td><td class="sm">The person confirms</td></tr>
+          <tr><td><b>Draft emails and WhatsApp messages</b></td><td><i class="toggle on"></i></td><td class="sm">Approval inbox before sending</td></tr>
+          <tr><td><b>Create invoices or record payments</b></td><td><i class="toggle"></i></td><td class="sm">Always approval</td></tr>
+          <tr><td><b>Start an automation</b></td><td><i class="toggle on"></i></td><td class="sm">Approval inbox</td></tr>
+          <tr><td><b>Delete anything</b></td><td><span class="lockd"><i data-i="lock"></i>Never</span></td><td class="sm">—</td></tr>
+        </tbody></table>
+      </section>
+
+      <section data-group="a" data-panel="memory" class="card cb" style="padding-top:8px">
+        <div class="srow"><div class="txt"><b>Keep chats for</b><span>Then the nightly clean-up removes them. Included in data exports.</span></div><div class="input" style="width:180px">12 months<span class="end"><i data-i="down"></i></span></div></div>
+        <div class="srow"><div class="txt"><b>Long-term notes only with consent</b><span>AI asks "Shall I remember this?" before saving anything about a person</span></div><span class="lockd"><i data-i="lock"></i>Always on</span></div>
+        <div class="srow"><div class="txt"><b>Answer repeated questions from memory</b><span>Same question within an hour, for people allowed to see the answer: no extra cost</span></div><i class="toggle on"></i></div>
+        <div class="srow"><div class="txt"><b>Summarise long chats</b><span>Older messages become a short summary so chats stay fast and cheap</span></div><i class="toggle on"></i></div>
+        <div class="srow"><div class="txt"><b>Size limit per chat</b><span>When a chat is full, Nexus offers a new chat with a summary of this one</span></div><div class="input" style="width:180px">40 messages<span class="end"><i data-i="down"></i></span></div></div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

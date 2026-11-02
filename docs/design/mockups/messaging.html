@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Messaging</title>
+<!-- Batch 2 · SCR-187 Messaging: test mode, senders (email addresses and WhatsApp numbers with their provider), routing rules, templates, delivery (CORE-060 to CORE-068, INT-003, D-154) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .test{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius);background:var(--amber-bg);color:var(--amber);font-weight:600}
+  .test svg{width:20px;height:20px;flex:none}
+  .test .txt{flex:1;color:var(--ink);font-weight:500}
+  .test .txt b{color:var(--amber);display:block;font-size:14px}
+  .g2x{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .prov{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+  .prov i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:10px;font-weight:800;font-style:normal;color:#fff}
+  .arrow{color:var(--muted);margin:0 4px}
+  .route b{font-weight:700}
+  .ch-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+  .ch-pill svg{width:13px;height:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Messaging</b></div>
+          <h1 class="serif">Messaging</h1>
+          <p>Who messages go out from, which way they travel, and the words they use. Rules use sender names like "Billing", so changing an address once changes every message.</p>
+        </div>
+        <div class="acts"><a class="btn lg" href="integrations.html" style="text-decoration:none"><i data-i="plug"></i>Integrations</a></div>
+      </div>
+      <div class="test"><i data-i="shield"></i><div class="txt"><b>Test mode is on</b>Every email and WhatsApp message goes to the owner's test inbox and test number, never to a client. Turn it off only when you are ready to go live.</div><i class="toggle on"></i></div>
+
+      <div class="tabs-x" data-tabs="m"><button data-tab="senders">Senders</button><button data-tab="routing">Routing</button><button data-tab="templates">Templates</button><button data-tab="delivery">Delivery</button></div>
+
+      <section data-group="m" data-panel="senders" class="g2x">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Email senders</h2><span class="link"><span class="btn"><i data-i="plus"></i>Add</span></span></div>
+          <table class="tbl"><thead><tr><th>Name</th><th>Address</th><th>Sent through</th><th>Status</th></tr></thead><tbody>
+            <tr><td><b>Billing</b></td><td class="sm">accounts@youtoopreneur.com</td><td class="sm">Gmail</td><td><span class="chip c-green">Working</span></td></tr>
+            <tr><td><b>Hello</b></td><td class="sm">hello@youtoopreneur.com</td><td class="sm">Gmail</td><td><span class="chip c-green">Working</span></td></tr>
+            <tr><td><b>Academy</b></td><td class="sm">academy@youtoopreneur.com</td><td class="sm">Email service (planned)</td><td><span class="chip c-ink">Not set up</span></td></tr>
+          </tbody></table>
+        </div>
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">WhatsApp numbers</h2><span class="link"><span class="btn"><i data-i="plus"></i>Add</span></span></div>
+          <table class="tbl"><thead><tr><th>Name</th><th>Number</th><th>Provider</th><th>If it fails</th><th>Status</th></tr></thead><tbody>
+            <tr><td><b>Billing</b></td><td class="sm">+91 98400 00001</td><td><span class="prov"><i style="background:#1B9C85">A</i>AiSensy</span></td><td class="sm">Email</td><td><span class="chip c-green">Connected</span></td></tr>
+            <tr><td><b>Support</b></td><td class="sm">+91 98400 00001</td><td><span class="prov"><i style="background:#1B9C85">A</i>AiSensy</span></td><td class="sm">One-tap</td><td><span class="chip c-green">Connected</span></td></tr>
+            <tr><td><b>Academy</b></td><td class="sm">Not chosen yet</td><td><span class="prov"><i style="background:var(--muted)">?</i>Any provider</span></td><td class="sm">One-tap</td><td><span class="chip c-ink">Ready slot</span></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">One number can serve several names. The WhatsApp Business app keeps working on the same number (AiSensy coexistence).</p>
+        </div>
+      </section>
+
+      <section data-group="m" data-panel="routing" class="card cb" style="padding-top:12px">
+        <table class="tbl route"><thead><tr><th>Message</th><th>First</th><th>If it fails</th><th>Sender</th><th>Language</th><th>On</th></tr></thead><tbody>
+          <tr><td><b>Invoice sent</b></td><td><span class="ch-pill"><i data-i="mail"></i>Email</span> <span class="ch-pill"><i data-i="chat"></i>WhatsApp</span></td><td class="sm">One-tap</td><td class="sm">Billing</td><td class="sm">Client's language</td><td><i class="toggle on"></i></td></tr>
+          <tr><td><b>Payment reminder</b></td><td><span class="ch-pill"><i data-i="mail"></i>Email</span> <span class="ch-pill"><i data-i="chat"></i>WhatsApp</span></td><td class="sm">One-tap</td><td class="sm">Billing</td><td class="sm">Client's language</td><td><i class="toggle on"></i></td></tr>
+          <tr><td><b>Renewal notice</b></td><td><span class="ch-pill"><i data-i="mail"></i>Email</span> <span class="ch-pill"><i data-i="chat"></i>WhatsApp</span></td><td class="sm">One-tap</td><td class="sm">Billing</td><td class="sm">Client's language</td><td><i class="toggle on"></i></td></tr>
+          <tr><td><b>Client login code</b></td><td><span class="ch-pill"><i data-i="chat"></i>WhatsApp</span></td><td class="sm">Email</td><td class="sm">Support</td><td class="sm">Client's language</td><td><i class="toggle on"></i></td></tr>
+          <tr><td><b>Meeting reminder</b></td><td><span class="ch-pill"><i data-i="chat"></i>WhatsApp</span></td><td class="sm">Email</td><td class="sm">Hello</td><td class="sm">Client's language</td><td><i class="toggle on"></i></td></tr>
+          <tr><td><b>Daily summary (staff)</b></td><td><span class="ch-pill"><i data-i="bell"></i>In Nexus</span> <span class="ch-pill"><i data-i="mail"></i>Email</span></td><td class="sm">—</td><td class="sm">Hello</td><td class="sm">Person's language</td><td><i class="toggle on"></i></td></tr>
+        </tbody></table>
+        <p class="help" style="margin-top:10px">A client's own preference (for example "email only") always wins over these rules.</p>
+      </section>
+
+      <section data-group="m" data-panel="templates" class="g2x">
+        <a class="card tile" href="email-templates.html"><div class="lic"><i data-i="mail"></i></div><div><b>Email templates</b><span>Invoice, reminders, renewal notices, daily summary, login code, newsletter layout · 5 languages</span></div></a>
+        <a class="card tile" href="whatsapp-templates.html"><div class="lic"><i data-i="chat"></i></div><div><b>WhatsApp templates</b><span>Approved by Meta through AiSensy · linked to each message type and language</span></div></a>
+      </section>
+
+      <section data-group="m" data-panel="delivery" class="card cb" style="padding-top:12px">
+        <table class="tbl"><thead><tr><th>When</th><th>Message</th><th>To</th><th>Channel</th><th>Status</th></tr></thead><tbody>
+          <tr><td class="sm">10:40 am</td><td><b>Payment reminder · Greenleaf Organics</b></td><td class="sm">Test number (test mode)</td><td class="sm">WhatsApp · AiSensy</td><td><span class="chip c-green">Delivered</span></td></tr>
+          <tr><td class="sm">10:40 am</td><td><b>Payment reminder · Greenleaf Organics</b></td><td class="sm">Test inbox (test mode)</td><td class="sm">Email · Gmail</td><td><span class="chip c-green">Delivered</span></td></tr>
+          <tr><td class="sm">9:00 am</td><td><b>Invoice YTP/26-27/0045 · Velocity Motors</b></td><td class="sm">Test inbox (test mode)</td><td class="sm">Email · Gmail</td><td><span class="chip c-green">Delivered</span></td></tr>
+          <tr><td class="sm">6:40 pm</td><td><b>Renewal notice · Kaveri Hospitals</b></td><td class="sm">Test inbox (test mode)</td><td class="sm">Email · Gmail</td><td><span class="chip c-amber">Failed, retrying</span></td></tr>
+        </tbody></table>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

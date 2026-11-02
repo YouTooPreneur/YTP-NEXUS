@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Subscriptions and products</title>
+<!-- Batch 5 · SCR-057 Subscriptions and products sold: billing cycle, invoice each cycle by default or autopay once a gateway is connected (the client chooses), delivery status for products, licence keys shown masked and opened with a log (CON-010, CORE-024, AUTO-028, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .card .ch{padding:12px 20px 4px}
+  .card .ch h2{font-size:20px}
+  .cb6{padding:0 20px 12px}
+  .tbl td{padding-top:9px;padding-bottom:9px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:22px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .pay{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+  .pay svg{width:13px;height:13px}
+  .pay.auto{background:var(--green-bg);color:var(--green);border-color:transparent}
+  .dlv{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted)}
+  .dlv svg{width:14px;height:14px}
+  .key{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--card-2);border:1px solid var(--line-soft)}
+  .key .btn{height:24px;padding:0 8px;font-family:"DM Sans",sans-serif;font-size:11px}
+  .split2{display:grid;grid-template-columns:1fr 330px;gap:14px;align-items:start}
+  .how2{display:flex;flex-direction:column;gap:10px;padding:14px 16px}
+  .how2 h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px}
+  .how2 .opt2{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;border:1px solid var(--line-soft);font-size:12.5px}
+  .how2 .opt2.on{border-color:var(--on);background:color-mix(in srgb,var(--on) 6%,var(--card))}
+  .how2 .opt2 b{display:block;font-weight:700}
+  .how2 .opt2 small{color:var(--muted);font-size:11.5px}
+  .how2 .rd{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--edge);flex:none;margin-top:2px}
+  .how2 .opt2.on .rd{border:5px solid var(--on)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="subs">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Subscriptions and products</h1>
+          <p>Tools we resell and products we sell to clients. Each subscription bills itself every cycle, or the client pays by autopay once they choose it. Products show how they are delivered; licence keys stay hidden until someone opens them.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span><span class="btn solid lg"><i data-i="plus"></i>Add</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>4</b><span>Subscriptions · ₹55,908 a year</span></div>
+        <div class="ctr"><b>1</b><span>On autopay</span></div>
+        <div class="ctr"><b>1</b><span>Renews in 60 days</span></div>
+        <div class="ctr"><b>4</b><span>Products sold this year</span></div>
+        <div class="ctr warn"><b>1</b><span>Product not delivered yet</span></div>
+      </div>
+
+      <div class="split2">
+        <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+          <!-- Subscriptions (CON-010, AUTO-028) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Subscriptions</h2><span class="count">4</span></div>
+            <div class="cb6">
+              <table class="tbl">
+                <thead><tr><th>Client</th><th>Subscription</th><th>Cycle</th><th class="num">Price</th><th>How it is paid</th><th>Next</th></tr></thead>
+                <tbody>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9">ML</span><b>Meridian Logistics</b></div></td><td><b>Google Workspace</b><small>Business Starter · 5 users</small></td><td>Yearly</td><td class="num">₹8,400</td><td><span class="pay"><i data-i="doc"></i>Invoice each year</span></td><td><b>6 Nov</b><small>Invoice made 7 Oct</small></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#A16207">RC</span><b>Royal Caterers</b></div></td><td><b>WhatsApp Business (AiSensy)</b><small>Basic plan · their own number</small></td><td>Monthly</td><td class="num">₹2,360</td><td><span class="pay auto"><i data-i="repeat"></i>Autopay · Razorpay</span><small style="margin-top:3px">Chosen by the client · test mode now</small></td><td><b>28 Oct</b><small>Charged by itself</small></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#2F5E8C">GV</span><b>Green Valley School</b></div></td><td><b>Zoom Pro</b><small>1 licence for online classes</small></td><td>Yearly</td><td class="num">₹13,200</td><td><span class="pay"><i data-i="doc"></i>Invoice each year</span></td><td><b>14 Jan 2027</b><small>Alerts from 15 Dec</small></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">VM</span><b>Velocity Motors</b></div></td><td><b>Canva Pro</b><small>1 seat for their marketing team</small></td><td>Monthly</td><td class="num">₹499</td><td><span class="pay"><i data-i="doc"></i>On the retainer invoice</span></td><td><b>1 Nov</b><small>With ads management</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Products (CORE-024) -->
+          <div class="card">
+            <div class="ch"><h2 class="serif">Products</h2><span class="count">4</span></div>
+            <div class="cb6">
+              <table class="tbl">
+                <thead><tr><th>Client</th><th>Product</th><th class="num">Price</th><th>Delivered by</th><th>Status</th><th>Key or link</th></tr></thead>
+                <tbody>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239">AT</span><b>Anbu Textiles</b></div></td><td><b>Product Add-ons licence</b><small>WooCommerce · 1 site · 1 year</small></td><td class="num">₹4,500</td><td><span class="dlv"><i data-i="key"></i>Licence key</span></td><td><span class="chip c-green">Delivered 20 Aug</span></td><td><span class="key">WCPA-••••-7F2K<span class="btn" data-ai="Opening a licence key shows it for 30 seconds and saves who opened it, and when, in the log.">Show</span></span></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#A21CAF">LS</span><b>Lakshmi Silks</b></div></td><td><b>Reels template pack</b><small>20 templates · Canva</small></td><td class="num">₹3,500</td><td><span class="dlv"><i data-i="link"></i>Download link</span></td><td><span class="chip c-green">Delivered 30 Sep</span></td><td><span class="sm">Secret link · ends 30 Oct</span></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#EA580C">SC</span><b>Sunrise Clinic</b></div></td><td><b>Booking plugin set-up</b><small>Online appointments for 3 doctors</small></td><td class="num">₹7,500</td><td><span class="dlv"><i data-i="users"></i>Team set-up</span></td><td><span class="chip c-blue">With the website</span></td><td><span class="sm">Task for Arun after design</span></td></tr>
+                  <tr><td><div class="nmc"><span class="lg-av" style="--av:#2F5E8C">GV</span><b>Green Valley School</b></div></td><td><b>Premium theme licence</b><small>Astra Pro · 1 site</small></td><td class="num">₹3,500</td><td><span class="dlv"><i data-i="key"></i>Licence key</span></td><td><span class="chip c-amber">Not sent yet</span></td><td><span class="btn" style="height:28px">Add the key</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- How a subscription is paid (client's choice) -->
+        <div class="card how2">
+          <h3>How a client pays a subscription</h3>
+          <span class="sm" style="font-size:12.5px">Set per subscription. The client picks; you can change it with them.</span>
+          <div class="opt2 on"><span class="rd"></span><div><b>Invoice each cycle</b><small>The usual way. The invoice is made and sent by itself on its day; reminders follow if unpaid.</small></div></div>
+          <div class="opt2"><span class="rd"></span><div><b>Autopay</b><small>Only after a payment gateway is connected and the client agrees once. Each cycle is charged by itself and a receipt goes out.</small></div></div>
+          <div class="banner info" style="font-size:12px;align-items:flex-start"><i data-i="shield"></i>Licence keys are stored locked and shown masked. Passwords are never kept here; logins stay as vault links.</div>
+          <div class="ai-card" style="padding:10px 12px;gap:6px"><div class="ai-h"><i data-i="spark"></i>Idea</div><span style="font-size:12.5px">3 social media clients use WhatsApp but have no Business API plan. Want a short list to offer it?</span><span class="ai-btn sm" style="align-self:flex-start" data-ai="Shows the 3 clients with why each might want it. Goes to you only; nothing reaches a client until you confirm.">Show the 3 clients</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

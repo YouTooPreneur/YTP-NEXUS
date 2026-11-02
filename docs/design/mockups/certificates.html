@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Certificates</title>
+<!-- Batch 9 · SCR-156 Certificates (DMM-Jul26): who qualifies under the course rule (attendance 75% or more and the final project passed), certificates issued as PDF with a QR code and numbered in the YTA-C series, sent by email and WhatsApp, the reasons a student is not yet eligible, and the public check page (ACD-008). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay13{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+  .rc3{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+  .rc3 h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .rc3 h3 .chip,.rc3 h3 .r{margin-left:auto}
+  .kv12{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:12.5px}
+  .kv12 span{color:var(--muted)}
+  .kv12 b{font-weight:700}
+  .sct{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .ln5{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
+  .ln5 b{font-weight:700}
+  .ln5 .r{margin-left:auto;font-weight:700;white-space:nowrap}
+  .ln5 small{color:var(--muted);font-size:11.5px}
+
+  .tbl td{padding-top:6px;padding-bottom:6px}
+  .wait2 td{background:color-mix(in srgb,var(--amber-bg) 60%,transparent)}
+  .mini{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;color:#1C3D36;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;position:relative}
+  .mini::before{content:"";position:absolute;inset:6px;border:1.5px solid #CFE6DA;border-radius:10px;pointer-events:none}
+  .mini small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#5F6B65;font-weight:700}
+  .mini b.nm{font-family:Sora,sans-serif;font-weight:600;font-size:20px}
+  .mini span{font-size:11.5px}
+  .mini .row6{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 6px;margin-top:4px}
+  .mini .upi-qr{width:56px;height:56px}
+  .mini .row6 span{font-size:10px;color:var(--muted);text-align:left}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="certs">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Certificates</h1>
+          <p>Issued when a student meets the course rule. Each one is a PDF with a QR code that opens the public check page.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Download all</span><span class="chip c-green" title="AUTO-032"><i data-i="check"></i>Issued by itself when the course rule is met</span></div>
+      </div>
+      <div class="counters"><div class="ctr"><b>14</b><span>Issued · DMM-Jul26</span></div><div class="ctr warn"><b>2</b><span>Not yet eligible</span></div><div class="ctr"><b>10</b><span>Reels · all lessons and the quiz</span></div><div class="ctr"><b>3</b><span>Checked on the public page this week</span></div></div>
+      <div class="lay13">
+        <div class="card" style="padding:4px 16px 10px">
+          <div class="ch" style="padding:10px 0 4px"><h2 class="serif">DMM-Jul26 · Digital Marketing Mastery</h2><span class="sm" style="margin-left:auto;font-size:12px">This course's rule: attendance 75% or more and the final project passed</span></div>
+          <table class="tbl">
+            <thead><tr><th>Student</th><th class="num">Attendance</th><th class="num">Final</th><th>Certificate</th><th>Sent</th><th></th></tr></thead>
+            <tbody>
+              <tr class="wait2"><td><b>Arjun P</b></td><td class="num" style="color:var(--red)">70%</td><td class="num">B</td><td colspan="2" class="sm">Not yet: attendance · make-up class on Sat 10 Oct</td><td class="r"><span class="sm">Waiting</span></td></tr>
+              <tr class="wait2"><td><b>Lakshmi Narayanan</b></td><td class="num">88%</td><td class="num">Redo</td><td colspan="2" class="sm">Not yet: final project to hand in again by 8 Oct</td><td class="r"><span class="sm">Waiting</span></td></tr>
+              <tr><td><b>Ajay K</b></td><td class="num">96%</td><td class="num">A</td><td><span class="inv">YTA-C/2026/0011</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Brinda S</b></td><td class="num">91%</td><td class="num">A</td><td><span class="inv">YTA-C/2026/0012</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Charles D</b></td><td class="num">88%</td><td class="num">B</td><td><span class="inv">YTA-C/2026/0013</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Deepika R</b></td><td class="num">94%</td><td class="num">A</td><td><span class="inv">YTA-C/2026/0014</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Elango M</b></td><td class="num">82%</td><td class="num">B</td><td><span class="inv">YTA-C/2026/0015</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Farhana B</b></td><td class="num">97%</td><td class="num">A</td><td><span class="inv">YTA-C/2026/0016</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr><td><b>Gayathri N</b></td><td class="num">90%</td><td class="num">B</td><td><span class="inv">YTA-C/2026/0017</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><span class='sm'>PDF</span></td></tr><tr class=sel><td><b>Keerthana R</b></td><td class="num">94%</td><td class="num">A</td><td><span class="inv">YTA-C/2026/0018</span></td><td><span class="chip c-green">Sent 30 Sep</span></td><td class="r"><a class='btn' href='certificate-check.html' style='text-decoration:none;height:28px'>Check page</a></td></tr>
+            </tbody>
+          </table>
+          <span class="manual">10 of 16 shown. Numbers come from the YTA-C series in Numbering and templates.</span>
+        </div>
+        <div class="card rc3">
+          <h3>Keerthana R <span class="chip c-green">Issued</span></h3>
+          <div class="mini"><small>YouTooPreneur Academy · certificate</small><span>This certifies that</span><b class="nm">Keerthana R</b><span>completed <b>Digital Marketing Mastery</b> with grade A</span><span style="color:var(--muted)">Batch DMM-Jul26 · 6 Jul – 26 Sep 2026</span><div class="row6"><span>YTA-C/2026/0018<br>Issued 30 Sep 2026</span><span class="upi-qr" data-qr="YTA-C-2026-0018"></span></div></div>
+          <div class="kv12"><span>Sent</span><b>Email and WhatsApp · 30 Sep 6:10 pm</b><span>Opened</span><b>30 Sep 7:02 pm</b><span>Checked</span><b>2 times on the public page</b></div>
+          <div style="display:flex;gap:8px"><a class="btn" href="docs-pdf.html#certificate" style="text-decoration:none"><i data-i="file"></i>PDF</a><a class="btn" href="certificate-check.html" style="text-decoration:none"><i data-i="shield"></i>Check page</a><a class="btn" href="approvals.html" style="text-decoration:none;color:var(--red)">Ask to cancel</a></div>
+          <span class="manual">Cancelling needs a written reason and the Owner's approval: it waits in Approvals as a "Certificate cancel" request. Only after approval does the check page say "not valid", with the date.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Search</title>
+<!-- Batch 2 · SCR-005 Search results: one box to search every module or ask Nexus a question (AI answer with sources, AI-001) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .bigq{display:flex;align-items:center;gap:12px;height:56px;padding:0 10px 0 18px;border:1.5px solid var(--ink);border-radius:var(--radius);background:var(--card);font-size:16px;font-weight:600;box-shadow:var(--shadow)}
+  .bigq > svg{width:20px;height:20px;color:var(--muted)}
+  .bigq .q{flex:1;min-width:0}
+  .bigq .caret{display:inline-block;width:2px;height:20px;background:var(--ink);vertical-align:-4px;margin-left:2px}
+  .res{display:grid;grid-template-columns:220px 1fr;gap:22px;min-height:0;flex:1}
+  .res .side-f{display:flex;flex-direction:column;gap:2px}
+  .res .side-f .count{margin-left:auto}
+  .grp{padding:6px 22px 10px}
+  .grp + .grp{border-top:1px solid var(--line-soft)}
+  .hit{display:flex;align-items:center;gap:14px;padding:9px 0}
+  .hit .lic{flex:none}
+  .hit b{display:block;font-weight:700}
+  .hit .m{font-size:12.5px;color:var(--muted)}
+  .hit .r{margin-left:auto;display:flex;gap:10px;align-items:center}
+  mark{background:rgba(3,255,150,.22);color:inherit;border-radius:3px;padding:0 2px}
+  .answer p{font-size:14.5px;line-height:1.6;max-width:900px}
+</style>
+</head>
+<body>
+<div class="app" data-active="">
+  <main>
+    <section class="pg" style="gap:16px">
+      <div class="bigq"><i data-i="search"></i><span class="q">What does Sharma Dental Care owe us?<span class="caret"></span></span><span class="mic lg" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span></div>
+
+      <div class="ai-card answer">
+        <div class="ai-h"><i data-i="spark"></i>Nexus answer<span class="r">Uses only what you are allowed to see · 1 question from today's AI budget</span></div>
+        <p><b>Sharma Dental Care owes nothing right now.</b> Their <b>₹8,850</b> renewal invoice for domain + hosting is ready and <b>sends by itself tomorrow at 9:00 am</b>, as renewals do; the domain renews on <b>29 Oct</b>. Their last 3 invoices were paid on time.</p>
+        <div class="ai-acts">
+          <a class="src" href="client-profile.html"><i data-i="users"></i>Client · Sharma Dental Care</a>
+          <a class="src" href="invoices.html"><i data-i="doc"></i>Renewal invoice (ready)</a>
+          <a class="src" href="payments.html"><i data-i="wallet"></i>Payment history</a>
+          <span style="flex:1"></span>
+          <span class="ai-btn" data-ai="AI helper: writes a short note to Dr. Priya Sharma to go with the invoice, in her language. You check it before it is sent."><i data-i="spark"></i>Add a personal note</span>
+          <span class="btn"><i data-i="copy"></i>Copy</span>
+        </div>
+      </div>
+
+      <div class="res">
+        <div class="side-f">
+          <div class="sect" style="padding:4px 14px 6px">Results</div>
+          <a class="list-item on">All<span class="count">7</span></a>
+          <a class="list-item">Clients<span class="count">1</span></a>
+          <a class="list-item">Websites and domains<span class="count">2</span></a>
+          <a class="list-item">Invoices<span class="count">2</span></a>
+          <a class="list-item">Tasks<span class="count">1</span></a>
+          <a class="list-item">Files<span class="count">1</span></a>
+          <p class="help" style="padding:12px 14px">Search works on names, numbers, domains, phone numbers and notes, in every module you can open.</p>
+        </div>
+        <div class="card" style="padding:8px 0">
+          <div class="grp">
+            <div class="sect" style="padding:6px 0">Clients</div>
+            <div class="hit"><div class="lic"><i data-i="users"></i></div><div><b><mark>Sharma Dental</mark> Care</b><span class="m">Dr. Priya Sharma · Healthcare · Chennai · client since Jul 2025</span></div><div class="r"><span class="chip c-green">Client</span><a class="btn" href="client-profile.html" style="text-decoration:none">Open</a></div></div>
+          </div>
+          <div class="grp">
+            <div class="sect" style="padding:6px 0">Websites and domains</div>
+            <div class="hit"><div class="lic"><i data-i="globe"></i></div><div><b><mark>sharmadental</mark>.in</b><span class="m">Domain + hosting · renews 29 Oct · SSL valid</span></div><div class="r"><span class="chip c-amber">Renews soon</span><a class="btn" href="asset.html" style="text-decoration:none">Open</a></div></div>
+            <div class="hit"><div class="lic"><i data-i="globe"></i></div><div><b>book.<mark>sharmadental</mark>.in</b><span class="m">Booking page · hosted with the main site</span></div><div class="r"><a class="btn" href="asset.html" style="text-decoration:none">Open</a></div></div>
+          </div>
+          <div class="grp">
+            <div class="sect" style="padding:6px 0">Invoices</div>
+            <div class="hit"><div class="lic"><i data-i="doc"></i></div><div><b>Renewal invoice · ₹8,850</b><span class="m">Domain + hosting · sends by itself tomorrow 9:00 am · numbered when issued</span></div><div class="r"><span class="chip c-blue">Ready</span><a class="btn" href="invoices.html" style="text-decoration:none">Open</a></div></div>
+            <div class="hit"><div class="lic"><i data-i="doc"></i></div><div><b>YTP/25-26/0018 · ₹70,800</b><span class="m">Website design · paid 1 Aug 2025 by UPI</span></div><div class="r"><span class="chip c-green">Paid</span><a class="btn" href="invoices.html" style="text-decoration:none">Open</a></div></div>
+          </div>
+          <div class="grp">
+            <div class="sect" style="padding:6px 0">Tasks</div>
+            <div class="hit"><div class="lic"><i data-i="tasks"></i></div><div><b>Check SSL auto-renewal</b><span class="m"><mark>Sharma Dental</mark> Care · Arun · today 3:00 pm</span></div><div class="r"><span class="chip c-amber">Due today</span><a class="btn" href="task.html" style="text-decoration:none">Open</a></div></div>
+          </div>
+          <div class="grp">
+            <div class="sect" style="padding:6px 0">Files</div>
+            <div class="hit"><div class="ftype img">SVG</div><div><b><mark>sharma-dental</mark>-logo.svg</b><span class="m">Brand assets · 48 KB · shared with the client</span></div><div class="r"><a class="btn" href="files.html" style="text-decoration:none">Open</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

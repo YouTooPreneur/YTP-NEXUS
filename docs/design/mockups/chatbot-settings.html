@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client chatbot</title>
+<!-- Batch 8 · SCR-259 Client chatbot settings: WhatsApp (AiSensy) and the website chat, a greeting that says it is an AI, answers only from knowledge marked for clients, lead questions that create a lead, hand-over rules (asked for a person, unsure, complaints, prices, discounts, payments), office hours, and the limits: daily budget, 20 messages a conversation, conversations per number, short answers, spam protection (AI-019, AI-020, AI-016, CRM-030). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .cs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 340px;gap:12px;align-items:start}
+  .col7{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .sc2{padding:13px 16px;display:flex;flex-direction:column;gap:8px}
+  .sc2 h3{font-family:Sora,sans-serif;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .sc2 h3 .r{margin-left:auto;font-family:"DM Sans",sans-serif;font-size:11.5px;font-weight:700;color:var(--muted);text-decoration:none}
+  .row7{display:flex;align-items:center;gap:10px;font-size:12.5px;padding:5px 0}
+  .row7 b{display:block;font-weight:700;font-size:13px}
+  .row7 small{display:block;color:var(--muted);font-size:11.5px}
+  .row7 .toggle,.row7 .later,.row7 .chk{margin-left:auto}
+  .greet{padding:10px 12px;border-radius:12px;background:#E7F8EE;color:#0B3B30;font-size:12.5px;line-height:1.5}
+  .kn{display:flex;flex-wrap:wrap;gap:6px}
+  .kn span{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft)}
+  .kn span.no{color:var(--red);background:var(--red-bg);border-color:transparent}
+  .kn svg{width:12px;height:12px}
+  .qs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .qs span{font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--active-bg)}
+  .qs i{color:var(--muted);font-style:normal;font-size:12px}
+  .lim{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;font-size:12.5px;align-items:center}
+  .lim span{color:var(--muted)}
+  .lim b{font-weight:700;text-align:right}
+  .today3{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .today3 div{padding:9px 11px;border-radius:12px;background:var(--card-2)}
+  .today3 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .today3 b{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="settings.html">Connections</a><span>/</span><b style="color:var(--ink)">Client chatbot</b></div>
+          <h1 class="serif">Client chatbot</h1>
+          <p>Answers people on WhatsApp and on the website from knowledge marked for clients. It says it is an AI, takes lead details, books a clarity session and hands over to a person when needed.</p>
+        </div>
+        <div class="acts"><span class="chip c-amber">Test mode</span><a class="btn lg" href="ai-knowledge.html" style="text-decoration:none"><i data-i="chat"></i>Test as a client</a><a class="btn solid lg" href="live-chat.html" style="text-decoration:none"><i data-i="msg"></i>Live chat</a></div>
+      </div>
+      <div class="cs">
+        <div class="col7">
+          <div class="card sc2">
+            <h3>Where it answers</h3>
+            <div class="row7"><span class="po-ic grn" style="width:32px;height:32px"><i data-i="chat"></i></span><div><b>WhatsApp · Hello number</b><small>Through AiSensy · +91 98400 00001</small></div><span class="toggle on"></span></div>
+            <div class="row7"><span class="po-ic" style="width:32px;height:32px"><i data-i="globe"></i></span><div><b>Website chat bubble</b><small>youtoopreneur.com · every page</small></div><span class="toggle on"></span></div>
+            <div class="row7"><span class="po-ic" style="width:32px;height:32px"><i data-i="camera"></i></span><div><b>Instagram messages</b><small>When Meta is connected</small></div><span class="later">Step 3.9</span></div>
+          </div>
+          <div class="card sc2">
+            <h3>Greeting <div class="pill-sel" style="margin-left:auto"><span class="on">English</span><span>தமிழ்</span></div></h3>
+            <div class="greet">Hi, I'm YTP Assist, the AI assistant of YouTooPreneur. I can tell you about our services, take your details or book a clarity session. Type "person" any time to talk to our team; we are here Monday to Saturday, 10:00 am to 6:30 pm.</div>
+            <span class="manual">It replies in the language the person writes in.</span>
+          </div>
+          <div class="card sc2">
+            <h3>What it may answer <a class="r" href="ai-knowledge.html">AI knowledge</a></h3>
+            <div class="kn"><span><i data-i="check"></i>Services · 42</span><span><i data-i="check"></i>FAQs · 24</span><span><i data-i="check"></i>Published case studies · 2</span><span><i data-i="check"></i>Academy courses · 4</span><span><i data-i="check"></i>Office hours and address</span></div>
+            <div class="kn"><span class="no"><i data-i="x"></i>Prices and discounts</span><span class="no"><i data-i="x"></i>Client records</span><span class="no"><i data-i="x"></i>Invoices</span><span class="no"><i data-i="x"></i>Anything marked "team only"</span></div>
+            <div class="row7"><div><b>Prices</b><small>Never. Every question about prices, discounts or payments goes to a person</small></div><span class="chip c-ink">Never</span></div>
+          </div>
+        </div>
+        <div class="col7">
+          <div class="card sc2">
+            <h3>Lead questions</h3>
+            <div class="qs"><span>Name</span><i>→</i><span>Business</span><i>→</i><span>Service</span><i>→</i><span>Budget</span><i>→</i><span>Best time to call</span></div>
+            <span class="sm" style="font-size:12px">Makes a lead with source "WhatsApp" or "Website chat", checks for duplicates by number, and gives it to the right person by the lead rules. A message from a client goes to their timeline instead.</span>
+            <div class="row7"><div><b>Offer a clarity session</b><small>Books into the Owner's free slots</small></div><span class="toggle on"></span></div>
+          </div>
+          <div class="card sc2">
+            <h3>Hand over to a person when</h3>
+            <div class="row7"><span>They ask for a person</span><i class="chk on"></i></div>
+            <div class="row7"><span>The AI is not sure of the answer</span><i class="chk on"></i></div>
+            <div class="row7"><span>It is a complaint</span><i class="chk on"></i></div>
+            <div class="row7"><span>They ask about prices, discounts or payments</span><i class="chk on"></i></div>
+            <div class="row7"><span>A client needs support · becomes a support flag</span><i class="chk on"></i></div>
+            <span class="sm" style="font-size:12px">Alerts the assigned person on WhatsApp and in Nexus. No reply in 15 minutes during office hours: the Manager is told.</span>
+          </div>
+          <div class="card sc2">
+            <h3>Office hours</h3>
+            <div class="row7"><div><b>Monday to Saturday · 10:00 am–6:30 pm</b><small>People take over chats only in these hours. Outside them the AI answers from its knowledge, takes the details, and hands the chat to a person at 10:00 am.</small></div></div>
+          </div>
+        </div>
+        <div class="col7">
+          <div class="card sc2">
+            <h3>Limits</h3>
+            <div class="lim"><span>Daily budget</span><b>₹100 a day</b></div>
+            <div style="display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)"><span>Today ₹38 used</span><span class="meter" style="height:6px"><i style="width:38%;background:var(--on)"></i></span></div>
+            <div class="lim"><span>Messages in one chat</span><b>20</b><span>Chats per number a day</span><b>3</b><span>Answers</span><b>Short · small, low-cost model</b><span>Spam</span><b>Blocked after 5 links or abuse</b></div>
+            <div class="greet" style="background:var(--card-2);color:var(--ink)">At any limit it says: "Thank you! A person from our team will reply shortly," and hands over.</div>
+          </div>
+          <div class="card sc2">
+            <h3>Today <a class="r" href="live-chat.html">Live chat</a></h3>
+            <div class="today3"><div><small>Chats</small><b>14</b></div><div><small>New leads</small><b>6</b></div><div><small>Handed over</small><b>3</b></div><div><small>Limits hit</small><b>1</b></div></div>
+          </div>
+          <span class="manual">Test mode: replies go only to the owner's test number until you switch it live.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

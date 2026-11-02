@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Goals and performance</title>
+<!-- Batch 3 · SCR-137 Goals and performance: company and personal goals (OKRs) with progress, reviews, training and recognition; AI drafts a review from goals and work done (TEAM-018 to TEAM-020, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
+  .obj{padding:16px 20px;display:flex;flex-direction:column;gap:10px}
+  .obj .h{display:flex;align-items:center;gap:10px}
+  .obj .h b{font-family:Sora,sans-serif;font-weight:600;font-size:16px}
+  .obj .h .r{margin-left:auto;font-weight:700}
+  .kr{display:grid;grid-template-columns:1fr 160px 60px 34px;gap:12px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .kr .meter i{background:var(--on)}
+  .kr .meter i.mid{background:#E2A93B}
+  .kr .p{font-weight:700;text-align:right}
+  .rv{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .rv:first-of-type{border-top:0}
+  .rv .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Goals and performance</b></div>
+          <h1 class="serif">Goals and performance</h1>
+          <p>Company goals for the quarter, each person's goals under them, and a yearly review on each person's joining anniversary. Progress updates itself where Nexus can measure it.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>Oct–Dec 2026</span><span class="on">Jul–Sep 2026</span></div><span class="btn solid lg"><i data-i="plus"></i>New goal</span></div>
+      </div>
+      <div class="lay">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card obj">
+            <div class="h"><span class="chip c-ink">Company</span><b>Grow monthly recurring revenue to ₹4,00,000</b><span class="r">46%</span></div>
+            <div class="kr"><span>Sign 6 new AMC clients</span><span class="meter"><i style="width:33%"></i></span><span class="p">2 / 6</span><span class="av s">YP</span></div>
+            <div class="kr"><span>Win 3 SEO retainers</span><span class="meter"><i class="mid" style="width:33%"></i></span><span class="p">1 / 3</span><span class="av s">KR</span></div>
+            <div class="kr"><span>No renewal missed</span><span class="meter"><i style="width:100%"></i></span><span class="p">0 missed</span><span class="av s">AK</span></div>
+          </div>
+          <div class="card obj">
+            <div class="h"><span class="chip c-blue">Karthik</span><b>Make SEO results easy for clients to see</b><span class="r">60%</span></div>
+            <div class="kr"><span>Monthly SEO report for every SEO client by the 3rd</span><span class="meter"><i style="width:80%"></i></span><span class="p">4 / 5</span><span class="av s">KR</span></div>
+            <div class="kr"><span>2 case studies published</span><span class="meter"><i class="mid" style="width:50%"></i></span><span class="p">1 / 2</span><span class="av s">KR</span></div>
+          </div>
+          <div class="card obj">
+            <div class="h"><span class="chip c-blue">Divya</span><b>Faster design approvals</b><span class="r">40%</span></div>
+            <div class="kr"><span>First design approved within 2 rounds</span><span class="meter"><i class="mid" style="width:40%"></i></span><span class="p">2 / 5</span><span class="av s">DS</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Reviews</h2><span class="link">Yearly · joining anniversary</span></div>
+            <div class="rv"><span class="av s">KR</span>Karthik · yearly review<span class="chip c-amber r">Due 12 Oct</span></div>
+            <div class="rv"><span class="av s">DS</span>Divya · yearly review<span class="chip c-green r">Done 14 Aug</span></div>
+            <div class="rv"><span class="av s">AK</span>Arun · yearly review<span class="chip c-green r">Done 3 Jun</span></div>
+            <div class="rv"><span class="av s">PN</span>Priya · probation review<span class="chip c-ink r">22 Dec</span></div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Draft Karthik's review</div>
+            <div style="font-size:13px;line-height:1.55">From his goals, finished tasks and client feedback since his last review on 12 Oct 2025: strong on SEO reports (4 of 5 on time in Jul–Sep) and client calls; 2 tasks late in September, both during the Royal Caterers kickoff week. Suggested goal: hand routine reports to Priya.</div>
+            <div class="ai-acts"><span class="btn">Use as a draft</span><span class="manual">You write the final review</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Training and recognition</h2></div>
+            <div class="rv"><i data-i="cap"></i>Arun · Google Analytics 4 course<span class="sm r" style="font-size:12px">Completed 20 Sep</span></div>
+            <div class="rv"><i data-i="star"></i>Divya · "Client hero" award, Royal Caterers kickoff<span class="sm r" style="font-size:12px">28 Sep</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

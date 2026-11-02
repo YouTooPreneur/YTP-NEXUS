@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Payouts</title>
+<!-- Batch 7 · SCR-114 Payouts: freelancer payouts per task, project or deal (a finished task makes the payout due), referral partner and influencer commissions decided case by case per deal and due when the client pays; approval, then paid by UPI or bank with the reference; TDS as a setting checked by the CA (FIN-019, TEAM-017, CRM-025, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .tbl td{padding-top:9px;padding-bottom:9px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:18px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .kind{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .kind.f{background:#EEF2FF;color:#4338CA} .kind.r{background:var(--green-bg);color:var(--green)}
+  .how5{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .how5 > div{padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft);font-size:12.5px;line-height:1.45}
+  .how5 b{display:block;font-weight:700;font-size:13px;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="payouts">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Payouts</h1>
+          <p>Money we owe to freelancers, referral partners and influencers. A freelancer's finished task makes a payout due; a commission is due when the client pays. Each payout is approved, then paid with its reference.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="download"></i>Export</span><span class="btn solid lg"><i data-i="plus"></i>Add payout</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr warn"><b>₹8,000</b><span>Due now · approve</span></div>
+        <div class="ctr"><b>₹10,000</b><span>Waiting for the client to pay</span></div>
+        <div class="ctr"><b>₹6,000</b><span>Planned · work not done yet</span></div>
+        <div class="ctr"><b>₹9,500</b><span>Paid in September</span></div>
+      </div>
+
+      <div class="how5">
+        <div><b>Freelancers</b>A rate per task, reel, day or project is set on their profile; finishing the task makes the payout due.</div>
+        <div><b>Referral partners and influencers</b>Commission decided case by case for each deal; due only when the client's money comes in.</div>
+        <div><b>TDS</b>Off for now; your CA confirms if and when tax must be held back from payouts.</div>
+      </div>
+
+      <div class="card" style="padding:4px 18px 12px">
+        <table class="tbl">
+          <thead><tr><th>Person</th><th>Kind</th><th>For</th><th>Basis</th><th class="num">Amount</th><th>Status</th><th>Paid</th></tr></thead>
+          <tbody>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#334155;width:28px;height:28px;font-size:9.5px">SJ</span><div><b>Sanjay J</b><small>Freelance video</small></div></div></td><td><span class="kind f">Freelancer</span></td><td><b>Royal Caterers · launch reels 1 and 2</b><small>Tasks done 26 Sep · checked by Karthik</small></td><td class="sm">₹4,000 a reel</td><td class="num">₹8,000</td><td><span class="chip c-amber">Due</span></td><td><span class="btn solid" style="height:28px;font-size:12px" data-ai="Approved in the preview only. In Nexus the payout moves to 'to pay'; Accounts pays by UPI and adds the reference.">Approve</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:28px;height:28px;font-size:9.5px">LR</span><div><b>Lakshmi R</b><small>Referral partner</small></div></div></td><td><span class="kind r">Commission</span></td><td><b>Sunrise Clinic · website and booking</b><small>Deal ₹1,20,000 won 29 Sep</small></td><td class="sm">5% of the deal</td><td class="num">₹6,000</td><td><span class="chip c-ink">When client pays</span></td><td class="sm">Advance not paid yet</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:28px;height:28px;font-size:9.5px">LR</span><div><b>Lakshmi R</b><small>Referral partner</small></div></div></td><td><span class="kind r">Commission</span></td><td><b>Greenleaf Organics · website refresh</b><small>Deal ₹80,000 won 24 Sep</small></td><td class="sm">₹4,000 fixed</td><td class="num">₹4,000</td><td><span class="chip c-ink">When client pays</span></td><td class="sm">Waiting for the signature</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#334155;width:28px;height:28px;font-size:9.5px">SJ</span><div><b>Sanjay J</b><small>Freelance video</small></div></div></td><td><span class="kind f">Freelancer</span></td><td><b>Kaveri doctor videos · cover for Rahul</b><small>6–9 Oct, if Rahul's leave is approved</small></td><td class="sm">₹1,500 a day</td><td class="num mut">₹6,000</td><td><span class="chip c-blue">Planned</span></td><td class="sm">—</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#334155;width:28px;height:28px;font-size:9.5px">SJ</span><div><b>Sanjay J</b><small>Freelance video</small></div></div></td><td><span class="kind f">Freelancer</span></td><td><b>Lakshmi Silks · reel shoots</b><small>3 days, 17–19 Sep</small></td><td class="sm">₹3,000 a day + travel</td><td class="num">₹9,500</td><td><span class="chip c-green">Paid</span></td><td class="sm">20 Sep · UPI · 426310992871</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

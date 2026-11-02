@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Correct expiry date</title>
+<!-- Batch 4 · SCR-099 Correct expiry date: fix a wrong date with a reason and evidence; no renewal or payment is recorded; logged (WEB-017, RULE-024) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .dates{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+  .dates .d{padding:12px 14px;border-radius:14px;border:1px solid var(--line)}
+  .dates .d small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .dates .d b{font-family:Sora,sans-serif;font-weight:600;font-size:20px}
+  .dates .d.old b{color:var(--red);text-decoration:line-through;text-decoration-thickness:1.5px}
+  .dates .d.new{border:1.5px solid var(--on);background:color-mix(in srgb,var(--on) 6%,var(--card))}
+  .ev{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;border:1px dashed var(--edge)}
+  .ev .ftype{width:40px;height:40px}
+  .ev b{display:block;font-weight:700}
+  .ev small{font-size:12px;color:var(--muted)}
+  .ev .r{margin-left:auto}
+  .no{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:var(--card-2);font-size:12.5px}
+  .no span{display:flex;gap:8px;align-items:center}
+  .no svg{width:14px;height:14px;color:var(--green)}
+</style>
+</head>
+<body>
+<div class="app ov" data-active="WebCare" data-sec="webcare" data-sec-on="assets">
+  <main>
+    <div class="ov-ghost"><i style="height:70px;width:45%"></i><i style="height:90px"></i><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px"><i style="height:300px"></i><i style="height:300px"></i><i style="height:300px"></i></div></div>
+  </main>
+  <div class="ov-dim">
+    <div class="ov-dlg" role="dialog" aria-label="Correct expiry date">
+      <div class="dh"><h2 class="serif">Correct expiry date</h2><span class="chip c-ink">royalcaterers.in · domain</span><a class="btn x" href="webcare.html" style="text-decoration:none" title="Close"><i data-i="x"></i></a></div>
+      <p class="sm" style="font-size:13px;line-height:1.5;margin-top:-4px">Use this only when the date in Nexus is simply wrong. If the domain was renewed, use the renewal with its evidence instead.</p>
+      <div class="dates"><div class="d old"><small>Date in Nexus now</small><b>28 Sep 2026</b></div><i data-i="right" style="color:var(--muted)"></i><div class="d new"><small>Correct date</small><b>28 Sep 2028</b></div></div>
+      <div class="field"><label>Reason (required)</label><div class="input" style="height:auto;padding:10px 12px;white-space:normal;line-height:1.5">Typed wrongly when Royal Caterers was added. The domain was registered for 3 years in 2025.</div></div>
+      <div class="field"><label>Evidence (required)</label><div class="ev"><span class="ftype img">PNG</span><div><b>godaddy-royalcaterers-domain.png</b><small>Screenshot of the registrar page · 180 KB</small></div><span class="btn r">Replace</span></div></div>
+      <div class="no"><span><i data-i="check"></i>No renewal, invoice or payment is created.</span><span><i data-i="check"></i>The change is saved in the history with your name, the reason and the evidence.</span><span><i data-i="check"></i>Tomorrow's 6:00 am check will confirm the date with the registry.</span></div>
+      <div style="display:flex;gap:10px;align-items:center"><span class="btn solid lg">Save correction</span><a class="btn lg" href="webcare.html" style="text-decoration:none">Cancel</a><span class="manual" style="margin-left:auto">Owner and Managers only</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Technical dossier</title>
+<!-- Batch 4 · SCR-096 Technical dossiers: internal notes per client or site (how it is built, DNS and email, access as vault links only, runbooks, known issues); staff only; AI answers questions from the dossier (WEB-013, WEB-009, RULE-025, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:240px 1fr 360px;gap:18px;align-items:start}
+  .toc{display:flex;flex-direction:column;gap:2px;padding:10px}
+  .toc a{padding:8px 12px;border-radius:10px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none}
+  .toc a.on{background:var(--active-bg);color:var(--ink)}
+  .doc2{padding:20px 24px;display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.6}
+  .doc2 h3{font-family:Sora,sans-serif;font-weight:600;font-size:16px}
+  .doc2 ul{padding-left:18px;display:flex;flex-direction:column;gap:3px}
+  .doc2 code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:var(--card-2);border:1px solid var(--line-soft);border-radius:6px;padding:1px 6px}
+  .vref{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;border:1px solid var(--line-soft);background:var(--card-2)}
+  .vref b{font-weight:700}
+  .vref small{font-size:12px;color:var(--muted);display:block}
+  .vref .r{margin-left:auto}
+  .tq{display:flex;flex-direction:column;gap:8px}
+  .tq .q{align-self:flex-end;background:var(--primary-bg);color:#fff;padding:9px 12px;border-radius:14px 14px 4px 14px;font-size:13px;max-width:90%}
+  .tq .a{background:var(--card);padding:10px 12px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.55;border:1px solid var(--line-soft)}
+  .tq small{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="dossiers">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Velocity Motors · technical dossier</h1>
+          <p>How their website is built and run, for our team only. Access is written as vault links: no password ever goes in a dossier.</p>
+        </div>
+        <div class="acts"><span class="chip c-ink"><i data-i="lock"></i>Staff with WebCare access</span><span class="btn lg"><i data-i="history"></i>History</span><span class="btn solid lg"><i data-i="edit"></i>Edit</span></div>
+      </div>
+      <div class="lay">
+        <div class="card toc"><div class="sect" style="padding:4px 12px 6px">Sections</div><a class="on">How it is built</a><a>DNS and email</a><a>Access</a><a>Restore a backup</a><a>Known issues</a><a>Change notes</a></div>
+        <div class="card doc2">
+          <div><h3>How it is built</h3><ul><li>WordPress 6.6 with Elementor; the car models list is a custom post type.</li><li>Hosting: <a class="lk" href="servers.html">YTP-VPS-01</a> (DigitalOcean), moved from YTP-HS-01 in May 2026 for speed.</li><li>Enquiry form: WPForms, sending through the <b>Billing</b> email sender; enquiries also go to the CRM.</li></ul></div>
+          <div><h3>DNS and email</h3><ul><li>Domain at the client's Namecheap; DNS at Cloudflare (YTP).</li><li>Client email is Zoho Mail. Do not change the <code>MX</code> or <code>TXT</code> records.</li></ul></div>
+          <div><h3>Access</h3>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+              <div class="vref"><i data-i="key"></i><div><b>WordPress admin</b><small>Vault: Clients / Velocity Motors · verified 1 Oct by Arun</small></div><span class="btn r"><i data-i="lock"></i>Open in vault</span></div>
+              <div class="vref"><i data-i="key"></i><div><b>Namecheap (client's account)</b><small>Vault: Clients / Velocity Motors · we are a manager</small></div><span class="btn r"><i data-i="lock"></i>Open in vault</span></div>
+            </div>
+          </div>
+          <div><h3>Known issues</h3><ul><li><b>1 Oct:</b> the mail plugin lost its settings after an update, so enquiries stopped. Fixed by reconnecting to Billing (task "Fix contact form"). After every plugin update, send a test enquiry.</li></ul></div>
+        </div>
+        <div class="ai-card">
+          <div class="ai-h"><i data-i="spark"></i>Ask this dossier<span class="r">Never shows logins</span></div>
+          <div class="tq"><span class="q">How do I restore velocitymotors.in from yesterday?</span><span class="a">Open YTP-VPS-01's backups, choose 30 Sep 2:00 am, restore files and database together, then send a test enquiry, because the form has stopped working before after a change. <small>· from "Restore a backup" and "Known issues"</small></span></div>
+          <div class="input" style="color:var(--muted)">Ask about this site…</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

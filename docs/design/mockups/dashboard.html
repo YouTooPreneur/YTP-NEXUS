@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Command Centre</title>
+<!-- Batch 5 · SCR-020 Founder dashboard: the 4 success measures, everything that needs the owner (approvals, money, renewals, leads, work), today, renewals in 30 days, collections, risks, revenue trend, tasks by status, team, missing documents, subscription spend, automations; every item opens its record (CC-001 to CC-005, CC-008, AI-009). The page scrolls; the first screen keeps the approved style-round-2 layout. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .hello{padding:22px 0 18px}
+  .hello h1{font-size:46px}
+  .summary .pill{text-decoration:none;color:var(--muted)}
+  .summary .pill svg{width:15px;height:15px}
+  .msrs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:none}
+  .msrs .msr.lead{border-top:2px solid var(--accent)}
+  .msr .lab{font-size:10.5px}
+  .days{display:flex;gap:7px;align-items:center;height:6px;padding-left:2px}
+  .days i{width:10px;height:10px;border-radius:50%;background:var(--on);box-shadow:0 0 0 2px var(--on-ring)}
+  .days i.off{background:var(--bar);box-shadow:none}
+  .days small{margin-left:6px;font-size:11.5px;color:var(--muted);font-weight:600}
+  .d1{display:grid;grid-template-columns:1fr 420px;gap:16px;margin-top:16px}
+  .d2,.d3,.d4{display:grid;gap:16px;margin-top:16px}
+  .d2{grid-template-columns:1.35fr 1fr 1fr}
+  .d3{grid-template-columns:1.2fr 1fr 1fr}
+  .d4{grid-template-columns:1fr 1fr 1.2fr}
+  .d3 .vbars{height:176px}
+  .att-views{padding:0 22px 8px}
+  .att li{grid-template-columns:92px 1fr 96px 112px;padding:8px 0}
+  .att li .btn{height:30px;padding:0 12px}
+  .att a{color:inherit;text-decoration:none}
+  .att .amt.neg{color:var(--muted)}
+  .att-more{display:flex;align-items:center;gap:8px;margin:2px 22px 14px;padding:10px 12px;border-radius:12px;background:var(--card-2);font-size:12.5px;color:var(--muted);text-decoration:none}
+  .att-more b{color:var(--ink)}
+  .att-more svg{width:14px;height:14px;margin-left:auto}
+  .right{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .right .today-card{flex:1}
+  .brief{margin:0}
+  .brief ol{padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.45}
+  .brief .srcs{display:flex;gap:6px;flex-wrap:wrap}
+  .tmrw{display:flex;gap:10px;align-items:center;margin:6px 22px 4px;padding:10px 12px;border-radius:12px;border:1px dashed var(--edge);font-size:12.5px}
+  .tmrw b{display:block;font-weight:700}
+  .tmrw small{color:var(--muted);font-size:12px}
+  .tmrw .btn{margin-left:auto;height:28px;padding:0 10px}
+  .fu a{color:inherit;text-decoration:none}
+  .card .cb2{padding:2px 22px 18px;display:flex;flex-direction:column;gap:12px}
+  .rn td{padding:8px 0}
+  .rn b{display:block;font-weight:700;font-size:13px}
+  .rn small{font-size:11.5px;color:var(--muted)}
+  .rn .dring{margin-right:2px}
+  .big2{display:flex;gap:18px}
+  .big2 div small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .big2 div b{font-family:Sora,sans-serif;font-weight:600;font-size:24px;letter-spacing:-.01em}
+  .big2 div span{display:block;font-size:12px;color:var(--muted)}
+  .agk{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:600;margin-top:6px}
+  .callf{display:flex;flex-direction:column}
+  .callf a{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft);color:inherit;text-decoration:none;font-size:13px}
+  .callf a:first-child{border-top:0}
+  .callf a b{font-weight:700}
+  .callf a small{color:var(--muted);font-size:12px;display:block}
+  .callf a .amt4{margin-left:auto;font-weight:700}
+  .risk{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line-soft);text-decoration:none;color:inherit}
+  .risk:first-child{border-top:0}
+  .risk .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-family:Sora,sans-serif;font-weight:600;font-size:16px;flex:none}
+  .risk .n.r{background:var(--red-bg);color:var(--red)} .risk .n.g{background:var(--green-bg);color:var(--green)} .risk .n.a{background:var(--amber-bg);color:var(--amber)}
+  .risk b{display:block;font-weight:700;font-size:13px}
+  .risk small{font-size:12px;color:var(--muted)}
+  .tm li{grid-template-columns:34px 1fr 128px}
+  .tm .av{border:0}
+  .tm .today-st{font-size:12px}
+  .docs a{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft);color:inherit;text-decoration:none}
+  .docs a:first-child{border-top:0}
+  .docs b{display:block;font-weight:700;font-size:13px}
+  .docs small{font-size:12px;color:var(--muted)}
+  .docs .chip{margin-left:auto}
+  .spend{display:flex;flex-direction:column;gap:7px}
+  .spend div{display:grid;grid-template-columns:120px 1fr 72px;gap:10px;align-items:center;font-size:12.5px}
+  .spend div i{display:block;height:8px;border-radius:999px;background:var(--bar-fill)}
+  .spend div b{text-align:right;font-weight:700}
+  .runs a{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line-soft);color:inherit;text-decoration:none;font-size:12.5px}
+  .runs a:first-child{border-top:0}
+  .runs .t{font-weight:700;color:var(--muted)}
+  .runs b{font-weight:700}
+  .runs small{color:var(--muted)}
+  .cardfoot{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+  .cardfoot a{color:var(--ink);font-weight:700;text-decoration:none;margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app long" data-active="Command Centre">
+  <main>
+    <section class="hello">
+      <div>
+        <p class="eyebrow">Thursday, 1 October 2026 · tomorrow is Gandhi Jayanti (holiday)</p>
+        <h1 class="serif">Good morning, <em>Owner</em></h1>
+      </div>
+      <div class="summary">
+        <a class="pill" href="run-history.html"><i></i>14 automations ran this morning · all fine</a>
+        <a class="pill" href="my-profile.html#preferences"><span style="display:flex"><svg class="i" viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="M3 5.5l7 5.5 7-5.5"/></svg></span>Morning summary sent 7:30 am</a>
+        <span class="ai-btn" data-ai="Brief me: reads today's attention list aloud in about a minute, in English or Tamil. Uses the summary already made at 7:30 am, so it costs almost nothing from the AI limit."><i data-i="spark"></i>Brief me</span>
+      </div>
+    </section>
+
+    <!-- The 4 success measures (CC-008) -->
+    <section class="msrs">
+      <a class="card msr lead" href="renewals.html">
+        <div class="mh"><span class="lab">Missed renewals</span><span class="tgt ok">Target 0</span></div>
+        <div class="num serif" style="color:var(--key)">0</div>
+        <div class="track"><i style="width:100%"></i></div>
+        <div class="sub">31 of 31 renewed on time since 1 April</div>
+      </a>
+      <a class="card msr" href="collections.html">
+        <div class="mh"><span class="lab">Invoices paid in 15 days</span><span class="tgt ok">Target 80%</span></div>
+        <div class="num serif">82%</div>
+        <div class="track"><i style="width:82%"></i><b style="left:80%"></b></div>
+        <div class="sub"><span class="up">↑ 4%</span> vs August · 23 of 28 invoices, Jul–Sep</div>
+      </a>
+      <a class="card msr" href="leads.html">
+        <div class="mh"><span class="lab">Leads contacted in 24 h</span><span class="tgt near">Target 95%</span></div>
+        <div class="num serif">94%</div>
+        <div class="track"><i class="amb" style="width:94%"></i><b style="left:95%"></b></div>
+        <div class="sub">30 of 32 in September · 1 waiting now: Bloom Florists</div>
+      </a>
+      <a class="card msr" href="notifications.html">
+        <div class="mh"><span class="lab">Morning check</span><span class="tgt ok">Target 5 min</span></div>
+        <div class="num serif">4 min <small>today, 7:48–7:52 am</small></div>
+        <div class="days"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sub">Under 5 minutes for 12 working days in a row</div>
+      </a>
+    </section>
+
+    <section class="d1">
+      <!-- Attention list with the approval inbox inside it (CC-001, CC-002, CC-003) -->
+      <div class="card">
+        <div class="ch"><h2 class="serif">Needs your attention</h2><span class="count">16</span><a class="link" href="approvals.html" style="text-decoration:none">Approval inbox<i data-i="right"></i></a></div>
+        <div class="views att-views"><span class="on">All <em class="count">16</em></span><span>Approvals <em class="count">8</em></span><span>Money <em class="count">2</em></span><span>Renewals <em class="count">2</em></span><span>Leads <em class="count">2</em></span><span>Work <em class="count">2</em></span></div>
+        <ul class="att">
+          <li><span class="chip c-red">At risk</span><a href="renewals.html"><b>greenleaforganics.com ends in 7 days</b><span>Invoice YTP/26-27/0042 unpaid · auto-renew is off at GoDaddy</span></a><div class="amt">₹1,416</div><a class="btn" href="renewals.html">Call</a></li>
+          <li><span class="chip c-ink">Approve</span><a href="approvals.html"><b>15% discount on SEO · Bloom Florists</b><span>Asked by Karthik · every discount comes to you</span></a><div class="amt neg">−₹6,750</div><a class="btn" href="approvals.html">Open</a></li>
+          <li><span class="chip c-red">Overdue</span><a href="collections.html"><b>YTP/26-27/0033 · 34 days</b><span>Anbu Textiles · escalated to you · 2 reminders sent</span></a><div class="amt">₹28,000</div><a class="btn" href="collections.html">Call</a></li>
+          <li><span class="chip c-red">Support</span><a href="task.html"><b>Contact form not working</b><span>Velocity Motors · the 3-day fix was due yesterday · Arun is on it</span></a><div class="amt none">—</div><a class="btn" href="task.html">Open</a></li>
+          <li><span class="chip c-amber">Lead</span><a href="pipeline.html"><b>Bloom Florists · SEO</b><span>From Instagram · not contacted for 6 hours · Karthik</span></a><div class="amt none">—</div><a class="btn" href="pipeline.html">Call</a></li>
+          <li><span class="chip c-ink">Approve</span><a href="approvals.html"><b>Invoice for new work · Kaveri Hospitals</b><span>Paid clarity session on 3 Oct</span></a><div class="amt">₹2,500</div><span class="btn solid" data-ai="Approved in the preview only. In Nexus the invoice gets its number and is sent; the decision is saved in the log.">Approve</span></li>
+          <li><span class="chip c-ink">Approve</span><a href="leave.html"><b>Leave · Rahul · 6–9 Oct</b><span>Earned leave, 4 days · over 3 days, so it comes to you</span></a><div class="amt none">—</div><a class="btn solid" href="leave.html">Review</a></li>
+          <li><span class="chip c-blue">Renewal</span><a href="renewal-confirm.html"><b>Kaveri Hospitals hosting · proof received</b><span>The client renewed at GoDaddy · confirm before 14 Oct</span></a><div class="amt none">—</div><a class="btn solid" href="renewal-confirm.html">Confirm</a></li>
+          <li><span class="chip c-red">Overdue</span><a href="collections.html"><b>YTP/26-27/0038 · 3 days past due</b><span>Kaveri Hospitals · reminders sent on day 7 and day 15</span></a><div class="amt">₹23,600</div><a class="btn" href="collections.html">Open</a></li>
+          <li><span class="chip c-ink">Approve</span><a href="expenses.html"><b>Expense claim · Arun</b><span>Client visit travel · bill attached</span></a><div class="amt">₹4,200</div><a class="btn" href="expenses.html">Open</a></li>
+          <li><span class="chip c-amber">Inputs</span><a href="client-inputs.html"><b>Logo files not received for 5 days</b><span>Aroma Bakes · website project</span></a><div class="amt none">—</div><a class="btn" href="client-inputs.html" style="text-decoration:none">Remind</a></li>
+          <li><span class="chip c-amber">Deal</span><a href="deal.html"><b>Pearl Dental · follow-up 1 day late</b><span>SEO · ₹40,000 · Karthik</span></a><div class="amt none">—</div><a class="btn" href="deal.html">Open</a></li>
+        </ul>
+        <a class="att-more" href="approvals.html"><b>4 more approvals</b> · Meridian's extra-posts bill ₹6,000 · AI reminder draft for Greenleaf · 3 follow-up tasks · Shutterstock bill ₹2,950<i data-i="right"></i></a>
+      </div>
+
+      <div class="right">
+        <div class="ai-card brief">
+          <div class="ai-h"><i data-i="spark"></i>Your morning in 3 lines<span class="r">AI · made 7:30 am</span></div>
+          <ol>
+            <li><b>Call Greenleaf before noon.</b> The domain ends in 7 days and ₹1,416 is unpaid.</li>
+            <li><b>Anbu Textiles</b> has not answered for 34 days; it is escalated to you.</li>
+            <li><b>Bloom Florists</b> has waited 6 hours, and Karthik wants 15% off for them.</li>
+          </ol>
+          <div class="srcs"><a class="src" href="invoice.html"><i data-i="doc"></i>YTP/26-27/0042</a><a class="src" href="collections.html"><i data-i="users"></i>Anbu Textiles</a><a class="src" href="approvals.html"><i data-i="users"></i>Bloom Florists</a></div>
+          <div class="ai-acts"><span class="ai-btn sm" data-ai="Read aloud: plays these 3 lines in English or Tamil (voice minutes count towards the AI limit)."><i data-i="mic"></i>Read aloud</span><a class="ai-btn sm" href="ask-nexus.html" style="text-decoration:none"><i data-i="chat"></i>Ask more</a><span class="manual" style="margin-left:auto">Everything here can be done by hand</span></div>
+        </div>
+
+        <div class="card today-card">
+          <div class="ch"><h2 class="serif">Today</h2><a class="link" href="calendar.html" style="text-decoration:none">Calendar<i data-i="right"></i></a></div>
+          <div class="sect">Meetings</div>
+          <div class="meet"><div class="time serif">11:00 am</div><div><b>Discovery call</b><span>Sri Lakshmi Traders · Google Meet</span></div><a class="btn" href="meetings.html" style="text-decoration:none">Join</a></div>
+          <div class="meet"><div class="time serif">3:30 pm</div><div><b>Weekly review</b><span>Team · office</span></div></div>
+          <div class="sect" style="margin-top:6px">Follow-ups</div>
+          <div class="fu"><i class="box"></i><a href="collections.html">Call Kaveri Hospitals about YTP/26-27/0038</a><span>12:00 pm</span></div>
+          <div class="fu"><i class="box"></i><a href="notifications.html">Send quote to Urban Nest Interiors</a><span>2:00 pm</span></div>
+          <div class="fu"><i class="box"></i><a href="client-inputs.html">Remind Aroma Bakes for the logo files</a><span>5:00 pm</span></div>
+          <div class="fu"><i class="box"></i><a href="renewal-confirm.html">Confirm Kaveri's hosting proof</a><span>5:30 pm</span></div>
+          <div class="tmrw"><span class="dring sm" style="--c:#38BDF8;--p:100"><span>1</span></span><div><b>Tomorrow 9:00 am · invoice sends itself</b><small>Sharma Dental Care · renewal · ₹8,850</small></div><a class="btn" href="invoices.html">Hold</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d2">
+      <!-- Renewals in the next 30 days -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Renewals in the next 30 days</h2><span class="count">6</span><a class="link" href="renewals.html" style="text-decoration:none">Renewals board<i data-i="right"></i></a></div>
+        <div class="cb2" style="padding-top:0">
+          <table class="tbl rn">
+            <tbody>
+              <tr><td style="width:44px"><span class="dring sm" style="--c:var(--red);--p:23"><span>7</span></span></td><td><b>greenleaforganics.com</b><small>Greenleaf Organics · YTP bills</small></td><td><span class="chip c-red">Unpaid · at risk</span></td><td class="num">₹1,416</td></tr>
+              <tr><td><span class="dring sm" style="--c:#E2A93B;--p:40"><span>12</span></span></td><td><b>velocitymotors.in SSL</b><small>Velocity Motors · client renews</small></td><td><span class="chip c-amber">Reminder sent</span></td><td class="num mut">—</td></tr>
+              <tr><td><span class="dring sm" style="--c:#8B5CF6;--p:43"><span>13</span></span></td><td><b>Kaveri Hospitals hosting</b><small>Kaveri Hospitals · client renews</small></td><td><a class="chip c-blue" href="renewal-confirm.html" style="text-decoration:none">Proof to confirm</a></td><td class="num mut">—</td></tr>
+              <tr><td><span class="dring sm" style="--c:var(--on);--p:67"><span>20</span></span></td><td><b>Annual maintenance</b><small>Velocity Motors · YTP bills</small></td><td><span class="chip c-green">Paid 30 Sep</span></td><td class="num">₹12,000</td></tr>
+              <tr><td><span class="dring sm" style="--c:#38BDF8;--p:93"><span>28</span></span></td><td><b>sharmadental.in</b><small>Sharma Dental Care · YTP bills</small></td><td><span class="chip c-blue">Invoice sends 2 Oct</span></td><td class="num">₹8,850</td></tr>
+              <tr><td><span class="dring sm" style="--c:var(--on);--p:97"><span>29</span></span></td><td><b>royalcaterers.in SSL</b><small>Royal Caterers · renews itself</small></td><td><span class="chip c-ink">Nothing to do</span></td><td class="num mut">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Collections -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Collections</h2><a class="link" href="collections.html" style="text-decoration:none">Collections<i data-i="right"></i></a></div>
+        <div class="cb2">
+          <div class="big2"><div><small>To collect</small><b>₹1,39,016</b><span>7 invoices</span></div><div><small>Overdue</small><b style="color:var(--red)">₹65,016</b><span>4 invoices</span></div></div>
+          <div><div class="ageing"><i class="ag0" style="width:28.1%"></i><i class="ag1" style="width:26.2%"></i><i class="ag2" style="width:25.6%"></i><i class="ag3" style="width:20.1%"></i></div><div class="agk"><span>0–7 d ₹39,000</span><span>8–15 d ₹36,416</span><span>16–30 d ₹35,600</span><span>30+ d ₹28,000</span></div></div>
+          <div class="callf">
+            <a href="collections.html"><span class="lg-av" style="--av:#9F1239">AT</span><div><b>Anbu Textiles</b><small>34 days · escalated · not answering</small></div><span class="amt4">₹28,000</span></a>
+            <a href="statement.html"><span class="lg-av" style="--av:#047857">KH</span><div><b>Kaveri Hospitals</b><small>3 days past due · pays after the 2nd reminder</small></div><span class="amt4">₹23,600</span></a>
+            <a href="collections.html"><span class="lg-av" style="--av:#7C2D12">CR</span><div><b>Coastal Realty</b><small>29 days · client on hold</small></div><span class="amt4">₹12,000</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Risks (CC-004) -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Risks</h2><span class="count">3</span></div>
+        <div class="cb2" style="gap:0">
+          <a class="risk" href="renewals.html"><span class="n r">1</span><div><b>Renewal unpaid within 7 days</b><small>greenleaforganics.com · 8 Oct · ₹1,416 · the client was reminded on day 7</small></div></a>
+          <a class="risk" href="expiry.html"><span class="n g">0</span><div><b>Expired assets</b><small>Nothing has expired · 46 domains and 40 SSL checked at 6:00 am</small></div></a>
+          <a class="risk" href="collections.html"><span class="n r">1</span><div><b>Client with an escalation</b><small>Anbu Textiles · ₹28,000 for 34 days · a "call the client" task is yours</small></div></a>
+          <a class="risk" href="services-sold.html"><span class="n a">1</span><div><b>Agreement ended, money still due</b><small>Coastal Realty · SEO ended 15 Sep · on hold · ₹12,000</small></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="d3">
+      <!-- 6-month revenue trend -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Revenue · last 6 months</h2><span class="ai-btn sm" style="margin-left:auto" data-ai="Explain the trend: a short note on why September dipped 7%, with links to the invoices behind it. Arrives as a draft; nothing is sent."><i data-i="spark"></i>Explain</span></div>
+        <div class="cb2">
+          <div class="cardfoot" style="margin-top:-4px"><span>Money received each month · <b style="color:var(--ink)">₹9,02,750</b> in 6 months · average ₹1,50,458</span></div>
+          <div>
+            <div class="vbars">
+              <div><small>₹1.38L</small><i style="height:81%"></i></div>
+              <div><small>₹1.43L</small><i style="height:84%"></i></div>
+              <div><small>₹1.49L</small><i style="height:88%"></i></div>
+              <div><small>₹1.58L</small><i style="height:93%"></i></div>
+              <div><small>₹1.63L</small><i style="height:96%"></i></div>
+              <div class="cur"><small>₹1.52L</small><i style="height:89%"></i></div>
+            </div>
+            <div class="vbars-x"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
+          </div>
+          <div class="cardfoot"><span>September <span class="over" style="font-weight:600">7% below August</span></span><a href="finance.html">Finance</a></div>
+        </div>
+      </div>
+
+      <!-- Tasks by status -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Tasks by status</h2><a class="link" href="tasks.html" style="text-decoration:none">Tasks<i data-i="right"></i></a></div>
+        <div class="cb2">
+          <div class="big2"><div><small>Open</small><b>44</b><span>for the whole team</span></div><div><small>Late</small><b style="color:var(--red)">4</b><span>2 are client work</span></div><div><small>Done this week</small><b>26</b><span>since Monday</span></div></div>
+          <div class="stack"><i style="width:47.7%;background:#94A3B8"></i><i style="width:27.3%;background:#38BDF8"></i><i style="width:11.4%;background:#8B5CF6"></i><i style="width:4.5%;background:#E2A93B"></i><i style="width:9.1%;background:var(--red)"></i></div>
+          <div class="skey" style="grid-template-columns:repeat(2,1fr)"><div><i style="background:#94A3B8"></i>To do<b>21</b></div><div><i style="background:#38BDF8"></i>In progress<b>12</b></div><div><i style="background:#8B5CF6"></i>In review<b>5</b></div><div><i style="background:#E2A93B"></i>Blocked<b>2</b></div><div><i style="background:var(--red)"></i>Late<b>4</b></div><div><i style="background:var(--on)"></i>Done this week<b>26</b></div></div>
+        </div>
+      </div>
+
+      <!-- Team today -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Team today</h2><span class="count">4 of 6 in</span><a class="link" href="workload.html" style="text-decoration:none">Workload<i data-i="right"></i></a></div>
+        <ul class="team tm">
+          <li><span class="lg-av" style="--av:#0F766E">KR</span><div><b>Karthik Raman</b><span class="today-st in"><i></i>In 9:51 am · SEO lead</span></div><div class="load">9 open<div class="bar"><i class="hi" style="width:90%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><span class="today-st wfh"><i></i>In 9:58 am · from home</span></div><div class="load">6 open<div class="bar"><i style="width:60%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><span class="today-st in"><i></i>In 10:02 am · designer</span></div><div class="load">4 open<div class="bar"><i style="width:40%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><span class="today-st in"><i></i>In 10:05 am · on probation</span></div><div class="load">3 open<div class="bar"><i style="width:30%"></i></div></div></li>
+          <li><span class="lg-av" style="--av:#B45309">MV</span><div><b>Meena V</b><span class="today-st no"><i></i>Emergency leave asked</span></div><div class="load"><a class="chip c-amber" href="leave.html" style="text-decoration:none">Approve</a></div></li>
+          <li><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><span class="today-st leave"><i></i>On leave today</span></div><div class="load"><span class="chip c-ink">Away</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="d4">
+      <!-- Missing employee documents -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Missing employee documents</h2><span class="count">3</span></div>
+        <div class="cb2">
+          <div class="docs">
+            <a href="doc-check.html"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Bank passbook · education certificate · joined 29 Sep</small></div><span class="chip c-red">2 missing</span></a>
+            <a href="doc-check.html"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Education certificate</small></div><span class="chip c-red">1 missing</span></a>
+            <a href="doc-check.html"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N · PAN</b><small>Uploaded today 10:20 am · waiting for you to check</small></div><span class="chip c-amber">To check</span></a>
+          </div>
+          <div class="cardfoot"><span>Aadhaar: last 4 digits only</span><a href="doc-check.html">Remind both</a></div>
+        </div>
+      </div>
+
+      <!-- Subscription spend (YTP's own tools) -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Subscription spend</h2><a class="link" href="subscriptions.html" style="text-decoration:none">YTP subscriptions<i data-i="right"></i></a></div>
+        <div class="cb2">
+          <div class="big2"><div><small>This month</small><b>₹23,138</b><span>8 tools</span></div><div><small>Renew in 7 days</small><b>2</b><span>Figma 3 Oct · AiSensy 5 Oct</span></div></div>
+          <div class="spend">
+            <div><span>Semrush</span><i style="width:100%"></i><b>₹11,733</b></div>
+            <div><span>Adobe CC</span><i style="width:36%"></i><b>₹4,230</b></div>
+            <div><span>Figma</span><i style="width:21%"></i><b>₹2,515</b></div>
+            <div><span>AiSensy</span><i style="width:15%"></i><b>₹1,770</b></div>
+            <div><span>4 others</span><i style="width:25%"></i><b>₹2,890</b></div>
+          </div>
+          <div class="ai-card" style="padding:10px 12px;gap:4px"><div class="ai-h"><i data-i="spark"></i>Saving to consider</div><span style="font-size:12.5px">Figma: only Divya edited files in September. One editor saves about ₹1,257 a month before it renews on 3 Oct.</span></div>
+        </div>
+      </div>
+
+      <!-- Automations this morning -->
+      <div class="card">
+        <div class="ch"><h2 class="serif" style="font-size:22px">Automations this morning</h2><span class="count">14</span><a class="link" href="automations.html" style="text-decoration:none">Automations<i data-i="right"></i></a></div>
+        <div class="cb2">
+          <div class="runs">
+            <a href="run-history.html"><span class="t">6:00 am</span><span><b>Domain and SSL check</b> <small>· 46 domains, 40 SSL · 1 date changed</small></span><span class="dot g"></span></a>
+            <a href="run-history.html"><span class="t">6:05 am</span><span><b>Renewal alerts</b> <small>· greenleaforganics.com, 7 days</small></span><span class="dot g"></span></a>
+            <a href="run-history.html"><span class="t">6:10 am</span><span><b>AMC maintenance task</b> <small>· Aroma Bakes, quarterly</small></span><span class="dot g"></span></a>
+            <a href="run-history.html"><span class="t">7:30 am</span><span><b>Daily summaries</b> <small>· 6 sent · Rahul skipped (on leave)</small></span><span class="dot g"></span></a>
+            <a href="run-history.html"><span class="t">9:00 am</span><span><b>Monthly bill</b> <small>· Velocity Motors YTP/26-27/0045 · WhatsApp retried once</small></span><span class="dot a"></span></a>
+          </div>
+          <div class="cardfoot"><span>0 failed · the engine never sends anything twice</span><a href="run-history.html">Run history</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

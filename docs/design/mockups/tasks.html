@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Tasks</title>
+<!-- Batch 2 · SCR-080 Tasks: one task list for every module; saved views, filters, list or board; AI "Plan my day" (CORE-040 to CORE-046, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .tt td{padding-top:11px;padding-bottom:11px}
+  .tt td:first-child{width:34px}
+  .tt b{font-weight:700}
+  .tt .rel{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .tt a.tk{color:var(--ink);text-decoration:none}
+  .pr{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600}
+  .pr i{width:8px;height:8px;border-radius:50%}
+  .pr.u i{background:var(--red)} .pr.h i{background:var(--amber)} .pr.m i{background:var(--blue)} .pr.l i{background:var(--faint)}
+  .svc{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card-2);color:var(--muted);border:1px solid var(--line-soft);white-space:nowrap}
+  .due.late{color:var(--red);font-weight:700}
+  .plan{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+  .plan ol{display:flex;gap:18px;list-style:none;font-size:13px;flex-wrap:wrap}
+  .plan ol li{display:flex;gap:7px;align-items:center}
+  .plan ol li em{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--card);border:1px solid var(--ai-line);font-size:11px;font-weight:700;color:var(--ai-ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Tasks">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Tasks</h1>
+          <p>One task list for every module: client work, renewals, support, HR and the Academy. Each task can link to any record.</p>
+        </div>
+        <div class="acts"><div class="seg-tg"><span class="on">List</span><span>Board</span></div><span class="ai-btn" data-ai="AI helper: suggests an order for today from due times, priority and late work. You choose whether to use it."><i data-i="spark"></i>Plan my day</span><a class="btn solid lg" href="quick-add.html" style="text-decoration:none"><i data-i="plus"></i>New task</a></div>
+      </div>
+      <div class="views"><span class="on">My tasks <em class="count">12</em></span><span>Due today <em class="count">4</em></span><span>Late <em class="count">2</em></span><span>In review <em class="count">3</em></span><span>Blocked <em class="count">1</em></span><span>Team</span><span>By client</span><span>Workload</span><span><i data-i="plus"></i>Save view</span></div>
+
+      <div class="ai-card plan" style="padding:12px 16px">
+        <div class="ai-h"><i data-i="spark"></i>Suggested order for today</div>
+        <ol><li><em>1</em>Fix contact form (late)</li><li><em>2</em>Homepage design review 12:30 pm</li><li><em>3</em>Renew SSL before 3:00 pm</li><li><em>4</em>Update blog plugins</li></ol>
+        <div class="ai-acts"><span class="btn">Use this order</span><span class="btn" title="Dismiss"><i data-i="x"></i></span></div>
+      </div>
+
+      <section class="filters" style="padding:0"><div class="fsel"><span>Client</span>All<i data-i="down"></i></div><div class="fsel"><span>Service</span>All<i data-i="down"></i></div><div class="fsel"><span>Assignee</span>Me<i data-i="down"></i></div><div class="fsel"><span>Priority</span>All<i data-i="down"></i></div><div class="search"><i data-i="search"></i>Search tasks…</div></section>
+
+      <div class="card cb" style="padding-top:10px">
+        <table class="tbl tt">
+          <thead><tr><th></th><th>Task</th><th>Service</th><th>People</th><th>Priority</th><th>Due</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Fix contact form</b></a><span class="rel">Velocity Motors · Website support</span></td><td><span class="svc">Website</span></td><td><span class="av-stack"><span class="av s">AK</span></span></td><td><span class="pr u"><i></i>Urgent</span></td><td class="due late">Yesterday · late</td><td><span class="chip c-blue">In progress</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Homepage design review</b></a><span class="rel">Kaveri Hospitals · Website project</span></td><td><span class="svc">Website</span></td><td><span class="av-stack"><span class="av s">DS</span><span class="av s">YP</span></span></td><td><span class="pr h"><i></i>High</span></td><td>Today 12:30 pm</td><td><span class="chip c-blue">In review</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Check SSL auto-renewal</b></a><span class="rel">Sharma Dental Care · sharmadental.in</span></td><td><span class="svc">Domain + hosting</span></td><td><span class="av-stack"><span class="av s">AK</span></span></td><td><span class="pr h"><i></i>High</span></td><td>Today 3:00 pm</td><td><span class="chip c-ink">Pending</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Update blog plugins</b></a><span class="rel">Aroma Bakes · Annual maintenance</span></td><td><span class="svc">AMC</span></td><td><span class="av-stack"><span class="av s">AK</span></span></td><td><span class="pr m"><i></i>Medium</span></td><td>Today 5:30 pm</td><td><span class="chip c-ink">Pending</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>October content calendar</b></a><span class="rel">Green Valley School · Social media</span></td><td><span class="svc">Social</span></td><td><span class="av-stack"><span class="av s">DS</span><span class="av s">KR</span></span></td><td><span class="pr m"><i></i>Medium</span></td><td>3 Oct</td><td><span class="chip c-amber">Blocked</span><span class="rel">Waiting on client photos</span></td></tr>
+            <tr><td><i class="chk"></i></td><td><a class="tk" href="task.html"><b>Keyword report, September</b></a><span class="rel">Pearl Dental · SEO</span></td><td><span class="svc">SEO</span></td><td><span class="av-stack"><span class="av s">KR</span></span></td><td><span class="pr l"><i></i>Low</span></td><td>5 Oct</td><td><span class="chip c-blue">In progress</span></td></tr>
+            <tr><td><i class="chk on"></i></td><td><a class="tk" href="task.html"><b style="text-decoration:line-through;color:var(--muted)">Send welcome kit</b></a><span class="rel">Sri Lakshmi Traders · Onboarding</span></td><td><span class="svc">Website</span></td><td><span class="av-stack"><span class="av s">YP</span></span></td><td><span class="pr l"><i></i>Low</span></td><td>Today</td><td><span class="chip c-green">Completed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Task</title>
+<!-- Batch 2 · SCR-081 Task: details, subtasks with progress, comments with @mentions, files, activity; AI summarise, suggest subtasks, draft a client update (CORE-040, CORE-041, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start;min-height:0}
+  .col{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .desc{font-size:14px;line-height:1.6;color:var(--ink)}
+  .sub{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .sub:first-of-type{border-top:0}
+  .sub .who{margin-left:auto;display:flex;gap:10px;align-items:center;font-size:12px;color:var(--muted)}
+  .sub.done span.t{color:var(--muted);text-decoration:line-through}
+  .cm{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0}
+  .cm b{font-weight:700}
+  .cm .when{font-size:12px;color:var(--muted);margin-left:8px}
+  .cm p{margin-top:3px;font-size:13.5px;line-height:1.5}
+  .at{color:var(--blue);font-weight:700}
+  .reply{display:flex;align-items:center;gap:10px;height:46px;padding:0 8px 0 14px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--muted)}
+  .reply .sp{flex:1}
+  .kv{display:grid;grid-template-columns:110px 1fr;gap:12px 12px;font-size:13px;align-items:center}
+  .kv dt{color:var(--muted)}
+  .kv dd{font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .fl{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--line-soft)}
+  .fl:first-of-type{border-top:0}
+  .fl .m{font-size:12px;color:var(--muted);display:block}
+  .prog{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+  .prog .meter{flex:1}
+</style>
+</head>
+<body>
+<div class="app" data-active="Tasks">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="tasks.html">Tasks</a><span>/</span><a href="client-profile.html">Velocity Motors</a><span>/</span><b style="color:var(--ink)">Fix contact form</b></div>
+          <h1 class="serif">Fix contact form</h1>
+          <p style="display:flex;gap:8px;align-items:center;margin-top:10px"><span class="chip c-blue">In progress</span><span class="chip c-red">Late · due yesterday</span><span class="chip c-ink">Urgent</span><span class="svc" style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card-2);color:var(--muted)">Website support</span></p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: writes a short update for Ravi in his language from the subtasks and comments. It waits for your approval before sending."><i data-i="spark"></i>Draft update to client</span><span class="btn lg"><i data-i="copy"></i>Duplicate</span><span class="btn solid lg"><i data-i="check"></i>Mark completed</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="col">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Description</h2></div>
+            <p class="desc">The enquiry form on velocitymotors.in stopped sending emails after the update on 26 Sep. Ravi says 3 customers called because they got no reply. Fix the form, send a test enquiry, and tell Ravi when it works.</p>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Subtasks</h2><span class="prog" style="width:220px"><span class="meter"><i style="width:50%"></i></span>2 of 4</span><span class="link"><span class="ai-btn sm" data-ai="AI helper: suggests subtasks from the description and similar past tasks. You pick which to add."><i data-i="spark"></i>Suggest subtasks</span></span></div>
+            <div class="sub done"><i class="chk on"></i><span class="t">Find why emails stopped (mail plugin lost its settings)</span><span class="who"><span class="av s">AK</span>Done 10:05 am</span></div>
+            <div class="sub done"><i class="chk on"></i><span class="t">Reconnect the form to the Billing email sender</span><span class="who"><span class="av s">AK</span>Done 10:40 am</span></div>
+            <div class="sub"><i class="chk"></i><span class="t">Send a test enquiry and check it arrives</span><span class="who"><span class="av s">AK</span>Today</span></div>
+            <div class="sub"><i class="chk"></i><span class="t">Tell Ravi it works</span><span class="who"><span class="av s">KR</span>Today</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:20px">Comments</h2><em class="count">2</em><span class="link"><span class="ai-btn sm" data-ai="AI helper: summarises a long comment thread in a few lines."><i data-i="spark"></i>Summarise</span></span></div>
+            <div class="cm"><span class="av s" style="width:34px;height:34px">KR</span><div><b>Karthik</b><span class="when">Yesterday 5:20 pm</span><p>Ravi called again. <span class="at">@Arun</span> can you take this first thing tomorrow?</p></div></div>
+            <div class="cm"><span class="av s" style="width:34px;height:34px">AK</span><div><b>Arun</b><span class="when">Today 10:41 am</span><p>Found it: the mail plugin lost its settings in the update. Reconnected to Billing. Testing now.</p></div></div>
+            <div class="reply"><span class="sp">Write a comment… type @ to mention someone</span><span class="btn" title="Attach"><i data-i="clip"></i></span><span class="mic" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span><span class="btn solid"><i data-i="send"></i>Send</span></div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card cb" style="padding-top:18px">
+            <dl class="kv">
+              <dt>Assignees</dt><dd><span class="av-stack"><span class="av s">AK</span><span class="av s">KR</span></span>Arun, Karthik</dd>
+              <dt>Owner</dt><dd>Karthik</dd>
+              <dt>Due</dt><dd style="color:var(--red)">Yesterday, 6:00 pm</dd>
+              <dt>Priority</dt><dd>Urgent</dd>
+              <dt>Related to</dt><dd><a class="src" href="client-profile.html"><i data-i="users"></i>Velocity Motors</a><a class="src" href="dossier.html"><i data-i="globe"></i>velocitymotors.in</a></dd>
+              <dt>Service</dt><dd>Website support (AMC)</dd>
+              <dt>Repeats</dt><dd style="color:var(--muted);font-weight:500">No</dd>
+            </dl>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Files</h2><em class="count">2</em><span class="link"><span class="btn"><i data-i="upload"></i>Add</span></span></div>
+            <div class="fl"><span class="ftype img">PNG</span><div><b>form-error.png</b><span class="m">Screenshot from Ravi · 240 KB</span></div></div>
+            <div class="fl"><span class="ftype pdf">PDF</span><div><b>test-enquiry.pdf</b><span class="m">Arun · today · 80 KB</span></div></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Activity</h2><a class="link" href="record-history.html">History<i data-i="right"></i></a></div>
+            <p class="sm" style="font-size:12.5px;line-height:1.9">10:41 am · Arun completed a subtask<br>9:12 am · Status: Pending → In progress<br>Yesterday · Karthik created the task from a call</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

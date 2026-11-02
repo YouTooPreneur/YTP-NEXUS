@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documents · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-211 Documents from YTP (Kaveri Hospitals): agreements, reports, statements, meeting summaries and handover papers that the team marked for the client; internal documents and notes never appear (POR-012, CORE-051, PRJ-015). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .fld > span{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .inp{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13.5px;color:var(--ink);min-width:0}
+  .inp.ph{color:var(--muted)}
+  .inp.area{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.5}
+  .inp svg{width:16px;height:16px;color:var(--muted)}
+  .drop3{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--edge);border-radius:14px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .drop3 b{display:block;color:var(--ink);font-size:13px}
+  .drop3 .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+
+  .tbl td{font-size:13px}
+  .tbl td small{display:block;font-size:12px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .kind{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card-2);color:var(--muted);white-space:nowrap}
+  .sumd h3{font-family:Sora,sans-serif;font-weight:600;font-size:13px;margin-top:4px}
+  .sumd ul{margin:2px 0 0 18px;font-size:12.5px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="docs" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Documents</h1><p class="lead2">Agreements, reports, statements and meeting summaries we have shared with you.</p></div>
+    <div class="acts"><div class="pill-sel"><span class="on">All · 8</span><span>Agreements · 2</span><span>Reports · 2</span><span>Meetings · 2</span><span>Other · 2</span></div></div>
+  </div>
+  <div class="po-grid" style="--po-side:400px">
+    <div class="po-col">
+      <section class="pcard2">
+        <table class="tbl">
+          <thead><tr><th style="width:44px"></th><th>Document</th><th>Kind</th><th>Shared</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ftype pdf">PDF</span></td><td><b>Website report · September 2026</b><small>Uptime, backups, updates, visits and requests</small></td><td><span class="kind">Report</span></td><td class="sm">Today</td><td class="r"><a class="po-btn sm" href="docs-pdf.html#report">Open</a></td></tr>
+            <tr><td><span class="ftype pdf">PDF</span></td><td><b>Statement of account · Jul–Sep 2026</b><small>Billed, paid, TDS and balance</small></td><td><span class="kind">Statement</span></td><td class="sm">30 Sep</td><td class="r"><a class="po-btn sm" href="portal-invoices.html">Open</a></td></tr>
+            <tr class="sel"><td><span class="ftype doc">DOC</span></td><td><b>Meeting summary · sitemap review</b><small>Decisions and next steps</small></td><td><span class="kind">Meeting</span></td><td class="sm">2 Sep</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+            <tr><td><span class="ftype pdf">PDF</span></td><td><b>Website report · August 2026</b><small>Monthly report</small></td><td><span class="kind">Report</span></td><td class="sm">1 Sep</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+            <tr><td><span class="ftype fig">IMG</span></td><td><b>Sitemap · approved</b><small>7 pages · approved by you 2 Sep</small></td><td><span class="kind">Project file</span></td><td class="sm">2 Sep</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+            <tr><td><span class="ftype doc">DOC</span></td><td><b>Meeting summary · discovery call</b><small>What you need from the new website</small></td><td><span class="kind">Meeting</span></td><td class="sm">15 Jul</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+            <tr><td><span class="ftype pdf">PDF</span></td><td><b>Proposal Q-2026-009 · website redesign</b><small>Accepted and signed online 12 Jul · this is the agreement</small></td><td><span class="kind">Agreement</span></td><td class="sm">12 Jul</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+            <tr><td><span class="ftype pdf">PDF</span></td><td><b>Website care agreement</b><small>From 1 Apr 2025 · signed</small></td><td><span class="kind">Agreement</span></td><td class="sm">1 Apr 2025</td><td class="r"><span class="po-btn sm">Open</span></td></tr>
+          </tbody>
+        </table>
+        <div class="po-note"><i data-i="eye"></i><span>Only documents we mark for you appear here. Our internal notes never do.</span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2 sumd">
+        <h2>Sitemap review · 2 Sep</h2>
+        <span class="sm" style="font-size:12.5px">Google Meet · Dr. Rao, Owner, Divya</span>
+        <h3>Decisions</h3>
+        <ul><li>Sitemap approved: 7 pages</li><li>Each department gets its own page</li><li>Photo shoot at the hospital on 8 Sep</li></ul>
+        <h3>Next steps</h3>
+        <ul><li>Colours and fonts by 5 Sep · YouTooPreneur</li><li>Doctor list with timings · Kaveri Hospitals · done 6 Sep</li></ul>
+        <h3>Next meeting</h3>
+        <ul><li>Homepage review (held on 29 Sep)</li></ul>
+        <span class="po-btn sm" style="align-self:flex-start;margin-top:4px"><i data-i="download"></i>Download PDF</span>
+      </section>
+    </div>
+  </div>
+</main>
+</div>
+</body>
+</html>

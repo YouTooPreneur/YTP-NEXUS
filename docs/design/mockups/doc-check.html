@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Employee documents check</title>
+<!-- Batch 3 · SCR-139 Employee documents check: uploads waiting for HR, verified and missing; Aadhaar masked; every opening logged (TEAM-025, TEAM-028) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:start}
+  .dc td{padding-top:11px;padding-bottom:11px}
+  .dc tr.on td{background:var(--active-bg)}
+  .viewer{background:var(--stage);border-radius:14px;height:260px;display:grid;place-items:center;position:relative;overflow:hidden}
+  .pan{width:300px;height:180px;border-radius:12px;background:linear-gradient(135deg,#E8F0FB,#CFE0F5);box-shadow:0 8px 24px rgba(0,0,0,.12);padding:16px;display:flex;flex-direction:column;gap:6px;font-size:11px;color:#1e3a5f;font-family:ui-monospace,Consolas,monospace}
+  .pan b{font-family:Sora,sans-serif;font-size:12px;letter-spacing:.08em}
+
+  .wm{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:11px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="people.html">Team</a><span>/</span><b style="color:var(--ink)">Documents check</b></div>
+          <h1 class="serif">Employee documents check</h1>
+          <p>Documents people uploaded, waiting for HR. Only the Owner and HR can open them; every opening is logged. Aadhaar is kept masked: last 4 digits only.</p>
+        </div>
+      </div>
+      <div class="counters"><div class="ctr warn"><b>1</b><span>Waiting for HR</span></div><div class="ctr"><b>27</b><span>Verified</span></div><div class="ctr warn"><b>3</b><span>Missing (2 people)</span></div></div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:8px">
+          <table class="tbl dc"><thead><tr><th>Person</th><th>Document</th><th>Uploaded</th><th>Status</th></tr></thead><tbody>
+            <tr class="on"><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td><b>PAN</b></td><td class="sm">By Priya · today 10:20 am</td><td><span class="chip c-amber">Waiting for HR</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td><b>Bank passbook or cheque</b></td><td class="sm">—</td><td><span class="chip c-red">Missing</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td><b>Education certificate</b></td><td class="sm">—</td><td><span class="chip c-red">Missing</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><b>Divya S</b></div></td><td><b>Education certificate</b></td><td class="sm">—</td><td><span class="chip c-red">Missing</span></td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><b>Priya N</b></div></td><td><b>Aadhaar</b> <span class="sm">· •••• 4821</span></td><td class="sm">By HR · 29 Sep</td><td><span class="chip c-green">Verified</span></td></tr>
+          </tbody></table>
+          <div style="display:flex;gap:10px;margin-top:12px"><span class="btn"><i data-i="bell"></i>Remind the 2 people</span></div>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">Priya N · PAN</h2><span class="chip c-ink">Opening logged</span></div>
+          <div class="viewer"><div class="pan"><b>INCOME TAX DEPARTMENT</b><span>Permanent Account Number</span><span style="font-size:14px;font-weight:700">ABC•••••4F</span><span>PRIYA N</span><span>DOB ••/••/2001</span></div><span class="wm">Watermark: viewed by Owner · 1 Oct 11:12 am</span></div>
+          <div class="fields"><div class="field"><label>Name matches the record</label><div class="input"><i class="chk on"></i>Yes</div></div><div class="field"><label>Readable</label><div class="input"><i class="chk on"></i>Yes</div></div></div>
+          <div style="display:flex;gap:10px"><span class="btn solid lg">Verify</span><span class="btn lg">Ask for a new copy</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

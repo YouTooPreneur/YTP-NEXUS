@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Servers and hosting</title>
+<!-- Batch 4 · SCR-093 Servers and hosting: shared and dedicated hosting accounts and servers; dated placements (which site, from and to); one renewal and one alert per account listing every site; vendor cost recorded once (WEB-010, FIN-016, FIN-018) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:330px 1fr;gap:18px;align-items:start}
+  .sv{display:flex;flex-direction:column;gap:10px}
+  .svc2{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+  .svc2.on{box-shadow:inset 0 0 0 1.5px var(--on),var(--shadow)}
+  .svc2 .h{display:flex;align-items:center;gap:8px}
+  .svc2 .h b{font-weight:700}
+  .svc2 .h .chip{margin-left:auto}
+  .svc2 small{font-size:12px;color:var(--muted)}
+  .svc2.client{background:var(--card-2);box-shadow:none;border-style:dashed}
+  .head2{display:flex;align-items:center;gap:12px}
+  .head2 h2{font-size:24px}
+  .head2 .r{margin-left:auto;display:flex;gap:8px}
+  .alert2{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--amber-bg)}
+  .alert2 svg{width:18px;height:18px;color:var(--amber);flex:none;margin-top:2px}
+  .alert2 b{color:var(--amber)}
+  .alert2 p{font-size:12.5px;color:var(--ink);margin-top:3px;line-height:1.5}
+  .use{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .use div{display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+  .use span.t{display:flex;justify-content:space-between;color:var(--muted)}
+  .use span.t b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="app" data-active="WebCare" data-sec="webcare" data-sec-on="servers">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:16px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Servers and hosting</h1>
+          <p>Shared and dedicated hosting accounts and servers. Each account has one renewal and one alert that lists every site on it; its cost is recorded once.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>Add server or account</span></div>
+      </div>
+      <div class="lay">
+        <div class="sv">
+          <div class="svc2 on"><div class="h"><i data-i="server"></i><b>YTP-HS-01</b><span class="chip c-blue">12 sites</span></div><small>Hostinger Cloud Startup · shared · YTP account</small><small>Renews 14 Jan 2027 · ₹19,999 a year</small></div>
+          <div class="svc2"><div class="h"><i data-i="server"></i><b>YTP-HS-02</b><span class="chip c-blue">6 sites</span></div><small>Hostinger Business · shared · YTP account</small><small>Renews 2 Mar 2027 · ₹8,388 a year</small></div>
+          <div class="svc2"><div class="h"><i data-i="server"></i><b>YTP-VPS-01</b><span class="chip c-blue">2 sites</span></div><small>DigitalOcean droplet, 4 GB · YTP account</small><small>Monthly · USD 24 (about ₹2,010, card)</small></div>
+          <div class="svc2 client"><div class="h"><i data-i="server"></i><b>Kaveri Hospitals cPanel</b><span class="chip c-amber">Client renews</span></div><small>GoDaddy · client's own account</small><small>Renews 14 Oct 2026 · we confirm with proof</small></div>
+        </div>
+
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:14px">
+          <div class="head2"><span class="lic" style="width:44px;height:44px"><i data-i="server"></i></span><div><h2 class="serif">YTP-HS-01</h2><span class="sm" style="font-size:12.5px">Hostinger Cloud Startup · 200 GB · <a class="lk" href="providers.html">Hostinger · YTP account</a> · MFA on</span></div><span class="r"><span class="btn"><i data-i="lock"></i>Open in vault</span><span class="btn">Edit</span></span></div>
+          <div class="kvc" style="grid-template-columns:repeat(4,1fr)"><div><small>Renews</small><b>14 Jan 2027</b></div><div><small>Cost (recorded once)</small><b>₹19,999 a year</b></div><div><small>Billed to clients</small><b>Per each agreement</b></div><div><small>Split across sites</small><b>By disk each uses</b></div></div>
+          <div class="alert2"><i data-i="bell"></i><div><b>One renewal, one alert</b><p>On 15 Dec, 30 Dec, 7 Jan and 13 Jan, one alert goes to the Owner and Arun, listing all 12 sites below. Clients never see this account, its login, or each other.</p></div></div>
+          <div>
+            <div class="sect" style="padding:0 0 6px">Sites on this account (placements)</div>
+            <table class="tbl"><thead><tr><th>Site</th><th>Client</th><th>From</th><th>To</th><th>Disk</th><th>Our cost share</th><th>Client is billed</th></tr></thead><tbody>
+              <tr><td><a class="lk" href="asset.html" style="font-weight:700">sharmadental.in</a></td><td class="sm">Sharma Dental Care</td><td class="sm">Jul 2025</td><td class="sm">Now</td><td class="sm">6 GB</td><td class="sm">₹968</td><td class="sm">₹8,850 a year with the domain</td></tr>
+              <tr><td><b>greenleaforganics.com</b></td><td class="sm">Greenleaf Organics</td><td class="sm">Mar 2025</td><td class="sm">Now</td><td class="sm">9 GB</td><td class="sm">₹1,451</td><td class="sm">In the AMC</td></tr>
+              <tr><td><b>anbutextiles.com</b></td><td class="sm">Anbu Textiles</td><td class="sm">Jun 2026</td><td class="sm">Now</td><td class="sm">22 GB</td><td class="sm">₹3,548</td><td class="sm">₹6,000 a year</td></tr>
+              <tr><td><b>book.sharmadental.in</b></td><td class="sm">Sharma Dental Care</td><td class="sm">Jan 2026</td><td class="sm">Now</td><td class="sm">2 GB</td><td class="sm">₹323</td><td class="sm">With the main site</td></tr>
+              <tr><td><b>velocitymotors.in</b></td><td class="sm">Velocity Motors</td><td class="sm">Feb 2025</td><td class="sm">May 2026</td><td class="sm">—</td><td class="sm">—</td><td class="sm">Moved to YTP-VPS-01</td></tr>
+              <tr><td class="sm" colspan="4">+ 8 more sites · placement history is kept for every move</td><td class="sm">85 GB</td><td class="sm">₹13,709</td><td class="sm">Per each agreement</td></tr>
+              <tr><td class="sm" colspan="4"><b>12 sites now</b> · the shares add up to the bill</td><td class="sm"><b>124 GB</b></td><td class="sm"><b>₹19,999</b></td><td></td></tr>
+            </tbody></table>
+          </div>
+          <div class="use"><div><span class="t">Disk<b>124 GB of 200 GB</b></span><span class="meter"><i style="width:62%;background:var(--on)"></i></span></div><div><span class="t">Sites<b>12 of 100</b></span><span class="meter"><i style="width:12%;background:var(--on)"></i></span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

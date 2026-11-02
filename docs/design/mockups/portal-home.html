@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-201 Portal home (Kaveri Hospitals · Dr. Rao): what needs the client (approvals, an invoice due, a quote), cards for open requests, work in progress, amount to pay and total paid (matching the invoices), the agreement card, what comes next and the YTP people on their work (POR-001, POR-004, POR-011). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .agr{display:flex;flex-direction:column;gap:7px;padding:10px 12px;border-radius:14px;background:var(--card-2)}
+  .agr .t{display:flex;align-items:center;gap:8px}
+  .agr .t b{font-weight:700;font-size:13.5px}
+  .agr .t .chip{margin-left:auto}
+  .nxt{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .nxt:first-of-type{border-top:0}
+  .nxt .d6{display:flex;flex-direction:column;align-items:center;justify-content:center;height:46px;border-radius:12px;background:var(--card-2);font-weight:700;font-size:11px;color:var(--muted);line-height:1.1}
+  .nxt .d6 b{font-family:Sora,sans-serif;font-size:17px;color:var(--ink)}
+  .nxt b{font-weight:700}
+  .nxt small{display:block;color:var(--muted);font-size:12px}
+  .tms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px}
+  .tm{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="home" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Good morning, Dr. Rao</h1><p class="lead2">Here is what needs you, and how your work with YouTooPreneur is going. Thursday 1 October 2026.</p></div>
+    <div class="acts"><a class="po-btn" href="portal-support.html"><i data-i="msg"></i>Raise a request</a><span class="po-btn"><i data-i="chat"></i>WhatsApp us</span></div>
+  </div>
+  <div class="po-kpis">
+    <a class="po-k" href="portal-support.html"><small>Open requests</small><b>1</b><span>Priya is on it · 12 closed this year</span></a>
+    <a class="po-k" href="portal-projects.html"><small>Work in progress</small><b>2 projects</b><span>Website redesign · doctor videos</span></a>
+    <a class="po-k warn" href="portal-invoices.html"><small>To pay</small><b>₹23,600</b><span>1 invoice · 3 days past due</span></a>
+    <a class="po-k" href="portal-invoices.html"><small>Paid this year</small><b>₹90,100</b><span>3 invoices · includes your TDS</span></a>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Needs you <span class="count">3</span></h2>
+        <div class="prow"><span class="po-ic amb"><i data-i="video"></i></span><div><b>Approve 3 doctor intro videos</b><small>Sent by Rahul on 29 Sep · 3 of 6 ready</small></div><span class="r"><a class="po-btn sm solid" href="portal-projects.html">Review</a></span></div>
+        <div class="prow"><span class="po-ic red"><i data-i="wallet"></i></span><div><b>Invoice YTP/26-27/0038 · ₹23,600</b><small>Website care, Jul–Sep · was due on 28 Sep</small></div><span class="r"><a class="po-btn sm" href="docs-pdf.html#invoice">PDF</a><a class="po-btn sm solid" href="portal-invoices.html">Pay now</a></span></div>
+        <div class="prow"><span class="po-ic blu"><i data-i="doc"></i></span><div><b>Quote · online appointment booking · ₹15,000</b><small>You asked for it on the 29 Sep call · valid until 15 Oct</small></div><span class="r"><a class="po-btn sm solid" href="portal-proposals.html">Open</a></span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Website redesign <a class="r" href="portal-projects.html">Details</a></h2>
+        <div class="po-stages"><div class="d"><i></i><b>Discovery</b>Done</div><div class="d"><i></i><b>Content</b>Done</div><div class="n"><i></i><b>Design</b>In progress</div><div><i></i><b>Build</b>From 13 Oct</div><div><i></i><b>Launch</b>5 Nov</div></div>
+        <div class="po-note"><i data-i="clock"></i><span>Next from us: <b>the new homepage design, by 3 Oct</b>. Divya leads the design; Arun builds the site.</span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Latest from us</h2>
+        <div class="prow"><span class="po-ic"><i data-i="chart"></i></span><div><b>September website report</b><small>Updates, backups, visits and requests · today</small></div><span class="r"><a class="po-btn sm" href="docs-pdf.html#report">Open</a></span></div>
+        <div class="prow"><span class="po-ic"><i data-i="video"></i></span><div><b>Doctor intro videos 1 to 3</b><small>Sent for your approval · 29 Sep</small></div><span class="r"><a class="po-btn sm" href="portal-projects.html">Open</a></span></div>
+        <div class="prow"><span class="po-ic"><i data-i="server"></i></span><div><b>Your hosting proof</b><small>Received 30 Sep · Arun confirms it today</small></div><span class="r"><a class="po-btn sm" href="portal-services.html">Open</a></span></div>
+      </section>
+      <section class="pcard2">
+        <h2>Your team at YouTooPreneur</h2>
+        <div class="tms">
+          <div class="tm"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya S</b><small>Design lead · website redesign</small></div></div>
+          <div class="tm"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun Kumar</b><small>Developer · website care</small></div></div>
+          <div class="tm"><span class="lg-av" style="--av:#0369A1">PN</span><div><b>Priya N</b><small>Support · your open request</small></div></div>
+          <div class="tm"><span class="lg-av" style="--av:#7C3AED">RM</span><div><b>Rahul M</b><small>Videos · doctor intro videos</small></div></div>
+        </div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Your agreements <a class="r" href="portal-docs.html">Documents</a></h2>
+        <div class="agr"><div class="t"><b>Website care · current site</b><span class="chip c-green">Active</span></div>
+          <div class="po-kv"><span>Type</span><b>Annual maintenance (AMC)</b><span>Fee</span><b>₹23,600 a quarter</b><span>Started</span><b>1 Apr 2025</b><span>Ends</span><b>No end date · 30 days' notice</b></div></div>
+        <div class="agr"><div class="t"><b>Website redesign</b><span class="chip c-blue">In progress</span></div>
+          <div class="po-kv"><span>Type</span><b>Project · proposal Q-2026-009</b><span>Value</span><b>₹1,20,000 in 3 stages</b><span>Started</span><b>12 Jul 2026</b><span>Ends</span><b>At handover, after launch</b></div></div>
+      </section>
+      <section class="pcard2">
+        <h2>Coming up</h2>
+        <div class="nxt"><span class="d6"><b>3</b>Oct</span><div><b>Clarity session · 11:00 am</b><small>Google Meet · the link opens 10 minutes before</small></div></div>
+        <div class="nxt"><span class="d6"><b>14</b>Oct</span><div><b>Hosting renews</b><small>You renewed it; we got your proof and are checking it</small></div></div>
+        <div class="nxt"><span class="d6"><b>5</b>Nov</span><div><b>New website goes live</b><small>Then it joins your website care</small></div></div>
+        <div class="nxt"><span class="d6"><b>31</b>Dec</span><div><b>Next website care bill · ₹23,600</b><small>For October to December</small></div></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">Signed in as Dr. Rao · Kaveri Hospitals. Your access: invoices, projects, approvals and support. You only ever see your own company.</p>
+</main>
+</div>
+</body>
+</html>

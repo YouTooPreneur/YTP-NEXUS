@@ -1,0 +1,333 @@
+<title>Nexus Screen Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one calm column; summary first (progress, colour), then each batch as a list of screens with links. */
+:root{
+  --bg:#FAF8F3; --surface:#FFFFFF; --ink:#1C3D36; --muted:#5E6E66; --line:#E6E2D7; --soft:#F2EFE7;
+  --accent:#03FF96; --on-accent:#0E2A23; --band:#1C3D36; --band-ink:#FFFFFF;
+  --ready:#1E7149; --ready-bg:#E5F2EA; --next:#8F6512; --next-bg:#F6EEDB; --later:#5E6E66; --later-bg:#EEEBE3;
+  --display:"Sora",system-ui,sans-serif; --text:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C1814; --surface:#12231E; --ink:#E9F1EC; --muted:#9DB1A7; --line:#21403A; --soft:#172C26;
+  --accent:#03FF96; --on-accent:#06150F; --band:#0A1411; --band-ink:#E9F1EC;
+  --ready:#7FDDB0; --ready-bg:rgba(127,221,176,.12); --next:#E6C07C; --next-bg:rgba(230,192,124,.12); --later:#9DB1A7; --later-bg:rgba(157,177,167,.1);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1814; --surface:#12231E; --ink:#E9F1EC; --muted:#9DB1A7; --line:#21403A; --soft:#172C26;
+  --accent:#03FF96; --on-accent:#06150F; --band:#0A1411; --band-ink:#E9F1EC;
+  --ready:#7FDDB0; --ready-bg:rgba(127,221,176,.12); --next:#E6C07C; --next-bg:rgba(230,192,124,.12); --later:#9DB1A7; --later-bg:rgba(157,177,167,.1);
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:500 15px/1.55 var(--text);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:flex;flex-direction:column;gap:22px}
+.band{display:flex;align-items:center;gap:12px;background:var(--band);color:var(--band-ink);border-radius:16px;padding:16px 20px}
+.band svg{width:30px;height:33px;color:var(--accent);flex:none}
+.band b{font:600 22px var(--display)}
+.band span{opacity:.75;font-size:13px}
+h1{font:600 clamp(30px,5vw,44px)/1.08 var(--display);margin:6px 0 0;text-wrap:balance;letter-spacing:-.02em}
+.lead{color:var(--muted);max-width:68ch;margin:8px 0 0}
+.summary{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+.stat b{font:600 18px var(--display);margin-right:4px;font-variant-numeric:tabular-nums}
+.colour{display:flex;align-items:center;gap:8px;margin-left:auto}
+.colour button{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600}
+.colour button i{width:26px;height:20px;border-radius:6px;display:block}
+.colour button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent)}
+.colour button:focus-visible,.links a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{font-size:13px;color:var(--muted)}
+.batch{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.bhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:16px 20px}
+.bhead h2{font:600 19px var(--display);margin:0}
+.bhead .meta{color:var(--muted);font-size:13px}
+.chip{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:7px;margin-left:auto}
+.chip.ready{color:var(--ready);background:var(--ready-bg)} .chip.next{color:var(--next);background:var(--next-bg)} .chip.later{color:var(--later);background:var(--later-bg)}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:11px 20px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .id{font:600 12px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.row b{display:block;font-weight:700}
+.row .what{font-size:13px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.links a{font-size:12.5px;font-weight:700;color:var(--ink);text-decoration:none;padding:6px 11px;border-radius:9px;border:1px solid var(--line);background:var(--bg);white-space:nowrap}
+.links a.main{background:var(--band);color:var(--band-ink);border-color:var(--band)}
+@media (max-width:640px){.row{grid-template-columns:1fr}.links{justify-content:flex-start}.colour{margin-left:0}}
+</style>
+
+<div class="wrap">
+  <div class="band"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.43 211.82" fill="currentColor" role="img" aria-label="YouTooPreneur"><path d="M61.3,70l6.31,4c2.56,1.65,5.11,3.31,7.68,4.94a2.67,2.67,0,0,1,1.24,1.68Q81.9,100,87.32,119.4c.05.18.11.35.19.6a1.61,1.61,0,0,0,.48-.93c2.59-8.49,5.21-17,7.76-25.49.32-1,.65-1,1.47-.52,4.32,2.83,8.64,5.63,13,8.39a1.4,1.4,0,0,1,.67,2c-5,14.75-10,29.52-15,44.26a10.8,10.8,0,0,0-.47,4q.35,7.95.68,15.92.57,13.32,1.13,26.64c0,.85,0,1.7,0,2.54s-.25.76-.78.42c-4-2.61-8.08-5.23-12.14-7.82a1.72,1.72,0,0,1-.73-1.58c-.09-2.15-.2-4.31-.28-6.46-.25-6.73-.48-13.46-.76-20.19s-.52-13.46-.92-20.19c-.13-2.1-1.06-4.08-1.65-6.11Q70.79,103.16,61.5,71.5A2.64,2.64,0,0,1,61.3,70Z" transform="translate(-29.13 -19.65)"/><path d="M182.9,59.67q-28.05,20-56.51,39.21l.12.25,3.7-1.48c1.54-.63,1.55-.63,1.69,1q1.07,12,2.14,24c.81,8.85,1.66,17.69,2.49,26.54.31,3.33.59,6.66.93,10a1.43,1.43,0,0,1-1.11,1.78c-8,2.88-16,5.82-24.07,8.73-1.27.46-1.33.45-1.21-.87.41-4.87.87-9.73,1.31-14.6l1-11.14q.66-7.12,1.31-14.25l1.23-13.56c.44-4.82.89-9.65,1.32-14.48.14-1.57.23-3.14.4-4.71.08-.73-.44-.92-.86-1.22L91,76.92Q79,68.58,67,60.23c-.25-.17-.48-.36-.87-.66a1.91,1.91,0,0,1,1.24.4Q88,70.66,108.65,81.39a4.52,4.52,0,0,0,2.09.52c9.28,0,18.56,0,27.84,0a7.78,7.78,0,0,0,3.66-1.26q19.56-10.05,39.07-20.19C181.84,60.19,182.37,59.94,182.9,59.67Z" transform="translate(-29.13 -19.65)"/><path d="M35.83,96.69c0,7.85,0,15.71,0,23.56,0,1.08-.23,1.53-1.39,1.43a30.27,30.27,0,0,0-3.81,0c-.81,0-1.11-.3-1.11-1.06,0-1.43,0-2.85,0-4.28-.08-5.89-.09-11.78-.27-17.67-.13-4.2-.15-8.39.05-12.58.29-6.13,1.4-12,5.6-16.85a33.82,33.82,0,0,1,7.7-6.41c5.5-3.46,11.25-6.5,17-9.61,15.15-8.25,29.92-17.15,44.69-26a78.58,78.58,0,0,1,11.19-5.72,23,23,0,0,1,18.18.15,118,118,0,0,1,16,8.5c16,9.84,32.35,19.1,48.82,28.13a67.59,67.59,0,0,1,13.4,9,22.17,22.17,0,0,1,7,13.43c1,6.39.76,12.83.62,19.25-.09,4.58-.11,9.16-.24,13.74-.06,2.35-.12,4.69-.13,7,0,.74-.23,1-1,1-1.38,0-2.77-.06-4.15,0-1,0-1.18-.35-1.16-1.21.11-5.35.15-10.71.28-16,.16-6.62.25-13.24-.06-19.86-.35-7.53-4.2-12.68-10.4-16.52-6.94-4.31-14.16-8.11-21.29-12.08-12.84-7.16-25.43-14.75-38.06-22.27a98.82,98.82,0,0,0-11.84-6.22,17.28,17.28,0,0,0-14.1,0A109.5,109.5,0,0,0,103.39,35q-23.69,14.4-48,27.67c-3.69,2-7.31,4.12-10.8,6.44s-6.38,5.1-7.7,9.21a28.71,28.71,0,0,0-1.27,8c-.09,3.46,0,6.93,0,10.4Z" transform="translate(-29.13 -19.65)"/><path d="M32.85,167.59c.83.09,2-.38,2.77.2s.49,1.87.67,2.84a16.43,16.43,0,0,0,7.12,10.54A128.12,128.12,0,0,0,57,189.31c17.1,9.25,33.81,19.18,50.46,29.2a71.76,71.76,0,0,0,10.35,5.33,16.79,16.79,0,0,0,13.14,0c1.74-.71,3.45-1.51,5.11-2.39,8.55-4.51,16.69-9.73,25-14.64,12-7.08,24.17-13.7,36.27-20.53a57,57,0,0,0,10-6.81,15.72,15.72,0,0,0,5.2-9.76c0-.15,0-.31.06-.46.27-1.66.27-1.66,2-1.67,1.12,0,2.24,0,3.35,0,.91,0,1.24.28,1.14,1.2-.7,6.2-3,11.57-7.84,15.71a79.51,79.51,0,0,1-14.12,9.15c-18.26,9.86-36.08,20.48-53.87,31.14a75.36,75.36,0,0,1-9.39,4.68,23.49,23.49,0,0,1-19.15-.07,121.32,121.32,0,0,1-15.6-8.5c-16-9.8-32.34-19.08-48.82-28.1-4.66-2.54-9.31-5.1-13.28-8.72a22.59,22.59,0,0,1-7.25-14.54c-.23-1.93-.19-1.94,1.8-1.94Z" transform="translate(-29.13 -19.65)"/><path d="M108.28,199.21c.42-4.75.84-9.35,1.23-14a1.38,1.38,0,0,1,1.06-1.31q13.55-4.92,27.08-9.89c1-.37,1.15,0,1.23.88.57,6.43,1.18,12.86,1.77,19.29.16,1.77.32,3.53.49,5.29a1.71,1.71,0,0,1-.44,1.26q-7.68,10-15.35,20c-.52.67-.8.72-1.34,0q-7.58-9.92-15.21-19.77A2.3,2.3,0,0,1,108.28,199.21Z" transform="translate(-29.13 -19.65)"/><path d="M124.84,78.21A12.14,12.14,0,0,1,112.71,66a12.16,12.16,0,1,1,24.32.1A12.06,12.06,0,0,1,124.84,78.21Z" transform="translate(-29.13 -19.65)"/><path d="M192.17,108.93c-.43-5.18-.88-10.35-1.3-15.52s-.79-10.43-1.24-15.64a13.87,13.87,0,0,0-.83-4.63,4.09,4.09,0,0,0-5.31-2.38,9.37,9.37,0,0,0-2.71,1.51l-10.53,7.9q-13.35,10-26.7,20a1.76,1.76,0,0,0-.87,1.81c.23,2.14.33,4.29.5,6.44q.51,6.27,1,12.53.65,7.88,1.3,15.75.51,6.33,1,12.65.65,7.88,1.3,15.75c.42,5.18.81,10.35,1.24,15.53s.86,10.34,1.3,15.52c0,.39-.18,1,.28,1.14s.74-.33,1.07-.57c4.37-3.28,8.72-6.59,13.13-9.82a2.3,2.3,0,0,0,1-2.43c-.34-3.36-.59-6.74-.86-10.11l-1-12.65c-.35-4.41-.7-8.82-1.08-13.22a1.8,1.8,0,0,1,.88-1.81q10.88-8.11,21.7-16.28c4.78-3.62,6.82-8.66,7.27-14.18C192.52,113.6,192.36,111.26,192.17,108.93Zm-13.59,6.95-17.31,12.29a1.87,1.87,0,0,1-.45.16c-.23-1.63-.47-3.21-.68-4.79-.6-4.41-1.16-8.83-1.8-13.24a2.3,2.3,0,0,1,1.08-2.59c5.4-3.75,10.74-7.6,16.1-11.41.47-.33,1-.87,1.14.25.8,6.06,1.58,12.11,2.4,18.16A1.06,1.06,0,0,1,178.58,115.88Z" transform="translate(-29.13 -19.65)"/><path d="M138.38,169.73a1,1,0,0,1-.73,1.25q-13.38,4.88-26.75,9.81c-.66.24-1,.21-.92-.66q.34-3,.59-6a1.09,1.09,0,0,1,.85-1.06l25.43-9.37c.68-.25,1-.14,1.07.62C138.06,166.17,138.23,168,138.38,169.73Z" transform="translate(-29.13 -19.65)"/></svg><b>Nexus</b><span>YouTooPreneur</span></div>
+  <div>
+    <h1>Screen preview</h1>
+    <p class="lead">Step 1.6 of the YTP Nexus plan: every screen, clickable, in the approved style. Send Claude changes on any batch at any time. You and your team member approve once, after all 9 batches are built.</p>
+  </div>
+  <div class="summary">
+    <div class="stat"><b>9</b>of 9 batches ready</div>
+    <div class="stat"><b>184</b>of 184 screens</div>
+    <a class="stat" href="viewer.html" style="text-decoration:none;color:inherit" title="Every screen in one window, with previous and next"><b>▶</b>Screen viewer</a>
+    <div class="colour" role="group" aria-label="Preview colour">
+      <span class="note">Preview colour</span>
+      <button type="button" data-look="E" aria-pressed="true"><i style="background:linear-gradient(90deg,#1C3D36 0 38%,#FAF8F3 38%)"></i>Emerald</button>
+      <button type="button" data-look="N" aria-pressed="false"><i style="background:linear-gradient(90deg,#10273A 0 38%,#F5F7FA 38%)"></i>Navy</button>
+    </div>
+  </div>
+  <p class="note">Computer screens are designed for a full-size screen; in a smaller window they shrink to fit. Links marked "Phone" show the phone version. Buttons for parts that come later (for example e-signature) show a short notice. ✦ marks an AI helper: in the preview it explains what it would do; in Nexus it comes with the step that builds that screen (the AI base is first, in step 3.1), always within your AI limits, and everything can still be done by hand.</p>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 1 · Foundation</h2><span class="meta">Phase 2 · 16 screens · sign-in, menu, profile, settings · AI parts added to profile, roles, security, switches, monitoring, logs, languages</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-001</span><div><b>Sign in</b><span class="what">Google or email, then the two-step code</span></div><div class="links"><a class="main" href="login.html">Computer</a><a href="phone-foundation.html">Phone</a><a href="login.html#twostep">Code step</a></div></div>
+      <div class="row"><span class="id">SCR-002</span><div><b>Two-step set-up</b><span class="what">First sign-in for roles that see money</span></div><div class="links"><a class="main" href="login.html#setup">Open</a></div></div>
+      <div class="row"><span class="id">SCR-003</span><div><b>Forgot and reset password</b><span class="what">Email link, then a new password</span></div><div class="links"><a class="main" href="login.html#forgot">Open</a><a href="login.html#reset">New password</a></div></div>
+      <div class="row"><span class="id">Extra</span><div><b>Google account not allowed</b><span class="what">What a person sees before the owner adds them</span></div><div class="links"><a class="main" href="login.html#denied">Open</a></div></div>
+      <div class="row"><span class="id">Extra</span><div><b>Tamil sample</b><span class="what">Sign-in screen in Tamil, to check longer words fit</span></div><div class="links"><a class="main" href="login.html#tamil">Open</a></div></div>
+      <div class="row"><span class="id">SCR-004</span><div><b>Menu and top bar</b><span class="what">Grouped side menu, colour switch, search, alerts, profile</span></div><div class="links"><a class="main" href="dashboard.html">Computer</a><a href="phone-foundation.html">Phone menu</a></div></div>
+      <div class="row"><span class="id">SCR-008</span><div><b>My profile</b><span class="what">Details, language and colour, notifications, sign-in and devices</span></div><div class="links"><a class="main" href="my-profile.html">Open</a><a href="my-profile.html#preferences">Preferences</a><a href="my-profile.html#security">Security</a></div></div>
+      <div class="row"><span class="id">SCR-010</span><div><b>Record history</b><span class="what">Who changed what, on any record</span></div><div class="links"><a class="main" href="record-history.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-011</span><div><b>Trash</b><span class="what">Restore anything deleted in the last 30 days</span></div><div class="links"><a class="main" href="trash.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-180</span><div><b>Settings</b><span class="what">Every setting, grouped</span></div><div class="links"><a class="main" href="settings.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-181</span><div><b>Company profile</b><span class="what">Details by date, GST switch, LLP date, logos, portal colour</span></div><div class="links"><a class="main" href="company-profile.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-182</span><div><b>Users and roles</b><span class="what">People who sign in, the role builder, approval limits</span></div><div class="links"><a class="main" href="users-roles.html">People</a><a href="users-roles.html#roles">Roles</a><a href="users-roles.html#approvals">Approvals</a></div></div>
+      <div class="row"><span class="id">SCR-186</span><div><b>Numbering and templates</b><span class="what">Invoice series and document layouts</span></div><div class="links"><a class="main" href="numbering.html">Series</a><a href="numbering.html#templates">Templates</a></div></div>
+      <div class="row"><span class="id">SCR-190</span><div><b>Security</b><span class="what">Two-step rules, sessions, Google sign-in, limits</span></div><div class="links"><a class="main" href="security.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-192</span><div><b>Languages</b><span class="what">Five languages and how new ones are added</span></div><div class="links"><a class="main" href="languages.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-193</span><div><b>Feature switches</b><span class="what">Turn whole areas on or off</span></div><div class="links"><a class="main" href="feature-switches.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-194</span><div><b>Monitoring</b><span class="what">Jobs, messages, backups, connections, errors</span></div><div class="links"><a class="main" href="monitoring.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-195</span><div><b>Logs</b><span class="what">Activity log and security log</span></div><div class="links"><a class="main" href="logs.html">Activity</a><a href="logs.html#security">Security</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 2 · Core</h2><span class="meta">Step 3.1 · 22 screens · search, alerts, quick add, approvals, tasks, files, settings · ✦ AI base: chat, limits, settings, knowledge, quality</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-005</span><div><b>Search or ask Nexus</b><span class="what">One box for every module; ✦ AI answers questions with sources</span></div><div class="links"><a class="main" href="search.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-006</span><div><b>Notification centre</b><span class="what">Unread, snoozed, mentions; ✦ AI summary</span></div><div class="links"><a class="main" href="notifications.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-007</span><div><b>Quick add</b><span class="what">Type or say it; ✦ AI fills the form, you confirm</span></div><div class="links"><a class="main" href="quick-add.html">Computer</a><a href="phone-core.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-009</span><div><b>Approval inbox</b><span class="what">Discounts, leave, expenses, invoices, ✦ AI drafts</span></div><div class="links"><a class="main" href="approvals.html">Computer</a><a href="phone-core.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-080</span><div><b>Tasks</b><span class="what">Saved views, filters, list or board; ✦ plan my day</span></div><div class="links"><a class="main" href="tasks.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-081</span><div><b>Task</b><span class="what">Subtasks, comments with @mentions, files; ✦ summarise, draft an update</span></div><div class="links"><a class="main" href="task.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-082</span><div><b>To-do lists and reminders</b><span class="what">Own and shared lists, smart views; ✦ notes into to-dos</span></div><div class="links"><a class="main" href="todos.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-087</span><div><b>Files and client resources</b><span class="what">Folders, versions, vault links for logins; ✦ find a file</span></div><div class="links"><a class="main" href="files.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-183</span><div><b>Services and templates</b><span class="what">8 capabilities, delivery stages; no fixed prices</span></div><div class="links"><a class="main" href="services.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-184</span><div><b>Custom fields</b><span class="what">Your own fields on any record</span></div><div class="links"><a class="main" href="custom-fields.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-185</span><div><b>Lists</b><span class="what">Lead sources, stages, reasons, tags</span></div><div class="links"><a class="main" href="lists.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-187</span><div><b>Messaging</b><span class="what">Test mode, senders, WhatsApp numbers on AiSensy, routing</span></div><div class="links"><a class="main" href="messaging.html">Senders</a><a href="messaging.html#routing">Routing</a><a href="messaging.html#delivery">Delivery</a></div></div>
+      <div class="row"><span class="id">SCR-188</span><div><b>Integrations</b><span class="what">AiSensy and Gmail connected; ready slots for the rest</span></div><div class="links"><a class="main" href="integrations.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-191</span><div><b>Data</b><span class="what">Import wizard with ✦ AI column matching, export, keeping data</span></div><div class="links"><a class="main" href="data.html">Import</a><a href="data.html#export">Export</a></div></div>
+      <div class="row"><span class="id">SCR-196</span><div><b>Storage</b><span class="what">Space by area, largest files; ✦ clean-up suggestions</span></div><div class="links"><a class="main" href="storage.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-250</span><div><b>Email templates</b><span class="what">Branded layout, 5 languages; ✦ translate, improve</span></div><div class="links"><a class="main" href="email-templates.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-251</span><div><b>WhatsApp templates</b><span class="what">Meta-approved templates from AiSensy, buttons, costs</span></div><div class="links"><a class="main" href="whatsapp-templates.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-173</span><div><b>Ask Nexus chat</b><span class="what">✦ New chat, chat history, answers with sources, actions with Confirm, memory with consent</span></div><div class="links"><a class="main" href="ask-nexus.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-174</span><div><b>AI usage and limits</b><span class="what">Budget, limits per role, person and feature, voice minutes, savings</span></div><div class="links"><a class="main" href="ai-usage.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-256</span><div><b>AI settings</b><span class="what">Providers, model per job, guardrails, what AI may do, memory</span></div><div class="links"><a class="main" href="ai-settings.html">Providers</a><a href="ai-settings.html#guard">Guardrails</a><a href="ai-settings.html#memory">Memory</a></div></div>
+      <div class="row"><span class="id">SCR-257</span><div><b>AI knowledge</b><span class="what">What AI may read; brand voice; test as a client</span></div><div class="links"><a class="main" href="ai-knowledge.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-258</span><div><b>AI quality</b><span class="what">Test questions that must pass, speed, poor answers to review</span></div><div class="links"><a class="main" href="ai-quality.html">Open</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 3 · CRM + Team</h2><span class="meta">Step 3.2 · 31 screens · leads, clients, pipeline, people, attendance, leave, hiring, HR · ✦ AI where it helps</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-030</span><div><b>Leads and clients</b><span class="what">One list, status, agreement, renewal, outstanding, totals; duplicates banner</span></div><div class="links"><a class="main" href="leads.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-031</span><div><b>Quick add lead</b><span class="what">4 fields; ✦ fill from a message, card or voice; duplicate check</span></div><div class="links"><a class="main" href="lead-quick.html">Computer</a><a href="phone-team.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-032</span><div><b>Client 360° profile</b><span class="what">Outstanding and unbilled, 13 tabs, vault links, ✦ client summary</span></div><div class="links"><a class="main" href="client-profile.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-033</span><div><b>Add / edit client and contacts</b><span class="what">Company, contacts with language, portal access and consent</span></div><div class="links"><a class="main" href="client-edit.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-034</span><div><b>Sales pipeline</b><span class="what">Premium board, counters, ✦ lead scores and deals that need you</span></div><div class="links"><a class="main" href="pipeline.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-035</span><div><b>Deal</b><span class="what">Overdue banner, stages, quick call / WhatsApp / email, ✦ score reasons and next step</span></div><div class="links"><a class="main" href="deal.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-036</span><div><b>Business diagnosis</b><span class="what">Questions, notes, free or paid, ✦ recommended services</span></div><div class="links"><a class="main" href="diagnosis.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-039</span><div><b>Duplicate merge</b><span class="what">Side by side; keep both sources and all history</span></div><div class="links"><a class="main" href="merge.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-043</span><div><b>Lead rules</b><span class="what">Scoring points, temperature, ✦ limited AI adjustment, assignment</span></div><div class="links"><a class="main" href="lead-rules.html">Scoring</a><a href="lead-rules.html#assign">Assignment</a></div></div>
+      <div class="row"><span class="id">SCR-252</span><div><b>Client profile PDF</b><span class="what">One-page branded summary; logins never shown</span></div><div class="links"><a class="main" href="client-pdf.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-120</span><div><b>People</b><span class="what">Counters, missing documents, work mode, today's status</span></div><div class="links"><a class="main" href="people.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-121</span><div><b>Person</b><span class="what">16 tabs, probation, documents, masked bank and Aadhaar, ✦ joining check</span></div><div class="links"><a class="main" href="person.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-122</span><div><b>Org chart</b><span class="what">Who reports to whom</span></div><div class="links"><a class="main" href="org-chart.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-123</span><div><b>Check in / check out</b><span class="what">Office or WFH, one-line note, Saturdays left</span></div><div class="links"><a class="main" href="phone-team.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-124</span><div><b>Attendance register</b><span class="what">Live board, month view, late minutes</span></div><div class="links"><a class="main" href="attendance.html">Live</a><a href="attendance.html#month">Month</a></div></div>
+      <div class="row"><span class="id">SCR-140</span><div><b>Attendance and WFH requests</b><span class="what">Regularise and work from home, to approve</span></div><div class="links"><a class="main" href="attendance.html#requests">Open</a></div></div>
+      <div class="row"><span class="id">SCR-125</span><div><b>Leave</b><span class="what">Requests with balance after, bulk approve, team calendar, balances</span></div><div class="links"><a class="main" href="leave.html">Requests</a><a href="leave.html#calendar">Calendar</a><a href="leave.html#balances">Balances</a></div></div>
+      <div class="row"><span class="id">SCR-126</span><div><b>Comp-off and overtime</b><span class="what">Earned, used, expiring in 30 days</span></div><div class="links"><a class="main" href="leave.html#compoff">Open</a></div></div>
+      <div class="row"><span class="id">SCR-088</span><div><b>Workload</b><span class="what">Load against capacity, leave aware; ✦ rebalance</span></div><div class="links"><a class="main" href="workload.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-130</span><div><b>Hiring openings</b><span class="what">Open roles and their applicants</span></div><div class="links"><a class="main" href="hiring.html#openings">Open</a></div></div>
+      <div class="row"><span class="id">SCR-131</span><div><b>Applicants</b><span class="what">Board by stage; ✦ skills match, people decide</span></div><div class="links"><a class="main" href="hiring.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-132</span><div><b>Applicant</b><span class="what">Resume, interviews, offer; ✦ summary</span></div><div class="links"><a class="main" href="applicant.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-133</span><div><b>Joining and leaving</b><span class="what">Checklists per person</span></div><div class="links"><a class="main" href="joining.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-134</span><div><b>Letters</b><span class="what">Offer, appointment, experience, relieving</span></div><div class="links"><a class="main" href="letters.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-246</span><div><b>HR letters PDF</b><span class="what">Letter preview on the dated letterhead</span></div><div class="links"><a class="main" href="letters.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-135</span><div><b>Policies</b><span class="what">Versions, who acknowledged; ✦ answers from policies</span></div><div class="links"><a class="main" href="policies.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-136</span><div><b>Company assets</b><span class="what">Issued, in store, needs repair</span></div><div class="links"><a class="main" href="assets.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-137</span><div><b>Goals and performance</b><span class="what">Goals with progress, reviews; ✦ draft review</span></div><div class="links"><a class="main" href="goals.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-138</span><div><b>My HR (self-service)</b><span class="what">Balances, requests, documents, leave, payslips</span></div><div class="links"><a class="main" href="my-hr.html">Computer</a><a href="phone-team.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-139</span><div><b>Employee documents check</b><span class="what">Waiting for HR, verified, missing; openings logged</span></div><div class="links"><a class="main" href="doc-check.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-197</span><div><b>HR settings</b><span class="what">Hours, Saturdays, leave, documents, payroll rules</span></div><div class="links"><a class="main" href="hr-settings.html">Work</a><a href="hr-settings.html#leave">Leave</a><a href="hr-settings.html#pay">Payroll</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 4 · WebCare + Finance</h2><span class="meta">Step 3.3 · 32 screens · assets, renewals with evidence, invoices, payments, collections, vendors, LLP partners · ✦ AI where it helps</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-090</span><div><b>Digital assets</b><span class="what">Every client asset, whose account, provider, expiry, vault links</span></div><div class="links"><a class="main" href="webcare.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-091</span><div><b>Asset</b><span class="what">Technical info, domain and hosting with cost and margin, renewal with evidence, logins as vault links</span></div><div class="links"><a class="main" href="asset.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-093</span><div><b>Servers and hosting</b><span class="what">Shared accounts: one renewal and one alert listing every site; placements</span></div><div class="links"><a class="main" href="servers.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-094</span><div><b>Expiry monitor</b><span class="what">Daily domain and SSL checks; next 30 days; changes found</span></div><div class="links"><a class="main" href="expiry.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-095</span><div><b>Asset handover</b><span class="what">Checklist, transfer to the client, handover document</span></div><div class="links"><a class="main" href="handover.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-096</span><div><b>Technical dossiers</b><span class="what">How a site is built and run; ✦ ask the dossier; no passwords</span></div><div class="links"><a class="main" href="dossier.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-097</span><div><b>Provider accounts</b><span class="what">Owner, recovery email, MFA status, assets inside</span></div><div class="links"><a class="main" href="providers.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-099</span><div><b>Correct expiry date</b><span class="what">Fix a wrong date with reason and evidence; no renewal recorded</span></div><div class="links"><a class="main" href="expiry-fix.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-248</span><div><b>Handover document PDF</b><span class="what">What was handed over and where it lives now</span></div><div class="links"><a class="main" href="docs-pdf.html#handover">Open</a></div></div>
+      <div class="row"><span class="id">SCR-100</span><div><b>Finance overview</b><span class="what">To collect, overdue, ageing, money in and out, needs you; ✦ explain the month</span></div><div class="links"><a class="main" href="finance.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-101</span><div><b>Invoices</b><span class="what">Drafts without numbers, waiting approval, sent, overdue, paid</span></div><div class="links"><a class="main" href="invoices.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-102</span><div><b>Invoice editor</b><span class="what">Lines with SAC, GST by date and state, agreement panel, live preview; ✦ checks</span></div><div class="links"><a class="main" href="invoice-edit.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-103</span><div><b>Invoice</b><span class="what">Issued invoice: what happened, reminders, linked asset, secret link</span></div><div class="links"><a class="main" href="invoice.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-104</span><div><b>Record payment</b><span class="what">Mode, reference, part payments, TDS; ✦ reads a bank message</span></div><div class="links"><a class="main" href="payment-record.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-105</span><div><b>Credit note</b><span class="what">The only way to correct an issued invoice</span></div><div class="links"><a class="main" href="credit-note.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-106</span><div><b>Client statement</b><span class="what">Invoices, payments, TDS and the running balance</span></div><div class="links"><a class="main" href="statement.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-107</span><div><b>Payments and receipts</b><span class="what">Every payment and its receipt; ✦ suggests matches</span></div><div class="links"><a class="main" href="payments.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-108</span><div><b>Collections</b><span class="what">Who to call first, reminders, escalation, no late fees; ✦ Tamil draft</span></div><div class="links"><a class="main" href="collections.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-109</span><div><b>Vendors</b><span class="what">Who we pay, by category</span></div><div class="links"><a class="main" href="vendors.html#vendors">Open</a></div></div>
+      <div class="row"><span class="id">SCR-110</span><div><b>Vendor bills and payments</b><span class="what">Approval, USD with provisional rupees, split payments, duplicates blocked</span></div><div class="links"><a class="main" href="vendors.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-111</span><div><b>Expenses and claims</b><span class="what">Claims with receipts and approval; ✦ reads the receipt</span></div><div class="links"><a class="main" href="expenses.html">Computer</a><a href="phone-money.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-112</span><div><b>YTP subscriptions</b><span class="what">Tools we pay for: cards, calendar, spending; ✦ spot savings</span></div><div class="links"><a class="main" href="subscriptions.html">Cards</a><a href="subscriptions.html#calendar">Calendar</a><a href="subscriptions.html#spend">Spending</a></div></div>
+      <div class="row"><span class="id">SCR-115</span><div><b>LLP partners and shares</b><span class="what">Contribution and profit share by date, provisional</span></div><div class="links"><a class="main" href="partners.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-116</span><div><b>Partner money</b><span class="what">Investments, withdrawals, distributions with both partners' approval</span></div><div class="links"><a class="main" href="partners.html#money">Open</a></div></div>
+      <div class="row"><span class="id">SCR-117</span><div><b>Partner statement</b><span class="what">Opening to closing balance for any period</span></div><div class="links"><a class="main" href="partner-statement.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-253</span><div><b>Partner statement PDF</b><span class="what">The statement as a document</span></div><div class="links"><a class="main" href="partner-statement.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-118</span><div><b>Partner dashboard</b><span class="what">Revenue, expenses, profit, bank, receivables, payables, capital</span></div><div class="links"><a class="main" href="partner-dashboard.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-198</span><div><b>Finance settings</b><span class="what">Bank and UPI, terms, reminders, GST, gateways, currencies</span></div><div class="links"><a class="main" href="finance-settings.html">Bank</a><a href="finance-settings.html#reminders">Reminders</a><a href="finance-settings.html#gst">GST</a></div></div>
+      <div class="row"><span class="id">SCR-230</span><div><b>Secret-link document</b><span class="what">The client views and pays by UPI, Razorpay or bank transfer</span></div><div class="links"><a class="main" href="pay-link.html">Computer</a><a href="phone-money.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-240</span><div><b>Invoice PDF with UPI QR</b><span class="what">Plain invoice now; tax invoice after the GST date</span></div><div class="links"><a class="main" href="docs-pdf.html">Invoice</a><a href="docs-pdf.html#tax">Tax invoice</a></div></div>
+      <div class="row"><span class="id">SCR-241</span><div><b>Credit note PDF</b><span class="what">Draft shows "number given when issued"</span></div><div class="links"><a class="main" href="docs-pdf.html#credit">Open</a></div></div>
+      <div class="row"><span class="id">SCR-242</span><div><b>Payment receipt PDF</b><span class="what">Sent by itself when a payment is recorded</span></div><div class="links"><a class="main" href="docs-pdf.html#receipt">Open</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 5 · Contracts + Command Centre</h2><span class="meta">Step 3.4 · 14 screens · dashboards, renewals with proof, services sold, agreements, AMC, ad spend, automations · ✦ AI where it helps</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-020</span><div><b>Founder dashboard</b><span class="what">The 4 success measures, everything that needs you with approvals, today, renewals, collections, risks, revenue, team; ✦ morning brief</span></div><div class="links"><a class="main" href="dashboard.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-021</span><div><b>My day</b><span class="what">Code, work mode, leave left, task and to-do counters, priority tasks, meetings, alerts, check-in</span></div><div class="links"><a class="main" href="my-day.html">Computer</a><a href="phone.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-022</span><div><b>Manager dashboard</b><span class="what">Shown as Karthik: only his team, their clients and those clients' bills; no company totals</span></div><div class="links"><a class="main" href="manager-dashboard.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-053</span><div><b>Renewals board</b><span class="what">Next 60 days: alerted → invoiced → paid → renewed → confirmed with proof</span></div><div class="links"><a class="main" href="renewals.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-098</span><div><b>Confirm renewal</b><span class="what">Check the proof (✦ reads it) and confirm; only then the expiry date moves</span></div><div class="links"><a class="main" href="renewal-confirm.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-050</span><div><b>Services sold</b><span class="what">Every service per client: type, price, billing, next date, status</span></div><div class="links"><a class="main" href="services-sold.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-051</span><div><b>Service sold</b><span class="what">Payment stages, billing, free maintenance and AMC offer, revisions, change requests, inputs, support</span></div><div class="links"><a class="main" href="service-sold.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-052</span><div><b>Agreements</b><span class="what">Key terms, signature, versions and amendments, notice deadline</span></div><div class="links"><a class="main" href="agreements.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-244</span><div><b>Agreement PDF</b><span class="what">Version 2 with the amendment and both online signatures</span></div><div class="links"><a class="main" href="docs-pdf.html#agreement">Open</a></div></div>
+      <div class="row"><span class="id">SCR-054</span><div><b>AMC and free maintenance</b><span class="what">Free periods ending on the agreement date, AMC offers, coverage and schedules</span></div><div class="links"><a class="main" href="amc.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-057</span><div><b>Subscriptions and products sold</b><span class="what">Cycles, invoice or autopay, delivery status, licence keys masked</span></div><div class="links"><a class="main" href="subscriptions-sold.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-113</span><div><b>Ad spend rebilling</b><span class="what">Spend per client per month, fee from the agreement, the bill; ✦ reads a platform invoice</span></div><div class="links"><a class="main" href="ad-spend.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-170</span><div><b>Automations</b><span class="what">Every rule, on or off, when it runs, last result, next run; dry run</span></div><div class="links"><a class="main" href="automations.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-172</span><div><b>Run history</b><span class="what">Each run, what it did, skips and retries; ✦ explains an error</span></div><div class="links"><a class="main" href="run-history.html">Open</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 6 · Projects + meetings</h2><span class="meta">Step 3.6 · 17 screens · projects, deliverables, content calendar, support, change requests, inputs, testimonials, case studies, calendar, meetings · ✦ AI where it helps</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-060</span><div><b>Projects</b><span class="what">One board: one-time work by stage, monthly services as ongoing projects; ✦ what needs you</span></div><div class="links"><a class="main" href="projects.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-061</span><div><b>Project</b><span class="what">Stages and checklists, milestones, tasks, deliverables, money, what the client sees</span></div><div class="links"><a class="main" href="project.html">Overview</a><a href="project.html#timeline">Timeline</a><a href="project.html#client">Client view</a></div></div>
+      <div class="row"><span class="id">SCR-062</span><div><b>Deliverable</b><span class="what">Versions with comment pins, quality check before the client, revision rounds</span></div><div class="links"><a class="main" href="deliverable.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-063</span><div><b>Content calendar</b><span class="what">Posts by client and platform, coloured by status; ✦ plan next month</span></div><div class="links"><a class="main" href="content-calendar.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-064</span><div><b>Post editor</b><span class="what">Caption in English and Tamil, media, platforms, time, approval steps; ✦ write</span></div><div class="links"><a class="main" href="post-editor.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-065</span><div><b>Support inbox</b><span class="what">Reply and fix deadlines counting down; WhatsApp problems flagged by ✦, made by one tap</span></div><div class="links"><a class="main" href="support.html">Computer</a><a href="phone-work.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-066</span><div><b>Support request</b><span class="what">Conversation, internal notes, deadlines, links; ✦ draft reply</span></div><div class="links"><a class="main" href="support-request.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-055</span><div><b>Change requests</b><span class="what">Per-client rule, quote → client OK → bill</span></div><div class="links"><a class="main" href="change-requests.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-056</span><div><b>Client inputs</b><span class="what">Checklists per client, reminders on or off</span></div><div class="links"><a class="main" href="client-inputs.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-042</span><div><b>Testimonials</b><span class="what">Asked by itself after closing; what each client allows</span></div><div class="links"><a class="main" href="testimonials.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-233</span><div><b>Testimonial form</b><span class="what">The client rates, writes and chooses what we may show</span></div><div class="links"><a class="main" href="testimonial-form.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-069</span><div><b>Case studies</b><span class="what">Permission checked; public link + copy for the website</span></div><div class="links"><a class="main" href="case-studies.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-070</span><div><b>Close a project</b><span class="what">Closure checklist, then what happens by itself for this service</span></div><div class="links"><a class="main" href="project-handover.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-083</span><div><b>Calendar</b><span class="what">Week view of meetings, deadlines, milestones, invoices, leave, holidays</span></div><div class="links"><a class="main" href="calendar.html">Computer</a><a href="phone-work.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-084</span><div><b>Schedule a meeting</b><span class="what">People checked against leave and Saturdays; ask to record for AI minutes</span></div><div class="links"><a class="main" href="meeting-new.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-085</span><div><b>Meeting</b><span class="what">AI minutes from the recording (everyone agreed), action items become tasks</span></div><div class="links"><a class="main" href="meeting.html">Computer</a><a href="phone-work.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-086</span><div><b>Meeting history</b><span class="what">Search past meetings; open actions; export a summary</span></div><div class="links"><a class="main" href="meetings.html">Open</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 7 · Sales + Payroll</h2><span class="meta">Step 3.7 · 11 screens · proposals with AI first drafts, campaigns, broadcasts with consent and cost, payouts, payroll, salaries, payslips</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-037</span><div><b>Proposals</b><span class="what">Every quote: value, status, seen, valid until; forecast for October</span></div><div class="links"><a class="main" href="proposals.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-038</span><div><b>Proposal builder</b><span class="what">✦ AI drafts the first version from the call; you set prices, stages and terms</span></div><div class="links"><a class="main" href="proposal-edit.html">Open</a></div></div>
+      <div class="row"><span class="id">Extra</span><div><b>Proposal by secret link</b><span class="what">The client reads and accepts with a button or an online signature</span></div><div class="links"><a class="main" href="proposal-link.html">Computer</a><a href="phone-sales.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-243</span><div><b>Proposal PDF</b><span class="what">The proposal as a document</span></div><div class="links"><a class="main" href="docs-pdf.html#proposal">Open</a></div></div>
+      <div class="row"><span class="id">SCR-040</span><div><b>Campaigns</b><span class="what">Budget, spend, leads, cost per lead, deals won; leads by source</span></div><div class="links"><a class="main" href="campaigns.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-041</span><div><b>Broadcasts</b><span class="what">Consent only, email + WhatsApp, cost shown, owner approves; results</span></div><div class="links"><a class="main" href="broadcasts.html">Computer</a><a href="phone-sales.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-232</span><div><b>Unsubscribe and preferences</b><span class="what">Stop offers, keep account messages, choose channels</span></div><div class="links"><a class="main" href="unsubscribe.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-114</span><div><b>Payouts</b><span class="what">Freelancers per task, commissions when the client pays</span></div><div class="links"><a class="main" href="payouts.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-127</span><div><b>Payroll run</b><span class="what">Calculate → review → approve → payslips → bank file → paid</span></div><div class="links"><a class="main" href="payroll.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-128</span><div><b>Salary structures</b><span class="what">Basic, HRA, allowances; deductions off until the CA; revisions</span></div><div class="links"><a class="main" href="salary.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-129</span><div><b>Advances, bonuses, incentives</b><span class="what">Recovery plans, bonuses with approval, overtime</span></div><div class="links"><a class="main" href="advances.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-245</span><div><b>Payslip PDF</b><span class="what">Earnings, deductions, net pay, year to date</span></div><div class="links"><a class="main" href="docs-pdf.html#payslip">Computer</a><a href="phone-sales.html">Phone</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 8 · Portals, Reports, API, AI</h2><span class="meta">Steps 3.8, 3.9 · 23 screens · reports, the client portal (one page in Tamil), automation builder, voice assistant, client chatbot and live chat, API keys and MCP, website forms</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-160</span><div><b>Reports home</b><span class="what">Every report by area with its key figure; scheduled reports</span></div><div class="links"><a class="main" href="reports.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-161</span><div><b>Report</b><span class="what">Revenue and profitability: compare periods, chart, by service, margins</span></div><div class="links"><a class="main" href="report.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-067</span><div><b>Client results</b><span class="what">Velocity Motors ads: leads and cost per lead by month</span></div><div class="links"><a class="main" href="client-results.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-068</span><div><b>Client reports</b><span class="what">A report per client on a schedule, checked before sending</span></div><div class="links"><a class="main" href="client-reports.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-249</span><div><b>Client report PDF</b><span class="what">Kaveri Hospitals website report for September</span></div><div class="links"><a class="main" href="docs-pdf.html#report">Open</a></div></div>
+      <div class="row"><span class="id">SCR-200</span><div><b>Portal login</b><span class="what">A one-time code by email or WhatsApp; no password</span></div><div class="links"><a class="main" href="portal-login.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-201</span><div><b>Portal home</b><span class="what">What needs the client, amounts that match our books, agreements, team</span></div><div class="links"><a class="main" href="portal-home.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-202</span><div><b>Invoices and payments</b><span class="what">Pay by UPI or online, receipts, TDS certificates, statement</span></div><div class="links"><a class="main" href="portal-invoices.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-203</span><div><b>Services and renewals</b><span class="what">Who renews what and when; what website care covers</span></div><div class="links"><a class="main" href="portal-services.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-204</span><div><b>Projects and approvals</b><span class="what">Approve videos and designs with comments; who works on it</span></div><div class="links"><a class="main" href="portal-projects.html">Computer</a><a href="phone-ai.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-205</span><div><b>Content approvals</b><span class="what">Approve social posts · shown in Tamil for Royal Caterers</span></div><div class="links"><a class="main" href="portal-content.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-206</span><div><b>Support</b><span class="what">Raise, follow and reply; reply and fix times from the plan</span></div><div class="links"><a class="main" href="portal-support.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-207</span><div><b>Files we need</b><span class="what">Checklist with uploads (25 MB) and Drive links; no passwords</span></div><div class="links"><a class="main" href="portal-inputs.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-208</span><div><b>Proposals</b><span class="what">A quote for a change: accept, sign online or ask</span></div><div class="links"><a class="main" href="portal-proposals.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-210</span><div><b>Contact settings</b><span class="what">Language, messages by channel, consent, devices, people</span></div><div class="links"><a class="main" href="portal-settings.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-211</span><div><b>Documents</b><span class="what">Reports, statements, meeting notes and agreements shared</span></div><div class="links"><a class="main" href="portal-docs.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-212</span><div><b>Company profile</b><span class="what">Details as we have them; ask for a change</span></div><div class="links"><a class="main" href="portal-profile.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-171</span><div><b>Automation builder</b><span class="what">When → If → Do, dry run, versions; ✦ build from a sentence</span></div><div class="links"><a class="main" href="automation-builder.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-255</span><div><b>Voice assistant</b><span class="what">Hold to talk in Tamil or English; Confirm before anything is saved</span></div><div class="links"><a class="main" href="voice.html">Computer</a><a href="phone-ai.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-259</span><div><b>Client chatbot settings</b><span class="what">WhatsApp and website; knowledge, lead questions, hand-over, limits</span></div><div class="links"><a class="main" href="chatbot-settings.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-260</span><div><b>Live chat inbox</b><span class="what">AI or person on every message; take over and hand back</span></div><div class="links"><a class="main" href="live-chat.html">Computer</a><a href="phone-ai.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-189</span><div><b>API keys and MCP</b><span class="what">Keys with scope, expiry and limits; AI apps with approval</span></div><div class="links"><a class="main" href="api-keys.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-234</span><div><b>Website forms</b><span class="what">Enquiry forms per service and the careers form, with embed code</span></div><div class="links"><a class="main" href="forms.html">Open</a></div></div>
+    </div>
+  </section>
+
+  <section class="batch">
+    <div class="bhead"><h2>Batch 9 · Academy</h2><span class="meta">Step 3.10 · 18 screens · courses, batches, admissions, students, assessments, certificates, fees, the student portal and the public certificate check</span><span class="chip ready">Built</span></div>
+    <div class="rows">
+      <div class="row"><span class="id">SCR-158</span><div><b>Academy dashboard</b><span class="what">Admissions, seats per batch, fees due and collected, attendance</span></div><div class="links"><a class="main" href="academy.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-150</span><div><b>Courses</b><span class="what">Mode, syllabus by week, fee in full or instalments, trainers from Team</span></div><div class="links"><a class="main" href="courses.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-151</span><div><b>Batches</b><span class="what">Schedule, 18 sessions on the calendar, students with attendance</span></div><div class="links"><a class="main" href="batches.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-152</span><div><b>Admissions</b><span class="what">Enquiry → called → form → admitted; the admission form</span></div><div class="links"><a class="main" href="admissions.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-153</span><div><b>Students</b><span class="what">List and student detail: fees, attendance, results, certificates</span></div><div class="links"><a class="main" href="students.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-154</span><div><b>Session attendance</b><span class="what">The trainer marks present, late or absent on the phone</span></div><div class="links"><a class="main" href="phone-academy.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-155</span><div><b>Assessments</b><span class="what">Marks and a short note per student; published to the portal</span></div><div class="links"><a class="main" href="assessments.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-156</span><div><b>Certificates</b><span class="what">Who qualifies, certificates with QR, the reasons for "not yet"</span></div><div class="links"><a class="main" href="certificates.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-157</span><div><b>Fees and instalments</b><span class="what">Dues with YTA invoices, reminders, plans, what is coming in</span></div><div class="links"><a class="main" href="academy-fees.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-220</span><div><b>Student login</b><span class="what">A one-time code by WhatsApp or email</span></div><div class="links"><a class="main" href="student-login.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-221</span><div><b>Student home</b><span class="what">Next classes, fees, announcements, videos before the course</span></div><div class="links"><a class="main" href="student-home.html">Computer</a><a href="phone-academy.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-222</span><div><b>My courses</b><span class="what">Schedule by week, materials, recordings in Bunny Stream</span></div><div class="links"><a class="main" href="student-courses.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-223</span><div><b>Fees</b><span class="what">Instalments with invoices and receipts; pay by UPI or online</span></div><div class="links"><a class="main" href="student-fees.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-224</span><div><b>Attendance and results</b><span class="what">Attendance against 75%, assessments to come, results</span></div><div class="links"><a class="main" href="student-results.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-225</span><div><b>Certificates</b><span class="what">Download, share, and the check page</span></div><div class="links"><a class="main" href="student-certificates.html">Open</a></div></div>
+      <div class="row"><span class="id">SCR-231</span><div><b>Certificate check</b><span class="what">Public page from the QR code: genuine or not</span></div><div class="links"><a class="main" href="certificate-check.html">Computer</a><a href="phone-academy.html">Phone</a></div></div>
+      <div class="row"><span class="id">SCR-247</span><div><b>Certificate PDF</b><span class="what">With the QR code and the certificate number</span></div><div class="links"><a class="main" href="docs-pdf.html#certificate">Open</a></div></div>
+      <div class="row"><span class="id">SCR-254</span><div><b>Academy fee invoice and receipt</b><span class="what">YTA series, in 5 languages; shown in Tamil</span></div><div class="links"><a class="main" href="docs-pdf.html#yta">Open</a></div></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Preview colour: remembered in this browser and used by every preview screen.
+  (() => {
+    let look = 'E';
+    try { look = localStorage.getItem('nx-look') === 'N' ? 'N' : 'E'; } catch { /* storage may be blocked */ }
+    const buttons = [...document.querySelectorAll('.colour button')];
+    const paint = () => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.look === look)));
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      look = b.dataset.look;
+      try { localStorage.setItem('nx-look', look); } catch { /* ignore */ }
+      paint();
+    }));
+    paint();
+  })();
+</script>

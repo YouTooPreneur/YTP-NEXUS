@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Renewals board</title>
+<!-- Batch 5 · SCR-053 Renewals board: the next 60 days; each renewal moves through alerted → invoiced → paid → renewed at the vendor → confirmed with evidence (SCR-098). Client-paid items skip billing; items that renew themselves are confirmed by the daily check. Paying never moves an expiry date (CON-007, CON-008, CON-016, AUTO-001, AUTO-002, AUTO-007, AUTO-009, RULE-024, CC-008, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  main{padding-bottom:18px}
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .band3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 1.7fr;gap:12px;flex:none}
+  .st2{padding:11px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+  .st2 small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .st2 b{display:block;font-family:Sora,sans-serif;font-weight:600;font-size:22px;line-height:1.25;margin-top:2px;letter-spacing:-.01em}
+  .st2 span{font-size:12px;color:var(--muted)}
+  .st2.lead{background:linear-gradient(140deg,var(--primary-bg),color-mix(in srgb,var(--primary-bg) 78%,#03FF96));border-color:transparent;color:#fff}
+  .st2.lead small{color:rgba(255,255,255,.7)} .st2.lead span{color:rgba(255,255,255,.82)}
+  .st2.red b{color:var(--red)}
+  .tip{display:flex;flex-direction:column;justify-content:center;gap:7px;padding:11px 14px;border-radius:16px;background:var(--ai-bg);border:1px solid var(--ai-line);font-size:12.5px;line-height:1.45}
+  .tip .ai-h{margin:0}
+  .tip a{color:var(--ink);font-weight:700}
+  .filters3{display:flex;gap:10px;align-items:center;flex:none}
+  .stepkey{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:11.5px;color:var(--muted);font-weight:600}
+  .stepkey span{display:inline-flex;align-items:center;gap:5px}
+  .stepkey i{width:16px;height:5px;border-radius:999px;display:inline-block}
+  .lanes{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .lane .ln-v small{white-space:nowrap}
+  .dl{gap:7px;padding:10px 12px 9px;cursor:default}
+  .dl a{color:inherit;text-decoration:none}
+  .dl-top .dring{flex:none}
+  .dl-mid{gap:8px}
+  .dl-mid .dt{font-size:12px;font-weight:700;color:var(--muted);min-width:0;text-align:right}
+  .dl-top .fr{white-space:normal}
+  .dl-mid .amt2{font-size:15.5px}
+  .dl-foot{line-height:1.35;align-items:flex-start}
+  .dl-foot .ft{flex:1;min-width:0}
+  .dl-foot svg{margin-top:1px}
+  .dl-foot .btn{align-self:center}
+  .dl-foot .btn{margin-left:auto;height:26px;padding:0 10px;font-size:11.5px}
+  .dl.risk{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--red) 45%,transparent),0 6px 16px rgba(220,38,38,.08)}
+  .dring.far{--c:var(--faint)}
+  .lnote{border:1.5px dashed color-mix(in srgb,var(--c) 40%,var(--line));border-radius:14px;padding:10px 12px;font-size:11.5px;color:var(--muted);line-height:1.45;display:flex;gap:8px}
+  .lnote svg{width:15px;height:15px;flex:none;color:var(--c)}
+  .lnote b{color:var(--ink)}
+  .more3{display:flex;align-items:center;justify-content:center;gap:6px;height:32px;border-radius:12px;border:1.5px dashed color-mix(in srgb,var(--c) 35%,var(--line));color:var(--muted);font-size:12px;font-weight:600;flex:none}
+  .lane.won .dl{box-shadow:0 1px 2px rgba(16,39,58,.04)}
+  .moved{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .moved s{color:var(--muted);font-weight:600}
+  .moved svg{width:13px;height:13px;color:var(--green)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Contracts & Renewals" data-sec="contracts" data-sec-on="renewals">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Renewals</h1>
+          <p>Everything that renews in the next 60 days: what we bill, what clients renew themselves, and what renews itself. An expiry date moves only with proof or the morning check.</p>
+        </div>
+        <div class="acts"><div class="pill-sel"><span>30 days</span><span class="on">60 days</span><span>90 days</span></div><div class="seg-tg"><span class="on">Board</span><span>List</span></div><span class="btn lg"><i data-i="download"></i>Export</span></div>
+      </div>
+
+      <div class="band3">
+        <div class="st2 lead"><small>Next 60 days</small><b>10 renewals</b><span>₹36,802 from what we bill</span></div>
+        <div class="st2 red"><small>At risk</small><b>1</b><span>Unpaid with 7 days left</span></div>
+        <div class="st2"><small>Proof to confirm</small><b>1</b><span>Owner, Manager or Accounts</span></div>
+        <div class="st2"><small>Missed this year</small><b style="color:var(--green)">0</b><span>Target 0 · 31 done</span></div>
+        <div class="tip"><div class="ai-h"><i data-i="spark"></i>2 need you this week<span class="r">AI · from this board</span></div><span>Call <a href="invoice.html">Greenleaf</a> today: unpaid and the domain ends 8 Oct. Then confirm <a href="renewal-confirm.html">Kaveri's hosting proof</a>; it takes a minute.</span></div>
+      </div>
+
+      <div class="filters3">
+        <div class="views"><span class="on">All <em class="count">10</em></span><span>We bill <em class="count">6</em></span><span>Client renews <em class="count">2</em></span><span>Renews itself <em class="count">1</em></span><span>Agreements <em class="count">1</em></span></div>
+        <div class="stepkey"><span>Steps:</span><span><i style="background:var(--on)"></i>Done</span><span><i style="background:#E2A93B"></i>Now</span><span><i style="background:var(--red)"></i>Late</span><span><i style="background:repeating-linear-gradient(90deg,var(--line) 0 3px,transparent 3px 6px)"></i>Not needed</span></div>
+      </div>
+
+      <div class="lanes">
+        <!-- 1 · Coming up -->
+        <div class="lane" style="--c:#94A3B8">
+          <div class="ln-h"><b>Coming up</b><em class="count">7</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹23,386</span><small>to bill · alerts set</small></div>
+          <div class="ln-bar"><i style="width:64%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:#E2A93B;--p:40"><span>12</span></span><div class="nm"><b>velocitymotors.in SSL</b><span class="fr">Velocity Motors · Namecheap</span></div></div>
+              <div class="dl-mid"><span class="who"><i data-i="user"></i>Client renews</span><span class="dt">13 Oct</span></div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i></i><i></i></div>
+              <div class="dl-foot"><i data-i="bell2"></i><span class="ft">Reminded 13 and 28 Sep · confirm task on 13 Oct</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:#E2A93B;--p:57"><span>17</span></span><div class="nm"><b>Social media retainer</b><span class="fr">Meridian Logistics · agreement</span></div></div>
+              <div class="dl-mid"><span class="who"><i data-i="repeat"></i>Auto-renews</span><span class="dt">Notice by 18 Oct</span></div>
+              <div class="dl-foot"><i data-i="bell2"></i><span class="ft">Reminded 18 Sep · next 3 Oct, 11 Oct · renews 18 Nov</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:#38BDF8;--p:93"><span>28</span></span><div class="nm"><a href="asset.html"><b>sharmadental.in</b></a><span class="fr">Sharma Dental · domain + hosting</span></div></div>
+              <div class="dl-mid"><span class="amt2">₹8,850</span><span class="who ytp"><i data-i="wallet"></i>YTP bills</span></div>
+              <div class="rsteps"><i class="d"></i><i class="n"></i><i></i><i></i><i></i></div>
+              <div class="dl-foot today"><i data-i="clock"></i><span class="ft">Invoice sends itself 2 Oct, 9:00 am</span><a class="btn" href="invoices.html">Hold</a></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:var(--on);--p:97"><span>29</span></span><div class="nm"><b>royalcaterers.in SSL</b><span class="fr">Royal Caterers · Let's Encrypt</span></div></div>
+              <div class="dl-mid"><span class="who self"><i data-i="repeat"></i>Renews itself</span><span class="dt">30 Oct</span></div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i class="x"></i><i></i></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">The 6:00 am check confirms it</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm far" style="--p:100"><span>36</span></span><div class="nm"><b>Google Workspace · 5 users</b><span class="fr">Meridian Logistics · yearly</span></div></div>
+              <div class="dl-mid"><span class="amt2">₹8,400</span><span class="who ytp"><i data-i="wallet"></i>YTP bills</span></div>
+              <div class="dl-foot"><i data-i="clock"></i><span class="ft">Invoice made 7 Oct, 30 days before</span></div>
+            </div>
+          </div>
+          <div class="more3">+ 2 more in November</div>
+        </div>
+
+        <!-- 2 · Invoiced -->
+        <div class="lane" style="--c:#38BDF8">
+          <div class="ln-h"><b>Invoiced</b><em class="count">1</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹1,416</span><small>waiting for payment</small></div>
+          <div class="ln-bar"><i style="width:4%"></i></div>
+          <div class="cards">
+            <div class="dl risk">
+              <div class="dl-top"><span class="dring sm" style="--c:var(--red);--p:23"><span>7</span></span><div class="nm"><a href="invoice.html"><b>greenleaforganics.com</b></a><span class="fr">Greenleaf Organics · domain</span></div></div>
+              <div class="dl-mid"><span class="amt2">₹1,416</span><span class="chip c-red">At risk</span></div>
+              <div class="rsteps"><i class="d"></i><i class="r"></i><i></i><i></i><i></i></div>
+              <div class="dl-foot late2"><i data-i="flag"></i><span class="ft">YTP/26-27/0042 unpaid 9 days · auto-renew off at GoDaddy</span></div>
+              <div style="display:flex;gap:6px"><a class="btn" href="invoice.html" style="height:28px;font-size:12px"><i data-i="phone"></i>Call</a><a class="ai-btn sm" href="approvals.html" style="text-decoration:none"><i data-i="spark"></i>Draft waiting</a></div>
+            </div>
+            <div class="lnote"><i data-i="shield"></i><span>A renewal we bill becomes <b>at risk</b> when it is unpaid with 7 days or less left. It shows on the dashboard until it is paid.</span></div>
+          </div>
+        </div>
+
+        <!-- 3 · Paid -->
+        <div class="lane" style="--c:#E2A93B">
+          <div class="ln-h"><b>Paid · renew at vendor</b><em class="count">1</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">₹12,000</span><small>received</small></div>
+          <div class="ln-bar"><i style="width:33%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:var(--on);--p:67"><span>20</span></span><div class="nm"><a href="amc.html"><b>Annual maintenance</b></a><span class="fr">Velocity Motors · our service</span></div></div>
+              <div class="dl-mid"><span class="amt2">₹12,000</span><span class="chip c-green">Paid 30 Sep</span></div>
+              <div class="rsteps"><i class="d"></i><i class="d"></i><i class="d"></i><i class="x"></i><i></i></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">No vendor step · the new year starts 21 Oct by itself</span></div>
+            </div>
+            <div class="lnote"><i data-i="tasks"></i><span>When a client pays for something we buy from a vendor, Nexus gives the right person a <b>renew at vendor</b> task. Paying or finishing the task <b>never moves the date</b>.</span></div>
+          </div>
+        </div>
+
+        <!-- 4 · Renewed, confirm with proof -->
+        <div class="lane" style="--c:#8B5CF6">
+          <div class="ln-h"><b>Renewed · confirm</b><em class="count">1</em><span class="dots"><i data-i="more"></i></span></div>
+          <div class="ln-v"><span class="serif">1 proof</span><small>to check</small></div>
+          <div class="ln-bar"><i style="width:10%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="dring sm" style="--c:#8B5CF6;--p:43"><span>13</span></span><div class="nm"><b>Kaveri Hospitals hosting</b><span class="fr">cPanel · client's GoDaddy</span></div></div>
+              <div class="dl-mid"><span class="who"><i data-i="user"></i>Client renewed</span><span class="dt">14 Oct</span></div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i class="d"></i><i class="n"></i></div>
+              <div class="dl-foot"><i data-i="clip"></i><span class="ft">GoDaddy receipt from the client, 30 Sep</span><a class="btn solid" href="renewal-confirm.html">Confirm</a></div>
+            </div>
+            <div class="lnote"><i data-i="shield"></i><span>Anyone can add the proof. Only the <b>Owner, a Manager or Accounts</b> can confirm it, and only then does the expiry date move.</span></div>
+          </div>
+        </div>
+
+        <!-- 5 · Confirmed -->
+        <div class="lane won" style="--c:#12A15E">
+          <div class="ln-h"><b>Confirmed</b><em class="count">3</em><span class="won-r" style="margin-left:auto"><i data-i="check"></i>Last 30 days</span></div>
+          <div class="ln-v"><span class="serif">3 dates moved</span><small>with proof</small></div>
+          <div class="ln-bar"><i style="width:100%"></i></div>
+          <div class="cards">
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#6D28D9">BM</span><div class="nm"><b>brightmindstuition.in</b><span class="fr">Bright Minds Tuition · domain</span></div></div>
+              <div class="moved"><s>3 Nov 2026</s><i data-i="right"></i>3 Nov 2027</div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i class="d"></i><i class="d"></i></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">Today 6:00 am · the registry date is the proof</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#047857">KH</span><div class="nm"><b>kaverihospitals.com SSL</b><span class="fr">Kaveri Hospitals · renews itself</span></div></div>
+              <div class="moved"><s>20 Sep</s><i data-i="right"></i>19 Dec 2026</div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i class="x"></i><i class="d"></i></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">21 Sep · by the morning check</span></div>
+            </div>
+            <div class="dl">
+              <div class="dl-top"><span class="lg-av" style="--av:#7C2D12">CR</span><div class="nm"><b>coastalrealty.in</b><span class="fr">Coastal Realty · domain</span></div></div>
+              <div class="moved"><s>15 Sep 2026</s><i data-i="right"></i>15 Sep 2027</div>
+              <div class="rsteps"><i class="d"></i><i class="x"></i><i class="x"></i><i class="d"></i><i class="d"></i></div>
+              <div class="dl-foot ok"><i data-i="check"></i><span class="ft">16 Sep · client renewed · by the check</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

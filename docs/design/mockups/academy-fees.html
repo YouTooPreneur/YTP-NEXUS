@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Academy fees</title>
+<!-- Batch 9 · SCR-157 Fees and instalments: fee plans per course (in full or instalments, the student chooses), dues with their YTA invoices, reminders and receipts, payment by UPI QR, Razorpay or cash with a receipt, and what is coming in the next weeks; plain invoices until GST registration (ACD-005, ACD-011, FIN-024). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay13{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+  .rc3{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+  .rc3 h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .rc3 h3 .chip,.rc3 h3 .r{margin-left:auto}
+  .kv12{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:12.5px}
+  .kv12 span{color:var(--muted)}
+  .kv12 b{font-weight:700}
+  .sct{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .ln5{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
+  .ln5 b{font-weight:700}
+  .ln5 .r{margin-left:auto;font-weight:700;white-space:nowrap}
+  .ln5 small{color:var(--muted);font-size:11.5px}
+
+  .tbl td{padding-top:7px;padding-bottom:7px}
+  .tbl .inv,.tbl td:nth-child(5){white-space:nowrap}
+  .plan3{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;font-size:12.5px;align-items:center;padding:6px 0;border-top:1px solid var(--line-soft)}
+  .plan3:first-of-type{border-top:0}
+  .plan3 b{font-weight:700}
+  .plan3 small{display:block;font-size:11.5px;color:var(--muted)}
+  .plan3 .r{font-weight:700;text-align:right}
+  .up4{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .up4:first-of-type{border-top:0}
+  .up4 .d6{display:flex;flex-direction:column;align-items:center;justify-content:center;width:48px;height:42px;border-radius:11px;background:var(--card-2);font-weight:700;font-size:10.5px;color:var(--muted);line-height:1.15;flex:none}
+  .up4 .d6 b{font-family:Sora,sans-serif;font-size:15px;color:var(--ink)}
+  .up4 .r{margin-left:auto;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="fees">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Fees</h1>
+          <p>Fees in full or in instalments, as the student chooses. Every instalment is a YTA invoice with reminders and a receipt; no GST until registration.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="wallet"></i>Record payment</span><span class="btn solid lg"><i data-i="send"></i>Send reminders</span></div>
+      </div>
+      <div class="counters"><div class="ctr warn"><b>₹53,997</b><span>To collect · 5 students</span></div><div class="ctr"><b>₹3,46,989</b><span>Collected in September</span></div><div class="ctr"><b>₹1,44,000</b><span>Instalments on 5 Nov · 12 students</span></div><div class="ctr"><b>0</b><span>Late fees · we do not charge them</span></div></div>
+      <div class="lay13">
+        <div class="card" style="padding:4px 16px 10px">
+          <table class="tbl">
+            <thead><tr><th>Student</th><th>For</th><th>Invoice</th><th class="num">Amount</th><th>Due</th><th>Reminders</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>Bharathi V</b></td><td class="sm">DMM-Oct26 · instalment 1 of 3</td><td><span class="inv">YTA/26-27/0036</span></td><td class="num">₹12,000</td><td>5 Oct</td><td class="sm">Sent 29 Sep · reminder 2 Oct</td><td><span class="chip c-amber">Due in 4 days</span></td></tr>
+              <tr><td><b>Naveen R</b></td><td class="sm">DMM-Oct26 · instalment 1 of 3</td><td><span class="inv">YTA/26-27/0037</span></td><td class="num">₹12,000</td><td>5 Oct</td><td class="sm">Sent 29 Sep · reminder 2 Oct</td><td><span class="chip c-amber">Due in 4 days</span></td></tr>
+              <tr><td><b>Priyanka L</b></td><td class="sm">AI-Nov26 · in full</td><td><span class="inv">YTA/26-27/0038</span></td><td class="num">₹9,999</td><td>20 Oct</td><td class="sm">From 17 Oct</td><td><span class="chip c-ink">Not due yet</span></td></tr>
+              <tr><td><b>Thomas J</b></td><td class="sm">AI-Nov26 · in full</td><td><span class="inv">YTA/26-27/0039</span></td><td class="num">₹9,999</td><td>20 Oct</td><td class="sm">From 17 Oct</td><td><span class="chip c-ink">Not due yet</span></td></tr>
+              <tr><td><b>Kumaravel S</b></td><td class="sm">AI-Nov26 · in full</td><td><span class="inv">YTA/26-27/0040</span></td><td class="num">₹9,999</td><td>20 Oct</td><td class="sm">From 17 Oct</td><td><span class="chip c-ink">Not due yet</span></td></tr>
+              <tr><td><b>Harini S</b></td><td class="sm">DMM-Oct26 · instalment 1 of 3</td><td><span class="inv">YTA/26-27/0031</span></td><td class="num">₹12,000</td><td class="sm">28 Sep</td><td class="sm">Receipt sent</td><td><span class="chip c-green">Paid 28 Sep · UPI</span></td></tr>
+              <tr><td><b>Mohammed Arif</b></td><td class="sm">WP-Sep26 · in full</td><td><span class="inv">YTA/26-27/0024</span></td><td class="num">₹18,000</td><td class="sm">5 Sep</td><td class="sm">Receipt sent</td><td><span class="chip c-green">Paid 4 Sep · cash</span></td></tr>
+            </tbody>
+          </table>
+          <a class="btn" href="docs-pdf.html#yta" style="text-decoration:none;margin-top:8px"><i data-i="file"></i>How the invoice and receipt look</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card rc3">
+            <h3>Fee plans</h3>
+            <div class="plan3"><div><b>Digital Marketing Mastery</b><small>In full, or 3 instalments: now, 5 Nov, 5 Dec</small></div><span class="r">₹35,000<small>or ₹12,000 × 3</small></span></div>
+            <div class="plan3"><div><b>WordPress Website Building</b><small>In full</small></div><span class="r">₹18,000</span></div>
+            <div class="plan3"><div><b>AI for Small Business</b><small>In full</small></div><span class="r">₹9,999</span></div>
+            <div class="plan3"><div><b>Instagram Reels for Business</b><small>In full · recorded</small></div><span class="r">₹4,999</span></div>
+            <span class="manual">Each course sets its fee and instalment plan. An instalment invoice is made 7 days before its date; reminders go 3 days before, on the day and 3 days after. No late fees.</span>
+          </div>
+          <div class="card rc3">
+            <h3>Coming in</h3>
+            <div class="up4"><span class="d6"><b>5</b>Oct</span><span>2 first instalments</span><span class="r">₹24,000</span></div>
+            <div class="up4"><span class="d6"><b>20</b>Oct</span><span>3 AI-Nov26 fees</span><span class="r">₹29,997</span></div>
+            <div class="up4"><span class="d6"><b>5</b>Nov</span><span>DMM-Oct26 instalment 2 · 12 students</span><span class="r">₹1,44,000</span></div>
+            <span class="manual">Students pay by UPI QR or Razorpay from their portal, or in cash at the classroom with a receipt.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · AI knowledge</title>
+<!-- Batch 2 · SCR-257 AI knowledge: what AI may read, for the team assistant, the client chatbot or both; brand voice; test as a client (AI-016, AI-019) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 400px;gap:18px;align-items:start}
+  .kn td{padding-top:11px;padding-bottom:11px}
+  .kn b{font-weight:700;display:block}
+  .kn small{font-size:12px;color:var(--muted)}
+  .aud{display:flex;gap:6px}
+  .aud span{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .aud span.t{background:var(--active-bg);color:var(--ink);border-color:transparent}
+  .aud span.c{background:var(--blue-bg);color:var(--blue);border-color:transparent}
+  .voice{font-size:13.5px;line-height:1.6;padding:12px 14px;border-radius:12px;background:var(--card-2)}
+  .tq{display:flex;flex-direction:column;gap:8px}
+  .tq .q{align-self:flex-end;background:var(--primary-bg);color:#fff;padding:9px 12px;border-radius:14px 14px 4px 14px;font-size:13px;max-width:85%}
+  .tq .a{background:var(--card-2);padding:9px 12px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.5;max-width:92%}
+  .tq small{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="ai-settings.html">AI and voice</a><span>/</span><b style="color:var(--ink)">Knowledge</b></div>
+          <h1 class="serif">AI knowledge</h1>
+          <p>What AI may read when it answers. Mark each item for your team's assistant, the client chatbot, or both. The chatbot never sees anything marked "team only".</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: reads your website and past emails and suggests FAQs. You approve each one before AI may use it."><i data-i="spark"></i>Suggest FAQs</span><span class="btn solid lg"><i data-i="plus"></i>Add knowledge</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:10px">
+          <table class="tbl kn"><thead><tr><th>Knowledge</th><th>Used by</th><th>Updated</th><th>On</th></tr></thead><tbody>
+            <tr><td><b>Company profile</b><small>Name, address, GST status, offices · from Settings</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">Automatic</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Services and templates</b><small>42 services, delivery stages · no prices</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">Automatic</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>FAQs</b><small>24 questions and answers</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">28 Sep</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Brand voice</b><small>How YTP sounds in drafts and chats</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">20 Sep</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Office hours and contact</b><small>Mon–Sat 10:00 am–6:30 pm · Chennai and Dubai</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">1 Sep</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Price guide</b><small>Usual ranges for quotes</small></td><td><div class="aud"><span class="t">Team only</span></div></td><td class="sm">15 Sep</td><td><i class="toggle on"></i></td></tr>
+            <tr><td><b>Case studies</b><small>2 published · Bright Minds Tuition, Sharma Dental Care (drafts are never used)</small></td><td><div class="aud"><span class="t">Team</span><span class="c">Chatbot</span></div></td><td class="sm">10 Sep</td><td><i class="toggle on"></i></td></tr>
+          </tbody></table>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Brand voice</h2><span class="link"><span class="btn"><i data-i="edit"></i>Edit</span></span></div>
+            <div class="voice">Warm, simple English; Tamil when the client prefers it. Clarity first, never pushy. Short sentences. No prices or dates unless they are in a quote. Sign off as "Team YouTooPreneur".</div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Test as a client<span class="r">Uses chatbot knowledge only</span></div>
+            <div class="tq">
+              <span class="q">How much is a website?</span>
+              <span class="a">Prices depend on what you need, so a person from our team will share them with you. May I take your name and number? They reply between 10:00 am and 6:30 pm, Monday to Saturday. <small>· price question, handed to a person</small></span>
+              <span class="q">Can you do 20% off?</span>
+              <span class="a">I'll ask a person from our team to help with that; they will reply shortly. <small>· handed over (prices)</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

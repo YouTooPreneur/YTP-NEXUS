@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · People</title>
+<!-- Batch 3 · SCR-120 People: employees, freelancers, partners, influencers, trainers; counters; missing-documents banner; work-mode filter; today's status (TEAM-001, TEAM-026, TEAM-028, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pt td{padding-top:10px;padding-bottom:10px}
+  .docs{font-size:12.5px;font-weight:700}
+  .docs.miss{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><span>Team</span><span>/</span><b style="color:var(--ink)">People</b></div>
+          <h1 class="serif">People</h1>
+          <p>Everyone who works with YTP: employees, freelancers, referral partners, influencers and trainers, with or without a login.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: answers questions about the team (who is free on Friday, whose probation ends soon), within your permissions. Never shows salary or bank details to people who can't see them."><i data-i="spark"></i>Ask about the team</span><a class="btn lg" href="org-chart.html" style="text-decoration:none"><i data-i="users2"></i>Org chart</a><a class="btn lg" href="payroll.html" style="text-decoration:none"><i data-i="wallet"></i>Payroll</a><span class="btn solid lg"><i data-i="plus"></i>Add person</span></div>
+      </div>
+      <div class="counters"><div class="ctr"><b>10</b><span>Total</span></div><div class="ctr"><b>9</b><span>Active</span></div><div class="ctr"><b>1</b><span>On probation</span></div><div class="ctr"><b>0</b><span>On notice</span></div><a class="ctr warn" href="doc-check.html" style="text-decoration:none"><b>2</b><span>Missing documents</span></a><div class="ctr"><b>4 of 6</b><span>In today</span></div></div>
+      <div class="banner warn" style="justify-content:space-between"><span style="display:flex;gap:10px;align-items:center"><i data-i="doc"></i>Priya N and Divya S still have documents missing (bank passbook, education certificate).</span><a class="btn" href="doc-check.html" style="text-decoration:none">Open documents check</a></div>
+      <div style="display:flex;gap:10px;align-items:center"><div class="views"><span class="on">Everyone <em class="count">10</em></span><span>Employees <em class="count">6</em></span><span>Freelancers <em class="count">1</em></span><span>Referral partners <em class="count">1</em></span><span>Influencers <em class="count">1</em></span><span>Trainers <em class="count">1</em></span></div><div class="fsel" style="margin-left:auto"><span>Work mode</span>All<i data-i="down"></i></div><div class="fsel"><span>Status</span>All<i data-i="down"></i></div></div>
+
+      <div class="card cb" style="padding-top:8px">
+        <table class="tbl pt">
+          <thead><tr><th>Person</th><th>Code</th><th>Type</th><th>Work mode</th><th>Status</th><th>Today</th><th>Documents</th><th>Reports to</th></tr></thead>
+          <tbody>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0F766E">KR</span><a href="person.html"><b>Karthik Raman</b><small>SEO lead · Manager</small></a></div></td><td class="sm">YTP-002</td><td class="sm">Employee</td><td class="sm">Office</td><td><span class="chip c-green">Active</span></td><td><span class="today-st in"><i></i>In 9:51 am</span></td><td class="docs">5 / 5</td><td class="sm">Owner</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8">AK</span><a href="person.html"><b>Arun Kumar</b><small>Web developer</small></a></div></td><td class="sm">YTP-003</td><td class="sm">Employee</td><td class="sm">Hybrid</td><td><span class="chip c-green">Active</span></td><td><span class="today-st in"><i></i>In 9:58 am</span></td><td class="docs">5 / 5</td><td class="sm">Karthik</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D">DS</span><a href="person.html"><b>Divya S</b><small>Designer</small></a></div></td><td class="sm">YTP-004</td><td class="sm">Employee</td><td class="sm">Office</td><td><span class="chip c-green">Active</span></td><td><span class="today-st in"><i></i>In 10:02 am</span></td><td class="docs miss">4 / 5</td><td class="sm">Karthik</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED">RM</span><a href="person.html"><b>Rahul M</b><small>Video editor</small></a></div></td><td class="sm">YTP-005</td><td class="sm">Employee</td><td class="sm">Remote</td><td><span class="chip c-green">Active</span></td><td><span class="today-st leave"><i></i>On leave</span></td><td class="docs">5 / 5</td><td class="sm">Karthik</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309">MV</span><a href="person.html"><b>Meena V</b><small>Accounts</small></a></div></td><td class="sm">YTP-006</td><td class="sm">Employee</td><td class="sm">Office</td><td><span class="chip c-green">Active</span></td><td><span class="today-st no"><i></i>Not checked in</span></td><td class="docs">5 / 5</td><td class="sm">Owner</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1">PN</span><a href="person.html"><b>Priya N</b><small>Junior developer · joined 29 Sep</small></a></div></td><td class="sm">YTP-007</td><td class="sm">Employee</td><td class="sm">Office</td><td><span class="chip c-amber">Probation</span></td><td><span class="today-st in"><i></i>In 10:05 am</span></td><td class="docs miss">2 / 5</td><td class="sm">Arun</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#334155">SJ</span><b>Sanjay J</b></div></td><td class="sm">—</td><td class="sm">Freelancer · video</td><td class="sm">Remote</td><td><span class="chip c-green">Active</span></td><td class="sm">No login</td><td class="docs">2 / 2</td><td class="sm">Rahul</td></tr>
+            <tr><td><div class="nmc"><span class="lg-av" style="--av:#047857">LR</span><b>Lakshmi R</b></div></td><td class="sm">—</td><td class="sm">Referral partner</td><td class="sm">—</td><td><span class="chip c-green">Active</span></td><td class="sm">No login</td><td class="docs">1 / 1</td><td class="sm">Owner</td></tr>          </tbody>
+        </table>
+        <p class="help" style="margin-top:10px">8 of 10 shown; the other 2 are Kavya (influencer, no login) and Nandhini K (Academy trainer, login invited). Salary, bank and ID details open only for the Owner, HR and Accounts, and every opening is logged. LLP partners are kept in Finance.</p>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

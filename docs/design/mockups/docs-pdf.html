@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Document PDFs</title>
+<!-- Batch 4 · PDFs: SCR-240 Invoice and tax invoice with UPI QR, SCR-241 Credit note, SCR-242 Payment receipt, SCR-248 Handover document (FIN-001, FIN-003, FIN-007, WEB-012, RULE-002 to RULE-006). Batch 5 adds SCR-244 Agreement PDF (CON-002, CON-015, CON-016). Batch 7 adds SCR-243 Proposal PDF and SCR-245 Payslip PDF (CRM-015, TEAM-013, D-164, D-165). Batch 8 adds SCR-249 Client report PDF (PRJ-015, PRJ-014). Batch 9 adds SCR-247 Certificate PDF with QR and SCR-254 Academy fee invoice and receipt in 5 languages (ACD-005, ACD-008) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:var(--stage)}
+  .wrapd{min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 16px 40px}
+  .barx{width:820px;max-width:100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .barx b{font-weight:700}
+  .barx .r{margin-left:auto;display:flex;gap:8px}
+  .tabs-d{width:820px;max-width:100%;display:flex;gap:4px;flex-wrap:wrap}
+  .tabs-d button{all:unset;cursor:pointer;height:34px;padding:0 14px;border-radius:999px;font-weight:600;font-size:13px;color:var(--muted);background:var(--card);border:1px solid var(--line)}
+  .tabs-d button.on{background:var(--primary-bg);color:var(--primary-ink);border-color:var(--primary-bg)}
+  .a4doc{width:794px;min-height:1000px;padding:46px 56px}
+  .two2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .two2 small{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5F6B65;font-weight:700;margin-bottom:2px}
+  .bankbox{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font-size:11px}
+  .bankbox span{color:#5F6B65}
+  .note3{font-size:10.5px;color:var(--muted)}
+  .samp{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:#FEF3C7;color:#92400E;font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 12px;border-radius:999px}
+  .sig2{display:flex;justify-content:space-between;margin-top:24px}
+  .sig2 div{border-top:1px solid #9CA3AF;padding-top:4px;width:200px;font-size:10.5px;color:#6B7280}
+  .terms{display:flex;flex-direction:column;gap:9px;counter-reset:t}
+  .terms div{display:grid;grid-template-columns:22px 130px 1fr;gap:8px;font-size:11.5px}
+  .terms div::before{counter-increment:t;content:counter(t) ".";font-weight:700;color:#5F6B65}
+  .terms b{font-weight:700}
+  .esig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px}
+  .esig div{border:1px solid #E7E3D8;border-radius:8px;padding:10px 12px;font-size:10.5px;color:#6B7280}
+  .esig b{display:block;color:#1C3D36;font-size:11.5px}
+  .esig .sg{display:block;font-family:"Brush Script MT","Segoe Script",cursive;font-size:24px;color:#1C3D36;line-height:1.3;margin:2px 0}
+  .earn{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .earn table td{padding:6px 8px}
+  .netbox{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:8px;background:#F2F8F5;border:1px solid #D6E9E0}
+  .netbox b{font-family:Sora,sans-serif;font-size:20px}
+  .rk3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .rk3 div{border:1px solid #E7E3D8;border-radius:8px;padding:10px 12px}
+  .rk3 small{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5F6B65;font-weight:700}
+  .rk3 b{display:block;font-family:Sora,sans-serif;font-size:19px;line-height:1.25}
+  .rk3 span{font-size:10px;color:var(--muted)}
+  .vb3{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;height:84px;border-bottom:1px solid #E7E3D8;padding:0 18px}
+  .vb3 div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;height:100%;font-size:9.5px;font-weight:700;color:var(--muted)}
+  .vb3 i{display:block;width:100%;max-width:38px;border-radius:5px 5px 2px 2px;background:#CFE6DA}
+  .vb3 .cur i{background:#12A15E}
+  .vb3x{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:3px 18px 0;font-size:9.5px;color:#5F6B65;text-align:center;font-weight:700}
+  .certd{align-items:center;text-align:center;gap:10px;padding:56px 64px}
+  .certd .frame{position:absolute;inset:18px;border:2px solid #1C3D36;border-radius:6px;pointer-events:none}
+  .certd .frame::after{content:"";position:absolute;inset:6px;border:1px solid #CFE6DA;border-radius:3px}
+  .certd .brand{display:flex;align-items:center;gap:9px;font-family:Sora,sans-serif;font-weight:600;font-size:16px;justify-content:center}
+  .certd .brand svg{width:28px;height:31px;color:#1C3D36}
+  .certd h3{font-size:22px;letter-spacing:.16em;margin-top:26px}
+  .certd .nm{font-family:Sora,sans-serif;font-weight:600;font-size:38px;margin:6px 0}
+  .certd .cr{font-family:Sora,sans-serif;font-weight:600;font-size:22px}
+  .certd .sm2{font-size:12px;color:var(--muted)}
+  .certd .sig3{display:flex;justify-content:space-between;width:100%;margin-top:auto;padding-top:40px}
+  .certd .sig3 div{width:220px;border-top:1px solid #9CA3AF;padding-top:5px;font-size:11px;color:#6B7280}
+  .certd .sig3 .sg{display:block;font-family:"Brush Script MT","Segoe Script",cursive;font-size:24px;color:#1C3D36;margin-top:-34px;margin-bottom:6px}
+  .certd .qrrow{display:flex;justify-content:space-between;align-items:flex-end;width:100%;margin-top:34px;text-align:left;font-size:10.5px;color:var(--muted)}
+  .certd .qrrow .upi-qr{width:92px;height:92px}
+  .langs{display:flex;gap:4px;flex-wrap:wrap}
+  .langs span{font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid #E7E3D8;color:var(--muted)}
+  .langs span.on{background:#1C3D36;border-color:#1C3D36;color:#fff}
+  .ytad,.ytad *{font-family:"Noto Sans Tamil","DM Sans",sans-serif}
+  .ytad .lh .brand{font-family:Sora,sans-serif}
+  .vtag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 9px;border-radius:999px;background:#EEF2EF;color:#1C3D36}
+</style>
+</head>
+<body>
+<div class="wrapd">
+  <div class="barx"><a class="btn" href="invoices.html" style="text-decoration:none"><i data-i="x"></i>Close</a><b>Document PDFs · how each one looks</b><span class="r"><span class="btn"><i data-i="mail"></i>Email</span><span class="btn solid"><i data-i="download"></i>Download PDF</span></span></div>
+  <div class="tabs-d" data-tabs="d"><button data-tab="invoice">Invoice (now)</button><button data-tab="tax">Tax invoice (after GST)</button><button data-tab="credit">Credit note</button><button data-tab="receipt">Payment receipt</button><button data-tab="handover">Handover document</button><button data-tab="agreement">Agreement</button><button data-tab="proposal">Proposal</button><button data-tab="payslip">Payslip</button><button data-tab="report">Client report</button><button data-tab="certificate">Certificate</button><button data-tab="yta">Academy fee (Tamil)</button></div>
+
+  <!-- Invoice: plain, before GST registration -->
+  <section data-group="d" data-panel="invoice" class="a4doc">
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu · hello@youtoopreneur.com · +91 98400 00001</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3>INVOICE</h3><div style="text-align:right"><b style="font-size:13px">YTP/26-27/0042</b><br>Date 22 Sep 2026 · due on receipt</div></div>
+    <div class="two2"><div><small>Billed to</small><b>Greenleaf Organics</b><br>Mr. Prakash · RS Puram, Coimbatore, Tamil Nadu</div><div><small>Place of supply</small>Tamil Nadu<br><small style="margin-top:6px">From</small>YouTooPreneur (proprietorship)</div></div>
+    <table><thead><tr><th>#</th><th>Service</th><th>SAC</th><th>Period</th><th class="n">Amount</th></tr></thead><tbody><tr><td>1</td><td>Domain renewal · greenleaforganics.com</td><td>998319</td><td>8 Oct 2026 – 8 Oct 2027</td><td class="n">₹1,416.00</td></tr></tbody></table>
+    <div class="tot"><table><tr><td>Subtotal</td><td class="n">₹1,416.00</td></tr><tr><td>Round off</td><td class="n">₹0.00</td></tr><tr class="grand"><td>Total</td><td class="n">₹1,416</td></tr></table></div>
+    <div class="note3">Rupees one thousand four hundred sixteen only. Not registered under GST yet, so no GST is charged.</div>
+    <div class="payrow"><span class="upi-qr" data-qr="ytp-0042-1416"></span><div class="bankbox"><span>Pay by UPI</span><b>ytp@hdfcbank</b><span>Or online</span><b>pay.youtoopreneur.com/i/7Kq2…X9</b><span>Bank</span><b>HDFC Bank · A/c 50200012344321 · IFSC HDFC0001234</b><span>Name</span><b>YouTooPreneur</b></div></div>
+    <div class="foot"><span>Thank you for your business. Questions: accounts@youtoopreneur.com</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Tax invoice: how invoices look from the GST registration date -->
+  <section data-group="d" data-panel="tax" class="a4doc">
+    <span class="samp">SAMPLE · HOW INVOICES LOOK AFTER GST REGISTRATION</span>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>GSTIN 33ABCDE1234F1Z5 (sample) · Tamil Nadu (33)</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3>TAX INVOICE</h3><div style="text-align:right"><b style="font-size:13px">YTP/26-27/0071</b><br>Date 2 Feb 2027 · due on receipt</div></div>
+    <div class="two2"><div><small>Billed to</small><b>Sharma Dental Care</b><br>Dr. Priya Sharma · Adyar, Chennai, Tamil Nadu<br>GSTIN: not registered</div><div><small>Place of supply</small>Tamil Nadu (33) · same state, so CGST + SGST</div></div>
+    <table><thead><tr><th>#</th><th>Service</th><th>SAC</th><th class="n">Taxable</th><th class="n">CGST 9%</th><th class="n">SGST 9%</th><th class="n">Amount</th></tr></thead><tbody><tr><td>1</td><td>Domain + hosting · sharmadental.in · 1 year</td><td>998319</td><td class="n">₹8,850.00</td><td class="n">₹796.50</td><td class="n">₹796.50</td><td class="n">₹10,443.00</td></tr></tbody></table>
+    <div class="tot"><table><tr><td>Taxable value</td><td class="n">₹8,850.00</td></tr><tr><td>CGST 9%</td><td class="n">₹796.50</td></tr><tr><td>SGST 9%</td><td class="n">₹796.50</td></tr><tr><td>Round off</td><td class="n">₹0.00</td></tr><tr class="grand"><td>Total</td><td class="n">₹10,443</td></tr></table></div>
+    <div class="note3">For a client in another state the same invoice shows IGST 18% (₹1,593) instead of CGST and SGST. Foreign clients follow the CA's rule.</div>
+    <div class="payrow"><span class="upi-qr" data-qr="ytp-0071-10443"></span><div class="bankbox"><span>Pay by UPI</span><b>ytp@hdfcbank</b><span>Bank</span><b>HDFC Bank · A/c 50200012344321 · IFSC HDFC0001234</b></div></div>
+    <div class="foot"><span>Invoice numbers: consecutive per series and year, at most 16 characters</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Credit note (draft) -->
+  <section data-group="d" data-panel="credit" class="a4doc">
+    <span class="stamp draft">DRAFT</span>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3>CREDIT NOTE</h3><div style="text-align:right"><b style="font-size:13px">Number given when issued</b><br>Will be CN/26-27/004</div></div>
+    <div class="two2"><div><small>To</small><b>Coastal Realty</b><br>Chennai, Tamil Nadu</div><div><small>Against invoice</small><b>YTP/26-27/0036</b> · 2 Sep 2026 · ₹12,000</div></div>
+    <table><thead><tr><th>#</th><th>Reason and line</th><th>SAC</th><th class="n">Credit</th></tr></thead><tbody><tr><td>1</td><td>SEO retainer, 16–30 September: work paused while the account is on hold</td><td>998365</td><td class="n">₹6,000.00</td></tr></tbody></table>
+    <div class="tot"><table><tr><td>Credit</td><td class="n">₹6,000.00</td></tr><tr class="grand"><td>Invoice balance after</td><td class="n">₹6,000</td></tr></table></div>
+    <div class="note3">The original invoice is unchanged; this credit note reduces what is owed on it.</div>
+    <div class="foot"><span>YouTooPreneur · Chennai</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Payment receipt -->
+  <section data-group="d" data-panel="receipt" class="a4doc">
+    <span class="stamp paid">PAID</span>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3>PAYMENT RECEIPT</h3><div style="text-align:right"><b style="font-size:13px">RC/26-27/0057</b><br>30 Sep 2026</div></div>
+    <div class="two2"><div><small>Received from</small><b>Velocity Motors</b><br>Ravi · Guindy, Chennai</div><div><small>Paid by</small>UPI · reference 427319880044</div></div>
+    <table><thead><tr><th>Invoice</th><th>For</th><th class="n">Invoice amount</th><th class="n">Paid now</th><th class="n">Balance</th></tr></thead><tbody><tr><td>YTP/26-27/0041</td><td>Annual maintenance renewal, 21 Oct 2026 – 20 Oct 2027</td><td class="n">₹12,000.00</td><td class="n">₹12,000.00</td><td class="n">₹0.00</td></tr></tbody></table>
+    <div class="tot"><table><tr class="grand"><td>Received</td><td class="n">₹12,000</td></tr></table></div>
+    <div class="note3">Rupees twelve thousand only. Sent automatically by email and WhatsApp when the payment was recorded.</div>
+    <div class="foot"><span>Thank you. YouTooPreneur · accounts@youtoopreneur.com</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Handover document -->
+  <section data-group="d" data-panel="handover" class="a4doc">
+    <span class="stamp draft">DRAFT</span>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">Handover document<br>Bright Minds Tuition · October 2026</div></div>
+    <h3>WHAT WE ARE HANDING OVER</h3>
+    <table><thead><tr><th>Asset</th><th>Now lives in</th><th>Owned by</th><th>Notes</th></tr></thead><tbody>
+      <tr><td>brightmindstuition.in (domain)</td><td>GoDaddy · your account</td><td>Bright Minds Tuition</td><td>Renewed until 3 Nov 2027</td></tr>
+      <tr><td>Landing page (WordPress)</td><td>Your hosting, once bought</td><td>Bright Minds Tuition</td><td>Until then it stays on our server</td></tr>
+      <tr><td>Google Analytics</td><td>Google · your account</td><td>Bright Minds Tuition</td><td>YouTooPreneur removed</td></tr>
+    </tbody></table>
+    <div class="two2"><div><small>Last full backup</small>29 Sep 2026 · kept by us for 90 days</div><div><small>Logins</small>You set your own passwords. This document never contains passwords.</div></div>
+    <div class="two2"><div><small>Support after handover</small>No maintenance plan: help is available on request.</div><div><small>Your contact at YTP</small>Arun · +91 98400 00001</div></div>
+    <div class="sig2"><div>For YouTooPreneur</div><div>Received by Bright Minds Tuition</div></div>
+    <div class="foot"><span>YouTooPreneur · Chennai</span><span>Page 1 of 1</span></div>
+  </section>
+  <!-- Agreement (version 2, signed online by both) -->
+  <section data-group="d" data-panel="agreement" class="a4doc">
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu · hello@youtoopreneur.com · +91 98400 00001</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><h3>ADS MANAGEMENT AGREEMENT</h3><span class="vtag">VERSION 2 · AMENDMENT 1</span></div><div style="text-align:right"><b style="font-size:13px">AGR/VM/02</b><br>In force from 1 Jul 2026</div></div>
+    <div class="two2"><div><small>Between</small><b>YouTooPreneur</b> (proprietorship)<br>Adyar, Chennai, Tamil Nadu</div><div><small>And</small><b>Velocity Motors</b><br>Ravi · Guindy, Chennai, Tamil Nadu</div></div>
+    <div class="note3">This version replaces version 1 of 1 Jan 2026. Changes in this version: Google Ads added; the fee moves from ₹12,000 to ₹15,000 a month.</div>
+    <div class="terms">
+      <div><b>Services</b><span>Ads management on Meta and Google: set-up, 8 creatives a month, daily checks and a monthly report.</span></div>
+      <div><b>Fee</b><span>₹15,000 a month, billed on the 1st of each month in advance. No GST while YouTooPreneur is not registered; GST is added from the registration date.</span></div>
+      <div><b>Ad spend</b><span>Paid by Velocity Motors straight to Meta and Google from its own ad accounts. No fee is charged on the spend.</span></div>
+      <div><b>Term</b><span>1 Jan 2026 to 31 Dec 2026. It renews by itself for 12 months unless either side gives 30 days' written notice, that is by 1 Dec 2026.</span></div>
+      <div><b>Support</b><span>Replies within 24 hours and fixes within 3 working days.</span></div>
+      <div><b>Changes</b><span>Work outside point 1 is quoted first and done only after approval.</span></div>
+      <div><b>Payment</b><span>On receipt, by UPI, bank transfer or online. Reminders on day 7 and day 15.</span></div>
+    </div>
+    <div class="esig">
+      <div><b>For YouTooPreneur</b><span class="sg">Owner</span>Signed online · 29 Jun 2026, 10:15 am</div>
+      <div><b>For Velocity Motors</b><span class="sg">Ravi</span>Signed online · 28 Jun 2026, 6:42 pm · code sent to +91 ••••• •4410</div>
+    </div>
+    <div class="foot"><span>Version 2 of 2 · earlier versions are kept and can be opened from Nexus</span><span>Page 1 of 1</span></div>
+  </section>
+  <!-- Proposal (draft) -->
+  <section data-group="d" data-panel="proposal" class="a4doc">
+    <span class="stamp draft">DRAFT</span>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu · hello@youtoopreneur.com · +91 98400 00001</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><h3>PROPOSAL</h3><span class="vtag">A WEBSITE THAT TAKES YOUR WHOLESALE ORDERS ON WHATSAPP</span></div><div style="text-align:right"><b style="font-size:13px">Q-2026-024</b><br>Valid until 16 Oct 2026</div></div>
+    <div class="two2"><div><small>Prepared for</small><b>Sri Lakshmi Traders</b><br>Mr. Senthil Kumar · Chennai, Tamil Nadu</div><div><small>Prepared by</small>YouTooPreneur (proprietorship)<br>Owner · 1 Oct 2026</div></div>
+    <table><thead><tr><th>#</th><th>What you get</th><th>Qty</th><th class="n">Amount</th></tr></thead><tbody>
+      <tr><td>1</td><td><b>Website · 8 pages + product catalogue</b><br>Full grocery range with prices; orders go straight to your WhatsApp</td><td>1</td><td class="n">₹65,000.00</td></tr>
+      <tr><td>2</td><td><b>Local SEO set-up</b><br>Google Business profile, 20 business listings, reviews plan</td><td>1</td><td class="n">₹10,000.00</td></tr>
+      <tr><td>3</td><td><b>SEO care</b><br>Monthly local SEO with a short report · ₹5,000 a month</td><td>3 months</td><td class="n">₹15,000.00</td></tr>
+    </tbody></table>
+    <div class="tot"><table><tr><td>Subtotal</td><td class="n">₹90,000.00</td></tr><tr><td>GST</td><td class="n">Not registered yet</td></tr><tr class="grand"><td>Total</td><td class="n">₹90,000</td></tr></table></div>
+    <div class="two2"><div><small>How you pay</small>₹36,000 when you accept · ₹36,000 when you approve the designs · ₹18,000 at launch</div><div><small>How we work</small>2 rounds of changes a page · new work quoted first · 3 months free maintenance after launch</div></div>
+    <div class="note3">Accepting this proposal makes it our agreement. Accept online with the button on your secret link, sign online, or reply on WhatsApp or email and we will record it.</div>
+    <div class="foot"><span>Proposal Q-2026-024 · version 1 · YouTooPreneur, Chennai</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Payslip -->
+  <section data-group="d" data-panel="payslip" class="a4doc">
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>Tamil Nadu</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3>PAYSLIP · SEPTEMBER 2026</h3><div style="text-align:right"><b style="font-size:13px">Paid 1 Oct 2026</b><br>Bank transfer</div></div>
+    <div class="two2"><div><small>Employee</small><b>Arun Kumar</b> · YTP-003<br>Web developer · joined 3 Jun 2024</div><div><small>Bank and PAN</small>HDFC Bank · account ending •••• 6620<br>PAN •••••1234F</div></div>
+    <div class="two2"><div><small>Paid days</small>26 of 26 · casual leave 1 (18 Sep, paid)</div><div><small>Leave left</small>Casual 5 · sick 6 · earned 10</div></div>
+    <div class="earn">
+      <table><thead><tr><th>Earnings</th><th class="n">Amount</th></tr></thead><tbody><tr><td>Basic</td><td class="n">₹15,700.00</td></tr><tr><td>House rent allowance</td><td class="n">₹6,280.00</td></tr><tr><td>Special allowance</td><td class="n">₹9,420.00</td></tr><tr><td><b>Gross</b></td><td class="n"><b>₹31,400.00</b></td></tr></tbody></table>
+      <table><thead><tr><th>Deductions</th><th class="n">Amount</th></tr></thead><tbody><tr><td>Provident fund</td><td class="n">Off</td></tr><tr><td>ESI</td><td class="n">Off</td></tr><tr><td>Professional tax</td><td class="n">Off</td></tr><tr><td><b>Total deductions</b></td><td class="n"><b>₹0.00</b></td></tr></tbody></table>
+    </div>
+    <div class="netbox"><span>Net pay · Rupees thirty-one thousand four hundred only</span><b>₹31,400</b></div>
+    <div class="two2"><div><small>This year (Apr–Sep)</small>Net paid ₹1,81,338</div><div><small>Note</small>PF, ESI and professional tax are off until the CA confirms.</div></div>
+    <div class="foot"><span>Computer-made payslip; no signature needed. Questions: accounts@youtoopreneur.com</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Client report (website care, monthly) -->
+  <section data-group="d" data-panel="report" class="a4doc">
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur</div><div class="addr">Website report · September 2026<br>Kaveri Hospitals · kaverihospitals.com</div></div>
+    <div><h3>YOUR WEBSITE IN SEPTEMBER</h3><div class="note3" style="font-size:11.5px;color:#1C3D36;margin-top:6px;line-height:1.6">Your website was up 99.9% of the month and every nightly backup ran. We made 7 updates and fixed 3 requests, all within 3 days. Visits grew 8%, and the Doctors page is still the most visited. In October the new website moves into building, with testing from 27 Oct and launch on 5 Nov.</div></div>
+    <div class="rk3">
+      <div><small>Uptime</small><b>99.9%</b><span>One 40-minute outage, 14 Sep, at the hosting company</span></div>
+      <div><small>Backups</small><b>30 of 30</b><span>Kept 30 days · last one 1 Oct, 2:00 am</span></div>
+      <div><small>Updates</small><b>7</b><span>Plugins and theme, tested first</span></div>
+      <div><small>Visits</small><b>12,480</b><span>↑ 8% on August</span></div>
+      <div><small>Calls from the website</small><b>214</b><span>Taps on the phone number</span></div>
+      <div><small>Changes used</small><b>2 h 40 min</b><span>Of 6 hours in your plan</span></div>
+    </div>
+    <div class="two2"><div><small>Visits by month</small>
+      <div class="vb3"><div><i style="height:63%"></i>10,900</div><div><i style="height:65%"></i>11,200</div><div><i style="height:67%"></i>11,560</div><div class="cur"><i style="height:72%"></i>12,480</div></div>
+      <div class="vb3x"><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div></div>
+      <div><small>Most visited pages</small><table><tbody><tr><td>Doctors</td><td class="n">3,420</td></tr><tr><td>Departments</td><td class="n">2,860</td></tr><tr><td>Contact and directions</td><td class="n">1,940</td></tr><tr><td>Health checks</td><td class="n">1,210</td></tr></tbody></table></div></div>
+    <table><thead><tr><th>Request</th><th>Asked</th><th>Fixed</th><th class="n">Time taken</th></tr></thead><tbody>
+      <tr><td>SR-0127 · Visiting hours on the contact page</td><td>9 Sep</td><td>9 Sep</td><td class="n">Same day</td></tr>
+      <tr><td>SR-0138 · Add Dr. Fathima Begum's profile</td><td>16 Sep</td><td>18 Sep</td><td class="n">2 days</td></tr>
+      <tr><td>SR-0145 · Broken link on the careers page</td><td>28 Sep</td><td>29 Sep</td><td class="n">1 day</td></tr>
+    </tbody></table>
+    <div class="two2"><div><small>Next month</small>Monthly updates on 7 Oct · new website: building from 13 Oct, testing from 27 Oct, launch on 5 Nov</div><div><small>Your open request</small>SR-0151 · old phone number on the appointment page · fix by Mon 5 Oct</div></div>
+    <div class="foot"><span>Prepared by YouTooPreneur · checked by Arun Kumar · sent 1 Oct 2026 · visits from Google Analytics</span><span>Page 1 of 1</span></div>
+  </section>
+
+  <!-- Certificate with QR (Academy) -->
+  <section data-group="d" data-panel="certificate" class="a4doc certd">
+    <span class="frame"></span>
+    <div class="brand"><span class="mark"></span>YouTooPreneur Academy</div>
+    <h3>CERTIFICATE OF COMPLETION</h3>
+    <span class="sm2">This certifies that</span>
+    <span class="nm">Keerthana R</span>
+    <span class="sm2">has completed the course</span>
+    <span class="cr">Digital Marketing Mastery</span>
+    <span class="sm2">Batch DMM-Jul26 · 6 July to 26 September 2026 · 36 sessions · attendance 94% · grade A</span>
+    <div class="sig3"><div><span class="sg">Nandhini K</span>Nandhini K · Trainer</div><div><span class="sg">Owner</span>For YouTooPreneur Academy</div></div>
+    <div class="qrrow"><span>Certificate YTA-C/2026/0018<br>Issued 30 September 2026<br>Check it: scan the code, or open youtoopreneur.com/check and type the number</span><span class="upi-qr" data-qr="YTA-C-2026-0018"></span></div>
+  </section>
+
+  <!-- Academy fee invoice and receipt (YTA series), shown in Tamil -->
+  <section data-group="d" data-panel="yta" class="a4doc ytad">
+    <span class="stamp paid" style="font-size:13px;top:auto;bottom:150px;right:70px">செலுத்தப்பட்டது</span>
+    <div class="langs"><span>English</span><span class="on">தமிழ்</span></div>
+    <div class="lh"><div class="brand"><span class="mark"></span>YouTooPreneur Academy</div><div class="addr">No. 12, Sample Street, Adyar, Chennai 600020<br>academy@youtoopreneur.com · +91 98400 00001</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end"><h3 style="letter-spacing:0">கட்டண விலைப்பட்டியல் மற்றும் ரசீது</h3><div style="text-align:right"><b style="font-size:13px">YTA/26-27/0031</b><br>தேதி: 28 செப். 2026</div></div>
+    <div class="two2"><div><small>பெறுநர்</small><b>Harini S</b><br>சென்னை, தமிழ்நாடு</div><div><small>பாடநெறி</small>Digital Marketing Mastery<br>பேட்ச் DMM-Oct26 · 5 அக். – 26 டிச. 2026</div></div>
+    <table><thead><tr><th>#</th><th>விவரம்</th><th class="n">தொகை</th></tr></thead><tbody><tr><td>1</td><td>பாடக் கட்டணம் · தவணை 1 / 3</td><td class="n">₹12,000.00</td></tr></tbody></table>
+    <div class="tot"><table><tr class="grand"><td>மொத்தம்</td><td class="n">₹12,000</td></tr></table></div>
+    <div class="note3">ரூபாய் பன்னிரண்டாயிரம் மட்டும். இன்னும் GST பதிவு செய்யப்படவில்லை, அதனால் GST சேர்க்கப்படவில்லை.</div>
+    <div class="two2"><div><small>பெறப்பட்டது</small>₹12,000 · 28 செப். 2026 · UPI<br>குறிப்பு எண் 427781203311</div><div><small>அடுத்த தவணைகள்</small>₹12,000 · 5 நவ. 2026<br>₹12,000 · 5 டிச. 2026</div></div>
+    <div class="foot"><span>நன்றி. கேள்விகளுக்கு: academy@youtoopreneur.com</span><span>பக்கம் 1 / 1</span></div>
+  </section>
+</div>
+</body>
+</html>

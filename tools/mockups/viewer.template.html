@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexus Screen Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* Layout: a list of every screen on the left (by batch, searchable), the chosen screen on the right in a frame,
+   a bar on top with the screen name, previous / next, colour, size and "open full page". Built by
+   tools/mockups/build-preview.mjs from preview-hub.src.html, so the list always matches the preview home. */
+:root{
+  --bg:#FAF8F3; --surface:#FFFFFF; --ink:#1C3D36; --muted:#56655E; --line:#E6E2D7; --soft:#F2EFE7;
+  --accent:#03FF96; --band:#1C3D36; --band-ink:#FFFFFF; --on:#E5F2EA; --stage:#EFEBE1;
+  --display:"Sora",system-ui,sans-serif; --text:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C1814; --surface:#12231E; --ink:#E9F1EC; --muted:#A9BCB2; --line:#21403A; --soft:#172C26;
+  --band:#0A1411; --band-ink:#E9F1EC; --on:rgba(127,221,176,.14); --stage:#08110E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1814; --surface:#12231E; --ink:#E9F1EC; --muted:#A9BCB2; --line:#21403A; --soft:#172C26;
+  --band:#0A1411; --band-ink:#E9F1EC; --on:rgba(127,221,176,.14); --stage:#08110E; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 14px/1.45 var(--text);display:grid;grid-template-columns:330px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);overflow:hidden}
+.vbar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--band);color:var(--band-ink);min-width:0}
+.vbar .logo{display:flex;align-items:center;gap:8px;color:var(--band-ink);text-decoration:none;flex:none}
+.vbar .logo svg{width:24px;height:27px;color:var(--accent)}
+.vbar .logo b{font:600 17px var(--display)}
+.vbar .now{min-width:0;flex:1;display:flex;flex-direction:column}
+.vbar .now b{font:600 15px var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vbar .now span{font-size:12px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vbar button,.vbar a.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;min-width:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:var(--band-ink);font-size:13px;font-weight:600;white-space:nowrap}
+.vbar button[aria-pressed="true"]{background:var(--accent);color:#0E2A23;border-color:var(--accent)}
+.vbar .grp{display:flex;gap:4px;flex:none}
+.vbar button:focus-visible,.vbar a.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.list{border-right:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;min-height:0}
+.find{padding:12px;border-bottom:1px solid var(--line)}
+.find input{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-height:40px}
+.find small{display:block;color:var(--muted);margin-top:6px;font-size:12px}
+.scroll{overflow:auto;padding:6px 0 24px;flex:1}
+.bt{font:600 12px var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:14px 16px 6px}
+.it{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;align-items:baseline;width:100%;text-align:left;border:0;background:none;color:inherit;font:inherit;padding:7px 16px;cursor:pointer;min-height:36px}
+.it:hover{background:var(--soft)}
+.it[aria-current="true"]{background:var(--on);box-shadow:inset 3px 0 0 var(--band)}
+.it .id{font:600 11px var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.it b{font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.views{display:flex;flex-wrap:wrap;gap:6px;padding:2px 16px 10px 88px}
+.views a{font-size:12px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--bg)}
+.views a.on{background:var(--band);color:var(--band-ink);border-color:var(--band)}
+.stagev{background:var(--stage);display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:0}
+.stagev iframe{border:0;width:100%;height:100%;background:#fff;display:block}
+.stagev.phone{padding:18px}
+.stagev.phone iframe{width:390px;height:min(844px,100%);border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.empty{color:var(--muted);padding:16px}
+@media (max-width:900px){
+  body{grid-template-columns:1fr;grid-template-rows:auto 42% minmax(0,1fr)}
+  .list{border-right:0;border-bottom:1px solid var(--line)}
+  .vbar{flex-wrap:wrap}
+  .vbar .now{order:3;flex-basis:100%}
+}
+</style>
+</head>
+<body>
+<header class="vbar">
+  <a class="logo" href="index.html" title="Back to the preview home">__LOGO__<b>Nexus</b></a>
+  <div class="now"><b id="nowName">Screen viewer</b><span id="nowWhat">Pick a screen on the left</span></div>
+  <div class="grp"><button type="button" id="prev" title="Previous screen (←)">‹ Prev</button><button type="button" id="next" title="Next screen (→)">Next ›</button></div>
+  <div class="grp" role="group" aria-label="Colour"><button type="button" data-look="E" aria-pressed="true">Emerald</button><button type="button" data-look="N" aria-pressed="false">Navy</button></div>
+  <div class="grp" role="group" aria-label="Size"><button type="button" data-size="full" aria-pressed="true" title="Computer screens fit the frame">Computer</button><button type="button" data-size="phone" aria-pressed="false" title="Phone width (portals and public pages)">Phone width</button></div>
+  <a class="btn" id="full" href="index.html" target="_blank" rel="noopener">Open full page ↗</a>
+</header>
+<nav class="list" aria-label="Screens">
+  <div class="find"><input id="q" type="search" placeholder="Find a screen (name, ID or batch)" aria-label="Find a screen"><small id="count"></small></div>
+  <div class="scroll" id="items"></div>
+</nav>
+<main class="stagev" id="stage"><iframe id="frame" title="Screen" src="about:blank"></iframe></main>
+<script>
+const SCREENS = __SCREENS__;
+(() => {
+  const flat = [];
+  SCREENS.forEach((b) => b.rows.forEach((r) => { r.i = flat.length; flat.push({ ...r, batch: b.title }); }));
+  const $ = (id) => document.getElementById(id);
+  const frame = $('frame'), items = $('items');
+  let cur = -1, view = 0, size = 'full';
+  let look = 'E';
+  try { look = localStorage.getItem('nx-look') === 'N' ? 'N' : 'E'; } catch { /* storage may be blocked */ }
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  function draw() {
+    const q = $('q').value.trim().toLowerCase();
+    let html = '', n = 0;
+    SCREENS.forEach((b) => {
+      const rows = b.rows.map((r) => ({ r, i: r.i }))
+        .filter(({ r }) => !q || `${r.id} ${r.name} ${r.what} ${b.title}`.toLowerCase().includes(q));
+      if (!rows.length) return;
+      html += `<div class="bt">${esc(b.title)}</div>`;
+      rows.forEach(({ r, i }) => {
+        n++;
+        html += `<button type="button" class="it" data-i="${i}" aria-current="${i === cur}"><span class="id">${esc(r.id)}</span><span><b>${esc(r.name)}</b></span></button>`;
+        if (i === cur && r.links.length > 1) html += `<div class="views">${r.links.map((l, k) => `<a href="#${esc(l.href)}" data-v="${k}" class="${k === view ? 'on' : ''}">${esc(l.label)}</a>`).join('')}</div>`;
+      });
+    });
+    items.innerHTML = html || '<p class="empty">No screen matches.</p>';
+    const scr = new Set(flat.filter((f) => /^SCR-/.test(f.id)).map((f) => f.id)).size;
+    $('count').textContent = q ? `${n} of ${flat.length} found` : `${scr} screens and ${flat.length - scr} extra views, in ${SCREENS.length} batches`;
+  }
+  function open(i, v = 0, push = true) {
+    if (i < 0 || i >= flat.length) return;
+    cur = i; view = v;
+    const r = flat[i], l = r.links[v] || r.links[0];
+    frame.src = l.href;
+    $('full').href = l.href;
+    $('nowName').textContent = `${r.id} · ${r.name}`;
+    $('nowWhat').textContent = `${r.batch} · ${r.what}`;
+    if (push) history.replaceState(null, '', `#${l.href}`);
+    draw();
+    const on = items.querySelector('[aria-current="true"]');
+    if (on) on.scrollIntoView({ block: 'nearest' });
+  }
+  function paint() {
+    document.querySelectorAll('[data-look]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.look === look)));
+    document.querySelectorAll('[data-size]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.size === size)));
+    $('stage').classList.toggle('phone', size === 'phone');
+  }
+  items.addEventListener('click', (e) => {
+    const it = e.target.closest('.it');
+    if (it) { open(+it.dataset.i); return; }
+    const v = e.target.closest('[data-v]');
+    if (v) { e.preventDefault(); open(cur, +v.dataset.v); }
+  });
+  $('q').addEventListener('input', draw);
+  $('prev').onclick = () => open(cur <= 0 ? flat.length - 1 : cur - 1);
+  $('next').onclick = () => open(cur >= flat.length - 1 ? 0 : cur + 1);
+  document.querySelectorAll('[data-look]').forEach((b) => b.addEventListener('click', () => {
+    look = b.dataset.look;
+    try { localStorage.setItem('nx-look', look); } catch { /* ignore */ }
+    paint();
+    try { frame.contentWindow.location.reload(); } catch { frame.src = frame.src; }
+  }));
+  document.querySelectorAll('[data-size]').forEach((b) => b.addEventListener('click', () => { size = b.dataset.size; paint(); }));
+  addEventListener('keydown', (e) => {
+    if (e.target.closest('input')) return;
+    if (e.key === 'ArrowRight') $('next').click();
+    if (e.key === 'ArrowLeft') $('prev').click();
+  });
+  // Open the screen named in the address (viewer.html#leads.html), else the first one.
+  const want = decodeURIComponent(location.hash.slice(1));
+  let start = 0, sv = 0;
+  if (want) flat.forEach((r, i) => r.links.forEach((l, k) => { if (l.href === want && !start && !sv) { start = i; sv = k; } }));
+  paint();
+  draw();
+  open(start, sv, false);
+})();
+</script>
+</body>
+</html>

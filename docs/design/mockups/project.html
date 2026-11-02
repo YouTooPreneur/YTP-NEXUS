@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Project</title>
+<!-- Batch 6 · SCR-061 Project (Kaveri Hospitals · website redesign): stages and checklists from the service template, milestones timeline, tasks, deliverables, files and client resources, discussion (internal or visible to the client), change requests, payment stages and revisions from the agreement, and what the client sees (stages only, set per client). Tabs: #overview #timeline #deliverables #discussion #client (PRJ-001 to PRJ-011, CON-004, CON-011, CON-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:10px;padding-top:12px}
+  .hd{display:flex;gap:14px;align-items:center}
+  .hd .lg-av{width:48px;height:48px;font-size:14px}
+  .hd h1{font-size:28px;line-height:1.1}
+  .hd .sub3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:12.5px;color:var(--muted)}
+  .hd .sub3 a{color:var(--ink);font-weight:700;text-decoration:none}
+  .hd .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .flow .st{padding:8px 10px}
+  .tabs-x{flex:none}
+  .tabs-x a em{font-style:normal;display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;margin-left:6px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);font-size:11px;font-weight:700;color:var(--muted)}
+  .tabs-x button,.tabs-x a{padding:10px 13px}
+  .cols{display:grid;grid-template-columns:1.35fr 1fr;gap:12px;flex:1;min-height:0}
+  .col{display:flex;flex-direction:column;gap:12px;min-height:0}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:17px}
+  .cb7{padding:0 16px 11px}
+  .ck{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:12.5px}
+  .ck .r{margin-left:auto}
+  .ck.dn span.t{color:var(--muted);text-decoration:line-through}
+  .tt td{padding-top:6px;padding-bottom:6px;font-size:12.5px}
+  .tt b{font-weight:700}
+  .tt small{display:block;font-size:11.5px;color:var(--muted)}
+  .ms{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;margin-top:4px}
+  .ms::before{content:"";position:absolute;left:8%;right:8%;top:9px;height:2px;background:var(--line)}
+  .ms div{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:11px;color:var(--muted);position:relative}
+  .ms div i{width:18px;height:18px;border-radius:50%;background:var(--card);border:2px solid var(--edge)}
+  .ms div.d i{background:var(--on);border-color:var(--on)}
+  .ms div.n i{border-color:#E2A93B;background:#FEF3C7;box-shadow:0 0 0 4px rgba(226,169,59,.18)}
+  .ms div b{color:var(--ink);font-size:11.5px}
+  .kv3{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .kv3 > div{padding:8px 11px;border-radius:12px;background:var(--card-2)}
+  .kv3 small{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .kv3 b{font-weight:700;font-size:13px}
+  .kv3 span{display:block;font-size:11.5px;color:var(--muted)}
+  .stp3{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .stp3:first-of-type{border-top:0}
+  .stp3 .r{margin-left:auto;white-space:nowrap}
+  .cmt{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .cmt:first-of-type{border-top:0}
+  .cmt .lg-av{width:26px;height:26px;font-size:9px}
+  .cmt b{font-weight:700}
+  .cmt small{color:var(--muted);font-size:11.5px}
+  .vis{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:999px;margin-left:6px}
+  .vis.int{background:var(--card-2);color:var(--muted);border:1px solid var(--line-soft)}
+  .vis.cli{background:var(--blue-bg);color:var(--blue)}
+  .vis svg{width:11px;height:11px}
+  .files3{display:flex;gap:8px;flex-wrap:wrap}
+  .files3 > span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:10px;border:1px solid var(--line-soft);background:var(--card)}
+  .files3 .ftype{width:22px;height:22px;font-size:8px;border-radius:6px}
+  .tl3{display:flex;flex-direction:column;gap:0}
+  .tl3 .row3{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .tl3 .row3:first-child{border-top:0}
+  .gantt{position:relative;height:22px;border-radius:6px;background:var(--card-2)}
+  .gantt i{position:absolute;top:4px;bottom:4px;border-radius:5px}
+  .gantt em{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--red);left:40%}
+  .gx{display:grid;grid-template-columns:120px repeat(4,1fr);gap:14px;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding-bottom:6px}
+  .cview{display:grid;grid-template-columns:1fr 360px;gap:14px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="projects">
+  <main>
+    <section class="pg">
+      <div>
+        <div class="crumbs"><a href="projects.html">Projects</a><span>/</span><a href="client-profile.html">Kaveri Hospitals</a><span>/</span><b style="color:var(--ink)">Website redesign</b></div>
+        <div class="hd">
+          <span class="lg-av" style="--av:#047857">KH</span>
+          <div>
+            <h1 class="serif">Website redesign</h1>
+            <div class="sub3"><span class="chip c-blue">Design · stage 3 of 7</span><span class="chip c-green">On track</span><a href="client-profile.html">Kaveri Hospitals</a><span>· Dr. Rao · from proposal Q-2026-009, accepted 12 Jul · lead: Divya</span></div>
+          </div>
+          <div class="acts"><span class="ai-btn" data-ai="Progress update for the client: a short message (English or Tamil) on what is done, what is next and what we need from them. Arrives as a draft; nothing is sent until you approve."><i data-i="spark"></i>Update for the client</span><span class="btn lg"><i data-i="eye"></i>As the client sees it</span><span class="btn solid lg"><i data-i="edit"></i>Edit</span></div>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="st done"><b><em>1</em>Discovery</b>Done 22 Jul</div>
+        <div class="st done"><b><em>2</em>Content and photos</b>Done 12 Sep</div>
+        <div class="st now"><b><em>3</em>Design</b>Homepage review today</div>
+        <div class="st"><b><em>4</em>Build</b>From 13 Oct</div>
+        <div class="st"><b><em>5</em>Testing</b>From 27 Oct</div>
+        <div class="st"><b><em>6</em>Launch</b>5 Nov</div>
+        <div class="st"><b><em>7</em>Handover</b>After launch</div>
+      </div>
+
+      <div class="tabs-x" data-tabs="p"><button data-tab="overview">Overview</button><button data-tab="timeline">Timeline</button><a href="tasks.html">Tasks <em>9</em></a><button data-tab="deliverables">Deliverables <em>3</em></button><a href="files.html">Files and client resources</a><button data-tab="discussion">Discussion <em>6</em></button><a href="change-requests.html">Change requests <em>1</em></a><button data-tab="client">Client view</button></div>
+
+      <!-- Overview -->
+      <section data-group="p" data-panel="overview" class="cols">
+        <div class="col">
+          <div class="card">
+            <div class="ch"><h2 class="serif">This stage · Design</h2><span class="count">4 of 6</span><span class="link">From the website template</span></div>
+            <div class="cb7">
+              <div class="ck dn"><i class="chk on"></i><span class="t">Sitemap approved by the client</span><span class="r sm">2 Sep</span></div>
+              <div class="ck dn"><i class="chk on"></i><span class="t">Colours and fonts (style sheet)</span><span class="r sm">5 Sep</span></div>
+              <div class="ck dn"><i class="chk on"></i><span class="t">Homepage design v1 · sent, changes asked (round 1 of 2)</span><span class="r sm">24 Sep</span></div>
+              <div class="ck dn"><i class="chk on"></i><span class="t">Doctor photos placed</span><span class="r sm">29 Sep</span></div>
+              <div class="ck"><i class="chk"></i><span>Homepage design v2 · <b>internal review today 12:30 pm</b>, then to the client</span><a class="r btn" href="deliverable.html" style="height:26px;padding:0 10px;font-size:11.5px;text-decoration:none">Open</a></div>
+              <div class="ck"><i class="chk"></i><span>Inner pages · 5 of 9 designed</span><span class="r sm">12 Oct</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Milestones</h2><span class="link">On the calendar</span></div>
+            <div class="cb7">
+              <div class="ms">
+                <div class="d"><i></i><b>Sitemap</b>2 Sep</div>
+                <div class="d"><i></i><b>Photo shoot</b>8 Sep</div>
+                <div class="n"><i></i><b>Homepage</b>3 Oct</div>
+                <div><i></i><b>All designs</b>12 Oct</div>
+                <div><i></i><b>Build done</b>26 Oct</div>
+                <div><i></i><b>Launch</b>5 Nov</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="flex:1">
+            <div class="ch"><h2 class="serif">Tasks</h2><span class="count">9</span><a class="link" href="tasks.html" style="text-decoration:none">All tasks<i data-i="right"></i></a></div>
+            <div class="cb7">
+              <table class="tbl tt">
+                <tbody>
+                  <tr><td><b>Homepage design review</b><small>Design · with the Owner</small></td><td><span class="lg-av" style="--av:#BE185D;width:24px;height:24px;font-size:9px">DS</span></td><td>Today 12:30 pm</td><td><span class="chip c-amber">In review</span></td></tr>
+                  <tr><td><b>Inner page designs</b><small>Design · 5 of 9 done</small></td><td><span class="lg-av" style="--av:#BE185D;width:24px;height:24px;font-size:9px">DS</span></td><td>12 Oct</td><td><span class="chip c-blue">In progress</span></td></tr>
+                  <tr><td><b>Set up the staging site</b><small>Build · on YTP-HS-01</small></td><td><span class="lg-av" style="--av:#0369A1;width:24px;height:24px;font-size:9px">PN</span></td><td>5 Oct</td><td><span class="chip c-ink">To do</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="ch"><h2 class="serif">Money and agreement</h2><a class="link" href="agreements.html" style="text-decoration:none">Agreement<i data-i="right"></i></a></div>
+            <div class="cb7">
+              <div class="kv3">
+                <div><small>Value</small><b>₹1,20,000</b><span>3 payment stages</span></div>
+                <div><small>Paid</small><b>₹48,000</b><span>Advance 40% · 18 Jul</span></div>
+                <div><small>Next stage</small><b>₹48,000 · 40%</b><span>When "Design" is marked done</span></div>
+                <div><small>Revisions</small><b>1 of 2 used</b><span>Homepage · per this client</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Deliverables</h2><span class="count">3</span></div>
+            <div class="cb7">
+              <div class="stp3"><span class="ftype fig">FIG</span><div><b>Homepage design</b> · v2<br><small class="sm">Quality check before the client</small></div><a class="r chip c-amber" href="deliverable.html" style="text-decoration:none">Internal review</a></div>
+              <div class="stp3"><span class="ftype pdf">PDF</span><div><b>Sitemap</b> · v1<br><small class="sm">Approved by Dr. Rao, 2 Sep</small></div><span class="r chip c-green">Approved</span></div>
+              <div class="stp3"><span class="ftype pdf">PDF</span><div><b>Style sheet</b> · v1<br><small class="sm">Approved by Dr. Rao, 5 Sep</small></div><span class="r chip c-green">Approved</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2 class="serif">Client resources</h2><a class="link" href="files.html" style="text-decoration:none">Files<i data-i="right"></i></a></div>
+            <div class="cb7"><div class="files3"><span><span class="ftype img">IMG</span>42 doctor photos</span><span><span class="ftype fig">SVG</span>Logo</span><span><span class="ftype doc">DOC</span>Old site text</span><span><span class="ftype vlt">KEY</span>cPanel · vault link</span></div><span class="manual" style="display:block;margin-top:8px">The client uploads here from their portal too. Files up to 25 MB; bigger ones as Drive links.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section data-group="p" data-panel="timeline" class="card" style="padding:16px 18px">
+        <div class="gx"><span></span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct – Nov</span></div>
+        <div class="tl3">
+          <div class="row3"><b>Discovery</b><div class="gantt"><i style="left:0;width:18%;background:var(--on)"></i></div></div>
+          <div class="row3"><b>Content and photos</b><div class="gantt"><i style="left:12%;width:47.5%;background:var(--on)"></i></div></div>
+          <div class="row3"><b>Design</b><div class="gantt"><i style="left:46%;width:34%;background:#38BDF8"></i><em style="left:75.4%"></em></div></div>
+          <div class="row3"><b>Build</b><div class="gantt"><i style="left:80.2%;width:5.4%;background:var(--bar-fill);opacity:.5"></i></div></div>
+          <div class="row3"><b>Testing</b><div class="gantt"><i style="left:85.8%;width:3.4%;background:var(--bar-fill);opacity:.5"></i></div></div>
+          <div class="row3"><b>Launch</b><div class="gantt"><i style="left:89.3%;width:1.6%;background:#E2A93B"></i></div></div>
+        </div>
+        <span class="manual" style="display:block;margin-top:10px">The red line is today. Milestones also show on the calendar, with their files.</span>
+      </section>
+
+      <!-- Deliverables -->
+      <section data-group="p" data-panel="deliverables" class="card" style="padding:12px 18px">
+        <table class="tbl tt">
+          <thead><tr><th>Deliverable</th><th>Version</th><th>Quality check</th><th>Client</th><th>Revisions</th></tr></thead>
+          <tbody>
+            <tr><td><a href="deliverable.html" style="color:inherit"><b>Homepage design</b></a></td><td>v2</td><td><span class="chip c-amber">Today 12:30 pm</span></td><td>v1: changes asked</td><td>1 of 2</td></tr>
+            <tr><td><b>Sitemap</b></td><td>v1</td><td><span class="chip c-green">Signed off</span></td><td><span class="chip c-green">Approved 2 Sep</span></td><td>0 of 2</td></tr>
+            <tr><td><b>Style sheet</b></td><td>v1</td><td><span class="chip c-green">Signed off</span></td><td><span class="chip c-green">Approved 5 Sep</span></td><td>0 of 2</td></tr>          </tbody>
+        </table>
+      </section>
+
+      <!-- Discussion -->
+      <section data-group="p" data-panel="discussion" class="card" style="padding:12px 18px">
+        <div class="cmt"><span class="lg-av" style="--av:#BE185D">DS</span><div><b>Divya</b><span class="vis int"><i data-i="lock"></i>Internal</span> <small>· today 8:55 am</small><br>@Owner the hero image is ready for review.</div></div>
+        <div class="cmt"><span class="lg-av" style="--av:#047857">DR</span><div><b>Dr. Rao</b><span class="vis cli"><i data-i="eye"></i>Client sees</span> <small>· 30 Sep</small><br>Please show the 24×7 emergency number at the top.</div></div>
+        <div class="cmt"><span class="lg-av" style="--av:#0F766E">YP</span><div><b>Owner</b><span class="vis cli"><i data-i="eye"></i>Client sees</span> <small>· 30 Sep</small><br>Noted. It will be in version 2, along with the doctor photos.</div></div>
+        <div class="cmt"><span class="lg-av" style="--av:#1D4ED8">AK</span><div><b>Arun</b><span class="vis int"><i data-i="lock"></i>Internal</span> <small>· 29 Sep</small><br>Online booking is out of scope; I logged it as a change request.</div></div>
+        <span class="manual" style="display:block;margin-top:8px">Internal comments never appear in the client portal. Use @ to mention someone.</span>
+      </section>
+
+      <!-- What the client sees -->
+      <section data-group="p" data-panel="client" class="cview">
+        <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          <span class="banner info"><i data-i="eye"></i>Kaveri Hospitals is set to see <b>stages only</b>: no task list, no internal comments, no prices.</span>
+          <div class="flow">
+            <div class="st done"><b><em>1</em>Discovery</b>Done</div>
+            <div class="st done"><b><em>2</em>Content</b>Done</div>
+            <div class="st now"><b><em>3</em>Design</b>In progress</div>
+            <div class="st"><b><em>4</em>Build</b></div>
+            <div class="st"><b><em>5</em>Launch</b>5 Nov</div>
+          </div>
+          <span class="sm">Waiting for you: nothing right now. Next: the new homepage design, by 3 Oct.</span>
+        </div>
+        <div class="card" style="padding:16px 18px"><b>Set per client</b><p class="sm" style="margin-top:6px;font-size:12.5px;line-height:1.5">Stages only, or stages and tasks. Each client contact also has their own portal access (invoices, projects, approvals, support).</p></div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

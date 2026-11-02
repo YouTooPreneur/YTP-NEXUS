@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Company profile</title>
+<!-- Batch 1 · SCR-181 Company profile (effective-dated versions, GST switch, LLP date, logos, default colour) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Company profile</b></div>
+          <h1 class="serif">Company profile</h1>
+          <p>Printed on invoices, receipts, letters and certificates. Changes start from a date you choose; documents already issued keep the details they were issued with.</p>
+        </div>
+        <div class="acts"><span class="btn lg">Cancel</span><span class="btn solid lg">Save changes</span></div>
+      </div>
+
+      <div class="g2" style="grid-template-columns:1fr 440px;align-items:start">
+        <div class="card cb" style="padding-top:18px">
+          <div class="ch" style="padding:0 0 12px"><h2 class="serif">Current details</h2><span class="chip c-green">From 1 Apr 2024</span></div>
+          <div class="fields">
+            <div class="field"><label>Legal name</label><div class="input">YouTooPreneur</div></div>
+            <div class="field"><label>Business type</label><div class="input">Proprietorship<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>PAN</label><div class="input mono">AAAPY0000Y</div><span class="help">Sample value</span></div>
+            <div class="field"><label>GSTIN</label><div class="input ph">Not registered yet (applied)</div></div>
+            <div class="field full"><label>Address</label><div class="input">No. 12, Sample Street, Adyar, Chennai 600020</div></div>
+            <div class="field"><label>State (decides CGST + SGST or IGST)</label><div class="input">Tamil Nadu<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>Company email</label><div class="input">hello@youtoopreneur.com</div></div>
+            <div class="field"><label>Logo on light paper</label><div class="input" style="height:56px;gap:12px"><span class="mark" style="width:26px;height:28px;color:#1C3D36"></span><b>YOUTOOPRENEUR</b><span class="end"><span class="btn">Replace</span></span></div></div>
+            <div class="field"><label>Logo on dark backgrounds</label><div class="input" style="height:56px;gap:12px;background:#1C3D36;color:#fff;border-color:#1C3D36"><span class="mark" style="width:26px;height:28px;color:#03FF96"></span><b>YOUTOOPRENEUR</b><span class="end"><span class="btn" style="color:#fff;border-color:rgba(255,255,255,.3)">Replace</span></span></div></div>
+            <div class="field full"><label>Company colour (client and student portals)</label><div class="pill-sel" style="align-self:flex-start"><span class="on">Emerald</span><span>Navy</span></div><span class="help">Staff choose their own colour; clients and students always see this one.</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:18px;min-height:0">
+          <div class="card cb" style="padding-top:18px">
+            <div class="ch" style="padding:0 0 8px"><h2 class="serif">GST</h2><span class="chip c-amber">Applied</span></div>
+            <div class="srow"><div class="txt"><b>GST registered</b><span>Off: invoices are plain invoices without GST.</span></div><i class="toggle"></i></div>
+            <div class="srow"><div class="txt"><b>Registered from</b><span>Set the date when the certificate arrives. From that date: CGST 9% + SGST 9% in Tamil Nadu, IGST 18% elsewhere.</span></div><span class="btn">Set date</span></div>
+          </div>
+          <div class="card cb" style="padding-top:18px;flex:1">
+            <div class="ch" style="padding:0 0 8px"><h2 class="serif">Versions</h2><span class="link">Record history<i data-i="right"></i></span></div>
+            <div class="tl" style="grid-template-columns:1fr;padding:4px 0 0">
+              <div class="now" style="padding-left:24px;padding-top:0;padding-bottom:16px"><span class="d serif" style="font-size:18px">From 1 Apr 2024 · current</span><b>Proprietorship · YouTooPreneur</b><span>All invoices so far use these details</span></div>
+              <div style="padding-left:24px;padding-top:0"><span class="d serif" style="font-size:18px">From a date you set · draft</span><b>LLP · YouTooPreneur LLP</b><span>LLP registration in progress. New documents switch on that date; old ones keep the old name.</span><br><span class="btn" style="margin-top:8px">Set LLP date</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<style>.tl::before{display:none}.tl div::before{top:4px}</style>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Edit client</title>
+<!-- Batch 3 · SCR-033 Add / edit client and contacts: company, founder, several contacts (role, phone, email, WhatsApp, language, portal access, consent); AI fills from a website, card or chat (CRM-002, CRM-004, CRM-026 consent, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 1.25fr;gap:18px;align-items:start}
+  .fields3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 14px}
+  .ct{border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+  .ct-h{display:flex;align-items:center;gap:10px}
+  .ct-h b{font-weight:700}
+  .ct-h .r{margin-left:auto;display:flex;gap:6px}
+  .perm{display:flex;gap:6px;flex-wrap:wrap}
+  .perm span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .perm span.on{background:var(--active-bg);color:var(--ink);border-color:transparent}
+  .cons{display:flex;gap:16px;font-size:12.5px;color:var(--muted);align-items:center;flex-wrap:wrap}
+  .cons span{display:inline-flex;gap:6px;align-items:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="CRM">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="leads.html">CRM</a><span>/</span><a href="client-profile.html">Sharma Dental Care</a><span>/</span><b style="color:var(--ink)">Edit</b></div>
+          <h1 class="serif">Edit client</h1>
+          <p>Company details and the people we deal with. Each contact gets messages in their own language and only the portal access you give.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: reads the client's website, a visiting-card photo or a pasted chat and fills empty fields. Filled fields are marked for you to check."><i data-i="spark"></i>Fill from website or card</span><a class="btn lg" href="client-profile.html" style="text-decoration:none">Cancel</a><span class="btn solid lg">Save</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:14px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Company</h2></div>
+          <div class="fields">
+            <div class="field full"><label>Business name</label><div class="input">Sharma Dental Care</div></div>
+            <div class="field"><label>Industry</label><div class="input">Healthcare<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>City</label><div class="input">Chennai</div></div>
+            <div class="field"><label>Website</label><div class="input">sharmadental.in</div></div>
+            <div class="field"><label>GSTIN (if any)</label><div class="input ph">Not registered</div></div>
+            <div class="field full"><label>Address</label><div class="input">14, LB Road, Adyar, Chennai 600020</div></div>
+            <div class="field"><label>Founder</label><div class="input">Dr. Priya Sharma</div></div>
+            <div class="field"><label>Status</label><div class="input">Active<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>Source</label><div class="input">Referral<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>Referred by</label><div class="input">Dr. Rao (Kaveri Hospitals)</div></div>
+            <div class="field full"><label>Tags</label><div class="input">Healthcare · Happy client · Local SEO prospect</div></div>
+          </div>
+        </div>
+
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:12px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:20px">Contacts</h2><em class="count">2</em><span class="link"><span class="btn"><i data-i="plus"></i>Add contact</span></span></div>
+          <div class="ct">
+            <div class="ct-h"><span class="av">PS</span><b>Dr. Priya Sharma</b><span class="chip c-green">Main contact</span><span class="r"><span class="btn" title="Remove"><i data-i="trash"></i></span></span></div>
+            <div class="fields3">
+              <div class="field"><label>Role</label><div class="input">Owner</div></div>
+              <div class="field"><label>Phone</label><div class="input">+91 98400 12345</div></div>
+              <div class="field"><label>WhatsApp</label><div class="input">Same as phone</div></div>
+              <div class="field"><label>Email</label><div class="input">priya@sharmadental.in</div></div>
+              <div class="field"><label>Language</label><div class="input">Tamil<span class="end"><i data-i="down"></i></span></div></div>
+              <div class="field"><label>Prefers</label><div class="input">WhatsApp<span class="end"><i data-i="down"></i></span></div></div>
+            </div>
+            <div class="field"><label>Portal access</label><div class="perm"><span class="on">Invoices</span><span class="on">Approvals</span><span class="on">Requests</span><span class="on">Files</span><span class="on">Reports</span></div></div>
+            <div class="cons"><span><i class="chk on"></i>Agreed to offers and newsletters · 12 Jul 2025 · signed form</span><span><i class="chk on"></i>WhatsApp updates</span></div>
+          </div>
+          <div class="ct">
+            <div class="ct-h"><span class="av">RV</span><b>Ravi Varma</b><span class="r"><span class="btn" title="Remove"><i data-i="trash"></i></span></span></div>
+            <div class="fields3">
+              <div class="field"><label>Role</label><div class="input">Front desk</div></div>
+              <div class="field"><label>Phone</label><div class="input">+91 98400 54321</div></div>
+              <div class="field"><label>Language</label><div class="input">English<span class="end"><i data-i="down"></i></span></div></div>
+            </div>
+            <div class="field"><label>Portal access</label><div class="perm"><span class="on">Invoices</span><span>Approvals</span><span>Requests</span><span>Files</span><span>Reports</span></div></div>
+            <div class="cons"><span><i class="chk"></i>No consent for offers yet</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

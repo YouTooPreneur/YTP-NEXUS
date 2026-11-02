@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Change requests</title>
+<!-- Batch 6 · SCR-055 Change requests: every out-of-scope request, free or chargeable, handled per client ("always quote", "small changes free", "decide each time"); charged ones go quote → client approval → bill (CON-012, RULE-023, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .tbl td{padding-top:9px;padding-bottom:9px;font-size:12.5px}
+  .tbl th.num,.tbl td.num{padding-right:22px}
+  .tbl b{font-weight:700;font-size:13px;display:block}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .id2{font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;color:var(--muted)}
+  .hd2{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);color:var(--muted);white-space:nowrap}
+  .steps4{display:flex;gap:3px;width:90px}
+  .steps4 i{flex:1;height:5px;border-radius:999px;background:var(--bar)}
+  .steps4 i.d{background:var(--on)} .steps4 i.n{background:#E2A93B} .steps4 i.x{background:var(--red)}
+  .how3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .how3 > div{padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft);font-size:12.5px;line-height:1.45}
+  .how3 b{display:block;font-weight:700;font-size:13px;margin-bottom:2px}
+  .how3 .n2{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="app" data-active="Projects" data-sec="projects" data-sec-on="changes">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Change requests</h1>
+          <p>Work outside the agreed scope. Each client decides how it is handled. Charged work always goes quote → client approval → its own bill, made as soon as the client approves.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Draft a quote: from the request, the client's past prices and the service rates. Arrives as a draft quote; discounts still need approval."><i data-i="spark"></i>Draft a quote</span><span class="btn solid lg"><i data-i="plus"></i>New change request</span></div>
+      </div>
+
+      <div class="counters">
+        <div class="ctr"><b>4</b><span>Open</span></div>
+        <div class="ctr warn"><b>₹19,500</b><span>Quoted, waiting for clients</span></div>
+        <div class="ctr"><b>₹6,000</b><span>Approved, bill waits for your OK</span></div>
+        <div class="ctr"><b>1</b><span>Free change in Sep</span></div>
+      </div>
+
+      <div class="how3">
+        <div><span class="n2">Always quote</span><b>Every change gets a price first</b>Kaveri Hospitals, Meridian Logistics and 9 more.</div>
+        <div><span class="n2">Small changes free</span><b>Free up to a limit</b>Anbu Textiles and 4 more: up to 2 changes or 1 hour a month (a setting). More is quoted.</div>
+        <div><span class="n2">Decide each time</span><b>The default</b>Velocity Motors and 27 more. The owner or manager decides per request.</div>
+      </div>
+
+      <div class="card" style="padding:4px 18px 12px">
+        <table class="tbl">
+          <thead><tr><th></th><th>Change</th><th>Client and project</th><th>Client's rule</th><th class="num">Price</th><th>Quote → OK → bill</th><th>Status</th><th>Next step</th></tr></thead>
+          <tbody>
+            <tr><td class="id2">CR-4</td><td><b>Online appointment booking</b><small>Asked on the 29 Sep call</small></td><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:26px;height:26px;font-size:9px">KH</span><div><a href="project.html" style="color:inherit;text-decoration:none"><b>Kaveri Hospitals</b></a><small>Website redesign</small></div></div></td><td><span class="hd2">Always quote</span></td><td class="num">₹15,000</td><td><div class="steps4"><i class="d"></i><i class="n"></i><i></i></div></td><td><span class="chip c-amber">Quoted 30 Sep</span></td><td class="sm">Waiting for Dr. Rao</td></tr>
+            <tr><td class="id2">CR-2</td><td><b>Cash-on-delivery fee option</b><small>Checkout change</small></td><td><div class="nmc"><span class="lg-av" style="--av:#9F1239;width:26px;height:26px;font-size:9px">AT</span><div><a href="service-sold.html" style="color:inherit;text-decoration:none"><b>Anbu Textiles</b></a><small>Website · shop</small></div></div></td><td><span class="hd2">Small changes free</span></td><td class="num">₹4,500</td><td><div class="steps4"><i class="d"></i><i class="n"></i><i></i></div></td><td><span class="chip c-amber">Quoted 25 Sep</span></td><td class="sm">Remind · ₹28,000 still overdue</td></tr>
+            <tr><td class="id2">CR-5</td><td><b>4 extra Diwali posts</b><small>Above the 16 posts a month</small></td><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9;width:26px;height:26px;font-size:9px">ML</span><div><b>Meridian Logistics</b><small>Social media · monthly</small></div></div></td><td><span class="hd2">Always quote</span></td><td class="num">₹6,000</td><td><div class="steps4"><i class="d"></i><i class="d"></i><i class="n"></i></div></td><td><span class="chip c-green">Approved 29 Sep</span></td><td class="sm">Own bill made 29 Sep · waits for your OK</td></tr>
+            <tr><td class="id2">CR-6</td><td><b>New batch timings on the page</b><small>From WhatsApp today</small></td><td><div class="nmc"><span class="lg-av" style="--av:#6D28D9;width:26px;height:26px;font-size:9px">BM</span><div><b>Bright Minds Tuition</b><small>Landing page · no AMC</small></div></div></td><td><span class="hd2">Decide each time</span></td><td class="num">₹1,500</td><td><div class="steps4"><i class="n"></i><i></i><i></i></div></td><td><span class="chip c-ink">Quote draft</span></td><td><span class="btn" style="height:28px;font-size:12px">Send quote</span></td></tr>
+            <tr><td class="id2">CR-1</td><td><b>Size chart on product pages</b><small>Small change · 1 of 2 free in Sep</small></td><td><div class="nmc"><span class="lg-av" style="--av:#9F1239;width:26px;height:26px;font-size:9px">AT</span><div><b>Anbu Textiles</b><small>Website · shop</small></div></div></td><td><span class="hd2">Small changes free</span></td><td class="num mut">Free</td><td><div class="steps4"><i class="d"></i><i class="d"></i><i class="d"></i></div></td><td><span class="chip c-green">Done 2 Sep</span></td><td class="sm">—</td></tr>
+            <tr><td class="id2">CR-3</td><td><b>Diwali landing page</b><small>Asked 18 Sep</small></td><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8;width:26px;height:26px;font-size:9px">VM</span><div><b>Velocity Motors</b><small>Ads management</small></div></div></td><td><span class="hd2">Decide each time</span></td><td class="num mut">₹8,000</td><td><div class="steps4"><i class="d"></i><i class="x"></i><i></i></div></td><td><span class="chip c-ink">Declined 20 Sep</span></td><td class="sm">"Maybe next year"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

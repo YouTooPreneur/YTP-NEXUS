@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · YTP subscriptions</title>
+<!-- Batch 4 · SCR-112 YTP's own subscriptions: the tools YTP pays for, renewal dates, cards, calendar and spending (monthly, yearly, next 7 days, by category, by cycle, top 5); vault links instead of passwords; AI spots savings (FIN-015, AUTO-034, RULE-025, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .sub2{display:flex;flex-direction:column;gap:8px;padding:14px 16px}
+  .sub2 .h{display:flex;align-items:center;gap:10px}
+  .sub2 .lg{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;flex:none}
+  .sub2 .h b{display:block;font-weight:700}
+  .sub2 .h small{font-size:12px;color:var(--muted)}
+  .sub2 .price{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .sub2 .price span{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);font-weight:600}
+  .sub2 .row3{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .sub2 .row3 .r{margin-left:auto}
+  .sub2.soon{box-shadow:inset 0 0 0 1.5px #E2A93B,var(--shadow)}
+  .sub2.plan{background:var(--card-2);box-shadow:none;border-style:dashed}
+  .vlt{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:var(--muted)}
+  .vlt svg{width:12px;height:12px}
+  .lay{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start}
+  .cat{display:grid;grid-template-columns:110px 1fr 74px;gap:10px;align-items:center;padding:6px 0;font-size:12.5px}
+  .cat b{font-weight:600}
+  .cat .v{text-align:right;font-weight:700}
+  .top5{display:flex;flex-direction:column;gap:6px}
+  .top5 div{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px solid var(--line-soft)}
+  .top5 div:first-child{border-top:0}
+  .cal3{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px}
+  .cal3 .hd{text-align:center;color:var(--muted);font-weight:700;padding-bottom:2px}
+  .cal3 .c{min-height:48px;border-radius:8px;background:var(--card-2);padding:4px 5px;display:flex;flex-direction:column;gap:2px}
+  .cal3 .c em{font-style:normal;font-weight:700;color:var(--muted)}
+  .cal3 .c span{font-size:10px;font-weight:700;border-radius:4px;padding:1px 4px;color:#fff;background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.36));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cal3 .c.blank{background:transparent}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="subs">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">YTP subscriptions</h1>
+          <p>The tools YTP pays for, when each renews, and what we spend. Logins are vault links; Nexus never stores a password.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: looks at prices, renewal dates and who used each tool, and suggests savings. You decide; nothing is cancelled by AI."><i data-i="spark"></i>Spot savings</span><span class="btn solid lg"><i data-i="plus"></i>Add subscription</span></div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi lead-kpi"><div class="lab">This month</div><div class="num serif" style="font-size:32px">₹23,138</div><div class="sub">8 tools · 1 planned</div></div>
+        <div class="card kpi"><div class="lab">A year at this rate</div><div class="num serif" style="font-size:32px">₹2,77,656</div><div class="sub">Monthly and yearly plans together</div></div>
+        <div class="card kpi"><div class="lab">Renew in 7 days</div><div class="num serif" style="font-size:32px">2</div><div class="sub"><span class="over">Figma 3 Oct</span>AiSensy 5 Oct</div></div>
+        <div class="card kpi"><div class="lab">Paid in US dollars</div><div class="num serif" style="font-size:32px">2</div><div class="sub">Rupee amount from the card statement</div></div>
+      </div>
+      <div class="tabs-x" data-tabs="s"><button data-tab="cards">Cards</button><button data-tab="calendar">Calendar</button><button data-tab="spend">Spending</button></div>
+
+      <section data-group="s" data-panel="cards" class="grid4">
+        <div class="card sub2"><div class="h"><span class="lg" style="background:#F97316">S</span><div><b>Semrush</b><small>Pro · SEO</small></div></div><div class="price">USD 139.95 <span>a month ≈ ₹11,733</span></div><div class="row3"><span class="chip c-ink">For clients</span><span>Renews 20 Oct</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2"><div class="h"><span class="lg" style="background:#DA1F26">A</span><div><b>Adobe Creative Cloud</b><small>All apps · design</small></div></div><div class="price">₹4,230 <span>a month · autopay</span></div><div class="row3"><span class="chip c-ink">Internal</span><span>Renews 12 Oct</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2 soon"><div class="h"><span class="lg" style="background:#111">F</span><div><b>Figma</b><small>Professional · 2 editors</small></div></div><div class="price">USD 30 <span>a month ≈ ₹2,515</span></div><div class="row3"><span class="chip c-amber">Renews in 2 days</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2 soon"><div class="h"><span class="lg" style="background:#1B9C85">A</span><div><b>AiSensy</b><small>Basic · WhatsApp</small></div></div><div class="price">₹1,770 <span>a month incl. GST · autopay</span></div><div class="row3"><span class="chip c-amber">Renews in 4 days</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2"><div class="h"><span class="lg" style="background:#00C4CC">C</span><div><b>Canva</b><small>Teams · design</small></div></div><div class="price">₹11,999 <span>a year</span></div><div class="row3"><span class="chip c-ink">Internal</span><span>Renews 14 Feb 2027</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2"><div class="h"><span class="lg" style="background:#C96442">C</span><div><b>Claude</b><small>AI · pay for what we use</small></div></div><div class="price">₹1,240 <span>in September, of ₹3,000</span></div><div class="row3"><a class="lk" href="ai-usage.html" style="font-size:12px;font-weight:600">AI usage and limits</a><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2"><div class="h"><span class="lg" style="background:#4285F4">G</span><div><b>Google One · 2 TB</b><small>Backup storage</small></div></div><div class="price">₹650 <span>a month · autopay</span></div><div class="row3"><span class="chip c-ink">Internal</span><span>Renews 18 Oct</span><span class="vlt r"><i data-i="key"></i>Vault</span></div></div>
+        <div class="card sub2 plan"><div class="h"><span class="lg" style="background:#175DDC">V</span><div><b>Vaultwarden</b><small>Password manager · self-hosted</small></div></div><div class="price">₹0 <span>runs on our server from step 3.5</span></div><div class="row3"><span class="chip c-ink">Planned</span><span>Also: Google Workspace</span></div></div>
+      </section>
+
+      <section data-group="s" data-panel="calendar" class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">October 2026</h2><span class="sm" style="font-size:12px;margin-left:auto">Reminders 7 days and 1 day before each renewal</span></div>
+        <div class="cal3" id="cal3"></div>
+      </section>
+
+      <section data-group="s" data-panel="spend" class="lay">
+        <div class="card cb" style="padding-top:14px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:18px">By category</h2></div>
+          <div class="cat"><b>SEO</b><span class="meter"><i style="width:51%;background:#F97316"></i></span><span class="v">₹11,733</span></div>
+          <div class="cat"><b>Design</b><span class="meter"><i style="width:33%;background:#8B5CF6"></i></span><span class="v">₹7,745</span></div>
+          <div class="cat"><b>Messaging</b><span class="meter"><i style="width:8%;background:#1B9C85"></i></span><span class="v">₹1,770</span></div>
+          <div class="cat"><b>AI</b><span class="meter"><i style="width:5%;background:#C96442"></i></span><span class="v">₹1,240</span></div>
+          <div class="cat"><b>Storage</b><span class="meter"><i style="width:3%;background:#4285F4"></i></span><span class="v">₹650</span></div>
+        </div>
+        <div class="card cb" style="padding-top:14px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:18px">Top 5</h2></div>
+          <div class="top5"><div><span>Semrush</span><b>₹11,733</b></div><div><span>Adobe Creative Cloud</span><b>₹4,230</b></div><div><span>Figma</span><b>₹2,515</b></div><div><span>AiSensy</span><b>₹1,770</b></div><div><span>Claude</span><b>₹1,240</b></div></div>
+          <p class="help" style="margin-top:8px">By cycle: 6 monthly, 1 yearly (Canva), 1 free.</p>
+        </div>
+        <div class="ai-card"><div class="ai-h"><i data-i="spark"></i>Savings to consider</div><div style="font-size:13px;line-height:1.55">Figma has 2 editors but only Divya edited files in September: dropping to 1 editor saves about ₹1,257 a month before it renews on 3 Oct. Semrush is half the tool spend; it serves 5 SEO clients, so keep it.</div><div class="ai-acts"><span class="btn">Create a task for Divya</span></div></div>
+      </section>
+    </section>
+  </main>
+</div>
+<script>
+  // October 2026 starts on a Thursday.
+  const ev = { 3: ['Figma', '#111'], 5: ['AiSensy', '#1B9C85'], 12: ['Adobe', '#DA1F26'], 18: ['Google One', '#4285F4'], 20: ['Semrush', '#F97316'] };
+  let h = ['Mo','Tu','We','Th','Fr','Sa','Su'].map((d) => `<span class="hd">${d}</span>`).join('');
+  for (let i = 0; i < 3; i++) h += '<span class="c blank"></span>';
+  for (let d = 1; d <= 31; d++) h += `<span class="c"><em>${d}</em>${ev[d] ? `<span style="background-color:${ev[d][1]}">${ev[d][0]}</span>` : ''}</span>`;
+  document.getElementById('cal3').innerHTML = h;
+</script>
+</body>
+</html>

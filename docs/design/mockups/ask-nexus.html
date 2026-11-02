@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Ask Nexus</title>
+<!-- Batch 2 · SCR-173 Ask Nexus: chat with Nexus about your business. New chat, chat history, streaming answers with sources, actions with Confirm, memory with consent, limits (AI-001 to AI-004, AI-012 to AI-018, NFR-024) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  main{padding-bottom:20px}
+  .chatlay{display:grid;grid-template-columns:270px 1fr 290px;gap:18px;flex:1;min-height:0;padding-top:18px}
+  .hist{display:flex;flex-direction:column;min-height:0}
+  .hist .newc{margin:14px 14px 10px;height:42px;border-radius:12px;background:var(--primary-bg);color:var(--primary-ink);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700}
+  .hist .findc{margin:0 14px 8px;height:36px;border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;gap:8px;padding:0 10px;color:var(--muted);font-size:12.5px}
+  .hist .findc svg{width:14px;height:14px}
+  .hc{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:13px;color:var(--ink);text-decoration:none;border-radius:10px;margin:0 6px}
+  .hc span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hc small{font-size:11px;color:var(--muted)}
+  .hc.on{background:var(--active-bg);font-weight:700}
+  .hc svg{width:14px;height:14px;color:var(--muted);flex:none}
+  .use{margin-top:auto;padding:12px 16px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+  .thread{display:flex;flex-direction:column;min-height:0}
+  .th-h{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line-soft)}
+  .th-h h2{font-size:19px}
+  .th-h .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .msgs{flex:1;min-height:0;overflow:hidden;padding:16px 22px;display:flex;flex-direction:column;gap:10px;justify-content:safe flex-end}
+  .mine{align-self:flex-end;max-width:70%;background:var(--primary-bg);color:#fff;padding:11px 15px;border-radius:16px 16px 4px 16px;font-size:14px;line-height:1.5}
+  .mine small{display:block;font-size:11px;opacity:.7;margin-top:4px;text-align:right}
+  .bot{display:grid;grid-template-columns:32px 1fr;gap:12px;max-width:92%}
+  .bot .ava{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--primary-bg);color:var(--accent)}
+  .bot .ava svg{width:16px;height:16px}
+  .bot .body{display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.55}
+  .mini{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden}
+  .mini div{display:grid;grid-template-columns:1fr 110px 90px;padding:6px 12px;border-top:1px solid var(--line-soft);font-size:13px}
+  .mini div:first-child{border-top:0;background:var(--card-2);font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .mini b{font-weight:700}
+  .fb{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:12px}
+  .fb .btn{height:28px;padding:0 8px}
+  .act{border-radius:12px;border:1px solid var(--ai-line);background:var(--ai-bg);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .act b{font-weight:700}
+  .act ul{list-style:none;display:flex;flex-direction:column;gap:4px;font-size:13px}
+  .typing{display:inline-flex;gap:4px;align-items:center}
+  .typing i{width:6px;height:6px;border-radius:50%;background:var(--ai-ink);opacity:.5}
+  .typing i:nth-child(2){opacity:.75}.typing i:nth-child(3){opacity:1}
+  .comp{margin:0 18px 16px;border-radius:16px;border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--ai-a),var(--ai-b)) border-box;padding:10px 10px 10px 14px;display:flex;flex-direction:column;gap:8px}
+  .comp .row{display:flex;align-items:center;gap:10px}
+  .comp .ph{flex:1;color:var(--muted);font-size:14px}
+  .comp .att{display:flex;gap:6px}
+  .cnote{font-size:11.5px;color:var(--muted);text-align:center;margin:-8px 0 12px}
+  .side2{display:flex;flex-direction:column;gap:14px;min-height:0}
+  .kv2{display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-top:1px solid var(--line-soft)}
+  .kv2:first-of-type{border-top:0}
+  .kv2 span{color:var(--muted)}
+  .sq{display:flex;flex-direction:column;gap:6px}
+  .sq span{font-size:12.5px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card)}
+</style>
+</head>
+<body>
+<div class="app" data-active="">
+  <main>
+    <div class="chatlay">
+      <div class="card hist">
+        <span class="newc"><i data-i="plus"></i>New chat</span>
+        <div class="findc"><i data-i="search"></i>Search my chats</div>
+        <div class="sect" style="padding:6px 20px 4px">Pinned</div>
+        <a class="hc"><i data-i="star"></i><span>Monthly money check</span></a>
+        <a class="hc"><i data-i="star"></i><span>Renewals this quarter</span></a>
+        <div class="sect" style="padding:10px 20px 4px">Today</div>
+        <a class="hc on"><i data-i="msg"></i><span>Overdue payments this month</span><small>11:02 am</small></a>
+        <a class="hc"><i data-i="msg"></i><span>Draft proposal for Bloom Florists</span><small>9:40 am</small></a>
+        <div class="sect" style="padding:10px 20px 4px">This week</div>
+        <a class="hc"><i data-i="msg"></i><span>Who is free on Friday?</span><small>Tue</small></a>
+        <a class="hc"><i data-i="msg"></i><span>Kaveri project status</span><small>Mon</small></a>
+        <a class="hc"><i data-i="mic"></i><span>Voice: add Ravi follow-up</span><small>Mon</small></a>
+        <div class="use"><span style="display:flex;justify-content:space-between"><b style="color:var(--ink)">My AI in September</b>₹412 of ₹1,500</span><span class="meter"><i style="width:27%;background:var(--on)"></i></span><span>Chats are kept 12 months · <a class="lk" href="my-profile.html#ai">My AI settings</a></span></div>
+      </div>
+
+      <div class="card thread">
+        <div class="th-h"><h2 class="serif">Overdue payments this month</h2><span class="src"><i data-i="wallet"></i>About: Finance</span><span class="r"><span class="btn" title="Pin"><i data-i="star"></i></span><span class="btn" title="Share with a colleague"><i data-i="users2"></i></span><span class="btn" title="More"><i data-i="more"></i></span></span></div>
+        <div class="msgs">
+          <div class="mine">Which clients owe us money right now, and how much?<small>11:02 am</small></div>
+          <div class="bot"><span class="ava"><i data-i="spark"></i></span><div class="body">
+            <div><b>₹1,39,016</b> is unpaid across 7 invoices, and <b>₹65,016</b> of it is overdue. Anbu Textiles is the oldest (34 days, already escalated to you). Greenleaf's domain also expires on 8 Oct, so its small invoice matters more than its size.</div>
+            <div class="mini"><div><span>Overdue</span><span>Amount</span><span>Age</span></div><div><b>Anbu Textiles</b><span>₹28,000</span><span style="color:var(--red);font-weight:700">34 days</span></div><div><b>Kaveri Hospitals</b><span>₹23,600</span><span style="color:var(--red);font-weight:700">18 days</span></div><div><b>Coastal Realty</b><span>₹12,000</span><span style="color:var(--red);font-weight:700">29 days</span></div><div><b>Greenleaf Organics</b><span>₹1,416</span><span style="color:var(--red);font-weight:700">9 days</span></div></div>
+            <div class="ai-acts"><a class="src" href="collections.html"><i data-i="wallet"></i>Collections</a><a class="src" href="invoice.html"><i data-i="doc"></i>YTP/26-27/0042</a><a class="src" href="finance.html"><i data-i="chart"></i>Ageing</a><span style="flex:1"></span><span class="fb"><span class="btn" title="Good answer"><i data-i="thumb"></i></span><span class="btn flip" title="Poor answer"><i data-i="thumb"></i></span><span class="btn" title="Copy"><i data-i="copy"></i></span>1.4 s</span></div>
+          </div></div>
+          <div class="mine">Send Greenleaf a polite reminder on WhatsApp.<small>11:03 am</small></div>
+          <div class="bot"><span class="ava"><i data-i="spark"></i></span><div class="body">
+            <div class="act"><b>Nexus will do this after you confirm:</b><ul><li>✓ Send the "invoice_due_v2" WhatsApp template to Greenleaf Organics (Billing number, AiSensy)</li><li>✓ Note it on the client's timeline</li></ul><div class="ai-acts"><span class="btn solid">Confirm and send</span><span class="btn">Change the wording</span><span class="btn">Cancel</span></div><span class="manual">Test mode is on, so it goes to the test number.</span></div>
+          </div></div>
+          <div class="bot"><span class="ava"><i data-i="spark"></i></span><div class="body"><span class="typing"><i></i><i></i><i></i></span><span class="manual">Writing… <span class="lk" style="font-weight:600">Stop</span></span></div></div>
+        </div>
+        <div class="comp">
+          <div class="row"><span class="btn" title="Attach a record or file"><i data-i="clip"></i></span><span class="src"><i data-i="users"></i>Greenleaf Organics ✕</span><span class="ph">Ask Nexus anything…</span><span class="mic lg" data-go="voice.html" title="Voice assistant: press to talk"><i data-i="mic"></i></span><span class="btn solid lg"><i data-i="send"></i></span></div>
+        </div>
+        <p class="cnote">Nexus answers only from what you are allowed to see. AI can be wrong; check before acting. Nothing is sent or changed without Confirm.</p>
+      </div>
+
+      <div class="side2">
+        <div class="card cb" style="padding-top:16px">
+          <div class="sect" style="padding:0 0 6px">This chat</div>
+          <div class="kv2"><span>Attached</span><b>Greenleaf Organics</b></div>
+          <div class="kv2"><span>Uses</span><b>Finance, CRM</b></div>
+          <div class="kv2"><span>Size</span><b>18% of its limit</b></div>
+          <div class="kv2"><span>Speed</span><b>First words 0.9 s</b></div>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:8px">
+          <div class="sect" style="padding:0">Remembered about you</div>
+          <div class="kv2" style="border-top:0"><span style="color:var(--ink)">Client messages in Tamil when the client prefers it</span><span class="btn" title="Forget" style="height:26px;padding:0 6px"><i data-i="x"></i></span></div>
+          <div class="kv2"><span style="color:var(--ink)">Weekly money check on Mondays</span><span class="btn" title="Forget" style="height:26px;padding:0 6px"><i data-i="x"></i></span></div>
+          <span class="manual">Saved only when you say yes.</span>
+        </div>
+        <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:8px">
+          <div class="sect" style="padding:0">Try asking</div>
+          <div class="sq"><span>What renews in the next 30 days?</span><span>Who has the most late tasks?</span><span>Summarise Kaveri Hospitals for me</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

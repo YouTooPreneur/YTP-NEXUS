@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone: proposal, payslip and broadcast</title>
+<!-- Batch 7 on a phone · SCR-230 the client accepts a proposal from the secret link, SCR-245 a payslip in My HR, SCR-041 the owner approves a broadcast after seeing its cost (CRM-016, TEAM-013, TEAM-022, CRM-026, D-167). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .p-body{gap:11px}
+  .phero{margin:-6px -20px 0;padding:16px 20px 18px;background:#1C3D36;color:#fff;display:flex;flex-direction:column;gap:4px}
+  .phero b{font-family:Sora,sans-serif;font-size:19px;line-height:1.2}
+  .phero small{opacity:.78;font-size:11.5px}
+  .li3{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-top:1px solid var(--line-soft)}
+  .li3:first-of-type{border-top:0}
+  .li3 b{font-weight:700}
+  .tot5{display:flex;justify-content:space-between;font-family:Sora,sans-serif;font-weight:600;font-size:18px;padding-top:6px;border-top:1.5px solid var(--line)}
+  .bigb2{height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14px}
+  .bigb2.s{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigb2.l{border:1px solid var(--line)}
+  .agr3{display:flex;gap:8px;align-items:flex-start;font-size:12px}
+  .net2{display:flex;flex-direction:column;align-items:center;gap:2px;padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft)}
+  .net2 small{font-size:11.5px;color:var(--muted);font-weight:600}
+  .net2 b{font-family:Sora,sans-serif;font-weight:600;font-size:32px}
+  .net2 span{font-size:12px;color:var(--green);font-weight:700}
+  .ps{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft);font-size:12.5px}
+  .ps div{display:flex;justify-content:space-between;padding:4px 0}
+  .ps div b{font-weight:700}
+  .ps .h6{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:2px}
+  .tabs3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:var(--card-2);font-size:12.5px;font-weight:700;text-align:center}
+  .tabs3 span{padding:8px;color:var(--muted);border-radius:10px}
+  .tabs3 span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .appr{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:16px;background:var(--card);border:1px solid var(--line-soft)}
+  .appr b{font-weight:700;font-size:14px}
+  .appr small{font-size:12px;color:var(--muted)}
+  .kv6{display:grid;grid-template-columns:1fr auto;gap:5px 10px;font-size:12.5px}
+  .kv6 span{color:var(--muted)}
+  .kv6 b{text-align:right;font-weight:700}
+  .wa3{padding:9px 11px;border-radius:12px 12px 12px 4px;background:#E7F8EE;color:#0B3B30;font-size:12px;line-height:1.45}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 · Client accepts the proposal -->
+  <div class="phone">
+    <div class="status"><span>6:42</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif" style="font-size:18px">YouTooPreneur</span><span class="chip c-ink" style="margin-left:auto">Client view</span></div>
+    <div class="p-body">
+      <div class="phero"><b>A website that takes your wholesale orders on WhatsApp</b><small>For Sri Lakshmi Traders · valid until 16 Oct</small></div>
+      <div class="card pcard" style="padding:10px 14px">
+        <div class="li3"><span>Website · 8 pages + catalogue</span><b>₹65,000</b></div>
+        <div class="li3"><span>Local SEO set-up</span><b>₹10,000</b></div>
+        <div class="li3"><span>SEO care · 3 months</span><b>₹15,000</b></div>
+        <div class="tot5"><span>Total</span><span>₹90,000</span></div>
+      </div>
+      <span class="sm" style="font-size:12px">You pay ₹36,000 to start, ₹36,000 when you approve the designs and ₹18,000 at launch.</span>
+      <div class="agr3"><i class="chk on"></i><span>I agree on behalf of Sri Lakshmi Traders · Senthil Kumar</span></div>
+      <span class="bigb2 s">Accept · ₹90,000</span>
+      <span class="bigb2 l"><i data-i="chat"></i>Ask a question</span>
+    </div>
+  </div>
+
+  <!-- 2 · Payslip in My HR -->
+  <div class="phone">
+    <div class="status"><span>10:10</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">My HR</span><span class="av" style="margin-left:auto;background:color-mix(in srgb,#1D4ED8 16%,#fff);color:#1D4ED8;border-color:transparent">AK</span></div>
+    <div class="p-body">
+      <div class="tabs3"><span>Leave</span><span class="on">Payslips</span><span>Documents</span></div>
+      <div class="net2"><small>September 2026 · net pay</small><b>₹31,400</b><span>Paid 1 Oct · bank transfer</span></div>
+      <div class="ps">
+        <span class="h6">Earnings</span>
+        <div><span>Basic</span><b>₹15,700</b></div>
+        <div><span>House rent allowance</span><b>₹6,280</b></div>
+        <div><span>Special allowance</span><b>₹9,420</b></div>
+        <span class="h6" style="padding-top:6px">Deductions</span>
+        <div><span>PF, ESI, professional tax</span><b>Off</b></div>
+      </div>
+      <a class="bigb2 l" href="docs-pdf.html#payslip" style="text-decoration:none;color:var(--ink)"><i data-i="download"></i>Payslip PDF</a>
+      <span class="manual" style="text-align:center">Only you, HR, Accounts and the Owner can see this.</span>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="phone-team.html"><i data-i="clock"></i>Attendance</a><a class="on" href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 3 · Owner approves a broadcast after seeing the cost -->
+  <div class="phone">
+    <div class="status"><span>10:20</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Approve</span><span class="av" style="margin-left:auto">YP</span></div>
+    <div class="p-body">
+      <div class="appr">
+        <b>Broadcast · Diwali free website check</b>
+        <small>Made by Karthik · email + WhatsApp</small>
+        <div class="wa3">Hi {name}, Diwali is coming! 🪔 Until 8 Nov, YouTooPreneur checks your website for free…</div>
+        <div class="kv6"><span>People who agreed</span><b>51 of 64</b><span>Sends</span><b>Mon 5 Oct, 10:00 am</b><span>Email</span><b>₹0</b><span>WhatsApp · 38 people</span><b>about ₹34</b></div>
+      </div>
+      <span class="manual">13 people without consent are skipped. Every message has a way to stop.</span>
+      <span class="bigb2 s">Approve and schedule</span>
+      <span class="bigb2 l">Change something</span>
+    </div>
+    <nav class="p-nav"><a class="on" href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+</div>
+</body>
+</html>

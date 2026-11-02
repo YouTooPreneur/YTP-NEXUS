@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Automations</title>
+<!-- Batch 5 · SCR-170 Automations: every rule, on or off, when it runs, last run and result, next run. The engine runs each action exactly once, catches up after the computer was off, retries failures, and has a dry-run mode. Rules that protect money and dates cannot be switched off. The When → If → Do builder comes in step 3.8 (CORE-070 to CORE-072, AUTO-001 to AUTO-012, AUTO-014, AUTO-015, AUTO-021, AUTO-028, AUTO-029, AUTO-033, AUTO-034, AUTO-037, CON-016, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:11px;padding-top:14px}
+  .pg-head h1{font-size:34px}
+  .eng{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft);box-shadow:var(--shadow);font-size:12.5px}
+  .eng .live{width:9px;height:9px;border-radius:50%;background:var(--on);box-shadow:0 0 0 3px var(--on-ring)}
+  .eng b{font-weight:700}
+  .eng .sep{width:1px;height:18px;background:var(--line)}
+  .eng .r{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .dry{display:flex;align-items:center;gap:8px;font-weight:600}
+  .tbl td{padding-top:7px;padding-bottom:7px;font-size:12.5px}
+  .tbl .rn2 b{display:block;font-weight:700;font-size:13px}
+  .tbl .rn2 small{display:block;font-size:11.5px;color:var(--muted)}
+  .area{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);color:var(--muted);border:1px solid var(--line-soft);white-space:nowrap}
+  .res{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600}
+  .res i{width:7px;height:7px;border-radius:50%;flex:none}
+  .res .g{background:var(--on)} .res .a{background:#E2A93B} .res .n{background:var(--faint)}
+  .lockd{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--muted)}
+  .lockd svg{width:14px;height:14px}
+  .foot4{display:flex;align-items:center;gap:12px;padding:10px 2px 0;font-size:12.5px;color:var(--muted)}
+  .foot4 .r{margin-left:auto}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Automations</b></div>
+          <h1 class="serif">Automations</h1>
+          <p>Rules that run by themselves, on a schedule or when something happens. Each one acts exactly once, catches up if the computer was off, and tries again if a step fails. All timings are settings.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Ask about automations, for example: Why has Sharma's renewal invoice not gone yet? The answer points to the rule and its next run. Read only."><i data-i="spark"></i>Ask about automations</span><a class="btn solid lg" href="automation-builder.html" style="text-decoration:none"><i data-i="plus"></i>New rule</a></div>
+      </div>
+
+      <div class="tabs-x"><a class="on" href="automations.html">Automations</a><a href="run-history.html">Run history</a></div>
+
+      <div class="eng">
+        <span class="live"></span><b>Engine running</b><span class="sm">last check 10:15 am · nothing missed</span><span class="sep"></span>
+        <span><b>21</b> rules · <b>19</b> on · <b>2</b> always on</span><span class="sep"></span><span><b>14</b> runs today · <b>1</b> retried · <b>0</b> failed</span>
+        <span class="r"><span class="dry"><span class="toggle"></span>Dry run · log only, change nothing</span></span>
+      </div>
+
+      <div class="views"><span class="on">All <em class="count">21</em></span><span>Contracts <em class="count">8</em></span><span>Money <em class="count">5</em></span><span>WebCare <em class="count">2</em></span><span>Leads <em class="count">2</em></span><span>Work and team <em class="count">3</em></span><span>System <em class="count">1</em></span><span>Later steps <em class="count">20</em></span></div>
+
+      <div class="card" style="padding:4px 20px 12px">
+        <table class="tbl">
+          <thead><tr><th>Rule</th><th>Area</th><th>When</th><th>Last run</th><th>Result</th><th>Next</th><th style="text-align:right">On</th></tr></thead>
+          <tbody>
+            <tr><td class="rn2"><b>Renewal alerts</b><small>30, 15, 7 and 1 days before each renewal</small></td><td><span class="area">Contracts</span></td><td>Daily 6:05 am</td><td>Today 6:05 am</td><td><a class="res" href="run-history.html" style="color:inherit;text-decoration:none"><i class="g"></i>1 alert · greenleaforganics.com</a></td><td>Tomorrow</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Renewal invoice</b><small>Made 30 days before a renewal we bill</small></td><td><span class="area">Contracts</span></td><td>Daily 6:05 am</td><td>29 Sep</td><td><span class="res"><i class="g"></i>Sharma Dental · ₹8,850</span></td><td>7 Oct</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Monthly and recurring bills</b><small>Retainers, AMC, subscriptions on their billing day, holidays too</small></td><td><span class="area">Contracts</span></td><td>Send time 9:00 am</td><td>Today 9:00 am</td><td><a class="res" href="run-history.html" style="color:inherit;text-decoration:none"><i class="a"></i>1 invoice · WhatsApp retried once</a></td><td>18 Oct</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Free maintenance ending</b><small>AMC offer and a follow-up task, 30 days before</small></td><td><span class="area">Contracts</span></td><td>Daily 6:10 am</td><td>14 Sep</td><td><span class="res"><i class="g"></i>Offer sent · Greenleaf</span></td><td>28 Oct</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>AMC maintenance tasks</b><small>Made from each AMC's schedule</small></td><td><span class="area">Contracts</span></td><td>Daily 6:10 am</td><td>Today 6:10 am</td><td><span class="res"><i class="g"></i>1 task · Aroma Bakes</span></td><td>5 Oct</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Payment reminders</b><small>Day 7 and 15 after an unpaid invoice · email and WhatsApp</small></td><td><span class="area">Money</span></td><td>Send time 9:00 am</td><td>Today 9:00 am</td><td><span class="res"><i class="n"></i>None due today</span></td><td>3 Oct</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Domain and SSL check</b><small>Every domain and certificate, every morning</small></td><td><span class="area">WebCare</span></td><td>Daily 6:00 am</td><td>Today 6:00 am</td><td><span class="res"><i class="g"></i>86 checked · 1 date changed</span></td><td>Tomorrow</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Expiry dates move only with proof</b><small>Paying or finishing a task never moves a date</small></td><td><span class="area">WebCare</span></td><td>Always</td><td>Today 6:01 am</td><td><span class="res"><i class="g"></i>Confirmed by the check · 1</span></td><td>—</td><td style="text-align:right"><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+            <tr><td class="rn2"><b>Daily summary</b><small>Each person's day, at the time they chose</small></td><td><span class="area">Work and team</span></td><td>Each person's time</td><td>Today 7:30 am</td><td><span class="res"><i class="g"></i>6 sent · 1 skipped (on leave)</span></td><td>Tomorrow</td><td style="text-align:right"><span class="toggle on"></span></td></tr>
+            <tr><td class="rn2"><b>Daily backup</b><small>Copied off this computer; restore tested monthly</small></td><td><span class="area">System</span></td><td>Daily 12:30 am</td><td>Today 12:30 am</td><td><span class="res"><i class="g"></i>1.2 GB copied</span></td><td>Tomorrow</td><td style="text-align:right"><span class="lockd"><i data-i="lock"></i>Always on</span></td></tr>
+          </tbody>
+        </table>
+        <div class="foot4"><span>10 of 21 shown</span><span>20 more arrive with later steps: projects, sales, reports and integrations</span><a class="r" href="run-history.html" style="color:var(--ink);font-weight:700;text-decoration:none">Run history</a></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

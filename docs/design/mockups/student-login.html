@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Student portal · YouTooPreneur Academy</title>
+<!-- Batch 9 · SCR-220 Student login: a one-time code by WhatsApp or email, no password; a student only ever sees their own batches, fees and records (CORE-007, ACD-010, NFR-022). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@600&family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Malayalam:wght@600&family=Noto+Sans+Telugu:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  body{background:linear-gradient(180deg,#1C3D36 0 320px,var(--bg) 320px);min-height:100vh}
+  :root[data-look="N"] body{background:linear-gradient(180deg,#10273A 0 320px,var(--bg) 320px)}
+  .wrapl{max-width:560px;margin:0 auto;padding:22px 16px 40px;display:flex;flex-direction:column;gap:20px}
+  .topb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;color:#fff}
+  .topb .mark{width:28px;height:31px;color:#03FF96}
+  .topb b{font-family:Sora,sans-serif;font-weight:600;font-size:17px}
+  .topb .lang{margin-left:auto;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,255,255,.1)}
+  .topb .lang span{padding:5px 10px;border-radius:999px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.75);white-space:nowrap;font-family:"DM Sans","Noto Sans Tamil","Noto Sans Devanagari","Noto Sans Malayalam","Noto Sans Telugu",sans-serif}
+  .topb .lang span.on{background:#fff;color:#1C3D36}
+  .hero4{color:#fff;display:flex;flex-direction:column;gap:6px}
+  .hero4 h1{font-family:Sora,sans-serif;font-weight:600;font-size:clamp(24px,4vw,30px);line-height:1.15}
+  .hero4 p{color:rgba(255,255,255,.8);font-size:14px}
+  .lcard{background:var(--card);border-radius:22px;box-shadow:0 10px 34px rgba(16,39,58,.12);padding:24px 26px;display:flex;flex-direction:column;gap:14px}
+  .lcard h2{font-family:Sora,sans-serif;font-weight:600;font-size:21px}
+  .mseg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:var(--card-2)}
+  .mseg button{all:unset;cursor:pointer;text-align:center;padding:9px;border-radius:10px;font-weight:700;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:7px}
+  .mseg button svg{width:16px;height:16px}
+  .mseg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .lab4{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .bigin{height:48px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:15px;font-weight:600}
+  .bigin svg{width:17px;height:17px;color:var(--muted)}
+  .bigbtn{height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;background:var(--primary-bg);color:var(--primary-ink);text-decoration:none}
+  .otp{gap:8px}
+  .otp i{width:52px;height:58px;font-size:24px}
+  .foot9{font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+  @media (max-width:520px){.otp i{width:42px;height:50px}}
+</style>
+</head>
+<body>
+<div class="wrapl">
+  <div class="topb"><span class="mark"></span><b>YouTooPreneur Academy</b><div class="lang" aria-label="Language"><span class="on">English</span><span lang="ta">தமிழ்</span></div></div>
+  <div class="hero4"><h1>Student portal</h1><p>Your classes, recordings, fees, results and certificates. Sign in with a one-time code.</p></div>
+  <div class="lcard">
+    <h2>Sign in</h2>
+    <div class="mseg" data-tabs="m"><button data-tab="whatsapp"><i data-i="chat"></i>WhatsApp</button><button data-tab="email"><i data-i="mail"></i>Email</button></div>
+    <section data-group="m" data-panel="whatsapp" style="display:flex;flex-direction:column;gap:8px"><span class="lab4">The WhatsApp number you gave at admission</span><div class="bigin"><i data-i="chat"></i>+91 94449 18245</div></section>
+    <section data-group="m" data-panel="email" style="display:flex;flex-direction:column;gap:8px"><span class="lab4">Your email</span><div class="bigin"><i data-i="mail"></i>harini.s@gmail.com</div></section>
+    <span class="sm" style="font-size:13px">Code sent on WhatsApp at 8:12 am. It works for 10 minutes and only once.</span>
+    <div class="otp"><i>2</i><i>7</i><i>0</i><i>5</i><i class="cur"></i><i></i></div>
+    <a class="bigbtn" href="student-home.html">Sign in<i data-i="right"></i></a>
+  </div>
+  <p class="foot9">Only students of the Academy can sign in, and each sees only their own classes and fees. Trouble? WhatsApp the Academy on +91 98400 00001.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company profile · Client portal · YouTooPreneur</title>
+<!-- Batch 8 · SCR-212 Company profile (Kaveri Hospitals): contact, email, phone, address, GST, agreement period and services as YTP has them; "request a change" sends the change to YTP and the record changes only after approval (POR-013). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .fld > span{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .inp{display:flex;align-items:center;gap:8px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:13.5px;color:var(--ink);min-width:0}
+  .inp.ph{color:var(--muted)}
+  .inp.area{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.5}
+  .inp svg{width:16px;height:16px;color:var(--muted)}
+  .drop3{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--edge);border-radius:14px;background:var(--card-2);font-size:12.5px;color:var(--muted)}
+  .drop3 b{display:block;color:var(--ink);font-size:13px}
+  .drop3 .po-btn{margin-left:auto}
+  .tm{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12.5px}
+  .tm b{display:block;font-weight:700;font-size:13px}
+  .tm small{display:block;color:var(--muted);font-size:12px}
+
+  .ph4{display:flex;align-items:center;gap:16px}
+  .ph4 .lg-av.xl{width:64px;height:64px;font-size:20px}
+  .ph4 h2{font-size:22px}
+  .ph4 small{display:block;color:var(--muted);font-size:12.5px}
+  .kv8{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:0;font-size:13px}
+  .kv8 > *{padding:10px 14px 10px 0;border-top:1px solid var(--line-soft)}
+  .kv8 > :nth-child(3n){padding-right:0;text-align:right}
+  .kv8 > :nth-child(-n+3){border-top:0}
+  .kv8 span{color:var(--muted)}
+  .kv8 b{font-weight:700}
+  .kv8 a,.kv8 em{font-style:normal;font-size:12px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .chg{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:var(--amber-bg)}
+  .chg b{font-weight:700;color:var(--amber)}
+  .chg span{font-size:12.5px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="" data-who="KH|Kaveri Hospitals|Dr. Rao|#047857" data-lang="en">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Company profile</h1><p class="lead2">Your details as we have them. Something wrong? Ask for a change; we update it after a quick check.</p></div>
+    <div class="acts"><a class="po-btn" href="portal-settings.html"><i data-i="gear"></i>My settings</a><span class="po-btn solid"><i data-i="edit"></i>Request a change</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <div class="ph4"><span class="lg-av xl" style="--av:#047857">KH</span><div><h2>Kaveri Hospitals</h2><small>Healthcare · Chennai · client since April 2025</small></div></div>
+        <div class="kv8">
+          <span>Main contact</span><b>Dr. Rao · Medical Director</b><em></em>
+          <span>Email</span><b>rao@kaverihospitals.com</b><em></em>
+          <span>Phone</span><b>+91 98410 •••56 · WhatsApp too</b><em></em>
+          <span>Address</span><b>Anna Nagar, Chennai 600040, Tamil Nadu</b><em></em>
+          <span>GSTIN</span><b>33AAAFK0000A1Z5 (sample)</b><em style="color:var(--amber)">Change asked</em>
+          <span>Bills go to</span><b>Ms. Lavanya · accounts@kaverihospitals.com</b><em></em>
+        </div>
+      </section>
+      <section class="pcard2">
+        <h2>Agreements and services</h2>
+        <div class="kv8">
+          <span>Website care</span><b>From 1 Apr 2025 · no end date · ₹23,600 a quarter</b><a href="portal-services.html">Services</a>
+          <span>Website redesign</span><b>From 12 Jul 2026 · launch 5 Nov · ₹1,20,000</b><a href="portal-projects.html">Project</a>
+          <span>Doctor intro videos</span><b>6 videos · 3 sent</b><a href="portal-projects.html">Project</a>
+        </div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Changes you asked for</h2>
+        <div class="chg"><b>New GST number</b><span>From 33AAAFK0000A1Z5 to 33AAAFK0000A2Z4 · asked 30 Sep with the GST certificate</span><span class="sm" style="font-size:12px">Waiting for our check. Your invoices change only after we approve it.</span></div>
+        <div class="po-note"><i data-i="info"></i><span>You can ask to change your contact, email, phone, address, GST number or who gets the bills.</span></div>
+      </section>
+    </div>
+  </div>
+  <p class="pfoot">GST numbers shown here are samples.</p>
+</main>
+</div>
+</body>
+</html>

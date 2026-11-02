@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Users and roles</title>
+<!-- Batch 1 · SCR-182 Users and roles. Tabs: #users, #roles, #approvals -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Users and roles</b></div>
+          <h1 class="serif">Users and roles</h1>
+          <p>Who can sign in, and what each role can see and do. New roles need no developer.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="eye"></i>View as a role</span><span class="btn solid lg"><i data-i="plus"></i>Add person</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="u"><button data-tab="users">People who can sign in <em style="font-style:normal;color:var(--muted)">9</em></button><button data-tab="roles">Roles <em style="font-style:normal;color:var(--muted)">9</em></button><button data-tab="approvals">Approval limits</button></div>
+
+      <section data-group="u" data-panel="users" class="card cb" style="padding-top:16px">
+        <div class="banner info" style="margin-bottom:12px"><i data-i="lock"></i>Only the emails below can sign in, with Google or a password. Removing someone stops their access at once.</div>
+        <table class="tbl">
+          <thead><tr><th>Person</th><th>Sign-in email</th><th>Role</th><th>Two-step</th><th>Last active</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>Owner</b></td><td class="sm">owner@youtoopreneur.com · Google</td><td>Owner, LLP partner</td><td><span class="chip c-green">App</span></td><td class="sm">Now</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>LLP partner</b></td><td class="sm">partner@youtoopreneur.com · Google</td><td>LLP partner</td><td><span class="chip c-green">App</span></td><td class="sm">Today, 9:12 am</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Karthik</b></td><td class="sm">karthik.seo@gmail.com · Password</td><td>Manager</td><td><span class="chip c-green">Email code</span></td><td class="sm">Yesterday</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Meena</b></td><td class="sm">meena.accounts@gmail.com · Password</td><td>Accounts</td><td><span class="chip c-green">Email code</span></td><td class="sm">Yesterday</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Arun</b></td><td class="sm">arun.dev@gmail.com · Google</td><td>Staff</td><td class="sm">Not needed</td><td class="sm">5 min ago</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Divya</b></td><td class="sm">divya.design@gmail.com · Google</td><td>Staff</td><td class="sm">Not needed</td><td class="sm">1 hour ago</td><td><span class="chip c-green">Active</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Rahul</b></td><td class="sm">rahul.video@gmail.com · Google</td><td>Staff</td><td class="sm">Not needed</td><td class="sm">3 days ago</td><td><span class="chip c-ink">On leave</span></td><td class="r"><span class="btn">Edit</span></td></tr>
+            <tr><td><b>Priya</b> <span class="sm">· joined 29 Sep</span></td><td class="sm">priya.n@gmail.com → company email pending</td><td>Staff</td><td class="sm">Not needed</td><td class="sm">Today, 10:05 am</td><td><span class="chip c-amber">Switch email</span></td><td class="r"><span class="btn">Change email</span></td></tr>
+            <tr><td><b>Trainer (Academy)</b></td><td class="sm">Invited · not signed in yet</td><td>Trainer</td><td class="sm">Not needed</td><td class="sm">—</td><td><span class="chip c-blue">Invited</span></td><td class="r"><span class="btn">Resend</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section data-group="u" data-panel="roles" class="split">
+        <div class="card cb" style="padding:12px">
+          <a class="list-item">Owner<span class="n">1</span></a>
+          <a class="list-item">LLP partner<span class="n">2</span></a>
+          <a class="list-item">Manager<span class="n">1</span></a>
+          <a class="list-item">HR<span class="n">0</span></a>
+          <a class="list-item">Accounts<span class="n">1</span></a>
+          <a class="list-item on">Staff<span class="n">4</span></a>
+          <a class="list-item">Trainer<span class="n">1</span></a>
+          <a class="list-item">Client contact<span class="n">—</span></a>
+          <a class="list-item">Student<span class="n">—</span></a>
+          <span class="btn" style="margin:10px 4px 0;width:calc(100% - 8px)"><i data-i="plus"></i>New role</span>
+        </div>
+        <div class="card cb" style="padding-top:16px;min-height:0;overflow:hidden">
+          <div class="ch" style="padding:0 0 10px"><h2 class="serif">Staff</h2><span class="sm" style="color:var(--muted)">Used by designers, developers, SEO and video editors</span><span class="link"><span class="btn"><i data-i="eye"></i>View as Staff</span></span></div>
+          <table class="tbl perm">
+            <thead><tr><th>Area</th><th>See</th><th>Add</th><th>Edit</th><th>Delete</th><th>Approve</th><th>Export</th><th>Which records</th></tr></thead>
+            <tbody>
+              <tr><td><b>Command Centre</b></td><td><i class="chk on"></i></td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="sm">Own (My day)</td></tr>
+              <tr><td><b>Tasks and to-dos</b></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk"></i></td><td class="na">—</td><td><i class="chk"></i></td><td class="sm">Own and shared</td></tr>
+              <tr><td><b>CRM</b></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk"></i></td><td class="na">—</td><td><i class="chk"></i></td><td class="sm">Assigned to me · every edit logged</td></tr>
+              <tr><td><b>Projects</b></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk on"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td class="sm">My team</td></tr>
+              <tr><td><b>WebCare</b></td><td><i class="chk on"></i></td><td><i class="chk"></i></td><td><i class="chk on"></i></td><td><i class="chk"></i></td><td class="na">—</td><td><i class="chk"></i></td><td class="sm">Assigned to me</td></tr>
+              <tr><td><b>Finance</b></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td><i class="chk"></i></td><td class="sm">None</td></tr>
+              <tr><td><b>Team</b></td><td><i class="chk on"></i></td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="sm">Own (My HR)</td></tr>
+              <tr><td><b>Reports and Settings</b></td><td><i class="chk"></i></td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td><i class="chk"></i></td><td class="sm">None</td></tr>
+            </tbody>
+          </table>
+          <div class="perm-key"><span><i class="chk on"></i>Allowed</span><span><i class="chk"></i>Not allowed</span><span><b class="na">—</b>Not part of this area</span></div>
+          <div class="srow" style="margin-top:6px"><div class="txt"><b>Hide money</b><span>Prices, invoice amounts and salaries are hidden everywhere for this role.</span></div><i class="toggle on"></i></div>
+          <div class="srow" style="padding:10px 0"><div class="txt"><b>AI and voice</b><span>What Staff may use · AI limit ₹150 a person each month · AI actions always need the person's Confirm</span></div><div class="views" style="gap:6px"><span class="on"><i data-i="spark"></i>AI helpers</span><span class="on"><i data-i="mic"></i>Voice</span><span><i data-i="msg"></i>Ask Nexus chat</span></div></div>
+          <div class="srow" style="padding:8px 0"><div class="txt"><b>Phone buttons</b><span>Bottom menu on a phone · a person who handles leads gets Leads instead of Attendance</span></div><div class="views" style="gap:6px"><span class="on">Home</span><span class="on">Tasks</span><span class="on">Calendar</span><span class="on"><i data-i="clock"></i>Attendance</span><span class="on">More</span></div></div>
+        </div>
+      </section>
+
+      <section data-group="u" data-panel="approvals" class="card cb" style="padding-top:16px">
+        <table class="tbl">
+          <thead><tr><th>What needs approval</th><th>Who approves</th><th>Limit</th><th>Then</th></tr></thead>
+          <tbody>
+            <tr><td><b>Discounts on quotes</b></td><td>Owner</td><td class="sm">Any amount</td><td class="sm">—</td></tr>
+            <tr><td><b>Leave</b></td><td>Reporting manager</td><td class="sm">Up to 3 days</td><td class="sm">Owner for longer leave</td></tr>
+            <tr><td><b>Expense claims</b></td><td>Owner</td><td class="sm">Any amount</td><td class="sm">Paid back by bank transfer within 7 days</td></tr>
+            <tr><td><b>Vendor payments</b></td><td>Owner</td><td class="sm">Any amount</td><td class="sm">Every bill, repeating card bills too</td></tr>
+            <tr><td><b>Invoices for new work</b></td><td>Owner</td><td class="sm">Any amount</td><td class="sm">Renewals and monthly bills send by themselves</td></tr>
+            <tr><td><b>Quality check before work goes to a client</b></td><td>Project lead, Manager or Owner</td><td class="sm">—</td><td class="sm">One sign-off is enough; then it can go to the client</td></tr>
+            <tr><td><b>Renewal confirmation (with proof)</b></td><td>Owner, Manager or Accounts</td><td class="sm">—</td><td class="sm">The expiry date moves</td></tr>
+            <tr><td><b>LLP withdrawals and distributions</b></td><td><b>Both LLP partners</b></td><td class="sm">Any amount</td><td class="sm">Recorded in each partner's statement</td></tr>
+            <tr><td><b>Certificate cancel</b></td><td>Owner</td><td class="sm">Every one · written reason needed</td><td class="sm">The check page says "not valid" only after approval</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

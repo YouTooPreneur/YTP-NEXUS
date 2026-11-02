@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Report · Revenue and profitability</title>
+<!-- Batch 8 · SCR-161 Report, shown for revenue and profitability: filters, a period compared with another, a chart, the table by service with vendor costs and margins, recurring revenue that equals the active retainers, collections and outstanding, top clients, export and schedule. The same layout serves every report area (RPT-003, RPT-010, RPT-011, RPT-012, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:10px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .filters{padding-bottom:0}
+  .filters .fsel{height:34px;font-size:12.5px}
+  .kp5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .kp5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px}
+  .kp5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .kp5 b{font-family:Sora,sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em}
+  .kp5 span{font-size:11.5px;color:var(--muted)}
+  .kp5 .up2{color:var(--green);font-weight:700}
+  .lay5{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:12px}
+  .card .ch{padding:11px 16px 4px}
+  .card .ch h2{font-size:16px}
+  .cb7{padding:4px 16px 12px}
+  .bars2{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;align-items:end;height:142px;border-bottom:1px solid var(--line);padding:0 8px;position:relative}
+  .bars2 .m{display:flex;gap:4px;align-items:flex-end;justify-content:center;height:100%}
+  .bars2 .m i{display:block;width:22px;border-radius:6px 6px 2px 2px;background:color-mix(in srgb,var(--on) 30%,var(--card-2))}
+  .bars2 .m i.c{background:#94A3B8}
+  .bars2 .m.q2 i:first-child{background:var(--on)}
+  .bars2 .gl{position:absolute;left:0;right:0;border-top:1px dashed var(--line-soft);font-size:10px;color:var(--muted)}
+  .bx{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;padding:5px 8px 0;font-size:11px;font-weight:600;color:var(--muted);text-align:center}
+  .bx b{display:block;color:var(--ink);font-size:11.5px}
+  .key3{display:flex;gap:14px;font-size:11.5px;color:var(--muted);align-items:center;margin-left:auto}
+  .key3 span{display:inline-flex;align-items:center;gap:6px}
+  .key3 i{width:9px;height:9px;border-radius:3px;display:block}
+  .tbl td,.tbl th{padding-top:5px;padding-bottom:5px;font-size:12.5px}
+  .tbl th{padding-top:2px}
+  .tbl td.num,.tbl th.num{padding-right:14px}
+  .chg{font-weight:700;font-size:12px}
+  .chg.u{color:var(--green)} .chg.d{color:var(--red)} .chg.z{color:var(--muted)}
+  .mg{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+  .mg .meter{width:60px;height:6px}
+  .mg .meter i{background:var(--on)}
+  .tc{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:9px;align-items:center;padding:3px 0;font-size:12.5px;border-top:1px solid var(--line-soft)}
+  .tc:first-of-type{border-top:0}
+  .tc b{font-weight:700}
+  .tc .lg-av{width:28px;height:28px;font-size:9.5px}
+  .tc .r{font-weight:700;text-align:right}
+  .tc .r small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+  .acts .btn{height:38px}
+  .pas .ch{gap:10px}
+  .lk5{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-family:"DM Sans",sans-serif}
+  .lk5 svg{width:12px;height:12px}
+  .wf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+  .wf div{padding:11px 13px;border-radius:13px;background:var(--card-2);display:flex;flex-direction:column;gap:2px}
+  .wf small{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .wf b{font-family:Sora,sans-serif;font-weight:600;font-size:19px}
+  .wf span{font-size:11.5px;color:var(--muted)}
+  .wf .m b{color:var(--muted)}
+  .wf .p{background:var(--green-bg)}
+  .wf .p b{color:var(--green);font-size:22px}
+  .wfb{display:flex;height:16px;border-radius:999px;overflow:hidden;gap:2px;margin-top:12px}
+  .wfb i{display:block;height:100%}
+  .wfk{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:11.5px;color:var(--muted)}
+  .wfk span{display:inline-flex;align-items:center;gap:6px}
+  .wfk i{width:9px;height:9px;border-radius:3px;display:block}
+</style>
+</head>
+<body>
+<div class="app long" data-active="Reports" data-sec="reports" data-sec-on="report">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="reports.html">Reports</a><span>/</span><b style="color:var(--ink)">Revenue and profitability</b></div>
+          <h1 class="serif">Revenue and profitability</h1>
+          <p>What we billed, what delivery cost us and what is left, by service, client and month. Profit after salaries, for the whole company, is at the bottom.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="Explain this report: a short note on what changed against Apr–Jun and why, with links to the invoices and bills behind each number. Read only; arrives as a note."><i data-i="spark"></i>Explain</span><span class="btn"><i data-i="download"></i>Export</span><span class="btn"><i data-i="clock"></i>Schedule · 1st monthly</span></div>
+      </div>
+      <div class="filters">
+        <span class="fsel"><span>Period</span>Jul–Sep 2026<i data-i="down"></i></span>
+        <span class="fsel"><span>Compare with</span>Apr–Jun 2026<i data-i="down"></i></span>
+        <span class="fsel"><span>Service</span>All<i data-i="down"></i></span>
+        <span class="fsel"><span>Client</span>All<i data-i="down"></i></span>
+        <span class="fsel"><span>Owner</span>Everyone<i data-i="down"></i></span>
+        <div class="pill-sel" style="margin-left:auto"><span>Month</span><span class="on">Quarter</span><span>Year</span></div>
+      </div>
+      <div class="kp5">
+        <div class="card"><small>Services revenue</small><b>₹4,85,000</b><span><span class="up2">↑ 14%</span> · ₹60,000 more</span></div>
+        <div class="card"><small>Vendor and freelancer costs</small><b>₹62,400</b><span>13% of revenue · ↑ 9%</span></div>
+        <div class="card"><small>Margin</small><b>₹4,22,600</b><span>87.1% · was 86.5%</span></div>
+        <div class="card"><small>Recurring a month</small><b>₹1,10,000</b><span>= 8 active retainers</span></div>
+        <div class="card"><small>Collected</small><b>₹4,72,750</b><span>Outstanding ₹1,39,016 · <a href="collections.html" style="color:inherit">ageing</a></span></div>
+      </div>
+      <div class="lay5">
+        <div class="card">
+          <div class="ch"><h2 class="serif">Billed and collected by month</h2><div class="key3"><span><i style="background:var(--on)"></i>Billed</span><span><i style="background:#94A3B8"></i>Collected</span><span><i style="background:color-mix(in srgb,var(--on) 30%,var(--card-2))"></i>Earlier quarter</span></div></div>
+          <div class="cb7">
+            <div class="bars2">
+              <span class="gl" style="bottom:55.6%">₹1L</span>
+              <div class="m"><i style="height:75.6%"></i><i class="c" style="height:76.8%"></i></div>
+              <div class="m"><i style="height:78.6%"></i><i class="c" style="height:79.4%"></i></div>
+              <div class="m"><i style="height:81.9%"></i><i class="c" style="height:82.7%"></i></div>
+              <div class="m q2"><i style="height:84.4%"></i><i class="c" style="height:87.7%"></i></div>
+              <div class="m q2"><i style="height:95.3%"></i><i class="c" style="height:90.7%"></i></div>
+              <div class="m q2"><i style="height:89.7%"></i><i class="c" style="height:84.3%"></i></div>
+            </div>
+            <div class="bx"><span>Apr<b>₹1,36,000</b></span><span>May<b>₹1,41,500</b></span><span>Jun<b>₹1,47,500</b></span><span>Jul<b>₹1,52,000</b></span><span>Aug<b>₹1,71,500</b></span><span>Sep<b>₹1,61,500</b></span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><h2 class="serif">Top clients</h2><span class="sm" style="margin-left:auto;font-size:12px">74% of revenue</span></div>
+          <div class="cb7">
+            <div class="tc"><span class="lg-av" style="--av:#6D28D9">ML</span><b>Meridian Logistics</b><span class="r">₹1,05,000<small>Social media</small></span></div>
+            <div class="tc"><span class="lg-av" style="--av:#047857">KH</span><b>Kaveri Hospitals</b><span class="r">₹90,100<small>Website, shoot, care</small></span></div>
+            <div class="tc"><span class="lg-av" style="--av:#9F1239">AT</span><b>Anbu Textiles</b><span class="r">₹84,000<small>Website, stages 2 and 3</small></span></div>
+            <div class="tc"><span class="lg-av" style="--av:#1D4ED8">VM</span><b>Velocity Motors</b><span class="r">₹45,000<small>Ads</small></span></div>
+            <div class="tc"><span class="lg-av" style="--av:#A16207">RC</span><b>Royal Caterers</b><span class="r">₹35,000<small>Launch advance</small></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="lay5">
+        <div class="card">
+          <div class="cb7" style="padding-top:10px">
+            <table class="tbl">
+              <thead><tr><th>Service</th><th class="num">Apr–Jun</th><th class="num">Jul–Sep</th><th class="num">Change</th><th class="num">Vendor costs</th><th class="num">Margin</th></tr></thead>
+              <tbody>
+                <tr><td><b>Websites and shops</b></td><td class="num mut">₹1,68,000</td><td class="num">₹1,95,500</td><td class="num"><span class="chg u">↑ 16%</span></td><td class="num mut">₹18,000</td><td><div class="mg"><span class="meter"><i style="width:91%"></i></span>91%</div></td></tr>
+                <tr><td><b>Social media</b></td><td class="num mut">₹1,05,000</td><td class="num">₹1,23,000</td><td class="num"><span class="chg u">↑ 17%</span></td><td class="num mut">₹14,400</td><td><div class="mg"><span class="meter"><i style="width:88%"></i></span>88%</div></td></tr>
+                <tr><td><b>Ads management</b><small style="display:inline;color:var(--muted);font-size:11.5px"> · spend paid by clients</small></td><td class="num mut">₹45,000</td><td class="num">₹45,000</td><td class="num"><span class="chg z">0%</span></td><td class="num mut">₹0</td><td><div class="mg"><span class="meter"><i style="width:100%"></i></span>100%</div></td></tr>
+                <tr><td><b>Website care (AMC)</b></td><td class="num mut">₹38,600</td><td class="num">₹38,600</td><td class="num"><span class="chg z">0%</span></td><td class="num mut">₹3,000</td><td><div class="mg"><span class="meter"><i style="width:92%"></i></span>92%</div></td></tr>
+                <tr><td><b>Photo and video</b></td><td class="num mut">₹12,000</td><td class="num">₹30,500</td><td class="num"><span class="chg u">↑ 154%</span></td><td class="num mut">₹9,000</td><td><div class="mg"><span class="meter"><i style="width:70%"></i></span>70%</div></td></tr>
+                <tr><td><b>SEO</b></td><td class="num mut">₹36,000</td><td class="num">₹30,000</td><td class="num"><span class="chg d">↓ 17%</span></td><td class="num mut">₹6,000</td><td><div class="mg"><span class="meter"><i style="width:80%"></i></span>80%</div></td></tr>
+                <tr><td><b>Domains, hosting, subscriptions</b></td><td class="num mut">₹20,400</td><td class="num">₹22,400</td><td class="num"><span class="chg u">↑ 10%</span></td><td class="num mut">₹12,000</td><td><div class="mg"><span class="meter"><i style="width:46%"></i></span>46%</div></td></tr>
+              </tbody>
+              <tfoot><tr><td>Total</td><td class="num">₹4,25,000</td><td class="num">₹4,85,000</td><td class="num"><span class="chg u">↑ 14%</span></td><td class="num">₹62,400</td><td class="num">87%</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>What changed <span class="r">AI · read only</span></div>
+            <span style="font-size:12.5px;line-height:1.5">Revenue rose ₹60,000: the Royal Caterers advance, the Kaveri photo shoot and Anbu Textiles' website. SEO fell because Coastal Realty paused on 16 Sep. After domains and hosting, which we resell (46%), photo and video has the lowest margin (70%) because editing went to a freelancer.</span>
+            <div class="ai-acts"><a class="src" href="invoices.html"><i data-i="doc"></i>Invoices</a><a class="src" href="vendors.html"><i data-i="file"></i>Vendor bills</a></div>
+          </div>
+          <span class="manual"><i data-i="lock" style="width:12px;height:12px;vertical-align:-2px"></i> Only the Owner and LLP partners can open this report. Accounts gets the billing and collection reports instead.</span>
+        </div>
+      </div>
+      <div class="card pas">
+        <div class="ch"><h2 class="serif">Profit after salaries · whole company · Jul–Sep</h2><span class="lk5"><i data-i="lock"></i>Owner and LLP partners only</span><span class="chip c-amber">Provisional · the CA confirms</span><a class="link" href="partner-dashboard.html" style="text-decoration:none">Partner dashboard<i data-i="right"></i></a></div>
+        <div class="cb7" style="padding-bottom:16px">
+          <div class="wf">
+            <div><small>Revenue</small><b>₹10,25,000</b><span>Services ₹4,85,000 · Academy ₹5,40,000</span></div>
+            <div class="m"><small>Vendors, freelancers</small><b>− ₹62,400</b><span>Client services</span></div>
+            <div class="m"><small>Trainer fees</small><b>− ₹90,000</b><span>Academy</span></div>
+            <div class="m"><small>Salaries</small><b>− ₹4,80,208</b><span>From Payroll · Jul, Aug, Sep</span></div>
+            <div class="m"><small>Office, tools, other</small><b>− ₹1,92,392</b><span>Rent, software, our own ads</span></div>
+            <div class="p"><small>Profit after salaries</small><b>₹2,00,000</b><span>20% of revenue · ↑ ₹50,000 on Apr–Jun</span></div>
+          </div>
+          <div class="wfb"><i style="width:6.1%;background:#E2A93B"></i><i style="width:8.8%;background:#F97316"></i><i style="width:46.9%;background:#94A3B8"></i><i style="width:18.8%;background:#CBD5E1"></i><i style="width:19.5%;background:var(--on)"></i></div>
+          <div class="wfk"><span><i style="background:#E2A93B"></i>Vendors 6%</span><span><i style="background:#F97316"></i>Trainers 9%</span><span><i style="background:#94A3B8"></i>Salaries 47%</span><span><i style="background:#CBD5E1"></i>Office and other 19%</span><span><i style="background:var(--on)"></i>Profit 20%</span><span style="margin-left:auto">The same figures as the Partner dashboard; shared 60 / 40 each quarter.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

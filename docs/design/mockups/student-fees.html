@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fees · Student portal · YouTooPreneur Academy</title>
+<!-- Batch 9 · SCR-223 Fees (Harini S): her fee plan, each instalment with its YTA invoice and receipt, what is next and when the invoice comes, and paying by UPI QR or Razorpay (test mode in the preview) (ACD-005, ACD-010). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .kv13{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;font-size:12.5px}
+  .kv13 span{color:var(--muted)}
+  .kv13 b{font-weight:700}
+  .cls{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .cls:first-of-type{border-top:0}
+  .cls .d6{display:flex;flex-direction:column;align-items:center;justify-content:center;height:50px;border-radius:13px;background:var(--card-2);font-weight:700;font-size:10.5px;color:var(--muted);line-height:1.15}
+  .cls .d6 b{font-family:Sora,sans-serif;font-size:17px;color:var(--ink)}
+  .cls .d6.nx{background:var(--active-bg);box-shadow:inset 0 0 0 1.5px var(--on)}
+  .cls b{font-weight:700;font-size:13px}
+  .cls small{display:block;color:var(--muted);font-size:12px}
+  .md{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .md svg{width:12px;height:12px}
+  .vrow{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0;border-top:1px solid var(--line-soft);font-size:12.5px}
+  .vrow:first-of-type{border-top:0}
+  .vth{aspect-ratio:16/9;border-radius:10px;background:linear-gradient(135deg,#3B1F5C,#7C3AED 60%,#C084FC);display:grid;place-items:center;color:#fff;position:relative}
+  .vth.g{background:linear-gradient(135deg,#0F3D33,#1C5C4C 55%,#3B8C73)}
+  .vth svg{width:16px;height:16px;fill:#fff}
+  .vth small{position:absolute;right:5px;bottom:4px;font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:5px;background:rgba(0,0,0,.45)}
+  .vrow b{font-weight:700;font-size:13px}
+  .vrow small{display:block;color:var(--muted);font-size:12px}
+
+  .tbl td{font-size:13px}
+  .tbl td small{display:block;font-size:12px;color:var(--muted)}
+  .upi3{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:center;padding:12px;border-radius:14px;background:var(--card-2)}
+  .upi3 .upi-qr{width:112px;height:112px}
+  .upi3 b{display:block;font-weight:700;font-size:13.5px}
+  .upi3 small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="portal" data-pon="fees" data-who="HS|DMM-Oct26|Harini S|#BE185D" data-lang="en" data-kind="student">
+<main class="pmain">
+  <div class="po-hello">
+    <div><h1>Fees</h1><p class="lead2">Your plan, what you have paid, and what comes next. Every payment gets a receipt by WhatsApp and email.</p></div>
+  </div>
+  <div class="po-kpis">
+    <div class="po-k"><small>Course fee</small><b>₹36,000</b><span>3 instalments of ₹12,000</span></div>
+    <div class="po-k"><small>Paid</small><b>₹12,000</b><span>Instalment 1 · 28 Sep</span></div>
+    <div class="po-k"><small>Next</small><b>₹12,000</b><span>Due 5 Nov · invoice on 29 Oct</span></div>
+    <div class="po-k"><small>Late fees</small><b>None</b><span>We remind you before each date</span></div>
+  </div>
+  <div class="po-grid">
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Your invoices</h2>
+        <table class="tbl">
+          <thead><tr><th>For</th><th>Invoice</th><th class="num">Amount</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>DMM-Oct26 · instalment 1 of 3</b><small>Paid by UPI</small></td><td><span class="inv">YTA/26-27/0031</span></td><td class="num">₹12,000</td><td><span class="chip c-green">Paid 28 Sep</span></td><td class="r"><a class="po-btn sm" href="docs-pdf.html#yta">Receipt</a></td></tr>
+            <tr><td><b>DMM-Oct26 · instalment 2 of 3</b><small>Invoice comes on 29 Oct</small></td><td class="sm">—</td><td class="num">₹12,000</td><td><span class="chip c-ink">Due 5 Nov</span></td><td class="r"><span class="po-btn sm">Pay early</span></td></tr>
+            <tr><td><b>DMM-Oct26 · instalment 3 of 3</b><small>Invoice comes on 28 Nov</small></td><td class="sm">—</td><td class="num">₹12,000</td><td><span class="chip c-ink">Due 5 Dec</span></td><td class="r"></td></tr>
+            <tr><td><b>Instagram Reels for Business</b><small>Paid by card</small></td><td><span class="inv">YTA/26-27/0019</span></td><td class="num">₹4,999</td><td><span class="chip c-green">Paid 12 Aug</span></td><td class="r"><span class="po-btn sm">Receipt</span></td></tr>
+          </tbody>
+        </table>
+        <div class="po-note"><i data-i="info"></i><span>The Academy is not registered under GST yet, so no GST is added.</span></div>
+      </section>
+    </div>
+    <div class="po-col">
+      <section class="pcard2">
+        <h2>Pay instalment 2 early</h2>
+        <div class="upi3"><span class="upi-qr" data-qr="yta-hs-inst2"></span><div><b>Scan with any UPI app</b><small>GPay, PhonePe, Paytm or your bank app</small><small>UPI ID ytp@hdfcbank · ₹12,000</small></div></div>
+        <span class="po-btn solid" style="height:44px">Pay online · cards, net banking, UPI</span>
+        <span class="manual" style="text-align:center">Through Razorpay. Test mode in this preview.</span>
+      </section>
+    </div>
+  </div>
+</main>
+</div>
+</body>
+</html>

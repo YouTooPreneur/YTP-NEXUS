@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · My profile</title>
+<!-- Batch 1 · SCR-008 My profile and preferences. Tabs: #profile, #preferences, #notifications, #security -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+</head>
+<body>
+<div class="app" data-active="">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><span>Owner</span><span>/</span><b style="color:var(--ink)">My profile</b></div>
+          <h1 class="serif">My profile</h1>
+          <p>Your details, how Nexus looks and talks to you, and how you sign in. Only you can change these.</p>
+        </div>
+        <div class="acts"><span class="btn lg">Cancel</span><span class="btn solid lg">Save changes</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="p">
+        <button data-tab="profile">Profile</button><button data-tab="preferences">Preferences</button><button data-tab="notifications">Notifications</button><button data-tab="security">Sign-in and security</button><button data-tab="ai">AI and voice</button>
+      </div>
+
+      <section data-group="p" data-panel="profile" class="g2" style="grid-template-columns:320px 1fr">
+        <div class="card cb" style="padding-top:22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <div class="av" style="width:104px;height:104px;font-size:32px;border-width:2px">YP</div>
+          <span class="btn">Change photo</span>
+          <span class="help">JPG or PNG, up to 5 MB. Shown to your team and, on their tasks, to clients.</span>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;width:100%;text-align:left;font-size:13px">
+            <div class="srow"><div class="txt"><b>Employee code</b><span>YTP-001</span></div></div>
+            <div class="srow"><div class="txt"><b>Role</b><span>Owner · LLP partner</span></div></div>
+            <div class="srow"><div class="txt"><b>Joined</b><span>1 Apr 2024</span></div></div>
+          </div>
+        </div>
+        <div class="card cb" style="padding-top:20px">
+          <div class="fields">
+            <div class="field"><label>Full name</label><div class="input">Owner</div></div>
+            <div class="field"><label>Name shown to clients</label><div class="input">YTP Owner</div></div>
+            <div class="field full"><label>Sign-in email</label><div class="input">owner@youtoopreneur.com<span class="end"><span class="chip c-ink">Google</span></span></div><span class="help">Changed by an owner in Users and roles. Your history stays when it changes.</span></div>
+            <div class="field"><label>Phone</label><div class="input">+91 98400 00001</div></div>
+            <div class="field"><label>WhatsApp</label><div class="input">+91 98400 00001<span class="end"><span class="chip c-green">Same as phone</span></span></div></div>
+            <div class="field full"><label>Short bio (shown on client portal tasks)</label><div class="input ph">Founder, YouTooPreneur. Strategy and client success.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section data-group="p" data-panel="preferences" class="g2">
+        <div class="card cb" style="padding-top:20px;display:flex;flex-direction:column;gap:16px">
+          <div class="field"><label>Language</label><div class="pill-sel"><span class="on">English</span><span>தமிழ்</span></div><span class="help">Screens, emails and WhatsApp messages to you use this language. Hindi, Malayalam and Telugu appear here once a native speaker has checked them.</span></div>
+          <div class="field"><label>Colour</label>
+            <div class="colour-switch" role="radiogroup" aria-label="Colour" style="align-self:flex-start"><button role="radio" data-look="E" title="Emerald"><span class="pv pv-E"><i></i></span><span class="nm">Emerald</span></button><button role="radio" data-look="N" title="Navy"><span class="pv pv-N"><i></i></span><span class="nm">Navy</span></button></div>
+            <span class="help">Same as the switch in the top bar. Clients always see the company colour.</span></div>
+          <div class="fields">
+            <div class="field"><label>Time zone</label><div class="input">Asia/Kolkata (IST)<span class="end"><i data-i="down"></i></span></div></div>
+            <div class="field"><label>Daily summary at</label><div class="input">8:30 am<span class="end"><i data-i="clock"></i></span></div></div>
+          </div>
+        </div>
+        <div class="card cb" style="padding-top:18px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif">How dates and money look</h2></div>
+          <div class="srow"><div class="txt"><b>Date</b><span>1 Oct 2026</span></div></div>
+          <div class="srow"><div class="txt"><b>Time</b><span>3:30 pm (12-hour)</span></div></div>
+          <div class="srow"><div class="txt"><b>Money</b><span>₹1,84,500 (Indian grouping)</span></div></div>
+          <div class="srow"><div class="txt"><b>Week starts</b><span>Monday</span></div></div>
+        </div>
+      </section>
+
+      <section data-group="p" data-panel="notifications" class="card cb" style="padding-top:18px">
+        <table class="tbl">
+          <thead><tr><th>Tell me about</th><th>In Nexus</th><th>Email</th><th>WhatsApp</th><th>Email and WhatsApp go</th><th>Phone alerts</th></tr></thead>
+          <tbody>
+            <tr><td><b>Approvals waiting for me</b></td><td class="sm">Always</td><td><i class="toggle on"></i></td><td><i class="toggle"></i></td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td><td class="sm">Later</td></tr>
+            <tr><td><b>Renewals at risk</b></td><td class="sm">Always</td><td><i class="toggle on"></i></td><td><i class="toggle on"></i></td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td><td class="sm">Later</td></tr>
+            <tr><td><b>Overdue invoices</b></td><td class="sm">Always</td><td><i class="toggle on"></i></td><td><i class="toggle"></i></td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td><td class="sm">Later</td></tr>
+            <tr><td><b>New leads not contacted (6 h, 24 h)</b></td><td class="sm">Always</td><td><i class="toggle"></i></td><td><i class="toggle on"></i></td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td><td class="sm">Later</td></tr>
+            <tr><td><b>Tasks due and late</b></td><td class="sm">Always</td><td><i class="toggle"></i></td><td><i class="toggle"></i></td><td class="sm">—</td><td class="sm">Later</td></tr>
+            <tr><td><b>Someone @mentions me</b></td><td class="sm">Always</td><td><i class="toggle on"></i></td><td><i class="toggle"></i></td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td><td class="sm">Later</td></tr>
+          </tbody>
+        </table>
+        <div class="ch" style="padding:18px 0 6px"><h2 class="serif" style="font-size:18px">Company-wide alerts I set for the team</h2><span class="sm" style="margin-left:auto">Owner only</span></div>
+        <table class="tbl">
+          <thead><tr><th>Alert</th><th>Goes to</th><th>By</th><th>Email and WhatsApp go</th></tr></thead>
+          <tbody>
+            <tr><td><b>Renewal at risk</b></td><td>Meena (Accounts)</td><td class="sm">WhatsApp</td><td><div class="pill-sel"><span>Straight away</span><span class="on">Ask first</span></div></td></tr>
+            <tr><td><b>New lead not contacted for 6 hours</b></td><td>The lead's owner</td><td class="sm">WhatsApp</td><td><div class="pill-sel"><span class="on">Straight away</span><span>Ask first</span></div></td></tr>
+          </tbody>
+        </table>
+        <p class="help" style="margin-top:12px">The alert in Nexus always arrives. <b>Ask first:</b> the email or WhatsApp is prepared and waits in Notifications until whoever set the alert taps Send (you for company-wide alerts; each person for their own). WhatsApp alerts are sent through AiSensy; if that fails, a one-tap message is used instead. Phone alerts come with browser push, when needed.</p>
+      </section>
+
+      <section data-group="p" data-panel="security" class="g2">
+        <div class="card cb" style="padding-top:18px">
+          <div class="srow"><div class="lic"><i data-i="shield"></i></div><div class="txt"><b>Two-step login</b><span>Authenticator app · required for your role</span></div><span class="btn">Change method</span></div>
+          <div class="srow"><div class="lic"><i data-i="login"></i></div><div class="txt"><b>Google sign-in</b><span>owner@youtoopreneur.com</span></div><span class="chip c-green">On</span></div>
+          <div class="srow"><div class="lic"><i data-i="tasks"></i></div><div class="txt"><b>Password</b><span>Last changed 2 months ago</span></div><a class="btn" href="login.html#reset" style="text-decoration:none">Change password</a></div>
+        </div>
+        <div class="card cb" style="padding-top:18px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif">Where you're signed in</h2><span class="link"><span class="btn" style="color:var(--red);border-color:var(--red-bg)">Log out everywhere</span></span></div>
+          <table class="tbl"><tbody>
+            <tr><td><b>Windows PC · Chrome</b><br><span class="sm">Chennai · now</span></td><td class="r"><span class="chip c-green">This device</span></td></tr>
+            <tr><td><b>iPhone · Safari</b><br><span class="sm">Chennai · 2 hours ago</span></td><td class="r"><span class="btn">Log out</span></td></tr>
+            <tr><td><b>Office laptop · Edge</b><br><span class="sm">Chennai · yesterday</span></td><td class="r"><span class="btn">Log out</span></td></tr>
+          </tbody></table>
+        </div>
+      </section>
+      <section data-group="p" data-panel="ai" class="g2">
+        <div class="card cb" style="padding-top:18px;display:flex;flex-direction:column;gap:6px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif">AI and voice</h2><span class="ai-tag"><i data-i="spark"></i>Within your limits</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><b>My AI in September</b><span class="sm">₹412 of ₹1,500</span></div>
+          <span class="meter"><i style="width:27%;background:var(--on)"></i></span>
+          <p class="help" style="margin-bottom:6px">At your limit AI pauses for you; everything still works by hand.</p>
+          <div class="srow"><div class="txt"><b>AI helpers on my screens</b><span>Draft, summarise, suggest and fill in</span></div><i class="toggle on"></i></div>
+          <div class="srow"><div class="txt"><b>Voice language</b><span>What you speak to the voice assistant</span></div><div class="input" style="width:200px">Tamil and English<span class="end"><i data-i="down"></i></span></div></div>
+          <div class="srow"><div class="txt"><b>Read answers aloud</b><span>For voice questions</span></div><i class="toggle"></i></div>
+          <div class="srow"><div class="txt"><b>Chat history</b><span>Kept 12 months (company setting)</span></div><a class="btn" href="ask-nexus.html" style="text-decoration:none">Open my chats</a></div>
+        </div>
+        <div class="card cb" style="padding-top:18px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif">Remembered about me</h2><span class="link"><span class="btn" style="color:var(--red);border-color:var(--red-bg)">Forget all</span></span></div>
+          <table class="tbl"><tbody>
+            <tr><td>Client messages in Tamil when the client prefers it</td><td class="sm">Saved 12 Sep</td><td class="r"><span class="btn" title="Forget"><i data-i="x"></i></span></td></tr>
+            <tr><td>Weekly money check on Mondays</td><td class="sm">Saved 22 Sep</td><td class="r"><span class="btn" title="Forget"><i data-i="x"></i></span></td></tr>
+            <tr><td>Call me "Owner" in drafts to the team</td><td class="sm">Saved 25 Sep</td><td class="r"><span class="btn" title="Forget"><i data-i="x"></i></span></td></tr>
+          </tbody></table>
+          <p class="help" style="margin-top:10px">AI asks "Shall I remember this?" before saving anything. Only you can see this list.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

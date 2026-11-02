@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Client statement</title>
+<!-- Batch 4 · SCR-106 Client statement: invoices, payments, TDS and credit notes for any period, with a running balance; send or download (FIN-010, FIN-011) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 330px;gap:16px;align-items:start}
+  .st td{padding-top:10px;padding-bottom:10px}
+  .st .what b{display:block;font-weight:700}
+  .st .what small{font-size:12px;color:var(--muted)}
+  .st tr.open td,.st tr.close td{background:var(--card-2);font-weight:700}
+  .tds{color:var(--blue)}
+  .sum4{display:flex;flex-direction:column;gap:8px}
+  .sum4 div{display:flex;justify-content:space-between;padding:9px 12px;border-radius:10px;background:var(--card-2);font-size:13px}
+  .sum4 div b{font-weight:800}
+  .sum4 div.last{background:var(--red-bg);color:var(--red)}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="invoices">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif" style="font-size:34px">Statement · Kaveri Hospitals</h1>
+          <p>Everything billed and paid in the period, with the running balance. Sent in the client's language.</p>
+        </div>
+        <div class="acts"><div class="fsel"><span>Period</span>1 Jul – 30 Sep 2026<i data-i="down"></i></div><span class="btn lg"><i data-i="download"></i>PDF</span><span class="btn solid lg"><i data-i="send"></i>Send to Dr. Rao</span></div>
+      </div>
+      <div class="lay">
+        <div class="card cb" style="padding-top:6px">
+          <table class="tbl st">
+            <thead><tr><th>Date</th><th>What</th><th class="num">Billed</th><th class="num">Paid</th><th class="num">Balance</th></tr></thead>
+            <tbody>
+              <tr class="open"><td>1 Jul</td><td>Opening balance</td><td class="num"></td><td class="num"></td><td class="num">₹0</td></tr>
+              <tr><td class="sm">14 Jul</td><td class="what"><b>Invoice <span class="inv">YTP/26-27/0016</span></b><small>New website · 40% advance</small></td><td class="num">₹48,000</td><td class="num"></td><td class="num">₹48,000</td></tr>
+              <tr><td class="sm">18 Jul</td><td class="what"><b>Payment · receipt <span class="inv">RC/26-27/0029</span></b><small>Bank transfer ₹43,200 + TDS ₹4,800</small></td><td class="num"></td><td class="num">₹48,000</td><td class="num">₹0</td></tr>
+              <tr><td class="sm">8 Sep</td><td class="what"><b>Invoice <span class="inv">YTP/26-27/0037</span></b><small>Doctor photo shoot</small></td><td class="num">₹18,500</td><td class="num"></td><td class="num">₹18,500</td></tr>
+              <tr><td class="sm">12 Sep</td><td class="what"><b>Payment · receipt <span class="inv">RC/26-27/0054</span></b><small>UPI ₹16,650 + TDS ₹1,850</small></td><td class="num"></td><td class="num">₹18,500</td><td class="num">₹0</td></tr>
+              <tr><td class="sm">13 Sep</td><td class="what"><b>Invoice <span class="inv">YTP/26-27/0038</span></b><small>Old website care, Jul–Sep · due 28 Sep</small></td><td class="num">₹23,600</td><td class="num"></td><td class="num due" style="color:var(--red)">₹23,600</td></tr>
+              <tr class="close"><td>30 Sep</td><td>Closing balance</td><td class="num">₹90,100</td><td class="num">₹66,500</td><td class="num" style="color:var(--red)">₹23,600</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+            <div class="ch" style="padding:0"><h2 class="serif" style="font-size:18px">In this period</h2></div>
+            <div class="sum4"><div><span>Billed</span><b>₹90,100</b></div><div><span>Received in the bank</span><b>₹59,850</b></div><div><span class="tds">TDS deducted by Kaveri</span><b>₹6,650</b></div><div class="last"><span>Still to pay</span><b>₹23,600</b></div></div>
+          </div>
+          <div class="card cb" style="padding-top:14px">
+            <div class="ch" style="padding:0 0 4px"><h2 class="serif" style="font-size:18px">TDS certificates</h2></div>
+            <div class="srow" style="padding:6px 0;border-top:0"><div class="txt"><b>Apr–Jun · ₹2,360</b><span>Form 16A received 2 Aug</span></div><span class="chip c-green">Received</span></div>
+            <div class="srow" style="padding:6px 0"><div class="txt"><b>Jul–Sep · ₹6,650</b><span>Expected from Kaveri in November</span></div><span class="chip c-amber">Waiting</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

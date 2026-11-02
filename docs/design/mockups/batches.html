@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Batches</title>
+<!-- Batch 9 · SCR-151 Batches (WP-Sep26 · WordPress Website Building): schedule, trainer, place, seats, the 18 sessions (all on the calendar), students with attendance per session and results, class reminders; online batches get a meeting link per session (ACD-002, ACD-006, ACD-011). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay11{display:grid;grid-template-columns:250px minmax(0,1fr) 300px;gap:12px;align-items:start}
+  .bl2{padding:10px;display:flex;flex-direction:column;gap:3px}
+  .bl2 a{display:flex;flex-direction:column;gap:2px;padding:9px 10px;border-radius:12px;text-decoration:none;color:inherit;font-size:12px}
+  .bl2 a.on{background:var(--active-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+  .bl2 a b{font-weight:700;font-size:13px}
+  .bl2 a small{color:var(--muted);font-size:11.5px}
+  .bh3{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 16px 6px}
+  .bh3 h2{font-size:21px}
+  .facts4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:6px 16px 4px}
+  .facts4 div{padding:9px 11px;border-radius:12px;background:var(--card-2);font-size:12px;color:var(--muted)}
+  .facts4 b{display:block;font-size:13px;color:var(--ink)}
+  .sess{display:grid;grid-template-columns:repeat(18,1fr);gap:4px;padding:10px 16px 4px}
+  .sess i{height:26px;border-radius:7px;display:grid;place-items:center;font-style:normal;font-size:10.5px;font-weight:800;background:var(--card-2);color:var(--muted)}
+  .sess i.d{background:color-mix(in srgb,var(--on) 22%,var(--card));color:var(--green)}
+  .sess i.t{background:#FEF3C7;color:var(--amber);box-shadow:inset 0 0 0 1.5px #E2A93B}
+  .skey2{display:flex;gap:14px;padding:4px 16px 8px;font-size:11.5px;color:var(--muted)}
+  .att3{display:inline-flex;gap:3px}
+  .att3 i{width:12px;height:12px;border-radius:4px;display:block}
+  .att3 i.p{background:var(--on)} .att3 i.a{background:#F3CFC8}
+  .tbl td.lowa{color:var(--red)}
+  .rc2{padding:13px 15px;display:flex;flex-direction:column;gap:8px}
+  .rc2 h3{font-family:Sora,sans-serif;font-weight:600;font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="batches">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Batches</h1>
+          <p>A batch runs a course on set days with a trainer. Its sessions go on the calendar, and online sessions get a meeting link each.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New batch</span></div>
+      </div>
+      <div class="lay11">
+        <div class="card bl2">
+          <a href="batches.html"><b>DMM-Oct26</b><small>Starts Mon 5 Oct · 18/25 · mixed</small></a>
+          <a class="on" href="batches.html"><b>WP-Sep26</b><small>Session 11 of 18 today · 12/15</small></a>
+          <a href="batches.html"><b>AI-Nov26</b><small>Starts 3 Nov · 8/20 · online</small></a>
+          <a href="batches.html"><b>Reels · recorded</b><small>Join any time · 64 students</small></a>
+          <a href="certificates.html"><b>DMM-Jul26</b><small>Done 26 Sep · certificates</small></a>
+        </div>
+        <div class="card">
+          <div class="bh3"><h2 class="serif">WP-Sep26 · WordPress Website Building</h2><span class="chip c-green" style="margin-left:auto">Running</span></div>
+          <div class="facts4"><div>Days<b>Tue, Thu 6:30 pm · Sat 10:00 am</b></div><div>Where<b>Classroom · Adyar</b></div><div>Trainer<b>Arun Kumar</b></div><div>Seats<b>12 of 15 · 8 Sep – 17 Oct</b></div></div>
+          <div class="sess"><i class="d">1</i><i class="d">2</i><i class="d">3</i><i class="d">4</i><i class="d">5</i><i class="d">6</i><i class="d">7</i><i class="d">8</i><i class="d">9</i><i class="d">10</i><i class="t">11</i><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i>18</i></div>
+          <div class="skey2"><span>10 done</span><span>· today 18:30: "Pages, menus and forms"</span><span>· 7 to go</span><a href="calendar.html" style="margin-left:auto;color:var(--ink);font-weight:700;text-decoration:none">On the calendar</a></div>
+          <div class="cbx">
+            <table class="tbl">
+              <thead><tr><th>Student</th><th>Fee</th><th>Sessions 5 to 10</th><th class="num">Attendance</th><th class="num">Assignment 1</th></tr></thead>
+              <tbody><tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490;width:28px;height:28px;font-size:9.5px">MA</span><b>Mohammed Arif</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i></span></td><td class="num">100%</td><td class="num">18 / 20</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:28px;height:28px;font-size:9.5px">SK</span><b>Sathish Kumar</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="a"></i><i class="p"></i><i class="a"></i><i class="a"></i><i class="a"></i></span></td><td class="num lowa">60%</td><td class="num">Not yet</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D;width:28px;height:28px;font-size:9.5px">JR</span><b>Janani R</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="p"></i><i class="p"></i><i class="a"></i><i class="p"></i><i class="p"></i></span></td><td class="num">90%</td><td class="num">17 / 20</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8;width:28px;height:28px;font-size:9.5px">PS</span><b>Pradeep S</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="p"></i><i class="a"></i><i class="p"></i><i class="p"></i><i class="p"></i></span></td><td class="num">90%</td><td class="num">15 / 20</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED;width:28px;height:28px;font-size:9.5px">KM</span><b>Kavya M</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i></span></td><td class="num">100%</td><td class="num">19 / 20</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:28px;height:28px;font-size:9.5px">AT</span><b>Ashwin T</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="p"></i><i class="a"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="a"></i></span></td><td class="num">80%</td><td class="num">14 / 20</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239;width:28px;height:28px;font-size:9.5px">GR</span><b>Gokul R</b></div></td><td><span class="chip c-green">Paid</span></td><td><span class="att3"><i class="a"></i><i class="p"></i><i class="p"></i><i class="a"></i><i class="p"></i><i class="a"></i></span></td><td class="num lowa">70%</td><td class="num">12 / 20</td></tr></tbody>
+            </table>
+            <span class="manual">7 of 12 shown. Attendance below 75% is in red; the certificate needs 75%.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card rc2">
+            <h3>Today · session 11</h3>
+            <span style="font-size:12.5px">6:30–8:30 pm · classroom, Adyar · Arun</span>
+            <div class="po-note"><i data-i="bell"></i><span>Class reminder goes to 12 students on WhatsApp at 4:30 pm, 2 hours before.</span></div>
+            <a class="btn solid" href="phone-academy.html" style="text-decoration:none;align-self:flex-start"><i data-i="tasks"></i>Mark attendance</a>
+          </div>
+          <div class="card rc2">
+            <h3>Needs a word</h3>
+            <div class="prow" style="border-top:0"><span class="lg-av" style="--av:#B45309">SK</span><div><b>Sathish Kumar</b><small>Attendance 60% · missed 4 of the last 6</small></div></div>
+            <div class="prow"><span class="lg-av" style="--av:#9F1239">GR</span><div><b>Gokul R</b><small>Attendance 70% · needs 75% for the certificate</small></div></div>
+            <span class="ai-btn sm" style="align-self:flex-start" data-ai="Draft a kind WhatsApp to each: what they missed, the recordings, and the 75% rule. Arrives as drafts; Arun sends them.">Draft a message</span>
+          </div>
+          <div class="card rc2">
+            <h3>Online batches</h3>
+            <span class="sm" style="font-size:12px">DMM-Oct26 and AI-Nov26 get a Google Meet link for each session, made when the calendar account is connected; recordings go to Bunny Stream after class.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

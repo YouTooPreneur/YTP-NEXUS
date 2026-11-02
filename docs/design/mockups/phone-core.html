@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone quick add and approvals</title>
+<!-- Batch 2 · SCR-007 Quick add and SCR-009 Approval inbox on a phone: speak or type, AI fills it in, you confirm; approve on the go (CORE-113, AI-009, AI-010) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .sheet{margin-top:auto;background:var(--card);border-radius:26px 26px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.18);padding:14px 18px 18px;display:flex;flex-direction:column;gap:12px}
+  .grab{width:40px;height:5px;border-radius:3px;background:var(--line);align-self:center}
+  .sheet h2{font-size:22px}
+  .heard{font-size:15px;font-weight:600;line-height:1.45;padding:12px 14px;border-radius:14px;border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--ai-a),var(--ai-b)) border-box}
+  .wave{display:flex;align-items:center;justify-content:center;gap:4px;height:28px}
+  .wave i{width:4px;border-radius:2px;background:var(--on)}
+  .got2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .got2 div{padding:9px 11px;border-radius:12px;background:var(--card-2)}
+  .got2 small{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .got2 b{font-weight:700;font-size:13px}
+  .bigbtn{height:50px;border-radius:14px;display:grid;place-items:center;font-weight:700;font-size:15px}
+  .bigbtn.solid{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigbtn.line{border:1px solid var(--line)}
+  .dimbg{position:absolute;inset:0;background:rgba(9,22,19,.35)}
+  .phone{position:relative}
+  .ap2{padding:14px;display:flex;flex-direction:column;gap:8px}
+  .ap2 .t{display:flex;justify-content:space-between;gap:10px}
+  .ap2 b{font-weight:700}
+  .ap2 .m{font-size:12px;color:var(--muted)}
+  .ap2 .row{display:flex;gap:8px}
+  .ap2 .row span{flex:1;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px}
+  .ap2 .yes{background:var(--primary-bg);color:var(--primary-ink)}
+  .ap2 .no{border:1px solid var(--line);color:var(--red)}
+  .ap2 .more{border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone">
+    <div class="status"><span>11:02</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Nexus</span><a class="av" href="my-profile.html" style="margin-left:auto;text-decoration:none">AK</a></div>
+    <div class="p-body" style="padding-bottom:0"><div class="card" style="height:150px"></div><div class="card" style="height:220px"></div></div>
+    <div class="dimbg"></div>
+    <div class="sheet" style="position:absolute;left:0;right:0;bottom:0">
+      <span class="grab"></span>
+      <div style="display:flex;align-items:center;gap:8px"><h2 class="serif">Quick add</h2><span class="ai-tag" style="margin-left:auto"><i data-i="spark"></i>Listening</span></div>
+      <div class="wave"><i style="height:8px"></i><i style="height:16px"></i><i style="height:24px"></i><i style="height:14px"></i><i style="height:20px"></i><i style="height:10px"></i><i style="height:18px"></i><i style="height:8px"></i></div>
+      <div class="heard">"Remind me to collect the cheque from Kaveri Hospitals on Saturday at 4"</div>
+      <div class="got2">
+        <div><small>Add</small><b>Reminder</b></div>
+        <div><small>When</small><b>Sat 3 Oct, 4:00 pm</b></div>
+        <div><small>About</small><b>Collect the cheque</b></div>
+        <div><small>Client</small><b>Kaveri Hospitals</b></div>
+      </div>
+      <div class="bigbtn solid">Confirm</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><a class="bigbtn line" href="todos.html" style="text-decoration:none;color:var(--ink)">Change</a><div class="bigbtn line">Cancel</div></div>
+      <span class="manual" style="text-align:center">Tap a form instead to type it by hand</span>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="status"><span>11:05</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Approvals</span><a class="av" href="my-profile.html" style="margin-left:auto;text-decoration:none">YP</a></div>
+    <div class="p-body">
+      <div class="views"><span class="on">All <em class="count">8</em></span><span><i data-i="spark"></i>AI <em class="count">2</em></span><span>Money <em class="count">5</em></span></div>
+      <div class="card ap2">
+        <div class="t"><b>15% discount · Bloom Florists</b><b>−₹6,750</b></div>
+        <span class="m">Karthik · SEO · every discount comes to you</span>
+        <div class="row"><span class="yes">Approve</span><span class="no">Reject</span><a class="more" href="approvals.html" style="text-decoration:none;color:var(--ink);flex:1;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px">Details</a></div>
+      </div>
+      <div class="card ap2">
+        <div class="t"><b>Payment reminder · Greenleaf</b><b>₹1,416</b></div>
+        <span class="m"><span class="ai-tag"><i data-i="spark"></i>AI draft</span> Email and WhatsApp, day 7</span>
+        <div class="row"><span class="yes">Send</span><span class="no">Discard</span><span class="more">Edit</span></div>
+      </div>
+      <div class="card ap2">
+        <div class="t"><b>Expense · client visit travel</b><b>₹4,200</b></div>
+        <span class="m">Arun · bill attached</span>
+        <div class="row"><span class="yes">Approve</span><span class="no">Reject</span><span class="more">Bill</span></div>
+      </div>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html" class="on"><i data-i="more"></i>More</a></nav>
+  </div>
+</div>
+</body>
+</html>

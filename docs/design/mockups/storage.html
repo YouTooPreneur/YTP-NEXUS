@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Storage</title>
+<!-- Batch 2 · SCR-196 Storage: space used by area, largest files, backups, Google Drive links; AI clean-up suggestions (CORE-083, CORE-084, INT-022, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .area{display:grid;grid-template-columns:170px 1fr 70px;gap:14px;align-items:center;padding:9px 0;font-size:13px}
+  .area b{font-weight:600}
+  .area span.v{text-align:right;color:var(--muted);font-weight:600}
+  .big{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line-soft)}
+  .big:first-of-type{border-top:0}
+  .big b{display:block;font-weight:700}
+  .big small{font-size:12px;color:var(--muted)}
+  .big .r{margin-left:auto;display:flex;gap:10px;align-items:center}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><b style="color:var(--ink)">Data and storage</b></div>
+          <h1 class="serif">Data and storage</h1>
+          <p>Files live apart from the database, so they never slow Nexus down. See what uses space and keep it tidy.</p>
+        </div>
+      </div>
+      <div class="tabs-x"><a href="data.html#import">Import</a><a href="data.html#export">Export</a><a href="data.html#keep">Keeping data</a><a class="on" href="storage.html">Storage</a></div>
+
+      <div class="kpis">
+        <div class="card kpi"><div class="lab">Space used</div><div class="num serif" style="font-size:34px">18.4 GB</div><div class="sub">of 100 GB on the server</div></div>
+        <div class="card kpi"><div class="lab">Files</div><div class="num serif" style="font-size:34px">12,480</div><div class="sub">Images compressed on upload</div></div>
+        <div class="card kpi"><div class="lab">Backups</div><div class="num serif" style="font-size:34px">30</div><div class="sub"><span class="up">Last 2:00 am</span>restore tested 1 Sep</div></div>
+        <div class="card kpi"><div class="lab">Big files as links</div><div class="num serif" style="font-size:34px">6.2 GB</div><div class="sub">Kept in Google Drive, not here</div></div>
+      </div>
+
+      <div class="lay">
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 8px"><h2 class="serif" style="font-size:20px">Space by area</h2></div>
+          <div class="area"><b>Client files</b><span class="meter"><i style="width:53%"></i></span><span class="v">9.8 GB</span></div>
+          <div class="area"><b>Backups</b><span class="meter"><i style="width:28%"></i></span><span class="v">5.1 GB</span></div>
+          <div class="area"><b>Email attachments</b><span class="meter"><i style="width:11%"></i></span><span class="v">2.1 GB</span></div>
+          <div class="area"><b>Database</b><span class="meter"><i style="width:8%"></i></span><span class="v">1.4 GB</span></div>
+          <div class="area"><b>Academy videos</b><span class="meter"><i style="width:0%"></i></span><span class="v">0 GB</span></div>
+          <p class="help" style="margin-top:6px">Academy videos are kept in Bunny Stream, so they use no space here.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Clean-up suggestions<span class="r">AI · nothing is deleted by AI</span></div>
+            <div style="font-size:13.5px;line-height:1.55">14 files are exact copies of others (310 MB). 6 old drafts nobody opened this year (140 MB) could move to Google Drive as links.</div>
+            <div class="ai-acts"><span class="btn">Review copies</span><span class="btn">Review old drafts</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:20px">Largest files</h2><span class="link">Upload limit 25 MB a file</span></div>
+            <div class="big"><span class="ftype pdf">PDF</span><div><b>kaveri-brochure-print.pdf</b><small>Kaveri Hospitals · Brand assets</small></div><div class="r"><span class="sm">24.6 MB</span><span class="btn">Move to Drive</span></div></div>
+            <div class="big"><span class="ftype fig">FIG</span><div><b>brand-system-2026.fig</b><small>YouTooPreneur · Brand assets</small></div><div class="r"><span class="sm">23.9 MB</span><span class="btn">Open</span></div></div>
+            <div class="big"><span class="ftype pdf">ZIP</span><div><b>green-valley-photos.zip</b><small>Green Valley School · Social media</small></div><div class="r"><span class="sm">22.1 MB</span><span class="btn">Open</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

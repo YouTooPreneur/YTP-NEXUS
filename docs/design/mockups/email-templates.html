@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Email templates</title>
+<!-- Batch 2 · SCR-250 Email layout and templates: invoice, reminders, renewal notice, daily summary, login code, newsletter; per language, with placeholders; AI translate and improve (CORE-063, CORE-111, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:260px 1fr 330px;gap:18px;align-items:start}
+  .nav2{display:flex;flex-direction:column;gap:2px}
+  .nav2 .list-item{padding:8px 12px;font-size:13px}
+  .mail{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#F4F5F2}
+  .mail .hd{background:var(--card);padding:12px 18px;border-bottom:1px solid var(--line-soft);font-size:12.5px;display:grid;grid-template-columns:60px 1fr;gap:4px 10px}
+  .mail .hd span{color:var(--muted)}
+  .mail .hd b{font-weight:600}
+  .paper{margin:18px auto;width:520px;background:#FFFFFF;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden;color:#1C3D36}
+  .paper .band{background:#1C3D36;padding:16px 24px;display:flex;align-items:center;gap:10px;color:#fff;font-family:Sora,sans-serif;font-weight:600}
+  .paper .band svg{width:26px;height:28px;color:#03FF96}
+  .paper .bd{padding:22px 24px;font-size:13.5px;line-height:1.6;display:flex;flex-direction:column;gap:12px}
+  .ph{background:rgba(45,184,232,.14);color:#0E6F8E;border-radius:4px;padding:0 4px;font-weight:600}
+  .eamt{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:10px;background:#F7F5EF}
+  .eamt b{font-family:Sora,sans-serif;font-size:22px}
+  .pay{align-self:flex-start;background:#1C3D36;color:#03FF96;font-weight:700;padding:10px 18px;border-radius:10px}
+  .paper .ft{padding:12px 24px;font-size:11px;color:#5F6B65;border-top:1px solid #EFEBE2}
+  .langs{display:flex;gap:6px;flex-wrap:wrap}
+  .langs span{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;border:1px solid var(--line);display:inline-flex;gap:6px;align-items:center}
+  .langs span.on{background:var(--primary-bg);color:var(--primary-ink);border-color:var(--primary-bg)}
+  .langs .st{font-size:10.5px;color:var(--muted);font-weight:700}
+  .phs{display:flex;flex-wrap:wrap;gap:6px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Settings">
+  <main>
+    <section class="pg" style="gap:14px">
+      <div class="pg-head">
+        <div>
+          <div class="crumbs"><a href="settings.html">Settings</a><span>/</span><a href="messaging.html#templates">Messaging</a><span>/</span><b style="color:var(--ink)">Email templates</b></div>
+          <h1 class="serif">Email templates</h1>
+          <p>One branded layout for every email, and the words for each message in each language. Words in blue fill in by themselves.</p>
+        </div>
+        <div class="acts"><span class="btn lg"><i data-i="send"></i>Send a test to me</span><span class="btn solid lg">Save</span></div>
+      </div>
+
+      <div class="lay">
+        <div class="card" style="padding:12px 10px">
+          <div class="nav2">
+            <div class="sect" style="padding:4px 12px 6px">Billing</div>
+            <a class="list-item on">Invoice sent</a><a class="list-item">Payment reminder · day 7, 15</a><a class="list-item">Payment receipt</a>
+            <div class="sect" style="padding:10px 12px 6px">Renewals</div>
+            <a class="list-item">Renewal notice · 30 days</a><a class="list-item">Renewal notice · 7 days</a>
+            <div class="sect" style="padding:10px 12px 6px">Everyday</div>
+            <a class="list-item">Daily summary</a><a class="list-item">Meeting reminder</a><a class="list-item">Client login code</a>
+            <div class="sect" style="padding:10px 12px 6px">Layout</div>
+            <a class="list-item">Branded layout</a><a class="list-item">Newsletter layout</a>
+          </div>
+        </div>
+
+        <div class="mail">
+          <div class="hd"><span>From</span><b>Billing &lt;accounts@youtoopreneur.com&gt;</b><span>To</span><b><span class="ph">{client_email}</span></b><span>Subject</span><b>Invoice <span class="ph">{invoice_no}</span> for <span class="ph">{amount}</span></b></div>
+          <div class="paper">
+            <div class="band"><span class="mark"></span>YouTooPreneur</div>
+            <div class="bd">
+              <div>Hello <span class="ph">{contact_name}</span>,</div>
+              <div>Thank you for choosing us. Here is your invoice for <span class="ph">{service}</span>. You can pay by UPI, bank transfer or the link below.</div>
+              <div class="eamt"><span>Invoice <span class="ph">{invoice_no}</span><br><small style="color:var(--muted)">Due <span class="ph">{due_date}</span></small></span><b><span class="ph" style="font-size:18px">{amount}</span></b></div>
+              <span class="pay">Pay now</span>
+              <div>Warm regards,<br>Team YouTooPreneur</div>
+            </div>
+            <div class="ft">YouTooPreneur · Chennai · The invoice PDF is attached · Questions? Reply to this email.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="sect" style="padding:0">Language</div>
+            <div class="langs"><span class="on">English</span><span>தமிழ் <em class="st">DONE</em></span><span>हिन्दी <em class="st">DRAFT</em></span><span>മലയാളം <em class="st">MISSING</em></span><span>తెలుగు <em class="st">MISSING</em></span></div>
+            <p class="help">Each client gets the language set on their contact, once that language is checked and open (Tamil now); until then, English.</p>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>AI helpers</div>
+            <div class="ai-acts"><span class="ai-btn sm" data-ai="AI helper: translates this template into the missing languages as drafts. A native speaker checks them before they are switched on."><i data-i="spark"></i>Translate the 2 missing</span><span class="ai-btn sm" data-ai="AI helper: suggests clearer, friendlier wording. You pick what to keep."><i data-i="spark"></i>Improve wording</span></div>
+            <span class="manual">Drafts only. Nothing changes until you save.</span>
+          </div>
+          <div class="card cb" style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div class="sect" style="padding:0">Fill-in words</div>
+            <div class="phs"><span class="ph">{contact_name}</span><span class="ph">{client_name}</span><span class="ph">{invoice_no}</span><span class="ph">{amount}</span><span class="ph">{due_date}</span><span class="ph">{service}</span><span class="ph">{pay_link}</span><span class="ph">{upi_id}</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

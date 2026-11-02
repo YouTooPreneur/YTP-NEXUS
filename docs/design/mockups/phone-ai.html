@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Phone: voice, client portal and live chat</title>
+<!-- Batch 8 on a phone · SCR-255 the voice assistant answers a spoken question and reads it aloud, SCR-204 a client approves a video in the portal on their phone, SCR-260 a person takes over a chatbot conversation from the alert (AI-010, POR-004, AI-019, CRM-030). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .stage{gap:40px}
+  .p-body{gap:11px}
+  .vtop{margin:-6px -20px 0;padding:18px 20px 20px;background:linear-gradient(180deg,#1C3D36,#122B24);color:#fff;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+  :root[data-look="N"] .vtop{background:linear-gradient(180deg,#17344F,#0C1D2C)}
+  .vtop .bigmic{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:#03FF96;color:#04140E;box-shadow:0 0 0 10px rgba(3,255,150,.16)}
+  .vtop .bigmic svg{width:28px;height:28px}
+  .vtop small{font-size:11.5px;color:rgba(255,255,255,.75)}
+  .vq{padding:10px 12px;border-radius:12px;background:var(--card-2);font-size:13.5px;font-weight:600;line-height:1.5}
+  .vq small{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:3px}
+  .ans{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line-soft)}
+  .ans .h7{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ai-ink)}
+  .ans .h7 svg{width:13px;height:13px}
+  .ans b{font-family:Sora,sans-serif;font-weight:600;font-size:17px;margin:4px 0}
+  .li4{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-top:1px solid var(--line-soft)}
+  .li4 b{font-weight:700}
+  .say3{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ink)}
+  .say3 svg{width:15px;height:15px}
+  .bigb3{height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14px}
+  .bigb3.s{background:var(--primary-bg);color:var(--primary-ink)}
+  .bigb3.ok{background:var(--on);color:#fff}
+  .bigb3.l{border:1px solid var(--line)}
+  .ptop2{margin:-6px -20px 0;padding:12px 20px;background:#1C3D36;color:#fff;display:flex;align-items:center;gap:8px}
+  :root[data-look="N"] .ptop2{background:#10273A}
+  .ptop2 .mark{width:20px;height:22px;color:#03FF96}
+  .ptop2 b{font-family:Sora,sans-serif;font-weight:600;font-size:14px}
+  .ptop2 .lg-av{margin-left:auto;width:28px;height:28px;font-size:9.5px}
+  .thumb2{position:relative;aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,#0F3D33,#1C5C4C 55%,#3B8C73);display:grid;place-items:center;color:#fff}
+  .thumb2 .play{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);color:#1C3D36;display:grid;place-items:center}
+  .thumb2 .play svg{width:18px;height:18px;fill:currentColor;margin-left:2px}
+  .thumb2 .dur{position:absolute;right:8px;bottom:8px;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(0,0,0,.5)}
+  .dots3{display:flex;gap:5px;justify-content:center}
+  .dots3 i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .dots3 i.on{background:var(--ink)}
+  .ntf{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:#FBECE9;color:#7A2E22;font-size:12px;line-height:1.45}
+  .ntf svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .ntf b{display:block;font-size:12.5px}
+  .bb{max-width:84%;padding:8px 11px;border-radius:13px;font-size:12px;line-height:1.45}
+  .bb small{display:block;font-size:10px;font-weight:700;color:var(--muted);margin-bottom:2px}
+  .bb.in{background:var(--card-2);align-self:flex-start;border-radius:4px 13px 13px 13px}
+  .bb.ai{background:linear-gradient(135deg,#E6FBF1,#E5F4FB);border:1px solid var(--ai-line);align-self:flex-end;border-radius:13px 4px 13px 13px}
+  .sys4{align-self:center;font-size:10.5px;font-weight:700;color:#B4483A;padding:3px 10px;border-radius:999px;background:#FBECE9}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- 1 · Voice: a question answered and read aloud -->
+  <div class="phone">
+    <div class="status"><span>11:05</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-body">
+      <div class="vtop"><span class="bigmic"><i data-i="mic"></i></span><b style="font-family:Sora,sans-serif;font-weight:600">Hold to talk</b><small>Listens only while you hold · 46 of 300 minutes in September</small></div>
+      <div class="vq ta">"இன்னைக்கு overdue என்ன இருக்கு?"<small>In English: What is overdue today?</small></div>
+      <div class="ans">
+        <span class="h7"><i data-i="spark"></i>Nexus · read only</span>
+        <b>₹65,016 overdue · 4 invoices</b>
+        <div class="li4"><span>Anbu Textiles · 34 days</span><b>₹28,000</b></div>
+        <div class="li4"><span>Kaveri Hospitals · 3 days</span><b>₹23,600</b></div>
+        <div class="li4"><span>2 more</span><b>₹13,416</b></div>
+      </div>
+      <span class="say3"><i data-i="play"></i>Reading it aloud in Tamil · 0:14</span>
+      <a class="bigb3 l" href="collections.html" style="text-decoration:none;color:var(--ink)">Open collections</a>
+    </div>
+    <nav class="p-nav"><a class="on" href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+  <!-- 2 · Client portal: approve a video -->
+  <div class="phone">
+    <div class="status"><span>6:20</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-body">
+      <div class="ptop2"><span class="mark"></span><b>Client portal</b><span class="lg-av" style="--av:#047857">KH</span></div>
+      <span class="sm" style="font-size:12px;font-weight:700">Waiting for your approval · 1 of 3</span>
+      <div class="thumb2"><span class="play"><i data-i="play"></i></span><span class="dur">1:12</span></div>
+      <div><b style="font-weight:700;font-size:15px;display:block">Dr. S. Meenakshi · Cardiology</b><span class="sm" style="font-size:12px">Doctor intro video · version 1 · sent by Rahul on 29 Sep</span></div>
+      <div class="dots3"><i class="on"></i><i></i><i></i></div>
+      <a class="bigb3 ok" href="portal-projects.html" style="text-decoration:none"><i data-i="check"></i>Approve</a>
+      <span class="bigb3 l">Ask for changes</span>
+      <span class="manual" style="text-align:center">Your approval is saved with your name and the time. 2 rounds of changes are included.</span>
+    </div>
+  </div>
+
+  <!-- 3 · Live chat: take over from the alert -->
+  <div class="phone">
+    <div class="status"><span>10:05</span><span class="sig"><i data-i="signal"></i><i data-i="wifi"></i><i data-i="battery"></i></span></div>
+    <div class="p-head"><span class="mark"></span><span class="word serif">Live chat</span><span class="av" style="margin-left:auto;background:color-mix(in srgb,#0F766E 16%,#fff);color:#0F766E;border-color:transparent">KR</span></div>
+    <div class="p-body">
+      <div class="ntf"><i data-i="bell"></i><span><b>Arvind Opticals asks about prices</b>The chatbot handed this chat to you when the office opened · 10:00 am</span></div>
+      <div class="bb in"><small>Mr. Arvind · 9:52 am</small>After 4 pm is fine. Any discount if we take SEO too?</div>
+      <div class="bb ai"><small>AI · YTP Assist · 9:52 am</small>Thank you! I have passed your details to Karthik. Our team is in from 10:00 am, and he will reply here.</div>
+      <span class="sys4">Waiting for you · 5 min</span>
+      <a class="bigb3 s" href="live-chat.html" style="text-decoration:none"><i data-i="user"></i>Take over</a>
+      <span class="bigb3 l">Let the AI say I will call</span>
+      <span class="manual" style="text-align:center">Lead made by the chatbot: Arvind Opticals · website + local SEO · yours.</span>
+    </div>
+    <nav class="p-nav"><a href="phone.html"><i data-i="home"></i>Home</a><a href="tasks.html"><i data-i="tasks"></i>Tasks</a><a href="calendar.html"><i data-i="cal"></i>Calendar</a><a class="on" href="pipeline.html"><i data-i="target"></i>Leads</a><a href="phone-foundation.html"><i data-i="more"></i>More</a></nav>
+  </div>
+
+</div>
+</body>
+</html>

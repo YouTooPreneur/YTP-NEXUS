@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Assessments</title>
+<!-- Batch 9 · SCR-155 Assessments: enter results for an assignment or exam (WP-Sep26 · Assignment 1), marks out of the maximum with short feedback, a rubric, the weight in the final result; students see their result in the portal only after the trainer publishes (ACD-007, AI-009). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pg{gap:12px;padding-top:12px}
+  .pg-head h1{font-size:30px}
+  .pg-head p{margin-top:4px}
+  .card .ch{padding:12px 16px 4px}
+  .card .ch h2{font-size:16.5px}
+  .cbx{padding:4px 16px 12px}
+  .tbl td,.tbl th{padding-top:8px;padding-bottom:8px;font-size:12.5px}
+  .tbl b{display:block;font-weight:700;font-size:13px}
+  .tbl small{display:block;font-size:11.5px;color:var(--muted)}
+  .tbl tr.sel td{background:var(--active-bg)}
+  .tbl td.sm{white-space:nowrap}
+  .seat{display:flex;align-items:center;gap:8px;min-width:120px}
+  .seat .meter{flex:1;height:7px}
+  .seat .meter i{background:var(--on)}
+  .seat b{font-size:12px;font-weight:700;white-space:nowrap;display:inline}
+  .mode{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--card-2);border:1px solid var(--line-soft);white-space:nowrap}
+  .mode svg{width:12px;height:12px}
+  .k5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  .k5 .card{padding:11px 14px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+  .k5 small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .k5 b{font-family:Sora,sans-serif;font-weight:600;font-size:23px;letter-spacing:-.01em}
+  .k5 span{font-size:11.5px;color:var(--muted)}
+  .k5 .warn b{color:var(--red)}
+
+  .lay13{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+  .rc3{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+  .rc3 h3{font-family:Sora,sans-serif;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+  .rc3 h3 .chip,.rc3 h3 .r{margin-left:auto}
+  .kv12{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:12.5px}
+  .kv12 span{color:var(--muted)}
+  .kv12 b{font-weight:700}
+  .sct{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+  .ln5{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:4px 0}
+  .ln5 b{font-weight:700}
+  .ln5 .r{margin-left:auto;font-weight:700;white-space:nowrap}
+  .ln5 small{color:var(--muted);font-size:11.5px}
+
+  .lay14{display:grid;grid-template-columns:270px minmax(0,1fr) 320px;gap:12px;align-items:start}
+  .al{padding:10px;display:flex;flex-direction:column;gap:3px}
+  .al a{display:flex;flex-direction:column;gap:2px;padding:9px 10px;border-radius:12px;text-decoration:none;color:inherit;font-size:12px}
+  .al a.on{background:var(--active-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
+  .al a b{font-weight:700;font-size:13px}
+  .al a small{color:var(--muted);font-size:11.5px}
+  .al .gh2{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:8px 10px 2px}
+  .mk{display:inline-grid;place-items:center;min-width:44px;height:30px;padding:0 8px;border-radius:8px;border:1.5px solid var(--line);font-weight:700;font-size:13px;background:var(--card)}
+  .mk.e{color:var(--muted);border-style:dashed}
+  .tbl td{padding-top:6px;padding-bottom:6px}
+  .rub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;font-size:12.5px}
+  .rub b{font-weight:700;text-align:right}
+</style>
+</head>
+<body>
+<div class="app" data-active="Academy" data-sec="academy" data-sec-on="assess">
+  <main>
+    <section class="pg">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Assessments</h1>
+          <p>Assignments, quizzes and final projects. Trainers enter marks with a short note; students see their result once it is published.</p>
+        </div>
+        <div class="acts"><span class="btn solid lg"><i data-i="plus"></i>New assessment</span></div>
+      </div>
+      <div class="lay14">
+        <div class="card al">
+          <span class="gh2">WP-Sep26</span>
+          <a class="on" href="assessments.html"><b>Assignment 1 · a 3-page site</b><small>Marking · 9 of 12 marked</small></a>
+          <a href="assessments.html"><b>Assignment 2 · a 5-page site</b><small>Due Sat 3 Oct</small></a>
+          <span class="gh2">DMM-Jul26</span>
+          <a href="certificates.html"><b>Final project · a real campaign</b><small>Published 26 Sep · 15 passed</small></a>
+          <span class="gh2">Reels · recorded</span>
+          <a href="assessments.html"><b>Quizzes 1 and 2</b><small>Marked by themselves</small></a>
+        </div>
+        <div class="card">
+          <div class="ch"><h2 class="serif">WP-Sep26 · Assignment 1</h2><span class="chip c-amber" style="margin-left:auto">Not published</span></div>
+          <div class="cbx">
+            <table class="tbl">
+              <thead><tr><th>Student</th><th>Handed in</th><th class="num">Marks / 20</th><th>Note to the student</th></tr></thead>
+              <tbody><tr><td><div class="nmc"><span class="lg-av" style="--av:#0E7490;width:26px;height:26px;font-size:9px">MA</span><b>Mohammed Arif</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">18</span></td><td class="sm">Clean pages; add alt text to images</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#B45309;width:26px;height:26px;font-size:9px">SK</span><b>Sathish Kumar</b></div></td><td><span class='chip c-ink'>Not in</span></td><td class="num"><span class="mk e">—</span></td><td class="sm">Not handed in · reminded 29 Sep</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#BE185D;width:26px;height:26px;font-size:9px">JR</span><b>Janani R</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">17</span></td><td class="sm">Good menu; contact form not tested</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#1D4ED8;width:26px;height:26px;font-size:9px">PS</span><b>Pradeep S</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">15</span></td><td class="sm">Phone layout breaks on the services page</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#7C3AED;width:26px;height:26px;font-size:9px">KM</span><b>Kavya M</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">19</span></td><td class="sm">Very good; fast and tidy</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#047857;width:26px;height:26px;font-size:9px">AT</span><b>Ashwin T</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">14</span></td><td class="sm">Pages done; fonts too many</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#9F1239;width:26px;height:26px;font-size:9px">GR</span><b>Gokul R</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">12</span></td><td class="sm">Two pages missing</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#0369A1;width:26px;height:26px;font-size:9px">NP</span><b>Nisha P</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">17</span></td><td class="sm">Nice colours</td></tr><tr><td><div class="nmc"><span class="lg-av" style="--av:#334155;width:26px;height:26px;font-size:9px">IK</span><b>Imran K</b></div></td><td><span class='sm'>26 Sep</span></td><td class="num"><span class="mk">18</span></td><td class="sm">Good structure; check spelling</td></tr></tbody>
+            </table>
+            <span class="manual">9 of 12 shown · average 16.2 of 20 so far · 2 still to mark, 1 not handed in.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card rc3">
+            <h3>About this assessment</h3>
+            <div class="kv12"><span>Type</span><b>Assignment</b><span>Out of</span><b>20 marks</b><span>Counts for</span><b>20% of the final result</b><span>Was due</span><b>Sat 26 Sep</b><span>Marked by</span><b>Arun Kumar</b></div>
+            <span class="sct">Rubric</span>
+            <div class="rub"><span>Design and layout</span><b>5</b><span>All pages done</span><b>5</b><span>Works on a phone</span><b>5</b><span>Speed and basics</span><b>5</b></div>
+          </div>
+          <div class="ai-card">
+            <div class="ai-h"><i data-i="spark"></i>Notes from the rubric</div>
+            <span style="font-size:12.5px;line-height:1.5">Drafts a short, kind note for each student from the marks you gave. You change or delete any of them.</span>
+            <span class="ai-btn sm" style="align-self:flex-start" data-ai="Draft notes: one or two lines per student from the rubric marks. Arrive as drafts; the trainer publishes.">Draft the notes</span>
+          </div>
+          <span class="btn solid lg" style="align-self:flex-start"><i data-i="send"></i>Publish to students</span>
+          <span class="manual">Publishing shows the marks and notes in each student's portal and sends them a message.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

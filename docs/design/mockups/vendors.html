@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Vendors and bills</title>
+<!-- Batch 4 · SCR-109 Vendors (list and detail) and SCR-110 Vendor bills and payments: approval, original currency and INR (provisional until the statement), split payments, duplicate transactions blocked; AI reads a bill (FIN-012, FIN-013, FIN-016, FIN-018, FIN-022, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .lay{display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start}
+  .vt td{padding-top:10px;padding-bottom:10px}
+  .vt tr.on td{background:var(--active-bg)}
+  .vn{display:flex;align-items:center;gap:10px}
+  .vn .lg{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;flex:none}
+  .vn b{display:block;font-weight:700}
+  .vn small{font-size:12px;color:var(--muted)}
+  .bt td{padding-top:9px;padding-bottom:9px}
+  .bt .w b{display:block;font-weight:700}
+  .bt .w small{font-size:12px;color:var(--muted)}
+  .fx{font-size:11.5px;color:var(--muted);display:block;font-weight:500}
+  .prov{color:var(--amber)}
+  .blk{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--red-bg);color:var(--red);font-weight:600;font-size:13px}
+  .blk svg{width:16px;height:16px}
+</style>
+</head>
+<body>
+<div class="app" data-active="Finance" data-sec="finance" data-sec-on="vendors">
+  <main>
+    <section class="pg" style="gap:12px;padding-top:14px">
+      <div class="pg-head">
+        <div>
+          <h1 class="serif">Vendors and bills</h1>
+          <p>Who we pay and what we owe them. Every bill needs your approval, repeating card bills too; foreign-currency amounts stay provisional until the bank or card statement shows the real rupee amount.</p>
+        </div>
+        <div class="acts"><span class="ai-btn" data-ai="AI helper: reads a bill PDF or photo and fills the vendor, date, amount, currency and what it was for. It also warns if the bill looks like a duplicate."><i data-i="spark"></i>Read a bill</span><span class="btn solid lg"><i data-i="plus"></i>Add bill</span></div>
+      </div>
+      <div class="tabs-x" data-tabs="v"><button data-tab="bills">Bills and payments</button><button data-tab="vendors">Vendors <em class="count" style="font-style:normal">14</em></button></div>
+
+      <section data-group="v" data-panel="bills" style="display:flex;flex-direction:column;gap:12px">
+        <div class="blk"><i data-i="shield"></i>Blocked today: the DigitalOcean card payment for September (ref 7731…0042) was entered a second time. Each transaction can be used only once.</div>
+        <div class="card cb" style="padding-top:6px">
+          <table class="tbl bt">
+            <thead><tr><th>Bill</th><th>Vendor and what for</th><th class="num">Amount</th><th>Approval</th><th>Paid</th><th>Bill</th></tr></thead>
+            <tbody>
+              <tr><td class="sm">1 Oct</td><td class="w"><b>DigitalOcean</b><small>YTP-VPS-01, October · card bill, you approved it at 9:15 am</small></td><td class="num">USD 24.00<span class="fx prov">≈ ₹2,012 provisional · rate 83.84</span></td><td><span class="chip c-green">Approved</span></td><td><span class="chip c-green">Paid · card</span></td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">1 Oct</td><td class="w"><b>Shutterstock</b><small>Stock photos for Royal Caterers · added by Divya</small></td><td class="num">₹2,950</td><td><span class="chip c-amber">Waiting</span></td><td class="sm">—</td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">1 Oct</td><td class="w"><b>ACT Fibernet</b><small>Office internet, October</small></td><td class="num">₹2,550</td><td><span class="chip c-green">Approved</span></td><td class="sm">Autopay 5 Oct</td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">30 Sep</td><td class="w"><b>Meta Ads</b><small>September · Lakshmi Silks ₹20,000, to be rebilled · our own ads ₹5,000</small></td><td class="num">₹25,000</td><td><span class="chip c-green">Approved</span></td><td class="sm">Due 5 Oct</td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">29 Sep</td><td class="w"><b>Sanjay J</b><small>Freelance video edit · Kaveri doctor videos</small></td><td class="num">₹8,000</td><td><span class="chip c-green">Approved</span></td><td class="sm">Due 6 Oct</td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">26 Sep</td><td class="w"><b>GoDaddy</b><small>3 domain renewals</small></td><td class="num">₹3,297<span class="fx">split: ₹2,000 UPI + ₹1,297 card</span></td><td><span class="chip c-green">Approved</span></td><td><span class="chip c-green">Paid</span></td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+              <tr><td class="sm">2 Sep</td><td class="w"><b>DigitalOcean</b><small>YTP-VPS-01, September</small></td><td class="num">USD 24.00<span class="fx">₹2,046.12 actual (card statement) · was ₹2,010 provisional</span></td><td><span class="chip c-green">Approved</span></td><td><span class="chip c-green">Paid · card</span></td><td><span class="btn"><i data-i="eye"></i></span></td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Still to pay</td><td class="num">₹38,500</td><td colspan="3" class="sm">4 bills · 1 waiting for approval</td></tr></tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section data-group="v" data-panel="vendors" class="lay">
+        <div class="card cb" style="padding-top:6px">
+          <table class="tbl vt"><thead><tr><th>Vendor</th><th>Category</th><th>GSTIN</th><th class="num">Paid this year</th></tr></thead><tbody>
+            <tr class="on"><td><div class="vn"><span class="lg" style="background:#111">G</span><div><b>GoDaddy</b><small>Domains</small></div></div></td><td class="sm">Registrar</td><td class="sm">Foreign · none</td><td class="num">₹14,210</td></tr>
+            <tr><td><div class="vn"><span class="lg" style="background:#673DE6">H</span><div><b>Hostinger</b><small>Hosting</small></div></div></td><td class="sm">Hosting</td><td class="sm">Foreign · none</td><td class="num">₹28,387</td></tr>
+            <tr><td><div class="vn"><span class="lg" style="background:#0080FF">D</span><div><b>DigitalOcean</b><small>Server · USD</small></div></div></td><td class="sm">Hosting</td><td class="sm">Foreign · none</td><td class="num">₹12,206</td></tr>
+            <tr><td><div class="vn"><span class="lg" style="background:#1877F2">M</span><div><b>Meta Ads</b><small>Client ad spend and our own ads</small></div></div></td><td class="sm">Ad platform</td><td class="sm">Foreign · none</td><td class="num">₹1,48,000</td></tr>
+            <tr><td><div class="vn"><span class="lg" style="background:#334155">SJ</span><div><b>Sanjay J</b><small>Video editing</small></div></div></td><td class="sm">Freelancer</td><td class="sm">Not registered</td><td class="num">₹36,000</td></tr>
+            <tr><td><div class="vn"><span class="lg" style="background:#E11D48">A</span><div><b>ACT Fibernet</b><small>Office internet</small></div></div></td><td class="sm">Other</td><td class="sm">33AAACA•••••1Z5</td><td class="num">₹15,300</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card cb" style="padding-top:14px;display:flex;flex-direction:column;gap:10px">
+          <div class="ch" style="padding:0"><h2 class="serif" style="font-size:19px">GoDaddy</h2><span class="chip c-ink">Registrar</span></div>
+          <div class="kvc" style="grid-template-columns:1fr 1fr"><div><small>Paid this year</small><b>₹14,210</b></div><div><small>Bills</small><b>12</b></div><div><small>Paid with</small><b>Company card, UPI</b></div><div><small>Account</small><b><a class="lk" href="providers.html">GoDaddy · YTP</a></b></div></div>
+          <div class="srow" style="padding:6px 0;border-top:0"><div class="txt"><b>Used for</b><span>22 client domains · costs shown on each asset</span></div><a class="btn" href="webcare.html" style="text-decoration:none">Assets</a></div>
+          <p class="help">Bills are stored with the vendor and open from each bill. Logins live in the vault.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+</body>
+</html>

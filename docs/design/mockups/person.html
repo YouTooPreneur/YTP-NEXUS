@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus · Person</title>
+<!-- Batch 3 · SCR-121 Person: profile with tabs (overview, personal, job, bank and statutory restricted, documents, agreements, access, assets, attendance, leave, salary restricted, goals, training, recognition, letters, exit); status with reason (TEAM-002 to TEAM-008, TEAM-018 to TEAM-020, TEAM-026, TEAM-028, TEAM-029, AI-009) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+<script src="mockup.js"></script>
+<style>
+  .pphead{display:flex;align-items:center;gap:18px}
+  .pphead h1{font-size:34px;line-height:1.1}
+  .pphead .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px;color:var(--muted)}
+  .pphead .r{margin-left:auto;display:flex;gap:8px}
+  .tabsrow{display:flex;border-bottom:1px solid var(--line-soft);overflow:hidden}
+  .tabsrow .tab{padding:11px 10px;font-size:12.5px}
+  .tabsrow .lk2{display:inline-flex;align-items:center;gap:4px}
+  .tabsrow .lk2 svg{width:12px;height:12px}
+  .g3p{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start}
+  .row2{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft);font-size:13px}
+  .row2:first-of-type{border-top:0}
+  .row2 .r{margin-left:auto}
+  .row2 small{display:block;font-size:12px;color:var(--muted)}
+  .row2 b{font-weight:600}
+  .masked{font-family:ui-monospace,Consolas,monospace;letter-spacing:.06em}
+  .prob{display:flex;flex-direction:column;gap:8px}
+  .prob .meter i{background:#E2A93B}
+</style>
+</head>
+<body>
+<div class="app" data-active="Team">
+  <main>
+    <section class="pg" style="gap:12px">
+      <div class="crumbs" style="margin:0"><a href="people.html">Team</a><span>/</span><a href="people.html">People</a><span>/</span><b style="color:var(--ink)">Priya N</b></div>
+      <div class="pphead">
+        <span class="lg-av xl" style="--av:#0369A1">PN</span>
+        <div>
+          <h1 class="serif">Priya N</h1>
+          <div class="meta"><span class="chip c-amber">Probation</span><span>Junior developer · YTP-007 · Tech · Office · reports to Arun · joined 29 Sep 2026</span></div>
+        </div>
+        <div class="r"><span class="btn"><i data-i="chat"></i>WhatsApp</span><a class="btn" href="letters.html" style="text-decoration:none"><i data-i="doc"></i>Letter</a><span class="btn">Change status</span><span class="btn solid"><i data-i="edit"></i>Edit</span></div>
+      </div>
+      <div class="tabsrow"><span class="tab on">Overview</span><span class="tab">Personal</span><span class="tab">Job</span><span class="tab lk2"><i data-i="lock"></i>Bank and statutory</span><span class="tab">Documents <em>3</em></span><span class="tab">Agreements</span><span class="tab">Access</span><span class="tab">Assets</span><span class="tab">Attendance</span><span class="tab">Leave</span><span class="tab lk2"><i data-i="lock"></i>Salary</span><span class="tab">Goals</span><span class="tab">Training</span><span class="tab">Recognition</span><span class="tab">Letters</span><span class="tab">Exit</span></div>
+
+      <div class="ai-card" style="flex-direction:row;align-items:center;gap:14px;padding:12px 16px"><div class="ai-h" style="flex:none"><i data-i="spark"></i>Joining check</div><div style="flex:1;font-size:13.5px;line-height:1.5">3 things left for Priya: her PAN waits for HR to verify, the bank passbook and education certificate are missing, and the IT policy is not signed yet.</div><span class="btn">Draft a reminder to Priya</span></div>
+
+      <div class="g3p">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Probation</h2></div>
+            <div class="prob"><div style="display:flex;justify-content:space-between;font-size:13px"><b>29 Sep → 29 Dec</b><span class="sm">3 days of 91</span></div><span class="meter"><i style="width:4%"></i></span><span class="help">For new joiners only: 3 months, set by her role (can be changed for one person, or set to none). Reminder to Arun and the Owner 7 days before it ends.</span></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Status history</h2></div>
+            <div class="row2"><div><b>Probation</b><small>From 29 Sep · joined · by Owner</small></div></div>
+            <div class="row2"><div><b>Hired from applicants</b><small>Offer accepted 22 Sep</small></div></div>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Access and assets</h2></div>
+            <div class="row2"><div><b>Nexus sign-in</b><small>priya.n@gmail.com · Google · company email pending</small></div><span class="chip c-amber r">Switch email</span></div>
+            <div class="row2"><div><b>Dell Latitude 5440</b><small>Laptop · issued 29 Sep</small></div><span class="chip c-blue r">Issued</span></div>
+          </div>
+        </div>
+
+        <div class="card cb" style="padding-top:16px">
+          <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Documents</h2><a class="link" href="doc-check.html">Documents check<i data-i="right"></i></a></div>
+          <div class="row2"><i class="chk on"></i><div><b>Aadhaar</b><small>Last 4 digits only: <span class="masked">•••• 4821</span> · copy stored masked</small></div><span class="chip c-green r">Verified</span></div>
+          <div class="row2"><i class="chk"></i><div><b>PAN</b><small>Uploaded by Priya today</small></div><span class="chip c-amber r">Waiting for HR</span></div>
+          <div class="row2"><i class="chk"></i><div><b>Bank passbook or cheque</b><small>Required</small></div><span class="chip c-red r">Missing</span></div>
+          <div class="row2"><i class="chk"></i><div><b>Education certificate</b><small>Required</small></div><span class="chip c-red r">Missing</span></div>
+          <div class="row2"><i class="chk on"></i><div><b>Resume</b><small>From her application</small></div><span class="chip c-green r">Verified</span></div>
+          <div class="sect" style="padding:12px 0 4px">Agreements</div>
+          <div class="row2"><i class="chk on"></i><div><b>Offer and appointment letters</b></div><span class="chip c-green r">Signed</span></div>
+          <div class="row2"><i class="chk on"></i><div><b>NDA</b></div><span class="chip c-green r">Signed</span></div>
+          <div class="row2"><i class="chk"></i><div><b>IT policy</b></div><span class="chip c-amber r">Pending</span></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">Bank and statutory</h2><span class="chip c-ink">Owner, HR, Accounts</span></div>
+            <div class="row2"><div><b>Account</b><small class="masked">HDFC Bank · •••• •••• 6620</small></div></div>
+            <div class="row2"><div><b>PAN</b><small class="masked">ABC•••••4F</small></div></div>
+            <div class="row2"><div><b>UAN · ESIC</b><small>Not yet</small></div></div>
+            <span class="btn" style="margin-top:8px"><i data-i="eye"></i>Show full details (logged)</span>
+          </div>
+          <div class="card cb" style="padding-top:16px">
+            <div class="ch" style="padding:0 0 6px"><h2 class="serif" style="font-size:19px">This month</h2></div>
+            <div class="row2"><div><b>Attendance</b><small>1 of 1 day · 5 late minutes in total</small></div></div>
+            <div class="row2"><div><b>Leave balance</b><small>Casual 1 · Sick 1</small></div></div>
+            <div class="row2"><div><b>Saturdays</b><small>2 off left (five Saturdays in October)</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
