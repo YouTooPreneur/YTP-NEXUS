@@ -128,7 +128,8 @@ YTP-SAAS/                    this folder is the repository root
 │       ├── shell            side menu, top bar, phone menu, colour and language switches
 │       ├── areas            staff app · client portal · student portal · public pages
 │       ├── modules          core · crm · contracts · projects · webcare · finance · team · academy
-│       │                    each: its screens, their parts and component tests
+│       │                    each: its screens and their parts
+│       │                    (their component tests live in apps/web/test/<area>/)
 │       └── api              the generated API client: made at every start, build and verify,
 │                            never edited by hand and not kept in the repository
 ├── apps/api                 BACKEND (Express + TypeScript)
@@ -138,7 +139,8 @@ YTP-SAAS/                    this folder is the repository root
 │   ├── src/shared           the shared steps of section 2, written once in Release 1
 │   ├── src/modules          core · crm · contracts · projects · webcare · finance · team · academy
 │   │                        each: MODULE.md · routes (API doors) · handlers · service (window,
-│   │                        rules) · repository (database) · schema (tables) · events · jobs · API tests
+│   │                        rules) · repository (database) · schema (tables) · events · jobs
+│   │                        (their API tests live in apps/api/test/<area>/)
 │   └── drizzle              database changes (SQL), in order, generated and hand-written
 ├── packages/contracts       the API list and field rules (Zod), shared by both parts
 ├── packages/ui              shared screen parts built from the mockup tokens
@@ -451,6 +453,8 @@ This numbering is the one `docs/PLAN.md` and `docs/STATUS.md` use. Inside a step
 | 42 | **Allowing a whole email domain** to sign in (CORE-008): a person from the domain who signs in for the first time is created with the rule's default role, and the Owner is alerted | When YTP uses Google Workspace |
 | 43 | **The platform operator:** who sees rows that belong to no company once Nexus has a second company | Before a second company is added |
 | 44 | **Meeting links and calendar sync** (CORE-054, CORE-055, CORE-057) need the Google Calendar and booking doors (INT-010, INT-011), placed in Release 16: either those doors move to Release 5, or meetings start with pasted links until Release 16 | Owner, before Release 5's task cards |
+| 45 | **How the API and the worker start in production.** `node dist/main.js` (TASK-0002) stops working once the API imports `@ytp/contracts` (TASK-0011), because that package is TypeScript source. Choose one: run with tsx, give `@ytp/contracts` its own build, or bundle the API; and add a production start for the worker. Whatever is chosen must keep `apps/api/test/setup/main.test.ts` passing (it starts `src/main.ts` with the test run's own settings), and any card that edits `main.ts` keeps the `api listening` and `api could not start` messages and exit code 1. (CR-002) | Release 1, when TASK-0079's card is written (step 2.8) |
+| 46 | **How the API and the worker read `infra/.env`** on the builder's computer (nothing loads it yet), for example Node's `--env-file` in the start scripts or a small loader. Whatever is chosen must keep `apps/api/test/setup/main.test.ts` passing (it starts `src/main.ts` with the test run's own settings), and any card that edits `main.ts` keeps the `api listening` and `api could not start` messages and exit code 1. (CR-002) | Release 1, when TASK-0014's card is written (step 2.2) |
 
 ## 13. Approved, and the owner's next steps
 
