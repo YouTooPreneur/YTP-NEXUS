@@ -482,3 +482,4 @@ Asked one by one after batches 8 and 9 were built.
 - "Yes, go ahead" → D-194 (Antigravity builds every card while Codex has no tokens; Claude reviews every card) and D-195 (a plain-words report after every task, with the app run and shown) take effect, starting with the review of TASK-0004, 2 Nov 2026.
 - "done" (TASK-0005 built by Antigravity) → Claude reviews TASK-0005: PASS, merged into `main`, shown live; the gap the review found (a failed answer counted as success) is fixed before TASK-0013 (CR-005), 2 Nov 2026.
 - "Yes, clear it" → Claude clears npm's download cache (17 GB, outside the project; packages download again when needed): drive C: has 23 GB free, 2 Nov 2026.
+- "done" (TASK-0006 built by Antigravity) → Claude reviews TASK-0006: PASS, merged into `main`, shown running; the review's notes for later cards are recorded (CR-006), 2 Nov 2026.

@@ -192,7 +192,7 @@ Full detail per table is in `docs/DATA-MODEL.md`.
 | `nexus_system` | Nobody signs in with it | Bypasses the row rules; owns the functions that add security-log rows, write and read rows with no company, check the chains and remove personal values on request. `nexus_app` may only run these functions |
 | `nexus_backup` | The backup container only | Bypasses the row rules and reads everything (`pg_read_all_data`); replication and the base-backup functions; its only write is `core.backup_runs` |
 
-The accounts are created by an SQL script in `infra` when the database is first made; the passwords of the ones that sign in come from the environment file (6.6).
+The accounts are created by a set-up script in `infra` that can be run more than once (as the database administrator); the passwords of the ones that sign in come from the environment file (6.6). It does not rely on the database's first-start folder, which runs only when the database is first made (CR-006).
 
 ### 5.3 Database changes and rollback (decided)
 
@@ -304,6 +304,7 @@ Each place (the builder's computer, the test copy, the live system) has its own 
 
 | Setting | Read by | What it is |
 |---|---|---|
+| `POSTGRES_SUPERUSER_PASSWORD` | postgres (development only) | The development database's administrator password; never used by Nexus itself |
 | `DATABASE_URL_APP` | api, worker | The app database account |
 | `DATABASE_URL_OWNER` | migrate, setup | The owner account, for database changes only |
 | `DATABASE_URL_BACKUP` | backup | The backup account |
@@ -312,6 +313,7 @@ Each place (the builder's computer, the test copy, the live system) has its own 
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | api | Google sign-in |
 | `NEXUS_MASTER_KEY` | api, worker | Encrypts sensitive fields and stored keys |
 | `GMAIL_USER`, `GMAIL_APP_PASSWORD` | worker | The email door (Release 1) |
+| `SMTP_URL` | worker | Development and tests: the email catcher (Mailpit, `smtp://localhost:1025`); TASK-0029 says how the email door chooses between it and Gmail |
 | `FILES_S3_ENDPOINT`, `FILES_S3_BUCKET`, `FILES_S3_KEY`, `FILES_S3_SECRET` | api | The files door |
 | `BACKUP_S3_ENDPOINT`, `BACKUP_S3_BUCKET`, `BACKUP_S3_KEY`, `BACKUP_S3_SECRET`, `BACKUP_ENCRYPTION_KEY` | backup, postgres | The backup bucket and its encryption (the key can add copies but not delete them early: the bucket lock) |
 | `FILES_BACKUP_S3_KEY`, `FILES_BACKUP_S3_SECRET` | backup | A **read-only** key to the files bucket, for the nightly copy |
@@ -455,6 +457,8 @@ This numbering is the one `docs/PLAN.md` and `docs/STATUS.md` use. Inside a step
 | 44 | **Meeting links and calendar sync** (CORE-054, CORE-055, CORE-057) need the Google Calendar and booking doors (INT-010, INT-011), placed in Release 16: either those doors move to Release 5, or meetings start with pasted links until Release 16 | Owner, before Release 5's task cards |
 | 45 | **How the API and the worker start in production.** `node dist/main.js` (TASK-0002) stops working once the API imports `@ytp/contracts` (TASK-0011), because that package is TypeScript source. Choose one: run with tsx, give `@ytp/contracts` its own build, or bundle the API; and add a production start for the worker. The screens' production build also needs the root `package.json`, `pnpm-workspace.yaml`, `packages/contracts` and the screens' development packages, because `build` makes the API client first (CR-003). Whatever is chosen must keep `apps/api/test/setup/main.test.ts` passing (it starts `src/main.ts` with the test run's own settings), and any card that edits `main.ts` keeps the `api listening` and `api could not start` messages and exit code 1. (CR-002) | Release 1, when TASK-0079's card is written (step 2.8) |
 | 46 | **How the API and the worker read `infra/.env`** on the builder's computer (nothing loads it yet), for example Node's `--env-file` in the start scripts or a small loader. Whatever is chosen must keep `apps/api/test/setup/main.test.ts` passing (it starts `src/main.ts` with the test run's own settings), and any card that edits `main.ts` keeps the `api listening` and `api could not start` messages and exit code 1. (CR-002) | Release 1, when TASK-0014's card is written (step 2.2) |
+| 47 | **The development services for the database cards** (found in the review of TASK-0006, CR-006): the services listen only on this computer (`127.0.0.1:5432:5432` and so on, not every network address); the database health check goes over the network (`pg_isready -h 127.0.0.1 ...`), so "healthy" means the first-start script has finished; which file the database tests read and that its passwords match `infra/.env`; every new builder copy needs its own `infra/.env`; all copies share one database server and one `nexus_test` | Release 1, when TASK-0014's card is written (step 2.2) |
+| 48 | **Private files in development** (CR-006): SeaweedFS as set up checks no keys, so give it an identity file (a full key for `nexus-files` and the read-only backup key), create the `nexus-files` bucket, check buckets with HeadBucket (its ListBuckets stays empty), give it a health check, and switch off its usage reports (`-telemetry=false`) | Release 1, when TASK-0069 (files door) and TASK-0027 (backup) are written |
 
 ## 13. Approved, and the owner's next steps
 
