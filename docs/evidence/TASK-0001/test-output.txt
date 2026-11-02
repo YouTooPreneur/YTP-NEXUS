@@ -1,0 +1,15 @@
+✔ package.json is the private workspace root (13.8833ms)
+✔ the pnpm workspace lists the apps and packages folders (5.394ms)
+✔ the Node version file says 24 (0.4483ms)
+✔ the shared TypeScript settings are strict (0.4715ms)
+✔ editor and line-ending rules exist (0.7827ms)
+✔ .gitignore keeps generated and local files out, and keeps the old lines (2.1242ms)
+✔ the pinned pnpm is the one in use (766.0291ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 902.423

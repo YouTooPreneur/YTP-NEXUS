@@ -43,3 +43,11 @@ share/
 
 # Rebuilt automatically on every computer (would clash on every card)
 tracker.html
+
+# Nexus code: generated and local files
+apps/web/src/api/
+packages/contracts/openapi.json
+*.tsbuildinfo
+playwright-report/
+test-results/
+
