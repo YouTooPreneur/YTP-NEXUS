@@ -11,7 +11,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | Task | Title | Step | Part | Builder | Reviewer | Depends on | Covers | Status | Done by |
 |---|---|---|---|---|---|---|---|---|---|
 | TASK-0001 | Workspace root (the owner's practice task) | 2.1 | Set-up | Antigravity, run by the owner | Claude | Step 1.9 | NFR-015 | Done | antigravity |
-| TASK-0002 | Backend app with a health door | 2.1 | Set-up | Codex | Claude | 0001 | NFR-015 | To do | — |
+| TASK-0002 | Backend app with a health door | 2.1 | Set-up | Codex | Claude | 0001 | NFR-015 | Done | codex |
 | TASK-0003 | Frontend app | 2.1 | Set-up | Antigravity | Claude | 0002 | NFR-009 | To do | — |
 | TASK-0004 | Design tokens and the first screen parts | 2.1 | Set-up | Antigravity | Claude | 0003 | CORE-114 | To do | — |
 | TASK-0005 | Shared API list and the generated client | 2.1 | Set-up | Claude | Codex | 0004 | D-187 | To do | — |

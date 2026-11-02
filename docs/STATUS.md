@@ -197,3 +197,4 @@ One line per task, newest at the bottom.
 | Task | Title | Status | Done by | Date |
 |---|---|---|---|---|
 | TASK-0001 | Workspace root (the owner's practice task) | Done | antigravity | 2026-11-02 |
+| TASK-0002 | Backend app with a health door | Done | codex | 2026-11-02 |
