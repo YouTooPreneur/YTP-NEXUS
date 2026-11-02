@@ -1,0 +1,80 @@
+@theme {
+  --font-ui: "DM Sans", system-ui, sans-serif;
+  --font-title: "Sora", system-ui, sans-serif;
+  --font-tamil: "Noto Sans Tamil", "DM Sans", system-ui, sans-serif;
+}
+
+:root,
+[data-colour="emerald"] {
+  --bg: #FAF8F3;
+  --stage: #EFEBE1;
+  --card: #FFFFFF;
+  --card-2: #F7F5EF;
+  --line: #E7E3D8;
+  --line-soft: #EFEBE2;
+  --ink: #1C3D36;
+  --muted: #5E6B64;
+  --faint: #A0A9A3;
+  --accent: #03FF96;
+  --key: #1C3D36;
+  --logo: #1C3D36;
+  --primary-bg: #1C3D36;
+  --primary-ink: #03FF96;
+  --active-bg: #EAF3EE;
+  --active-ink: #1C3D36;
+  --red: #A9483A;
+  --red-bg: #F8EAE6;
+  --amber: #86600F;
+  --amber-bg: #F6EEDB;
+  --green: #1E7149;
+  --green-bg: #E5F2EA;
+  --blue: #355F86;
+  --blue-bg: #E7EEF5;
+  --side-bg: linear-gradient(180deg, #1E4239 0%, #163229 100%);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+[data-colour="navy"] {
+  --bg: #F5F7FA;
+  --stage: #E8EDF3;
+  --card: #FFFFFF;
+  --card-2: #F2F5F9;
+  --line: #DFE6EE;
+  --line-soft: #EAEFF5;
+  --ink: #10273A;
+  --muted: #5B6D80;
+  --faint: #9AA8B6;
+  --accent: #03FF96;
+  --key: #10273A;
+  --logo: #10273A;
+  --primary-bg: #10273A;
+  --primary-ink: #03FF96;
+  --active-bg: #EAF0F6;
+  --active-ink: #10273A;
+  --red: #B4483A;
+  --red-bg: #FBECE9;
+  --amber: #86600F;
+  --amber-bg: #F8F0DC;
+  --green: #17744A;
+  --green-bg: #E3F3EA;
+  --blue: #2F5E8C;
+  --blue-bg: #E6EEF7;
+  --side-bg: linear-gradient(180deg, #17344F 0%, #0E2235 100%);
+  --radius: 18px;
+  --radius-sm: 12px;
+}
+
+:root {
+  --side-ink: #FFFFFF;
+  --side-muted: rgba(255, 255, 255, 0.9);
+  --side-line: rgba(255, 255, 255, 0.16);
+  --side-active-bg: rgba(3, 255, 150, 0.14);
+  --side-active-ink: #03FF96;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
