@@ -46,7 +46,7 @@ The way of working (history, handover, tracker tabs, Word copies, choices, desig
   - Never touch Agency OS (being closed; its screenshots are only a feature list).
   - Nexus never stores client or tool passwords: Vaultwarden links only (RULE-025, D-140). Aadhaar: last 4 digits only. Never import passwords.
   - Test mode during development: no message ever reaches a real client.
-  - No git commits unless the owner asks, except the one commit per finished task card that its builder makes (D-189) and Claude's own planning saves to `main` (D-193). Uploads (`git push`) are run by the owner.
+  - No git commits unless the owner asks, except the one commit per finished task card that its builder makes (D-189) and Claude's own planning saves to `main` (D-193). Uploads (`git push`) are run by the owner: Claude gives the one upload line with a **Run** button and the owner clicks it.
 
 ## 3. The process
 
@@ -133,6 +133,7 @@ The way of working (history, handover, tracker tabs, Word copies, choices, desig
 | Helpers stopped by a new message (2 Nov) | A background review stopped when the owner sent a message, and Claude wrongly said it was still running. Before saying helpers are running, read the workflow's `journal.jsonl`; tell the owner a new message or Stop may end them, and restart them if so |
 | Review rounds that fix their own fixes (2 Nov) | The tech design review found 54 problems, the check of the fixes 24 more (mostly caused by the fixes), and a last check 6. Always re-check fixes with a fresh reviewer and a skeptic before showing the owner; keep each check narrower than the last |
 | Test builds catch what reading misses (2 Nov) | Reviewers who actually built the first cards in a temp folder found pnpm 11 refusing esbuild's install script, a test that could not read its file in the browser-like mode, and Prettier rewriting the design tokens; none showed up by reading. Before releasing a step's cards, have a helper build the first cards literally in a temp folder. Tell every helper to delete only the temp folder it made: one cleaned the session scratchpad by mistake |
+| Claude cannot give itself upload rights (2 Nov) | The owner asked why Claude can't upload with the deploy key, then said "take good decision". Claude tried to add a project-only `git push` permission to `.claude/settings.local.json`; this app's safety lock refused it (Claude may not change its own permissions). Do not try again or work around it. Uploads stay with the owner: after each save Claude shows the upload line in a `bash` block, and the owner clicks **Run**. Only the owner could add such a permission, in the app's own settings |
 
 **Windows and tool notes**
 - The Bash tool breaks on heredocs with apostrophes and escaped quotes. Write Python scripts to a file and run them, or use the Edit tool.
