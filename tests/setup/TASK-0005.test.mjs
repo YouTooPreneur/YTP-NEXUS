@@ -25,6 +25,12 @@ test('the contract package and the client tool are pinned', () => {
   assert.equal(web.scripts.api, 'orval --config orval.config.ts');
 });
 
+test('the screens make the API client before they start or build', () => {
+  const web = JSON.parse(read('apps/web/package.json'));
+  assert.equal(web.scripts.dev, 'pnpm --workspace-root run api:generate && vite');
+  assert.equal(web.scripts.build, 'pnpm --workspace-root run api:generate && vite build');
+});
+
 test('running the command writes openapi.json and the typed client with a health hook', () => {
   execSync('pnpm api:generate', { stdio: 'pipe' });
   assert.ok(existsSync('packages/contracts/openapi.json'));

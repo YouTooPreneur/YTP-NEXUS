@@ -52,7 +52,7 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
                   Commit (format below)
 ```
 
-The verify command is created in Phase 2 (TASK-0007). **Cards TASK-0001 to TASK-0006 come before it exists:** wherever this loop says "verify", run the commands in the card's VERIFY AND DEBUG section instead. Each builder's own copy is a git worktree at `../ytp-work/TASK-XXXX` on the branch `task/TASK-XXXX`. **After the reviewer's PASS**, the reviewer merges the card's branch into `main`.
+The verify command is created in Phase 2 (TASK-0007). **Cards TASK-0001 to TASK-0006 come before it exists:** wherever this loop says "verify", run the commands in the card's VERIFY AND DEBUG section instead, and for the start check run the commands in the card's BEFORE YOU START. Each builder's own copy is a git worktree at `../ytp-work/TASK-XXXX` on the branch `task/TASK-XXXX`. **After the reviewer's PASS**, the reviewer merges the card's branch into `main`.
 
 ## 4. Commit format
 

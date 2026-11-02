@@ -20,7 +20,7 @@
 
 ## Commands run
 ```
-<each command, in order>
+<each command, in order, including the ones that start a server or take a screenshot>
 ```
 
 ## Errors and fixes
@@ -34,7 +34,7 @@
 ```
 
 ## Evidence
-- `docs/evidence/TASK-XXXX/<files>`
+- `docs/evidence/TASK-XXXX/<files>` (save command output without colour codes: first run `$env:NO_COLOR = '1'` in PowerShell, or `export NO_COLOR=1` in bash; for a screenshot, write here the address it shows)
 
 ## Notes for next task
 - <anything the next task must know: new files, names, gotchas>

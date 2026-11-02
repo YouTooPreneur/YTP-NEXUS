@@ -476,3 +476,4 @@ Asked one by one after batches 8 and 9 were built.
 - "Yes, allow" → Claude saves its planning updates to `main` itself; the owner runs the uploads (D-193), 2 Nov 2026.
 - "why cannot you push from your end ... why should i do on my own", then "take good decision i cannot understand even single word at all" → Claude decides: uploads stay with the owner, who clicks **Run** on the one upload line after each save (the app does not let Claude give itself upload rights), 2 Nov 2026.
 - "task 2 done" → Claude reviews TASK-0002 (Codex): PASS, merged into `main`; two gaps in the plan found by the review are fixed or scheduled (CR-002), 2 Nov 2026.
+- "done" (TASK-0003 built by Antigravity, and the upload) → Claude reviews TASK-0003: PASS, merged into `main`; two more gaps in the plan found by the review are fixed before those cards start (CR-003), 2 Nov 2026.

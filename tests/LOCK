@@ -6,11 +6,13 @@ TASK-0002  apps/api/test/setup/health.test.ts  a4158959a67e976e31ef04f68867a5bc5
 TASK-0002  tests/setup/TASK-0002.test.mjs  f54fa7b5c94319046ab354a0a743bc085654cd5b376d516293008ccfc6a79c3f
 TASK-0003  apps/web/test/setup/app.test.tsx  3486637cd10a5d58c09c6f6917047c78eac8125adea03102701cc47e931fb23a
 TASK-0003  tests/setup/TASK-0003.test.mjs  30ba1df92615e97d4227f9f9775a34e349b2bff06adf3908745af75b67f52cac
+TASK-0004  apps/web/test/setup/cleanup.test.tsx  c6fa190878f9963d3536579f0e06ed1cb649f9eda675ffd2d57c2c956df9a982
 TASK-0004  packages/ui/test/button.test.tsx  452989c510acd3435f6124b4471ab785636725479c83ba3e9f1f679e95f32fba
+TASK-0004  packages/ui/test/cleanup.test.tsx  3a1a9d43b7634e59eaab7e53aec8a11e9149c519e895aa681914fe3ccb783724
 TASK-0004  packages/ui/test/tokens.test.ts  6eb93f5103dbc482e936933e33e1701a88e5dd7e2aacdbe329ce8f270c9accda
 TASK-0004  tests/setup/TASK-0004.test.mjs  d24d94652df69640d4b361db210a2ea1e8f4ba0f72e25c5b196bf38403271a77
 TASK-0005  packages/contracts/test/openapi.test.ts  02fcf702351d9c6f3d3c14d40424929767784ff2b0d6fd63434c295798ee78dd
-TASK-0005  tests/setup/TASK-0005.test.mjs  45c8388ce1e81b298edccc3f32afc4d80fc04d4c15a5a2057d01558e1c359fec
+TASK-0005  tests/setup/TASK-0005.test.mjs  86f39def8a5875ff561b23a96de02dfa02bd71ac3fc33c20f49894efbe6f7d1b
 TASK-0006  tests/setup/TASK-0006.test.mjs  ae3f8ac60092f483da6f3c70c0710fdb718db364e65e0c42e78bd5c5ccc46988
 TASK-0007  tests/setup/TASK-0007.test.mjs  da0a519d8e761643e80cfcb761d8068b38cdc46260467c2506c49cbec3640e74
 TASK-0008  tests/setup/TASK-0008.test.mjs  645f30d11fae8734f6579d8ad432991bec062ad711bdd6f3c7858480fb8445c6
