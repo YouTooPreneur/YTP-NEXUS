@@ -14,14 +14,14 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0002 | Backend app with a health door | 2.1 | Set-up | Codex | Claude | 0001 | NFR-015 | Done | codex |
 | TASK-0003 | Frontend app | 2.1 | Set-up | Antigravity | Claude | 0002 | NFR-009 | Done | antigravity |
 | TASK-0004 | Design tokens and the first screen parts | 2.1 | Set-up | Antigravity | Claude | 0003 | CORE-114 | Done | antigravity |
-| TASK-0005 | Shared API list and the generated client | 2.1 | Set-up | Claude | Codex | 0004 | D-187 | To do | — |
-| TASK-0006 | Development services: database, files, mail | 2.1 | Set-up | Codex | Claude | 0005 | NFR-015 | To do | — |
-| TASK-0007 | The verify command | 2.1 | Set-up | Claude | Codex | 0006 | NFR-011 | To do | — |
-| TASK-0008 | Code style and architecture checks | 2.1 | Set-up | Claude | Codex | 0007 | NFR-011, D-014 | To do | — |
-| TASK-0009 | Allowed-files check and test lock | 2.1 | Set-up | Codex | Claude | 0008 | NFR-011 | To do | — |
-| TASK-0010 | Shared backend steps: request context, logging, errors | 2.1 | Set-up | Codex | Claude | 0009 | NFR-001, NFR-012 | To do | — |
-| TASK-0011 | Shared backend steps: the route helper | 2.1 | Set-up | Claude | Codex | 0010 | D-019 | To do | — |
-| TASK-0012 | Contract, door and module-card checks; the Core module card | 2.1 | Set-up | Claude | Codex | 0011 | NFR-011 | To do | — |
+| TASK-0005 | Shared API list and the generated client | 2.1 | Set-up | Antigravity | Claude | 0004 | D-187 | To do | — |
+| TASK-0006 | Development services: database, files, mail | 2.1 | Set-up | Antigravity | Claude | 0005 | NFR-015 | To do | — |
+| TASK-0007 | The verify command | 2.1 | Set-up | Antigravity | Claude | 0006 | NFR-011 | To do | — |
+| TASK-0008 | Code style and architecture checks | 2.1 | Set-up | Antigravity | Claude | 0007 | NFR-011, D-014 | To do | — |
+| TASK-0009 | Allowed-files check and test lock | 2.1 | Set-up | Antigravity | Claude | 0008 | NFR-011 | To do | — |
+| TASK-0010 | Shared backend steps: request context, logging, errors | 2.1 | Set-up | Antigravity | Claude | 0009 | NFR-001, NFR-012 | To do | — |
+| TASK-0011 | Shared backend steps: the route helper | 2.1 | Set-up | Antigravity | Claude | 0010 | D-019 | To do | — |
+| TASK-0012 | Contract, door and module-card checks; the Core module card | 2.1 | Set-up | Antigravity | Claude | 0011 | NFR-011 | To do | — |
 | TASK-0013 | Smoke test at computer and phone width; GitHub check run | 2.1 | Set-up | Antigravity | Claude | 0012 | NFR-009, CORE-113 | To do | — |
 | TASK-0014 | Database accounts, schemas, the migrate service, and PostgreSQL in the GitHub check run | 2.2 | Backend | Claude | Codex | 0006, 0012 | CORE-014 | To do | — |
 | TASK-0015 | Company context and row rules | 2.2 | Backend | Claude | Codex | 0014 | CORE-014, NFR-014 | To do | — |
@@ -101,8 +101,10 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 - **Moves within Release 1's build order** (TECH-DESIGN section 10, recorded as CR-001 in `docs/CHANGES.md`): Caddy is set up with the production containers (TASK-0079), not in step 2.1, because development uses Vite's `/api` passing; the worker's delivery of announcements (TASK-0020) is built in step 2.2 with the outbox; the Security screen (TASK-0063) is in step 2.5 because it needs the Settings doors; the screens' API client headers (TASK-0085) come before the first screen; PostgreSQL joins the GitHub check run with the database (TASK-0014).
 - **The Owner's two-step reset** (TASK-0048) is an action on the People screen (TASK-0053).
 - **Settle when writing these cards** (found in the review of TASK-0002, TECH-DESIGN section 12 points 45 and 46, CR-002): **TASK-0014** says how the API and the worker read `infra/.env` (nothing loads it yet), and lists the file that does it; **TASK-0079** says how the API and the worker start in production: `node dist/main.js` stops working once the API uses `@ytp/contracts` (TASK-0011), because that package is TypeScript source. Choose one way (run with tsx, build `@ytp/contracts`, or bundle the API), add a production start for the worker, and add a planner test that builds, starts and calls `GET /api/health`; the screens' production build also needs the root `package.json`, `pnpm-workspace.yaml`, `packages/contracts` and the screens' development packages, because `build` makes the API client first (CR-003). For both cards, whatever is chosen must keep `apps/api/test/setup/main.test.ts` passing (it starts `src/main.ts` with the test run's own settings), and any card that edits `main.ts` keeps the `api listening` and `api could not start` messages and exit code 1.
+- **For the screen cards** (found in the review of TASK-0004, CR-004): in screen code, Tailwind's `rounded-sm` means the design's small corner (10 px Emerald, 12 px Navy), because the design token `--radius-sm` replaces Tailwind's own; cards use `rounded-[var(--radius)]`. The first card with a form decides how a disabled button looks (never by fading with opacity, HANDOVER section 6) and adds a test for it. The secondary button's edge (`--line`) is very light against the page (about 1.2:1; WCAG asks 3:1 for the edge of a control that has no other shape): raise it in the next design round with the owner.
 - **If `pnpm install` ever changes `pnpm-workspace.yaml`**, the builder stops and marks the card BLOCKED (only the planner changes that file).
 - **Settings storage (0024) is in step 2.2**, one step earlier than the tech design's table, because the sign-in rules of step 2.4 read their values from it; the Settings screens stay in step 2.5.
 - **The owner's practice task (0001):** the owner runs it with Antigravity, start to finish, to learn the task loop (PLAN step 2.1).
 - **Cards 0001 to 0006 come before the verify command exists:** their tests run with `node --test` (or the app's own test command), as each card says. From 0007 on, every card uses `pnpm verify`.
 - **Builders, by default:** Antigravity builds the screens, Codex most backend cards, Claude (in a separate building session) the set-up, database, security and online cards. The owner can change any builder.
+- **While Codex has no tokens (D-194, from 2 Nov 2026):** Antigravity builds every card and Claude reviews every card; Claude builds none, so nobody checks their own work. Cards TASK-0005 to TASK-0012 already say so. Later cards still show the planned split (Codex, Claude): when each step's full cards are written, they name Antigravity until the owner says Codex is back.
