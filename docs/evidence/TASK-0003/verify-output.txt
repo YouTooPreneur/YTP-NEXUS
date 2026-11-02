@@ -1,0 +1,41 @@
+COMMAND: node --test tests/setup/TASK-0003.test.mjs
+EXIT: 0
+✔ the frontend package has the agreed name, scripts and exact versions (1.2729ms)
+✔ the page is English, fits phones and loads the app (0.2784ms)
+✔ during development /api goes to the backend on port 3000 (0.2889ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 75.2616
+
+COMMAND: pnpm --filter @ytp/web typecheck
+EXIT: 0
+
+COMMAND: pnpm --filter @ytp/web test
+EXIT: 0
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90mC:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0003/apps/web[39m
+
+ [32m✓[39m test/setup/app.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 101[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m   Start at [22m 19:53:53
+[2m   Duration [22m 1.24s[2m (environment 75%, import 14%, tests 9%, transform 1%)[22m
+
+
+COMMAND: pnpm --filter @ytp/web build
+EXIT: 0
+[36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.32 kB │ gzip:  0.23 kB
+dist/assets/index-BSgpJ22u.js  219.63 kB │ gzip: 68.63 kB
+
+[32m✓ built in 167ms[39m
