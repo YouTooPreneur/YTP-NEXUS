@@ -39,9 +39,9 @@ TASK-0008  tests/setup/fixtures/arch/apps/web/src/ok.ts  cddc4a04a6134c143ab7504
 TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-backend.ts  3fb4336d7a1453807191485055a524c7fde4035e99d7ac86500adc9271895ef4
 TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-db.ts  79e30897fd37313a34b8f33e6666b70c661127768d8c724c37e64bd8ce3f80a0
 TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/ok.ts  d676e1fe7514b99ec4a27df55b2cf5a24f3930c62e5c5c54dda1a4fc6a6bf1bc
-TASK-0009  tests/setup/TASK-0009.test.mjs  8e5bb0b9377e006eae8bd95ff54b11c872733ef186781d48b5d6945c6b73024e
+TASK-0009  tests/setup/TASK-0009.test.mjs  9b86b14b068f4eef0cc523cb1d0e85d045eaf180cfaedec6726ec90a0a80e76b
 TASK-0010  apps/api/test/setup/context.test.ts  01264095084dd572aee6630affa3debb295982e8c5409e68a3230f481157aba2
-TASK-0010  apps/api/test/setup/errors.test.ts  ec5969bcaca251342191901b5a3c920161584fd6d0cc318f4a9485aeec47fb91
+TASK-0010  apps/api/test/setup/errors.test.ts  39cb57651e77eaffcb56a3673049c83b17f499d211994c908a3d0e728465b635
 TASK-0010  apps/api/test/setup/logging.test.ts  76fd9835edb83d0cca2b14ff7e5d979dce3ec59abb767e7fb4134ea284eeb8b3
 TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104d4fec1e62ddb8d7898084fe5273c3
 TASK-0011  apps/api/test/setup/route.test.ts  2aab207874ea55a6200a48ebb09609731c527a5b249dd8db0282350fd8de4a87

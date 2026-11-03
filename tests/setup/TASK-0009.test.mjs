@@ -109,10 +109,11 @@ test('changedFiles lists edited, added and untracked files since the start point
     writeFileSync(join(dir, 'edited.txt'), '2');
     mkdirSync(join(dir, 'sub'));
     writeFileSync(join(dir, 'sub', 'new.txt'), 'n');
+    writeFileSync(join(dir, 'sub', 'résumé.txt'), 'r');
     writeFileSync(join(dir, 'committed.txt'), 'c');
     git('add committed.txt');
     git('commit -q -m more');
-    assert.deepEqual(changedFiles(dir, start), ['committed.txt', 'edited.txt', 'sub/new.txt']);
+    assert.deepEqual(changedFiles(dir, start), ['committed.txt', 'edited.txt', 'sub/new.txt', 'sub/résumé.txt']);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

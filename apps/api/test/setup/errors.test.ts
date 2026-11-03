@@ -55,11 +55,23 @@ describe('errors', () => {
     expect(res.body.error.requestId).toBe(res.headers['x-request-id']);
   });
 
+  it('a refused body is logged at warn with its request ID, never with the body or any part of it', async () => {
+    for (const sent of ['{"email":"a@b.c","password":"Hunter2-secret"', '{"email":"a@b.c","password": Hunter2-secret}']) {
+      const start = lines.length;
+      const res = await request(app).post('/api/test/input').set('Content-Type', 'application/json').send(sent);
+      expect(res.status).toBe(400);
+      const logged = lines.slice(start);
+      expect(logged.some((l) => l.includes(res.headers['x-request-id'] as string) && l.includes('"level":40'))).toBe(true);
+      expect(logged.join('\n')).not.toContain('Hunter2');
+    }
+  });
+
   it('a body over 1 MB is 413 too_large', async () => {
     const big = JSON.stringify({ text: 'x'.repeat(1_100_000) });
     const res = await request(app).post('/api/test/input').set('Content-Type', 'application/json').send(big);
     expect(res.status).toBe(413);
     expect(res.body.error.code).toBe('too_large');
+    expect(res.body.error.requestId).toBe(res.headers['x-request-id']);
   });
 
   it('an unexpected error is a plain 500, logged, with no stack or detail in the answer', async () => {
