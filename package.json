@@ -8,8 +8,21 @@
   },
   "scripts": {
     "api:generate": "pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api",
+    "depcruise": "depcruise apps packages --config .dependency-cruiser.cjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
     "services:up": "docker compose -f infra/compose.dev.yaml --env-file infra/.env up -d --wait",
     "services:down": "docker compose -f infra/compose.dev.yaml --env-file infra/.env down",
     "verify": "node tools/verify/verify.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "dependency-cruiser": "18.7.0",
+    "eslint": "10.13.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.13.0",
+    "prettier": "3.9.10",
+    "typescript-eslint": "8.72.0"
   }
 }

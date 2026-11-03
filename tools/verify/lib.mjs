@@ -42,8 +42,9 @@ export function readIndexStatuses(markdown) {
     }
 
     const rawCells = line.split('|');
-    const cells = (rawCells[0].trim() === '' && rawCells.length > 1 ? rawCells.slice(1) : rawCells)
-      .map((c) => c.trim());
+    const cells = (
+      rawCells[0].trim() === '' && rawCells.length > 1 ? rawCells.slice(1) : rawCells
+    ).map((c) => c.trim());
     if (cells.length > 0 && cells[cells.length - 1] === '') {
       cells.pop();
     }
@@ -131,7 +132,7 @@ export function listTestFiles(root) {
   }
 
   const filtered = files.filter(
-    (f) => !f.includes('node_modules') && !f.startsWith('tests/setup/fixtures/')
+    (f) => !f.includes('node_modules') && !f.startsWith('tests/setup/fixtures/'),
   );
 
   return filtered.sort();

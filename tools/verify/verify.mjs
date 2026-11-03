@@ -55,7 +55,7 @@ const files = listTestFiles(root);
 const selected = selectTests({ files, lock, statuses, card });
 
 console.log(
-  `verify: running ${selected.run.length} test files, leaving out ${selected.left.length} (cards not Done)`
+  `verify: running ${selected.run.length} test files, leaving out ${selected.left.length} (cards not Done)`,
 );
 
 const ctx = {

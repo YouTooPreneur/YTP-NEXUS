@@ -16,9 +16,13 @@ export function generateOpenApi() {
       request: {
         ...(contract.params ? { params: contract.params } : {}),
         ...(contract.query ? { query: contract.query } : {}),
-        ...(contract.body ? { body: { content: { 'application/json': { schema: contract.body } } } } : {}),
+        ...(contract.body
+          ? { body: { content: { 'application/json': { schema: contract.body } } } }
+          : {}),
       },
-      responses: { 200: { description: 'OK', content: { 'application/json': { schema: contract.response } } } },
+      responses: {
+        200: { description: 'OK', content: { 'application/json': { schema: contract.response } } },
+      },
     });
   }
   return new OpenApiGeneratorV31(registry.definitions).generateDocument({

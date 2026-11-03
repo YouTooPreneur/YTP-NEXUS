@@ -55,7 +55,7 @@ export const steps = [
         fs.writeFileSync(
           verifyTsconfigPath,
           JSON.stringify(verifyTsconfig, null, 2) + '\n',
-          'utf8'
+          'utf8',
         );
 
         const pkgJsonPath = path.join(ctx.root, folder, 'package.json');
@@ -69,7 +69,7 @@ export const steps = [
             cwd: ctx.root,
             shell: true,
             stdio: 'inherit',
-          }
+          },
         );
         if (res.status !== 0) {
           allOk = false;
@@ -79,21 +79,50 @@ export const steps = [
     },
   },
   {
+    name: 'Lint',
+    run(ctx) {
+      const res = spawnSync('pnpm', ['lint'], {
+        cwd: ctx.root,
+        shell: true,
+        stdio: 'inherit',
+      });
+      return { ok: res.status === 0 };
+    },
+  },
+  {
+    name: 'Format',
+    run(ctx) {
+      const res = spawnSync('pnpm', ['format:check'], {
+        cwd: ctx.root,
+        shell: true,
+        stdio: 'inherit',
+      });
+      return { ok: res.status === 0 };
+    },
+  },
+  {
+    name: 'Architecture',
+    run(ctx) {
+      const res = spawnSync('pnpm', ['depcruise'], {
+        cwd: ctx.root,
+        shell: true,
+        stdio: 'inherit',
+      });
+      return { ok: res.status === 0 };
+    },
+  },
+  {
     name: 'Set-up tests',
     run(ctx) {
       const setupFiles = ctx.selected.filter((f) => f.startsWith('tests/setup/'));
       if (setupFiles.length === 0) {
         return { ok: true, note: 'no set-up tests to run' };
       }
-      const res = spawnSync(
-        'node',
-        ['--test', ...setupFiles],
-        {
-          cwd: ctx.root,
-          shell: true,
-          stdio: 'inherit',
-        }
-      );
+      const res = spawnSync('node', ['--test', ...setupFiles], {
+        cwd: ctx.root,
+        shell: true,
+        stdio: 'inherit',
+      });
       return { ok: res.status === 0 };
     },
   },
@@ -121,15 +150,11 @@ export const steps = [
         const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
         const pkgName = pkgJson.name;
 
-        const res = spawnSync(
-          'pnpm',
-          ['--filter', pkgName, 'exec', 'vitest', 'run', ...relFiles],
-          {
-            cwd: ctx.root,
-            shell: true,
-            stdio: 'inherit',
-          }
-        );
+        const res = spawnSync('pnpm', ['--filter', pkgName, 'exec', 'vitest', 'run', ...relFiles], {
+          cwd: ctx.root,
+          shell: true,
+          stdio: 'inherit',
+        });
         if (res.status !== 0) {
           allOk = false;
         }

@@ -17,7 +17,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0005 | Shared API list and the generated client | 2.1 | Set-up | Antigravity | Claude | 0004 | D-187 | Done | antigravity |
 | TASK-0006 | Development services: database, files, mail | 2.1 | Set-up | Antigravity | Claude | 0005 | NFR-015 | Done | antigravity |
 | TASK-0007 | The verify command | 2.1 | Set-up | Antigravity | Claude | 0006 | NFR-011 | Done | antigravity |
-| TASK-0008 | Code style and architecture checks | 2.1 | Set-up | Antigravity | Claude | 0007 | NFR-011, D-014 | To do | — |
+| TASK-0008 | Code style and architecture checks | 2.1 | Set-up | Antigravity | Claude | 0007 | NFR-011, D-014 | Done | antigravity |
 | TASK-0009 | Allowed-files check and test lock | 2.1 | Set-up | Antigravity | Claude | 0008 | NFR-011 | To do | — |
 | TASK-0010 | Shared backend steps: request context, logging, errors | 2.1 | Set-up | Antigravity | Claude | 0009 | NFR-001, NFR-012 | To do | — |
 | TASK-0011 | Shared backend steps: the route helper | 2.1 | Set-up | Antigravity | Claude | 0010 | D-019 | To do | — |
