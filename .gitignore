@@ -39,8 +39,8 @@ __pycache__/
 
 # Kept off GitHub by the owner's choice (2 Nov 2026): staff personal details, the private conversation, rebuilt Word copies
 docs/sources/EMPLOYEES DASHBOARD.docx
-history/
-share/
+/history/
+/share/
 
 # Rebuilt automatically on every computer (would clash on every card)
 tracker.html

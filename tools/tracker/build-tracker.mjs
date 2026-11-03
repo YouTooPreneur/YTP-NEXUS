@@ -173,6 +173,14 @@ const decisions = sections(read('docs/DECISIONS.md'))
 
 // ---- tasks, questions, changes ----
 const indexTable = tables(read('docs/tasks/INDEX.md').split('\n'))[0] || { head: [], rows: [] };
+// Lanes (D-196): docs/tasks/LANES.md says careful or fast for each card; show it next to the title.
+const laneTable = existsSync(join(root, 'docs/tasks/LANES.md')) ? tables(read('docs/tasks/LANES.md').split('\n'))[0] : null;
+const laneOf = new Map(laneTable ? realRows(laneTable.rows).map((r) => [plain(r[0]).trim(), r[2] || '']) : []);
+const titleCol = indexTable.head.findIndex((h) => /^title$/i.test(plain(h).trim()));
+if (laneOf.size && titleCol >= 0) {
+  indexTable.head.splice(titleCol + 1, 0, 'Lane');
+  indexTable.rows = indexTable.rows.map((r) => [...r.slice(0, titleCol + 1), laneOf.get(plain(r[0] || '').trim()) || '', ...r.slice(titleCol + 1)]);
+}
 const statusCol = Math.max(0, indexTable.head.findIndex((h) => /^status$/i.test(plain(h).trim())));
 const tasks = realRows(indexTable.rows).map((r) => ({ cells: r.map(inline), status: plain(r[statusCol] || '').toLowerCase() }));
 const qTable = tables(read('docs/QUESTIONS.md').split('\n'))[0] || { head: [], rows: [] };

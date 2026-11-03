@@ -54,6 +54,15 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
 
 The verify command is created in Phase 2 (TASK-0007). **Cards TASK-0001 to TASK-0006 come before it exists:** wherever this loop says "verify", run the commands in the card's VERIFY AND DEBUG section instead, and for the start check run the commands in the card's BEFORE YOU START. Each builder's own copy is a git worktree at `../ytp-work/TASK-XXXX` on the branch `task/TASK-XXXX`. **After the reviewer's PASS**, the reviewer merges the card's branch into `main`.
 
+## 3a. Batches (the fast lane, D-196)
+
+Each card has a lane, careful or fast, in `docs/tasks/LANES.md` (only the planner changes it, when the owner asks). A careful card is always built alone. Consecutive fast cards may be given to you together, 2 to 5 at a time (a **batch**), in one message from the owner (`docs/templates/BATCH-PROMPT.md`). In a batch:
+
+- You work in one worktree for the whole batch, `../ytp-work/BATCH-<first card>-<last card>` on the branch `batch/<first card>-<last card>`.
+- You do the cards **one at a time, in the order given**. Each card gets the whole task loop of section 3: its own start point (the commit just before you begin it, written in its log), steps, verify with `--card`, log, evidence, status lines and **its own commit**. Only then start the next card.
+- **Stop the whole batch** at the first card that is BLOCKED: do not start the next card.
+- The reviewer checks the batch once, card by card, and merges the batch branch after PASS. A card that fails review is sent back alone.
+
 ## 4. Commit format
 
 One commit per task, with only that card's files, added by name (allowed by the owner, D-189):

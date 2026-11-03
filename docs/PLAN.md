@@ -24,7 +24,7 @@ Nothing moves to the next stage without the gate before it (D-182).
 
 ## The 18 releases (D-186)
 
-The full list, screen by screen, is in `docs/RELEASES.md`. Every release follows the same cycle: task cards → built by Antigravity, Codex or Claude → checked by the owner and a team member → online → used by the team for 1 to 2 weeks → feedback fixed → closed by the owner → the next release starts. A release may be split further if it turns out big.
+The full list, screen by screen, is in `docs/RELEASES.md`. Every release follows the same cycle: task cards → built by Antigravity, Codex or Claude → checked by the owner and a team member → online → used by the team for 1 to 2 weeks → feedback fixed → closed by the owner → the next release starts. A release may be split further if it turns out big. **Two lanes (D-196):** risky cards are built one at a time with a full review (careful lane); low-risk cards are built 2 to 5 at a time with one review per batch (fast lane). Each card's lane is in `docs/tasks/LANES.md`, and the owner can switch it at any time.
 
 | # | Release | Screens | What it gives |
 |---|---|---|---|
