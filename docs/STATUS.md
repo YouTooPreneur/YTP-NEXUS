@@ -228,3 +228,4 @@ One line per task, newest at the bottom.
 | TASK-0006 | Development services: database, files, mail | Done | antigravity | 2026-11-02 |
 | TASK-0007 | The verify command | Done | antigravity | 2026-11-03 |
 | TASK-0008 | Code style and architecture checks | Done | antigravity | 2026-11-03 |
+| TASK-0009 | Allowed-files check and test lock | Done | antigravity | 2026-11-03 |

@@ -1,7 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { packageOf } from './lib.mjs';
+import { packageOf, readLock } from './lib.mjs';
+import { checkTestLock } from './checks/test-lock.mjs';
+import {
+  readAllowedFiles,
+  readStartPoint,
+  changedFiles,
+  checkAllowedFiles,
+} from './checks/allowed-files.mjs';
 
 export const steps = [
   {
@@ -112,6 +119,19 @@ export const steps = [
     },
   },
   {
+    name: 'Test lock',
+    run(ctx) {
+      const lockPath = path.join(ctx.root, 'tests', 'LOCK');
+      const lockContent = fs.readFileSync(lockPath, 'utf8');
+      const entries = readLock(lockContent);
+      const problems = checkTestLock(ctx.root, entries);
+      if (problems.length > 0) {
+        return { ok: false, note: problems.join(', ') };
+      }
+      return { ok: true };
+    },
+  },
+  {
     name: 'Set-up tests',
     run(ctx) {
       const setupFiles = ctx.selected.filter((f) => f.startsWith('tests/setup/'));
@@ -160,6 +180,32 @@ export const steps = [
         }
       }
       return { ok: allOk };
+    },
+  },
+  {
+    name: 'Allowed files',
+    run(ctx) {
+      if (!ctx.card) {
+        return { ok: true, note: 'only with --card' };
+      }
+      const logPath = path.join(ctx.root, 'docs', 'logs', `${ctx.card}.md`);
+      if (!fs.existsSync(logPath)) {
+        return { ok: false, note: `no start point in docs/logs/${ctx.card}.md` };
+      }
+      const logContent = fs.readFileSync(logPath, 'utf8');
+      const startPoint = readStartPoint(logContent);
+      if (!startPoint) {
+        return { ok: false, note: `no start point in docs/logs/${ctx.card}.md` };
+      }
+      const cardPath = path.join(ctx.root, 'docs', 'tasks', `${ctx.card}.md`);
+      const cardContent = fs.readFileSync(cardPath, 'utf8');
+      const allowed = readAllowedFiles(cardContent);
+      const changed = changedFiles(ctx.root, startPoint, ctx.card);
+      const violations = checkAllowedFiles({ changed, allowed, card: ctx.card });
+      if (violations.length > 0) {
+        return { ok: false, note: `not allowed: ${violations.join(', ')}` };
+      }
+      return { ok: true };
     },
   },
 ];

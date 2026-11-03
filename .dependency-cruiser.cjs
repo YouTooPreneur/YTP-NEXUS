@@ -4,7 +4,7 @@ module.exports = {
       name: 'frontend-never-imports-backend',
       severity: 'error',
       from: {
-        path: '^(apps/web|packages/ui)/',
+        path: '^(apps/web|packages/(ui|contracts))/',
       },
       to: {
         path: '^apps/api/',
@@ -14,7 +14,7 @@ module.exports = {
       name: 'frontend-no-server-packages',
       severity: 'error',
       from: {
-        path: '^(apps/web|packages/ui)/',
+        path: '^(apps/web|packages/(ui|contracts))/',
       },
       to: {
         path: '^(pg|drizzle-orm|pg-boss|nodemailer|express)(/|$)|^better-auth(/(?!client|react)|$)|node_modules/(pg|drizzle-orm|pg-boss|nodemailer|express)/|node_modules/better-auth/(?!dist/client|react)',

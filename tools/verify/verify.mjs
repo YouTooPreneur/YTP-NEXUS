@@ -46,13 +46,23 @@ if (list) {
   process.exit(0);
 }
 
-const lockContent = fs.readFileSync(path.join(root, 'tests', 'LOCK'), 'utf8');
-const indexContent = fs.readFileSync(path.join(root, 'docs', 'tasks', 'INDEX.md'), 'utf8');
+let lock;
+let statuses;
+let files;
+let selected;
 
-const lock = readLock(lockContent);
-const statuses = readIndexStatuses(indexContent);
-const files = listTestFiles(root);
-const selected = selectTests({ files, lock, statuses, card });
+try {
+  const lockContent = fs.readFileSync(path.join(root, 'tests', 'LOCK'), 'utf8');
+  const indexContent = fs.readFileSync(path.join(root, 'docs', 'tasks', 'INDEX.md'), 'utf8');
+
+  lock = readLock(lockContent);
+  statuses = readIndexStatuses(indexContent);
+  files = listTestFiles(root);
+  selected = selectTests({ files, lock, statuses, card });
+} catch (err) {
+  console.log(`verify: FAILED: ${err.message}`);
+  process.exit(1);
+}
 
 console.log(
   `verify: running ${selected.run.length} test files, leaving out ${selected.left.length} (cards not Done)`,
@@ -67,7 +77,12 @@ const ctx = {
 const failedSteps = [];
 for (const step of steps) {
   console.log(`▶ ${step.name}`);
-  const res = step.run(ctx);
+  let res;
+  try {
+    res = step.run(ctx);
+  } catch (err) {
+    res = { ok: false, note: `crashed: ${err.message}` };
+  }
   const noteSuffix = res && res.note ? ` (${res.note})` : '';
   if (res && res.ok) {
     console.log(`✔ ${step.name}${noteSuffix}`);
