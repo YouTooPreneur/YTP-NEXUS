@@ -49,4 +49,4 @@ TASK-0012  tests/setup/TASK-0012.test.mjs  2be20fb1619c0fe4b99f29690ab0ecf1dadc0
 TASK-0013  apps/web/test/setup/api-status.test.tsx  b2532a6aecaac504e9e661edd6d08991e591f3ebb0dfb7453b3011863c8fd0df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
 TASK-0013  tests/setup/TASK-0013.test.mjs  bcbffb02a0e73a2e08e837204ef5f8999f2b03a1ad0ff13ad014cb512dd9741c
-TASK-0086  apps/api/test/setup/log-safety.test.ts  213a5199acbd7f008e504af327b83a79709c8564af3759ad6dab47bffcaf8fb8
+TASK-0086  apps/api/test/setup/log-safety.test.ts  3fbe86e729108658697499d8ece5396104ee0c2637b8e30540a42e5bf2858bdd

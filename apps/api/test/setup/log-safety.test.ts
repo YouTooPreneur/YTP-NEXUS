@@ -105,6 +105,17 @@ describe('safe logs', () => {
     expect(errors[1]?.err).toMatchObject({ type: 'TypeError', message: 'Invalid URL', errorCode: 'ERR_INVALID_URL' });
   });
 
+  it('an error logged under any other top-level key is cleaned the same way', () => {
+    const { lines, logger } = capture();
+    logger.error({ error: new DrizzleQueryError('select 1', ['asha@example.com', 'TOKEN-VALUE-123']) }, 'under error');
+    logger.warn({ cause: Object.assign(new TypeError('Invalid URL'), { input: 'postgres://nexus:DB-PASSWORD@localhost/nexus' }) }, 'under cause');
+    const text = lines.join('\n');
+    for (const secret of ['asha@example.com', 'TOKEN-VALUE-123', 'DB-PASSWORD']) expect(text).not.toContain(secret);
+    const [first, second] = parsed(lines);
+    expect(first?.error).toMatchObject({ type: 'DrizzleQueryError', message: 'Failed query: select 1' });
+    expect(second?.cause).toMatchObject({ type: 'TypeError', message: 'Invalid URL' });
+  });
+
   it('cleanError keeps only the type, message, code, stack and cause of anything thrown', () => {
     expect(cleanError('a plain string')).toEqual({ type: 'string' });
     const cleaned = cleanError(Object.assign(new Error('boom'), { body: 'RAW-BODY', config: { password: 'X' } }));
