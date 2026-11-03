@@ -1,9 +1,9 @@
 // TASK-0009 · Allowed-files check and test lock. Written by the planner; builders never edit this file.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, rmSync, copyFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { execSync, execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { sha256Of, checkTestLock } from '../../tools/verify/checks/test-lock.mjs';
@@ -180,6 +180,37 @@ test('a step that crashes counts as failed, the others still run, and a broken l
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('lint finds a misspelt name in verify code (eslint.config.mjs uses defineConfig)', () => {
+  const config = readFileSync('eslint.config.mjs', 'utf8');
+  assert.match(config, /import \{ defineConfig \} from 'eslint\/config';/);
+  assert.match(config, /export default defineConfig\(/);
+  const out = spawnSync(
+    'pnpm',
+    ['exec', 'eslint', '--stdin', '--stdin-filename', 'tools/verify/probe.mjs'],
+    { input: 'export function f() {\n  return procss.argv.length;\n}\n', encoding: 'utf8', shell: true },
+  );
+  assert.notEqual(out.status, 0, `lint passed a misspelt name: ${out.stdout}${out.stderr}`);
+  assert.match(out.stdout, /'procss' is not defined/);
+});
+
+test('the screens\' walls also cover the shared contracts package', () => {
+  const out = spawnSync(
+    'pnpm',
+    ['exec', 'depcruise', 'apps', 'packages', '--config', resolve('.dependency-cruiser.cjs'), '--output-type', 'json'],
+    { cwd: resolve('tests/setup/fixtures/arch'), encoding: 'utf8', shell: true, maxBuffer: 50 * 1024 * 1024 },
+  );
+  assert.ok(out.stdout, `depcruise printed nothing: ${out.stderr}`);
+  const violations = JSON.parse(out.stdout).summary.violations.map((v) => ({ rule: v.rule.name, from: v.from }));
+  const found = (rule, from) => violations.some((v) => v.rule === rule && v.from === from);
+  for (const [rule, from] of [
+    ['frontend-never-imports-backend', 'packages/contracts/src/bad-backend.ts'],
+    ['frontend-no-server-packages', 'packages/contracts/src/bad-db.ts'],
+  ]) {
+    assert.ok(found(rule, from), `${rule} did not report ${from}. Reported: ${JSON.stringify(violations)}`);
+  }
+  assert.deepEqual(violations.filter((v) => v.from === 'packages/contracts/src/ok.ts'), [], 'the ok fixture was reported');
 });
 
 test('verify has the Test lock step before the set-up tests, and Allowed files last', () => {

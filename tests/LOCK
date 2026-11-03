@@ -15,8 +15,8 @@ TASK-0005  packages/contracts/test/openapi.test.ts  02fcf702351d9c6f3d3c14d40424
 TASK-0005  tests/setup/TASK-0005.test.mjs  86f39def8a5875ff561b23a96de02dfa02bd71ac3fc33c20f49894efbe6f7d1b
 TASK-0006  tests/setup/TASK-0006.test.mjs  ae3f8ac60092f483da6f3c70c0710fdb718db364e65e0c42e78bd5c5ccc46988
 TASK-0007  tests/setup/TASK-0007.test.mjs  da0a519d8e761643e80cfcb761d8068b38cdc46260467c2506c49cbec3640e74
-TASK-0008  tests/setup/TASK-0008.test.mjs  645f30d11fae8734f6579d8ad432991bec062ad711bdd6f3c7858480fb8445c6
-TASK-0008  tests/setup/fixtures/arch/README.md  0fbb6f68e295ebdce4ddacca1de00e372ffb4b4b50c52e7b5c53e99a15f526c7
+TASK-0008  tests/setup/TASK-0008.test.mjs  c6070e66af168f9225b105d44eb9e1464ae4bce534cdcf508aa305d76910d81c
+TASK-0008  tests/setup/fixtures/arch/README.md  798aa20440d4982c3bf16ec8d86811a712ca1997dc155e2ecbeff541faaca654
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/app.ts  f615240bdf4b9ae589da60e1a702728dc65b34ae174ed23a9f07e61732232ec5
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/db/auth-schema.ts  0dd7bbbc4d80d2d15c858b6d9069bd216bf729a977c15ef12514257c72ca5a2a
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/core/bad-upward.ts  1db49682f2eea11bf002b04cf991b0509612c8cbd3f36b6e477868c930ed14ba
@@ -25,6 +25,8 @@ TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/core/signin/ok-auth.ts
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/core/users/ok-users.ts  7489e7d0980674aca6002ddcd3e05536d1eb0435a93222a1b181bbeffe2d35a8
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/bad-auth.ts  eb40a6a60faae601915362d14116b3005812eeb694a6e6ac3fd8e723bcc7000d
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/bad-floor.ts  13ffc7f4313b7664cffbee5acf800056763c1238a20f0ffccc8fb698f52ed6b7
+TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/bad-loop-a.ts  5ef8a5558ff34b074b74be7bed44a60f80e378b1e4232e668a6b46babae6d06b
+TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/bad-loop-b.ts  2589cf8b8bca98e2372e5980fc07a7f8039d3422d64f26959dfb3e30bfc52133
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/index.ts  d88a6a1518dae78f4677c808e2423255fdb4af458085b2bed6b9694f6315b26d
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/ok-core.ts  8c334a0a99e98e8dec3a00f0a294054cbc9eb2d087938ee02a7146b7eafb6399
 TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/crm/repository.ts  c168236138e282f7e4118a164195b37734bc2aa96670ee0b3d6212410f949656
@@ -34,9 +36,12 @@ TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/finance/ok-down.ts  66
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/bad-backend.ts  e019eb37304164f67ef3505d9a1391b76237c49efec1b553579e83c7cba78403
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/bad-db.ts  79e30897fd37313a34b8f33e6666b70c661127768d8c724c37e64bd8ce3f80a0
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/ok.ts  cddc4a04a6134c143ab75042794302a2594f778eda05084118b5dff49a9d9457
-TASK-0009  tests/setup/TASK-0009.test.mjs  90a238fbd070ed352164b0a0b208c33002bd27ed5143c00258f4ace4e9599e57
+TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-backend.ts  3fb4336d7a1453807191485055a524c7fde4035e99d7ac86500adc9271895ef4
+TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-db.ts  79e30897fd37313a34b8f33e6666b70c661127768d8c724c37e64bd8ce3f80a0
+TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/ok.ts  d676e1fe7514b99ec4a27df55b2cf5a24f3930c62e5c5c54dda1a4fc6a6bf1bc
+TASK-0009  tests/setup/TASK-0009.test.mjs  8e5bb0b9377e006eae8bd95ff54b11c872733ef186781d48b5d6945c6b73024e
 TASK-0010  apps/api/test/setup/context.test.ts  01264095084dd572aee6630affa3debb295982e8c5409e68a3230f481157aba2
-TASK-0010  apps/api/test/setup/errors.test.ts  1aca2e43e731ec3f208a9c1aa76a5e6ae106da08745e7283f4257afd6db537ba
+TASK-0010  apps/api/test/setup/errors.test.ts  ec5969bcaca251342191901b5a3c920161584fd6d0cc318f4a9485aeec47fb91
 TASK-0010  apps/api/test/setup/logging.test.ts  76fd9835edb83d0cca2b14ff7e5d979dce3ec59abb767e7fb4134ea284eeb8b3
 TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104d4fec1e62ddb8d7898084fe5273c3
 TASK-0011  apps/api/test/setup/route.test.ts  2aab207874ea55a6200a48ebb09609731c527a5b249dd8db0282350fd8de4a87

@@ -46,6 +46,10 @@ test('every architecture rule catches its broken fixture', () => {
   for (const [rule, from] of expected) {
     assert.ok(found(rule, from), `${rule} did not report ${from}. Reported: ${JSON.stringify(violations)}`);
   }
+  assert.ok(
+    violations.some((v) => v.rule === 'no-circular' && /\/bad-loop-[ab]\.ts$/.test(v.from)),
+    `no-circular did not report the loop. Reported: ${JSON.stringify(violations)}`,
+  );
 });
 
 test('the allowed paths are never reported', () => {

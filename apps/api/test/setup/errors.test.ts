@@ -4,7 +4,7 @@ import request from 'supertest';
 import { Writable } from 'node:stream';
 import { createApp } from '../../src/app.js';
 import { createLogger } from '../../src/shared/logging.js';
-import { AppError } from '../../src/shared/errors.js';
+import { AppError, errorHandler } from '../../src/shared/errors.js';
 
 const lines: string[] = [];
 const logger = createLogger(new Writable({ write: (chunk, _e, done) => (lines.push(String(chunk)), done()) }));
@@ -25,6 +25,10 @@ const app = createApp({
 });
 
 describe('errors', () => {
+  it('the error handler has the four parameters Express needs to treat it as one', () => {
+    expect(errorHandler(logger).length).toBe(4);
+  });
+
   it('an unknown door is 404 not_found with the request ID', async () => {
     const res = await request(app).get('/api/no-such-door');
     expect(res.status).toBe(404);

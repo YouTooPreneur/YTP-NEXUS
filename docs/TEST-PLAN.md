@@ -29,6 +29,7 @@
 - **`pnpm verify --card TASK-XXXX`** also runs that card's own tests. At the start check they must fail (proof they test something); at the end they must all pass.
 - **Before the verify command exists** (cards 0001 to 0006), each card names its own test command (`node --test tests/setup/TASK-XXXX.test.mjs`, or the app's own `pnpm --filter … test`).
 - A builder may add extra tests of their own; they are not locked, and the planner's tests always win.
+- **Every check that `pnpm verify` runs has a planner test that plants a mistake and expects it caught** (CR-008: a config helper had quietly switched off a lint rule for `.mjs` files while lint stayed green; only a planted misspelt name showed it). A check that only ever passes proves nothing.
 - **Rules that keep `pnpm verify` exact** (found in the review of TASK-0007, CR-007): no test file's path within its package may be contained in another's, ignoring case (for example `x.test.ts` beside `x.test.tsx`), because vitest matches the paths it is given as parts of a path; test files never go in a folder named `fixtures`, except `tests/setup/fixtures/`; every package's `tsconfig.json` has an `include` list; every card stays in the first table of `docs/tasks/INDEX.md`; `tsconfig.json` files are plain JSON (no comments).
 
 ## 4. Test data and the test database
