@@ -8,6 +8,6 @@ You are the builder for a batch of task cards in the YTP Nexus project: <TASK-AA
 2. Do the cards one at a time, in the order above. For each card: BEFORE YOU START (write that card's start commit from `git rev-parse HEAD` in its log, taken just before you begin it), every STEP in order, VERIFY AND DEBUG, then WHEN GREEN with its own log, evidence, status lines and its one commit. Only then start the next card.
 3. For each card, touch only the files in its ALLOWED FILES table, plus its log (docs/logs/TASK-XXXX.md), its evidence folder (docs/evidence/TASK-XXXX/) and its lines in docs/STATUS.md and docs/tasks/INDEX.md.
 4. Never edit any test file or tests/LOCK. If anything is unclear, or a card is still failing after 5 tries, mark that card BLOCKED, write the question in docs/QUESTIONS.md and STOP the whole batch: do not start the next card.
-5. In each log, list every command exactly as typed, and save the output of the first run as proof. Never write a real password, key or token into any file. Do not push to GitHub.
+5. In each log, list every command exactly as typed and paste the start-check output; save the final `pnpm verify --card` output in the card's evidence folder, exactly as printed. Never write a real password, key or token into any file. Do not push to GitHub.
 6. Finish with one reply that gives, for every card, the reply described in AGENTS.md section 5.
 ```

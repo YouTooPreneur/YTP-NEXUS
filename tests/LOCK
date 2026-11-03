@@ -34,7 +34,7 @@ TASK-0008  tests/setup/fixtures/arch/apps/api/src/modules/finance/ok-down.ts  66
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/bad-backend.ts  e019eb37304164f67ef3505d9a1391b76237c49efec1b553579e83c7cba78403
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/bad-db.ts  79e30897fd37313a34b8f33e6666b70c661127768d8c724c37e64bd8ce3f80a0
 TASK-0008  tests/setup/fixtures/arch/apps/web/src/ok.ts  cddc4a04a6134c143ab75042794302a2594f778eda05084118b5dff49a9d9457
-TASK-0009  tests/setup/TASK-0009.test.mjs  e36ccdd68e13a278cf7c51be2e7b67e56f74d5630201a1727d2b1525f19f137e
+TASK-0009  tests/setup/TASK-0009.test.mjs  90a238fbd070ed352164b0a0b208c33002bd27ed5143c00258f4ace4e9599e57
 TASK-0010  apps/api/test/setup/context.test.ts  01264095084dd572aee6630affa3debb295982e8c5409e68a3230f481157aba2
 TASK-0010  apps/api/test/setup/errors.test.ts  1aca2e43e731ec3f208a9c1aa76a5e6ae106da08745e7283f4257afd6db537ba
 TASK-0010  apps/api/test/setup/logging.test.ts  76fd9835edb83d0cca2b14ff7e5d979dce3ec59abb767e7fb4134ea284eeb8b3

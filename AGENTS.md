@@ -25,7 +25,7 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
 6. **Do not add, rename, refactor, "improve" or "clean up" anything** that the card does not ask for.
 7. **Do not install new packages** unless the card says so, by exact name and version.
 8. **If anything is unclear, missing or looks wrong: STOP.** Write your question in `docs/QUESTIONS.md` and mark the task BLOCKED. Never guess.
-9. **Never claim something works without proof.** Proof is the verify output plus any screenshot the card asks for.
+9. **Never claim something works without proof.** Proof is the verify output, pasted exactly as printed (never a summary you wrote yourself), plus any screenshot the card asks for.
 10. **Never touch secrets.** Never write passwords, API keys or tokens into any file, log or message.
 
 ## 3. The task loop (every task, every time)
@@ -39,7 +39,8 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
                   Then run it once with --card TASK-XXXX: your card's own
                   tests must fail (they test what you will build). Log both.
                   Not green? STOP. Mark BLOCKED. Do not build on a broken base.
-2. BUILD        → Follow the card's STEPS exactly, in order.
+2. BUILD        → Follow the card's STEPS exactly, in order. From TASK-0008 on,
+                  run `pnpm format` before verifying (it only reformats code).
 3. VERIFY       → Run the verify command with --card TASK-XXXX.
 4. DEBUG LOOP   → Failed? Read the error, fix it inside the allowed files only,
                   run verify again. Up to 5 attempts.

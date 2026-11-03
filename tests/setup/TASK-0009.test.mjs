@@ -1,10 +1,10 @@
 // TASK-0009 · Allowed-files check and test lock. Written by the planner; builders never edit this file.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { execSync, spawnSync } from 'node:child_process';
+import { execSync, execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { sha256Of, checkTestLock } from '../../tools/verify/checks/test-lock.mjs';
 import {
@@ -113,6 +113,70 @@ test('changedFiles lists edited, added and untracked files since the start point
     git('add committed.txt');
     git('commit -q -m more');
     assert.deepEqual(changedFiles(dir, start), ['committed.txt', 'edited.txt', 'sub/new.txt']);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('changedFiles keeps to each card\'s own commits when later cards are built on top (a batch)', () => {
+  const dir = tempDir();
+  const git = (...args) => execFileSync('git', args, { cwd: dir, stdio: 'pipe' });
+  const head = () => execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim();
+  try {
+    git('init', '-q');
+    git('config', 'user.email', 'test@example.com');
+    git('config', 'user.name', 'Test');
+    writeFileSync(join(dir, 'base.txt'), '1');
+    git('add', '.');
+    git('commit', '-q', '-m', 'start');
+    const start = head();
+    writeFileSync(join(dir, 'first.txt'), 'a');
+    git('add', 'first.txt');
+    git('commit', '-q', '-m', 'TASK-0100: First card [antigravity]');
+    const afterFirst = head();
+    writeFileSync(join(dir, 'second.txt'), 'b');
+    git('add', 'second.txt');
+    git('commit', '-q', '-m', 'TASK-0101: Second card [antigravity]');
+    const afterSecond = head();
+    writeFileSync(join(dir, 'third.txt'), 'c');
+    assert.deepEqual(changedFiles(dir, start, 'TASK-0100'), ['first.txt']);
+    assert.deepEqual(changedFiles(dir, afterFirst, 'TASK-0101'), ['second.txt']);
+    assert.deepEqual(changedFiles(dir, afterSecond, 'TASK-0102'), ['third.txt']);
+    writeFileSync(join(dir, 'first-fix.txt'), 'f');
+    git('add', 'first-fix.txt');
+    git('commit', '-q', '-m', 'TASK-0100: Fix after review [antigravity]');
+    assert.deepEqual(changedFiles(dir, start, 'TASK-0100'), ['first-fix.txt', 'first.txt']);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('a step that crashes counts as failed, the others still run, and a broken lock is reported', () => {
+  const dir = tempDir();
+  const run = () => spawnSync(process.execPath, ['tools/verify/verify.mjs'], { cwd: dir, encoding: 'utf8' });
+  const lastLine = (text) => text.trim().split(/\r?\n/).at(-1);
+  try {
+    mkdirSync(join(dir, 'tools', 'verify'), { recursive: true });
+    for (const file of ['verify.mjs', 'lib.mjs']) {
+      copyFileSync(join('tools', 'verify', file), join(dir, 'tools', 'verify', file));
+    }
+    writeFileSync(
+      join(dir, 'tools', 'verify', 'steps.mjs'),
+      "export const steps = [\n  { name: 'Boom', run() { throw new Error('kaboom'); } },\n  { name: 'After', run() { return { ok: true }; } },\n];\n",
+    );
+    mkdirSync(join(dir, 'tests'));
+    writeFileSync(join(dir, 'tests', 'LOCK'), '# no planner tests here\n');
+    mkdirSync(join(dir, 'docs', 'tasks'), { recursive: true });
+    writeFileSync(join(dir, 'docs', 'tasks', 'INDEX.md'), '| Task | Status |\n|---|---|\n| TASK-0001 | Done |\n');
+    let out = run();
+    assert.equal(out.status, 1, out.stdout + out.stderr);
+    assert.match(out.stdout, /✖ Boom \(crashed: kaboom\)/);
+    assert.match(out.stdout, /✔ After/);
+    assert.equal(lastLine(out.stdout), 'verify: FAILED: Boom');
+    writeFileSync(join(dir, 'tests', 'LOCK'), 'not a lock line\n');
+    out = run();
+    assert.equal(out.status, 1, out.stdout + out.stderr);
+    assert.equal(lastLine(out.stdout), 'verify: FAILED: tests/LOCK line 1: not a lock line');
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -30,7 +30,7 @@
 
 ## Final verify result
 ```
-<paste the final verify summary>
+<paste the last lines of `pnpm verify --card TASK-XXXX` exactly as printed, ending with the `verify:` line>
 ```
 
 ## Evidence
