@@ -2,7 +2,7 @@
 # TASK-ID  path  sha256. Written by the planner with tools/tasks/write-lock.py; builders never edit this file.
 
 TASK-0001  tests/setup/TASK-0001.test.mjs  beced44e799d13db0fe537d9b4019869027562b5de217a495a0dd9aebe5bcf4b
-TASK-0002  apps/api/test/setup/health.test.ts  a4158959a67e976e31ef04f68867a5bc5ef91c92f591fde41937e8497687e9ec
+TASK-0002  apps/api/test/setup/health.test.ts  092d5c3b5838c66a65dc8d35a646d1b715e3f84479b33c6eeb54d1f03419e77a
 TASK-0002  tests/setup/TASK-0002.test.mjs  f54fa7b5c94319046ab354a0a743bc085654cd5b376d516293008ccfc6a79c3f
 TASK-0003  apps/web/test/setup/app.test.tsx  3486637cd10a5d58c09c6f6917047c78eac8125adea03102701cc47e931fb23a
 TASK-0003  tests/setup/TASK-0003.test.mjs  30ba1df92615e97d4227f9f9775a34e349b2bff06adf3908745af75b67f52cac
@@ -40,12 +40,13 @@ TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-backend.ts  3fb4
 TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/bad-db.ts  79e30897fd37313a34b8f33e6666b70c661127768d8c724c37e64bd8ce3f80a0
 TASK-0008  tests/setup/fixtures/arch/packages/contracts/src/ok.ts  d676e1fe7514b99ec4a27df55b2cf5a24f3930c62e5c5c54dda1a4fc6a6bf1bc
 TASK-0009  tests/setup/TASK-0009.test.mjs  9b86b14b068f4eef0cc523cb1d0e85d045eaf180cfaedec6726ec90a0a80e76b
-TASK-0010  apps/api/test/setup/context.test.ts  01264095084dd572aee6630affa3debb295982e8c5409e68a3230f481157aba2
+TASK-0010  apps/api/test/setup/context.test.ts  d9e9195967c883a454e6e74d5c95a3d3023daba9b54859e8106769bd01060a89
 TASK-0010  apps/api/test/setup/errors.test.ts  39cb57651e77eaffcb56a3673049c83b17f499d211994c908a3d0e728465b635
-TASK-0010  apps/api/test/setup/logging.test.ts  76fd9835edb83d0cca2b14ff7e5d979dce3ec59abb767e7fb4134ea284eeb8b3
+TASK-0010  apps/api/test/setup/logging.test.ts  e6f278fa7e669db4553c40452463718916094f3114629c2033fc3f9811d51c07
 TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104d4fec1e62ddb8d7898084fe5273c3
 TASK-0011  apps/api/test/setup/route.test.ts  2aab207874ea55a6200a48ebb09609731c527a5b249dd8db0282350fd8de4a87
 TASK-0012  tests/setup/TASK-0012.test.mjs  2be20fb1619c0fe4b99f29690ab0ecf1dadc0dfd5b2d825d17f85428b2b92904
 TASK-0013  apps/web/test/setup/api-status.test.tsx  b2532a6aecaac504e9e661edd6d08991e591f3ebb0dfb7453b3011863c8fd0df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
 TASK-0013  tests/setup/TASK-0013.test.mjs  bcbffb02a0e73a2e08e837204ef5f8999f2b03a1ad0ff13ad014cb512dd9741c
+TASK-0086  apps/api/test/setup/log-safety.test.ts  213a5199acbd7f008e504af327b83a79709c8564af3759ad6dab47bffcaf8fb8

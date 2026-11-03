@@ -18,6 +18,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0008 | Code style and architecture checks | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0009 | Allowed-files check and test lock | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0010 | Shared backend steps: request context, logging, errors | careful | The project's base and its automatic checks: everything later relies on them |
+| TASK-0086 | Shared backend steps: safe logs | careful | Logs must never hold a secret; added after the review of TASK-0010 (CR-010) |
 | TASK-0011 | Shared backend steps: the route helper | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0012 | Contract, door and module-card checks; the Core module card | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0013 | Smoke test at computer and phone width; GitHub check run | careful | The project's base and its automatic checks: everything later relies on them |
@@ -93,7 +94,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0081 | Test copy, error reporting and uptime alerts | careful | Going online: server, address, security list |
 | TASK-0082 | Go-live checks: security list, restore drill, phone sign-in | careful | Going online: server, address, security list |
 
-**Not yet built:** 57 careful, 21 fast. Release 1 is mostly the security base, so most of its cards are careful; later releases (screens, lists, everyday features) will have far more fast cards.
+**Not yet built:** 54 careful, 21 fast (after TASK-0010, with TASK-0086 added by CR-010). Release 1 is mostly the security base, so most of its cards are careful; later releases (screens, lists, everyday features) will have far more fast cards.
 
 **Fast batches in Release 1, in build order** (cards that sit between careful cards run alone in the fast lane):
 

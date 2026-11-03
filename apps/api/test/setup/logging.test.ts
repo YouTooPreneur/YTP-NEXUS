@@ -32,6 +32,21 @@ describe('logging', () => {
     expect(text).toContain('Asha');
   });
 
+  it('puts the request ID of the x-request-id answer header into the request log line', async () => {
+    const { lines, logger } = capture();
+    const app = createApp({ logger });
+    for (let i = 0; i < 2; i += 1) {
+      const start = lines.length;
+      const res = await request(app).get('/api/health');
+      const completed = lines
+        .slice(start)
+        .map((line) => JSON.parse(line) as { msg?: string; req?: { id?: unknown } })
+        .filter((line) => line.msg === 'request completed');
+      expect(completed).toHaveLength(1);
+      expect(completed[0]?.req?.id).toBe(res.headers['x-request-id']);
+    }
+  });
+
   it('keeps the agreed list of removed paths', () => {
     for (const path of ['req.headers.cookie', 'req.headers.authorization', 'res.headers["set-cookie"]', '*.password', '*.code', '*.token', '*.secret']) {
       expect(REDACT_PATHS).toContain(path);

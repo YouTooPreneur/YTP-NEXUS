@@ -38,6 +38,10 @@ describe('request context', () => {
   it('trusts exactly one proxy, so the person\'s own address is seen', async () => {
     const res = await request(app()).get('/api/test/context').set('x-forwarded-for', '203.0.113.5');
     expect(res.body.ip).toBe('203.0.113.5');
+    // A person can write a made-up address in front; only the last one, added by our one proxy, counts.
+    const faked = await request(app()).get('/api/test/context').set('x-forwarded-for', '198.51.100.9, 203.0.113.5');
+    expect(faked.body.ip).toBe('203.0.113.5');
+    expect(app().get('trust proxy')).toBe(1);
   });
 
   it('works outside a request only through runWithContext', () => {
