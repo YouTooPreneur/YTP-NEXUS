@@ -1,11 +1,15 @@
 // TASK-0012 · Contract, door and module-card checks. Written by the planner; builders never edit this file.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { spawnSync } from 'node:child_process';
+import { readFileSync, mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawnSync, execFileSync } from 'node:child_process';
 import { compareRoutesToContracts } from '../../tools/verify/checks/contract.mjs';
 import { checkDoors } from '../../tools/verify/checks/doors.mjs';
 import { checkModuleCards, SECTIONS } from '../../tools/verify/checks/module-cards.mjs';
+import { changedFiles, checkAllowedFiles, commitProblems } from '../../tools/verify/checks/allowed-files.mjs';
+import { steps } from '../../tools/verify/steps.mjs';
 
 const health = { operationId: 'getHealth', method: 'get', path: '/api/health', module: 'core', public: true, permission: null, feature: null };
 const listUsers = {
@@ -95,4 +99,90 @@ test('verify runs the three checks after Architecture, and Allowed files stays l
   assert.ok(order.every((i) => i >= 0), `missing a step in: ${names.join(', ')}`);
   assert.deepEqual(order, [...order].sort((x, y) => x - y));
   assert.equal(names.at(-1), 'Allowed files');
+});
+
+// A throwaway git folder for the allowed-files checks (CR-009).
+function gitFolder(branch) {
+  const dir = mkdtempSync(join(tmpdir(), 'nexus-verify-'));
+  const git = (...args) => execFileSync('git', args, { cwd: dir, stdio: 'pipe' });
+  const head = () => execFileSync('git', ['rev-parse', 'HEAD'], { cwd: dir, encoding: 'utf8' }).trim();
+  const commit = (subject, files) => {
+    for (const [file, text] of Object.entries(files)) {
+      mkdirSync(join(dir, file, '..'), { recursive: true });
+      writeFileSync(join(dir, file), text);
+    }
+    git('add', ...Object.keys(files));
+    git('commit', '-q', '-m', subject);
+    return head();
+  };
+  git('init', '-q', '-b', branch);
+  git('config', 'user.email', 'test@example.com');
+  git('config', 'user.name', 'Test');
+  git('config', 'diff.renames', 'true');
+  return { dir, git, head, commit };
+}
+
+test('changedFiles lists both paths of a moved file, before the card is committed and in the fallback', () => {
+  const { dir, git, commit } = gitFolder('main');
+  try {
+    const start = commit('start', { 'docs/DECISIONS.md': 'one\ntwo\nthree\nfour\n' });
+    git('mv', 'docs/DECISIONS.md', 'allowed.md');
+    const changed = changedFiles(dir, start, 'TASK-0100');
+    assert.deepEqual(changed, ['allowed.md', 'docs/DECISIONS.md']);
+    assert.deepEqual(checkAllowedFiles({ changed, allowed: ['allowed.md'], card: 'TASK-0100' }), ['docs/DECISIONS.md']);
+    git('commit', '-q', '-m', 'Moved without the card name');
+    assert.deepEqual(changedFiles(dir, start, 'TASK-0100'), ['allowed.md', 'docs/DECISIONS.md']);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('commitProblems names every commit after the start point that is not named for a card and not yet on main', () => {
+  const { dir, git, commit } = gitFolder('main');
+  try {
+    const start = commit('start', { 'base.txt': '1' });
+    commit('Planning: an answer on main', { 'docs/QUESTIONS.md': 'answered' });
+    git('checkout', '-q', '-b', 'task/TASK-0100');
+    commit('TASK-0100: First card [antigravity]', { 'allowed.ts': 'a' });
+    assert.deepEqual(commitProblems(dir, start), []);
+    commit('tidy up', { 'docs/DECISIONS.md': 'x' });
+    commit('TASK-0100: Fix after review [antigravity]', { 'allowed.ts': 'b' });
+    const problems = commitProblems(dir, start);
+    assert.equal(problems.length, 1, JSON.stringify(problems));
+    assert.match(problems[0], /^commit not named for a card: [0-9a-f]{7,} tidy up$/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+  const other = gitFolder('trunk');
+  try {
+    const start = other.commit('start', { 'base.txt': '1' });
+    other.commit('Planning: no main branch here', { 'notes.md': 'n' });
+    const problems = commitProblems(other.dir, start);
+    assert.equal(problems.length, 1, JSON.stringify(problems));
+    assert.match(problems[0], /^commit not named for a card: [0-9a-f]{7,} Planning: no main branch here$/);
+  } finally {
+    rmSync(other.dir, { recursive: true, force: true });
+  }
+});
+
+test('the Allowed files step reports a commit not named for a card', () => {
+  const { dir, git, commit } = gitFolder('main');
+  const allowedStep = steps.find((s) => s.name === 'Allowed files');
+  try {
+    const start = commit('start', {
+      'docs/tasks/TASK-0100.md': '# TASK-0100\n\n## ALLOWED FILES (touch nothing else)\n| File | Action |\n|---|---|\n| `allowed.ts` | create |\n\n## STEPS\n',
+    });
+    git('checkout', '-q', '-b', 'task/TASK-0100');
+    commit('TASK-0100: First card [antigravity]', {
+      'allowed.ts': 'a',
+      'docs/logs/TASK-0100.md': `# LOG\n\n## Start check\n- Start point (commit): ${start}\n`,
+    });
+    assert.deepEqual(allowedStep.run({ root: dir, card: 'TASK-0100' }), { ok: true });
+    commit('tidy up', { 'docs/DECISIONS.md': 'x' });
+    const result = allowedStep.run({ root: dir, card: 'TASK-0100' });
+    assert.equal(result.ok, false);
+    assert.match(result.note, /^commit not named for a card: [0-9a-f]{7,} tidy up$/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

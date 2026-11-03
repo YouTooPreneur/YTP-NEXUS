@@ -7,7 +7,7 @@
 ## BEFORE YOU START
 - TASK-XXXX must be **Done** in `docs/STATUS.md`
 - Read: `AGENTS.md`, `docs/logs/TASK-XXXX.md` (Notes for next task), <other files>
-- Work in your own git worktree on a branch cut from the current main; write the start commit in your log.
+- Work in your own git worktree on a branch cut from the current main. Write `- Start point (commit): <hash>` in your log: the bare hash, with no backticks or words after it (the Allowed files check reads this line).
 - Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
 - Run `pnpm verify`. It must be green. If not: STOP and mark BLOCKED.
 - Run `pnpm verify --card TASK-XXXX` once: this card's tests must fail. Write both results in your log.
@@ -19,6 +19,8 @@
 | File | Action |
 |---|---|
 | `<path>` | create / edit |
+
+Patterns: `*` matches inside one folder; `**` matches anything, including `/`. So `dir/**/*.ts` needs at least one folder after `dir/`: when files directly in `dir/` are allowed too, add a `dir/*.ts` row as well (as TASK-0008 does). `dir/**` covers everything under `dir/`. Every other character, including `?`, is matched as written. A builder's own test file is allowed only when it is listed here.
 
 ## STEPS
 1. <exact step: names, types, labels, messages all spelled out>
@@ -44,4 +46,4 @@ TASK-XXXX: <what it will do>
 Anything not in STEPS. Do not rename, refactor or improve anything.
 
 ## IF UNSURE
-Stop. Write the question in `docs/QUESTIONS.md`. Mark the task BLOCKED.
+Stop. Write the question in your log (`docs/logs/TASK-XXXX.md`, under "If BLOCKED"). Mark the task BLOCKED. Do not edit `docs/QUESTIONS.md`.

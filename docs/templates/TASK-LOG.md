@@ -40,6 +40,8 @@
 - <anything the next task must know: new files, names, gotchas>
 
 ## If BLOCKED
+- My question (the planner copies it into docs/QUESTIONS.md and answers it there):
 - What failed:
 - What I tried:
 - What I think is needed:
+- Resumed after the planner's fix (AGENTS.md section 3), earlier start:

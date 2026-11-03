@@ -174,7 +174,7 @@ The steps match `docs/TECH-DESIGN.md` section 10.
 3. **Changes never interrupt a task in progress.** Before the freeze, changes go into the review rounds. After it, small tweaks seen at demos (labels, wording, colours, field order) are included and logged; new fields, features or flows go into `docs/CHANGES.md` (CR-001…), sized Small (under 1 day), Medium (1–10 days) or Large (touches the architecture or core flows), and wait for the owner's written approval.
 4. **One change updates everything it touches:** requirement, screen, preview and data model together.
 5. **Every review round is numbered** in `docs/STATUS.md`: date, what was reviewed, the feedback, what changed.
-6. **Decisions are locked** in `docs/DECISIONS.md`. An AI that disagrees writes in `docs/QUESTIONS.md` and stops; only the owner unlocks a decision.
+6. **Decisions are locked** in `docs/DECISIONS.md`. An AI that disagrees writes its question in its task log (the planner copies it into `docs/QUESTIONS.md`) and stops; only the owner unlocks a decision.
 7. **Small choices are listed, not hidden:** every small decision Claude makes while building goes into `docs/CHOICES.md`; the owner answers in one line (D-179).
 8. **Check before showing:** the screen check passes with 0 problems, then Claude looks at the pictures itself (D-181). Every design version is kept (D-180).
 9. **Everything is in the folder and in the tracker:** the conversation saves itself after every reply, every document has a Word copy for WhatsApp (D-176, D-177, D-178).

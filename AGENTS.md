@@ -24,7 +24,7 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
 5. **Never edit `AGENTS.md`, `CLAUDE.md` or anything in `docs/`** except your own task log, your evidence folder, and your task's line in `docs/STATUS.md` and `docs/tasks/INDEX.md`.
 6. **Do not add, rename, refactor, "improve" or "clean up" anything** that the card does not ask for.
 7. **Do not install new packages** unless the card says so, by exact name and version.
-8. **If anything is unclear, missing or looks wrong: STOP.** Write your question in `docs/QUESTIONS.md` and mark the task BLOCKED. Never guess.
+8. **If anything is unclear, missing or looks wrong: STOP.** Write your question in your task log under "If BLOCKED" and mark the task BLOCKED. Never guess. Do not edit `docs/QUESTIONS.md`: the planner copies your question there, with the answer, on `main`.
 9. **Never claim something works without proof.** Proof is the verify output, pasted exactly as printed (never a summary you wrote yourself), plus any screenshot the card asks for.
 10. **Never touch secrets.** Never write passwords, API keys or tokens into any file, log or message.
 
@@ -55,6 +55,16 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
 
 The verify command is created in Phase 2 (TASK-0007). **Cards TASK-0001 to TASK-0006 come before it exists:** wherever this loop says "verify", run the commands in the card's VERIFY AND DEBUG section instead, and for the start check run the commands in the card's BEFORE YOU START. Each builder's own copy is a git worktree at `../ytp-work/TASK-XXXX` on the branch `task/TASK-XXXX`. **After the reviewer's PASS**, the reviewer merges the card's branch into `main`.
 
+**Resuming a BLOCKED card.** The planner answers your question in `docs/QUESTIONS.md` on `main`, fixes the card or its tests there if needed, and in a batch first reviews and merges the cards you already finished. When the owner tells you to resume, in your copy:
+1. Run `git merge --ff-only --autostash main`. It brings in the planner's fix, keeps your unsaved work and makes no commit. Never use `git stash`: all copies share it.
+2. If git reports a conflict or any error, STOP: copy what git printed into your log under "If BLOCKED" and tell the owner.
+3. Run `pnpm install --frozen-lockfile`.
+4. In your log, replace the hash on the line `- Start point (commit):` with the output of `git rev-parse HEAD` (replace it; never add a second such line, because the check reads the first one), and under "If BLOCKED" fill in `- Resumed after the planner's fix, earlier start: <old hash>`.
+5. Read your card again (the planner may have changed it) and redo any step that changed.
+6. Continue from VERIFY (step 3 of the loop). The 5 tries start again.
+
+**A card sent back after review (FAIL)** is fixed in the same copy and on the same branch, from BUILD (step 2) on, inside the allowed files only. When `pnpm verify --card TASK-XXXX` is green, commit the fix's files by name as `TASK-XXXX: Fix after review [<your name>]`. Then run `pnpm verify --card TASK-XXXX` once more: once a card has its own commits, the allowed-files check reads only committed work, so this run is the proof. Save its output in `docs/evidence/TASK-XXXX/`, update your log, and commit those two by name as `TASK-XXXX: Proof after review [<your name>]`. Never change the card's first commit.
+
 ## 3a. Batches (the fast lane, D-196)
 
 Each card has a lane, careful or fast, in `docs/tasks/LANES.md` (only the planner changes it, when the owner asks). A careful card is always built alone. Consecutive fast cards may be given to you together, 2 to 5 at a time (a **batch**), in one message from the owner (`docs/templates/BATCH-PROMPT.md`). In a batch:
@@ -62,7 +72,8 @@ Each card has a lane, careful or fast, in `docs/tasks/LANES.md` (only the planne
 - You work in one worktree for the whole batch, `../ytp-work/BATCH-<first card>-<last card>` on the branch `batch/<first card>-<last card>`.
 - You do the cards **one at a time, in the order given**. Each card gets the whole task loop of section 3: its own start point (the commit just before you begin it, written in its log), steps, verify with `--card`, log, evidence, status lines and **its own commit**. Only then start the next card.
 - **Stop the whole batch** at the first card that is BLOCKED: do not start the next card.
-- The reviewer checks the batch once, card by card, and merges the batch branch after PASS. A card that fails review is sent back alone.
+- The reviewer checks the batch once, card by card, and merges the batch branch after PASS. A card that fails review is sent back alone and fixed as section 3 says ("A card sent back after review").
+- **Resuming a stopped batch:** follow "Resuming a BLOCKED card" (section 3) in the batch's copy. Only the blocked card's start point changes; the cards already committed keep theirs. Then carry on with the blocked card and the cards after it, in order.
 
 ## 4. Commit format
 
@@ -72,7 +83,7 @@ One commit per task, with only that card's files, added by name (allowed by the 
 TASK-0142: Add GSTIN to client [antigravity]
 ```
 
-Use your own name in the brackets: `antigravity`, `codex` or `claude`.
+Use your own name in the brackets: `antigravity`, `codex` or `claude`. Every commit you make starts with its card's ID: a card sent back after review gets two more, `TASK-XXXX: Fix after review [<your name>]` and `TASK-XXXX: Proof after review [<your name>]` (section 3). From TASK-0012 on, the allowed-files check fails on any commit not named for a card.
 
 ## 5. Your reply when you finish
 

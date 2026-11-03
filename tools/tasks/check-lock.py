@@ -36,7 +36,7 @@ for line in lock.read_text(encoding='utf-8').splitlines():
         print('CHANGED', path)
         problems += 1
 
-diff = subprocess.run(['git', '-C', str(root), 'diff', '--name-only', f'{base}...HEAD'],
+diff = subprocess.run(['git', '-C', str(root), 'diff', '--name-only', '--no-renames', f'{base}...HEAD'],
                       capture_output=True, text=True)
 if diff.returncode != 0:
     print(f'lock entries checked: {checked}, problems: {problems}; cannot compare with "{base}": {diff.stderr.strip()}')
