@@ -3,9 +3,12 @@ import type { pino } from 'pino';
 import { contextMiddleware } from './shared/context.js';
 import { createLogger, httpLogger } from './shared/logging.js';
 import { errorHandler, notFoundHandler } from './shared/errors.js';
+import { mountRoutes, type RouteHooks } from './shared/route.js';
+import { allRoutes } from './routes.js';
 
 export interface AppOptions {
   logger?: pino.Logger;
+  hooks?: RouteHooks;
   routes?: (app: Express) => void;
 }
 
@@ -19,9 +22,7 @@ export function createApp(options: AppOptions = {}): Express {
   app.use(httpLogger(logger));
   app.use(express.json({ limit: '1mb' }));
 
-  app.get('/api/health', (_request, response) => {
-    response.status(200).json({ ok: true, service: 'api' });
-  });
+  mountRoutes(app, allRoutes, options.hooks);
 
   options.routes?.(app);
 

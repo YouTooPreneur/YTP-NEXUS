@@ -1,0 +1,153 @@
+$ node tools/verify/verify.mjs "--card" "TASK-0011"
+verify: running 23 test files, leaving out 3 (cards not Done)
+▶ API client
+$ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+$ tsx scripts/write-openapi.ts
+openapi.json written
+$ orval --config orval.config.ts
+🍻 orval v8.45.0 - A swagger client generator for typescript
+nexus - Cleaning output folder
+nexus - 🎉 YTP Nexus API - Your OpenAPI spec has been converted into ready to use orval!
+✔ API client
+▶ Type check
+✔ Type check
+▶ Lint
+$ eslint .
+✔ Lint
+▶ Format
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+✔ Format
+▶ Architecture
+$ depcruise apps packages --config .dependency-cruiser.cjs
+
+✔ no dependency violations found (47 modules, 49 dependencies cruised)
+
+✔ Architecture
+▶ Test lock
+✔ Test lock
+▶ Set-up tests
+✔ package.json is the private workspace root (2.3605ms)
+✔ the pnpm workspace lists the apps and packages folders (0.6114ms)
+✔ the Node version file says 24 (0.2556ms)
+✔ the shared TypeScript settings are strict (0.2552ms)
+✔ editor and line-ending rules exist (0.4817ms)
+✔ .gitignore keeps generated and local files out, and keeps the old lines (0.4164ms)
+✔ the pinned pnpm is the one in use (571.3644ms)
+✔ the backend package has the agreed name and scripts (1.2015ms)
+✔ every dependency version is exact (0.5155ms)
+✔ the backend has its two start commands (0.4065ms)
+✔ the frontend package has the agreed name, scripts and exact versions (1.4625ms)
+✔ the page is English, fits phones and loads the app (1.1606ms)
+✔ during development /api goes to the backend on port 3000 (0.3849ms)
+✔ the screen-parts package is set up (1.6743ms)
+✔ the frontend uses Tailwind, the tokens and the self-hosted fonts (1.4056ms)
+✔ the page starts in Emerald (0.2871ms)
+✔ the root has one command that makes the API description and the client (1.0674ms)
+✔ the contract package and the client tool are pinned (0.4893ms)
+✔ the screens make the API client before they start or build (0.2705ms)
+✔ running the command writes openapi.json and the typed client with a health hook (3374.1969ms)
+✔ the generated files are never committed (41.6719ms)
+✔ the three services use pinned images, never latest (2.633ms)
+✔ the database starts with a development and a test database (0.4348ms)
+✔ the settings lists name every setting, in the agreed order, with no real secrets (2.2764ms)
+✔ the example settings files are kept, the real one never is (33.2553ms)
+✔ the root scripts start and stop the services (0.4347ms)
+✔ Docker accepts the compose file (376.0955ms)
+✔ readLock reads the lock lines and skips comments (1.9464ms)
+✔ readLock names the line it cannot read (0.5054ms)
+✔ readIndexStatuses finds the Status column by its header (0.4102ms)
+✔ selectTests runs Done cards, the named card and unlocked tests, and leaves the rest (0.2881ms)
+✔ packageOf finds the package of a test file (0.2422ms)
+✔ listTestFiles finds the planner tests and never the fixtures (2.5957ms)
+✔ the real lock file reads cleanly and every file in it exists (3.5055ms)
+✔ --list shows the four first steps in order (73.7846ms)
+✔ a wrong or unknown card is refused with exit code 2 (215.7085ms)
+✔ the root script runs it (0.4212ms)
+(node:13296) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the config files and scripts exist (3.5974ms)
+✔ every architecture rule catches its broken fixture (1946.1873ms)
+✔ the allowed paths are never reported (1709.3086ms)
+✔ verify runs lint, format and architecture after the type check (69.1735ms)
+(node:15320) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ sha256Of and checkTestLock spot missing, changed and doubled tests (5.0138ms)
+✔ readAllowedFiles reads the first backticked path of each row (0.5969ms)
+✔ readStartPoint reads the start commit from the log (0.2424ms)
+✔ matchesPattern understands * and ** (0.3099ms)
+✔ machine-written paths and the builder's own files are always allowed (0.6713ms)
+✔ changedFiles lists edited, added and untracked files since the start point (439.7813ms)
+✔ changedFiles keeps to each card's own commits when later cards are built on top (a batch) (1232.8058ms)
+✔ a step that crashes counts as failed, the others still run, and a broken lock is reported (135.5337ms)
+✔ lint finds a misspelt name in verify code (eslint.config.mjs uses defineConfig) (1831.8753ms)
+✔ the screens' walls also cover the shared contracts package (1570.7098ms)
+✔ verify has the Test lock step before the set-up tests, and Allowed files last (66.9031ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5869.7549
+✔ Set-up tests
+▶ Unit and API tests
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0011/apps/api
+
+ ✓ test/setup/route.test.ts (8 tests) 124ms
+ ✓ test/setup/context.test.ts (5 tests) 112ms
+ ✓ test/setup/log-safety.test.ts (8 tests) 185ms
+ ✓ test/setup/errors.test.ts (8 tests) 191ms
+ ✓ test/setup/health.test.ts (1 test) 60ms
+ ✓ test/setup/log-message.test.ts (3 tests) 52ms
+ ✓ test/setup/logging.test.ts (4 tests) 80ms
+ ✓ test/setup/main.test.ts (2 tests) 1756ms
+   ✓ the API start command (src/main.ts) (2)
+     ✓ logs "api listening" with the port, and answers the health door, when the port is free 1102ms
+     ✓ stops with exit code 1, and never says "api listening", when the port is already taken 651ms
+
+ Test Files  8 passed (8)
+      Tests  39 passed (39)
+   Start at  13:23:25
+   Duration  2.01s (import 59%, tests 38%, transform 2%, worker 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0011/apps/web
+
+ ✓ test/setup/cleanup.test.tsx (2 tests) 28ms
+ ✓ test/setup/app.test.tsx (1 test) 115ms
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  13:23:28
+   Duration  1.60s (environment 79%, import 14%, tests 5%, worker 1%, transform 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0011/packages/contracts
+
+ ✓ test/openapi.test.ts (6 tests) 8ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  13:23:31
+   Duration  325ms (import 79%, transform 11%, tests 5%, worker 5%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0011/packages/ui
+
+ ✓ test/tokens.test.ts (5 tests) 7ms
+ ✓ test/cleanup.test.tsx (2 tests) 31ms
+ ✓ test/button.test.tsx (4 tests) 145ms
+
+ Test Files  3 passed (3)
+      Tests  11 passed (11)
+   Start at  13:23:32
+   Duration  1.57s (environment 76%, import 15%, tests 7%, worker 1%, transform 1%)
+
+✔ Unit and API tests
+▶ Allowed files
+✔ Allowed files
+verify: PASSED
