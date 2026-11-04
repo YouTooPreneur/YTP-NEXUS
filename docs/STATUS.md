@@ -247,3 +247,4 @@ One line per task, newest at the bottom.
 | TASK-0087 | Shared backend steps: safe error messages in logs | Done | antigravity | 2026-11-04 |
 | TASK-0011 | Shared backend steps: the route helper | Done | antigravity | 2026-11-04 |
 | TASK-0012 | Contract, door and module-card checks; the Core module card | Done | antigravity | 2026-11-04 |
+| TASK-0013 | Smoke test at computer and phone width; GitHub check run | Done | antigravity | 2026-11-04 |

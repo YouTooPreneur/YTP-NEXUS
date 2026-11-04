@@ -109,6 +109,18 @@ export function listTestFiles(root) {
     }
   }
 
+  const e2eDir = path.join(root, 'tests', 'e2e');
+  if (fs.existsSync(e2eDir)) {
+    const entries = fs.readdirSync(e2eDir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isFile() && entry.name.endsWith('.spec.ts')) {
+        const fullPath = path.join(e2eDir, entry.name);
+        const rel = path.relative(root, fullPath).replace(/\\/g, '/');
+        files.push(rel);
+      }
+    }
+  }
+
   const appsDir = path.join(root, 'apps');
   if (fs.existsSync(appsDir)) {
     const apps = fs.readdirSync(appsDir, { withFileTypes: true });
