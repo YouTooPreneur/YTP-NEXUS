@@ -180,13 +180,15 @@ test('Contract, Doors and Module cards read the backend list, the API list and t
       announcements: [{ name: 'core.user.disabled', module: 'core' }],
     };
     put('package.json', '{"name":"ws","private":true}');
-    put('pnpm-workspace.yaml', 'packages:\n  - "apps/*"\n');
+    // No install before routes:list, so nothing outside this temp folder is touched (pnpm's store keeps a link to every folder it installs).
+    put('pnpm-workspace.yaml', 'packages:\n  - "apps/*"\nverifyDepsBeforeRun: false\n');
     put('apps/api/package.json', '{"name":"@ytp/api","private":true,"scripts":{"routes:list":"node print.mjs"}}');
     put('apps/api/listed.json', JSON.stringify(listed));
     put('apps/api/print.mjs', "import { appendFileSync, readFileSync } from 'node:fs';\nappendFileSync('runs.txt', 'run\\n');\nprocess.stdout.write(readFileSync('listed.json', 'utf8'));\n");
     put('packages/contracts/openapi.json', JSON.stringify({ paths: { '/api/health': { get: { operationId: 'getHealth' } } } }));
     put('tools/verify/auth-routes.json', readFileSync('tools/verify/auth-routes.json', 'utf8'));
-    put('apps/api/src/modules/core/MODULE.md', readFileSync('apps/api/src/modules/core/MODULE.md', 'utf8'));
+    // A fixed card, never the live one: later cards add doors and announcements to the real Core card.
+    put('apps/api/src/modules/core/MODULE.md', SECTIONS.map((s) => (s === '## Window' ? `${s}\n- \`getHealth\`: GET /api/health` : `${s}\n- (none yet)`)).join('\n\n'));
     mkdirSync(join(ws, 'apps', 'api', 'src', 'modules', 'crm'), { recursive: true });
     const run = (name, ctx) => steps.find((s) => s.name === name).run(ctx);
     const runs = () => readFileSync(join(ws, 'apps', 'api', 'runs.txt'), 'utf8').split('\n').filter(Boolean).length;
