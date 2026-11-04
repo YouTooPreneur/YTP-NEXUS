@@ -130,7 +130,7 @@ export function changedFiles(root, startCommit, card) {
   }
 
   const files = new Set();
-  const diffOut = git(['diff', '--name-only', startCommit]);
+  const diffOut = git(['diff', '--name-only', '--no-renames', startCommit]);
   for (const file of diffOut.split(/\r?\n/).filter(Boolean)) {
     files.add(file.replace(/\\/g, '/').trim());
   }
@@ -159,4 +159,42 @@ export function checkAllowedFiles({ changed, allowed, card }) {
   }
 
   return violations.sort();
+}
+
+export function commitProblems(root, startCommit) {
+  const git = (args, options = {}) =>
+    execFileSync('git', ['-c', 'core.quotepath=off', ...args], {
+      cwd: root,
+      encoding: 'utf8',
+      ...options,
+    });
+
+  let hasMain = false;
+  try {
+    git(['rev-parse', '--verify', '--quiet', 'refs/heads/main'], { stdio: 'pipe' });
+    hasMain = true;
+  } catch {
+    // main branch does not exist
+  }
+
+  const logArgs = ['log', '--no-merges', '--reverse', '--format=%h%x09%s', `${startCommit}..HEAD`];
+  if (hasMain) {
+    logArgs.push('--not', 'main');
+  }
+
+  const out = git(logArgs);
+  const lines = out.split(/\r?\n/).filter(Boolean);
+  const problems = [];
+
+  for (const line of lines) {
+    const tabIdx = line.indexOf('\t');
+    if (tabIdx === -1) continue;
+    const hash = line.slice(0, tabIdx).trim();
+    const subject = line.slice(tabIdx + 1).trim();
+    if (!/^TASK-\d{4}:/.test(subject)) {
+      problems.push(`commit not named for a card: ${hash} ${subject}`);
+    }
+  }
+
+  return problems;
 }

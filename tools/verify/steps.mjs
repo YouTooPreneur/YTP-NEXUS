@@ -8,7 +8,30 @@ import {
   readStartPoint,
   changedFiles,
   checkAllowedFiles,
+  commitProblems,
 } from './checks/allowed-files.mjs';
+import { compareRoutesToContracts } from './checks/contract.mjs';
+import { checkDoors } from './checks/doors.mjs';
+import { checkModuleCards } from './checks/module-cards.mjs';
+
+function getRoutesData(ctx) {
+  if (ctx.routesData) {
+    return ctx.routesData;
+  }
+  const res = spawnSync('pnpm', ['--filter', '@ytp/api', '--silent', 'routes:list'], {
+    cwd: ctx.root,
+    shell: true,
+    encoding: 'utf8',
+  });
+  if (res.status !== 0 || !res.stdout) {
+    throw new Error(
+      res.stderr ? res.stderr.trim() : `routes:list failed with status ${res.status}`,
+    );
+  }
+  const data = JSON.parse(res.stdout);
+  ctx.routesData = data;
+  return data;
+}
 
 export const steps = [
   {
@@ -119,6 +142,63 @@ export const steps = [
     },
   },
   {
+    name: 'Contract',
+    run(ctx) {
+      const data = getRoutesData(ctx);
+      const openapiPath = path.join(ctx.root, 'packages', 'contracts', 'openapi.json');
+      const openapi = JSON.parse(fs.readFileSync(openapiPath, 'utf8'));
+      const problems = compareRoutesToContracts(data.routes, openapi);
+      if (problems.length > 0) {
+        return { ok: false, note: problems.join('; ') };
+      }
+      return { ok: true };
+    },
+  },
+  {
+    name: 'Doors',
+    run(ctx) {
+      const data = getRoutesData(ctx);
+      const authRoutesPath = path.join(ctx.root, 'tools', 'verify', 'auth-routes.json');
+      const allowedAuthRoutes = JSON.parse(fs.readFileSync(authRoutesPath, 'utf8'));
+      const problems = checkDoors({
+        routes: data.routes,
+        authRoutes: data.authRoutes,
+        allowedAuthRoutes,
+      });
+      if (problems.length > 0) {
+        return { ok: false, note: problems.join('; ') };
+      }
+      return { ok: true };
+    },
+  },
+  {
+    name: 'Module cards',
+    run(ctx) {
+      const data = getRoutesData(ctx);
+      const modulesDir = path.join(ctx.root, 'apps', 'api', 'src', 'modules');
+      const modules = [];
+      if (fs.existsSync(modulesDir)) {
+        const entries = fs.readdirSync(modulesDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isDirectory()) {
+            const cardPath = path.join(modulesDir, entry.name, 'MODULE.md');
+            const card = fs.existsSync(cardPath) ? fs.readFileSync(cardPath, 'utf8') : null;
+            modules.push({ name: entry.name, card });
+          }
+        }
+      }
+      const problems = checkModuleCards({
+        modules,
+        routes: data.routes,
+        announcements: data.announcements,
+      });
+      if (problems.length > 0) {
+        return { ok: false, note: problems.join('; ') };
+      }
+      return { ok: true };
+    },
+  },
+  {
     name: 'Test lock',
     run(ctx) {
       const lockPath = path.join(ctx.root, 'tests', 'LOCK');
@@ -202,8 +282,16 @@ export const steps = [
       const allowed = readAllowedFiles(cardContent);
       const changed = changedFiles(ctx.root, startPoint, ctx.card);
       const violations = checkAllowedFiles({ changed, allowed, card: ctx.card });
+      const commits = commitProblems(ctx.root, startPoint);
+      const parts = [];
       if (violations.length > 0) {
-        return { ok: false, note: `not allowed: ${violations.join(', ')}` };
+        parts.push(`not allowed: ${violations.join(', ')}`);
+      }
+      if (commits.length > 0) {
+        parts.push(...commits);
+      }
+      if (parts.length > 0) {
+        return { ok: false, note: parts.join('; ') };
       }
       return { ok: true };
     },

@@ -132,6 +132,7 @@ module.exports = {
     },
   ],
   options: {
+    tsPreCompilationDeps: true,
     doNotFollow: 'node_modules',
     exclude: '^(apps|packages)/[^/]+/(dist|test)/',
     enhancedResolveOptions: {
