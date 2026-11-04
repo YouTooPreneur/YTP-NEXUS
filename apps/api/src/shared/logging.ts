@@ -67,6 +67,23 @@ export function createLogger(destination?: pino.DestinationStream): pino.Logger 
       level: process.env.LOG_LEVEL || 'info',
       redact: { paths: REDACT_PATHS, censor: '[removed]' },
       serializers: { err: cleanError },
+      hooks: {
+        // With no message, pino writes the error's own message as `msg` before any printer runs,
+        // a failed query's values included; this hands it the cleaned message instead.
+        logMethod(args, method) {
+          const [first, second] = args as unknown[];
+          const object = (typeof first === 'object' && first !== null ? first : {}) as {
+            err?: unknown;
+            msg?: unknown;
+          };
+          const error =
+            first instanceof Error ? first : object.msg === undefined ? object.err : undefined;
+          if (second === undefined && isErrorLike(error)) {
+            return method.apply(this, [first, describeError(error).message] as never);
+          }
+          return method.apply(this, args);
+        },
+      },
       formatters: {
         // An error logged under any other top-level key ({ error }, { cause }) is cleaned the same way.
         log: (object) =>
