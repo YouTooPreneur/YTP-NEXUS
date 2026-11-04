@@ -5,7 +5,7 @@
 | **Done by** | <antigravity / codex / claude> |
 | **Date** | YYYY-MM-DD |
 | **Result** | DONE / BLOCKED |
-| **Attempts** | <number of verify runs> |
+| **Attempts** | <debug-loop tries (AGENTS.md section 3, step 4): 1 if the first `pnpm verify --card` after building passed> |
 
 ## Start check
 - Previous task Done: yes / no

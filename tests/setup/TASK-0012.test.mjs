@@ -78,6 +78,31 @@ test('checkModuleCards wants the six parts, every door and every announcement', 
     checkModuleCards({ modules: [{ name: 'core', card: good.replace('`core.user.disabled`', 'core.user.disabled') }], routes: [], announcements }),
     ['core.user.disabled is not listed under Announcements in core/MODULE.md'],
   );
+  // A door or announcement of a module with no folder is on no card (review of TASK-0011, CR-012).
+  assert.deepEqual(
+    checkModuleCards({
+      modules: [{ name: 'core', card: good }],
+      routes: [health, { ...listUsers, module: 'cmr' }],
+      announcements: [...announcements, { name: 'crm.lead.won', module: 'crm' }],
+    }),
+    ['crm.lead.won belongs to module crm, which has no folder', 'listUsers belongs to module cmr, which has no folder'],
+  );
+});
+
+test('the screens cannot borrow backend code even for its types (review of TASK-0011, CR-012)', () => {
+  const out = spawnSync(
+    'pnpm',
+    ['exec', 'depcruise', 'apps', '--config', join(process.cwd(), '.dependency-cruiser.cjs'), '--output-type', 'json'],
+    { cwd: join('tests', 'setup', 'fixtures', 'arch'), encoding: 'utf8', shell: true, maxBuffer: 50 * 1024 * 1024 },
+  );
+  assert.ok(out.stdout, `depcruise printed nothing: ${out.stderr}`);
+  const violations = JSON.parse(out.stdout).summary.violations;
+  for (const file of ['apps/web/src/bad-type-import.ts', 'apps/web/src/bad-inline-type-import.ts']) {
+    assert.ok(
+      violations.some((v) => v.rule.name === 'frontend-never-imports-backend' && v.from === file),
+      `${file} was not reported`,
+    );
+  }
 });
 
 test('the real backend lists the health door as public, and the Core card lists it', () => {
