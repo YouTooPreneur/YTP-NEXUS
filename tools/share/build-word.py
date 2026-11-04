@@ -42,6 +42,7 @@ NAMES = {
     'docs/CHOICES.md': 'Choices to confirm',
     'docs/CHOICES-EXPLAINED.md': 'Choices explained (for the manager)',
     'docs/HANDOVER.md': 'Handover (continue anywhere)',
+    'docs/NEW-LAPTOP.md': 'Moving to another laptop',
     'docs/design/DESIGN-RULES.md': 'Design rules (colours, fonts, versions)',
     'docs/design/STYLE-PROMPTS.md': 'Style prompts (round 1)',
     'docs/design/STYLE-PROMPTS-ROUND2.md': 'Style prompts (round 2)',

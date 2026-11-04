@@ -2,9 +2,12 @@
 
   python tools/history/make-backup.py                      this project
   python tools/history/make-backup.py C:/path/to/folder  any other folder
+  python tools/history/make-backup.py --with-git           the carry ZIP for another laptop (D-198)
 
 The ZIP goes next to the folder, named with the date and time (24-hour, so they sort in order),
 e.g. Downloads/YTP-SAAS-backup-2026-10-21_11-30.zip = 21 Oct 2026, 11:30 am.
+With --with-git it also holds the save history (.git), so the copy can save and upload on its own,
+and is named YTP-SAAS-carry-<date>.zip; docs/NEW-LAPTOP.md says how to use it.
 It includes history/ (the private conversation), so share it with nobody. Uses only the Python standard library.
 """
 import os
@@ -13,14 +16,17 @@ import zipfile
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SKIP = {'__pycache__', 'node_modules', '.git'}
+WITH_GIT = '--with-git' in sys.argv
+ARGS = [a for a in sys.argv[1:] if a != '--with-git']
+SKIP = {'__pycache__', 'node_modules'} | (set() if WITH_GIT else {'.git'})
 
 
 def main():
-    src = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else ROOT
+    src = os.path.abspath(ARGS[0]) if ARGS else ROOT
     name = os.path.basename(src)
     now = datetime.now()
-    out = os.path.join(os.path.dirname(src), f'{name}-backup-{now:%Y-%m-%d_%H-%M}.zip')
+    kind = 'carry' if WITH_GIT else 'backup'
+    out = os.path.join(os.path.dirname(src), f'{name}-{kind}-{now:%Y-%m-%d_%H-%M}.zip')
     count = 0
     with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
         for folder, dirs, files in os.walk(src):

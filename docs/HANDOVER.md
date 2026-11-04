@@ -188,9 +188,11 @@ The conversation saves itself: after every reply and when a session closes, the 
 
 ## 9. Continue on a new PC or account
 
-1. Install the Claude desktop app (or Claude Code), Python 3, Node.js, and Microsoft Edge or Google Chrome.
-2. Copy this folder onto the new PC, from GitHub, Google Drive or a backup ZIP.
-3. Optional: run `python tools/history/export-session.py --restore`. It puts the old sessions and memory where Claude Code looks, so they can usually be reopened.
+**The full steps are in `docs/NEW-LAPTOP.md` (D-198):** a carry ZIP with everything, the save history included (`python tools/history/make-backup.py --with-git`), made last on the old laptop; on the new one, install the tools, unzip, `pnpm install --frozen-lockfile`, `--restore`, `git worktree prune`, `pnpm verify`, remake the builder copy of a card in progress, and give that laptop its own upload key. In short:
+
+1. Install the Claude desktop app (or Claude Code), Git, Python 3, Node.js 24 with pnpm 11.10.0, Docker Desktop, Microsoft Edge or Google Chrome, and Antigravity.
+2. Copy this folder onto the new PC from the carry ZIP (a plain backup ZIP or GitHub also work, but miss the save history or the conversation).
+3. Run `python tools/history/export-session.py --restore`. It puts the old sessions and memory where Claude Code looks, so they can usually be reopened.
 4. Open the folder in Claude and say: **"Continue from where we stopped."** The handover, memory notes and latest conversation load by themselves. Approve the project's hooks if Claude asks (they keep saving the conversation). If Python is called `py` or `python3` on that PC, change `python` in `.claude/settings.json`.
 5. Keep the folder name `YTP-SAAS`: the save finds Claude's sessions by it. The old conversation is always kept in `history/sessions/`, so the tracker's History stays complete on any PC.
 6. On a new account everything here still works (Claude keeps sessions on the PC, not in the account).
