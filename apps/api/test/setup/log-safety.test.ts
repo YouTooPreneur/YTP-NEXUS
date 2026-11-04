@@ -51,14 +51,17 @@ describe('safe logs', () => {
       },
     });
     const res = await request(app)
-      .get('/api/health?token=QUERY-TOKEN')
+      .get('/api/health?token=QUERY-TOKEN&invite=QUERY-INVITE&q=asha@example.com')
       .set('Referer', 'http://localhost:5173/reset?token=REFERER-TOKEN');
     expect(res.status).toBe(200);
     await request(app).get('/api/test/redirect');
     const text = lines.join('\n');
-    for (const secret of ['QUERY-TOKEN', 'REFERER-TOKEN', 'LOCATION-TOKEN']) expect(text).not.toContain(secret);
+    for (const secret of ['QUERY-TOKEN', 'QUERY-INVITE', 'asha@example.com', 'REFERER-TOKEN', 'LOCATION-TOKEN']) {
+      expect(text).not.toContain(secret);
+    }
     const line = parsed(lines).find((l) => l.req?.id === res.headers['x-request-id']);
     expect(line?.req?.url).toBe('/api/health');
+    expect(line?.req).not.toHaveProperty('query');
   });
 
   it('a refused body still gets its request line, with method, address and status, never the body', async () => {
@@ -120,6 +123,33 @@ describe('safe logs', () => {
     expect(cleanError('a plain string')).toEqual({ type: 'string' });
     const cleaned = cleanError(Object.assign(new Error('boom'), { body: 'RAW-BODY', config: { password: 'X' } }));
     expect(Object.keys(cleaned as object).sort()).toEqual(['message', 'stack', 'type']);
+  });
+
+  it('an error logged through the request logger (req.log) is cleaned the same way, with its real type and cause', async () => {
+    const { lines, logger } = capture();
+    const app = createApp({
+      logger,
+      routes: (a) => {
+        a.get('/api/test/request-log', (req, res) => {
+          const cause = Object.assign(new Error('duplicate key value violates unique constraint "people_email"'), {
+            code: '23505',
+            detail: 'Key (email)=(asha@example.com) already exists.',
+          });
+          const err = Object.assign(new DrizzleQueryError('select 1', ['asha@example.com', 'TOKEN-VALUE-123'], cause), {
+            input: 'postgres://nexus:DB-PASSWORD@localhost/nexus',
+          });
+          req.log.error({ err }, 'through the request logger');
+          res.json({ ok: true });
+        });
+      },
+    });
+    const res = await request(app).get('/api/test/request-log');
+    expect(res.status).toBe(200);
+    const text = lines.join('\n');
+    for (const secret of ['asha@example.com', 'TOKEN-VALUE-123', 'DB-PASSWORD']) expect(text).not.toContain(secret);
+    const line = parsed(lines).find((l) => l.msg === 'through the request logger');
+    expect(line?.req?.id).toBe(res.headers['x-request-id']);
+    expect(line?.err).toMatchObject({ type: 'DrizzleQueryError', message: 'Failed query: select 1', cause: { errorCode: '23505' } });
   });
 
   it('a blank LOG_LEVEL falls back to info', () => {
