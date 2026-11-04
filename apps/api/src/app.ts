@@ -16,8 +16,8 @@ export function createApp(options: AppOptions = {}): Express {
   app.set('trust proxy', 1);
   app.disable('x-powered-by');
   app.use(contextMiddleware());
-  app.use(express.json({ limit: '1mb' }));
   app.use(httpLogger(logger));
+  app.use(express.json({ limit: '1mb' }));
 
   app.get('/api/health', (_request, response) => {
     response.status(200).json({ ok: true, service: 'api' });

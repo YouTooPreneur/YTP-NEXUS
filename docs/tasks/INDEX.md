@@ -20,7 +20,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0008 | Code style and architecture checks | 2.1 | Set-up | Antigravity | Claude | 0007 | NFR-011, D-014 | Done | antigravity |
 | TASK-0009 | Allowed-files check and test lock | 2.1 | Set-up | Antigravity | Claude | 0008 | NFR-011 | Done | antigravity |
 | TASK-0010 | Shared backend steps: request context, logging, errors | 2.1 | Set-up | Antigravity | Claude | 0009 | NFR-001, NFR-012 | Done | antigravity |
-| TASK-0086 | Shared backend steps: safe logs | 2.1 | Set-up | Antigravity | Claude | 0010 | NFR-001 | To do | — |
+| TASK-0086 | Shared backend steps: safe logs | 2.1 | Set-up | Antigravity | Claude | 0010 | NFR-001 | Done | antigravity |
 | TASK-0011 | Shared backend steps: the route helper | 2.1 | Set-up | Antigravity | Claude | 0086 | D-019 | To do | — |
 | TASK-0012 | Contract, door and module-card checks; the Core module card | 2.1 | Set-up | Antigravity | Claude | 0011 | NFR-011 | To do | — |
 | TASK-0013 | Smoke test at computer and phone width; GitHub check run | 2.1 | Set-up | Antigravity | Claude | 0012 | NFR-009, CORE-113 | To do | — |
