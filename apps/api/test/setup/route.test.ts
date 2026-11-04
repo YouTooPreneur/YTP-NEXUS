@@ -227,6 +227,7 @@ describe('the input check', () => {
           code: z.string().min(5, 'Too short').regex(/^x/, 'Must start with x'),
           items: z.array(z.object({ name: z.string().min(1, 'Name needed') })).optional(),
         }),
+        query: z.strictObject({ page: z.string().optional() }),
         response: z.object({}),
       }),
       public: true,
@@ -241,5 +242,7 @@ describe('the input check', () => {
     expect(nested.body.error.fields).toEqual({ 'body.items.0.name': 'Name needed' });
     const twoIssues = await request(app()).post('/api/test/form').send({ code: 'ab' });
     expect(twoIssues.body.error.fields).toEqual({ 'body.code': 'Too short' });
+    const unknownQuery = await request(app()).post('/api/test/form?zzz=1').send({ code: 'xxxxx' });
+    expect(Object.keys(unknownQuery.body.error.fields)).toEqual(['query']);
   });
 });

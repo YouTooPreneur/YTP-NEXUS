@@ -75,6 +75,14 @@ test('checkModuleCards wants the six parts, every door and every announcement', 
     'module crm has no MODULE.md',
   ]);
   assert.deepEqual(
+    checkModuleCards({
+      modules: [{ name: 'crm', card: null }],
+      routes: [{ ...listUsers, module: 'crm' }],
+      announcements: [{ name: 'crm.lead.won', module: 'crm' }],
+    }),
+    ['module crm has no MODULE.md'],
+  );
+  assert.deepEqual(
     checkModuleCards({ modules: [{ name: 'core', card: good.replace('`core.user.disabled`', 'core.user.disabled') }], routes: [], announcements }),
     ['core.user.disabled is not listed under Announcements in core/MODULE.md'],
   );

@@ -46,10 +46,10 @@ TASK-0010  apps/api/test/setup/context.test.ts  d9e9195967c883a454e6e74d5c95a3d3
 TASK-0010  apps/api/test/setup/errors.test.ts  39cb57651e77eaffcb56a3673049c83b17f499d211994c908a3d0e728465b635
 TASK-0010  apps/api/test/setup/logging.test.ts  e6f278fa7e669db4553c40452463718916094f3114629c2033fc3f9811d51c07
 TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104d4fec1e62ddb8d7898084fe5273c3
-TASK-0011  apps/api/test/setup/route.test.ts  5a3274b97c939a6aa7a22a55d38dae57a31b55d01851426e358d66ede985a335
-TASK-0012  tests/setup/TASK-0012.test.mjs  571ddaab8a7d22d88bb21cdb07cd193f368bccf5a7ca83389f213b7b26d7d1cf
+TASK-0011  apps/api/test/setup/route.test.ts  532e17bc570c94008d4c7f8c552c67756666feefb9ffb3101866d18c04310b45
+TASK-0012  tests/setup/TASK-0012.test.mjs  dabf532b01c76e11db2006dec068681177d8a2e514be0a5bca790865874afd3e
 TASK-0013  apps/web/test/setup/api-status.test.tsx  b2532a6aecaac504e9e661edd6d08991e591f3ebb0dfb7453b3011863c8fd0df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
-TASK-0013  tests/setup/TASK-0013.test.mjs  bcbffb02a0e73a2e08e837204ef5f8999f2b03a1ad0ff13ad014cb512dd9741c
+TASK-0013  tests/setup/TASK-0013.test.mjs  46ce1a3f29a4f5871e0a737f5ddfc6de5979f1d2aea8a3dba53449aa38b525a6
 TASK-0086  apps/api/test/setup/log-safety.test.ts  eca7ffd7dbf289c16c8f00270a22fab4fef8841a409e4e52298c8b4d320f4c13
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e

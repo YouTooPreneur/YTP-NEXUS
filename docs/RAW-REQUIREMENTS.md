@@ -491,3 +491,4 @@ Asked one by one after batches 8 and 9 were built.
 - "done" (TASK-0086) → Claude reviews TASK-0086: PASS, merged into `main`, shown before and after (secrets in the log 10 times before, 0 after); the last gap found (an error logged without a message) is fixed by a small careful card, TASK-0087, built before TASK-0011 (CR-011), 4 Nov 2026.
 - "done" (TASK-0087) → Claude reviews TASK-0087: PASS, merged into `main`, shown before and after (a database error no longer puts a reset code and an email into the log); notes only, 4 Nov 2026.
 - "done" (TASK-0011) → Claude reviews TASK-0011: PASS, merged into `main`, shown with a sample door; CR-012 plan fixes applied; the re-check and the TASK-0012 trial build wait for the next session (usage limit), 4 Nov 2026.
+- "continue" (after the usage limit) → Claude re-checks CR-012 (5 of its own notes corrected) and trial-builds TASK-0012 and TASK-0013 (both pass first time); TASK-0012 goes to Antigravity, 4 Nov 2026.
