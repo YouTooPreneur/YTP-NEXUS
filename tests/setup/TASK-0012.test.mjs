@@ -30,6 +30,20 @@ test('compareRoutesToContracts finds doors missing on either side', () => {
   assert.deepEqual(compareRoutesToContracts([health, listUsers, extra], openapi), [
     'route without contract: delete /api/core/users/{userId} deleteUser',
   ]);
+  // Added in the review of TASK-0012 (CR-013): method, path and operationId must all agree.
+  const one = { paths: { '/api/health': { get: { operationId: 'getHealth' } } } };
+  assert.deepEqual(compareRoutesToContracts([{ ...health, operationId: 'checkHealth' }], one), [
+    'contract without route: get /api/health getHealth',
+    'route without contract: get /api/health checkHealth',
+  ]);
+  assert.deepEqual(compareRoutesToContracts([{ ...health, path: '/api/healthz' }], one), [
+    'contract without route: get /api/health getHealth',
+    'route without contract: get /api/healthz getHealth',
+  ]);
+  assert.deepEqual(compareRoutesToContracts([{ ...health, method: 'post' }], one), [
+    'contract without route: get /api/health getHealth',
+    'route without contract: post /api/health getHealth',
+  ]);
 });
 
 test('checkDoors finds doors without a permission or feature, and checks the sign-in list once it exists', () => {
@@ -134,6 +148,76 @@ test('verify runs the three checks after Architecture, and Allowed files stays l
   assert.equal(names.at(-1), 'Allowed files');
 });
 
+// Added in the review of TASK-0012 (CR-013): step 9's wiring, which no check guarded yet.
+test('loading the verify steps runs nothing: routes:list waits for its step (step 9)', () => {
+  const empty = mkdtempSync(join(tmpdir(), 'nexus-nopath-'));
+  try {
+    const env = { ...process.env };
+    for (const key of Object.keys(env)) if (/^path$/i.test(key)) delete env[key];
+    env.PATH = empty; // pnpm cannot be found, so anything run while steps.mjs loads fails
+    const out = spawnSync(process.execPath, ['tools/verify/verify.mjs', '--list'], { encoding: 'utf8', env });
+    assert.equal(out.status, 0, `verify --list failed without pnpm on PATH: ${out.stderr}`);
+    assert.equal(out.stdout.split(/\r?\n/).filter(Boolean).at(-1), 'Allowed files');
+  } finally {
+    rmSync(empty, { recursive: true, force: true });
+  }
+});
+
+test('Contract, Doors and Module cards read the backend list, the API list and the module cards, sharing one routes:list run', () => {
+  const ws = mkdtempSync(join(tmpdir(), 'nexus-wiring-'));
+  const put = (file, text) => {
+    mkdirSync(join(ws, file, '..'), { recursive: true });
+    writeFileSync(join(ws, file), text);
+  };
+  try {
+    const listLeads = {
+      operationId: 'listLeads', method: 'get', path: '/api/crm/leads', module: 'cmr', public: false,
+      permission: { module: 'crm.leads', action: 'view' }, feature: 'crm.leads',
+    };
+    const listed = {
+      routes: [health, { ...listUsers, feature: null }, listLeads],
+      authRoutes: ['POST /api/auth/update-user'],
+      announcements: [{ name: 'core.user.disabled', module: 'core' }],
+    };
+    put('package.json', '{"name":"ws","private":true}');
+    put('pnpm-workspace.yaml', 'packages:\n  - "apps/*"\n');
+    put('apps/api/package.json', '{"name":"@ytp/api","private":true,"scripts":{"routes:list":"node print.mjs"}}');
+    put('apps/api/listed.json', JSON.stringify(listed));
+    put('apps/api/print.mjs', "import { appendFileSync, readFileSync } from 'node:fs';\nappendFileSync('runs.txt', 'run\\n');\nprocess.stdout.write(readFileSync('listed.json', 'utf8'));\n");
+    put('packages/contracts/openapi.json', JSON.stringify({ paths: { '/api/health': { get: { operationId: 'getHealth' } } } }));
+    put('tools/verify/auth-routes.json', readFileSync('tools/verify/auth-routes.json', 'utf8'));
+    put('apps/api/src/modules/core/MODULE.md', readFileSync('apps/api/src/modules/core/MODULE.md', 'utf8'));
+    mkdirSync(join(ws, 'apps', 'api', 'src', 'modules', 'crm'), { recursive: true });
+    const run = (name, ctx) => steps.find((s) => s.name === name).run(ctx);
+    const runs = () => readFileSync(join(ws, 'apps', 'api', 'runs.txt'), 'utf8').split('\n').filter(Boolean).length;
+    const allowedSorted = JSON.parse(readFileSync('tools/verify/auth-routes.json', 'utf8')).sort();
+    const ctx = { root: ws, card: null, selected: [] };
+    assert.deepEqual(run('Contract', ctx), {
+      ok: false,
+      note: 'route without contract: get /api/core/users listUsers; route without contract: get /api/crm/leads listLeads',
+    });
+    assert.deepEqual(run('Doors', ctx), {
+      ok: false,
+      note: [
+        'door without permission or feature: listUsers',
+        'sign-in door not on the list: POST /api/auth/update-user',
+        ...allowedSorted.map((r) => `sign-in door on the list but missing: ${r}`),
+      ].join('; '),
+    });
+    assert.deepEqual(run('Module cards', ctx), {
+      ok: false,
+      note: 'core.user.disabled is not listed under Announcements in core/MODULE.md; listLeads belongs to module cmr, which has no folder; listUsers is not listed under Window in core/MODULE.md; module crm has no MODULE.md',
+    });
+    assert.equal(runs(), 1, 'routes:list must run once and be shared through ctx');
+    const alone = run('Module cards', { root: ws, card: null, selected: [] });
+    assert.equal(alone.ok, false);
+    assert.match(alone.note, /^core\.user\.disabled is not listed under Announcements/);
+    assert.equal(runs(), 2, 'a step runs routes:list itself when ctx does not have it');
+  } finally {
+    rmSync(ws, { recursive: true, force: true });
+  }
+});
+
 // A throwaway git folder for the allowed-files checks (CR-009).
 function gitFolder(branch) {
   const dir = mkdtempSync(join(tmpdir(), 'nexus-verify-'));
@@ -183,6 +267,16 @@ test('commitProblems names every commit after the start point that is not named 
     const problems = commitProblems(dir, start);
     assert.equal(problems.length, 1, JSON.stringify(problems));
     assert.match(problems[0], /^commit not named for a card: [0-9a-f]{7,} tidy up$/);
+    // Added in the review of TASK-0012 (CR-013): no merges, oldest first, the colon after the card ID.
+    commit('TASK-0100 Fix without a colon', { 'b.txt': 'b' });
+    git('checkout', '-q', '-b', 'side');
+    commit('TASK-0100: Side work', { 'c.txt': 'c' });
+    git('checkout', '-q', 'task/TASK-0100');
+    git('merge', '-q', '--no-ff', '-m', "Merge branch 'side' into task/TASK-0100", 'side');
+    assert.deepEqual(commitProblems(dir, start).map((p) => p.replace(/[0-9a-f]{7,}/, 'H')), [
+      'commit not named for a card: H tidy up',
+      'commit not named for a card: H TASK-0100 Fix without a colon',
+    ]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -215,6 +309,11 @@ test('the Allowed files step reports a commit not named for a card', () => {
     const result = allowedStep.run({ root: dir, card: 'TASK-0100' });
     assert.equal(result.ok, false);
     assert.match(result.note, /^commit not named for a card: [0-9a-f]{7,} tidy up$/);
+    commit('TASK-0100: Second part [antigravity]', { 'docs/PLAN.md': 'p' });
+    assert.match(
+      allowedStep.run({ root: dir, card: 'TASK-0100' }).note,
+      /^not allowed: docs\/PLAN\.md; commit not named for a card: [0-9a-f]{7,} tidy up$/,
+    );
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

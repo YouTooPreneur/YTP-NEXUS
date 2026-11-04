@@ -36,8 +36,8 @@
 ## Evidence
 - `docs/evidence/TASK-XXXX/<files>` (for a screenshot, write here the address it shows)
 - Save the final verify output with exactly one of these, which keep both output streams and leave out colour codes:
-  - Git Bash: `NO_COLOR=1 pnpm verify --card TASK-XXXX > docs/evidence/TASK-XXXX/verify-output.txt 2>&1`
-  - PowerShell: `$env:NO_COLOR = '1'; cmd /c "pnpm verify --card TASK-XXXX > docs\evidence\TASK-XXXX\verify-output.txt 2>&1"`
+  - Git Bash: `mkdir -p docs/evidence/TASK-XXXX && NO_COLOR=1 pnpm verify --card TASK-XXXX > docs/evidence/TASK-XXXX/verify-output.txt 2>&1`
+  - PowerShell: `New-Item -ItemType Directory -Force docs/evidence/TASK-XXXX | Out-Null; $env:NO_COLOR = '1'; cmd /c "pnpm verify --card TASK-XXXX > docs\evidence\TASK-XXXX\verify-output.txt 2>&1"`
   - Never save it with `WriteAllLines`, `Out-File` or a PowerShell `>`: they drop pnpm's lines on the error stream (failure details included) or write the wrong encoding.
 
 ## Notes for next task
