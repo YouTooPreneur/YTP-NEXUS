@@ -26,7 +26,8 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0088 | Root files type-checked, lint warnings as errors, every end-to-end test runs | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0089 | Tighter module-card, door and commit checks | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0090 | Services on this computer only, and reading infra/.env | careful | The development services' exposure and the backend's settings: everything later relies on them |
-| TASK-0014 | Database accounts, schemas, the migrate service, and PostgreSQL in the GitHub check run | careful | Database foundations: company separation, logs, data safety |
+| TASK-0014 | Database accounts, the test database, and PostgreSQL in GitHub's check run | careful | Database foundations: company separation, logs, data safety |
+| TASK-0091 | The core and audit schemas, the first database changes and the migrate command | careful | Database foundations: company separation, logs, data safety |
 | TASK-0015 | Company context and row rules | careful | Database foundations: company separation, logs, data safety |
 | TASK-0016 | Transaction per request and short security writes | careful | Database foundations: company separation, logs, data safety |
 | TASK-0084 | Same-site check for data-changing requests | careful | Database foundations: company separation, logs, data safety |

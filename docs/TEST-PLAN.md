@@ -40,8 +40,8 @@
 
 ## 4. Test data and the test database
 
-- **Development services** (card 0006) run PostgreSQL 16, SeaweedFS (files) and Mailpit (email) in Docker on the builder's computer.
-- **The test database** `nexus_test` is created next to the development database. From step 2.2, the backend's test setup applies every database change to it, and each test file starts from an empty company set.
+- **Development services** (card 0006) run PostgreSQL 16, SeaweedFS (files) and Mailpit (email) in Docker on the builder's computer, on `127.0.0.1` only (TASK-0090). From TASK-0014 on, `pnpm verify` needs them: start Docker Desktop, then run `pnpm services:up`.
+- **The test database** `nexus_test` lives on the same server as the development database `nexus_dev`; the database accounts belong to the whole server, so both share them. The backend's database tests (`apps/api/test/db/`, the Vitest group `db` in `apps/api/vitest.config.ts`) read `infra/.env.test`, which is git-ignored: Claude makes it in each copy from `infra/.env` (the same passwords, database `nexus_test`), and GitHub's check run copies `infra/.env.test.example` (made-up values) next to its own PostgreSQL. Their set-up (the planner's, from TASK-0014) refuses any database but `nexus_test`, refuses an `infra/.env.test` whose passwords differ from `infra/.env`, deletes `nexus_test` at the start of every run, holds a lock so runs from different copies take turns, and runs the test files one at a time; it stops with a plain reason when the database is not running. From TASK-0015 it also makes the accounts and applies every database change before the first file, and each test file starts from an empty company set. The other backend tests (the group `unit`) need nothing running.
 - **Two test companies** ("Test Company A" and "Test Company B") are made by the test helpers, never by hand, so the company-separation tests (CORE-014, NFR-014) always run.
 - **Emails** are read back from Mailpit's own API in tests (two-step codes, reset links, alerts).
 - **Time** is controlled with fake timers for timeouts, locks and the 30-day clean-up.

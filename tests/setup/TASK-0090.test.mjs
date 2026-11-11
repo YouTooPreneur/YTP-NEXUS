@@ -26,20 +26,33 @@ test('the development services listen on this computer only, and the database ch
   assert.equal(out.status, 0, out.stderr);
   const services = JSON.parse(out.stdout).services;
   const published = Object.entries(services).flatMap(([name, s]) => (s.ports ?? []).map((p) => [name, p]));
-  assert.equal(published.length, 4, JSON.stringify(published));
-  for (const [name, port] of published) assert.equal(port.host_ip, '127.0.0.1', `${name} port ${port.published} listens on every address`);
+  for (const [name, target] of [
+    ['postgres', 5432],
+    ['seaweedfs', 8333],
+    ['mailpit', 1025],
+    ['mailpit', 8025],
+  ]) {
+    assert.ok(
+      published.some(([n, p]) => n === name && p.target === target),
+      `${name} ${target} is published`,
+    );
+  }
+  for (const [name, port] of published) {
+    assert.equal(port.host_ip, '127.0.0.1', `${name} port ${port.published} listens on every address`);
+  }
   assert.deepEqual(services.postgres.healthcheck.test, ['CMD-SHELL', 'pg_isready -U postgres -h 127.0.0.1']);
 });
 
-test('the API and the worker read infra/.env first', () => {
-  const main = read('apps/api/src/main.ts');
-  const worker = read('apps/api/src/worker.ts');
-  for (const [name, text] of [['main.ts', main], ['worker.ts', worker]]) {
-    assert.match(text, /^import \{ loadSettingsFile \} from '\.\/settings-file\.js';$/m, name);
-    assert.match(text, /^loadSettingsFile\(\);$/m, name);
-  }
-  assert.ok(main.indexOf('loadSettingsFile();') < main.indexOf('createLogger()'), 'main.ts reads the settings before it makes the logger');
-  assert.ok(worker.indexOf('loadSettingsFile();') < worker.indexOf("console.log('worker started')"), 'worker.ts reads the settings first');
+test('the API and the worker read infra/.env before any other file loads', () => {
+  // Every import runs before the importing file's own lines, so the read must be the first import.
+  const imports = (path) =>
+    read(path)
+      .split(/\r?\n/)
+      .filter((line) => /^import\b/.test(line));
+  assert.equal(imports('apps/api/src/main.ts')[0], "import './load-settings.js';");
+  assert.equal(imports('apps/api/src/worker.ts')[0], "import './load-settings.js';");
+  assert.deepEqual(imports('apps/api/src/load-settings.ts'), ["import { loadSettingsFile } from './settings-file.js';"]);
+  assert.match(read('apps/api/src/load-settings.ts'), /^loadSettingsFile\(\);$/m);
 });
 
 test('the settings file is infra/.env at the top of the project', () => {
@@ -54,10 +67,11 @@ test('routes:list needs no settings and loads none (CR-012)', () => {
   const list = spawnSync('pnpm', ['--filter', '@ytp/api', '--silent', 'routes:list'], { encoding: 'utf8', shell: true, env });
   assert.equal(list.status, 0, list.stderr);
   assert.ok(JSON.parse(list.stdout).routes.length > 0, 'routes:list prints one JSON object');
-  // Loading everything list-routes.ts loads sets none of the settings, even where this copy has an infra/.env.
+  // Loading list-routes.ts and everything it loads reads no settings file and sets none of the settings,
+  // even where this copy has an infra/.env.
   const names = JSON.stringify(NAMES);
-  const script = `Promise.all([import('./src/routes.ts'), import('./src/announcements.ts')]).then(() => console.log(JSON.stringify(${names}.filter((n) => n in process.env))))`;
+  const script = `const loads = []; process.loadEnvFile = (path) => { loads.push(String(path)); }; import('./scripts/list-routes.ts').then(() => console.log(JSON.stringify({ set: ${names}.filter((n) => n in process.env), loads })))`;
   const loaded = spawnSync(process.execPath, ['--import', 'tsx', '-e', script], { cwd: 'apps/api', encoding: 'utf8', env });
   assert.equal(loaded.status, 0, loaded.stderr);
-  assert.deepEqual(JSON.parse(loaded.stdout.trim().split(/\r?\n/).at(-1)), []);
+  assert.deepEqual(JSON.parse(loaded.stdout.trim().split(/\r?\n/).at(-1)), { set: [], loads: [] });
 });

@@ -499,3 +499,4 @@ Asked one by one after batches 8 and 9 were built.
 - (found by Claude, 11 Nov 2026) the GitHub repository is public, against D-192; no secret in it; the owner makes it private (Settings → General → Change visibility).
 - "done" (TASK-0088) → Claude reviews TASK-0088: PASS, merged into `main`, shown catching 3 kinds of mistake the check used to miss; CR-015 notes for later cards; TASK-0089 goes to Antigravity; the repository is still public, 11 Nov 2026.
 - "done" (TASK-0089) → Claude reviews TASK-0089: PASS, merged into `main`, shown catching planted mistakes; step 2.1 finished; CR-016 notes; next the owner's two-person check and step 2.2's cards; the repository is still public, 11 Nov 2026.
+- "Yes, start step 2.2" → Claude writes step 2.2's first cards: TASK-0014 split in three (TASK-0090, TASK-0014, TASK-0091, CR-017); TASK-0090 trial-built and fixed; TASK-0014 written and prototyped; TASK-0090 goes to Antigravity, 11 Nov 2026.
