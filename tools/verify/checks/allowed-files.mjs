@@ -181,6 +181,7 @@ export function commitProblems(root, startCommit) {
   if (hasMain) {
     logArgs.push('--not', 'main');
   }
+  logArgs.push('--');
 
   const out = git(logArgs);
   const lines = out.split(/\r?\n/).filter(Boolean);

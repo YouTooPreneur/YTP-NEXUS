@@ -2,6 +2,19 @@ const HTTP_METHODS = new Set(['get', 'post', 'put', 'delete', 'patch', 'options'
 
 export function compareRoutesToContracts(routes = [], openapi = {}) {
   const problems = [];
+  const doorCount = new Map();
+  const idCount = new Map();
+  for (const r of routes) {
+    const door = `${(r.method || '').toLowerCase()} ${r.path}`;
+    doorCount.set(door, (doorCount.get(door) ?? 0) + 1);
+    idCount.set(r.operationId, (idCount.get(r.operationId) ?? 0) + 1);
+  }
+  for (const [door, count] of doorCount) {
+    if (count > 1) problems.push(`door listed twice: ${door}`);
+  }
+  for (const [operationId, count] of idCount) {
+    if (count > 1) problems.push(`operationId used twice: ${operationId}`);
+  }
   const routeMap = new Map();
 
   for (const r of routes) {
