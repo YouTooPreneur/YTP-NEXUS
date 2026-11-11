@@ -7,7 +7,7 @@
 1. Write the release's task cards; Antigravity, Codex or Claude builds them (D-185).
 2. The owner and a team member check each part.
 3. Put it online; the team uses it for 1 to 2 weeks.
-4. Collect the feedback in one list; fix and improve.
+4. Collect the feedback in one list (the release's feedback list, under its heading below); fix and improve.
 5. The owner closes the release; the next one starts.
 
 ## The releases at a glance
@@ -56,6 +56,12 @@
 | SCR-193 | Feature switches |
 | SCR-194 | Monitoring |
 | SCR-195 | Logs |
+
+**Release 1 feedback list.** Problems found in each step's two-person check and while the team uses Release 1. The owner tells Claude, and Claude writes them here.
+
+| Date | Found by | Problem | Fixed by (card or change) |
+|---|---|---|---|
+| — | — | — | — |
 
 ### Release 2 · Daily tools (13 screens)
 

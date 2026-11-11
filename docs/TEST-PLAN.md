@@ -85,7 +85,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 
 ## 6. The two-person check (D-152)
 
-At the end of each Release 1 step, the owner and a team member click through what the step built, using a short checklist the planner writes into that step's last card. Problems found go into the feedback list for Release 1; nothing is changed by hand.
+At the end of each Release 1 step, the owner and a team member click through what the step built, using a short checklist the planner writes into that step's last card. Problems found go into the release's feedback list in `docs/RELEASES.md` (the owner tells Claude, and Claude writes them there); nothing is changed by hand.
 
 ## 7. Going live (step 2.8)
 
