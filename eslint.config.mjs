@@ -25,12 +25,33 @@ export default defineConfig(
     ],
   },
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.mjs'],
+    linterOptions: { reportUnusedDisableDirectives: 'error' },
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx', '**/*.mjs', '**/*.js', '**/*.cjs'],
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
+  },
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
   },
   {
     files: ['apps/web/**', 'packages/ui/**'],
     ...reactHooks.configs.flat.recommended,
+  },
+  {
+    files: ['apps/web/**', 'packages/ui/**'],
+    rules: {
+      'react-hooks/exhaustive-deps': 'error',
+    },
   },
   {
     files: [
