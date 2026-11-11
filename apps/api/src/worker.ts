@@ -1,3 +1,5 @@
+import './load-settings.js';
+
 console.log('worker started');
 
 const timer = setInterval(() => {}, 60_000);
