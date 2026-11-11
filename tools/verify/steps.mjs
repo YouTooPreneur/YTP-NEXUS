@@ -105,6 +105,30 @@ export const steps = [
           allOk = false;
         }
       }
+
+      const rootTsconfigPath = path.join(ctx.root, 'tsconfig.json');
+      if (fs.existsSync(rootTsconfigPath)) {
+        const rootTsconfig = JSON.parse(fs.readFileSync(rootTsconfigPath, 'utf8'));
+        const rootInclude = Array.isArray(rootTsconfig.include) ? rootTsconfig.include : [];
+        const rootTestFiles = ctx.selected.filter((f) => f.startsWith('tests/e2e/'));
+        fs.writeFileSync(
+          path.join(ctx.root, 'tsconfig.verify.json'),
+          JSON.stringify(
+            { extends: './tsconfig.json', include: [...rootInclude, ...rootTestFiles] },
+            null,
+            2,
+          ) + '\n',
+          'utf8',
+        );
+        const res = spawnSync('pnpm', ['exec', 'tsc', '-p', 'tsconfig.verify.json', '--noEmit'], {
+          cwd: ctx.root,
+          shell: true,
+          stdio: 'inherit',
+        });
+        if (res.status !== 0) {
+          allOk = false;
+        }
+      }
       return { ok: allOk };
     },
   },
@@ -269,15 +293,11 @@ export const steps = [
       if (e2eFiles.length === 0) {
         return { ok: true, note: 'no end-to-end tests to run' };
       }
-      const res = spawnSync(
-        'pnpm',
-        ['exec', 'playwright', 'test', '--grep', '@smoke', ...e2eFiles],
-        {
-          cwd: ctx.root,
-          shell: true,
-          stdio: 'inherit',
-        },
-      );
+      const res = spawnSync('pnpm', ['exec', 'playwright', 'test', ...e2eFiles], {
+        cwd: ctx.root,
+        shell: true,
+        stdio: 'inherit',
+      });
       return { ok: res.status === 0 };
     },
   },
