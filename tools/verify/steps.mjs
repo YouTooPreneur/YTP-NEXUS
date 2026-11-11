@@ -18,19 +18,30 @@ function getRoutesData(ctx) {
   if (ctx.routesData) {
     return ctx.routesData;
   }
+  if (ctx.routesError) {
+    throw ctx.routesError;
+  }
   const res = spawnSync('pnpm', ['--filter', '@ytp/api', '--silent', 'routes:list'], {
     cwd: ctx.root,
     shell: true,
     encoding: 'utf8',
   });
   if (res.status !== 0 || !res.stdout) {
-    throw new Error(
+    ctx.routesError = new Error(
       res.stderr ? res.stderr.trim() : `routes:list failed with status ${res.status}`,
     );
+    throw ctx.routesError;
   }
-  const data = JSON.parse(res.stdout);
-  ctx.routesData = data;
-  return data;
+  try {
+    ctx.routesData = JSON.parse(res.stdout);
+  } catch {
+    const firstLine = res.stdout.split(/\r?\n/).find((line) => line.trim() !== '') ?? '';
+    ctx.routesError = new Error(
+      `routes:list did not print JSON: ${firstLine.trim().slice(0, 200)}`,
+    );
+    throw ctx.routesError;
+  }
+  return ctx.routesData;
 }
 
 export const steps = [

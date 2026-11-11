@@ -26,7 +26,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0012 | Contract, door and module-card checks; the Core module card | 2.1 | Set-up | Antigravity | Claude | 0011 | NFR-011 | Done | antigravity |
 | TASK-0013 | Smoke test at computer and phone width; GitHub check run | 2.1 | Set-up | Antigravity | Claude | 0012 | NFR-009, CORE-113 | Done | antigravity |
 | TASK-0088 | Root files type-checked, lint warnings as errors, every end-to-end test runs | 2.1 | Set-up | Antigravity | Claude | 0013 | NFR-011 | Done | antigravity |
-| TASK-0089 | Tighter module-card, door and commit checks | 2.1 | Set-up | Antigravity | Claude | 0088 | NFR-011 | To do | — |
+| TASK-0089 | Tighter module-card, door and commit checks | 2.1 | Set-up | Antigravity | Claude | 0088 | NFR-011 | Done | antigravity |
 | TASK-0014 | Database accounts, schemas, the migrate service, and PostgreSQL in the GitHub check run | 2.2 | Backend | Claude | Codex | 0006, 0089 | CORE-014 | To do | — |
 | TASK-0015 | Company context and row rules | 2.2 | Backend | Claude | Codex | 0014 | CORE-014, NFR-014 | To do | — |
 | TASK-0016 | Transaction per request and short security writes | 2.2 | Backend | Claude | Codex | 0015 | NFR-021 | To do | — |
