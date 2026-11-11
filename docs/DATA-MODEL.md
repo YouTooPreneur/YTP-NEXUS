@@ -592,7 +592,7 @@ Each module lists its main records, what links them to other modules (always by 
 
 ## 5. Main announcements between modules
 
-Every row follows the floors (D-014): **announcements go up** (to a higher floor, or to the read-only Command Centre and Reports); **everything downward is an ask** through the lower module's window. Listeners on the same floor wait for open point 8 (Release 3). The full list for each module is on its module card.
+Every row follows the floors (D-014): **announcements go up** (to a higher floor, or to the read-only Command Centre and Reports); **everything downward is an ask** through the lower module's window. Listeners on the same floor wait for open point 8 (Release 3). This table is the plan; each announcement is added to its module card by the card that builds it (CR-014).
 
 | Announcement | From | Who listens | Release |
 |---|---|---|---|

@@ -20,8 +20,10 @@ test('TypeScript and Node types are pinned at the root, and the root files are c
   assert.equal(pkg.devDependencies['@types/node'], '24.19.2');
   const root = json('tsconfig.json');
   assert.equal(root.extends, './tsconfig.base.json');
-  assert.deepEqual(root.include, ['playwright.config.ts']);
-  assert.deepEqual(root.compilerOptions.types, ['node']);
+  // Lenient on purpose: a later card may add a root config file or another types entry.
+  assert.ok(root.include.includes('playwright.config.ts'), 'playwright.config.ts is type-checked');
+  assert.ok(!root.include.some((p) => p.startsWith('tests')), 'tests/e2e is added by the Type check step, not by include');
+  assert.ok(root.compilerOptions.types.includes('node'), "Node's types are on at the root");
   assert.equal(root.compilerOptions.noEmit, true);
   assert.ok(json('apps/web/tsconfig.json').include.includes('orval.config.ts'), 'orval.config.ts is type-checked with the screens');
 });
@@ -67,31 +69,42 @@ test('the screens catch a misspelt option in their API client settings (orval)',
   }
 });
 
-test('the Type check step type-checks the selected end-to-end files at the root', () => {
+test('the Type check step type-checks the root files and the selected end-to-end files', () => {
   const dir = probeFolder();
   try {
     const probe = join(dir, 'wrong-type.ts').replace(/\\/g, '/');
     writeFileSync(probe, "export const count: number = 'not a number';\n");
-    const typeCheck = steps.find((s) => s.name === 'Type check');
-    assert.equal(typeCheck.run({ root: '.', selected: [probe] }).ok, false);
+    // The step runs in its own process, so its planted TS2322 line is read here and never printed into a verify run.
+    const script = `import('./tools/verify/steps.mjs').then(({ steps }) => process.exit(steps.find((s) => s.name === 'Type check').run({ root: '.', selected: ['${probe}'] }).ok ? 0 : 1))`;
+    const out = spawnSync(process.execPath, ['-e', script], { encoding: 'utf8' });
+    assert.equal(out.status, 1, out.stdout + out.stderr);
+    assert.match(out.stdout, /wrong-type\.ts\(1,14\): error TS2322/, out.stdout + out.stderr);
+    // The root files stay in the list: playwright.config.ts is type-checked together with the selected end-to-end files.
+    assert.deepEqual(json('tsconfig.verify.json').include, [...json('tsconfig.json').include, probe]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
 });
 
-test('lint fails on a missing hook dependency, an unused eslint-disable and a mistake in a .cjs file', () => {
-  const hook = lint(
-    'apps/web/src/probe-0088.tsx',
-    "import { useEffect } from 'react';\n\nexport function Probe({ id }: { id: string }) {\n  useEffect(() => {\n    document.title = id;\n  }, []);\n  return null;\n}\n",
-  );
-  assert.notEqual(hook.status, 0, hook.stdout);
-  assert.match(hook.stdout, /error\s+React Hook useEffect has a missing dependency/);
+test('lint fails on a missing hook dependency (screens and ui), an unused eslint-disable and a mistake in a .js or .cjs file', () => {
+  const hookProbe =
+    "import { useEffect } from 'react';\n\nexport function Probe({ id }: { id: string }) {\n  useEffect(() => {\n    document.title = id;\n  }, []);\n  return null;\n}\n";
+  for (const where of ['apps/web/src', 'packages/ui/src']) {
+    const hook = lint(`${where}/probe-0088.tsx`, hookProbe);
+    assert.notEqual(hook.status, 0, `${where}: ${hook.stdout}`);
+    assert.match(hook.stdout, /error\s+React Hook useEffect has a missing dependency/, `${where}: ${hook.stdout}`);
+  }
   const directive = lint('apps/api/src/probe-0088.ts', '// eslint-disable-next-line no-console\nexport const value = 1;\n');
   assert.notEqual(directive.status, 0, directive.stdout);
   assert.match(directive.stdout, /error\s+Unused eslint-disable directive/);
-  const cjs = lint('probe-0088.cjs', 'module.exports = { value: notDefinedAnywhere };\n');
+  // A .cjs file gets the recommended rules and Node's globals, and may use require().
+  const cjs = lint('probe-0088.cjs', "const path = require('node:path');\nmodule.exports = { value: notDefinedAnywhere, path };\n");
   assert.notEqual(cjs.status, 0, cjs.stdout);
   assert.match(cjs.stdout, /'notDefinedAnywhere' is not defined/);
+  assert.doesNotMatch(cjs.stdout, /'module' is not defined|'require' is not defined|no-require-imports/, cjs.stdout);
+  const plainJs = lint('probe-0088.js', 'export const value = notDefinedAnywhere;\n');
+  assert.notEqual(plainJs.status, 0, plainJs.stdout);
+  assert.match(plainJs.stdout, /'notDefinedAnywhere' is not defined/);
 });
 
 test('every selected end-to-end test runs, tagged @smoke or not', () => {

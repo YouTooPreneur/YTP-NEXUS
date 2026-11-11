@@ -31,7 +31,7 @@ Patterns: `*` matches inside one folder; `**` matches anything, including `/`. S
 - `<path to test file>`
 
 ## VERIFY AND DEBUG
-Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries. If End-to-end smoke says a URL "is already used", do not change `playwright.config.ts`: stop the server on port 3000 or 5173 if you started it, otherwise wait for the other run to finish, then run verify again.
+Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries. If End-to-end smoke says a URL "is already used", do not change `playwright.config.ts`: stop the server on port 3000 or 5173 if you started it, otherwise wait for the other run to finish, then run verify again. Lines saying `The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set` are expected and need no fix.
 Still failing: mark BLOCKED in `docs/STATUS.md`, explain in your log, and STOP.
 
 ## WHEN GREEN

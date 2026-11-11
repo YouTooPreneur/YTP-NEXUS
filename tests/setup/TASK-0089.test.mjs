@@ -60,6 +60,19 @@ test('an entry under Window or Announcements that no longer exists is reported',
     checkModuleCards({ modules: core(card('- `getHealth`: GET `/api/health`, see also `listUsers`')), routes: [health], announcements: [] }),
     [],
   );
+  // ...and a door or announcement named only later in a line, or in a note, is not listed (both directions agree).
+  assert.deepEqual(
+    checkModuleCards({ modules: core(card('- `getHealth`: GET /api/health, see also `listUsers`')), routes: [health, listUsers], announcements: [] }),
+    ['listUsers is not listed under Window in core/MODULE.md'],
+  );
+  assert.deepEqual(
+    checkModuleCards({
+      modules: core(card('- `getHealth`: GET /api/health', '- (none yet; `core.user.disabled` comes later)')),
+      routes: [health],
+      announcements: [{ name: 'core.user.disabled', module: 'core' }],
+    }),
+    ['core.user.disabled is not listed under Announcements in core/MODULE.md'],
+  );
 });
 
 test('the same door twice, or one operationId on two doors, is reported', () => {
