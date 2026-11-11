@@ -45,7 +45,7 @@ It holds the private conversation, so share it with nobody.
    git worktree prune
    ```
    If Python is called `py` on that laptop, change `python` to `py` in `.claude/settings.json`.
-5. **Check:** with Docker Desktop running, run `pnpm services:up` (it must end without an error). Make `infra/.env.test` from `infra/.env` if it is missing (Claude does it: the same file with `nexus_dev` changed to `nexus_test`; never print either file). Then `pnpm verify` must end with `verify: PASSED`.
+5. **Check:** with Docker Desktop running, run `pnpm services:up` (it must end without an error). The new laptop's database is new: it has no accounts and no tables yet. So, from TASK-0014 on, run `pnpm --filter @ytp/api --silent db:accounts` once; it must print `database accounts ready on nexus_dev: nexus_owner, nexus_app, nexus_system, nexus_backup`. From TASK-0091 on, then also run `pnpm --filter @ytp/api --silent db:migrate` once; it must print a line starting `database changes applied on nexus_dev:`. Make `infra/.env.test` from `infra/.env` if it is missing (Claude does it: the same file with `nexus_dev` changed to `nexus_test`; never print either file). Then `pnpm verify` must end with `verify: PASSED`.
 6. **The card in progress:** a remade builder copy (`git worktree add`) has no `infra/.env` or `infra/.env.test`, because both are git-ignored: Claude copies both into it before the builder starts.
    - If TASK-0013 was **not** finished on the old laptop, make its builder copy again: `git worktree add ../ytp-work/TASK-0013 task/TASK-0013`, then give Antigravity Claude's TASK-0013 message.
    - If it **was** finished and saved there, its save travelled in the ZIP: tell Claude "TASK-0013 done" and Claude reviews it from the same branch.
@@ -72,7 +72,7 @@ The upload key stays on the old laptop on purpose: a key never travels. The new 
 | What | On the new laptop |
 |---|---|
 | `node_modules` (the installed packages) | Rebuilt by `pnpm install` (step 4) |
-| Docker's development database | Started fresh with `pnpm services:up` (nothing real is stored yet) |
+| Docker's development database | Started fresh with `pnpm services:up` (nothing real is stored yet), then made ready with `db:accounts` (from TASK-0014) and `db:migrate` (from TASK-0091), step 5 |
 | Playwright's test browser | Downloaded again by TASK-0013 (about 120 MB) |
 | The upload key | A new one per laptop (section 3) |
 | Claude's sessions on the old laptop | Restored from `history/` (step 4) |

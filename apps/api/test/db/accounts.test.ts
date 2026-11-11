@@ -146,41 +146,114 @@ describe('ensureAccounts', () => {
   });
 
   it('puts right everything that was changed by hand', async () => {
-    // Every attribute of every account the other way round, wrong memberships and options, settings and rights.
-    for (const statement of [
-      'ALTER ROLE nexus_owner WITH SUPERUSER CREATEDB CREATEROLE REPLICATION BYPASSRLS NOLOGIN NOINHERIT CONNECTION LIMIT 0',
-      "ALTER ROLE nexus_app WITH SUPERUSER CREATEDB CREATEROLE REPLICATION BYPASSRLS NOLOGIN VALID UNTIL '2000-01-01' PASSWORD 'changed-by-hand'",
-      `ALTER ROLE nexus_system WITH SUPERUSER CREATEDB CREATEROLE REPLICATION NOBYPASSRLS LOGIN PASSWORD '${randomUUID()}'`,
-      'ALTER ROLE nexus_backup WITH SUPERUSER CREATEDB CREATEROLE NOREPLICATION NOBYPASSRLS NOLOGIN',
-      'REVOKE nexus_system FROM nexus_owner',
-      'REVOKE pg_read_all_data FROM nexus_backup',
-      'GRANT pg_read_all_data TO nexus_backup WITH ADMIN TRUE, INHERIT FALSE',
-      'GRANT pg_monitor TO nexus_app WITH ADMIN TRUE, INHERIT FALSE',
-      'GRANT nexus_system TO nexus_app',
-      'GRANT pg_write_all_data TO nexus_app',
-      'ALTER ROLE nexus_app SET row_security = off',
-      "ALTER ROLE nexus_owner IN DATABASE nexus_test SET work_mem = '1MB'",
-      'GRANT TEMPORARY ON DATABASE nexus_test TO PUBLIC',
-      'GRANT CREATE, TEMPORARY ON DATABASE nexus_test TO nexus_app',
-    ]) {
-      await admin.query(statement);
+    // A role outside the accounts that passes a membership on: only GRANTED BY removes what it gave.
+    const dropGrantor = `DO $$ BEGIN IF EXISTS (SELECT FROM pg_roles WHERE rolname = 'accounts_test_grantor') THEN
+                           DROP OWNED BY accounts_test_grantor; DROP ROLE accounts_test_grantor; END IF; END $$`;
+    // Every attribute of every account the other way round, wrong memberships and options, settings and rights,
+    // rights and memberships passed on by an account or by another role, and the database's owner and settings.
+    try {
+      for (const statement of [
+        dropGrantor,
+        // A right passed on by an account that never owns the database (a change of owner relabels the owner's
+        // grants), before it becomes a superuser (or its grant would be recorded as the owner's).
+        'GRANT CONNECT ON DATABASE nexus_test TO nexus_backup WITH GRANT OPTION',
+        'SET ROLE nexus_backup',
+        'GRANT CONNECT ON DATABASE nexus_test TO nexus_system',
+        'RESET ROLE',
+        'ALTER ROLE nexus_owner WITH SUPERUSER CREATEDB CREATEROLE REPLICATION BYPASSRLS NOLOGIN NOINHERIT CONNECTION LIMIT 0',
+        "ALTER ROLE nexus_app WITH SUPERUSER CREATEDB CREATEROLE REPLICATION BYPASSRLS NOLOGIN VALID UNTIL '2000-01-01' PASSWORD 'changed-by-hand'",
+        `ALTER ROLE nexus_system WITH SUPERUSER CREATEDB CREATEROLE REPLICATION NOBYPASSRLS LOGIN PASSWORD '${randomUUID()}'`,
+        'ALTER ROLE nexus_backup WITH SUPERUSER CREATEDB CREATEROLE NOREPLICATION NOBYPASSRLS NOLOGIN',
+        'REVOKE nexus_system FROM nexus_owner',
+        'REVOKE pg_read_all_data FROM nexus_backup',
+        'GRANT pg_read_all_data TO nexus_backup WITH ADMIN TRUE, INHERIT FALSE',
+        'GRANT pg_monitor TO nexus_app WITH ADMIN TRUE, INHERIT FALSE',
+        'GRANT pg_monitor TO nexus_backup GRANTED BY nexus_app',
+        'CREATE ROLE accounts_test_grantor',
+        'GRANT pg_read_all_data TO accounts_test_grantor WITH ADMIN TRUE',
+        'GRANT pg_read_all_data TO nexus_app GRANTED BY accounts_test_grantor',
+        'GRANT nexus_system TO nexus_app',
+        'GRANT pg_write_all_data TO nexus_app',
+        'ALTER ROLE nexus_app SET row_security = off',
+        "ALTER ROLE nexus_owner IN DATABASE nexus_test SET work_mem = '1MB'",
+        'GRANT TEMPORARY ON DATABASE nexus_test TO PUBLIC',
+        'GRANT CREATE, TEMPORARY ON DATABASE nexus_test TO nexus_app',
+        'ALTER DATABASE nexus_test OWNER TO nexus_app',
+        "ALTER DATABASE nexus_test SET search_path = 'public'",
+      ]) {
+        await admin.query(statement);
+      }
+      await ensureAccounts();
+      expect(await rows(RIGHTS_QUERY)).toEqual(ACCOUNT_RIGHTS);
+      expect(await rows(`SELECT rolpassword IS NULL AS no_password FROM pg_authid WHERE rolname = 'nexus_system'`)).toEqual([
+        { no_password: true },
+      ]);
+      expect(await rows(MEMBERSHIPS_QUERY)).toEqual(MEMBERSHIPS);
+      expect(
+        await rows(`SELECT rolname FROM pg_roles WHERE rolname LIKE 'nexus\\_%'
+                      AND (NOT rolinherit OR rolconnlimit <> -1 OR rolvaliduntil < now())`),
+      ).toEqual([]);
+      expect(await rows(`SELECT 1 FROM pg_db_role_setting WHERE setrole::regrole::text LIKE 'nexus\\_%'`)).toEqual([]);
+      expect(
+        await rows(`SELECT 1 FROM pg_db_role_setting s JOIN pg_database d ON d.oid = s.setdatabase WHERE d.datname = 'nexus_test'`),
+      ).toEqual([]);
+      expect(await rows(`SELECT pg_get_userbyid(datdba) AS owner FROM pg_database WHERE datname = 'nexus_test'`)).toEqual([
+        { owner: 'postgres' },
+      ]);
+      expect(await rows(DATABASE_RIGHTS_QUERY)).toEqual(DATABASE_RIGHTS);
+      expect(await rows(FOR_EVERYONE_QUERY)).toEqual([]);
+      expect(await canSignIn('nexus_owner', passwords[0]!)).toBe(true);
+      expect(await canSignIn('nexus_app', passwords[1]!)).toBe(true);
+      expect(await canSignIn('nexus_backup', passwords[2]!)).toBe(true);
+    } finally {
+      await admin.query('RESET ROLE');
+      await admin.query(dropGrantor);
     }
-    await ensureAccounts();
-    expect(await rows(RIGHTS_QUERY)).toEqual(ACCOUNT_RIGHTS);
-    expect(await rows(`SELECT rolpassword IS NULL AS no_password FROM pg_authid WHERE rolname = 'nexus_system'`)).toEqual([
-      { no_password: true },
-    ]);
-    expect(await rows(MEMBERSHIPS_QUERY)).toEqual(MEMBERSHIPS);
-    expect(
-      await rows(`SELECT rolname FROM pg_roles WHERE rolname LIKE 'nexus\\_%'
-                    AND (NOT rolinherit OR rolconnlimit <> -1 OR rolvaliduntil < now())`),
-    ).toEqual([]);
-    expect(await rows(`SELECT 1 FROM pg_db_role_setting WHERE setrole::regrole::text LIKE 'nexus\\_%'`)).toEqual([]);
-    expect(await rows(DATABASE_RIGHTS_QUERY)).toEqual(DATABASE_RIGHTS);
-    expect(await rows(FOR_EVERYONE_QUERY)).toEqual([]);
+  });
+
+  it.each([
+    // passwordcheck (in the postgres image) refuses a password under 8 characters.
+    { when: 'refused', first: "LOAD 'passwordcheck'", beforePassword: '', reason: 'password is too short' },
+    // Slow password hashing and a short time limit cancel the password statement half-way.
+    {
+      when: 'cancelled',
+      first: 'SET scram_iterations = 2000000000',
+      beforePassword: "SET statement_timeout = '1s'",
+      reason: 'canceling statement due to statement timeout',
+    },
+  ])('names only the account when setting a password is $when, never the password', async ({ first, beforePassword, reason }) => {
+    // The first password set is the owner's, so no real password reaches the check. All in ensureAccounts' own
+    // session: the server is unchanged, and the transaction leaves the accounts as they were.
+    const planted = 'Qz7#x';
+    const settings = { ...process.env };
+    const url = new URL(settings.DATABASE_URL_OWNER!);
+    url.password = encodeURIComponent(planted);
+    settings.DATABASE_URL_OWNER = url.href;
+    const query = Client.prototype.query;
+    Client.prototype.query = function (this: Client, ...args: unknown[]) {
+      const run = (query as (...a: unknown[]) => Promise<unknown>).bind(this);
+      const text = args[0];
+      if (text === 'SET log_parameter_max_length = 0') return run(first).then(() => run(...args));
+      if (beforePassword && typeof text === 'string' && text.includes('PASSWORD %L')) {
+        return run(beforePassword).then(() => run(...args));
+      }
+      return run(...args);
+    } as typeof query;
+    let error: unknown;
+    try {
+      await ensureAccounts(settings).catch((e: unknown) => (error = e));
+    } finally {
+      Client.prototype.query = query;
+    }
+    const seen = JSON.stringify({
+      ...(error as object),
+      message: (error as Error | undefined)?.message,
+      stack: (error as Error | undefined)?.stack,
+    });
+    expect(leaks(seen, [...secrets, planted, url.password]), 'the error holds a password').toBe(false);
+    expect(error).toBeInstanceOf(Error);
+    expect((error as Error).message).toBe(`could not set the password of nexus_owner: ${reason}`);
     expect(await canSignIn('nexus_owner', passwords[0]!)).toBe(true);
-    expect(await canSignIn('nexus_app', passwords[1]!)).toBe(true);
-    expect(await canSignIn('nexus_backup', passwords[2]!)).toBe(true);
   });
 
   it('never puts a password in the text of a statement, nor a value in the server log', async () => {

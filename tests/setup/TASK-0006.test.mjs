@@ -28,15 +28,11 @@ test('the three services use pinned images, never latest', () => {
   assert.match(text, /image:\s*chrislusf\/seaweedfs:4\.51/);
   assert.match(text, /image:\s*axllent\/mailpit:v1\.33\.0/);
   assert.doesNotMatch(text, /:latest\b/);
-  assert.match(text, /\.\/postgres\/init:\/docker-entrypoint-initdb\.d:ro/);
   assert.match(text, /pg_isready -U postgres/);
 });
 
-test('the database starts with a development and a test database', () => {
-  const sql = read('infra/postgres/init/00-databases.sql');
-  assert.match(sql, /CREATE DATABASE nexus_dev;/);
-  assert.match(sql, /CREATE DATABASE nexus_test;/);
-});
+// The first-start folder (infra/postgres/init) and its check left this test with CR-017: from TASK-0014 the accounts
+// command makes the databases, and TASK-0014's test checks that the database container needs no folder of the copy.
 
 test('the settings lists name every setting, in the agreed order, with no real secrets', () => {
   assert.deepEqual(envNames('infra/.env.example'), NAMES);

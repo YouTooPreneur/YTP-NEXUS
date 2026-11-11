@@ -13,7 +13,7 @@ TASK-0004  packages/ui/test/tokens.test.ts  6eb93f5103dbc482e936933e33e1701a88e5
 TASK-0004  tests/setup/TASK-0004.test.mjs  d24d94652df69640d4b361db210a2ea1e8f4ba0f72e25c5b196bf38403271a77
 TASK-0005  packages/contracts/test/openapi.test.ts  02fcf702351d9c6f3d3c14d40424929767784ff2b0d6fd63434c295798ee78dd
 TASK-0005  tests/setup/TASK-0005.test.mjs  86f39def8a5875ff561b23a96de02dfa02bd71ac3fc33c20f49894efbe6f7d1b
-TASK-0006  tests/setup/TASK-0006.test.mjs  ae3f8ac60092f483da6f3c70c0710fdb718db364e65e0c42e78bd5c5ccc46988
+TASK-0006  tests/setup/TASK-0006.test.mjs  34136417176b78f49a4fe427eac6510781ec8356d3260a40a6c2cf115b23e681
 TASK-0007  tests/setup/TASK-0007.test.mjs  da0a519d8e761643e80cfcb761d8068b38cdc46260467c2506c49cbec3640e74
 TASK-0008  tests/setup/TASK-0008.test.mjs  c6070e66af168f9225b105d44eb9e1464ae4bce534cdcf508aa305d76910d81c
 TASK-0008  tests/setup/fixtures/arch/README.md  c3b88131e0d808085af8371c35d7bcbc3c7574de3050b0391036101ae2d4ce42
@@ -51,8 +51,8 @@ TASK-0012  tests/setup/TASK-0012.test.mjs  5c18a4e6c5635f374a656a422a70bf7524408
 TASK-0013  apps/web/test/setup/api-status.test.tsx  9f3df061f4f9ce1faf6f4a603dd537dea043d8825468163b5264b51e4fe295df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
 TASK-0013  tests/setup/TASK-0013.test.mjs  1db10f39bfec81a7cece78b6ee839ec603081510d31a48754f6e7b3568ee11d0
-TASK-0014  apps/api/test/db/accounts.test.ts  11275c3e411b797f92a0201bd9bced2be8a7ccac890c36818c9cec0161e9fee9
-TASK-0014  tests/setup/TASK-0014.test.mjs  4667e5ec7978272812a0885730ff06034a0766807f04a8b1f16b65352371c8d7
+TASK-0014  apps/api/test/db/accounts.test.ts  8c1cb149379003cb577d98a016384af3fce0a1507d15ec4a5ef1cfc53afdfcfb
+TASK-0014  tests/setup/TASK-0014.test.mjs  8eee68159604e71bf8e1979c85862afc8d2e0936e6772f8eb6b9c8b1a8cc5499
 TASK-0086  apps/api/test/setup/log-safety.test.ts  eca7ffd7dbf289c16c8f00270a22fab4fef8841a409e4e52298c8b4d320f4c13
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e
 TASK-0088  tests/setup/TASK-0088.test.mjs  5fd0ca2a47ca4e30615c15da1e435219e56272d0f43094d6908d61b2873bb1d6

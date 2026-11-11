@@ -1,7 +1,10 @@
 // TASK-0014 · The database driver, the accounts command, and PostgreSQL in GitHub's check run. Written by the planner; builders never edit this file.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { parseEnv } from 'node:util';
 
 const read = (path) => readFileSync(path, 'utf8');
@@ -55,4 +58,27 @@ test("GitHub's check run has the same PostgreSQL, ready before the tests, with t
   assert.equal(runs.at(-1), 'pnpm verify');
   assert.equal(runs.at(-2), 'cp infra/.env.test.example infra/.env.test');
   assert.match(wf, /^ {6}- run: cp infra\/\.env\.test\.example infra\/\.env\.test\n {6}- run: pnpm verify$/m);
+});
+
+test('the shared database container is the same from every copy, and needs no first-start folder', () => {
+  // Every builder copy runs pnpm services:up against the one container of the project ytp-nexus-dev. A folder of
+  // the copy in its settings would make each copy's container different, so Docker would recreate it from every
+  // copy and cut other copies' runs. The accounts command makes the databases, so no first-start folder is needed.
+  const folder = mkdtempSync(join(tmpdir(), 'nexus-compose-'));
+  try {
+    copyFileSync('infra/compose.dev.yaml', join(folder, 'compose.dev.yaml'));
+    const hash = (file) => {
+      const out = spawnSync(
+        'docker',
+        ['compose', '-f', file, '--env-file', resolve('infra/.env.example'), 'config', '--hash', 'postgres'],
+        { encoding: 'utf8' },
+      );
+      assert.equal(out.status, 0, out.stderr);
+      return out.stdout.trim();
+    };
+    assert.equal(hash(join(folder, 'compose.dev.yaml')), hash('infra/compose.dev.yaml'));
+  } finally {
+    rmSync(folder, { recursive: true, force: true });
+  }
+  assert.equal(existsSync('infra/postgres/init/00-databases.sql'), false, 'the first-start script is gone');
 });
