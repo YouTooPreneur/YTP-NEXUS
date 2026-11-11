@@ -2,8 +2,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
+import { once } from 'node:events';
 import { listTestFiles } from '../../tools/verify/lib.mjs';
+import { steps } from '../../tools/verify/steps.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
 
@@ -14,6 +16,7 @@ test('Playwright is pinned and checks computer and phone width', () => {
   assert.match(config, /testDir:\s*['"]tests\/e2e['"]/);
   assert.match(config, /name:\s*['"]computer['"][\s\S]*?width:\s*1600[\s\S]*?height:\s*1000/);
   assert.match(config, /name:\s*['"]phone['"][\s\S]*?width:\s*375[\s\S]*?height:\s*812/);
+  assert.match(config, /name:\s*['"]phone['"][\s\S]*?isMobile:\s*true[\s\S]*?hasTouch:\s*true/, 'the phone project emulates a phone (review of TASK-0013, CR-014)');
   assert.match(config, /baseURL:\s*['"]http:\/\/localhost:5173['"]/);
   assert.match(config, /http:\/\/localhost:3000\/api\/health/);
   assert.equal((config.match(/reuseExistingServer:\s*false/g) || []).length, 2, 'both webServer entries keep reuseExistingServer: false (CR-010)');
@@ -49,4 +52,25 @@ test('the page shows the API status from the generated client', () => {
   assert.match(status, /useGetHealth/);
   for (const text of ['API: checking…', 'API: connected', 'API: not reachable']) assert.ok(status.includes(text), text);
   assert.match(read('apps/web/src/App.tsx'), /QueryClientProvider/);
+});
+
+// Added in the review of TASK-0013 (CR-014): the step must follow Playwright's result.
+test('End-to-end smoke fails when Playwright fails, and skips when no end-to-end test is selected (the "already used" line is expected)', async () => {
+  const step = steps.find((s) => s.name === 'End-to-end smoke');
+  assert.deepEqual(step.run({ root: '.', selected: [] }), { ok: true, note: 'no end-to-end tests to run' });
+  assert.deepEqual(step.run({ root: '.', selected: ['tests/setup/TASK-0013.test.mjs'] }), { ok: true, note: 'no end-to-end tests to run' });
+  // A stand-in on port 3000 in its own process (never in this one: the step's spawnSync blocks this event loop), started without a shell so kill() ends the listener itself.
+  const blocker = spawn(process.execPath, ['-e', "require('http').createServer((q, s) => s.end('x')).listen(3000, () => console.log('ready'))"], { stdio: ['ignore', 'pipe', 'inherit'] });
+  try {
+    const ready = await new Promise((resolve) => {
+      blocker.stdout.on('data', (d) => { if (String(d).includes('ready')) resolve(true); });
+      blocker.on('exit', () => resolve(false));
+    });
+    assert.ok(ready, 'port 3000 is busy: stop pnpm dev or any other server on it, then run verify again');
+    // Playwright's first webServer (the API) finds 3000 in use and fails before starting anything (reuseExistingServer: false, CR-010).
+    assert.equal(step.run({ root: '.', selected: ['tests/e2e/smoke.spec.ts'] }).ok, false);
+  } finally {
+    blocker.kill();
+    if (blocker.exitCode === null && blocker.signalCode === null) await once(blocker, 'exit');
+  }
 });

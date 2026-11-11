@@ -9,6 +9,7 @@
 - Read: `AGENTS.md`, `docs/logs/TASK-XXXX.md` (Notes for next task), <other files>
 - Work in your own git worktree on a branch cut from the current main. Write `- Start point (commit): <hash>` in your log: the bare hash, with no backticks or words after it (the Allowed files check reads this line).
 - Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
+- Make sure no server uses port 3000 or 5173: stop any `pnpm dev` or demo you started. Since TASK-0013 every `pnpm verify` starts its own servers (End-to-end smoke), so on this computer only one verify runs at a time (AGENTS.md section 3).
 - Run `pnpm verify`. It must be green. If not: STOP and mark BLOCKED.
 - Run `pnpm verify --card TASK-XXXX` once: this card's tests must fail. Write both results in your log.
 
@@ -30,7 +31,7 @@ Patterns: `*` matches inside one folder; `**` matches anything, including `/`. S
 - `<path to test file>`
 
 ## VERIFY AND DEBUG
-Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries.
+Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries. If End-to-end smoke says a URL "is already used", do not change `playwright.config.ts`: stop the server on port 3000 or 5173 if you started it, otherwise wait for the other run to finish, then run verify again.
 Still failing: mark BLOCKED in `docs/STATUS.md`, explain in your log, and STOP.
 
 ## WHEN GREEN

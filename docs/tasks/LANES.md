@@ -23,6 +23,8 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0011 | Shared backend steps: the route helper | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0012 | Contract, door and module-card checks; the Core module card | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0013 | Smoke test at computer and phone width; GitHub check run | careful | The project's base and its automatic checks: everything later relies on them |
+| TASK-0088 | Root files type-checked, lint warnings as errors, every end-to-end test runs | careful | The project's base and its automatic checks: everything later relies on them |
+| TASK-0089 | Tighter module-card, door and commit checks | careful | The project's base and its automatic checks: everything later relies on them |
 | TASK-0014 | Database accounts, schemas, the migrate service, and PostgreSQL in the GitHub check run | careful | Database foundations: company separation, logs, data safety |
 | TASK-0015 | Company context and row rules | careful | Database foundations: company separation, logs, data safety |
 | TASK-0016 | Transaction per request and short security writes | careful | Database foundations: company separation, logs, data safety |

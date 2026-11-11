@@ -53,6 +53,8 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
                   Commit (format below)
 ```
 
+**Ports 3000 and 5173 (since TASK-0013):** every `pnpm verify` starts the API on port 3000 and the screens on port 5173 for its End-to-end smoke step. Before each verify run, stop any `pnpm dev` or demo you started; on one computer only one verify runs at a time. If End-to-end smoke says a URL "is already used", stop that server if you started it, otherwise wait and run verify again. Never stop a process you did not start, never change `playwright.config.ts` to get round it, and do not mark a card BLOCKED for a busy port alone.
+
 The verify command is created in Phase 2 (TASK-0007). **Cards TASK-0001 to TASK-0006 come before it exists:** wherever this loop says "verify", run the commands in the card's VERIFY AND DEBUG section instead, and for the start check run the commands in the card's BEFORE YOU START. Each builder's own copy is a git worktree at `../ytp-work/TASK-XXXX` on the branch `task/TASK-XXXX`. **After the reviewer's PASS**, the reviewer merges the card's branch into `main`.
 
 **Resuming a BLOCKED card.** The planner answers your question in `docs/QUESTIONS.md` on `main`, fixes the card or its tests there if needed, and in a batch first reviews and merges the cards you already finished. When the owner tells you to resume, in your copy:
