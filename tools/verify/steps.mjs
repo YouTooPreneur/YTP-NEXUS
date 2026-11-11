@@ -263,6 +263,25 @@ export const steps = [
     },
   },
   {
+    name: 'End-to-end smoke',
+    run(ctx) {
+      const e2eFiles = ctx.selected.filter((f) => f.startsWith('tests/e2e/'));
+      if (e2eFiles.length === 0) {
+        return { ok: true, note: 'no end-to-end tests to run' };
+      }
+      const res = spawnSync(
+        'pnpm',
+        ['exec', 'playwright', 'test', '--grep', '@smoke', ...e2eFiles],
+        {
+          cwd: ctx.root,
+          shell: true,
+          stdio: 'inherit',
+        },
+      );
+      return { ok: res.status === 0 };
+    },
+  },
+  {
     name: 'Allowed files',
     run(ctx) {
       if (!ctx.card) {

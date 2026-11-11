@@ -9,6 +9,7 @@ export default defineConfig({
       httpClient: 'fetch',
       mode: 'single',
       clean: true,
+      override: { fetch: { forceSuccessResponse: true } },
     },
   },
 });

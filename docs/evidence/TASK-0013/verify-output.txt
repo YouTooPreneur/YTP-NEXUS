@@ -1,0 +1,220 @@
+$ node tools/verify/verify.mjs "--card" "TASK-0013"
+verify: running 27 test files, leaving out 0 (cards not Done)
+▶ API client
+$ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+$ tsx scripts/write-openapi.ts
+openapi.json written
+$ orval --config orval.config.ts
+🍻 orval v8.45.0 - A swagger client generator for typescript
+nexus - Cleaning output folder
+nexus - 🎉 YTP Nexus API - Your OpenAPI spec has been converted into ready to use orval!
+✔ API client
+▶ Type check
+✔ Type check
+▶ Lint
+$ eslint .
+✔ Lint
+▶ Format
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+✔ Format
+▶ Architecture
+$ depcruise apps packages --config .dependency-cruiser.cjs
+
+✔ no dependency violations found (51 modules, 67 dependencies cruised)
+
+✔ Architecture
+▶ Contract
+✔ Contract
+▶ Doors
+✔ Doors
+▶ Module cards
+✔ Module cards
+▶ Test lock
+✔ Test lock
+▶ Set-up tests
+✔ package.json is the private workspace root (3.7801ms)
+✔ the pnpm workspace lists the apps and packages folders (1.2626ms)
+✔ the Node version file says 24 (0.3774ms)
+✔ the shared TypeScript settings are strict (0.5118ms)
+✔ editor and line-ending rules exist (0.6803ms)
+✔ .gitignore keeps generated and local files out, and keeps the old lines (0.5057ms)
+✔ the pinned pnpm is the one in use (588.5053ms)
+✔ the backend package has the agreed name and scripts (1.1787ms)
+✔ every dependency version is exact (0.6346ms)
+✔ the backend has its two start commands (0.4093ms)
+✔ the frontend package has the agreed name, scripts and exact versions (1.4519ms)
+✔ the page is English, fits phones and loads the app (1.0448ms)
+✔ during development /api goes to the backend on port 3000 (0.4737ms)
+✔ the screen-parts package is set up (1.2963ms)
+✔ the frontend uses Tailwind, the tokens and the self-hosted fonts (1.4944ms)
+✔ the page starts in Emerald (0.3033ms)
+✔ the root has one command that makes the API description and the client (1.1311ms)
+✔ the contract package and the client tool are pinned (0.7685ms)
+✔ the screens make the API client before they start or build (0.2937ms)
+✔ running the command writes openapi.json and the typed client with a health hook (3412.9857ms)
+✔ the generated files are never committed (42.4096ms)
+✔ the three services use pinned images, never latest (2.4849ms)
+✔ the database starts with a development and a test database (0.4639ms)
+✔ the settings lists name every setting, in the agreed order, with no real secrets (1.4221ms)
+✔ the example settings files are kept, the real one never is (38.771ms)
+✔ the root scripts start and stop the services (0.3823ms)
+✔ Docker accepts the compose file (461.5502ms)
+✔ readLock reads the lock lines and skips comments (2.0071ms)
+✔ readLock names the line it cannot read (0.5111ms)
+✔ readIndexStatuses finds the Status column by its header (0.4234ms)
+✔ selectTests runs Done cards, the named card and unlocked tests, and leaves the rest (0.3258ms)
+✔ packageOf finds the package of a test file (0.3124ms)
+✔ listTestFiles finds the planner tests and never the fixtures (3.0761ms)
+✔ the real lock file reads cleanly and every file in it exists (3.6816ms)
+✔ --list shows the four first steps in order (77.5887ms)
+✔ a wrong or unknown card is refused with exit code 2 (297.2512ms)
+✔ the root script runs it (0.476ms)
+(node:808) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the config files and scripts exist (3.3136ms)
+✔ every architecture rule catches its broken fixture (1798.052ms)
+✔ the allowed paths are never reported (1729.1052ms)
+✔ verify runs lint, format and architecture after the type check (74.3196ms)
+(node:27132) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ sha256Of and checkTestLock spot missing, changed and doubled tests (4.613ms)
+✔ readAllowedFiles reads the first backticked path of each row (0.6443ms)
+✔ readStartPoint reads the start commit from the log (0.2467ms)
+✔ matchesPattern understands * and ** (0.3016ms)
+✔ machine-written paths and the builder's own files are always allowed (0.552ms)
+✔ changedFiles lists edited, added and untracked files since the start point (539.2767ms)
+✔ changedFiles keeps to each card's own commits when later cards are built on top (a batch) (1237.8296ms)
+✔ a step that crashes counts as failed, the others still run, and a broken lock is reported (136.985ms)
+✔ lint finds a misspelt name in verify code (eslint.config.mjs uses defineConfig) (1871.9477ms)
+✔ the screens' walls also cover the shared contracts package (1505.2298ms)
+✔ verify has the Test lock step before the set-up tests, and Allowed files last (62.0717ms)
+(node:23408) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ compareRoutesToContracts finds doors missing on either side (1.9138ms)
+✔ checkDoors finds doors without a permission or feature, and checks the sign-in list once it exists (0.9837ms)
+✔ checkModuleCards wants the six parts, every door and every announcement (1.2507ms)
+✔ the screens cannot borrow backend code even for its types (review of TASK-0011, CR-012) (1809.9277ms)
+✔ the real backend lists the health door as public, and the Core card lists it (1079.7969ms)
+✔ verify runs the three checks after Architecture, and Allowed files stays last (70.991ms)
+✔ loading the verify steps runs nothing: routes:list waits for its step (step 9) (65.6474ms)
+✔ Contract, Doors and Module cards read the backend list, the API list and the module cards, sharing one routes:list run (1235.8504ms)
+✔ changedFiles lists both paths of a moved file, before the card is committed and in the fallback (460.1233ms)
+✔ commitProblems names every commit after the start point that is not named for a card and not yet on main (1555.5761ms)
+✔ the Allowed files step reports a commit not named for a card (909.6083ms)
+✔ Playwright is pinned and checks computer and phone width (3.8546ms)
+✔ the end-to-end tests are found and run before Allowed files (95.9889ms)
+✔ GitHub runs pnpm verify on every change with pinned actions (0.6444ms)
+✔ the page shows the API status from the generated client (0.4847ms)
+ℹ tests 67
+ℹ suites 0
+ℹ pass 67
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8003.8716
+✔ Set-up tests
+▶ Unit and API tests
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0013/apps/api
+
+ ✓ test/setup/log-safety.test.ts (8 tests) 112ms
+ ✓ test/setup/context.test.ts (5 tests) 94ms
+ ✓ test/setup/route.test.ts (12 tests) 167ms
+ ✓ test/setup/errors.test.ts (8 tests) 150ms
+ ✓ test/setup/health.test.ts (1 test) 63ms
+ ✓ test/setup/logging.test.ts (4 tests) 71ms
+ ✓ test/setup/log-message.test.ts (3 tests) 57ms
+ ✓ test/setup/main.test.ts (2 tests) 1624ms
+   ✓ the API start command (src/main.ts) (2)
+     ✓ logs "api listening" with the port, and answers the health door, when the port is free 993ms
+     ✓ stops with exit code 1, and never says "api listening", when the port is already taken 628ms
+
+ Test Files  8 passed (8)
+      Tests  43 passed (43)
+   Start at  18:55:04
+   Duration  2.01s (import 58%, tests 39%, transform 2%, worker 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0013/apps/web
+
+ ✓ test/setup/cleanup.test.tsx (2 tests) 34ms
+ ✓ test/setup/api-status.test.tsx (3 tests) 112ms
+ ✓ test/setup/app.test.tsx (1 test) 146ms
+
+ Test Files  3 passed (3)
+      Tests  6 passed (6)
+   Start at  18:55:08
+   Duration  1.87s (environment 75%, import 16%, tests 6%, transform 1%, worker 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0013/packages/contracts
+
+ ✓ test/openapi.test.ts (6 tests) 10ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  18:55:10
+   Duration  318ms (import 74%, transform 16%, tests 6%, worker 3%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0013/packages/ui
+
+ ✓ test/tokens.test.ts (5 tests) 15ms
+ ✓ test/cleanup.test.tsx (2 tests) 34ms
+ ✓ test/button.test.tsx (4 tests) 154ms
+
+ Test Files  3 passed (3)
+      Tests  11 passed (11)
+   Start at  18:55:12
+   Duration  1.94s (environment 77%, import 15%, tests 6%, worker 1%, transform 1%)
+
+✔ Unit and API tests
+▶ End-to-end smoke
+[WebServer] (node:8168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:848) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:25880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ pnpm --workspace-root run api:generate && vite
+[WebServer] (node:14952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+[WebServer] (node:15372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsx scripts/write-openapi.ts
+[WebServer] (node:16568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:13976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ orval --config orval.config.ts
+[WebServer] (node:19228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:11520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 2 workers
+
+(node:15036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [phone] › tests\e2e\smoke.spec.ts:4:1 › the home page shows the product and reaches the API @smoke (488ms)
+  ok 2 [computer] › tests\e2e\smoke.spec.ts:4:1 › the home page shows the product and reaches the API @smoke (510ms)
+  ok 3 [phone] › tests\e2e\smoke.spec.ts:10:1 › nothing scrolls sideways @smoke (443ms)
+  ok 4 [computer] › tests\e2e\smoke.spec.ts:10:1 › nothing scrolls sideways @smoke (434ms)
+  ok 5 [phone] › tests\e2e\smoke.spec.ts:20:1 › the page is in English and in Emerald by default @smoke (382ms)
+  ok 6 [computer] › tests\e2e\smoke.spec.ts:20:1 › the page is in English and in Emerald by default @smoke (380ms)
+
+  6 passed (8.3s)
+✔ End-to-end smoke
+▶ Allowed files
+✔ Allowed files
+verify: PASSED
