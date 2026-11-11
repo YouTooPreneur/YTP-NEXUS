@@ -81,8 +81,10 @@ test('checkModuleCards wants the six parts, every door and every announcement', 
     'listUsers is not listed under Window in core/MODULE.md',
   ]);
 
+  // From the review of TASK-0013 (CR-014): each case below passes the doors and announcements its card lists, so it holds
+  // before and after TASK-0089 adds the stale-entry check.
   const noNight = good.replace(/## Night checklist[\s\S]*$/, '');
-  assert.deepEqual(checkModuleCards({ modules: [{ name: 'core', card: noNight }], routes: [], announcements: [] }), [
+  assert.deepEqual(checkModuleCards({ modules: [{ name: 'core', card: noNight }], routes: [health, listUsers], announcements }), [
     'MODULE.md of core is missing the section ## Night checklist',
   ]);
   assert.deepEqual(checkModuleCards({ modules: [{ name: 'crm', card: null }], routes: [], announcements: [] }), [
@@ -97,13 +99,13 @@ test('checkModuleCards wants the six parts, every door and every announcement', 
     ['module crm has no MODULE.md'],
   );
   assert.deepEqual(
-    checkModuleCards({ modules: [{ name: 'core', card: good.replace('`core.user.disabled`', 'core.user.disabled') }], routes: [], announcements }),
+    checkModuleCards({ modules: [{ name: 'core', card: good.replace('`core.user.disabled`', 'core.user.disabled') }], routes: [health, listUsers], announcements }),
     ['core.user.disabled is not listed under Announcements in core/MODULE.md'],
   );
   // A door or announcement of a module with no folder is on no card (review of TASK-0011, CR-012).
   assert.deepEqual(
     checkModuleCards({
-      modules: [{ name: 'core', card: good }],
+      modules: [{ name: 'core', card: missingDoor }],
       routes: [health, { ...listUsers, module: 'cmr' }],
       announcements: [...announcements, { name: 'crm.lead.won', module: 'crm' }],
     }),
