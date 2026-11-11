@@ -47,18 +47,22 @@ export default async function setup(): Promise<() => Promise<void>> {
 }
 
 async function start(): Promise<() => Promise<void>> {
+  // Read, never loaded: this set-up runs in Vitest's main process, and every worker (the unit group's too)
+  // inherits its environment. Only test-settings.ts loads these settings, into the db group's files.
+  let file: Record<string, string | undefined>;
   try {
-    process.loadEnvFile(TEST_SETTINGS_FILE);
+    file = parseEnv(readFileSync(TEST_SETTINGS_FILE, 'utf8'));
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
     throw new Error('infra/.env.test is missing: make it from infra/.env (TEST-PLAN section 4)');
   }
-  const owner = checkTestSettings();
+  const env = { ...file, ...process.env };
+  const owner = checkTestSettings(env);
   const admin = new Client({
     host: owner.hostname,
     port: Number(owner.port) || 5432,
     user: 'postgres',
-    password: process.env.POSTGRES_SUPERUSER_PASSWORD,
+    password: env.POSTGRES_SUPERUSER_PASSWORD,
     database: 'postgres',
   });
   try {

@@ -31,7 +31,7 @@ It holds the private conversation, so share it with nobody.
    - Node.js 24
    - pnpm 11.10.0: after Node.js, run `npm install -g pnpm@11.10.0`
    - Python 3 (tick "Add python.exe to PATH")
-   - Docker Desktop (needed from TASK-0090: after it is merged, run `pnpm services:up` once; from TASK-0014 on, every check needs the services running)
+   - Docker Desktop (needed from TASK-0090: after it is merged, run `pnpm services:up` once; from TASK-0014 on, every check needs the services running). Start it once yourself and finish its first-run screens before step 3; leave it running.
    - Microsoft Edge or Google Chrome
    - Antigravity
 2. **Unzip** the carry ZIP into a folder `Documents\pranav\ytp`, so that you get `Documents\pranav\ytp\YTP-SAAS`. Keep the name `YTP-SAAS`: Claude finds its saved sessions by it. The builders' copies are made next to it, in `Documents\pranav\ytp\ytp-work`.
@@ -45,11 +45,11 @@ It holds the private conversation, so share it with nobody.
    git worktree prune
    ```
    If Python is called `py` on that laptop, change `python` to `py` in `.claude/settings.json`.
-5. **Check:** `pnpm verify` must end with `verify: PASSED`.
-6. **The card in progress:**
+5. **Check:** with Docker Desktop running, run `pnpm services:up` (it must end without an error). Make `infra/.env.test` from `infra/.env` if it is missing (Claude does it: the same file with `nexus_dev` changed to `nexus_test`; never print either file). Then `pnpm verify` must end with `verify: PASSED`.
+6. **The card in progress:** a remade builder copy (`git worktree add`) has no `infra/.env` or `infra/.env.test`, because both are git-ignored: Claude copies both into it before the builder starts.
    - If TASK-0013 was **not** finished on the old laptop, make its builder copy again: `git worktree add ../ytp-work/TASK-0013 task/TASK-0013`, then give Antigravity Claude's TASK-0013 message.
    - If it **was** finished and saved there, its save travelled in the ZIP: tell Claude "TASK-0013 done" and Claude reviews it from the same branch.
-7. **Windows:** set this Wi-Fi network to **Public** until TASK-0079, as on the old laptop. (After TASK-0090 and one `pnpm services:up`, the three services listen on this computer only, but the backend itself still listens on every address while it runs, until TASK-0079.) Also make `infra/.env.test` from `infra/.env` if it is missing (Claude does it: the same file with `nexus_dev` changed to `nexus_test`).
+7. **Windows:** set this Wi-Fi network to **Public** until TASK-0079, as on the old laptop. (After TASK-0090 and one `pnpm services:up`, the three services listen on this computer only, but the backend itself still listens on every address while it runs, until TASK-0079.)
 
 ## 3. Uploads to GitHub from the new laptop
 

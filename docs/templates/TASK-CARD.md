@@ -9,6 +9,8 @@
 - Read: `AGENTS.md`, `docs/logs/TASK-XXXX.md` (Notes for next task), <other files>
 - Work in your own git worktree on a branch cut from the current main. Write `- Start point (commit): <hash>` in your log: the bare hash, with no backticks or words after it (the Allowed files check reads this line).
 - Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
+- Your copy needs `infra/.env` and `infra/.env.test` (both git-ignored; Claude puts them in the copy). Check that both exist; if one is missing, STOP and mark BLOCKED. Never print, copy into your log or change either file.
+- Start Docker Desktop, then run `pnpm services:up` in your copy. It must end without an error (from TASK-0014 on; AGENTS.md section 3).
 - Make sure no server uses port 3000 or 5173: stop any `pnpm dev` or demo you started. Since TASK-0013 every `pnpm verify` starts its own servers (End-to-end smoke), so on this computer only one verify runs at a time (AGENTS.md section 3).
 - Run `pnpm verify`. It must be green. If not: STOP and mark BLOCKED.
 - Run `pnpm verify --card TASK-XXXX` once: this card's tests must fail. Write both results in your log.
@@ -31,7 +33,7 @@ Patterns: `*` matches inside one folder; `**` matches anything, including `/`. S
 - `<path to test file>`
 
 ## VERIFY AND DEBUG
-Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries. If End-to-end smoke says a URL "is already used", do not change `playwright.config.ts`: stop the server on port 3000 or 5173 if you started it, otherwise wait for the other run to finish, then run verify again. Lines saying `The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set` are expected and need no fix.
+Run `pnpm verify --card TASK-XXXX`. If it fails, fix it inside the allowed files and run it again, up to 5 tries. If it says `The database tests could not start: the database is not running: run pnpm services:up`, start Docker Desktop and run `pnpm services:up`, then verify again (this does not count as a try). If it says `The database tests could not start:` with any other reason, STOP and mark BLOCKED (only Claude makes `infra/.env` and `infra/.env.test`). If End-to-end smoke says a URL "is already used", do not change `playwright.config.ts`: stop the server on port 3000 or 5173 if you started it, otherwise wait for the other run to finish, then run verify again. Lines saying `The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set` are expected and need no fix.
 Still failing: mark BLOCKED in `docs/STATUS.md`, explain in your log, and STOP.
 
 ## WHEN GREEN

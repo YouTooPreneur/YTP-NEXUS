@@ -195,7 +195,7 @@ Full detail per table is in `docs/DATA-MODEL.md`.
 | `nexus_system` | Nobody signs in with it | Bypasses the row rules; owns the functions that add security-log rows, write and read rows with no company, check the chains and remove personal values on request. `nexus_app` may only run these functions |
 | `nexus_backup` | The backup container only | Bypasses the row rules and reads everything (`pg_read_all_data`); replication and the base-backup functions; its only write is `core.backup_runs` |
 
-The accounts are created by a backend command that can be run more than once, `pnpm --filter @ytp/api db:accounts` (`apps/api/src/db/accounts.ts`, TASK-0014; changed from a script in `infra` by CR-017, because only the backend has the database driver), signed in as the database administrator; the passwords of the ones that sign in come from the environment file (6.6) and never appear in a statement's text. It also makes the database named in the settings, opens it only to these accounts and lets only `nexus_owner` create in it. `nexus_owner` is a member of `nexus_system` without its rights (`WITH INHERIT FALSE, SET TRUE`), so database changes can hand the system functions to `nexus_system`. It does not rely on the database's first-start folder, which runs only when the database is first made (CR-006).
+The accounts are created by a backend command that can be run more than once, `pnpm --filter @ytp/api db:accounts` (`apps/api/src/db/accounts.ts`, TASK-0014; changed from a script in `infra` by CR-017, because only the backend has the database driver), signed in as the database administrator; the passwords of the ones that sign in come from the environment file (6.6) and never appear in a statement's text, an error or the server's log. It also makes the database named in the settings, opens it only to these accounts and lets only `nexus_owner` create in it. Every run puts back exactly these attributes, memberships and database rights and removes every other membership, role setting and database right of the accounts, so a change made by hand is always undone. `nexus_owner` is a member of `nexus_system` that does not inherit its rights but may switch to it (`WITH INHERIT FALSE, SET TRUE`), so database changes can hand the system functions to `nexus_system`; a change that does so first grants `nexus_system` `USAGE, CREATE` on that schema. (As the tables' owner, `nexus_owner` could switch the row rules off anyway: it is used only by the migrate and first-start commands.) It does not rely on the database's first-start folder, which runs only when the database is first made (CR-006).
 
 ### 5.3 Database changes and rollback (decided)
 
@@ -307,10 +307,10 @@ Each place (the builder's computer, the test copy, the live system) has its own 
 
 | Setting | Read by | What it is |
 |---|---|---|
-| `POSTGRES_SUPERUSER_PASSWORD` | postgres (development only) | The development database's administrator password; never used by Nexus itself |
-| `DATABASE_URL_APP` | api, worker | The app database account |
-| `DATABASE_URL_OWNER` | migrate, setup | The owner account, for database changes only |
-| `DATABASE_URL_BACKUP` | backup | The backup account |
+| `POSTGRES_SUPERUSER_PASSWORD` | postgres (also the PostgreSQL of GitHub's check run), the accounts command (`db:accounts`) and the database tests' set-up | The database administrator's (`postgres`) password, in every place, the server included: used only to make and put right the database and its accounts (5.2), and in tests to make `nexus_test`; never by the running API or the worker |
+| `DATABASE_URL_APP` | api, worker; `db:accounts` and the database tests' set-up | The app database account (`db:accounts` checks its server, database and account name and sets its password) |
+| `DATABASE_URL_OWNER` | migrate, setup; `db:accounts` and the database tests' set-up | The owner account, for database changes only. `db:accounts` also takes from it the server and the database to make, and sets its password |
+| `DATABASE_URL_BACKUP` | backup; `db:accounts` and the database tests' set-up | The backup account (`db:accounts` checks its server, database and account name and sets its password) |
 | `APP_URL` | api | `https://nexus.youtoopreneur.com` (or the local address) |
 | `BETTER_AUTH_SECRET` | api | Signs session cookies |
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | api | Google sign-in |
