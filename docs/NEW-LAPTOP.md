@@ -49,7 +49,7 @@ It holds the private conversation, so share it with nobody.
 6. **The card in progress:**
    - If TASK-0013 was **not** finished on the old laptop, make its builder copy again: `git worktree add ../ytp-work/TASK-0013 task/TASK-0013`, then give Antigravity Claude's TASK-0013 message.
    - If it **was** finished and saved there, its save travelled in the ZIP: tell Claude "TASK-0013 done" and Claude reviews it from the same branch.
-7. **Windows:** set this Wi-Fi network to **Public** until TASK-0014, as on the old laptop.
+7. **Windows:** set this Wi-Fi network to **Public** until TASK-0090 is merged and `pnpm services:up` has been run once after it (the services then listen on this computer only), as on the old laptop.
 
 ## 3. Uploads to GitHub from the new laptop
 

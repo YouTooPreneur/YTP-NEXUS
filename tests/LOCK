@@ -55,3 +55,5 @@ TASK-0086  apps/api/test/setup/log-safety.test.ts  eca7ffd7dbf289c16c8f00270a22f
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e
 TASK-0088  tests/setup/TASK-0088.test.mjs  5fd0ca2a47ca4e30615c15da1e435219e56272d0f43094d6908d61b2873bb1d6
 TASK-0089  tests/setup/TASK-0089.test.mjs  d26c6eef15bacfa08bedecc7bec941323e24ef5ac3aa4144aed6e9a35f51b16c
+TASK-0090  apps/api/test/setup/settings-file.test.ts  3e536e02e2cec6723028091bb497d535a363cb323849ffd93aab664bec8bbc1c
+TASK-0090  tests/setup/TASK-0090.test.mjs  a842c06987c40ce601068aed2d9270147882ea9cf9de47f1377a802647efe918
