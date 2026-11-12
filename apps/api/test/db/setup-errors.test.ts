@@ -2,8 +2,11 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { Client } from 'pg';
+import { sql } from 'drizzle-orm';
+import { DrizzleQueryError } from 'drizzle-orm/errors';
+import { drizzle } from 'drizzle-orm/node-postgres';
 import { ensureAccounts } from '../../src/db/accounts.js';
-import { applyChanges } from './global-setup.js';
+import { applyChanges, changeFailure } from './global-setup.js';
 
 // Its own scratch database, where Core's first change cannot run: no test drops nexus_test (TEST-PLAN section 4).
 const SCRATCH = 'nexus_test_setup_errors';
@@ -32,12 +35,22 @@ afterAll(async () => {
 });
 
 describe('the set-up applies every database change', () => {
-  it('names a failed change by the database’s own reason and its statement’s first line, never by its whole text', async () => {
+  it('names a failed change by the database’s own reason and its statement’s first line of SQL, never by its whole text', async () => {
     const message = await applyChanges(env).then(
       () => 'no error',
       (error: unknown) => (error as Error).message,
     );
-    expect(message).toBe('a database change failed: schema "audit" already exists (in the statement starting: CREATE SCHEMA "audit";)');
+    expect(message).toBe('a database change failed: schema "audit" already exists; its statement starts with: CREATE SCHEMA "audit";');
+  });
+
+  it('skips the comment lines when it names the statement', async () => {
+    const failed: unknown = await drizzle(admin)
+      .execute(sql.raw('-- why this statement exists\n\n  SELECT 1 / 0;\n'))
+      .then(() => 'no error', (error: unknown) => error);
+    expect(failed).toBeInstanceOf(DrizzleQueryError);
+    expect(changeFailure(failed as DrizzleQueryError).message).toBe(
+      'a database change failed: division by zero; its statement starts with: SELECT 1 / 0;',
+    );
   });
 
   it('passes every other problem on as it is', async () => {

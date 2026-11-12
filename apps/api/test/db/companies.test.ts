@@ -48,7 +48,7 @@ describe('core.uuid_v7()', () => {
     expect(second > first, 'a later ID sorts after an earlier one').toBe(true);
   });
 
-  it('belongs to nexus_owner, runs with a fixed search path, and only the app (not everyone) may run it', async () => {
+  it('belongs to nexus_owner, runs with a fixed search path, and the app may run it but everyone may not', async () => {
     expect(
       await rows(
         admin,
@@ -62,7 +62,7 @@ describe('core.uuid_v7()', () => {
 });
 
 describe('core.companies', () => {
-  it('has exactly its columns, key, unique short name and status choices (DATA-MODEL 3.1)', async () => {
+  it('has exactly its columns, key, unique slug and status choices (DATA-MODEL 3.1)', async () => {
     expect(
       await rows(
         admin,

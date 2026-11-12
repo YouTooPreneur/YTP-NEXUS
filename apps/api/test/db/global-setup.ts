@@ -38,17 +38,25 @@ export function checkTestSettings(env: Record<string, string | undefined> = proc
 }
 
 // Applies every database change as db:migrate does. A failed change is a DrizzleQueryError: its message is the
-// statement's text and its cause says why, so this names the database's own reason and the statement's first line.
-// Every other problem (the settings, the connection) is passed on as it is.
+// statement's text and its cause says why, so this names the database's own reason and the statement's first
+// line of SQL (its comment lines skipped). Every other problem (the settings, the connection, a missing change
+// file) is passed on as it is.
 export async function applyChanges(env: Record<string, string | undefined>): Promise<void> {
   try {
     await runMigrations(env);
   } catch (error) {
-    if (!(error instanceof DrizzleQueryError)) throw error;
-    const reason = error.cause instanceof Error ? error.cause.message : 'no reason given';
-    const first = error.query.split('\n').find((line) => line.trim() !== '')?.trim() ?? '';
-    throw new Error(`a database change failed: ${reason} (in the statement starting: ${first})`);
+    throw error instanceof DrizzleQueryError ? changeFailure(error) : error;
   }
+}
+
+export function changeFailure(error: DrizzleQueryError): Error {
+  const reason = error.cause instanceof Error ? error.cause.message : 'no reason given';
+  const lines = error.query
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line !== '');
+  const first = lines.find((line) => !line.startsWith('--')) ?? lines[0] ?? '';
+  return new Error(`a database change failed: ${reason}; its statement starts with: ${first}`);
 }
 
 // Vitest 5.0.5 cannot show an error thrown by this set-up (it fails on its own source map and prints
