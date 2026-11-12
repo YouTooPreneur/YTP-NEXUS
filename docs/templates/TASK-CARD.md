@@ -8,6 +8,8 @@
 - TASK-XXXX must be **Done** in `docs/STATUS.md`
 - Read: `AGENTS.md`, `docs/logs/TASK-XXXX.md` (Notes for next task), <other files>
 - Work in your own git worktree on a branch cut from the current main. Write `- Start point (commit): <hash>` in your log: the bare hash, with no backticks or words after it (the Allowed files check reads this line).
+- Create your log `docs/logs/TASK-XXXX.md` from `docs/templates/TASK-LOG.md` now and write the start-point line, before anything else, also when your copy was made for you. In the start check, `Allowed files` must pass; if it says `no start point`, write the line and run the start check again.
+- (Planner: list the start check's expected failures exactly as a trial build printed them, never from reading the tests.)
 - Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
 - Your copy needs `infra/.env` and `infra/.env.test` (both git-ignored; Claude puts them in the copy). Check that both exist; if one is missing, STOP and mark BLOCKED. Never print, copy into your log or change either file.
 - Start Docker Desktop, then run `pnpm services:up` in your copy. It must end without an error (from TASK-0014 on; AGENTS.md section 3).
