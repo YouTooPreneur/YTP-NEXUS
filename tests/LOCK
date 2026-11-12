@@ -62,5 +62,5 @@ TASK-0090  tests/setup/TASK-0090.test.mjs  73ab390e059b2de27e28ca16146ccb3d83f79
 TASK-0091  apps/api/test/db/migrate.test.ts  5cd3eb8e6ddcc80c35cf2f61372c06395878a37fcc40addb1246940d95c1e733
 TASK-0091  tests/setup/TASK-0091.test.mjs  4c1580f40590edffc11f5cedf02466475edda8ee5dae8925f9acf1f81b058af9
 TASK-0092  apps/api/test/db/companies.test.ts  ffd89fbf997a71724ce4898850210d85399cafde89f508ef0e54ede7e30ddf4d
-TASK-0092  apps/api/test/db/setup-errors.test.ts  5abadd367d6497079d5656a794aa340a75c5c7acb7473c3b0339bb27981bef72
+TASK-0092  apps/api/test/db/setup-errors.test.ts  2bee310b85dbb208fd02a7331c504c4ecfbde0e673d59ff35273831492a955fb
 TASK-0092  tests/setup/TASK-0092.test.mjs  35b6cc32cc779fd71738cdae261cb2cf3cbaf8ce38aaba9db7638aa5a56d8f9e

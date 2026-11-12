@@ -1,12 +1,13 @@
 // TASK-0014, TASK-0092 · The database tests' set-up: a fresh nexus_test for every run, with the accounts and every database change (TEST-PLAN section 4). Written by the planner; builders never edit this file.
 // It deletes the database it is given, so it refuses every name but nexus_test. All builder copies share one
 // database server, so a run holds a lock until it ends and runs from other copies wait their turn.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { parseEnv } from 'node:util';
 import { Client } from 'pg';
 import { DrizzleQueryError } from 'drizzle-orm/errors';
 import { ensureAccounts } from '../../src/db/accounts.js';
-import { runMigrations } from '../../src/db/migrate.js';
+import { CHANGES_FOLDER, runMigrations } from '../../src/db/migrate.js';
 
 const SETTINGS = ['DATABASE_URL_OWNER', 'DATABASE_URL_APP', 'DATABASE_URL_BACKUP'];
 const DEV_SETTINGS_FILE = new URL('../../../../infra/.env', import.meta.url);
@@ -38,9 +39,10 @@ export function checkTestSettings(env: Record<string, string | undefined> = proc
 }
 
 // Applies every database change as db:migrate does. A failed change is a DrizzleQueryError: its message is the
-// statement's text and its cause says why, so this names the database's own reason and the statement's first
-// line of SQL (its comment lines skipped). Every other problem (the settings, the connection, a missing change
-// file) is passed on as it is.
+// statement's text and its cause says why. So this names the change file that holds the statement (or "no change
+// file" for drizzle's own statements), the database's own reason and the statement's first line of SQL (its
+// comment lines skipped). Every other problem (the settings, the connection, a missing change file) is passed on
+// as it is.
 export async function applyChanges(env: Record<string, string | undefined>): Promise<void> {
   try {
     await runMigrations(env);
@@ -49,14 +51,20 @@ export async function applyChanges(env: Record<string, string | undefined>): Pro
   }
 }
 
-export function changeFailure(error: DrizzleQueryError): Error {
+export function changeFailure(error: DrizzleQueryError, folder: string = CHANGES_FOLDER): Error {
   const reason = error.cause instanceof Error ? error.cause.message : 'no reason given';
-  const lines = error.query
+  const statement = error.query.trim();
+  const files = readdirSync(folder)
+    .filter((name) => name.endsWith('.sql'))
+    .sort()
+    .filter((name) => statement !== '' && readFileSync(join(folder, name), 'utf8').includes(statement));
+  const lines = statement
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line !== '');
   const first = lines.find((line) => !line.startsWith('--')) ?? lines[0] ?? '';
-  return new Error(`a database change failed: ${reason}; its statement starts with: ${first}`);
+  const where = files.length > 0 ? files.join(' or ') : 'no change file';
+  return new Error(`a database change failed in ${where}: ${reason}; its statement starts with: ${first}`);
 }
 
 // Vitest 5.0.5 cannot show an error thrown by this set-up (it fails on its own source map and prints
