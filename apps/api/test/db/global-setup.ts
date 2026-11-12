@@ -1,9 +1,11 @@
-// TASK-0014 · The database tests' set-up: a fresh nexus_test for every run (TEST-PLAN section 4). Written by the planner; builders never edit this file.
+// TASK-0014, TASK-0092 · The database tests' set-up: a fresh nexus_test for every run, with the accounts and every database change (TEST-PLAN section 4). Written by the planner; builders never edit this file.
 // It deletes the database it is given, so it refuses every name but nexus_test. All builder copies share one
 // database server, so a run holds a lock until it ends and runs from other copies wait their turn.
 import { existsSync, readFileSync } from 'node:fs';
 import { parseEnv } from 'node:util';
 import { Client } from 'pg';
+import { ensureAccounts } from '../../src/db/accounts.js';
+import { runMigrations } from '../../src/db/migrate.js';
 
 const SETTINGS = ['DATABASE_URL_OWNER', 'DATABASE_URL_APP', 'DATABASE_URL_BACKUP'];
 const DEV_SETTINGS_FILE = new URL('../../../../infra/.env', import.meta.url);
@@ -75,6 +77,10 @@ async function start(): Promise<() => Promise<void>> {
   }
   await admin.query('SELECT pg_advisory_lock($1)', [RUN_LOCK]);
   await admin.query('DROP DATABASE IF EXISTS nexus_test WITH (FORCE)');
+  // A fresh nexus_test with the accounts and every database change, once per run (TEST-PLAN section 4), made by
+  // the backend's own commands with the merged settings given explicitly (never loaded into this process).
+  await ensureAccounts(env);
+  await runMigrations(env);
   return async () => {
     await admin.query('SELECT pg_advisory_unlock($1)', [RUN_LOCK]);
     await admin.end();
