@@ -5,7 +5,7 @@ TASK-0001  tests/setup/TASK-0001.test.mjs  beced44e799d13db0fe537d9b401986902756
 TASK-0002  apps/api/test/setup/health.test.ts  092d5c3b5838c66a65dc8d35a646d1b715e3f84479b33c6eeb54d1f03419e77a
 TASK-0002  tests/setup/TASK-0002.test.mjs  f54fa7b5c94319046ab354a0a743bc085654cd5b376d516293008ccfc6a79c3f
 TASK-0003  apps/web/test/setup/app.test.tsx  3486637cd10a5d58c09c6f6917047c78eac8125adea03102701cc47e931fb23a
-TASK-0003  tests/setup/TASK-0003.test.mjs  30ba1df92615e97d4227f9f9775a34e349b2bff06adf3908745af75b67f52cac
+TASK-0003  tests/setup/TASK-0003.test.mjs  19876303ed3f59f0dbc7466848f79ae3ca6ac6433f2f02a8c43326fb97bb879f
 TASK-0004  apps/web/test/setup/cleanup.test.tsx  c6fa190878f9963d3536579f0e06ed1cb649f9eda675ffd2d57c2c956df9a982
 TASK-0004  packages/ui/test/button.test.tsx  452989c510acd3435f6124b4471ab785636725479c83ba3e9f1f679e95f32fba
 TASK-0004  packages/ui/test/cleanup.test.tsx  3a1a9d43b7634e59eaab7e53aec8a11e9149c519e895aa681914fe3ccb783724
@@ -50,10 +50,10 @@ TASK-0011  apps/api/test/setup/route.test.ts  532e17bc570c94008d4c7f8c552c677566
 TASK-0012  tests/setup/TASK-0012.test.mjs  5c18a4e6c5635f374a656a422a70bf75244088c87389533800a1fb7e1a3eebe9
 TASK-0013  apps/web/test/setup/api-status.test.tsx  9f3df061f4f9ce1faf6f4a603dd537dea043d8825468163b5264b51e4fe295df
 TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
-TASK-0013  tests/setup/TASK-0013.test.mjs  1db10f39bfec81a7cece78b6ee839ec603081510d31a48754f6e7b3568ee11d0
+TASK-0013  tests/setup/TASK-0013.test.mjs  36511a8ab100984ef9c1a058dd5ce61ea8a6e553fed922f2032caa73d47a2043
 TASK-0014  apps/api/test/db/accounts.test.ts  8c1cb149379003cb577d98a016384af3fce0a1507d15ec4a5ef1cfc53afdfcfb
 TASK-0014  tests/setup/TASK-0014.test.mjs  8eee68159604e71bf8e1979c85862afc8d2e0936e6772f8eb6b9c8b1a8cc5499
-TASK-0086  apps/api/test/setup/log-safety.test.ts  eca7ffd7dbf289c16c8f00270a22fab4fef8841a409e4e52298c8b4d320f4c13
+TASK-0086  apps/api/test/setup/log-safety.test.ts  f2a8b4d9c8afea87718817a5d4a66c3510da3cb2de6520989c58311f45d0e1c4
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e
 TASK-0088  tests/setup/TASK-0088.test.mjs  5fd0ca2a47ca4e30615c15da1e435219e56272d0f43094d6908d61b2873bb1d6
 TASK-0089  tests/setup/TASK-0089.test.mjs  d26c6eef15bacfa08bedecc7bec941323e24ef5ac3aa4144aed6e9a35f51b16c

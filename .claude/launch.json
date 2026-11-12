@@ -17,7 +17,7 @@
       "name": "nexus-web",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "@ytp/web", "dev"],
-      "port": 5173
+      "port": 5310
     }
   ]
 }

@@ -17,7 +17,9 @@ test('Playwright is pinned and checks computer and phone width', () => {
   assert.match(config, /name:\s*['"]computer['"][\s\S]*?width:\s*1600[\s\S]*?height:\s*1000/);
   assert.match(config, /name:\s*['"]phone['"][\s\S]*?width:\s*375[\s\S]*?height:\s*812/);
   assert.match(config, /name:\s*['"]phone['"][\s\S]*?isMobile:\s*true[\s\S]*?hasTouch:\s*true/, 'the phone project emulates a phone (review of TASK-0013, CR-014)');
-  assert.match(config, /baseURL:\s*['"]http:\/\/localhost:5173['"]/);
+  assert.match(config, /baseURL:\s*['"]http:\/\/localhost:5310['"]/);
+  assert.match(config, /command:\s*['"]pnpm --filter @ytp\/web dev['"],\s*url:\s*['"]http:\/\/localhost:5310['"]/, 'the check waits for the screens on their own port (CR-019)');
+  assert.doesNotMatch(config, /5173/, 'the screens moved from 5173 to 5310 (CR-019, D-199)');
   assert.match(config, /http:\/\/localhost:3000\/api\/health/);
   assert.equal((config.match(/reuseExistingServer:\s*false/g) || []).length, 2, 'both webServer entries keep reuseExistingServer: false (CR-010)');
   assert.doesNotMatch(config, /reuseExistingServer:\s*true/);

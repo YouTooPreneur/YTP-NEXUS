@@ -32,5 +32,7 @@ test('the page is English, fits phones and loads the app', () => {
 test('during development /api goes to the backend on port 3000', () => {
   const config = read('apps/web/vite.config.ts');
   assert.match(config, /['"]\/api['"]\s*:\s*['"]http:\/\/localhost:3000['"]/);
-  assert.match(config, /port:\s*5173/);
+  // The screens use port 5310, not Vite's usual 5173, which other projects take first (CR-019, D-199).
+  assert.match(config, /port:\s*5310,/);
+  assert.match(config, /strictPort:\s*true/, 'the screens never move to another port by themselves');
 });

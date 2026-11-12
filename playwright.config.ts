@@ -6,7 +6,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   forbidOnly: !!process.env.CI,
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5310',
     trace: 'retain-on-failure',
   },
   projects: [
@@ -38,7 +38,7 @@ export default defineConfig({
     },
     {
       command: 'pnpm --filter @ytp/web dev',
-      url: 'http://localhost:5173',
+      url: 'http://localhost:5310',
       reuseExistingServer: false,
       timeout: 60_000,
     },

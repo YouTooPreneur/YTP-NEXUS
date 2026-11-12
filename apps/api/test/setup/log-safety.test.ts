@@ -52,7 +52,7 @@ describe('safe logs', () => {
     });
     const res = await request(app)
       .get('/api/health?token=QUERY-TOKEN&invite=QUERY-INVITE&q=asha@example.com')
-      .set('Referer', 'http://localhost:5173/reset?token=REFERER-TOKEN');
+      .set('Referer', 'http://localhost:5310/reset?token=REFERER-TOKEN');
     expect(res.status).toBe(200);
     await request(app).get('/api/test/redirect');
     const text = lines.join('\n');
