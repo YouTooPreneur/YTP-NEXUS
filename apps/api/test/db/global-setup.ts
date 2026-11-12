@@ -4,6 +4,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { parseEnv } from 'node:util';
 import { Client } from 'pg';
+import { DrizzleQueryError } from 'drizzle-orm/errors';
 import { ensureAccounts } from '../../src/db/accounts.js';
 import { runMigrations } from '../../src/db/migrate.js';
 
@@ -34,6 +35,20 @@ export function checkTestSettings(env: Record<string, string | undefined> = proc
     }
   }
   return new URL(env.DATABASE_URL_OWNER!);
+}
+
+// Applies every database change as db:migrate does. A failed change is a DrizzleQueryError: its message is the
+// statement's text and its cause says why, so this names the database's own reason and the statement's first line.
+// Every other problem (the settings, the connection) is passed on as it is.
+export async function applyChanges(env: Record<string, string | undefined>): Promise<void> {
+  try {
+    await runMigrations(env);
+  } catch (error) {
+    if (!(error instanceof DrizzleQueryError)) throw error;
+    const reason = error.cause instanceof Error ? error.cause.message : 'no reason given';
+    const first = error.query.split('\n').find((line) => line.trim() !== '')?.trim() ?? '';
+    throw new Error(`a database change failed: ${reason} (in the statement starting: ${first})`);
+  }
 }
 
 // Vitest 5.0.5 cannot show an error thrown by this set-up (it fails on its own source map and prints
@@ -80,7 +95,7 @@ async function start(): Promise<() => Promise<void>> {
   // A fresh nexus_test with the accounts and every database change, once per run (TEST-PLAN section 4), made by
   // the backend's own commands with the merged settings given explicitly (never loaded into this process).
   await ensureAccounts(env);
-  await runMigrations(env);
+  await applyChanges(env);
   return async () => {
     await admin.query('SELECT pg_advisory_unlock($1)', [RUN_LOCK]);
     await admin.end();

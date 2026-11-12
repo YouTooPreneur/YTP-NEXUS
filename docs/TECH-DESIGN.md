@@ -163,7 +163,7 @@ Full detail per table is in `docs/DATA-MODEL.md`.
 |---|---|
 | Company separation (CORE-014, NFR-014) | Every table has `company_id`, except the **system tables** listed in DATA-MODEL section 2. **Two locks:** (1) every query goes through one data helper that adds the company; (2) **PostgreSQL row rules** on every company table, which the app account cannot bypass (section 5.1). Automated tests prove both |
 | Who touches the database | **Only the backend**, through the accounts in section 5.2. The frontend has no database address, account or key (D-187) |
-| Record IDs | A time-ordered unique ID (UUID v7) as the key, Better Auth's tables included; plus a readable code per module where people see it (for example `CL-0042`), counted per company |
+| Record IDs | A time-ordered unique ID (UUID v7, made by `core.uuid_v7()`) as the `id` key, Better Auth's tables included (the exceptions are in DATA-MODEL section 2); plus a readable code per module where people see it (for example `CL-0042`), counted per company |
 | Who and when | Every main record has `created_at`, `created_by`, `updated_at`, `updated_by` and a `version` number; a save with an old version is refused with "this was just changed, please review" (NFR-021) |
 | Times | Stored as UTC (`timestamptz`), shown in each person's time zone, India by default; 12-hour times by default, 24-hour as a personal choice (CORE-112, choice 4). Schedules are written in **Asia/Kolkata** time |
 | Money | Whole paise (`bigint`) plus a currency code; Indian number format on screen (D-021, CORE-112) |

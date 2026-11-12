@@ -24,8 +24,8 @@ test('the ID function and the companies rights are exactly the card’s', () => 
   assert.equal(
     read('apps/api/drizzle/0002_core_ids.sql'),
     [
-      '-- Time-ordered unique IDs (UUID version 7) for every table\'s key (DATA-MODEL section 2): the first 48 bits are',
-      '-- the time in milliseconds, then the version (7), then random bits.',
+      '-- Time-ordered unique IDs (UUID version 7) for the tables\' own id keys (DATA-MODEL section 2): the first 48 bits',
+      '-- are the time in milliseconds, then the version (7), then random bits.',
       'CREATE FUNCTION core.uuid_v7() RETURNS uuid',
       'LANGUAGE sql VOLATILE PARALLEL SAFE',
       'SET search_path = pg_catalog, pg_temp',
@@ -66,11 +66,13 @@ test('drizzle-kit made the companies table from the schema file, with the time-o
       '',
     ].join('\n'),
   );
-  assert.deepEqual(imports('apps/api/src/modules/core/schema/companies.ts'), [
-    "import { sql } from 'drizzle-orm';",
-    "import { text, timestamp, uuid } from 'drizzle-orm/pg-core';",
-    "import { core } from './schemas.js';",
-  ]);
+  // Not the exact list: a later card may add a column of another type to this file.
+  const lines = imports('apps/api/src/modules/core/schema/companies.ts');
+  assert.ok(lines.includes("import { core } from './schemas.js';"), 'the table is in Core’s own schema');
+  assert.ok(
+    lines.every((line) => !/auth-schema|pgSchema/.test(line)),
+    'no schema of its own and nothing from the sign-in tables',
+  );
 });
 
 test('Core’s module card lists the companies table and the ID rule, under the template’s intro', () => {

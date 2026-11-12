@@ -15,7 +15,7 @@ This document locks **the main records of every module** before any building sta
 
 | Rule | What every table gets |
 |---|---|
-| Key | `id`: a time-ordered unique ID (UUID v7), Better Auth's tables included |
+| Key | `id`: a time-ordered unique ID (UUID v7) made by the database function `core.uuid_v7()`, Better Auth's tables included. Section 3 gives three kinds of exception, and they keep their keys: a key that is another table's ID (`core.users.id` is `auth.user.id`; `core.user_preferences.user_id`; `core.session_state.session_id`), a key of several columns (for example the company and a name: settings, switches, languages, counters, doors, double-click keys; the permission catalogue and its grants, receipts, rate counters), and `audit.security_log`'s `bigint` (chain order). The `drizzle` schema (drizzle's own list of applied changes) and the `pgboss` schema keep their tools' own keys |
 | Company | `company_id`, required, linked to `core.companies`, protected by the company filter and the **row rules** (TECH-DESIGN 5.1). Only the **system tables** below have no company row rule |
 | Who and when | `created_at`, `created_by`, `updated_at`, `updated_by` (a person, or empty for automatic work; the activity log says which automation, API key or AI did it) |
 | Two people editing | `version`, a number that goes up by one on every save; a save that carries an old number is refused (NFR-021) |
