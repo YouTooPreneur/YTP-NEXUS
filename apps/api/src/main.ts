@@ -1,3 +1,4 @@
+import './load-settings.js';
 import { createApp } from './app.js';
 import { createLogger } from './shared/logging.js';
 
