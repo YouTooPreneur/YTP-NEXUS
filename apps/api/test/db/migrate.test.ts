@@ -1,4 +1,4 @@
-// TASK-0091 · The database changes: applied once and in order as nexus_owner, Core's schemas and their rights, no drift, failed queries logged without values. Written by the planner; builders never edit this file.
+// TASK-0091 · The database changes: applied once and in order as nexus_owner, Core's schemas and their rights, no drift, failed queries logged without values, a failed change reported by its reason. Written by the planner; builders never edit this file.
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { spawnSync } from 'node:child_process';
 import { cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -143,17 +143,20 @@ describe('the database changes in apps/api/drizzle', () => {
     expect(files.sort()).toEqual(entries.map((e) => `${e.tag}.sql`).sort());
   });
 
-  it('match the tables in the schema files: drizzle-kit finds nothing new (no drift)', () => {
+  it('match the tables in the schema files: drizzle-kit finds nothing new (no drift)', async () => {
     // drizzle-kit runs in a throwaway folder on a copy of the changes, so nothing in the project changes. It
     // puts its working folder in front of `out` even when `out` is a full path, and it can end with exit code 0
     // after an error, so the test reads what it printed and which files are there.
     const folder = mkdtempSync(join(tmpdir(), 'nexus-drift-'));
     try {
       cpSync(CHANGES_FOLDER, join(folder, 'drizzle'), { recursive: true });
-      const schema = join(apiFolder, 'src/modules/*/schema/*.ts').replace(/\\/g, '/');
+      // The schema files and options of drizzle.config.ts (later cards add files, for example the auth tables),
+      // with the paths made full; generate never needs credentials, so none are copied into the throwaway config.
+      const { default: config } = await import('../../drizzle.config.js');
+      const schema = [config.schema ?? []].flat().map((path) => join(apiFolder, path).replace(/\\/g, '/'));
       writeFileSync(
         join(folder, 'drift.config.mjs'),
-        `export default ${JSON.stringify({ dialect: 'postgresql', schema, out: './drizzle' })};\n`,
+        `export default ${JSON.stringify({ ...config, dbCredentials: undefined, schema, out: './drizzle' })};\n`,
       );
       const before = readdirSync(join(folder, 'drizzle'), { recursive: true }).map(String).sort();
       const kit = join(apiFolder, 'node_modules', 'drizzle-kit', 'bin.cjs');
@@ -210,6 +213,29 @@ describe('pnpm --filter @ytp/api db:migrate', () => {
     expect(leaks(out.stdout + out.stderr), 'the output holds a password').toBe(false);
     expect(out.status, out.stderr).toBe(0);
     expect(out.stdout.trim()).toMatch(new RegExp(`^database changes applied on ${SCRATCH}: 0 new, \\d+ in all$`));
+  });
+
+  it('gives the plain reason when a change fails, with exit code 1', async () => {
+    // Its own second scratch database, where Core's audit schema is already there before the first change runs.
+    const FAILING = 'nexus_test_migrate_fail';
+    const settings: Record<string, string | undefined> = { ...env };
+    for (const name of URLS) settings[name] = env[name]!.replace(`/${SCRATCH}`, `/${FAILING}`);
+    await admin.query(`DROP DATABASE IF EXISTS ${FAILING} WITH (FORCE)`);
+    try {
+      await ensureAccounts(settings);
+      const asOwner = new Client({ ...server, user: 'nexus_owner', password: decodeURIComponent(owner.password), database: FAILING });
+      await asOwner.connect();
+      await asOwner.query('CREATE SCHEMA audit');
+      await asOwner.end();
+      const out = run(settings);
+      expect(leaks(out.stdout + out.stderr), 'the output holds a password').toBe(false);
+      expect(out.status).toBe(1);
+      expect(out.stderr).toContain('db:migrate failed: schema "audit" already exists');
+      expect(out.stderr).not.toContain('Failed query');
+      expect(out.stderr).not.toContain('params:');
+    } finally {
+      await admin.query(`DROP DATABASE IF EXISTS ${FAILING} WITH (FORCE)`);
+    }
   });
 
   it('says the database is not running when nothing answers, with exit code 1', () => {
