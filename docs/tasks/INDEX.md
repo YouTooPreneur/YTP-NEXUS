@@ -29,7 +29,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0089 | Tighter module-card, door and commit checks | 2.1 | Set-up | Antigravity | Claude | 0088 | NFR-011 | Done | antigravity |
 | TASK-0090 | Services on this computer only, and reading infra/.env | 2.2 | Backend | Antigravity | Claude | 0089 | NFR-001 | Done | antigravity |
 | TASK-0014 | Database accounts, the test database, and PostgreSQL in GitHub's check run | 2.2 | Backend | Antigravity | Claude | 0006, 0090 | CORE-014 | Done | antigravity |
-| TASK-0091 | The core and audit schemas, the first database changes and the migrate command | 2.2 | Backend | Antigravity | Claude | 0014 | CORE-014, NFR-017 | To do | — |
+| TASK-0091 | The core and audit schemas, the first database changes and the migrate command | 2.2 | Backend | Antigravity | Claude | 0014 | CORE-014, NFR-017 | Done | antigravity |
 | TASK-0015 | Company context and row rules | 2.2 | Backend | Claude | Codex | 0091 | CORE-014, NFR-014 | To do | — |
 | TASK-0016 | Transaction per request and short security writes | 2.2 | Backend | Claude | Codex | 0015 | NFR-021 | To do | — |
 | TASK-0084 | Same-site check for data-changing requests | 2.2 | Backend | Claude | Codex | 0016 | NFR-001 | To do | — |

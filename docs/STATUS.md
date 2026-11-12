@@ -266,3 +266,4 @@ One line per task, newest at the bottom.
 | TASK-0089 | Tighter module-card, door and commit checks | Done | antigravity | 2026-11-11 |
 | TASK-0090 | Services on this computer only, and reading infra/.env | Done | antigravity | 2026-11-11 |
 | TASK-0014 | Database accounts, the test database, and PostgreSQL in GitHub's check run | Done | antigravity | 2026-11-12 |
+| TASK-0091 | The core and audit schemas, the first database changes and the migrate command | Done | antigravity | 2026-11-12 |

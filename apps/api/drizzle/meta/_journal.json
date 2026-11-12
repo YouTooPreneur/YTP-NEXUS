@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794465236153,
+      "tag": "0000_core_audit_schemas",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794465248887,
+      "tag": "0001_core_audit_rights",
+      "breakpoints": true
+    }
+  ]
+}
