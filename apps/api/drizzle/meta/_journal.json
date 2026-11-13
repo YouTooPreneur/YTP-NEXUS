@@ -15,6 +15,27 @@
       "when": 1794465248887,
       "tag": "0001_core_audit_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794487215827,
+      "tag": "0002_core_ids",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794487227482,
+      "tag": "0003_core_companies",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794487237570,
+      "tag": "0004_core_companies_rights",
+      "breakpoints": true
     }
   ]
 }
