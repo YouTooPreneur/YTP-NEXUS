@@ -14,6 +14,7 @@ test('the app mounts its doors with the shared hooks unless a test passes its ow
   const app = read('apps/api/src/app.ts');
   assert.match(app, /^import \{ createHooks \} from '\.\/shared\/hooks\.js';$/m);
   assert.match(app, /^ {2}mountRoutes\(app, allRoutes, options\.hooks \?\? createHooks\(\)\);$/m);
+  assert.equal((app.match(/\bmountRoutes\(app, allRoutes\b/g) || []).length, 1, 'mount allRoutes once: the old line is replaced, never kept beside the new one');
 });
 
 test('the request context holds the transaction, its type imported for types only and from no file that loads the context', () => {
