@@ -1,4 +1,4 @@
-// TASK-0016 · The shared hooks and the pool settings: every step not built yet refuses, making the hooks touches no database, and the pool sizes and limits. Written by the planner; builders never edit this file.
+// TASK-0016 · The shared hooks and the pool settings: every step not built yet refuses, making the hooks touches no database, the real transaction step, a connection always given back, and the pool sizes and limits. Written by the planner; builders never edit this file.
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
 import { Writable } from 'node:stream';
@@ -8,7 +8,8 @@ import { createApp } from '../../src/app.js';
 import { createLogger } from '../../src/shared/logging.js';
 import { defineRoute, mountRoutes, type RouteInfo } from '../../src/shared/route.js';
 import { createHooks } from '../../src/shared/hooks.js';
-import { poolSettings, poolSize } from '../../src/db/database.js';
+import { runWithContext } from '../../src/shared/context.js';
+import { onConnection, poolSettings, poolSize } from '../../src/db/database.js';
 
 const quiet = () => createLogger(new Writable({ write: (_c, _e, done) => done() }));
 const contract = defineContract({
@@ -21,6 +22,7 @@ const contract = defineContract({
 });
 const info = {} as RouteInfo;
 const ADDRESS = 'postgres://nexus_app:made%40up@db.example:6543/nexus_x';
+const COMPANY = '0b8f0d7e-5d1c-4f43-9a4b-2d7a3e9c1f00';
 
 afterEach(() => {
   vi.restoreAllMocks();
@@ -52,6 +54,17 @@ describe('createHooks', () => {
     await expect(hooks.idempotency(info, never)).rejects.toThrow('idempotency is not built yet');
     expect(() => hooks.hideFields(info, { ok: true })).toThrow('hideFields is not built yet');
     await expect(hooks.featureSwitch(info)).resolves.toBeUndefined();
+  });
+
+  it('runs the real request transaction: a request with no company is refused before anything inside it runs', async () => {
+    let ran = false;
+    const run = async () => {
+      ran = true;
+    };
+    await expect(
+      runWithContext({ requestId: 'r', background: false }, () => createHooks().inTransaction(info, run)),
+    ).rejects.toThrow('the request transaction needs the company');
+    expect(ran).toBe(false);
   });
 
   it('answers 500 for a non-public door mounted with them, without running its handler', async () => {
@@ -96,5 +109,27 @@ describe('the pool settings (TECH-DESIGN 6.6)', () => {
     expect(() => poolSettings({ DATABASE_URL_APP: ADDRESS.replace('nexus_app', 'nexus_owner') })).toThrow(
       'DATABASE_URL_APP must sign in as nexus_app',
     );
+  });
+});
+
+describe('a connection taken for a transaction', () => {
+  it('is always given back, even when its transaction cannot begin', async () => {
+    let released = 0;
+    const client = {
+      query: async () => {
+        throw new Error('the connection broke');
+      },
+      release: () => {
+        released += 1;
+      },
+    };
+    const pool = { connect: async () => client } as unknown as Parameters<typeof onConnection>[0];
+    let ran = false;
+    await expect(
+      onConnection(pool, COMPANY, async () => {
+        ran = true;
+      }),
+    ).rejects.toThrow();
+    expect([released, ran]).toEqual([1, false]);
   });
 });
