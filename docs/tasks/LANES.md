@@ -32,14 +32,14 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0015 | Company context and row rules | careful | Database foundations: company separation, logs, data safety |
 | TASK-0016 | Transaction per request and short security writes | careful | Database foundations: company separation, logs, data safety |
 | TASK-0084 | Same-site check for data-changing requests | careful | Database foundations: company separation, logs, data safety |
-| TASK-0017 | Activity log and its writer | careful | Database foundations: company separation, logs, data safety |
+| TASK-0017 | Activity log and its writer | fast | Records who changed what in everyday work; no sign-in or passwords; the security log (TASK-0018) stays careful (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0018 | Security log with chained fingerprints | careful | Database foundations: company separation, logs, data safety |
 | TASK-0019 | Rows with no company: system errors and readers | careful | Database foundations: company separation, logs, data safety |
 | TASK-0020 | Announcements: outbox and delivery by the worker | careful | Database foundations: company separation, logs, data safety |
 | TASK-0021 | Job queue in the worker, with the company per job | careful | Database foundations: company separation, logs, data safety |
-| TASK-0022 | Double-click keys | careful | Database foundations: company separation, logs, data safety |
+| TASK-0022 | Double-click keys | fast | Stops a double-clicked button from saving twice; a mistake shows at once in its tests (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0023 | Rate counters and the per-address limit | careful | Database foundations: company separation, logs, data safety |
-| TASK-0024 | Settings storage with change log | careful | Database foundations: company separation, logs, data safety |
+| TASK-0024 | Settings storage with change log | fast | Stores settings and their change history; who may change a setting is checked in careful cards (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0025 | Removing personal values on request | careful | Database foundations: company separation, logs, data safety |
 | TASK-0026 | PostgreSQL image with continuous WAL-G archiving | careful | Backups and restore |
 | TASK-0027 | Backup container: nightly base backup, dump and files copy | careful | Backups and restore |
@@ -64,7 +64,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0046 | Who am I (`/api/core/me`) | fast | Read-only: tells the screens who is signed in; the permission rules live elsewhere |
 | TASK-0047 | First-start setup command | careful | Creates the first owner account |
 | TASK-0048 | Owner resets a person's two-step | careful | Sign-in, sessions, people or permissions |
-| TASK-0085 | Screens' API client: background and double-click headers | careful | Every request from the screens passes through it (errors, background and double-click marks) |
+| TASK-0085 | Screens' API client: background and double-click headers | fast | Adds two marks to each request from the screens; the backend makes every check (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0049 | Sign-in screen | careful | Handles passwords on screen |
 | TASK-0050 | Two-step entry and set-up screens | careful | Handles two-step codes on screen |
 | TASK-0051 | Set or reset password screens | careful | Handles passwords on screen |
@@ -76,7 +76,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0057 | Feature switches: table, doors, backend and worker check (split) | careful | A switch that refuses doors and jobs (access control) |
 | TASK-0058 | Monitoring data: jobs, retry, errors, doors, backups (split) | fast | Read-only monitoring figures |
 | TASK-0059 | Logs doors: search and export (split) | careful | Searches and exports the security and activity logs |
-| TASK-0060 | Backup and archive watch with owner alerts | careful | Backup watch and owner alerts |
+| TASK-0060 | Backup and archive watch with owner alerts | fast | Watches the backups and alerts the owner; the backups themselves (TASK-0026 to TASK-0028) stay careful (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0061 | Nightly security-log chain check | careful | Proves the security log was not changed |
 | TASK-0062 | Settings home screen | fast | A screen |
 | TASK-0063 | Security screen | fast | A screen; the security rules themselves are in careful backend cards |
@@ -100,16 +100,19 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0081 | Test copy, error reporting and uptime alerts | careful | Going online: server, address, security list |
 | TASK-0082 | Go-live checks: security list, restore drill, phone sign-in | careful | Going online: server, address, security list |
 
-**Not yet built:** 54 careful, 21 fast (after TASK-0086, with TASK-0086 and TASK-0087 added by CR-010 and CR-011). Release 1 is mostly the security base, so most of its cards are careful; later releases (screens, lists, everyday features) will have far more fast cards.
+**Not yet built:** 42 careful, 26 fast (13 Nov 2026, after TASK-0016; the owner moved TASK-0017, TASK-0022, TASK-0024, TASK-0060 and TASK-0085 to fast, D-200). Release 1 is mostly the security base, so most of its cards are careful; later releases (screens, lists, everyday features) will have far more fast cards.
 
 **Fast batches in Release 1, in build order** (cards that sit between careful cards run alone in the fast lane):
 
 | Batch | Cards | What |
 |---|---|---|
+| Batch E (D-200) | TASK-0017, TASK-0022, TASK-0024 | Activity log, double-click keys, settings storage: built together right after TASK-0084 if their notes allow (each depends only on TASK-0016 or TASK-0017); otherwise each runs alone in the fast lane |
 | Fast, alone | TASK-0046 | Who am I |
+| Fast, alone (D-200) | TASK-0085 | Screens' API client: background and double-click headers |
 | Batch A | TASK-0052 to TASK-0055 | App shell, people screen, role builder screen, view-as-role banner |
 | Fast, alone | TASK-0056 | Settings doors |
 | Fast, alone | TASK-0058 | Monitoring data |
+| Fast, alone (D-200) | TASK-0060 | Backup and archive watch with owner alerts |
 | Batch B | TASK-0062 to TASK-0066 | Settings home, security, feature switches, monitoring and logs screens |
 | Fast, alone | TASK-0067 | Languages doors |
 | Batch C | TASK-0070 to TASK-0074 | Preferences doors, languages, company profile, my profile screens, colour and language switches |
