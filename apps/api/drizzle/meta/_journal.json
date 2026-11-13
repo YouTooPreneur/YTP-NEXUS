@@ -36,6 +36,13 @@
       "when": 1794487237570,
       "tag": "0004_core_companies_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794552459683,
+      "tag": "0005_core_company_rules",
+      "breakpoints": true
     }
   ]
 }
