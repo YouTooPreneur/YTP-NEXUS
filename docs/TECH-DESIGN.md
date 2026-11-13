@@ -138,7 +138,8 @@ YTP-SAAS/                    this folder is the repository root
 │   ├── src/setup.ts         the one-time first-start command (section 6.8)
 │   ├── src/shared           the shared steps of section 2, written once in Release 1
 │   ├── src/db               shared database code: the accounts command, the migrate command, the
-│   │                        database client and the auth tables' file (auth-schema.ts, CR-008)
+│   │                        database client, the company context and data helper (company.ts,
+│   │                        5.1) and the auth tables' file (auth-schema.ts, CR-008)
 │   ├── src/modules          core · crm · contracts · projects · webcare · finance · team · academy
 │   │                        each: MODULE.md · routes (API doors) · handlers · service (window,
 │   │                        rules) · repository (database) · schema (tables) · events · jobs
@@ -176,7 +177,7 @@ Full detail per table is in `docs/DATA-MODEL.md`.
 
 ### 5.1 Company context (decided)
 
-- **How the company is set:** the first statement of every request transaction is `set_config('app.company_id', <company>, true)`. Every company table has the row rule `company_id = NULLIF(current_setting('app.company_id', true), '')::uuid`, for reading and for writing, with `FORCE ROW LEVEL SECURITY`. So even a mistake in code returns nothing from another company, and a query on a reused connection with no company set returns no rows (and no error).
+- **How the company is set:** the first statement of every request transaction is `set_config('app.company_id', <company>, true)`. Every company table has the row rule `company_id = NULLIF(current_setting('app.company_id', true), '')::uuid`, for reading and for writing, with `FORCE ROW LEVEL SECURITY`. So even a mistake in code returns nothing from another company, and a query on a reused connection with no company set returns no rows (and no error). The row rule guards against mistakes in code; Drizzle's query parameters guard against injection; only the data helper (`src/db/company.ts`) sets the company.
 - **Before the company is known (sign-in):** Better Auth's tables live in their own `auth` schema, without row rules. Only Core's sign-in and users code may touch them; the wall check stops any other code. A session is read there first; its person's company is then set for the transaction, and everything after runs under the row rules.
 - **One account, one save:** the api and worker use one database account (5.2), so an Owner action that touches both the sign-in tables and Core's tables (adding a person, disabling, changing a sign-in email) is **one all-or-nothing save**. A Better Auth hook that needs Core data (the lock values, the owner alert, the last sign-in time) first reads the person's company from `auth.user`, then sets it.
 - **One login, one company:** a sign-in email is unique across Nexus.

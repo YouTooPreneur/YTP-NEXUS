@@ -28,7 +28,7 @@ This document locks **the main records of every module** before any building sta
 | Personal fields | Each module card marks which fields are personal, so a deletion request can clear them from the activity log (3.3) |
 | Search | Text fields people search on get a search index; every list can be filtered and exported (NFR-009) |
 
-**System tables** (no company row rule): `core.companies` (the companies themselves), `core.permission_catalogue` (registered from code), `core.event_receipts`, `core.rate_counters`, `core.backup_runs`, the whole `auth` schema (Better Auth's sign-in tables, touched only by Core's sign-in and users code) and the `pgboss` schema (the job queue, read only through a Core function that filters by company).
+**System tables** (no company row rule): `core.companies` (the companies themselves), `core.permission_catalogue` (registered from code), `core.event_receipts`, `core.rate_counters`, `core.backup_runs`, the whole `auth` schema (Better Auth's sign-in tables, touched only by Core's sign-in and users code), the `pgboss` schema (the job queue, read only through a Core function that filters by company) and the `drizzle` schema (drizzle's list of applied database changes).
 
 **Rows with no company** in `audit.security_log` (the system chain) and `core.error_events` are written and read only through database functions owned by the system role, which the row rules do not bind (TECH-DESIGN 5.1, 5.2). They are shown only to the platform operator: while Nexus has one company, its Owner.
 

@@ -62,6 +62,9 @@ test('the company helpers use only Drizzle, and never reach the auth tables or t
 
 test('Core’s module card names the row rule, the company context and the data helper', () => {
   const card = read('apps/api/src/modules/core/MODULE.md');
-  const rules = card.split('\n## Rules\n')[1].split('\n## ')[0];
-  assert.match(rules, /^- Every company table gets the company row rule .*`CALL core\.add_company_rules\('<schema\.table>'\);`.*`withCompany`.*`forCompany`/m);
+  const rules = card.split('\n## Rules\n')[1].split('\n## ')[0].split('\n');
+  // Exactly the card's line, after the ID rule (later cards may add rules after it).
+  const line = rules.indexOf('- Every company table gets the company row rule in its own database change, `CALL core.add_company_rules(\'<schema.table>\');`, and every query on it runs inside `withCompany` and filters with `forCompany` (`src/db/company.ts`; TECH-DESIGN 5.1, CORE-014)');
+  assert.ok(line > 0, 'the rule line is exactly the card’s, under ## Rules');
+  assert.ok(rules.slice(0, line).some((item) => item.includes('core.uuid_v7()')), 'it comes after the ID rule');
 });

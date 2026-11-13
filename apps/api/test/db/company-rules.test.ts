@@ -217,11 +217,13 @@ describe('every company table in the database (the catalogue check)', () => {
       if (SYSTEM.includes(table.name) || table.kind === 'm' || table.kind === 'f') continue;
       if (!table.row_rules || !table.forced) problems.push(`${table.name} has no forced row rules`);
       const policies = (
-        await owner.query('SELECT policyname, cmd, qual, with_check FROM pg_policies WHERE schemaname || \'.\' || tablename = $1', [
-          table.name,
-        ])
+        await owner.query(
+          'SELECT policyname, permissive, roles::text AS roles, cmd, qual, with_check FROM pg_policies WHERE schemaname || \'.\' || tablename = $1',
+          [table.name],
+        )
       ).rows;
-      if (JSON.stringify(policies) !== JSON.stringify([{ policyname: 'company_rows', cmd: 'ALL', qual: RULE, with_check: RULE }])) {
+      const exactly = [{ policyname: 'company_rows', permissive: 'PERMISSIVE', roles: '{public}', cmd: 'ALL', qual: RULE, with_check: RULE }];
+      if (JSON.stringify(policies) !== JSON.stringify(exactly)) {
         problems.push(`${table.name} does not have exactly the company_rows rule`);
       }
       const column = (
