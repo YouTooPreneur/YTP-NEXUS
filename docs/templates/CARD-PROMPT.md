@@ -4,7 +4,7 @@ Claude fills in the card ID, makes the builder's copy (`git worktree add ../ytp-
 
 ```
 You are the builder for task card TASK-XXXX in the YTP Nexus project. This folder is your own copy of the project: a git worktree on the branch task/TASK-XXXX (it is already made, so skip the card's "Make your own copy" line). Before anything else, even before pnpm install, create your log docs/logs/TASK-XXXX.md from docs/templates/TASK-LOG.md and write in it the line `- Start point (commit): <hash>` with the bare hash from `git rev-parse HEAD`, with no backticks, bold or words after it; the start check's Allowed files step must then pass. Leave every other field of the log empty until what it records has happened: the start-check answers after both start-check runs, Files changed after the files exist, Result and Attempts after the final verify.
-1. Read AGENTS.md completely and follow it exactly.
+1. Read AGENTS.md completely and follow it exactly. Before the start check, also open and read every document the card's BEFORE YOU START names (the sections it gives), even when the card gives the code word for word.
 2. Then do docs/tasks/TASK-XXXX.md exactly: BEFORE YOU START, every STEP in order, VERIFY AND DEBUG, then WHEN GREEN.
 3. Touch only the files in the card's ALLOWED FILES table, plus your log (docs/logs/TASK-XXXX.md), your evidence folder (docs/evidence/TASK-XXXX/) and the TASK-XXXX lines in docs/STATUS.md and docs/tasks/INDEX.md.
 4. Never edit any test file or tests/LOCK. If anything is unclear, stop, write the question in your log under "If BLOCKED" (never in docs/QUESTIONS.md) and mark the card BLOCKED.
