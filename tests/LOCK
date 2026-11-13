@@ -55,6 +55,9 @@ TASK-0014  apps/api/test/db/accounts.test.ts  8c1cb149379003cb577d98a016384af3fc
 TASK-0014  tests/setup/TASK-0014.test.mjs  8eee68159604e71bf8e1979c85862afc8d2e0936e6772f8eb6b9c8b1a8cc5499
 TASK-0015  apps/api/test/db/company-rules.test.ts  ad27f9112cdf2c822e2570785e227e602bad0b5514f9b4522f16a60eb4f61e99
 TASK-0015  tests/setup/TASK-0015.test.mjs  73e0c4e80905a79c3804de93d834f570e3bca0bccc818c850563eb88b5fffb40
+TASK-0016  apps/api/test/db/request-transaction.test.ts  99b862d9af8251a144b3533df2a8e1c4566660823206466c3739067380c817b5
+TASK-0016  apps/api/test/setup/hooks.test.ts  76197e51813337dbe1ca1ed88fac48f48dbbd70c02547fbd1d0bd853830e0d53
+TASK-0016  tests/setup/TASK-0016.test.mjs  ec36be6ac79ad78bdd477f9f968eb2c32b86a6a72c51d2460be08e753c46f6da
 TASK-0086  apps/api/test/setup/log-safety.test.ts  f2a8b4d9c8afea87718817a5d4a66c3510da3cb2de6520989c58311f45d0e1c4
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e
 TASK-0088  tests/setup/TASK-0088.test.mjs  5fd0ca2a47ca4e30615c15da1e435219e56272d0f43094d6908d61b2873bb1d6
