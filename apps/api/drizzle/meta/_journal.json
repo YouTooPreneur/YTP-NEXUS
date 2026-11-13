@@ -71,6 +71,20 @@
       "when": 1794573320960,
       "tag": "0009_core_idempotency_keys_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1794577684582,
+      "tag": "0010_core_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1794577695016,
+      "tag": "0011_core_settings_rights",
+      "breakpoints": true
     }
   ]
 }

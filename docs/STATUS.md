@@ -295,3 +295,4 @@ One line per task, newest at the bottom.
 | TASK-0017 | Activity log and its writer | Done | claude | 2026-11-13 |
 | TASK-0022 | Double-click keys | Done | claude | 2026-11-13 |
 | TASK-0093 | Activity-log writer: refuse a missing record ID, never store a secret | Done | claude | 2026-11-13 |
+| TASK-0024 | Settings storage with change log | Done | claude | 2026-11-13 |
