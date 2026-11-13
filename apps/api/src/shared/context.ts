@@ -1,12 +1,15 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { randomUUID } from 'node:crypto';
 import type { RequestHandler } from 'express';
+import type { Transaction } from '../db/company.js';
 
 export interface RequestContext {
   requestId: string;
   background: boolean;
   userId?: string;
   companyId?: string;
+  // The request's transaction while it runs (TASK-0016); the repositories read it here.
+  tx?: Transaction;
 }
 
 const storage = new AsyncLocalStorage<RequestContext>();
