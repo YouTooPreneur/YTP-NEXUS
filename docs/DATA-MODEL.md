@@ -81,7 +81,7 @@ The company's default colour (Emerald or Navy, CORE-114) is **not** part of thes
 | value | jsonb | Checked against the setting's definition |
 | updated_at, updated_by, version | | Every change also goes into the activity log with old and new value |
 
-What settings exist, their type, default and help text, are defined in each module's code and listed on its module card; only the **values** live in the table. A setting with no row uses its default.
+What settings exist, their type, default and help text, are defined in each module's code and listed on its module card; only the **values** live in the table. A setting with no row uses its default. As built (TASK-0024): `value` jsonb (never empty), `updated_at` `now()`, `updated_by` uuid (no link: the person table comes with TASK-0033), `version` integer starting at 1, linked to `core.companies` (`ON DELETE RESTRICT`), the company row rule; the app may read, add and change values, never delete them (a setting goes back to its default by saving the default). `defineSetting`, `getSetting` and `setSetting` are in `apps/api/src/modules/core/service/settings.ts`; a key is `<group>.<name>` in lower case and never looks like a secret; each change is in the activity log with `record_type` `setting`, `record_id` the company's ID and the key as the changed field.
 
 **`core.feature_switches`** (CORE-015, SCR-193)
 

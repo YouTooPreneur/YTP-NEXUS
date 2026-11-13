@@ -62,6 +62,8 @@ TASK-0017  apps/api/test/db/activity-log.test.ts  2e101ca9dd7c7c52d53f0267cf38d1
 TASK-0017  tests/setup/TASK-0017.test.mjs  7ee5c32bcc1f2ae894ae5d7878ac307ef9a55deacbeb317105d920493549b121
 TASK-0022  apps/api/test/db/double-click-keys.test.ts  23508d1e2d80fb99d4e2f65575616e27a4ca4587f3311a710b3374b78d3a39b0
 TASK-0022  tests/setup/TASK-0022.test.mjs  a4eef7cf857571c33878447688640a8bee847bef76ceb97285958857cbd22de8
+TASK-0024  apps/api/test/db/settings.test.ts  83a8d3280d187dee41f01f59ad120e7ba59205b72eff906298ce6d3e4f750734
+TASK-0024  tests/setup/TASK-0024.test.mjs  303e1b4c2c62015bca5eabb0a03bde6fb872858156ee2a22ee86a5e9832527ea
 TASK-0084  apps/api/test/setup/same-site.test.ts  7b45de81e062d19d45de1a52f43a2c21c3cbd9a890c16cb3e87cd48d6d62d00c
 TASK-0084  tests/setup/TASK-0084.test.mjs  e35f27640c03110f7037072ddacab2bd6240db54b8e4fa53bcbbfdd80597d7c7
 TASK-0086  apps/api/test/setup/log-safety.test.ts  f2a8b4d9c8afea87718817a5d4a66c3510da3cb2de6520989c58311f45d0e1c4

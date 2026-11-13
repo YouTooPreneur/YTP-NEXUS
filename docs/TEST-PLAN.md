@@ -66,7 +66,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-006 | 0041, 0053 | API tests (sessions stop at once) |
 | CORE-008 | 0040, 0042 | API tests (unknown Google account refused; after an email change the old account is refused and the same person signs in) |
 | CORE-010, CORE-011 | 0068, 0072 | API tests (the right version for a date; GST only from its date) |
-| CORE-012 | 0024, 0056, 0062 | API tests (every change logged with old and new value) |
+| CORE-012 | 0024, 0056, 0062 | API tests (every change logged with old and new value: 0024 with probe settings; the literal pass test, the morning summary time in the log, with TASK-0070) |
 | CORE-014 | 0015, 0016 | API tests (a second company sees nothing; a reused connection with no company returns no rows) |
 | CORE-015 | 0057, 0064 | API tests (a switched-off feature's door is refused; the worker skips its jobs) |
 | CORE-090 | 0017, 0059, 0076, 0078 | API tests (a role change shows old and new values in Record history) |
