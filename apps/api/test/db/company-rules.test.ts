@@ -195,56 +195,95 @@ describe('core.add_company_rules', () => {
   });
 });
 
+// The catalogue check: every table in the database, with what is wrong with each (an empty list when all is right).
+async function catalogueProblems(): Promise<{ tables: string[]; problems: string[] }> {
+  const tables = (
+    await owner.query(
+      `SELECT c.oid, n.nspname || '.' || c.relname AS name, c.relkind AS kind, c.relrowsecurity AS row_rules,
+              c.relforcerowsecurity AS forced, pg_get_userbyid(c.relowner) AS table_owner,
+              has_table_privilege('nexus_app', c.oid, 'TRUNCATE') AS app_truncates
+         FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE c.relkind IN ('r', 'p', 'm', 'f') AND n.nspname NOT IN ('pg_catalog', 'information_schema', 'pg_toast', 'drizzle', 'auth', 'pgboss')
+        ORDER BY 2`,
+    )
+  ).rows as { oid: number; name: string; kind: string; row_rules: boolean; forced: boolean; table_owner: string; app_truncates: boolean }[];
+  const problems: string[] = [];
+  for (const table of tables) {
+    // The row rules cannot bind a materialized view or a foreign table, and TRUNCATE ignores them.
+    if (table.kind === 'm' || table.kind === 'f') problems.push(`${table.name} is a materialized view or foreign table, which row rules cannot bind`);
+    if (table.app_truncates) problems.push(`${table.name} may be emptied by nexus_app (TRUNCATE ignores the row rules)`);
+    if (table.table_owner !== 'nexus_owner') problems.push(`${table.name} belongs to ${table.table_owner}`);
+    if (table.name.startsWith('public.')) problems.push(`${table.name} is in the public schema`);
+    if (SYSTEM.includes(table.name) || table.kind === 'm' || table.kind === 'f') continue;
+    if (!table.row_rules || !table.forced) problems.push(`${table.name} has no forced row rules`);
+    const policies = (
+      await owner.query(
+        'SELECT policyname, permissive, roles::text AS roles, cmd, qual, with_check FROM pg_policies WHERE schemaname || \'.\' || tablename = $1',
+        [table.name],
+      )
+    ).rows;
+    const exactly = [{ policyname: 'company_rows', permissive: 'PERMISSIVE', roles: '{public}', cmd: 'ALL', qual: RULE, with_check: RULE }];
+    if (JSON.stringify(policies) !== JSON.stringify(exactly)) {
+      problems.push(`${table.name} does not have exactly the company_rows rule`);
+    }
+    const column = (
+      await owner.query(
+        `SELECT format_type(atttypid, atttypmod) AS type, attnotnull AS required FROM pg_attribute
+          WHERE attrelid = $1 AND attname = 'company_id' AND NOT attisdropped`,
+        [table.oid],
+      )
+    ).rows[0] as { type: string; required: boolean } | undefined;
+    if (!column || column.type !== 'uuid') problems.push(`${table.name} has no company_id uuid column`);
+    else if (!column.required && !MAY_BE_EMPTY.includes(table.name)) problems.push(`${table.name} allows an empty company_id`);
+    const link = (
+      await owner.query(
+        `SELECT 1 FROM pg_constraint c JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = ANY (c.conkey)
+          WHERE c.conrelid = $1 AND c.contype = 'f' AND c.confrelid = 'core.companies'::regclass AND a.attname = 'company_id'`,
+        [table.oid],
+      )
+    ).rowCount;
+    if (!link) problems.push(`${table.name} has no link from company_id to core.companies`);
+    // Every unique key other than the table's own id includes company_id (TASK-0022, CR-022, TECH-DESIGN 5.1):
+    // PostgreSQL checks unique keys without the row rules, so a key without the company would reveal another
+    // company's value.
+    const uniques = (
+      await owner.query(
+        `SELECT i.indexrelid::regclass::text AS name,
+                array(SELECT a.attname::text FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(num, pos)
+                        JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.num ORDER BY k.pos) AS columns
+           FROM pg_index i WHERE i.indrelid = $1 AND i.indisunique`,
+        [table.oid],
+      )
+    ).rows as { name: string; columns: string[] }[];
+    for (const unique of uniques) {
+      if (unique.columns.join(',') !== 'id' && !unique.columns.includes('company_id')) {
+        problems.push(`${table.name} has the unique key ${unique.name} without company_id`);
+      }
+    }
+  }
+  return { tables: tables.map((table) => table.name), problems };
+}
+
 describe('every company table in the database (the catalogue check)', () => {
   it('has the company rule, its company_id and its link to core.companies; only the system tables go without', async () => {
-    const tables = (
-      await owner.query(
-        `SELECT c.oid, n.nspname || '.' || c.relname AS name, c.relkind AS kind, c.relrowsecurity AS row_rules,
-                c.relforcerowsecurity AS forced, pg_get_userbyid(c.relowner) AS table_owner,
-                has_table_privilege('nexus_app', c.oid, 'TRUNCATE') AS app_truncates
-           FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
-          WHERE c.relkind IN ('r', 'p', 'm', 'f') AND n.nspname NOT IN ('pg_catalog', 'information_schema', 'pg_toast', 'drizzle', 'auth', 'pgboss')
-          ORDER BY 2`,
-      )
-    ).rows as { oid: number; name: string; kind: string; row_rules: boolean; forced: boolean; table_owner: string; app_truncates: boolean }[];
-    const problems: string[] = [];
-    for (const table of tables) {
-      // The row rules cannot bind a materialized view or a foreign table, and TRUNCATE ignores them.
-      if (table.kind === 'm' || table.kind === 'f') problems.push(`${table.name} is a materialized view or foreign table, which row rules cannot bind`);
-      if (table.app_truncates) problems.push(`${table.name} may be emptied by nexus_app (TRUNCATE ignores the row rules)`);
-      if (table.table_owner !== 'nexus_owner') problems.push(`${table.name} belongs to ${table.table_owner}`);
-      if (table.name.startsWith('public.')) problems.push(`${table.name} is in the public schema`);
-      if (SYSTEM.includes(table.name) || table.kind === 'm' || table.kind === 'f') continue;
-      if (!table.row_rules || !table.forced) problems.push(`${table.name} has no forced row rules`);
-      const policies = (
-        await owner.query(
-          'SELECT policyname, permissive, roles::text AS roles, cmd, qual, with_check FROM pg_policies WHERE schemaname || \'.\' || tablename = $1',
-          [table.name],
-        )
-      ).rows;
-      const exactly = [{ policyname: 'company_rows', permissive: 'PERMISSIVE', roles: '{public}', cmd: 'ALL', qual: RULE, with_check: RULE }];
-      if (JSON.stringify(policies) !== JSON.stringify(exactly)) {
-        problems.push(`${table.name} does not have exactly the company_rows rule`);
-      }
-      const column = (
-        await owner.query(
-          `SELECT format_type(atttypid, atttypmod) AS type, attnotnull AS required FROM pg_attribute
-            WHERE attrelid = $1 AND attname = 'company_id' AND NOT attisdropped`,
-          [table.oid],
-        )
-      ).rows[0] as { type: string; required: boolean } | undefined;
-      if (!column || column.type !== 'uuid') problems.push(`${table.name} has no company_id uuid column`);
-      else if (!column.required && !MAY_BE_EMPTY.includes(table.name)) problems.push(`${table.name} allows an empty company_id`);
-      const link = (
-        await owner.query(
-          `SELECT 1 FROM pg_constraint c JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = ANY (c.conkey)
-            WHERE c.conrelid = $1 AND c.contype = 'f' AND c.confrelid = 'core.companies'::regclass AND a.attname = 'company_id'`,
-          [table.oid],
-        )
-      ).rowCount;
-      if (!link) problems.push(`${table.name} has no link from company_id to core.companies`);
-    }
-    expect(tables.map((table) => table.name)).toContain('core.companies');
+    const { tables, problems } = await catalogueProblems();
+    expect(tables).toContain('core.companies');
     expect(problems).toEqual([]);
+  });
+
+  it('reports a unique key on a company table that leaves out company_id (TASK-0022: a planted mistake)', async () => {
+    await owner.query(`CREATE TABLE core.probe_0022 (
+      id uuid PRIMARY KEY DEFAULT core.uuid_v7(),
+      company_id uuid NOT NULL REFERENCES core.companies (id),
+      code text NOT NULL,
+      CONSTRAINT probe_0022_code_unique UNIQUE (code),
+      CONSTRAINT probe_0022_company_code_unique UNIQUE (company_id, code))`);
+    try {
+      await owner.query(`CALL core.add_company_rules('core.probe_0022')`);
+      const { problems } = await catalogueProblems();
+      expect(problems).toEqual(['core.probe_0022 has the unique key core.probe_0022_code_unique without company_id']);
+    } finally {
+      await owner.query('DROP TABLE core.probe_0022');
+    }
   });
 });

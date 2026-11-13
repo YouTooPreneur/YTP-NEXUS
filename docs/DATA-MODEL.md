@@ -17,6 +17,7 @@ This document locks **the main records of every module** before any building sta
 |---|---|
 | Key | `id`: a time-ordered unique ID (UUID v7) made by the database function `core.uuid_v7()`, Better Auth's tables included. Section 3 gives three kinds of exception, and they keep their keys: a key that is another table's ID (`core.users.id` is `auth.user.id`; `core.user_preferences.user_id`; `core.session_state.session_id`), a key of several columns (for example the company and a name: settings, switches, languages, counters, doors, double-click keys; the permission catalogue and its grants, receipts, rate counters), and `audit.security_log`'s `bigint` (chain order). The `drizzle` schema (drizzle's own list of applied changes) and the `pgboss` schema keep their tools' own keys |
 | Company | `company_id`, required, linked to `core.companies`, protected by the company filter and the **row rules** (TECH-DESIGN 5.1). Only the **system tables** below have no company row rule |
+| Unique keys | Every unique key on a company table other than its own `id` includes `company_id` (PostgreSQL checks unique keys without the row rules, so a key without the company would reveal another company's value); the catalogue check in `apps/api/test/db/company-rules.test.ts` reports any that does not (TASK-0022, CR-023) |
 | Who and when | `created_at`, `created_by`, `updated_at`, `updated_by` (a person, or empty for automatic work; the activity log says which automation, API key or AI did it) |
 | Two people editing | `version`, a number that goes up by one on every save; a save that carries an old number is refused (NFR-021) |
 | Deleting | `deleted_at`, `deleted_by` on every main record: the record goes to the 30-day trash and is hidden everywhere (CORE-093). Every database link is `ON DELETE RESTRICT`, never `CASCADE` |
@@ -426,6 +427,8 @@ Rows are added **only** through one database function, owned by the system role:
 | user_id, action | | |
 | result | jsonb | The first result is returned again for a repeat |
 | expires_at | timestamptz | 24 hours |
+
+As built (TASK-0022): `key` text (the code accepts only a UUID and stores it in lower case), `user_id` uuid (no link: the person table comes with TASK-0033), `action` text (the door's `operationId`), `result` jsonb holding `{ answer }` (so an answer of `null` is kept too), `expires_at` `now() + 24 hours`, all required except `result`; linked to `core.companies` (`ON DELETE RESTRICT`); the company row rule; the app may read, add and update keys, never delete them (a nightly clean-up card gets that right).
 
 **`core.rate_counters`** (system; NFR-020, D-124)
 

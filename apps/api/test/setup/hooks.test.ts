@@ -45,13 +45,9 @@ describe('createHooks', () => {
 
   it('refuses at every step not built yet, and lets every feature through until the feature switches exist', async () => {
     const hooks = createHooks();
-    const never = async () => {
-      throw new Error('a refused step must not run the rest');
-    };
     for (const step of ['session', 'idleTimeout', 'twoStepGate', 'personLimit', 'permission'] as const) {
       await expect(hooks[step](info)).rejects.toThrow(`${step} is not built yet`);
     }
-    await expect(hooks.idempotency(info, never)).rejects.toThrow('idempotency is not built yet');
     expect(() => hooks.hideFields(info, { ok: true })).toThrow('hideFields is not built yet');
     await expect(hooks.featureSwitch(info)).resolves.toBeUndefined();
   });

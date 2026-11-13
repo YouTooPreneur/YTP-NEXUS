@@ -79,7 +79,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-140 | 0058, 0065 | API tests (failed job with a working Retry) |
 | NFR-020 | 0023, 0035, 0037, 0038 | API tests (one person's flood slowed, others not; refused requests count; a hit limit logged with one alert) |
 | NFR-007, AUTO-037, INT-022 | 0026, 0027, 0028, 0060 | Restore drill (timed restore to a chosen moment); watch alerts |
-| NFR-021 | 0016, 0022, 0085 | API tests (a repeated `Idempotency-Key` gets the first answer; an old version gets 409); the screens send the key with every change (0085) |
+| NFR-021 | 0016, 0022, 0085, and the first card with an edit door | API tests (a repeated `Idempotency-Key` gets the first answer, 0022; an old version gets 409, built by the first card that edits a record with a `version`); the screens send the key with every change (0085) |
 | NFR-001 (same-site check) | 0084 | API tests (a data-changing request from another address is refused) |
 | INT-001, CORE-065, CORE-121 (Release 1 parts) | 0029 | API tests (sign-in emails reach Mailpit in test mode; the email door's health check and retries) |
 | CORE-082 (Release 1 part) | 0069 | API tests (5-minute private links, refused without permission, every download logged) |
