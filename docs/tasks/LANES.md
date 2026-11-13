@@ -106,7 +106,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 
 | Batch | Cards | What |
 |---|---|---|
-| Batch E (D-200) | TASK-0017, TASK-0022, TASK-0024 | Activity log, double-click keys, settings storage: built together right after TASK-0084 if their notes allow (each depends only on TASK-0016 or TASK-0017); otherwise each runs alone in the fast lane |
+| Fast, alone, in turn (D-200) | TASK-0017, then TASK-0022, then TASK-0024 | Activity log, double-click keys, settings storage: each adds database changes, so each is built, checked and merged before the next starts (a batch would tie their change files together, CR-022) |
 | Fast, alone | TASK-0046 | Who am I |
 | Fast, alone (D-200) | TASK-0085 | Screens' API client: background and double-click headers |
 | Batch A | TASK-0052 to TASK-0055 | App shell, people screen, role builder screen, view-as-role banner |

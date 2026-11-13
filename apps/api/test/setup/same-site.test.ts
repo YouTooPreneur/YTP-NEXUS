@@ -77,6 +77,7 @@ describe('the same-site check (TECH-DESIGN section 2, step 1)', () => {
       refused(await send(app, method, { 'Sec-Fetch-Site': 'cross-site' }));
       refused(await send(app, method, { 'Sec-Fetch-Site': 'same-site' }));
       refused(await send(app, method, { 'Sec-Fetch-Site': 'something-else' }));
+      refused(await send(app, method, { 'Sec-Fetch-Site': '' }));
     }
     expect(handled).toBe(0);
   });
