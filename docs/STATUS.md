@@ -283,3 +283,4 @@ One line per task, newest at the bottom.
 | TASK-0092 | The companies table and time-ordered IDs | Done | antigravity | 2026-11-12 |
 | TASK-0015 | Company context and row rules | Done | antigravity | 2026-11-13 |
 | TASK-0016 | Transaction per request and short security writes | Done | antigravity | 2026-11-13 |
+| TASK-0084 | Same-site check for data-changing requests | Done | claude | 2026-11-13 |

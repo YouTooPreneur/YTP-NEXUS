@@ -33,7 +33,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0092 | The companies table and time-ordered IDs | 2.2 | Backend | Antigravity | Claude | 0091 | CORE-014, NFR-014 | Done | antigravity |
 | TASK-0015 | Company context and row rules | 2.2 | Backend | Antigravity | Claude | 0092 | CORE-014, NFR-014 | Done | antigravity |
 | TASK-0016 | Transaction per request and short security writes | 2.2 | Backend | Antigravity | Claude | 0015 | NFR-021 | Done | antigravity |
-| TASK-0084 | Same-site check for data-changing requests | 2.2 | Backend | Claude | Claude (checking session) | 0016 | NFR-001 | To do | — |
+| TASK-0084 | Same-site check for data-changing requests | 2.2 | Backend | Claude | Claude (checking session) | 0016 | NFR-001 | Done | claude |
 | TASK-0017 | Activity log and its writer | 2.2 | Backend | Codex | Claude | 0016 | CORE-090 | To do | — |
 | TASK-0018 | Security log with chained fingerprints | 2.2 | Backend | Claude | Codex | 0016 | CORE-092 | To do | — |
 | TASK-0019 | Rows with no company: system errors and readers | 2.2 | Backend | Codex | Claude | 0018 | CORE-140, NFR-014 | To do | — |
