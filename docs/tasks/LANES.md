@@ -38,6 +38,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0020 | Announcements: outbox and delivery by the worker | careful | Database foundations: company separation, logs, data safety |
 | TASK-0021 | Job queue in the worker, with the company per job | careful | Database foundations: company separation, logs, data safety |
 | TASK-0022 | Double-click keys | fast | Stops a double-clicked button from saving twice; a mistake shows at once in its tests (moved to fast by the owner, 13 Nov 2026, D-200) |
+| TASK-0093 | Activity-log writer: refuse a missing record ID, never store a secret | fast | Two guards in one file, from Codex's extra check of TASK-0017; no database change (D-200, CR-024) |
 | TASK-0023 | Rate counters and the per-address limit | careful | Database foundations: company separation, logs, data safety |
 | TASK-0024 | Settings storage with change log | fast | Stores settings and their change history; who may change a setting is checked in careful cards (moved to fast by the owner, 13 Nov 2026, D-200) |
 | TASK-0025 | Removing personal values on request | careful | Database foundations: company separation, logs, data safety |

@@ -520,3 +520,5 @@ Asked one by one after batches 8 and 9 were built.
 - "Also your 84 task is done by you" → TASK-0084 checked by a separate Claude session, merged and shown (round 97), 13 Nov 2026.
 - (Codex's TASK-0084 report shown) → six extra checks so far, all clean, 13 Nov 2026.
 - "what next in short" → TASK-0017 checked and merged, TASK-0022 next, then TASK-0024; Codex and Antigravity rest, 13 Nov 2026.
+- "what abotu codex and antigravity" → Codex checks TASK-0017 and Antigravity TASK-0011, read-only, 13 Nov 2026.
+- "done both codex and antigravity and next tell me short" → TASK-0011 clean; Codex found 2 gaps in TASK-0017's card, fixed by a new small card TASK-0093; TASK-0022 built, checked, merged and shown, 13 Nov 2026.
