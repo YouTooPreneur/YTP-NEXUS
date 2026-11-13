@@ -13,7 +13,7 @@
 - Enough free disk space for the card (at least 5 GB on drive C: when it installs or downloads anything big).
 - Your copy needs `infra/.env` and `infra/.env.test` (both git-ignored; Claude puts them in the copy). Check that both exist; if one is missing, STOP and mark BLOCKED. Never print, copy into your log or change either file.
 - Start Docker Desktop, then run `pnpm services:up` in your copy. It must end without an error (from TASK-0014 on; AGENTS.md section 3).
-- Make sure no program uses port 3000 or 5310. If one does: stop it if you started it (any `pnpm dev` or demo); otherwise do not run the start check yet: tell the owner which program holds it and wait (a busy port is never a reason to mark BLOCKED); never stop it yourself. Since TASK-0013 every `pnpm verify` starts its own servers (End-to-end smoke), so on this computer only one verify runs at a time (AGENTS.md section 3).
+- Make sure no program uses port 3000 or 5310: in PowerShell, `Get-NetTCPConnection -State Listen -LocalPort 3000,5310` must list nothing (lines in `netstat` marked `TIME_WAIT`, left by an earlier run, are not a busy port). If one does: stop it if you started it (any `pnpm dev` or demo); otherwise do not run the start check yet: tell the owner which program holds it and wait (a busy port is never a reason to mark BLOCKED); never stop it yourself. Since TASK-0013 every `pnpm verify` starts its own servers (End-to-end smoke), so on this computer only one verify runs at a time (AGENTS.md section 3).
 - Run `pnpm verify`. It must be green. If not: STOP and mark BLOCKED (a busy port alone is not a reason: see the line above).
 - Run `pnpm verify --card TASK-XXXX` once: this card's tests must fail. Write both results in your log.
 

@@ -54,6 +54,7 @@ test('the company helpers use only Drizzle, and never reach the auth tables or t
     "import { eq, sql } from 'drizzle-orm';",
     "import type { SQL } from 'drizzle-orm';",
     "import type { NodePgDatabase } from 'drizzle-orm/node-postgres';",
+    "import { PgTransaction } from 'drizzle-orm/pg-core';",
     "import type { PgColumn } from 'drizzle-orm/pg-core';",
   ]);
   assert.doesNotMatch(read('apps/api/src/db/company.ts'), /auth-schema|getContext|runWithContext/);

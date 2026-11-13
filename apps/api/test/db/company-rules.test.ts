@@ -1,5 +1,6 @@
-// TASK-0015 · Company context and row rules: both locks, the row rule's procedure, a reused connection, two companies at once, and every company table in the database. Written by the planner; builders never edit this file.
+// TASK-0015 · Company context and row rules: both locks, the row rule's procedure, a reused connection, two companies at once, a pool, and every company table in the database. Written by the planner; builders never edit this file.
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { Pool } from 'pg';
 import { eq, sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { pgSchema, text, uuid } from 'drizzle-orm/pg-core';
@@ -90,6 +91,41 @@ describe('the row rule (lock 2)', () => {
     expect(await Promise.all([slowly(A, app), slowly(B, app2)])).toEqual([['a1', 'a2'], ['b1']]);
   });
 
+  it('runs the company setting and the work on the transaction’s own connection when the database is a pool, as in the API', async () => {
+    // A pool gives every query outside the transaction any free connection, where no company is set.
+    const url = new URL(process.env.DATABASE_URL_APP!);
+    const pool = new Pool({
+      host: url.hostname,
+      port: Number(url.port) || 5432,
+      user: url.username,
+      password: decodeURIComponent(url.password),
+      database: url.pathname.slice(1),
+      max: 4,
+    });
+    try {
+      const seen = (companyId: string) => withCompany(drizzle(pool), companyId, async (tx) => labels(await tx.select().from(probe)));
+      expect(await Promise.all([seen(A), seen(B), seen(A)])).toEqual([['a1', 'a2'], ['b1'], ['a1', 'a2']]);
+    } finally {
+      await pool.end();
+    }
+  });
+
+  it('refuses a transaction in place of the database, so a company never stays set on an outer transaction', async () => {
+    const seen = await withCompany(drizzle(app), A, async (outer) => {
+      const nested = await withCompany(outer, B, async () => 'ran').then(
+        (value) => value,
+        (error: unknown) => (error as Error).message,
+      );
+      return { nested, rows: labels(await outer.select().from(probe)) };
+    });
+    expect(seen).toEqual({ nested: 'withCompany needs the database, not a transaction', rows: ['a1', 'a2'] });
+  });
+
+  it('takes a database made with a schema too, for relational queries', async () => {
+    const rows = await withCompany(drizzle(app, { schema: { probe } }), B, (tx) => tx.query.probe.findMany());
+    expect(labels(rows)).toEqual(['b1']);
+  });
+
   it('refuses a value that is not a company ID before it reaches the database, and never names it', async () => {
     // Also values that hold a real company ID inside them.
     for (const planted of ["x' OR '1'='1", `${A}' OR '1'='1`, ` ${A}`, `${A}\n`, `{${A}}`, '']) {
@@ -163,18 +199,22 @@ describe('every company table in the database (the catalogue check)', () => {
   it('has the company rule, its company_id and its link to core.companies; only the system tables go without', async () => {
     const tables = (
       await owner.query(
-        `SELECT c.oid, n.nspname || '.' || c.relname AS name, c.relrowsecurity AS row_rules, c.relforcerowsecurity AS forced,
-                pg_get_userbyid(c.relowner) AS table_owner
+        `SELECT c.oid, n.nspname || '.' || c.relname AS name, c.relkind AS kind, c.relrowsecurity AS row_rules,
+                c.relforcerowsecurity AS forced, pg_get_userbyid(c.relowner) AS table_owner,
+                has_table_privilege('nexus_app', c.oid, 'TRUNCATE') AS app_truncates
            FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
-          WHERE c.relkind IN ('r', 'p') AND n.nspname NOT IN ('pg_catalog', 'information_schema', 'pg_toast', 'drizzle', 'auth', 'pgboss')
+          WHERE c.relkind IN ('r', 'p', 'm', 'f') AND n.nspname NOT IN ('pg_catalog', 'information_schema', 'pg_toast', 'drizzle', 'auth', 'pgboss')
           ORDER BY 2`,
       )
-    ).rows as { oid: number; name: string; row_rules: boolean; forced: boolean; table_owner: string }[];
+    ).rows as { oid: number; name: string; kind: string; row_rules: boolean; forced: boolean; table_owner: string; app_truncates: boolean }[];
     const problems: string[] = [];
     for (const table of tables) {
+      // The row rules cannot bind a materialized view or a foreign table, and TRUNCATE ignores them.
+      if (table.kind === 'm' || table.kind === 'f') problems.push(`${table.name} is a materialized view or foreign table, which row rules cannot bind`);
+      if (table.app_truncates) problems.push(`${table.name} may be emptied by nexus_app (TRUNCATE ignores the row rules)`);
       if (table.table_owner !== 'nexus_owner') problems.push(`${table.name} belongs to ${table.table_owner}`);
       if (table.name.startsWith('public.')) problems.push(`${table.name} is in the public schema`);
-      if (SYSTEM.includes(table.name)) continue;
+      if (SYSTEM.includes(table.name) || table.kind === 'm' || table.kind === 'f') continue;
       if (!table.row_rules || !table.forced) problems.push(`${table.name} has no forced row rules`);
       const policies = (
         await owner.query('SELECT policyname, cmd, qual, with_check FROM pg_policies WHERE schemaname || \'.\' || tablename = $1', [
