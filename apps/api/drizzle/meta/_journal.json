@@ -57,6 +57,20 @@
       "when": 1794571462417,
       "tag": "0007_audit_activity_log_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794573309419,
+      "tag": "0008_core_idempotency_keys",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794573320960,
+      "tag": "0009_core_idempotency_keys_rules",
+      "breakpoints": true
     }
   ]
 }
