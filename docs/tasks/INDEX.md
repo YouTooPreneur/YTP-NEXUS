@@ -35,13 +35,13 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0016 | Transaction per request and short security writes | 2.2 | Backend | Antigravity | Claude | 0015 | NFR-021 | Done | antigravity |
 | TASK-0084 | Same-site check for data-changing requests | 2.2 | Backend | Claude | Claude (checking session) | 0016 | NFR-001 | Done | claude |
 | TASK-0017 | Activity log and its writer | 2.2 | Backend | Claude | Claude (checking session) | 0084 | CORE-090, NFR-002 | Done | claude |
+| TASK-0022 | Double-click keys | 2.2 | Backend | Claude | Claude (checking session) | 0017 | NFR-021, NFR-003 | To do | — |
+| TASK-0024 | Settings storage with change log | 2.2 | Backend | Claude | Claude (checking session) | 0022 | CORE-012 | To do | — |
 | TASK-0018 | Security log with chained fingerprints | 2.2 | Backend | Claude | Codex | 0016 | CORE-092 | To do | — |
 | TASK-0019 | Rows with no company: system errors and readers | 2.2 | Backend | Codex | Claude | 0018 | CORE-140, NFR-014 | To do | — |
 | TASK-0020 | Announcements: outbox and delivery by the worker | 2.2 | Backend | Codex | Claude | 0017 | NFR-003 | To do | — |
 | TASK-0021 | Job queue in the worker, with the company per job | 2.2 | Backend | Codex | Claude | 0020 | NFR-003 | To do | — |
-| TASK-0022 | Double-click keys | 2.2 | Backend | Codex | Claude | 0016 | NFR-021 | To do | — |
 | TASK-0023 | Rate counters and the per-address limit | 2.2 | Backend | Codex | Claude | 0016, 0084 | NFR-020 | To do | — |
-| TASK-0024 | Settings storage with change log | 2.2 | Backend | Codex | Claude | 0017 | CORE-012 | To do | — |
 | TASK-0025 | Removing personal values on request | 2.2 | Backend | Codex | Claude | 0017, 0018 | NFR-010 | To do | — |
 | TASK-0026 | PostgreSQL image with continuous WAL-G archiving | 2.3 | Backend | Claude | Codex | 0014 | NFR-007, NFR-008 | To do | — |
 | TASK-0027 | Backup container: nightly base backup, dump and files copy | 2.3 | Backend | Claude | Codex | 0026 | AUTO-037, INT-022 | To do | — |
