@@ -524,3 +524,4 @@ Asked one by one after batches 8 and 9 were built.
 - "done both codex and antigravity and next tell me short" → TASK-0011 clean; Codex found 2 gaps in TASK-0017's card, fixed by a new small card TASK-0093; TASK-0022 built, checked, merged and shown, 13 Nov 2026.
 - "what to do simple and easy and give work to codex and antigravity too" → Claude builds TASK-0093; Codex checks TASK-0022 and Antigravity the safe logs, read-only, 13 Nov 2026.
 - "done" → both extra checks clean; TASK-0093 checked and merged; TASK-0024 written and trial-built, 13 Nov 2026.
+- "Start it" (TASK-0024) → built, checked (PASS), merged and shown; next Claude writes TASK-0018, 13 Nov 2026.
