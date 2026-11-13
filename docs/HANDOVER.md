@@ -164,6 +164,7 @@ The way of working (history, handover, tracker tabs, Word copies, choices, desig
 - The Bash tool breaks on heredocs with apostrophes and escaped quotes. Write Python scripts to a file and run them, or use the Edit tool.
 - Headless Edge: use a fresh profile per picture and a timeout, or it may hang.
 - Scratchpad files disappear between sessions; anything worth keeping goes into `tools/`.
+- After the computer restarts or sleeps overnight, Docker Desktop may not be running: a check then stops with `The database tests could not start: the database is not running`. Start Docker Desktop (`C:\Program Files\Docker\Docker\Docker Desktop.exe`) and run `pnpm services:up` before any check; a throwaway prototype container (such as `ytp-proto-pg` on 15432) must be started again too (found in the TASK-0092 review, 13 Nov 2026).
 - A database change that fails with `syntax error at or near ""` (an empty-looking character) starts with a byte-order mark: PowerShell 5.1's `Set-Content -Encoding utf8` and `Out-File -Encoding utf8` add one (`Out-File` without `-Encoding` writes UTF-16). Cards with database changes say to save filled files without one. Rewrite the file as UTF-8 without it (found in the TASK-0092 checks, 12 Nov 2026).
 
 ## 7. End of every session
