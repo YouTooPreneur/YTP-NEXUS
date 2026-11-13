@@ -7,11 +7,13 @@ Every module is built from the same 6 parts (TECH-DESIGN section 2). If it is no
 ## Data
 - `core.companies`: one company using Nexus; a system table with no company row rule, read-only for the app (DATA-MODEL 3.1)
 - `audit.activity_log`: one entry per change or automatic action (who, what, when, old and new values); a company table the app may only add to and read (DATA-MODEL 3.3, CORE-090)
+- `core.idempotency_keys`: the first answer to a request that changes data, kept 24 hours under the screen's double-click key; a company table the app may read, add and update (DATA-MODEL 3.4, NFR-021)
 
 ## Rules
 - A table's own `id` key is a time-ordered ID (UUID version 7) made by the database function `core.uuid_v7()`, Better Auth's tables included; a key that is another table's ID, a key of several columns and `audit.security_log`'s chain number keep the form DATA-MODEL section 3 gives them, and drizzle's and pg-boss's own tables keep their tools' keys (DATA-MODEL section 2)
 - Every company table gets the company row rule in its own database change, `CALL core.add_company_rules('<schema.table>');`, and every query on it runs inside `withCompany` and filters with `forCompany` (`src/db/company.ts`; TECH-DESIGN 5.1, CORE-014)
 - Every save writes its activity-log entry with `writeActivity` (`modules/core/repository/activity-log.ts`) in the save's own transaction, after the work and before any announcement; `changes` holds only the changed fields as `{ field: { old, new } }`, named as in the record's API contract (a new record: `old` is null; a delete or restore: `{}`), and never a password, code, token or key; a change to a record with no ID of its own (a setting, a switch) is logged against the record that holds it, for a company's settings the company (TECH-DESIGN section 2 step 13, CORE-090)
+- Every request that changes data carries an `Idempotency-Key` (a UUID the screen makes, one per change, sent again on a retry); a repeat within 24 hours by the same person to the same door gets the first answer without running again (`src/shared/idempotency.ts`, TECH-DESIGN section 2 step 12, NFR-021)
 - Core serves everyone and asks no module (D-014)
 - Core's sign-in code lives in `modules/core/signin/` and its users code in `modules/core/users/`; only these two folders and `src/db/` may touch the `auth` schema (the auth-schema wall, TECH-DESIGN 5.1)
 
