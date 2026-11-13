@@ -36,7 +36,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0084 | Same-site check for data-changing requests | 2.2 | Backend | Claude | Claude (checking session) | 0016 | NFR-001 | Done | claude |
 | TASK-0017 | Activity log and its writer | 2.2 | Backend | Claude | Claude (checking session) | 0084 | CORE-090, NFR-002 | Done | claude |
 | TASK-0022 | Double-click keys | 2.2 | Backend | Claude | Claude (checking session) | 0017 | NFR-021, NFR-003 | Done | claude |
-| TASK-0093 | Activity-log writer: refuse a missing record ID, never store a secret | 2.2 | Backend | Claude | Claude (checking session) | 0022 | CORE-090, RULE-025 | To do | — |
+| TASK-0093 | Activity-log writer: refuse a missing record ID, never store a secret | 2.2 | Backend | Claude | Claude (checking session) | 0022 | CORE-090, RULE-025 | Done | claude |
 | TASK-0024 | Settings storage with change log | 2.2 | Backend | Claude | Claude (checking session) | 0022 | CORE-012 | To do | — |
 | TASK-0018 | Security log with chained fingerprints | 2.2 | Backend | Claude | Codex | 0016 | CORE-092 | To do | — |
 | TASK-0019 | Rows with no company: system errors and readers | 2.2 | Backend | Codex | Claude | 0018 | CORE-140, NFR-014 | To do | — |

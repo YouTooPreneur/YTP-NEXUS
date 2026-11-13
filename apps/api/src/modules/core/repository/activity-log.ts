@@ -26,11 +26,22 @@ export interface ActivityEntry {
 
 const ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-// An ID is checked before it reaches the database, so a wrong value never appears in a database error.
-function checkId(value: string | undefined): void {
-  if (value !== undefined && !ID.test(value)) {
+// An ID is checked before it reaches the database, so a wrong value never appears in a database error; a required
+// ID that is missing is refused the same way (TASK-0093).
+function checkId(value: string | undefined, required = false): void {
+  if ((required || value !== undefined) && !ID.test(value ?? '')) {
     throw new Error('the activity entry holds an ID that is not valid');
   }
+}
+
+// A field whose name looks like a secret (a password, passcode, secret, token, API key or private key, in any
+// spelling) is never stored: a changed field keeps its name with both values hidden, and a deeper one is hidden
+// (TASK-0093, RULE-025).
+const HIDDEN = '[hidden]';
+const SECRET = /pass(word|code)|secret|token|apikey|privatekey/;
+
+function isSecret(name: string): boolean {
+  return SECRET.test(name.toLowerCase().replace(/[^a-z]/g, ''));
 }
 
 export async function writeActivity(entry: ActivityEntry): Promise<string> {
@@ -53,15 +64,21 @@ export async function writeActivity(entry: ActivityEntry): Promise<string> {
   } else {
     throw new Error('the activity log needs who did it');
   }
-  checkId(entry.recordId);
+  checkId(entry.recordId, true);
   checkId(entry.clientId);
   checkId(who.actorUserId);
   // A value left undefined is kept as null, so the entry still shows that the field changed.
-  const changes = JSON.parse(
-    JSON.stringify(entry.changes ?? {}, (_key, value: unknown) =>
-      value === undefined ? null : value,
+  const kept = JSON.parse(
+    JSON.stringify(entry.changes ?? {}, (key, value: unknown) =>
+      key !== '' && isSecret(key) ? HIDDEN : value === undefined ? null : value,
     ),
   ) as Record<string, unknown>;
+  const changes = Object.fromEntries(
+    Object.entries(kept).map(([field, change]) => [
+      field,
+      isSecret(field) ? { old: HIDDEN, new: HIDDEN } : change,
+    ]),
+  );
   const [row] = await context.tx
     .insert(activityLog)
     .values({
