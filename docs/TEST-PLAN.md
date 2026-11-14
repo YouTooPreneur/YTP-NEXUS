@@ -70,7 +70,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-014 | 0015, 0016 | API tests (a second company sees nothing; a reused connection with no company returns no rows) |
 | CORE-015 | 0057, 0064 | API tests (a switched-off feature's door is refused; the worker skips its jobs) |
 | CORE-090 | 0017, 0059, 0076, 0078 | API tests (a role change shows old and new values in Record history) |
-| CORE-092 | 0018, 0059, 0061 | API tests (role change, view-as-role and failed sign-ins logged; the chain whole under parallel writes) |
+| CORE-092 | 0018, 0059, 0061, and each card that writes an event | API tests (0018: one whole chain per company and the system chain, whole under parallel writes, never changed; role change, view-as-role and failed sign-ins logged: TASK-0030/0044, TASK-0045 and TASK-0032/0036) |
 | CORE-093 | 0075, 0077 | API tests (a deleted role restored; a deleted person cleaned up while their records and name remain) |
 | CORE-110 | 0067, 0071, 0074 | API and screen tests (a language opens only after its check) |
 | CORE-112 | 0033, 0070 | API tests (10:00 IST shows 08:30 for Dubai; ₹1,00,000) |
