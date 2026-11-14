@@ -406,6 +406,8 @@ As built (TASK-0018): `id` is an identity key and `seq` a number per chain, with
 | external_id | text | The same error in Sentry |
 | resolved_at, resolved_by | | |
 
+As built (TASK-0019): `id` defaults to `core.uuid_v7()`; `source` is the database type `core.error_source` (`api`, `worker`); `at` defaults to the time of the write. A row is added only by `core.record_error(source, message, request_id)` (owned by `nexus_system`, run by the app), under the transaction's company or with none, with the message cut to its first 2000 characters; the app may only read its own company's rows, and the system account adds and reads them. The API's error handler keeps every server error (an unexpected error, or an `AppError` of 500 or more) with `recordError` (`apps/api/src/modules/core/repository/error-events.ts`) in a short security write of its own, without making the answer wait; answers under 500 are never kept. The message is always `safeErrorMessage(error)` (`apps/api/src/shared/logging.ts`), the log's own cleaned message. The rows with no company are read only through `core.system_errors(limit)`, and the security log's system chain through `core.system_security_entries(before_seq, limit)`, both newest first, at least 1 and at most 500 rows, and both refused while Nexus has more than one company (TECH-DESIGN section 12 point 43). Marking an error resolved (TASK-0058) and the Sentry ID (TASK-0081) add their own rights; no clean-up yet.
+
 **`core.backup_runs`** (system; NFR-007, NFR-008, AUTO-037) — written only by the backup container through its own account; the worker reads it to alert the owner
 
 | Field | Type | Notes |
