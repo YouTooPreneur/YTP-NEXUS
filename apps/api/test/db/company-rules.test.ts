@@ -29,7 +29,7 @@ const reason = (error: unknown) => String((error as { cause?: Error }).cause?.me
 
 beforeAll(async () => {
   await Promise.all([owner.connect(), app.connect(), app2.connect(), backup.connect()]);
-  await owner.query('DROP TABLE IF EXISTS core.probe_0015, core.probe_0015_bad');
+  await owner.query('DROP TABLE IF EXISTS core.probe_0015, core.probe_0015_bad, core.probe_0030_child, core.probe_0030_parent');
   await resetCompanies(owner);
   ({ a: A, b: B } = await makeTestCompanies(owner));
   await owner.query(`CREATE TABLE core.probe_0015 (
@@ -260,6 +260,26 @@ async function catalogueProblems(): Promise<{ tables: string[]; problems: string
         problems.push(`${table.name} has the unique key ${unique.name} without company_id`);
       }
     }
+    // Every link to another company table includes company_id on both sides (TASK-0030, TECH-DESIGN 5.1): PostgreSQL
+    // checks links without the row rules, so a link without the company could point at another company's row.
+    const links = (
+      await owner.query(
+        `SELECT c.conname AS name, c.confrelid::regclass::text AS parent,
+                array(SELECT a.attname::text FROM unnest(c.conkey) WITH ORDINALITY AS k(num, pos)
+                        JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = k.num ORDER BY k.pos) AS columns,
+                array(SELECT a.attname::text FROM unnest(c.confkey) WITH ORDINALITY AS k(num, pos)
+                        JOIN pg_attribute a ON a.attrelid = c.confrelid AND a.attnum = k.num ORDER BY k.pos) AS parent_columns
+           FROM pg_constraint c WHERE c.conrelid = $1 AND c.contype = 'f' AND c.confrelid <> 'core.companies'::regclass`,
+        [table.oid],
+      )
+    ).rows as { name: string; parent: string; columns: string[]; parent_columns: string[] }[];
+    for (const link of links) {
+      if (SYSTEM.includes(link.parent)) continue;
+      const at = link.columns.indexOf('company_id');
+      if (at === -1 || link.parent_columns[at] !== 'company_id') {
+        problems.push(`${table.name} has the link ${link.name} to ${link.parent} without company_id`);
+      }
+    }
   }
   return { tables: tables.map((table) => table.name), problems };
 }
@@ -284,6 +304,28 @@ describe('every company table in the database (the catalogue check)', () => {
       expect(problems).toEqual(['core.probe_0022 has the unique key core.probe_0022_code_unique without company_id']);
     } finally {
       await owner.query('DROP TABLE core.probe_0022');
+    }
+  });
+
+  it('reports a link between two company tables that leaves out company_id (TASK-0030: a planted mistake)', async () => {
+    await owner.query(`CREATE TABLE core.probe_0030_parent (
+      id uuid PRIMARY KEY DEFAULT core.uuid_v7(),
+      company_id uuid NOT NULL REFERENCES core.companies (id),
+      CONSTRAINT probe_0030_parent_company_id_unique UNIQUE (company_id, id))`);
+    await owner.query(`CREATE TABLE core.probe_0030_child (
+      id uuid PRIMARY KEY DEFAULT core.uuid_v7(),
+      company_id uuid NOT NULL REFERENCES core.companies (id),
+      parent_id uuid NOT NULL,
+      other_id uuid NOT NULL,
+      CONSTRAINT probe_0030_child_parent_fk FOREIGN KEY (parent_id) REFERENCES core.probe_0030_parent (id),
+      CONSTRAINT probe_0030_child_other_fk FOREIGN KEY (company_id, other_id) REFERENCES core.probe_0030_parent (company_id, id))`);
+    try {
+      await owner.query(`CALL core.add_company_rules('core.probe_0030_parent')`);
+      await owner.query(`CALL core.add_company_rules('core.probe_0030_child')`);
+      const { problems } = await catalogueProblems();
+      expect(problems).toEqual(['core.probe_0030_child has the link probe_0030_child_parent_fk to core.probe_0030_parent without company_id']);
+    } finally {
+      await owner.query('DROP TABLE core.probe_0030_child, core.probe_0030_parent');
     }
   });
 });

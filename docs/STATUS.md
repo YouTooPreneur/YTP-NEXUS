@@ -316,3 +316,5 @@ One line per task, newest at the bottom.
 | TASK-0023 | Rate counters and the per-address limit | Done | codex | 2026-11-14 |
 | TASK-0020 | Announcements: the outbox and the poster | To do | — | — |
 | TASK-0025 | Removing personal values on request | To do | — | — |
+| TASK-0094 | Announcements: delivery by the worker | To do | — | — |
+| TASK-0030 | Roles, permission list and default grants | To do | — | — |

@@ -49,7 +49,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0027 | Backup container: nightly base backup, dump and files copy | 2.3 | Backend | Claude | Codex | 0026 | AUTO-037, INT-022 | To do | — |
 | TASK-0028 | Timed restore drill | 2.3 | Backend | Claude | Codex | 0027 | NFR-007, AUTO-037 | To do | — |
 | TASK-0029 | Door standard, doors table and the email door | 2.4 | Backend | Codex | Claude | 0021 | CORE-121 (part), INT-001 (part), CORE-065 (part) | To do | — |
-| TASK-0030 | Roles, permission list and default grants | 2.4 | Backend | Codex | Claude | 0017 | USR-002, USR-003, USR-006 | To do | — |
+| TASK-0030 | Roles, permission list and default grants | 2.4 | Backend | Antigravity or Codex | Claude | 0017 | USR-002, USR-003, USR-006 | To do | — |
 | TASK-0031 | Permission check, scope and hidden fields | 2.4 | Backend | Claude | Codex | 0030 | USR-002 | To do | — |
 | TASK-0032 | Better Auth: Google, password and the open sign-in doors | 2.4 | Backend | Claude | Codex | 0015, 0023, 0084 | CORE-001 | To do | — |
 | TASK-0033 | People and preferences tables; the "who is asking" step | 2.4 | Backend | Claude | Codex | 0032 | USR-001, CORE-112 | To do | — |
