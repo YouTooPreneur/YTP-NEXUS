@@ -78,6 +78,8 @@ TASK-0025  apps/api/test/db/erasure.test.ts  847ca183e007ba7cde29aa3d9d732ce0777
 TASK-0025  tests/setup/TASK-0025.test.mjs  9b458cb61044e1589befe446244300e37610b16c39a01ecff19dc15b3caa46bf
 TASK-0030  apps/api/test/db/roles.test.ts  b5ecadaa373744e61deff394cb5df5608388ed9e90eb8e4e8dd1703aa5765d96
 TASK-0030  tests/setup/TASK-0030.test.mjs  77ccf493749449f94adf200df1d45203e6b694e5d4c872bc8f96177a8d1879be
+TASK-0032  apps/api/test/db/signin.test.ts  00a09ec975a399b8dddbec872ec731dcb23d37c4987879ab1f21cdcaa7f2ee98
+TASK-0032  tests/setup/TASK-0032.test.mjs  f8b17b66893a70fde5675c9eff1d06c5a592eba5abf023c45da7ece6fe2334cf
 TASK-0084  apps/api/test/setup/same-site.test.ts  7b45de81e062d19d45de1a52f43a2c21c3cbd9a890c16cb3e87cd48d6d62d00c
 TASK-0084  tests/setup/TASK-0084.test.mjs  cfe1da128c2a0bf54d75c0dd0266b3cef3e520a9570aa039b808d168aad797bf
 TASK-0085  apps/web/test/requests/nexus-fetch.test.ts  1b5520a80c22db92976a99d00c71b2191f4fef89fb02d6f9cca22b6775047d64
