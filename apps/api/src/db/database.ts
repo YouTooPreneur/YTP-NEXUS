@@ -1,4 +1,4 @@
-import { Pool, type PoolConfig } from 'pg';
+import { Pool, type PoolConfig, type QueryConfig } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { getContext, runWithContext, type RequestContext } from '../shared/context.js';
 import { withCompany, type Transaction } from './company.js';
@@ -82,6 +82,26 @@ export async function onConnection<T>(
   } finally {
     client.release();
   }
+}
+
+// Better Auth's database (TASK-0032): Drizzle on the request pool, made without the auth tables (only
+// modules/core/signin hands them to Better Auth). Each statement takes the request pool in use when it runs, so this
+// database, made once, never keeps a pool that closePools() has ended. Better Auth runs its statements one by one and
+// never in a transaction of its own; this database is never used for a transaction, whose statements could each land
+// on another connection.
+function makeAuthDatabase() {
+  return drizzle({
+    client: {
+      query: (config: QueryConfig, values?: unknown[]) => getPools().request.query(config, values),
+    } as unknown as Pool,
+  });
+}
+
+let authDb: ReturnType<typeof makeAuthDatabase> | undefined;
+
+export function authDatabase(): ReturnType<typeof makeAuthDatabase> {
+  authDb ??= makeAuthDatabase();
+  return authDb;
 }
 
 // Step 5: runs the rest of a request in one transaction on the request pool, with the request's company set

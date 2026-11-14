@@ -1,5 +1,6 @@
 import { allRoutes } from '../src/routes.js';
 import { allAnnouncements } from '../src/announcements.js';
+import { OPEN_AUTH_ROUTES } from '../src/modules/core/signin/open-routes.js';
 
 const routes = allRoutes.map((r) => ({
   operationId: r.operationId,
@@ -18,7 +19,7 @@ const announcements = allAnnouncements.map((a) => ({
 
 const output = {
   routes,
-  authRoutes: [],
+  authRoutes: [...OPEN_AUTH_ROUTES],
   announcements,
 };
 

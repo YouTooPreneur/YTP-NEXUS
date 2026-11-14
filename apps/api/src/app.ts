@@ -8,6 +8,8 @@ import { errorHandler, notFoundHandler } from './shared/errors.js';
 import { mountRoutes, type RouteHooks } from './shared/route.js';
 import { createHooks } from './shared/hooks.js';
 import { allRoutes } from './routes.js';
+import { openAuthRoutesOnly } from './modules/core/signin/auth-routes.js';
+import { authHandler } from './modules/core/signin/auth.js';
 
 export interface AppOptions {
   logger?: pino.Logger;
@@ -25,6 +27,8 @@ export function createApp(options: AppOptions = {}): Express {
   app.use(httpLogger(logger));
   app.use(sameSiteCheck());
   app.use(['/api/auth', '/api/core/two-step'], addressLimit('signin'));
+  app.use('/api/auth', openAuthRoutesOnly());
+  app.all('/api/auth/*splat', authHandler());
   app.use(express.json({ limit: '1mb' }));
 
   mountRoutes(app, allRoutes, options.hooks ?? createHooks());

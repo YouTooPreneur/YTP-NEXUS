@@ -326,7 +326,7 @@ One line per task, newest at the bottom.
 | TASK-0025 | Removing personal values on request | Done | codex | 2026-11-14 |
 | TASK-0094 | Announcements: delivery by the worker | Done | antigravity | 2026-11-14 |
 | TASK-0030 | Roles, permission list and default grants | Done | codex | 2026-11-14 |
-| TASK-0032 | Better Auth: Google, password and the open sign-in doors | To do | — | — |
+| TASK-0032 | Better Auth: Google, password and the open sign-in doors | Done | claude | 2026-11-14 |
 | TASK-0021 | Job queue in the worker, with the company per job | To do | — | — |
 | TASK-0095 | Door answers checked against their contract; signed-in doors | To do | — | — |
 | TASK-0096 | Plain return types for the role functions | To do | — | — |

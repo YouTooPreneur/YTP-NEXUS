@@ -3,7 +3,8 @@ import { pino } from 'pino';
 import { pinoHttp } from 'pino-http';
 import { getContext } from './context.js';
 
-const SECRET_KEYS = ['password', 'code', 'token', 'secret', 'newPassword', 'currentPassword'];
+// prettier-ignore
+const SECRET_KEYS = ['password', 'code', 'token', 'secret', 'newPassword', 'currentPassword', 'accessToken', 'refreshToken', 'idToken'];
 
 // Removed from every log line: sign-in headers, the Referer and redirect addresses (they can carry a
 // one-time token in their query), and secret fields at the top level and up to three levels deep.

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@ytp/contracts": "workspace:*",
+    "better-auth": "1.7.14",
     "drizzle-orm": "0.45.4",
     "express": "5.3.0",
     "pg": "8.23.1",
