@@ -92,3 +92,5 @@ TASK-0092  apps/api/test/db/companies.test.ts  ffd89fbf997a71724ce4898850210d853
 TASK-0092  apps/api/test/db/setup-errors.test.ts  2bee310b85dbb208fd02a7331c504c4ecfbde0e673d59ff35273831492a955fb
 TASK-0092  tests/setup/TASK-0092.test.mjs  35b6cc32cc779fd71738cdae261cb2cf3cbaf8ce38aaba9db7638aa5a56d8f9e
 TASK-0093  apps/api/test/db/activity-log-guards.test.ts  07995d8ff4358b512c25d236be09cfd8987eedae5f7ba63a3e219521366d6555
+TASK-0094  apps/api/test/db/delivery.test.ts  cf59cc1cf6fc27f7c16d0027410b227dc8e38eecb8db4dbaad72431885d251ca
+TASK-0094  tests/setup/TASK-0094.test.mjs  f678e2e75ee5d7b50fe307b512a9d514ef83cef593b71de47be1b2cdd423fa1c
