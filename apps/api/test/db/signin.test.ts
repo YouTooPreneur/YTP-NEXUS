@@ -45,11 +45,14 @@ beforeAll(async () => {
   appUrl = new URL(process.env.APP_URL!).origin;
 });
 
-beforeEach(() => {
+// Every test starts with no sign-in counts: the file sends more requests from one address than the per-address limit of
+// infra/.env.test allows in a minute (signin:20/minute, TASK-0023), and each test sends at most 10.
+beforeEach(async () => {
   mails.length = 0;
   setResetMailer(async (mail) => {
     mails.push(mail);
   });
+  await owner.query('TRUNCATE core.rate_counters');
 });
 
 afterEach(async () => {

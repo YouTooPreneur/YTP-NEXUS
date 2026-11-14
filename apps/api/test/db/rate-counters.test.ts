@@ -39,6 +39,9 @@ const web = createApp({
     a.get('/api/auth/x', (_req, res) => {
       res.json({ ok: true });
     });
+    a.get('/api/core/two-step/x', (_req, res) => {
+      res.json({ ok: true });
+    });
     a.post('/api/core/two-step/x', (_req, res) => {
       res.json({ ok: true });
     });
@@ -50,7 +53,11 @@ const web = createApp({
     });
   },
 });
-const from = (address: string) => request(web).get('/api/auth/x').set('X-Forwarded-For', address);
+// A request to a sign-in-limited test door from an address. The door is under /api/core/two-step, which the limit counts in
+// the same bucket as /api/auth: from TASK-0032 on, every path under /api/auth that is not one of the seven open sign-in
+// doors answers 404 after the limit (its gate), so a test door there no longer answers 200. The /api/auth paths are still
+// counted and refused below (changed by the planner for TASK-0032, 14 Nov 2026).
+const from = (address: string) => request(web).get('/api/core/two-step/x').set('X-Forwarded-For', address);
 
 beforeAll(async () => {
   await owner.connect();
@@ -199,10 +206,11 @@ describe('the per-address limit on the sign-in and two-step doors', () => {
   });
 
   it('counts the two-step doors in the same sign-in bucket, every method, and paths in any case', async () => {
-    await from('203.0.113.9');
+    await request(web).get('/api/auth/x').set('X-Forwarded-For', '203.0.113.9');
     await request(web).post('/api/core/two-step/x').set('X-Forwarded-For', '203.0.113.9').send({});
     await request(web).get('/API/AUTH/x').set('X-Forwarded-For', '203.0.113.9');
     expect(await counters()).toEqual([['signin:ip:203.0.113.9', 3]]);
+    expect((await request(web).get('/api/auth/x').set('X-Forwarded-For', '203.0.113.9')).status).toBe(429);
     expect((await from('203.0.113.9')).status).toBe(429);
   });
 
