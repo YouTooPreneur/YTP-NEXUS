@@ -99,6 +99,20 @@
       "when": 1794637700198,
       "tag": "0013_audit_security_log_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1794642692988,
+      "tag": "0014_core_error_events",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1794642702482,
+      "tag": "0015_core_error_events_rules",
+      "breakpoints": true
     }
   ]
 }

@@ -306,4 +306,4 @@ One line per task, newest at the bottom.
 | TASK-0024 | Settings storage with change log | Done | claude | 2026-11-13 |
 | TASK-0085 | Screens' API client: background and double-click headers | Done | codex | 2026-11-14 |
 | TASK-0018 | Security log with chained fingerprints | Done | antigravity | 2026-11-14 |
-| TASK-0019 | Rows with no company: system errors and readers | To do | — | — |
+| TASK-0019 | Rows with no company: system errors and readers | Done | antigravity | 2026-11-14 |
