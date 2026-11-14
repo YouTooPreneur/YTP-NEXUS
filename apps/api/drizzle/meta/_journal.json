@@ -148,6 +148,20 @@
       "when": 1794656014133,
       "tag": "0020_core_erasure",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1794657277799,
+      "tag": "0021_core_roles",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1794657279229,
+      "tag": "0022_core_roles_rights",
+      "breakpoints": true
     }
   ]
 }
