@@ -22,7 +22,8 @@ export type SecurityEvent =
   | 'vault_reference_opened'
   | 'api_call'
   | 'setting_changed'
-  | 'data_erased';
+  | 'data_erased'
+  | 'limit_hit';
 
 export interface SecurityEntry {
   event: SecurityEvent;
@@ -49,6 +50,7 @@ const EVENTS = new Set<string>([
   'api_call',
   'setting_changed',
   'data_erased',
+  'limit_hit',
 ]);
 const ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const HIDDEN = '[hidden]';
