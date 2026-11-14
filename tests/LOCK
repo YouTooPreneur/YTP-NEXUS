@@ -100,3 +100,5 @@ TASK-0092  tests/setup/TASK-0092.test.mjs  35b6cc32cc779fd71738cdae261cb2cf3cbaf
 TASK-0093  apps/api/test/db/activity-log-guards.test.ts  07995d8ff4358b512c25d236be09cfd8987eedae5f7ba63a3e219521366d6555
 TASK-0094  apps/api/test/db/delivery.test.ts  cf59cc1cf6fc27f7c16d0027410b227dc8e38eecb8db4dbaad72431885d251ca
 TASK-0094  tests/setup/TASK-0094.test.mjs  f678e2e75ee5d7b50fe307b512a9d514ef83cef593b71de47be1b2cdd423fa1c
+TASK-0095  apps/api/test/setup/door-answers.test.ts  08dd6513ad23de968af355a22d4c4069fd876cb5576a8703c0644f3b6f75dcaf
+TASK-0095  tests/setup/TASK-0095.test.mjs  6acfdd7713211e447f21d98f505ba51df34b9bbef69d60c3ddbc2b05f203a714
