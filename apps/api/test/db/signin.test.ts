@@ -235,12 +235,10 @@ describe('the settings Nexus relies on', () => {
 
   it('writes Better Auth’s own log lines through Nexus’s logger, with the message and a cleaned error only', () => {
     const start = lines.length;
-    const failure = Object.assign(new Error('Failed query: select 1
-params: SECRET-P-0032'), { params: ['SECRET-P-0032'] });
+    const failure = Object.assign(new Error('Failed query: select 1\nparams: SECRET-P-0032'), { params: ['SECRET-P-0032'] });
     authLog(logger)('error', 'sign-in broke', { password: 'SECRET-PW-0032', token: 'SECRET-T-0032' }, failure);
     authLog(logger)('success', 'all fine', { idToken: 'SECRET-ID-0032' });
-    const text = lines.slice(start).join('
-');
+    const text = lines.slice(start).join('\n');
     expect(text).toContain('sign-in broke');
     expect(text).toContain('all fine');
     expect(text).not.toContain('SECRET');
