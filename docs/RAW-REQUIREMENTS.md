@@ -531,3 +531,4 @@ Asked one by one after batches 8 and 9 were built.
 - "Yes, write them" → TASK-0019 written for Antigravity (CR-028); TASK-0023 drafted for Codex, built after TASK-0019 merges, 14 Nov 2026.
 - "antigravity done and tell me short first what to do?" → TASK-0019 reviewed (PASS) and merged; TASK-0023 handed to Codex, 14 Nov 2026.
 - "codex doing the work waht to do now in shrot" → next steps given; "Yes, write it" → TASK-0020 written for Antigravity (split: the outbox and the poster; TASK-0094 delivery by the worker), 14 Nov 2026.
+- "codex done 23" → TASK-0023 reviewed (PASS) and merged; TASK-0020 handed to Antigravity, 14 Nov 2026.
