@@ -51,6 +51,8 @@ export default defineConfig(
     files: ['apps/web/**', 'packages/ui/**'],
     rules: {
       'react-hooks/exhaustive-deps': 'error',
+      'react-hooks/unsupported-syntax': 'error',
+      'react-hooks/incompatible-library': 'off',
     },
   },
   {

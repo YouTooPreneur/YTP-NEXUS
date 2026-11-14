@@ -299,5 +299,5 @@ One line per task, newest at the bottom.
 | TASK-0022 | Double-click keys | Done | claude | 2026-11-13 |
 | TASK-0093 | Activity-log writer: refuse a missing record ID, never store a secret | Done | claude | 2026-11-13 |
 | TASK-0024 | Settings storage with change log | Done | claude | 2026-11-13 |
-| TASK-0085 | Screens' API client: background and double-click headers | To do | — | — |
+| TASK-0085 | Screens' API client: background and double-click headers | Done | codex | 2026-11-14 |
 | TASK-0018 | Security log with chained fingerprints | To do | — | — |
