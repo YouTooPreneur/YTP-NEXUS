@@ -40,7 +40,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0024 | Settings storage with change log | 2.2 | Backend | Claude | Claude (checking session) | 0093 | CORE-012 | Done | claude |
 | TASK-0018 | Security log with chained fingerprints | 2.2 | Backend | Antigravity | Claude | 0024 | CORE-092 | Done | antigravity |
 | TASK-0019 | Rows with no company: system errors and readers | 2.2 | Backend | Antigravity | Claude | 0018 | CORE-140, NFR-012, NFR-014 | Done | antigravity |
-| TASK-0020 | Announcements: the outbox and the poster | 2.2 | Backend | Antigravity | Claude | 0017, 0019, 0023 | NFR-003 | To do | — |
+| TASK-0020 | Announcements: the outbox and the poster | 2.2 | Backend | Antigravity | Claude | 0017, 0019, 0023 | NFR-003 | Done | antigravity |
 | TASK-0094 | Announcements: delivery by the worker | 2.2 | Backend | Codex | Claude | 0020 | NFR-003 | To do | — |
 | TASK-0021 | Job queue in the worker, with the company per job | 2.2 | Backend | Codex | Claude | 0094 | NFR-003 | To do | — |
 | TASK-0023 | Rate counters and the per-address limit | 2.2 | Backend | Codex | Claude | 0016, 0018, 0019, 0084 | NFR-020 | Done | codex |

@@ -127,6 +127,20 @@
       "when": 1794645980464,
       "tag": "0017_core_rate_counters_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1794655118786,
+      "tag": "0018_core_outbox",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1794655128486,
+      "tag": "0019_core_outbox_rights",
+      "breakpoints": true
     }
   ]
 }
