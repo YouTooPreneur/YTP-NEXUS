@@ -66,6 +66,8 @@ TASK-0024  apps/api/test/db/settings.test.ts  83a8d3280d187dee41f01f59ad120e7ba5
 TASK-0024  tests/setup/TASK-0024.test.mjs  303e1b4c2c62015bca5eabb0a03bde6fb872858156ee2a22ee86a5e9832527ea
 TASK-0084  apps/api/test/setup/same-site.test.ts  7b45de81e062d19d45de1a52f43a2c21c3cbd9a890c16cb3e87cd48d6d62d00c
 TASK-0084  tests/setup/TASK-0084.test.mjs  e35f27640c03110f7037072ddacab2bd6240db54b8e4fa53bcbbfdd80597d7c7
+TASK-0085  apps/web/test/requests/nexus-fetch.test.ts  1b5520a80c22db92976a99d00c71b2191f4fef89fb02d6f9cca22b6775047d64
+TASK-0085  tests/setup/TASK-0085.test.mjs  336a01dd5f379fc4ae8299954ec08ab3add26c29d5b752d05e24742e1d408ed1
 TASK-0086  apps/api/test/setup/log-safety.test.ts  f2a8b4d9c8afea87718817a5d4a66c3510da3cb2de6520989c58311f45d0e1c4
 TASK-0087  apps/api/test/setup/log-message.test.ts  bfa0d8e6e9278a7408f57bb70fde1880f7f78d99e77c16c9f0fcbd1305961b7e
 TASK-0088  tests/setup/TASK-0088.test.mjs  5fd0ca2a47ca4e30615c15da1e435219e56272d0f43094d6908d61b2873bb1d6

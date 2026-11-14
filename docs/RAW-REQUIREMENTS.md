@@ -525,3 +525,4 @@ Asked one by one after batches 8 and 9 were built.
 - "what to do simple and easy and give work to codex and antigravity too" → Claude builds TASK-0093; Codex checks TASK-0022 and Antigravity the safe logs, read-only, 13 Nov 2026.
 - "done" → both extra checks clean; TASK-0093 checked and merged; TASK-0024 written and trial-built, 13 Nov 2026.
 - "Start it" (TASK-0024) → built, checked (PASS), merged and shown; next Claude writes TASK-0018, 13 Nov 2026.
+- "ACtually both antigravity and codex is idle better give antigravity multi tasking it runs too long than you and also give to codex too because you are wasting too much token", then "I need all three should run thats how i need" → D-201: Antigravity builds TASK-0018, Codex builds TASK-0085, Claude writes the next cards, reviews and merges; demo pictures only when there is something to see, 14 Nov 2026.

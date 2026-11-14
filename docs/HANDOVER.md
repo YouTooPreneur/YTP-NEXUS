@@ -11,7 +11,7 @@ The way of working (history, handover, tracker tabs, Word copies, choices, desig
 | **Owner** | Runs YouTooPreneur (Chennai digital agency). Decides, approves, and is the only one who signs off. Not a developer by trade; wants plain-English explanations |
 | **Senior / team member** | Reviews the screens with the owner (review bundle with the Excel comment sheet). The owner and this person approve once, after all 9 batches (D-153) |
 | **Claude** | Planner: plan, documents, task cards, tests, screen mockups, reviews. From TASK-0084 also **builds the cards** (D-185, D-200): each in a separate building session; a separate Claude checking session checks it, and the planning session merges it (`CLAUDE.md`, `AGENTS.md`) |
-| **Executors** | Antigravity, Codex and Claude, building only from task cards; each card names its builder (D-185). From 2 to 13 Nov 2026 (D-194) Antigravity built every card and Claude reviewed it. **From TASK-0084 (D-200), Claude builds and a separate Claude session checks; Codex and Antigravity are optional extra checkers nobody waits for** |
+| **Executors** | Antigravity, Codex and Claude, building only from task cards; each card names its builder (D-185). From 2 to 13 Nov 2026 (D-194) Antigravity built every card and Claude reviewed it. From TASK-0084 (D-200) Claude built and a separate Claude session checked. **From 14 Nov 2026 (D-201) all three build at once:** Antigravity the long careful cards, Codex cards with no database change, Claude the next card when free; Claude reviews Antigravity's and Codex's cards and merges; only one database card at a time |
 | **CA** | Checks salary split, PF/ESI/professional tax, GST and invoice numbering before go-live |
 
 ## 2. How the owner likes to work

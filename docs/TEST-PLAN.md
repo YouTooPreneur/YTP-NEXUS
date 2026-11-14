@@ -16,7 +16,7 @@
 | Set-up checks | Node's built-in test runner (`node --test`) | `tests/setup/TASK-XXXX.test.mjs` | The project's files, scripts and tools are set up as the card says (step 2.1) |
 | Backend unit and API tests | Vitest, Supertest | `apps/api/test/<area>/*.test.ts` | Rules, windows and API doors behave as the card says, **on a real PostgreSQL test database**, run as the app account with the row rules on |
 | Package tests | Vitest | `packages/<name>/test/*.test.ts` | The shared API list and the screen parts |
-| Frontend component tests | Vitest, React Testing Library, MSW (a fake API built from the API list) | `apps/web/test/<area>/*.test.tsx` | Each screen shows the right things and sends the right requests |
+| Frontend component tests | Vitest, React Testing Library, MSW (a fake API built from the API list; it arrives with the first screen card, TASK-0049, which also gives the test page its own address; until then tests stub `fetch`) | `apps/web/test/<area>/*.test.tsx` | Each screen shows the right things and sends the right requests |
 | End-to-end tests | Playwright, at computer width (1600 × 1000) and phone width (375 × 812) | `tests/e2e/*.spec.ts` | A person can do the whole job through the real screens, API and database |
 | Architecture checks | dependency-cruiser and the checks in `tools/verify/` | run by `pnpm verify` | Walls, floors, the frontend wall, the contract, doors, module cards, allowed files, the test lock |
 | Restore drill | The backup tools (step 2.3) | `infra/backup/` | Nexus can be put back to a chosen moment within the targets |
