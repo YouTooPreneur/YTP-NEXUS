@@ -67,7 +67,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0046 | Who am I (`/api/core/me`) | 2.4 | Backend | Codex | Claude | 0031, 0034 | CORE-015, CORE-113 | To do | — |
 | TASK-0047 | First-start setup command | 2.4 | Backend | Claude | Codex | 0040, 0030 | USR-006 | To do | — |
 | TASK-0048 | Owner resets a person's two-step | 2.4 | Backend | Codex | Claude | 0037 | CORE-002 | To do | — |
-| TASK-0085 | Screens' API client: background and double-click headers | 2.4 | Frontend | Codex | Claude | 0088 | CORE-003, NFR-021 | To do | — |
+| TASK-0085 | Screens' API client: background and double-click headers | 2.4 | Frontend | Codex | Claude | 0088 | CORE-003, NFR-021 | Done | codex |
 | TASK-0049 | Sign-in screen | 2.4 | Frontend | Antigravity | Claude | 0032, 0085, 0004 | CORE-001 | To do | — |
 | TASK-0050 | Two-step entry and set-up screens | 2.4 | Frontend | Antigravity | Claude | 0038, 0039, 0049 | CORE-002 | To do | — |
 | TASK-0051 | Set or reset password screens | 2.4 | Frontend | Antigravity | Claude | 0032, 0049 | CORE-001 | To do | — |

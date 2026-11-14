@@ -9,7 +9,13 @@ export default defineConfig({
       httpClient: 'fetch',
       mode: 'single',
       clean: true,
-      override: { fetch: { forceSuccessResponse: true } },
+      override: {
+        mutator: { path: './src/requests/nexus-fetch.ts', name: 'nexusFetch' },
+        fetch: { forceSuccessResponse: true },
+        query: {
+          options: { retry: false, refetchOnWindowFocus: false, refetchOnReconnect: false },
+        },
+      },
     },
   },
 });
