@@ -8,9 +8,11 @@ const read = (path) => readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
 test('the app mounts the same-site check once, directly after the logging step and before the body is read', () => {
   const app = read('apps/api/src/app.ts');
   assert.match(app, /^import \{ sameSiteCheck \} from '\.\/shared\/same-site\.js';$/m);
-  assert.match(
-    app,
-    /^ {2}app\.use\(httpLogger\(logger\)\);\n {2}app\.use\(sameSiteCheck\(\)\);\n {2}app\.use\(express\.json\(\{ limit: '1mb' \}\)\);$/m,
+  assert.match(app, /^ {2}app\.use\(httpLogger\(logger\)\);\n {2}app\.use\(sameSiteCheck\(\)\);$/m);
+  // Since TASK-0023 the per-address limit sits between the check and the body reader (CR-029).
+  assert.ok(
+    app.indexOf('  app.use(sameSiteCheck());') < app.indexOf("  app.use(express.json({ limit: '1mb' }));"),
+    'before the body is read',
   );
   assert.equal((app.match(/sameSiteCheck\(\)/g) || []).length, 1, 'mount the check once');
 });

@@ -77,7 +77,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-113 | 0013, 0052 | End-to-end at 375 px; phone menu per role |
 | CORE-114 | 0004, 0052, 0074 | Screen tests (Emerald and Navy tokens match the approved design); both colours pass WCAG AA contrast, checked with axe in the end-to-end tests (0074) |
 | CORE-140 | 0019, 0058, 0065 | API tests (0019: every server error kept under its company or as a system error, nothing under 500, the answer never waiting, only the cleaned message, the error kept when the request's work is undone, the rows with no company read only through the two readers, which refuse once there is a second company; 0058: failed job with a working Retry) |
-| NFR-020 | 0023, 0035, 0037, 0038 | API tests (one person's flood slowed, others not; refused requests count; a hit limit logged with one alert) |
+| NFR-020 | 0023, 0035, 0037, 0038 | API tests (0023: one address's flood of a hundred slowed while another address gets in; refused requests count; one `limit_hit` entry per window; the address the proxy saw; 0035: one person's flood slowed, others not; the one owner alert: the notifications card) |
 | NFR-007, AUTO-037, INT-022 | 0026, 0027, 0028, 0060 | Restore drill (timed restore to a chosen moment); watch alerts |
 | NFR-021 | 0016, 0022, 0085, and the first card with an edit door | API tests (a repeated `Idempotency-Key` gets the first answer, 0022; an old version gets 409, built by the first card that edits a record with a `version`); the screens send the key with every change (0085) |
 | NFR-001 (same-site check) | 0084 | API tests (a data-changing request from another address is refused) |

@@ -324,7 +324,7 @@ Every field is required except `actor_user_id`, `actor_label`, `client_id` and `
 | company_id | uuid, may be empty | Empty for events with no known company (for example a failed sign-in for an unknown email): the **system chain** |
 | seq | bigint | Position in its chain (one chain per company, plus the system chain) |
 | at | timestamptz | |
-| event | text | signin_ok, signin_failed, account_locked, two_step_changed, two_step_reset, signin_email_changed, session_ended, permission_changed, role_viewed_as, export, sensitive_field_viewed, vault_reference_opened, api_call, setting_changed (security settings), data_erased |
+| event | text | signin_ok, signin_failed, account_locked, two_step_changed, two_step_reset, signin_email_changed, session_ended, permission_changed, role_viewed_as, export, sensitive_field_viewed, vault_reference_opened, api_call, setting_changed (security settings), data_erased, limit_hit (the first refused request of a limit's window, TASK-0023) |
 | user_id, target_user_id | uuid | |
 | record_type, record_id | text, uuid | |
 | ip, user_agent | text | |
@@ -440,6 +440,8 @@ As built (TASK-0022): `key` text (the code accepts only a UUID and stores it in 
 |---|---|---|
 | bucket + window_start | PK | e.g. `signin:ip:1.2.3.4` |
 | count | integer | Old windows are cleared every hour |
+
+As built (TASK-0023): `bucket` text, `window_start` timestamptz and `count` integer, all required, keyed by (`bucket`, `window_start`); no company, no row rule and no ID of its own. The app may read, add and change counters, never delete them (the first card with nightly or hourly work adds that right and clears old windows). `hitLimit` (`apps/api/src/modules/core/repository/rate-counters.ts`) counts a request with one statement (insert, or add 1 on conflict) in a short security write with no company; the window is fixed and worked out by the database's clock; the first refused request of a window writes one `limit_hit` entry in the security log's system chain. The per-address limit (`apps/api/src/shared/address-limit.ts`) uses the bucket `signin:ip:<address>` for the sign-in and two-step doors, with the values of `ADDRESS_LIMITS`.
 
 **Background jobs** live in pg-boss's own section of the database (`pgboss`); every job carries its `company_id`, and Monitoring reads jobs only through a Core function that filters by it (CORE-140).
 
@@ -643,7 +645,7 @@ Each requirement's pass test closes it. Where the full test needs records from a
 | CORE-113 phone, bottom menu by role | `core.roles.phone_menu` | Every Release 1 screen works at 375 px; each role's phone menu is stored and unbuilt buttons stay hidden; the Leads and Attendance example in Releases 3 and 4 |
 | CORE-114 Emerald and Navy | `core.user_preferences.colour`; the setting `appearance.default_colour` | — |
 | CORE-140 monitoring | Jobs through the Core function, `core.error_events`, `core.doors`, `core.backup_runs` | — |
-| NFR-020 rate limits | `core.rate_counters`, settings | Its own pass test (one person's flood is slowed while others are not), plus: refused requests count too, a hit limit is logged with one owner alert, two people on the same address are counted separately, and two parallel requests from one person do not wait on each other |
+| NFR-020 rate limits | `core.rate_counters`, settings | Its own pass test (one person's flood is slowed while others are not), plus: refused requests count too, a hit limit is logged once per window (TASK-0023) with one owner alert (the notifications card), two people on the same address are counted separately, and two parallel requests from one person do not wait on each other |
 | NFR-007 backups, at most 1 hour lost, back within 4 hours | WAL-G and the backup container (TECH-DESIGN 6.5), `core.backup_runs` | A timed restore to a chosen moment |
 | AUTO-037 daily backup, monthly restore test | `core.backup_runs` (nightly, restore_test) | — |
 | INT-022 backup storage | The separate backup bucket | — |
