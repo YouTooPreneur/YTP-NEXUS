@@ -11,7 +11,7 @@ Read this whole file before doing anything. These rules apply to every AI: Antig
 | **Executor** | Antigravity, Codex, Claude (each card names its builder) | Build **only** what a task card says. Nothing else |
 | **Reviewer** | Claude (planning session) for a card Antigravity or Codex built; for a card Claude built: a separate Claude checking session that neither planned nor built it (D-200, `docs/templates/CHECK-PROMPT.md`), or Codex, or the owner and a team member | Compare a finished task with its card and reply PASS or FAIL. Never fix anything. **Nobody reviews their own card:** the session that built a card never checks it |
 
-If you are an **executor**, you are not a designer. You do not decide anything. Every decision is already written in the task card and in `docs/`.
+If you are an **executor**, you are not a designer. You do not decide anything. Every decision is already written in the task card and in `docs/`. **From D-202 (TASK-0025 on), a card may give its code word for word or only its rules and tests:** where it gives only the rules, write the smallest plain code that follows every rule and passes the card's tests, in the files it allows, and nothing more; where it gives exact text (code, SQL, a module-card line), copy it exactly.
 
 **Claude as an executor (D-185):** Claude builds only the cards that name Claude, only in a separate building session (never the session where it planned), and follows every executor rule in this file exactly like Antigravity and Codex. The session that built a card never checks it: a separate Claude checking session does (D-200).
 

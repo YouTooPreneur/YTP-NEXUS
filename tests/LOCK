@@ -74,6 +74,8 @@ TASK-0023  apps/api/test/setup/address-limits.test.ts  e19c500af9d22805691856571
 TASK-0023  tests/setup/TASK-0023.test.mjs  1529c4228f61a85e704c11f3aa83b5d40c47ba3eaba53c70476d9e6634eedc1f
 TASK-0024  apps/api/test/db/settings.test.ts  83a8d3280d187dee41f01f59ad120e7ba59205b72eff906298ce6d3e4f750734
 TASK-0024  tests/setup/TASK-0024.test.mjs  303e1b4c2c62015bca5eabb0a03bde6fb872858156ee2a22ee86a5e9832527ea
+TASK-0025  apps/api/test/db/erasure.test.ts  847ca183e007ba7cde29aa3d9d732ce0777c5866ad26d64a68ce826fc48d7c3b
+TASK-0025  tests/setup/TASK-0025.test.mjs  9b458cb61044e1589befe446244300e37610b16c39a01ecff19dc15b3caa46bf
 TASK-0084  apps/api/test/setup/same-site.test.ts  7b45de81e062d19d45de1a52f43a2c21c3cbd9a890c16cb3e87cd48d6d62d00c
 TASK-0084  tests/setup/TASK-0084.test.mjs  cfe1da128c2a0bf54d75c0dd0266b3cef3e520a9570aa039b808d168aad797bf
 TASK-0085  apps/web/test/requests/nexus-fetch.test.ts  1b5520a80c22db92976a99d00c71b2191f4fef89fb02d6f9cca22b6775047d64
