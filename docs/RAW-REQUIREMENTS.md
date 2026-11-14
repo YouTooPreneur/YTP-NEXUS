@@ -529,3 +529,4 @@ Asked one by one after batches 8 and 9 were built.
 - "done codex and running antigravity now" (twice), then Codex's commit shown → TASK-0085 reviewed (PASS) and merged, 14 Nov 2026.
 - "antigravity done" → TASK-0018 reviewed (PASS) and merged; next TASK-0019 and TASK-0023, 14 Nov 2026.
 - "Yes, write them" → TASK-0019 written for Antigravity (CR-028); TASK-0023 drafted for Codex, built after TASK-0019 merges, 14 Nov 2026.
+- "antigravity done and tell me short first what to do?" → TASK-0019 reviewed (PASS) and merged; TASK-0023 handed to Codex, 14 Nov 2026.
