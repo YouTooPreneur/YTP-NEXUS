@@ -10,6 +10,9 @@ export interface RequestContext {
   companyId?: string;
   // The request's transaction while it runs (TASK-0016); the repositories read it here.
   tx?: Transaction;
+  // Where the request came from (TASK-0018): the security log keeps them with each entry.
+  ip?: string;
+  userAgent?: string;
 }
 
 const storage = new AsyncLocalStorage<RequestContext>();
@@ -19,7 +22,8 @@ export function contextMiddleware(): RequestHandler {
     const requestId = randomUUID();
     const background = req.headers['x-nexus-background'] === '1';
     res.setHeader('x-request-id', requestId);
-    const context: RequestContext = { requestId, background };
+    const userAgent = req.get('user-agent')?.slice(0, 300);
+    const context: RequestContext = { requestId, background, ip: req.ip, userAgent };
     storage.run(context, () => {
       next();
     });

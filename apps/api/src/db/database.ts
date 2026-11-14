@@ -122,6 +122,23 @@ export async function securityWrite<T>(
   );
 }
 
+// A short security write with no company (TASK-0018): for an entry in the security log's system chain, such as a failed
+// sign-in for an email nobody has. Its own transaction on the security pool, with no company set, committed whatever
+// happens to the request; the connection is always given back.
+export async function securityWriteWithoutCompany<T>(
+  work: (tx: Transaction) => Promise<T>,
+): Promise<T> {
+  const context = currentContext();
+  const client = await getPools().security.connect();
+  try {
+    return await drizzle(client).transaction(async (tx) =>
+      context ? runWithContext({ ...context, companyId: undefined, tx }, () => work(tx)) : work(tx),
+    );
+  } finally {
+    client.release();
+  }
+}
+
 // Ends both pools (in the tests now, and when the API stops once a later card wires that up); the next use makes
 // them again from the settings.
 export async function closePools(): Promise<void> {
