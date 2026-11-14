@@ -139,6 +139,32 @@ export async function securityWriteWithoutCompany<T>(
   }
 }
 
+// Work outside a request (TASK-0094: each announcement the worker delivers; later jobs and the first-start command): one
+// transaction on the request pool with the company set, and the company and the transaction on a copy of the current
+// context, so the writers read them there as in a request. It needs a context of its own (runWithContext) and refuses
+// inside another transaction, whose connection would wait for this one (CR-012).
+export async function inCompanyTransaction<T>(
+  companyId: string,
+  work: (tx: Transaction) => Promise<T>,
+): Promise<T> {
+  const context = currentContext();
+  if (!context) throw new Error('a company transaction needs its own context');
+  if (context.tx) throw new Error('a company transaction cannot run inside another transaction');
+  return onConnection(getPools().request, companyId, (tx) =>
+    runWithContext({ ...context, companyId, tx }, () => work(tx)),
+  );
+}
+
+// Every company's ID, read with no company set (core.companies is a system table the app may read): the worker
+// delivers the announcements company by company. Never from inside a transaction, like inCompanyTransaction.
+export async function listCompanyIds(): Promise<string[]> {
+  if (currentContext()?.tx) throw new Error('the companies are not read inside a transaction');
+  const result = await getPools().request.query<{ id: string }>(
+    'SELECT id FROM core.companies ORDER BY id',
+  );
+  return result.rows.map((row) => row.id);
+}
+
 // Ends both pools (in the tests now, and when the API stops once a later card wires that up); the next use makes
 // them again from the settings.
 export async function closePools(): Promise<void> {
