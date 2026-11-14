@@ -1,6 +1,7 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
 import type { pino } from 'pino';
 import { getContext } from './context.js';
+import { recordError } from '../modules/core/repository/error-events.js';
 
 export class AppError extends Error {
   constructor(
@@ -20,6 +21,14 @@ export function notFoundHandler(): RequestHandler {
   };
 }
 
+// Keeps a server error for Monitoring (TASK-0019) without making the answer wait for it; a failure to keep it is
+// logged as a warning, never thrown.
+function keepError(logger: pino.Logger, error: unknown, requestId: string): void {
+  recordError(error, 'api').catch((failure: unknown) => {
+    logger.warn({ err: failure, requestId }, 'error not recorded');
+  });
+}
+
 export function errorHandler(logger: pino.Logger): ErrorRequestHandler {
   return (error, req, res, next) => {
     if (res.headersSent) {
@@ -30,6 +39,12 @@ export function errorHandler(logger: pino.Logger): ErrorRequestHandler {
     const requestId = getContext().requestId;
 
     if (error instanceof AppError) {
+      // An AppError of 500 or more (an outside service that is down, for example) is a server error: logged and kept
+      // like an unexpected one, then answered with its own status and format.
+      if (error.status >= 500) {
+        logger.error({ err: error, requestId }, 'server error');
+        keepError(logger, error, requestId);
+      }
       const errorBody: {
         code: string;
         message: string;
@@ -75,6 +90,7 @@ export function errorHandler(logger: pino.Logger): ErrorRequestHandler {
     }
 
     logger.error({ err: error, requestId }, 'server error');
+    keepError(logger, error, requestId);
     res.status(500).json({
       error: {
         code: 'server_error',

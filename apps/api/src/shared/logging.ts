@@ -45,6 +45,17 @@ function describeError(error: ErrorLike): { type: string; message: string; error
     : { type, message };
 }
 
+// An error's message for a column kept outside the log (core.error_events now; later the outbox, the doors and failed
+// jobs; TECH-DESIGN section 7): the same cleaned message the log gets, without a failed query's values; an error with
+// no message gives its type, and anything thrown that is not an error gives only what kind of value it is. Never
+// error.message, String(error), the stack or the whole error.
+export function safeErrorMessage(value: unknown): string {
+  const error = isErrorLike(value) && value.raw instanceof Error ? value.raw : value;
+  if (!isErrorLike(error)) return typeof error;
+  const described = describeError(error);
+  return described.message || described.type;
+}
+
 // Logs an error's type, message (without a query's values), code, stack frames and one level of
 // cause. Every other property (params, input, detail, body, config) is dropped: it can hold secrets.
 export function cleanError(value: unknown): unknown {
