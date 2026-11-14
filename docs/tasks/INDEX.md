@@ -43,7 +43,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0020 | Announcements: the outbox and the poster | 2.2 | Backend | Antigravity | Claude | 0017, 0019, 0023 | NFR-003 | To do | — |
 | TASK-0094 | Announcements: delivery by the worker | 2.2 | Backend | Codex | Claude | 0020 | NFR-003 | To do | — |
 | TASK-0021 | Job queue in the worker, with the company per job | 2.2 | Backend | Codex | Claude | 0020 | NFR-003 | To do | — |
-| TASK-0023 | Rate counters and the per-address limit | 2.2 | Backend | Codex | Claude | 0016, 0018, 0019, 0084 | NFR-020 | To do | — |
+| TASK-0023 | Rate counters and the per-address limit | 2.2 | Backend | Codex | Claude | 0016, 0018, 0019, 0084 | NFR-020 | Done | codex |
 | TASK-0025 | Removing personal values on request | 2.2 | Backend | Codex | Claude | 0017, 0018 | NFR-010 | To do | — |
 | TASK-0026 | PostgreSQL image with continuous WAL-G archiving | 2.3 | Backend | Claude | Codex | 0014 | NFR-007, NFR-008 | To do | — |
 | TASK-0027 | Backup container: nightly base backup, dump and files copy | 2.3 | Backend | Claude | Codex | 0026 | AUTO-037, INT-022 | To do | — |

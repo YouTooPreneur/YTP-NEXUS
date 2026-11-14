@@ -113,6 +113,20 @@
       "when": 1794642702482,
       "tag": "0015_core_error_events_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1794645976091,
+      "tag": "0016_core_rate_counters",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1794645980464,
+      "tag": "0017_core_rate_counters_rights",
+      "breakpoints": true
     }
   ]
 }
