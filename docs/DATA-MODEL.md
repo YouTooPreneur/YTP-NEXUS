@@ -358,6 +358,7 @@ As built (TASK-0018): `id` is an identity key and `seq` a number per chain, with
 | occurred_at | timestamptz | |
 | published_at | timestamptz | Set by the worker once handed to listeners |
 | attempts, last_error | | |
+| next_attempt_at | timestamptz | When the worker may try a failed delivery again (TASK-0020) |
 
 **`core.event_receipts`** (system) — what each listener has handled
 
@@ -365,6 +366,8 @@ As built (TASK-0018): `id` is an identity key and `seq` a number per chain, with
 |---|---|---|
 | listener + event_id | PK | A listener never handles the same announcement twice |
 | handled_at | timestamptz | |
+
+As built (TASK-0020): `core.outbox` has `id` from `core.uuid_v7()`, `company_id` required and linked to `core.companies` (`ON DELETE RESTRICT`), `event` text, `event_version` smallint, `payload` jsonb (default `{}`), `occurred_at` and `next_attempt_at` (both default the time of the save), `published_at` (empty until delivered), `attempts` integer (default 0) and `last_error` text; an index on (`company_id`, `id`) of the rows not yet delivered; the company row rule. The app may read and add announcements and change only `published_at`, `attempts`, `last_error` and `next_attempt_at`, never what an announcement says, and deletes nothing (the first card with nightly work clears delivered rows). `core.event_receipts` has `listener` text, `event_id` uuid linked to the announcement (`ON DELETE RESTRICT`) and `handled_at` (default the time of the write), keyed by (`listener`, `event_id`); the app may only read and add receipts. Announcements are posted only by `announce` (`apps/api/src/modules/core/repository/outbox.ts`) in the save's own transaction, under the save's company; only a registered announcement, a version from 1 to 32767 and a payload object with no secret field are accepted. The worker's delivery comes with TASK-0094.
 
 ### 3.4 Files, doors, monitoring and safety
 

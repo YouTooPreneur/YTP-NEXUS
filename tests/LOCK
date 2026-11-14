@@ -65,6 +65,8 @@ TASK-0018  tests/setup/TASK-0018.test.mjs  5ac4edbd68f919343471302b27b8ccc883f82
 TASK-0019  apps/api/test/db/error-events.test.ts  e7a05843aa744c7ab324cd2eb56a39d35ce6a1b2ee7a92e884fb7f49dae679cd
 TASK-0019  apps/api/test/setup/safe-error-message.test.ts  608dc3c3c7b85b1474cc37507d9ddc0f554ef2b45673f3f09182e6cb7f6b26c5
 TASK-0019  tests/setup/TASK-0019.test.mjs  570c7f5012dbafd82e09ab80186e93e42567de9472a90f2ae45c7037e56ced91
+TASK-0020  apps/api/test/db/outbox.test.ts  57cb73787fad997055936e8f570fc0a6062e1f822907d75a93870bec7962d036
+TASK-0020  tests/setup/TASK-0020.test.mjs  9e1ca085e86c72eb6bb1d6b44bcf7323893684cbce8f194668c04e4f8de5f920
 TASK-0022  apps/api/test/db/double-click-keys.test.ts  23508d1e2d80fb99d4e2f65575616e27a4ca4587f3311a710b3374b78d3a39b0
 TASK-0022  tests/setup/TASK-0022.test.mjs  a4eef7cf857571c33878447688640a8bee847bef76ceb97285958857cbd22de8
 TASK-0023  apps/api/test/db/rate-counters.test.ts  f7faaeabcd5b1a9f9b95a121c0f0f42ab6c35d6bd72a29187774e78e954ad6e1

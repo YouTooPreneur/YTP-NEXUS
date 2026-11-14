@@ -96,7 +96,7 @@ Requirements → Screens → Clickable preview → Fields and data model
 | 2.2 | Database: schemas, database accounts, row rules and company context, the logs, the outbox | Builder on each card | Database tests green |
 | 2.3 | Backup: continuous encrypted backup off the server, with a timed restore | Builder on each card | Restore tested |
 | 2.4 | Sign-in (Google or email and password, two-step), roles and the role builder, the first-start command | Builder on each card | Login works |
-| 2.5 | Settings, feature switches, announcements delivered by the worker, Monitoring and Logs (the automation engine comes in Release 9) | Builder on each card | Working core |
+| 2.5 | Settings, feature switches, Monitoring and Logs (the automation engine comes in Release 9) | Builder on each card | Working core |
 | 2.6 | Languages, company profile with dated versions, My profile | Builder on each card | Languages and company details |
 | 2.7 | One complete **example feature** (Trash and record history), backend and frontend, the pattern executors copy | Builder on each card | Reference feature |
 | 2.8 | Online: the server, the address, the test copy, alerts; the team uses Release 1 for 1 to 2 weeks | Builder on each card; the owner closes it | Release 1 online |
