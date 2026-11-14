@@ -315,4 +315,4 @@ One line per task, newest at the bottom.
 | TASK-0019 | Rows with no company: system errors and readers | Done | antigravity | 2026-11-14 |
 | TASK-0023 | Rate counters and the per-address limit | Done | codex | 2026-11-14 |
 | TASK-0020 | Announcements: the outbox and the poster | To do | — | — |
-| TASK-0025 | Removing personal values on request | To do | — | — |
+| TASK-0025 | Removing personal values on request | Done | codex | 2026-11-14 |

@@ -127,6 +127,13 @@
       "when": 1794645980464,
       "tag": "0017_core_rate_counters_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1794654342616,
+      "tag": "0018_core_erasure",
+      "breakpoints": true
     }
   ]
 }
