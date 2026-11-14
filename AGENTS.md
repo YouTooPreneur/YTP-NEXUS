@@ -39,6 +39,10 @@ If you are an **executor**, you are not a designer. You do not decide anything. 
                   Then run it once with --card TASK-XXXX: your card's own
                   tests must fail (they test what you will build). Log both.
                   Not green? STOP. Mark BLOCKED. Do not build on a broken base.
+                  From D-203 (TASK-0030, TASK-0094 and every later card):
+                  skip both verify runs here (Claude checks main after
+                  every merge); write `skipped (D-203)` in the log's two
+                  start-check lines. Your first verify is step 3.
 2. BUILD        → Follow the card's STEPS exactly, in order. From TASK-0008 on,
                   run `pnpm format` before verifying (it only reformats code).
 3. VERIFY       → Run the verify command with --card TASK-XXXX.
