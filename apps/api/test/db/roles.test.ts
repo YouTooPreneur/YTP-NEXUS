@@ -331,7 +331,9 @@ describe('applyDefaultGrants', () => {
 describe('outside a save', () => {
   it('refuses to run without the transaction on the request context', async () => {
     await expect(registerPermissions(CORE_PERMISSIONS)).rejects.toThrow('No request context');
-    for (const run of [() => registerPermissions(CORE_PERMISSIONS), () => makeDefaultRoles(), () => applyDefaultGrants()]) {
+    // Typed as one list, so each function keeps its plain return type (TASK-0096).
+    const runs: Array<() => Promise<unknown>> = [() => registerPermissions(CORE_PERMISSIONS), () => makeDefaultRoles(), () => applyDefaultGrants()];
+    for (const run of runs) {
       await expect(runWithContext(ctx(), run)).rejects.toThrow('the roles need the transaction');
     }
   });

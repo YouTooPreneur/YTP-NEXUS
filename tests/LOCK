@@ -78,7 +78,7 @@ TASK-0024  apps/api/test/db/settings.test.ts  83a8d3280d187dee41f01f59ad120e7ba5
 TASK-0024  tests/setup/TASK-0024.test.mjs  303e1b4c2c62015bca5eabb0a03bde6fb872858156ee2a22ee86a5e9832527ea
 TASK-0025  apps/api/test/db/erasure.test.ts  847ca183e007ba7cde29aa3d9d732ce0777c5866ad26d64a68ce826fc48d7c3b
 TASK-0025  tests/setup/TASK-0025.test.mjs  9b458cb61044e1589befe446244300e37610b16c39a01ecff19dc15b3caa46bf
-TASK-0030  apps/api/test/db/roles.test.ts  b5ecadaa373744e61deff394cb5df5608388ed9e90eb8e4e8dd1703aa5765d96
+TASK-0030  apps/api/test/db/roles.test.ts  8069347afb9cdef31f6812a86a0596a29316a8d32ac3ee5d826fe248f2b2389a
 TASK-0030  tests/setup/TASK-0030.test.mjs  77ccf493749449f94adf200df1d45203e6b694e5d4c872bc8f96177a8d1879be
 TASK-0032  apps/api/test/db/signin.test.ts  81236f7aee743adf4e48ac8633616b11d076a2ff79bd80b39e2e486e7cee6de2
 TASK-0032  tests/setup/TASK-0032.test.mjs  f8b17b66893a70fde5675c9eff1d06c5a592eba5abf023c45da7ece6fe2334cf
@@ -102,3 +102,4 @@ TASK-0094  apps/api/test/db/delivery.test.ts  cf59cc1cf6fc27f7c16d0027410b227dc8
 TASK-0094  tests/setup/TASK-0094.test.mjs  f678e2e75ee5d7b50fe307b512a9d514ef83cef593b71de47be1b2cdd423fa1c
 TASK-0095  apps/api/test/setup/door-answers.test.ts  08dd6513ad23de968af355a22d4c4069fd876cb5576a8703c0644f3b6f75dcaf
 TASK-0095  tests/setup/TASK-0095.test.mjs  6acfdd7713211e447f21d98f505ba51df34b9bbef69d60c3ddbc2b05f203a714
+TASK-0096  tests/setup/TASK-0096.test.mjs  08db80bcfb8b9e2e70011722d24f38063503195a092f3f34871177d01e08ae98
