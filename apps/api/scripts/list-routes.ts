@@ -8,6 +8,7 @@ const routes = allRoutes.map((r) => ({
   path: r.path,
   module: r.module,
   public: r.public,
+  ...(r.signedIn ? { signedIn: true } : {}),
   permission: r.public ? null : (r.permission ?? null),
   feature: r.public ? null : (r.feature ?? null),
 }));

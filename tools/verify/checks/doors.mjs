@@ -3,7 +3,7 @@ export function checkDoors({ routes = [], authRoutes = [], allowedAuthRoutes = [
 
   for (const r of routes) {
     if (!r.public) {
-      if (!r.permission || !r.feature) {
+      if (!r.feature || (!r.permission && r.signedIn !== true)) {
         problems.push(`door without permission or feature: ${r.operationId}`);
       }
     }
