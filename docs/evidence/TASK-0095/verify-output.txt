@@ -1,0 +1,335 @@
+$ node tools/verify/verify.mjs "--card" "TASK-0095"
+verify: running 74 test files, leaving out 3 (cards not Done)
+▶ API client
+$ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+$ tsx scripts/write-openapi.ts
+openapi.json written
+$ orval --config orval.config.ts
+🍻 orval v8.45.0 - A swagger client generator for typescript
+nexus - ⚠️  Using query options is deprecated and will be removed in a future major release. Please use queryOptions or mutationOptions instead.
+nexus - Cleaning output folder
+nexus - 🎉 YTP Nexus API - Your OpenAPI spec has been converted into ready to use orval!
+✔ API client
+▶ Type check
+✔ Type check
+▶ Lint
+$ eslint .
+✔ Lint
+▶ Format
+$ prettier --check .
+Checking formatting...
+All matched files use Prettier code style!
+✔ Format
+▶ Architecture
+$ depcruise apps packages --config .dependency-cruiser.cjs
+
+✔ no dependency violations found (101 modules, 210 dependencies cruised)
+
+✔ Architecture
+▶ Contract
+✔ Contract
+▶ Doors
+✔ Doors
+▶ Module cards
+✔ Module cards
+▶ Test lock
+✔ Test lock
+▶ Set-up tests
+✔ package.json is the private workspace root (2.6931ms)
+✔ the pnpm workspace lists the apps and packages folders (0.6094ms)
+✔ the Node version file says 24 (0.2815ms)
+✔ the shared TypeScript settings are strict (0.3053ms)
+✔ editor and line-ending rules exist (0.513ms)
+✔ .gitignore keeps generated and local files out, and keeps the old lines (0.4441ms)
+✔ the pinned pnpm is the one in use (730.914ms)
+✔ the backend package has the agreed name and scripts (1.6885ms)
+✔ every dependency version is exact (1.4445ms)
+✔ the backend has its two start commands (0.4289ms)
+✔ the frontend package has the agreed name, scripts and exact versions (1.4888ms)
+✔ the page is English, fits phones and loads the app (1.1632ms)
+✔ during development /api goes to the backend on port 3000 (0.4032ms)
+✔ the screen-parts package is set up (51.6061ms)
+✔ the frontend uses Tailwind, the tokens and the self-hosted fonts (3.2471ms)
+✔ the page starts in Emerald (0.5196ms)
+✔ the root has one command that makes the API description and the client (1.159ms)
+✔ the contract package and the client tool are pinned (0.5601ms)
+✔ the screens make the API client before they start or build (0.2749ms)
+✔ running the command writes openapi.json and the typed client with a health hook (4297.6995ms)
+✔ the generated files are never committed (129.9009ms)
+✔ the three services use pinned images, never latest (1.7221ms)
+✔ the settings lists name every setting, in the agreed order, with no real secrets (2.3998ms)
+✔ the example settings files are kept, the real one never is (64.7114ms)
+✔ the root scripts start and stop the services (0.4388ms)
+✔ Docker accepts the compose file (435.4333ms)
+✔ readLock reads the lock lines and skips comments (2.0521ms)
+✔ readLock names the line it cannot read (0.544ms)
+✔ readIndexStatuses finds the Status column by its header (0.413ms)
+✔ selectTests runs Done cards, the named card and unlocked tests, and leaves the rest (0.313ms)
+✔ packageOf finds the package of a test file (0.2581ms)
+✔ listTestFiles finds the planner tests and never the fixtures (5.7141ms)
+✔ the real lock file reads cleanly and every file in it exists (7.0504ms)
+✔ --list shows the four first steps in order (80.4125ms)
+✔ a wrong or unknown card is refused with exit code 2 (309.8659ms)
+✔ the root script runs it (0.472ms)
+(node:18232) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the config files and scripts exist (3.794ms)
+✔ every architecture rule catches its broken fixture (2148.6449ms)
+✔ the allowed paths are never reported (2369.2875ms)
+✔ verify runs lint, format and architecture after the type check (97.4359ms)
+(node:11028) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ sha256Of and checkTestLock spot missing, changed and doubled tests (4.6644ms)
+✔ readAllowedFiles reads the first backticked path of each row (0.5687ms)
+✔ readStartPoint reads the start commit from the log (0.2382ms)
+✔ matchesPattern understands * and ** (0.2955ms)
+✔ machine-written paths and the builder's own files are always allowed (0.5517ms)
+✔ changedFiles lists edited, added and untracked files since the start point (813.9876ms)
+✔ changedFiles keeps to each card's own commits when later cards are built on top (a batch) (1507.4532ms)
+✔ a step that crashes counts as failed, the others still run, and a broken lock is reported (159.4109ms)
+✔ lint finds a misspelt name in verify code (eslint.config.mjs uses defineConfig) (2982.5146ms)
+✔ the screens' walls also cover the shared contracts package (2452.8805ms)
+✔ verify has the Test lock step before the set-up tests, and Allowed files last (109.0453ms)
+(node:15572) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ compareRoutesToContracts finds doors missing on either side (2.3719ms)
+✔ checkDoors finds doors without a permission or feature, and checks the sign-in list once it exists (0.6549ms)
+✔ checkModuleCards wants the six parts, every door and every announcement (1.421ms)
+✔ the screens cannot borrow backend code even for its types (review of TASK-0011, CR-012) (2229.2611ms)
+✔ the real backend lists the health door as public, and the Core card lists it (2493.6658ms)
+✔ verify runs the three checks after Architecture, and Allowed files stays last (314.5978ms)
+✔ loading the verify steps runs nothing: routes:list waits for its step (step 9) (259.2957ms)
+✔ Contract, Doors and Module cards read the backend list, the API list and the module cards, sharing one routes:list run (2371.6419ms)
+✔ changedFiles lists both paths of a moved file, before the card is committed and in the fallback (1024.9767ms)
+✔ commitProblems names every commit after the start point that is not named for a card and not yet on main (4471.7204ms)
+✔ the Allowed files step reports a commit not named for a card (3891.581ms)
+✔ Playwright is pinned and checks computer and phone width (1.5943ms)
+✔ the end-to-end tests are found and run before Allowed files (108.0962ms)
+✔ GitHub runs pnpm verify on every change with pinned actions (0.871ms)
+✔ the page shows the API status from the generated client (0.7091ms)
+Error: http://localhost:3000/api/health is already used, make sure that nothing is running on the port/url or set reuseExistingServer:true in config.webServer.
+
+(node:3856) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ End-to-end smoke fails when Playwright fails, and skips when no end-to-end test is selected (the "already used" line is expected) (1943.348ms)
+✔ the backend uses the pinned PostgreSQL driver and has the accounts command (1.1429ms)
+✔ the accounts command reads infra/.env before any other file loads (0.7629ms)
+✔ GitHub's check run has the same PostgreSQL, ready before the tests, with the test settings (2.8669ms)
+✔ the shared database container is the same from every copy, and needs no first-start folder (908.4805ms)
+✔ the row-rule change comes right after the companies changes (2.4738ms)
+✔ the row-rule procedure is exactly the card’s (1.3976ms)
+✔ the company helpers use only Drizzle, and never reach the auth tables or the request context (0.8128ms)
+✔ Core’s module card names the row rule, the company context and the data helper (0.5334ms)
+✔ the app mounts its doors with the shared hooks unless a test passes its own (1.4334ms)
+✔ the request context holds the transaction, its type imported for types only and from no file that loads the context (2.3345ms)
+✔ only the company helper sets the company for the row rules (7.3107ms)
+✔ the two activity-log changes come right after the company rule change, in order (4.0738ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.5252ms)
+✔ the rule and rights change is exactly the card’s (0.3091ms)
+✔ the schema file uses Core’s audit schema and links each entry to its company (0.9741ms)
+✔ the writer takes the transaction and the company from the request context and opens nothing itself (0.786ms)
+✔ Core’s module card lists the activity log and the rule for writing it (0.3531ms)
+✔ the two security-log changes come right after the settings changes, in order (2.4874ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.397ms)
+✔ the rule, rights and functions change is exactly the card’s (1.7838ms)
+✔ the schema file uses Core’s audit schema, an identity key and a chain key that holds the system chain (11.9041ms)
+✔ the writer adds entries only through the database function, in the transaction on the request context (1.0341ms)
+✔ the request context keeps where a request came from, and the no-company security write is in database.ts (0.6467ms)
+✔ Core’s module card lists the security log and the rule for rows with no company (0.5099ms)
+✔ the two error changes come right after the security-log changes, in order (3.8093ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.8474ms)
+✔ the rule, rights and functions change is exactly the card’s (1.0204ms)
+✔ the schema file uses Core’s schema, its own time-ordered key, a company that may be empty and the two sources (0.9928ms)
+✔ the recorder adds errors only through core.record_error, in a security write of its own, with the cleaned message (0.6288ms)
+✔ the error handler keeps every server error without waiting, and logs an AppError of 500 or more like one (0.502ms)
+✔ safeErrorMessage is built on the log’s own cleaning, which stays private (0.3672ms)
+✔ only the recorder adds errors, and only the recorder and the schema file name the function that adds them (8.9117ms)
+✔ Core’s module card lists the errors table and the rule for server errors, after the rule for rows with no company (0.5398ms)
+✔ the two announcement changes come right after the counter changes, in order (2.7759ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.4115ms)
+✔ the rule and rights change is exactly the card’s (0.2992ms)
+✔ the schema file uses Core’s schema: the outbox is a company table with its own key, the receipts a system table (0.8067ms)
+✔ the poster adds announcements only in the transaction on the request context, under its company (0.4986ms)
+✔ only the poster adds announcements (5.7971ms)
+✔ Core’s module card lists both tables after the counters, and the announcement rule right after the activity-log rule (0.4892ms)
+✔ the two double-click key changes come right after the activity-log changes, in order (3.6365ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (1.2552ms)
+✔ the rule and rights change is exactly the card’s (0.8558ms)
+✔ the schema file uses Core’s schema, keys each entry by company and key, and links it to its company (0.9566ms)
+✔ the step works in the request’s transaction from the context and opens nothing itself (2.0027ms)
+✔ the shared hooks use the real double-click step (0.7647ms)
+✔ Core’s module card lists the double-click keys and the rule for them (1.8453ms)
+✔ the two counter changes come right after the error changes, in order (6.9203ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.4775ms)
+✔ the rights change is exactly the card’s: no company rule, no delete (0.3188ms)
+✔ the schema file is exactly the card’s: a system table with no company and no ID of its own (0.2534ms)
+✔ the counter counts with one statement on the database’s clock, on the security pool with no company (1.1369ms)
+✔ the limiter reads its values at each request and counts the address Express trusts (0.8522ms)
+✔ the limiter is mounted on the sign-in and two-step doors only, right after the same-site check and before the body is read (2.632ms)
+✔ the security log knows the limit_hit event (3.5883ms)
+✔ Core’s module card lists the counters table and the rule for the per-address limit (0.7479ms)
+✔ the two settings changes come right after the double-click key changes, in order (3.2756ms)
+✔ drizzle-kit made the table change from the schema file, exactly as expected (0.3744ms)
+✔ the rule and rights change is exactly the card’s (0.2716ms)
+✔ the schema file uses Core’s schema, keys each value by company and key, and links it to its company (0.891ms)
+✔ the settings service works in the request’s transaction, logs through the activity-log writer, and reads no environment (0.8331ms)
+✔ Core’s module card lists the settings table and the rule for settings (0.4115ms)
+✔ the removal change exists once, in the journal and as a file, and holds exactly the card’s SQL (5.3236ms)
+✔ the remover works in the request’s own transaction and writes the data_erased entry through the security-log writer (1.2905ms)
+✔ only the remover calls the removal function (5.5408ms)
+✔ Core’s module card has the removal rule under Rules (0.313ms)
+✔ the table change and the rules and rights change come one after the other; the second is exactly the card’s (3.5828ms)
+✔ the schema file uses Core’s schema and links grants and hidden fields to the role of the same company (0.8161ms)
+✔ the service works in the transaction on the request context, filters company tables by company and logs new roles (1.1173ms)
+✔ Core’s module card lists the four lines under Data after the double-click keys, and the rule after the settings rule (1.0734ms)
+✔ Better Auth is pinned to exactly 1.7.14 and the schema list adds its tables to the modules’ schema files (3.076ms)
+✔ the sign-in doors sit after the per-address limit and before the body reader, closed except for the open list (1.7705ms)
+✔ the open doors are plain data that import nothing, the same seven as the agreed list, and the routes listing reads them (1.3736ms)
+✔ the log removes the sign-in tokens too, and only the sign-in, users and database code touch the auth tables (10.0147ms)
+✔ the table change and the rights change come one after the other; the second is exactly the card’s (1.0284ms)
+✔ Core’s module card lists the sign-in tables after the companies, and the sign-in rule after the per-address limit rule (0.3174ms)
+✔ the app mounts the same-site check once, directly after the logging step and before the body is read (1.3764ms)
+✔ the check reads Nexus’s address from APP_URL and changes nothing else in the request (0.4111ms)
+(node:25148) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the generated client calls the screens’ own fetch, keeps forceSuccessResponse and switches off the query library’s retries and refetches (1.1658ms)
+✔ the screens’ own fetch lives outside the generated folder, takes two parts and never sets the browser’s own headers (1.5148ms)
+✔ no screen lint rule is left at warning level: unsupported syntax is an error and the library warning is off (2842.7824ms)
+✔ lint fails on eval in a screen, and stays quiet about a form library hook (8171.1524ms)
+(node:17388) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ TypeScript and Node types are pinned at the root, and the root files are covered (1.6132ms)
+✔ the root settings catch misspelt options and a misspelt name in a Playwright config (2700.9038ms)
+✔ the screens catch a misspelt option in their API client settings (orval) (2860.1655ms)
+✔ the Type check step type-checks the root files and the selected end-to-end files (15628.6777ms)
+✔ lint fails on a missing hook dependency (screens and ui), an unused eslint-disable and a mistake in a .js or .cjs file (8946.9632ms)
+✔ every selected end-to-end test runs, tagged @smoke or not (1228.2394ms)
+(node:29052) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ a module card section counts only when its heading is a whole line (3.3158ms)
+✔ an entry under Window or Announcements that no longer exists is reported (0.7377ms)
+✔ the same door twice, or one operationId on two doors, is reported (0.5126ms)
+✔ when routes:list prints something else or fails, the three steps say why and it runs only once (2991.1217ms)
+✔ the commit check still works when a file is named main (749.1906ms)
+(node:28008) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the development services listen on this computer only, and the database check goes over the network (508.2004ms)
+✔ the API and the worker read infra/.env before any other file loads (0.9992ms)
+✔ the settings file is infra/.env at the top of the project (265.4251ms)
+✔ routes:list needs no settings and loads none (CR-012) (4719.5696ms)
+✔ the backend uses the pinned Drizzle and has the generate and migrate commands (4.7197ms)
+✔ drizzle-kit reads the modules’ schema files by path, and its config is type-checked (CR-008, CR-015) (3.2876ms)
+✔ the migrate command reads infra/.env before any other file loads (0.8831ms)
+✔ Core’s first two database changes are exactly the card’s (0.6004ms)
+✔ the database code never reaches the auth tables (CR-008) (0.4257ms)
+✔ the three database changes come after Core’s first two, in order (2.2079ms)
+✔ the ID function and the companies rights are exactly the card’s (1.3396ms)
+✔ drizzle-kit made the companies table from the schema file, with the time-ordered key (0.7507ms)
+✔ Core’s module card lists the companies table and the ID rule, under the template’s intro (4.0631ms)
+✔ the worker reads the settings first, starts the delivery with no listener, and on a signal stops it before the pools (3.2174ms)
+✔ database.ts gains the company transaction on the request pool and the company list, and still makes one pool (0.6164ms)
+✔ the delivery takes each announcement under a skip lock, names its company in the claim and in every update, and hands each listener its savepoint (0.7659ms)
+✔ only the delivery adds receipts and marks announcements delivered or failed (5.7317ms)
+✔ Core’s module card has the delivery rule right after the announcement rule (0.4865ms)
+✔ route.ts reads the door kinds plainly, with no casts and no non-null assertion on the hooks (1.9426ms)
+✔ the door check accepts a signed-in door with a feature key and still reports the others (2.9014ms)
+✔ the routes listing marks signed-in doors and leaves the key out on every other door (0.5171ms)
+ℹ tests 181
+ℹ suites 0
+ℹ pass 181
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36843.7802
+✔ Set-up tests
+▶ Unit and API tests
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0095/apps/api
+
+{"level":40,"time":1795069411637,"pid":12140,"hostname":"Youtoopreneur-2","msg":"Invalid password"}
+{"level":40,"time":1795069411742,"pid":12140,"hostname":"Youtoopreneur-2","msg":"User not found"}
+{"level":50,"time":1795069412027,"pid":12140,"hostname":"Youtoopreneur-2","msg":"Failed to create session"}
+{"level":40,"time":1795069412973,"pid":12140,"hostname":"Youtoopreneur-2","msg":"Invalid password"}
+{"level":40,"time":1795069413089,"pid":12140,"hostname":"Youtoopreneur-2","msg":"Reset Password: User not found"}
+{"level":40,"time":1795069413775,"pid":12140,"hostname":"Youtoopreneur-2","msg":"Invalid password"}
+
+ Test Files  32 passed (32)
+      Tests  320 passed (320)
+   Start at  11:52:43
+   Duration  76.71s (tests 57%, import 42%, transform 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0095/apps/web
+
+
+ Test Files  4 passed (4)
+      Tests  21 passed (21)
+   Start at  11:54:01
+   Duration  2.79s (environment 81%, import 15%, tests 3%, transform 1%, worker 1%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0095/packages/contracts
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  11:54:05
+   Duration  299ms (import 77%, transform 13%, tests 6%, worker 3%)
+
+
+ RUN  v5.0.5 C:/Users/Spartan/Documents/pranav/ytp/ytp-work/TASK-0095/packages/ui
+
+
+ Test Files  3 passed (3)
+      Tests  11 passed (11)
+   Start at  11:54:06
+   Duration  1.62s (environment 75%, import 16%, tests 6%, worker 2%, transform 1%)
+
+✔ Unit and API tests
+▶ End-to-end smoke
+[WebServer] (node:600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:17032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:17620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ pnpm --workspace-root run api:generate && vite
+[WebServer] (node:7724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ pnpm --filter @ytp/contracts openapi && pnpm --filter @ytp/web api
+[WebServer] (node:22680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsx scripts/write-openapi.ts
+[WebServer] (node:3224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:22180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ orval --config orval.config.ts
+[WebServer] (node:28984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 2 workers
+
+(node:26372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [computer] › tests\e2e\smoke.spec.ts:4:1 › the home page shows the product and reaches the API @smoke (936ms)
+  ok 1 [phone] › tests\e2e\smoke.spec.ts:4:1 › the home page shows the product and reaches the API @smoke (920ms)
+  ok 4 [phone] › tests\e2e\smoke.spec.ts:10:1 › nothing scrolls sideways @smoke (474ms)
+  ok 3 [computer] › tests\e2e\smoke.spec.ts:10:1 › nothing scrolls sideways @smoke (485ms)
+  ok 6 [computer] › tests\e2e\smoke.spec.ts:20:1 › the page is in English and in Emerald by default @smoke (502ms)
+  ok 5 [phone] › tests\e2e\smoke.spec.ts:20:1 › the page is in English and in Emerald by default @smoke (509ms)
+
+  6 passed (11.3s)
+✔ End-to-end smoke
+▶ Allowed files
+✔ Allowed files
+verify: PASSED

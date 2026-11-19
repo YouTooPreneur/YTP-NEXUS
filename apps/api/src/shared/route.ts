@@ -33,6 +33,7 @@ export interface RegisteredRoute {
   path: string;
   module: string;
   public: boolean;
+  signedIn?: true;
   permission?: Permission;
   feature?: string;
   contract: Contract;
@@ -58,37 +59,63 @@ export type RouteHandler<C extends Contract, Res> = (
 export interface PublicRouteDefinition<C extends Contract = Contract, Res = unknown> {
   contract: C;
   public: true;
+  signedIn?: never;
   permission?: never;
   feature?: never;
+  handler: RouteHandler<C, Res>;
+}
+
+export interface SignedInRouteDefinition<C extends Contract = Contract, Res = unknown> {
+  contract: C;
+  public?: false;
+  signedIn: true;
+  permission?: never;
+  feature: string;
   handler: RouteHandler<C, Res>;
 }
 
 export interface ProtectedRouteDefinition<C extends Contract = Contract, Res = unknown> {
   contract: C;
   public?: false;
+  signedIn?: never;
   permission: Permission;
   feature: string;
   handler: RouteHandler<C, Res>;
 }
 
 export type RouteDefinition<C extends Contract = Contract, Res = unknown> =
-  PublicRouteDefinition<C, Res> | ProtectedRouteDefinition<C, Res>;
+  | PublicRouteDefinition<C, Res>
+  | SignedInRouteDefinition<C, Res>
+  | ProtectedRouteDefinition<C, Res>;
 
 export function defineRoute<const C extends Contract, Res>(
   def: RouteDefinition<C, Res>,
 ): RegisteredRoute {
-  const operationId = def.contract?.operationId ?? 'unknown';
-  const isPublic = Boolean((def as { public?: boolean }).public);
-  const rawDef = def as { permission?: Permission; feature?: string };
+  const operationId = def.contract.operationId;
+  const isPublic = def.public === true;
+  const isSignedIn = def.signedIn === true;
+
+  if (isPublic && isSignedIn) {
+    throw new Error(`Route ${operationId} cannot be both public and signed in only`);
+  }
 
   if (isPublic) {
-    if (rawDef.permission !== undefined || rawDef.feature !== undefined) {
+    const validPublic = def.permission === undefined && def.feature === undefined;
+    if (validPublic === false) {
       throw new Error(
         `Route ${operationId} is public and cannot declare a permission or feature key`,
       );
     }
+  } else if (isSignedIn) {
+    if (def.permission === undefined) {
+      if (def.feature === undefined) {
+        throw new Error(`Route ${operationId} is signed in only and must declare its feature key`);
+      }
+    } else {
+      throw new Error(`Route ${operationId} is signed in only and cannot declare a permission`);
+    }
   } else {
-    if (!rawDef.permission || !rawDef.feature) {
+    if (def.permission === undefined || def.feature === undefined) {
       throw new Error(
         `Route ${operationId} must declare its permission and feature key, or be public`,
       );
@@ -101,8 +128,9 @@ export function defineRoute<const C extends Contract, Res>(
     path: def.contract.path,
     module: def.contract.module,
     public: isPublic,
-    ...(rawDef.permission ? { permission: rawDef.permission } : {}),
-    ...(rawDef.feature ? { feature: rawDef.feature } : {}),
+    ...(isSignedIn ? { signedIn: true } : {}),
+    ...(def.permission ? { permission: def.permission } : {}),
+    ...(def.feature ? { feature: def.feature } : {}),
     contract: def.contract,
     handler: def.handler,
   };
@@ -173,13 +201,22 @@ function checkInput(
   };
 }
 
+function checkAnswer(route: RegisteredRoute, answer: unknown): unknown {
+  const result = route.contract.response.safeParse(answer);
+  if (result.success) {
+    return result.data;
+  }
+
+  throw new Error(`${route.operationId}: the answer does not match its contract`);
+}
+
 export function mountRoutes(
   app: Express,
   routes: readonly RegisteredRoute[],
   hooks?: RouteHooks,
 ): void {
   for (const route of routes) {
-    if (!route.public && !hooks) {
+    if (route.public === false && hooks === undefined) {
       throw new Error(
         `Route ${route.operationId} needs the shared hooks; they come with steps 2.2 to 2.5`,
       );
@@ -191,26 +228,34 @@ export function mountRoutes(
       const info: RouteInfo = { req, route };
 
       try {
-        if (route.public) {
+        if (route.public === true) {
           const input = checkInput(route.contract, req);
-          const answer = await route.handler(input, info);
+          const answer = checkAnswer(route, await route.handler(input, info));
           res.status(200).json(answer);
           return;
         }
 
-        const h = hooks!;
+        if (hooks === undefined) {
+          throw new Error(
+            `Route ${route.operationId} needs the shared hooks; they come with steps 2.2 to 2.5`,
+          );
+        }
+
+        const h = hooks;
         await h.session(info);
         const answer = await h.inTransaction(info, async () => {
           await h.idleTimeout(info);
           await h.twoStepGate(info);
           await h.personLimit(info);
           await h.featureSwitch(info);
-          await h.permission(info);
+          if (route.signedIn === undefined) {
+            await h.permission(info);
+          }
           const input = checkInput(route.contract, req);
-          const rawAnswer = await h.idempotency(info, async () => {
-            return route.handler(input, info);
-          });
-          return h.hideFields(info, rawAnswer);
+          const checkedAnswer = await h.idempotency(info, async () =>
+            checkAnswer(route, await route.handler(input, info)),
+          );
+          return h.hideFields(info, checkedAnswer);
         });
 
         res.status(200).json(answer);

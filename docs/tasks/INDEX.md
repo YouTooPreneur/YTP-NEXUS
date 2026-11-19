@@ -50,7 +50,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0028 | Timed restore drill | 2.3 | Backend | Claude | Codex | 0027 | NFR-007, AUTO-037 | To do | — |
 | TASK-0029 | Door standard, doors table and the email door | 2.4 | Backend | Codex | Claude | 0021 | CORE-121 (part), INT-001 (part), CORE-065 (part) | To do | — |
 | TASK-0030 | Roles, permission list and default grants | 2.4 | Backend | Antigravity or Codex | Claude | 0017 | USR-002, USR-003, USR-006 | Done | codex |
-| TASK-0095 | Door answers checked against their contract; signed-in doors | 2.4 | Backend | Codex | Claude | 0011, 0012, 0016 | TECH-DESIGN 6.7 | To do | — |
+| TASK-0095 | Door answers checked against their contract; signed-in doors | 2.4 | Backend | Codex | Claude | 0011, 0012, 0016 | TECH-DESIGN 6.7 | Done | codex |
 | TASK-0096 | Plain return types for the role functions | 2.4 | Backend | Whoever is free first | Claude | 0030 | USR-002, USR-003, USR-006 | To do | — |
 | TASK-0031 | Permission check, scope and hidden fields | 2.4 | Backend | Claude | Codex | 0030, 0033, 0095 | USR-002 | To do | — |
 | TASK-0032 | Better Auth: Google, password and the open sign-in doors | 2.4 | Backend | Claude | Codex | 0015, 0023, 0084 | CORE-001 | Done | claude |
