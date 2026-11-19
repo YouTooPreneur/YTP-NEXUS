@@ -8,6 +8,8 @@ export interface RequestContext {
   background: boolean;
   userId?: string;
   companyId?: string;
+  // The signed-in session's ID (TASK-0033), never its token: the session facts (TASK-0034) are kept under it.
+  sessionId?: string;
   // The request's transaction while it runs (TASK-0016); the repositories read it here.
   tx?: Transaction;
   // Where the request came from (TASK-0018): the security log keeps them with each entry.
