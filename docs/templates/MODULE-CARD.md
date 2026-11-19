@@ -9,6 +9,7 @@ Every module is built from the same 6 parts (TECH-DESIGN section 2). If it is no
 
 ## Rules
 - <rule, with its requirement ID>
+- Scope: own = <the columns that make a record the person's, such as created by and assigned to>; team = <this module's team rule>; or "all only" for records that belong to nobody (TECH-DESIGN 6.2, TASK-0031)
 
 ## Screens
 - <SCR-xxx name> (frontend, `apps/web/src/modules/<module>/`)

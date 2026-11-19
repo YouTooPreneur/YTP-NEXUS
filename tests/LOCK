@@ -80,6 +80,10 @@ TASK-0025  apps/api/test/db/erasure.test.ts  847ca183e007ba7cde29aa3d9d732ce0777
 TASK-0025  tests/setup/TASK-0025.test.mjs  9b458cb61044e1589befe446244300e37610b16c39a01ecff19dc15b3caa46bf
 TASK-0030  apps/api/test/db/roles.test.ts  e57f6d019c0603e4861dcc604f0d4e3e65bfd424bf1774dbd12cde6bd1fc8f51
 TASK-0030  tests/setup/TASK-0030.test.mjs  77ccf493749449f94adf200df1d45203e6b694e5d4c872bc8f96177a8d1879be
+TASK-0031  apps/api/test/db/permission.test.ts  c67c914997076d6aad989da4dd47a85cad23f2f675c55636147a0c18a9c6d58c
+TASK-0031  apps/api/test/setup/hide-fields.test.ts  691cd1e2384e60088c2df66c4d853854d7c9da8699d55b1bbec46fe812607b4b
+TASK-0031  packages/contracts/test/hideable-fields.test.ts  250f8ebd6958eb8befc30eb44c868b345a294579a84bb9e3a6d0ce1d4ae7400d
+TASK-0031  tests/setup/TASK-0031.test.mjs  211c522d402e6e8d338a666a680559e01725e032e339e077929cbf1a2b888d61
 TASK-0032  apps/api/test/db/signin.test.ts  2e16a361b3444cde743e727c52e692063f6c39a8e0f8532566ea90e05a910e3f
 TASK-0032  tests/setup/TASK-0032.test.mjs  f8b17b66893a70fde5675c9eff1d06c5a592eba5abf023c45da7ece6fe2334cf
 TASK-0033  apps/api/test/db/users.test.ts  aa5063006daa2b6e4a264e5e5a418c7912badaa781b2586cd17f6dda942747e5

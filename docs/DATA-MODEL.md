@@ -295,9 +295,9 @@ Everyone signed in can always open their own profile, devices and sign-out; thes
 
 | Field | Type | Notes |
 |---|---|---|
-| company_id, role_id, module, field | PK | e.g. Staff hides `finance.invoice.total` |
+| company_id, role_id, module, field | PK | e.g. Staff hides `finance.invoice.total`: `field` is the hidden name, `<module>.<record type>.<field>` (TECH-DESIGN 6.2), and `module` the permission area that offers it (for example `finance.invoices`); a hidden field is hidden in every door of the role, whichever area it was hidden under (TASK-0031) |
 
-One shared backend step removes a caller's hidden fields from every API answer and from the old and new values shown in the activity log. "View as role" (USR-004) needs no table: it builds the same permission set for the chosen role, read-only, and the security log records who previewed which role.
+The permission step loads every field the role does not see; the shared `hideFields` step removes them from every API answer at the paths its contract names, and the Logs and Record history doors drop them from the activity log's old and new values (TECH-DESIGN 6.2, TASK-0031). "View as role" (USR-004) needs no table: it builds the same permission set for the chosen role, read-only, and the security log records who previewed which role.
 
 ### 3.3 Logs, trash and announcements
 
