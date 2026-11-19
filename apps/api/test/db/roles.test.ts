@@ -66,7 +66,8 @@ beforeAll(async () => {
 
 afterEach(async () => {
   await closePools();
-  await owner.query('TRUNCATE core.default_grants_applied, core.role_hidden_fields, core.role_permissions, core.roles, core.permission_catalogue, audit.activity_log');
+  // CASCADE: from TASK-0033 people (core.users) link to their role, and PostgreSQL empties no table another one links to.
+  await owner.query('TRUNCATE core.default_grants_applied, core.role_hidden_fields, core.role_permissions, core.roles, core.permission_catalogue, audit.activity_log CASCADE');
 });
 
 afterAll(async () => {

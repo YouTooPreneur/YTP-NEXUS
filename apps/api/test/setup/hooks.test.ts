@@ -45,7 +45,8 @@ describe('createHooks', () => {
 
   it('refuses at every step not built yet, and lets every feature through until the feature switches exist', async () => {
     const hooks = createHooks();
-    for (const step of ['session', 'idleTimeout', 'twoStepGate', 'personLimit', 'permission'] as const) {
+    // The who-is-asking step is built by TASK-0033 (its test: apps/api/test/db/who-is-asking.test.ts).
+    for (const step of ['idleTimeout', 'twoStepGate', 'personLimit', 'permission'] as const) {
       await expect(hooks[step](info)).rejects.toThrow(`${step} is not built yet`);
     }
     expect(() => hooks.hideFields(info, { ok: true })).toThrow('hideFields is not built yet');
@@ -63,7 +64,7 @@ describe('createHooks', () => {
     expect(ran).toBe(false);
   });
 
-  it('answers 500 for a non-public door mounted with them, without running its handler', async () => {
+  it('refuses a non-public door mounted with them, without running its handler', async () => {
     let ran = false;
     const route = defineRoute({
       contract,
@@ -76,8 +77,10 @@ describe('createHooks', () => {
     });
     const app = createApp({ logger: quiet(), routes: (a) => mountRoutes(a, [route], createHooks()) });
     const res = await request(app).post('/api/test/hooks');
-    expect(res.status).toBe(500);
-    expect(res.body.error.code).toBe('server_error');
+    // From TASK-0033 the who-is-asking step answers first: 401 not_signed_in where Better Auth has its settings, 500 where
+    // it has none (this unit project usually has none); before it, the step not built yet answers 500.
+    expect([401, 500]).toContain(res.status);
+    expect(['not_signed_in', 'server_error']).toContain(res.body.error.code);
     expect(ran).toBe(false);
   });
 });

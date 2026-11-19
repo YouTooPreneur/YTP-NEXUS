@@ -63,7 +63,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-003 | 0034, 0085 | API tests with fake time (timeout per role; background refreshes do not extend it; "timed out" in My devices and the security log); the screens mark their automatic refreshes (0085) |
 | CORE-004 | 0036 | API tests (5 wrong passwords lock for 15 minutes, the owner alert email, the security log) |
 | CORE-005 | 0043, 0073 | API tests; My profile screen tests |
-| CORE-006 | 0041, 0053 | API tests (sessions stop at once) |
+| CORE-006 | 0033, 0041, 0053 | API tests (sessions stop at once) |
 | CORE-008 | 0040, 0042 | API tests (unknown Google account refused; after an email change the old account is refused and the same person signs in) |
 | CORE-010, CORE-011 | 0068, 0072 | API tests (the right version for a date; GST only from its date) |
 | CORE-012 | 0024, 0056, 0062 | API tests (every change logged with old and new value: 0024 with probe settings; the literal pass test, the morning summary time in the log, with TASK-0070) |
@@ -73,7 +73,7 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | CORE-092 | 0018, 0059, 0061, and each card that writes an event | API tests (0018: one whole chain per company and the system chain, whole under parallel writes, never changed; role change, view-as-role and failed sign-ins logged: TASK-0030/0044, TASK-0045 and TASK-0032/0036) |
 | CORE-093 | 0075, 0077 | API tests (a deleted role restored; a deleted person cleaned up while their records and name remain) |
 | CORE-110 | 0067, 0071, 0074 | API and screen tests (a language opens only after its check) |
-| CORE-112 | 0033, 0070 | API tests (10:00 IST shows 08:30 for Dubai; ₹1,00,000) |
+| CORE-112 | 0033, 0070 | API tests (0033: each person's time zone and formats stored, with India's defaults; 0070 and the screens: 10:00 IST shows 08:30 for Dubai; ₹1,00,000) |
 | CORE-113 | 0013, 0052 | End-to-end at 375 px; phone menu per role |
 | CORE-114 | 0004, 0052, 0074 | Screen tests (Emerald and Navy tokens match the approved design); both colours pass WCAG AA contrast, checked with axe in the end-to-end tests (0074) |
 | CORE-140 | 0019, 0058, 0065 | API tests (0019: every server error kept under its company or as a system error, nothing under 500, the answer never waiting, only the cleaned message, the error kept when the request's work is undone, the rows with no company read only through the two readers, which refuse once there is a second company; 0058: failed job with a working Retry) |

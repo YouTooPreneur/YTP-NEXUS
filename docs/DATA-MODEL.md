@@ -15,7 +15,7 @@ This document locks **the main records of every module** before any building sta
 
 | Rule | What every table gets |
 |---|---|
-| Key | `id`: a time-ordered unique ID (UUID v7) made by the database function `core.uuid_v7()`, Better Auth's tables included. Section 3 gives three kinds of exception, and they keep their keys: a key that is another table's ID (`core.users.id` is `auth.user.id`; `core.user_preferences.user_id`; `core.session_state.session_id`), a key of several columns (for example the company and a name: settings, switches, languages, counters, doors, double-click keys; the permission catalogue and its grants, receipts, rate counters), and `audit.security_log`'s `bigint` (chain order). The `drizzle` schema (drizzle's own list of applied changes) and the `pgboss` schema keep their tools' own keys |
+| Key | `id`: a time-ordered unique ID (UUID v7) made by the database function `core.uuid_v7()`, Better Auth's tables included. Section 3 gives three kinds of exception, and they keep their keys: a key that is another table's ID (`core.users.id` is `auth.user.id`), a key of several columns (for example the company and a name: settings, switches, languages, counters, doors, double-click keys; the company and the person or session: `core.user_preferences`, `core.session_state`; the permission catalogue and its grants, receipts, rate counters), and `audit.security_log`'s `bigint` (chain order). The `drizzle` schema (drizzle's own list of applied changes) and the `pgboss` schema keep their tools' own keys |
 | Company | `company_id`, required, linked to `core.companies`, protected by the company filter and the **row rules** (TECH-DESIGN 5.1). Only the **system tables** below have no company row rule |
 | Unique keys | Every unique key on a company table other than its own `id` includes `company_id` (PostgreSQL checks unique keys without the row rules, so a key without the company would reveal another company's value); the catalogue check in `apps/api/test/db/company-rules.test.ts` reports any that does not (TASK-0022, CR-023) |
 | Who and when | `created_at`, `created_by`, `updated_at`, `updated_by` (a person, or empty for automatic work; the activity log says which automation, API key or AI did it) |
@@ -142,7 +142,7 @@ What settings exist, their type, default and help text, are defined in each modu
 | Field | Type | Notes |
 |---|---|---|
 | id, user_id | uuid | |
-| token | text unique | Kept as Better Auth needs it; only Core's sign-in code reads this table, and it never leaves the backend |
+| token | text unique | Kept as Better Auth needs it; only Core's sign-in code reads this table, and it never leaves the backend (Better Auth's own get-session answer still carries it until the small card before TASK-0049 removes it) |
 | expires_at, ip_address, user_agent, created_at, updated_at | | |
 
 **`auth.verification`** — password reset links
@@ -168,11 +168,13 @@ What settings exist, their type, default and help text, are defined in each modu
 | last_signin_at | timestamptz | |
 | + who-and-when, version, deleted | | "Invited", "Active" and "Disabled" come from `auth.user.status`; "On leave" comes from the Team module from Release 4 and is not stored here. Deleting a person also disables them; their email stays reserved until the 30-day clean-up; only the Owner can restore them. **People are never removed**: the clean-up deletes their sign-in rows (accounts, sessions, two-step methods and codes, trusted computers) and replaces their sign-in email with `deleted+<id>@invalid`, which frees the address; this row stays, marked purged, so every who-and-when link and the activity log still name them |
 
+**As built (TASK-0033):** `id` has no default (it is the person's sign-in ID) and no database link to `auth.user` (the who-is-asking step reads the sign-in record, never this row, and the catalogue check would need the company on both sides of such a link); `display_name` and `role_id` required; `photo_file_id` with no link until the files table (TASK-0069); `role_id` linked `(company_id, role_id)` → `core.roles (company_id, id)` and `manager_user_id` linked `(company_id, manager_user_id)` → `core.users (company_id, id)`, so both stay in the person's company; `signin_methods` a required `text[]` with no default and the check `users_signin_methods_check` (at least one; only `google` and `password`); who-and-when, `version`, `deleted_at`, `deleted_by` and `purged_at` (set when the 30-day clean-up marks the person purged); `UNIQUE (company_id, id)` for the links; every link `ON DELETE RESTRICT`; the app may read, add and change people, never delete them. The earlier who-and-when and person columns (`created_by`, `updated_by`, `actor_user_id`, `user_id`) stay plain IDs with no link.
+
 **`core.user_preferences`** (SCR-008, CORE-112)
 
 | Field | Type | Notes |
 |---|---|---|
-| user_id | uuid PK → core.users | |
+| user_id | uuid → core.users | The key, with `company_id` (as built) |
 | company_id | uuid | |
 | language_code | text | Only an open language |
 | colour | enum emerald, navy, or empty | Empty = the company default |
@@ -181,6 +183,8 @@ What settings exist, their type, default and help text, are defined in each modu
 | date_format | text | `DD MMM YYYY` by default |
 | daily_summary_time | time | Stored now; the summary is sent from Release 9 (CC-005) |
 | updated_at | | |
+
+**As built (TASK-0033):** keyed by `(company_id, user_id)` (every unique key on a company table includes the company) and linked `(company_id, user_id)` → `core.users (company_id, id)`; `language_code` empty means the company's language (checked against the open languages when TASK-0067 and TASK-0070 write it); `colour` the enum `core.theme_colour` (emerald, navy), empty = the company's colour; `time_format` the enum `core.clock_format` (`h12`, `h24`; not named `time_format`, which drizzle-kit 0.31.11 would write without its schema); `daily_summary_time` empty until set; `updated_at` required, `now()`; the app may read, add and change, never delete.
 
 **`core.session_state`** — Nexus's facts about each session (CORE-003, CORE-005, CORE-002)
 
