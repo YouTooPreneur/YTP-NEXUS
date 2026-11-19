@@ -190,6 +190,13 @@
       "when": 1795069318802,
       "tag": "0026_core_users_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1795087409988,
+      "tag": "0027_pgboss_schema",
+      "breakpoints": true
     }
   ]
 }
