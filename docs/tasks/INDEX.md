@@ -53,7 +53,7 @@ Status values: To do · In progress · Done · BLOCKED. "Part": Set-up (step 2.1
 | TASK-0095 | Door answers checked against their contract; signed-in doors | 2.4 | Backend | Codex | Claude | 0011, 0012, 0016 | TECH-DESIGN 6.7 | To do | — |
 | TASK-0096 | Plain return types for the role functions | 2.4 | Backend | Whoever is free first | Claude | 0030 | USR-002, USR-003, USR-006 | To do | — |
 | TASK-0031 | Permission check, scope and hidden fields | 2.4 | Backend | Claude | Codex | 0030, 0033, 0095 | USR-002 | To do | — |
-| TASK-0032 | Better Auth: Google, password and the open sign-in doors | 2.4 | Backend | Claude | Codex | 0015, 0023, 0084 | CORE-001 | To do | — |
+| TASK-0032 | Better Auth: Google, password and the open sign-in doors | 2.4 | Backend | Claude | Codex | 0015, 0023, 0084 | CORE-001 | Done | claude |
 | TASK-0033 | People and preferences tables; the "who is asking" step | 2.4 | Backend | Claude | Codex | 0032 | USR-001, CORE-112 | To do | — |
 | TASK-0034 | Session facts, idle timeout and background requests | 2.4 | Backend | Codex | Claude | 0033 | CORE-003 | To do | — |
 | TASK-0035 | Per-person limit | 2.4 | Backend | Codex | Claude | 0033, 0023 | NFR-020 | To do | — |

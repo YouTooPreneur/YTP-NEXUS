@@ -4,6 +4,6 @@ import { defineConfig } from 'drizzle-kit';
 // files into ./drizzle (TECH-DESIGN section 5.3). The files are named as paths, never imported here.
 export default defineConfig({
   dialect: 'postgresql',
-  schema: './src/modules/*/schema/*.ts',
+  schema: ['./src/modules/*/schema/*.ts', './src/db/auth-schema.ts'],
   out: './drizzle',
 });
