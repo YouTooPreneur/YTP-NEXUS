@@ -176,6 +176,20 @@
       "when": 1794659678267,
       "tag": "0024_auth_rights",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1795069310172,
+      "tag": "0025_core_users",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1795069318802,
+      "tag": "0026_core_users_rights",
+      "breakpoints": true
     }
   ]
 }

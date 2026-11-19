@@ -1,6 +1,7 @@
 import type { RouteHooks } from './route.js';
 import { inRequestTransaction } from '../db/database.js';
 import { doubleClickKey } from './idempotency.js';
+import { whoIsAsking } from '../modules/core/signin/session.js';
 
 // The shared steps of every non-public door (TECH-DESIGN section 2), which route.ts runs in order. Each card that
 // builds a step replaces its line here: TASK-0033 session, TASK-0034 idleTimeout, TASK-0037 twoStepGate,
@@ -13,7 +14,7 @@ function notBuilt(step: string): never {
 
 export function createHooks(): RouteHooks {
   return {
-    session: async () => notBuilt('session'),
+    session: async (info) => whoIsAsking(info.req),
     inTransaction: async (_info, run) => inRequestTransaction(run),
     idleTimeout: async () => notBuilt('idleTimeout'),
     twoStepGate: async () => notBuilt('twoStepGate'),
