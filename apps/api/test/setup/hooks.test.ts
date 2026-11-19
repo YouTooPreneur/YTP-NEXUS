@@ -45,11 +45,11 @@ describe('createHooks', () => {
 
   it('refuses at every step not built yet, and lets every feature through until the feature switches exist', async () => {
     const hooks = createHooks();
-    // The who-is-asking step is built by TASK-0033 (its test: apps/api/test/db/who-is-asking.test.ts).
-    for (const step of ['idleTimeout', 'twoStepGate', 'personLimit', 'permission'] as const) {
+    // The who-is-asking step is built by TASK-0033 (its test: apps/api/test/db/who-is-asking.test.ts), and the permission
+    // and hideFields steps by TASK-0031 (apps/api/test/db/permission.test.ts and apps/api/test/setup/hide-fields.test.ts).
+    for (const step of ['idleTimeout', 'twoStepGate', 'personLimit'] as const) {
       await expect(hooks[step](info)).rejects.toThrow(`${step} is not built yet`);
     }
-    expect(() => hooks.hideFields(info, { ok: true })).toThrow('hideFields is not built yet');
     await expect(hooks.featureSwitch(info)).resolves.toBeUndefined();
   });
 

@@ -17,16 +17,24 @@ const sources = (folder) =>
 
 test('the worker reads the settings first, starts the delivery with no listener, and on a signal stops it before the pools', () => {
   const path = 'apps/api/src/worker.ts';
-  assert.deepEqual(imports(path), [
-    "import './load-settings.js';",
+  // Only this card's own parts: later cards add their own imports and stop their own work first (TASK-0021's jobs;
+  // changed by the planner for TASK-0021 on 19 Nov 2026).
+  const lines = imports(path);
+  assert.equal(lines[0], "import './load-settings.js';", 'the settings are read first');
+  for (const line of [
     "import { closePools } from './db/database.js';",
     "import { startDelivery } from './modules/core/events/delivery.js';",
     "import { createLogger } from './shared/logging.js';",
-  ]);
+  ]) {
+    assert.ok(lines.includes(line), line);
+  }
   const worker = read(path);
   assert.ok(worker.includes('const delivery = startDelivery({ listeners: [], logger, everyMs: 5_000 });\n'));
   assert.ok(worker.includes("\nconsole.log('worker started');\n"));
-  assert.ok(worker.includes('async function stop(): Promise<void> {\n  await delivery.stop();\n  await closePools();\n  process.exit(0);\n}\n'));
+  const start = worker.indexOf('async function stop(): Promise<void> {\n');
+  assert.ok(start >= 0, 'one stop function');
+  const stop = worker.slice(start, worker.indexOf('\n}\n', start) + 3);
+  assert.ok(stop.endsWith('\n  await delivery.stop();\n  await closePools();\n  process.exit(0);\n}\n'), 'the delivery stops, then the pools close, then the worker exits');
   assert.ok(worker.includes("process.on('SIGTERM', stop);\nprocess.on('SIGINT', stop);\n"));
   assert.doesNotMatch(worker, /setInterval|deliverPending/);
 });
