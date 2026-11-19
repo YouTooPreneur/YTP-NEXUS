@@ -260,8 +260,6 @@ export interface DefaultRole {
   phoneMenu: string[];
 }
 
-type RuntimeResult = ReturnType<typeof JSON.parse>;
-
 const home = ['home', 'tasks', 'calendar'];
 
 export const DEFAULT_ROLES: DefaultRole[] = [
@@ -340,7 +338,7 @@ function place() {
 
 const companyRoles = (companyId: string) => forCompany(roles.companyId, companyId);
 
-export async function registerPermissions(entries: PermissionEntry[]): Promise<never> {
+export async function registerPermissions(entries: PermissionEntry[]): Promise<void> {
   const { tx } = place();
   for (const entry of entries) {
     await tx
@@ -365,10 +363,9 @@ export async function registerPermissions(entries: PermissionEntry[]): Promise<n
         },
       });
   }
-  return undefined as never;
 }
 
-export async function makeDefaultRoles(): Promise<RuntimeResult> {
+export async function makeDefaultRoles(): Promise<Record<string, string>> {
   const { tx, companyId } = place();
   const existing = await tx
     .select({ key: roles.key, id: roles.id })
@@ -402,12 +399,18 @@ export async function makeDefaultRoles(): Promise<RuntimeResult> {
     });
   }
 
-  return Object.fromEntries(DEFAULT_ROLES.map((role) => [role.key, ids.get(role.key)!]));
+  const result: Record<string, string> = {};
+  for (const role of DEFAULT_ROLES) {
+    const id = ids.get(role.key);
+    if (!id) throw new Error('the default role was not saved');
+    result[role.key] = id;
+  }
+  return result;
 }
 
 type CatalogueGrant = Record<string, PermissionGrant>;
 
-export async function applyDefaultGrants(): Promise<never> {
+export async function applyDefaultGrants(): Promise<number> {
   const { tx, companyId } = place();
   const companyRoleRows = await tx
     .select({ key: roles.key, id: roles.id })
@@ -497,5 +500,5 @@ export async function applyDefaultGrants(): Promise<never> {
     }
   }
 
-  return added as never;
+  return added;
 }
