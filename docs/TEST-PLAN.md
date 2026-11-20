@@ -82,7 +82,8 @@ Each Release 1 requirement's tests are written with the card that builds it (`do
 | NFR-021 | 0016, 0022, 0085, and the first card with an edit door | API tests (a repeated `Idempotency-Key` gets the first answer, 0022; an old version gets 409, built by the first card that edits a record with a `version`); the screens send the key with every change (0085) |
 | NFR-003 | 0020, 0094, 0021 | API tests (0020: an announcement posted in the save's own transaction, kept or undone with it, under its company, never changing what it says; 0094: each delivered once to each listener, a failure retried later and never twice, two workers at once and a restart mid-run sending nothing twice; 0021: jobs) |
 | NFR-001 (same-site check) | 0084 | API tests (a data-changing request from another address is refused) |
-| INT-001, CORE-065, CORE-121 (Release 1 parts) | 0029 | API tests (sign-in emails reach Mailpit in test mode; the email door's health check and retries) |
+| CORE-121, CORE-140 (Release 1 parts: the doors table and a door's status) | 0029 | Database tests (the table, its rights and checks; `recordDoorCheck` kept when the work is undone, one row per company and door, only the cleaned message) |
+| INT-001, CORE-065, CORE-121 (Release 1 parts) | 0099 | API tests (sign-in emails reach Mailpit in test mode; the email door's health check and retries) |
 | CORE-082 (Release 1 part) | 0069 | API tests (5-minute private links, refused without permission, every download logged) |
 
 ## 6. The two-person check (D-152)

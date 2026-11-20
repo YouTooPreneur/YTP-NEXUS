@@ -46,7 +46,8 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0026 | PostgreSQL image with continuous WAL-G archiving | careful | Backups and restore |
 | TASK-0027 | Backup container: nightly base backup, dump and files copy | careful | Backups and restore |
 | TASK-0028 | Timed restore drill | careful | Backups and restore |
-| TASK-0029 | Door standard, doors table and the email door | careful | Sends emails: test mode must hold |
+| TASK-0029 | Doors table and the door status | careful | A database card: the table every outside service records its status in |
+| TASK-0099 | The email door: test mode, the email queue and the reset email | careful | Sends emails: test mode must hold |
 | TASK-0030 | Roles, permission list and default grants | careful | Sign-in, sessions, people or permissions |
 | TASK-0095 | Door answers checked against their contract; signed-in doors | careful | Sign-in and roles |
 | TASK-0096 | Plain return types for the role functions | fast | Types only; nothing a person sees or does changes |

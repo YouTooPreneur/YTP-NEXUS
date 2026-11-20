@@ -146,6 +146,7 @@ YTP-SAAS/                    this folder is the repository root
 │   ├── src/modules          core · crm · contracts · projects · webcare · finance · team · academy
 │   │                        each: MODULE.md · routes (API doors) · handlers · service (window,
 │   │                        rules) · repository (database) · schema (tables) · events · jobs
+│   │                        (Core also has doors: one file per outside service, 6.4, TASK-0029)
 │   │                        (their API tests live in apps/api/test/<area>/; the tests that need
 │   │                        the database live in apps/api/test/db/, TEST-PLAN section 4)
 │   └── drizzle              database changes (SQL), in order, generated and hand-written
@@ -286,6 +287,8 @@ Every outside service goes through a door in Core (D-018). Release 1 builds the 
 
 The backup is not a module door: it runs in its own container (6.5).
 
+- **Built in steps (round 121):** TASK-0029 makes `core.doors` and `recordDoorCheck` (`apps/api/src/modules/core/doors/doors.ts`, the only code that writes a door's row, in a security write of its own, so the result stays when the work is undone); TASK-0099 builds the email door on it (test mode, the email queue with its retries, the reset email); the files door follows with TASK-0069. Every door lives in `modules/core/doors/` and passes `recordDoorCheck` only an error with its own fixed message, never a library's or driver's error or a server reply (section 7).
+
 - **Keys in Release 1** come from the server's environment file (6.6), with a copy in the password manager. `core.doors` keeps each door's status, on/off and non-secret settings. Pasting keys inside Nexus arrives with the Integrations page in Release 16 (CORE-120). No key in code, logs or messages.
 - **Files:** an upload goes through the backend, which checks the permission, the type and the size (25 MB, a setting) and stores it privately; opening a file asks the backend for a link valid 5 minutes, after a permission check, and the download is logged (CORE-082, Release 1 part).
 
@@ -324,7 +327,7 @@ Each place (the builder's computer, the test copy, the live system) has its own 
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | api | Google sign-in |
 | `NEXUS_MASTER_KEY` | api, worker | Encrypts sensitive fields and stored keys |
 | `GMAIL_USER`, `GMAIL_APP_PASSWORD` | worker | The email door (Release 1) |
-| `SMTP_URL` | worker | Development and tests: the email catcher (Mailpit, `smtp://localhost:1025`); TASK-0029 says how the email door chooses between it and Gmail |
+| `SMTP_URL` | worker | Development and tests: the email catcher (Mailpit, `smtp://localhost:1025`); TASK-0099 says how the email door chooses between it and Gmail |
 | `FILES_S3_ENDPOINT`, `FILES_S3_BUCKET`, `FILES_S3_KEY`, `FILES_S3_SECRET` | api | The files door |
 | `BACKUP_S3_ENDPOINT`, `BACKUP_S3_BUCKET`, `BACKUP_S3_KEY`, `BACKUP_S3_SECRET`, `BACKUP_ENCRYPTION_KEY` | backup, postgres | The backup bucket and its encryption (the key can add copies but not delete them early: the bucket lock) |
 | `FILES_BACKUP_S3_KEY`, `FILES_BACKUP_S3_SECRET` | backup | A **read-only** key to the files bucket, for the nightly copy |
