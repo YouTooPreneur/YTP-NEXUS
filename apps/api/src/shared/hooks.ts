@@ -2,6 +2,8 @@ import type { RouteHooks } from './route.js';
 import { inRequestTransaction } from '../db/database.js';
 import { doubleClickKey } from './idempotency.js';
 import { whoIsAsking } from '../modules/core/signin/session.js';
+import { checkPermission } from '../modules/core/service/access.js';
+import { hideFields } from './hide-fields.js';
 
 // The shared steps of every non-public door (TECH-DESIGN section 2), which route.ts runs in order. Each card that
 // builds a step replaces its line here: TASK-0033 session, TASK-0034 idleTimeout, TASK-0037 twoStepGate,
@@ -22,8 +24,8 @@ export function createHooks(): RouteHooks {
     // On purpose, until TASK-0057 builds the feature switches: every feature counts as switched on. The
     // permission check after it still runs.
     featureSwitch: async () => {},
-    permission: async () => notBuilt('permission'),
+    permission: async (info) => checkPermission(info),
     idempotency: async (info, run) => doubleClickKey(info, run),
-    hideFields: () => notBuilt('hideFields'),
+    hideFields: (info, answer) => hideFields(info, answer),
   };
 }
