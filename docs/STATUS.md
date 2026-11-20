@@ -341,3 +341,4 @@ One line per task, newest at the bottom.
 | TASK-0095 | Door answers checked against their contract; signed-in doors | Done | codex | 2026-11-19 |
 | TASK-0096 | Plain return types for the role functions | Done | codex | 2026-11-19 |
 | TASK-0031 | Permission check, scope and hidden fields | To do | — | — |
+| TASK-0098 | get-session counted in the public limit; no session token or lock fields in the sign-in answers | To do | — | — |

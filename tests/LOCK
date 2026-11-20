@@ -113,3 +113,5 @@ TASK-0096  tests/setup/TASK-0096.test.mjs  08db80bcfb8b9e2e70011722d24f380635031
 TASK-0097  apps/api/test/db/jobs-safety.test.ts  356d1856bfb0370c23614bc1ec8c2cc5603e67d1d6a13916dde28e643fa1f746
 TASK-0097  apps/api/test/setup/jobs-options.test.ts  5612c3152c2829daf3dfd8002e5251c1d28edcfcb88a5b03c078b79c3e259083
 TASK-0097  tests/setup/TASK-0097.test.mjs  df09cc50ae789889145214568591c72e2982053fd8adeeb8a8ab76e100881898
+TASK-0098  apps/api/test/db/get-session.test.ts  7b6c63193a6c1f6fc26ba37b43141d60b0faa27d98ca15df9ce4dba2c1e2d9b5
+TASK-0098  tests/setup/TASK-0098.test.mjs  6f9a2f128dfd402871278aa3169e2868c144709a04719b9695d47658e82b5498
