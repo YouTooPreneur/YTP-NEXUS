@@ -1,7 +1,12 @@
 import { defineConfig } from '@playwright/test';
+import { endToEndSettings } from './tests/e2e/e2e-database.js';
 
 export default defineConfig({
   testDir: 'tests/e2e',
+  // Before the tests: a fresh nexus_test with the test person, kept for this run under the database tests' run lock
+  // (TECH-DESIGN section 12 point 56, TASK-0049). Playwright starts the webServers below before this set-up, so the
+  // end-to-end API must never connect to the database as it starts.
+  globalSetup: './tests/e2e/e2e-database.ts',
   reporter: [['list']],
   retries: process.env.CI ? 1 : 0,
   forbidOnly: !!process.env.CI,
@@ -32,7 +37,9 @@ export default defineConfig({
       command: 'pnpm --filter @ytp/api exec tsx src/main.ts',
       url: 'http://localhost:3000/api/health',
       stdout: 'pipe',
-      env: { LOG_LEVEL: 'warn' },
+      // The end-to-end API uses nexus_test with the settings of infra/.env.test, here and on GitHub; they win over
+      // infra/.env (TECH-DESIGN section 12 point 56).
+      env: { ...endToEndSettings(), LOG_LEVEL: 'warn' },
       reuseExistingServer: false,
       timeout: 60_000,
     },

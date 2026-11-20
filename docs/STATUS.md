@@ -346,3 +346,4 @@ One line per task, newest at the bottom.
 | TASK-0098 | get-session counted in the public limit; no session token or lock fields in the sign-in answers | To do | — | — |
 | TASK-0029 | Doors table and the door status | To do | — | — |
 | TASK-0099 | The email door: test mode, the email queue and the reset email | To do | — | — |
+| TASK-0049 | Sign-in screen | To do | — | — |

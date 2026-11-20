@@ -4,7 +4,6 @@
 TASK-0001  tests/setup/TASK-0001.test.mjs  beced44e799d13db0fe537d9b4019869027562b5de217a495a0dd9aebe5bcf4b
 TASK-0002  apps/api/test/setup/health.test.ts  092d5c3b5838c66a65dc8d35a646d1b715e3f84479b33c6eeb54d1f03419e77a
 TASK-0002  tests/setup/TASK-0002.test.mjs  f54fa7b5c94319046ab354a0a743bc085654cd5b376d516293008ccfc6a79c3f
-TASK-0003  apps/web/test/setup/app.test.tsx  3486637cd10a5d58c09c6f6917047c78eac8125adea03102701cc47e931fb23a
 TASK-0003  tests/setup/TASK-0003.test.mjs  19876303ed3f59f0dbc7466848f79ae3ca6ac6433f2f02a8c43326fb97bb879f
 TASK-0004  apps/web/test/setup/cleanup.test.tsx  c6fa190878f9963d3536579f0e06ed1cb649f9eda675ffd2d57c2c956df9a982
 TASK-0004  packages/ui/test/button.test.tsx  452989c510acd3435f6124b4471ab785636725479c83ba3e9f1f679e95f32fba
@@ -49,7 +48,7 @@ TASK-0010  apps/api/test/setup/main.test.ts  c32df44ad4938b2274d582aab210e4fe104
 TASK-0011  apps/api/test/setup/route.test.ts  532e17bc570c94008d4c7f8c552c67756666feefb9ffb3101866d18c04310b45
 TASK-0012  tests/setup/TASK-0012.test.mjs  5c18a4e6c5635f374a656a422a70bf75244088c87389533800a1fb7e1a3eebe9
 TASK-0013  apps/web/test/setup/api-status.test.tsx  9f3df061f4f9ce1faf6f4a603dd537dea043d8825468163b5264b51e4fe295df
-TASK-0013  tests/e2e/smoke.spec.ts  aec67004ae9fc5845b824932caf064403957c8373735ffcc1dea5a635a8e5d03
+TASK-0013  tests/e2e/screens-reach-api.spec.ts  d02dfd38f1ed223d246df5baecd3aa46ad8d4baa9a323fea6f6ed54d1554144b
 TASK-0013  tests/setup/TASK-0013.test.mjs  36511a8ab100984ef9c1a058dd5ce61ea8a6e553fed922f2032caa73d47a2043
 TASK-0014  apps/api/test/db/accounts.test.ts  8c1cb149379003cb577d98a016384af3fce0a1507d15ec4a5ef1cfc53afdfcfb
 TASK-0014  tests/setup/TASK-0014.test.mjs  8eee68159604e71bf8e1979c85862afc8d2e0936e6772f8eb6b9c8b1a8cc5499
@@ -91,6 +90,13 @@ TASK-0032  tests/setup/TASK-0032.test.mjs  f8b17b66893a70fde5675c9eff1d06c5a592e
 TASK-0033  apps/api/test/db/users.test.ts  aa5063006daa2b6e4a264e5e5a418c7912badaa781b2586cd17f6dda942747e5
 TASK-0033  apps/api/test/db/who-is-asking.test.ts  a4624b3d2eb3d6e4b48b9c8e6c2c865bb41383b1fef4e4d4e0b48c9e269a89f2
 TASK-0033  tests/setup/TASK-0033.test.mjs  32a2cb9c34efab3d3710c4848e266536c2d238bf3a8ffd94e40e07bb7ffaba65
+TASK-0049  apps/web/test/core/google.test.tsx  a28583e3802782443f12d7209c0526d1d21a5be417adc14614bd069ded974cd3
+TASK-0049  apps/web/test/core/session.test.tsx  b61695eb9a3a214af44c0c9d59abbafd065367f87c49af56b720cadf981f5b93
+TASK-0049  apps/web/test/core/sign-in.test.tsx  6eb369db5069d208ea0efd0b75ff3dab06900821d74e33f033a050b0d564f00a
+TASK-0049  apps/web/test/setup/app.test.tsx  6bd9fa32a8860f1206582d4d43c410aa35648e37c12d003964f4526be8e19868
+TASK-0049  tests/e2e/sign-in.spec.ts  8431f53df10c5c2f9019157cc81090211eddab859af7ef4bb5e2cc1125338e4f
+TASK-0049  tests/e2e/smoke.spec.ts  7024fcbd4cec0bf9b690ce0a8cf6c99cc52e025a4a170d55006b5116f2a4bbc6
+TASK-0049  tests/setup/TASK-0049.test.mjs  683a18a054ec71d4ff0b3f829ecdde000f78e234c1b4508ff1d64f994e2ce817
 TASK-0084  apps/api/test/setup/same-site.test.ts  7b45de81e062d19d45de1a52f43a2c21c3cbd9a890c16cb3e87cd48d6d62d00c
 TASK-0084  tests/setup/TASK-0084.test.mjs  cfe1da128c2a0bf54d75c0dd0266b3cef3e520a9570aa039b808d168aad797bf
 TASK-0085  apps/web/test/requests/nexus-fetch.test.ts  1b5520a80c22db92976a99d00c71b2191f4fef89fb02d6f9cca22b6775047d64

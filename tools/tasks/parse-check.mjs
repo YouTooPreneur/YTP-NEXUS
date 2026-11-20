@@ -7,7 +7,12 @@ const ts = require('typescript');
 let bad = 0;
 for (const file of process.argv.slice(2)) {
   const text = readFileSync(file, 'utf8');
-  const kind = file.endsWith('.mjs') || file.endsWith('.js') ? ts.ScriptKind.JS : ts.ScriptKind.TS;
+  // .tsx files hold JSX (the screen tests, from TASK-0049): parsed as TSX, never as plain TypeScript.
+  const kind = /\.(mjs|cjs|js)$/.test(file)
+    ? ts.ScriptKind.JS
+    : file.endsWith('.tsx')
+      ? ts.ScriptKind.TSX
+      : ts.ScriptKind.TS;
   const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true, kind);
   const problems = source.parseDiagnostics ?? [];
   if (problems.length === 0) {

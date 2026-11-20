@@ -169,6 +169,17 @@ Small things the helpers had to decide while changing the screens to match the a
 | 105 | Client chatbot (languages) | The chatbot replies in the language the person writes in, even Hindi, Malayalam or Telugu, which are not open yet on screens and messages (choice 11). | Reply only in the open languages (English and Tamil), otherwise English | |
 | 106 | AI usage and limits (top-ups) | A top-up adds to the current month only; on the 1st the budget starts again from the amount you typed (choice 20). | Unused top-up money carries into the next month | |
 
+## From the sign-in screen (TASK-0049, 20 Nov 2026)
+
+Small things decided while writing the sign-in screen. Each one already works the way "Now" says. Blank = Keep.
+
+| # | Where | Now | Other option | Your answer |
+|---|---|---|---|---|
+| 107 | Sign-in screen (messages) | Wrong password: "Wrong email or password. Try again, or use Forgot password." · Bad email: "Enter a valid email address." · Disabled or not set up: "This account can't sign in. Ask the owner to check it in Users and roles." · Locked: "Too many wrong passwords. This account is locked for 15 minutes, and the owner has been told." · Too many tries: the API's own "Too many tries. Please try again in N seconds." · Anything else: "Something went wrong. Please try again." · No connection: "Nexus can't be reached. Check your connection and try again." · Google not on the list: the page "This account can't sign in yet". · Google not turned on for the person, Google cancelled, Google not finished: a short message each | Your own wording for any of them | |
+| 108 | Sign-in screen (Keep me signed in) | Ticked when the page opens; unticked, the session ends after 1 day at most and is never renewed | Unticked when the page opens, or no checkbox | |
+| 109 | Sign-in screen (language) | No English/தமிழ் switch until a second language opens (only English is open) | Show the switch now, with only English | |
+| 110 | Sign-in screen ("This account can't sign in yet") | The page shows no email address (Google gives none back) and has only "Try another Google account" | Add a link back to signing in with email and password | |
+
 ## Fixed in the screens instead of asked
 
 While collecting these choices, 7 screens were found to go against a rule already decided. They were corrected on 21 Oct 2026, so there is nothing to answer:
