@@ -337,6 +337,7 @@ One line per task, newest at the bottom.
 | TASK-0032 | Better Auth: Google, password and the open sign-in doors | Done | claude | 2026-11-14 |
 | TASK-0033 | People and preferences tables; the "who is asking" step | Done | claude | 2026-11-19 |
 | TASK-0021 | Job queue in the worker, with the company per job | Done | antigravity | 2026-11-19 |
+| TASK-0097 | The job queue's pg-boss: errors logged, nothing made at run time, upkeep in the worker only | To do | — | — |
 | TASK-0095 | Door answers checked against their contract; signed-in doors | Done | codex | 2026-11-19 |
 | TASK-0096 | Plain return types for the role functions | Done | codex | 2026-11-19 |
 | TASK-0031 | Permission check, scope and hidden fields | To do | — | — |

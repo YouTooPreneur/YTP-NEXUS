@@ -50,6 +50,7 @@ Every Release 1 card, in build order, with its lane. **The owner can switch any 
 | TASK-0030 | Roles, permission list and default grants | careful | Sign-in, sessions, people or permissions |
 | TASK-0095 | Door answers checked against their contract; signed-in doors | careful | Sign-in and roles |
 | TASK-0096 | Plain return types for the role functions | fast | Types only; nothing a person sees or does changes |
+| TASK-0097 | The job queue's pg-boss: errors logged, nothing made at run time, upkeep in the worker only | fast | No screen, no door; one small file (a follow-up of TASK-0021) |
 | TASK-0031 | Permission check, scope and hidden fields | careful | Sign-in, sessions, people or permissions |
 | TASK-0032 | Better Auth: Google, password and the open sign-in doors | careful | Sign-in, sessions, people or permissions |
 | TASK-0033 | People and preferences tables; the "who is asking" step | careful | Sign-in, sessions, people or permissions |

@@ -110,3 +110,6 @@ TASK-0094  tests/setup/TASK-0094.test.mjs  69db96c78b0d250a3459fae71918f87d689d1
 TASK-0095  apps/api/test/setup/door-answers.test.ts  08dd6513ad23de968af355a22d4c4069fd876cb5576a8703c0644f3b6f75dcaf
 TASK-0095  tests/setup/TASK-0095.test.mjs  6acfdd7713211e447f21d98f505ba51df34b9bbef69d60c3ddbc2b05f203a714
 TASK-0096  tests/setup/TASK-0096.test.mjs  08db80bcfb8b9e2e70011722d24f38063503195a092f3f34871177d01e08ae98
+TASK-0097  apps/api/test/db/jobs-safety.test.ts  356d1856bfb0370c23614bc1ec8c2cc5603e67d1d6a13916dde28e643fa1f746
+TASK-0097  apps/api/test/setup/jobs-options.test.ts  5612c3152c2829daf3dfd8002e5251c1d28edcfcb88a5b03c078b79c3e259083
+TASK-0097  tests/setup/TASK-0097.test.mjs  df09cc50ae789889145214568591c72e2982053fd8adeeb8a8ab76e100881898
