@@ -540,20 +540,31 @@ describe('startDelivery (the worker’s loop)', () => {
   });
 
   it('stop() between rounds ends the wait and leaves no timer behind', { timeout: 30_000 }, async () => {
+    // Changed on 20 Nov 2026 (seen flaky in a trial build): an exact count of every timer of the process could change
+    // when an earlier test's idle-connection timer ended, so it neither held nor reliably caught a wait left running.
+    // Now stop() must clear the very wait the loop set, and the timers, counted with the pools closed, never grow.
+    await closePools();
     const before = timers();
     const waits = vi.spyOn(globalThis, 'setTimeout');
+    const clears = vi.spyOn(globalThis, 'clearTimeout');
     const id = await post(A);
     const delivery = startDelivery({ listeners: [listener('core.probe-first')], logger, everyMs: 60_000 });
+    let wait: unknown;
     try {
       await waitFor(async () => (await announcement(A, id)).published_at !== null);
       // The first round has ended once the loop has set its wait.
       await waitFor(() => waits.mock.calls.some(([, ms]) => ms === 60_000));
+      wait = waits.mock.results[waits.mock.calls.findIndex(([, ms]) => ms === 60_000)]?.value;
     } finally {
       await delivery.stop();
       waits.mockRestore();
     }
+    const cleared = clears.mock.calls.some(([timer]) => timer === wait);
+    clears.mockRestore();
+    expect(wait).toBeDefined();
+    expect(cleared, 'stop() clears the wait the loop set').toBe(true);
     await closePools();
-    expect(timers()).toBe(before);
+    expect(timers()).toBeLessThanOrEqual(before);
   });
 
   it('logs a failed round with its error, and the loop goes on', { timeout: 30_000 }, async () => {

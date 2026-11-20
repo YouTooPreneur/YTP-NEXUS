@@ -107,7 +107,7 @@ TASK-0092  apps/api/test/db/companies.test.ts  ffd89fbf997a71724ce4898850210d853
 TASK-0092  apps/api/test/db/setup-errors.test.ts  2bee310b85dbb208fd02a7331c504c4ecfbde0e673d59ff35273831492a955fb
 TASK-0092  tests/setup/TASK-0092.test.mjs  35b6cc32cc779fd71738cdae261cb2cf3cbaf8ce38aaba9db7638aa5a56d8f9e
 TASK-0093  apps/api/test/db/activity-log-guards.test.ts  07995d8ff4358b512c25d236be09cfd8987eedae5f7ba63a3e219521366d6555
-TASK-0094  apps/api/test/db/delivery.test.ts  cf59cc1cf6fc27f7c16d0027410b227dc8e38eecb8db4dbaad72431885d251ca
+TASK-0094  apps/api/test/db/delivery.test.ts  619cc3281c0fd1528ef9d13faf0e18a0658ea2fc46c0427401b683e81af19cb2
 TASK-0094  tests/setup/TASK-0094.test.mjs  69db96c78b0d250a3459fae71918f87d689d1001b695f6270360ae878e020d91
 TASK-0095  apps/api/test/setup/door-answers.test.ts  08dd6513ad23de968af355a22d4c4069fd876cb5576a8703c0644f3b6f75dcaf
 TASK-0095  tests/setup/TASK-0095.test.mjs  6acfdd7713211e447f21d98f505ba51df34b9bbef69d60c3ddbc2b05f203a714
