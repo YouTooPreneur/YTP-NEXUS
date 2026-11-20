@@ -123,6 +123,22 @@ describe('hideable fields the client never counts on', () => {
     expect(hideableProblems(make(invoice, { '[].total': 'finance.invoice.total' }))).toEqual(['testHide: [].total is not in the answer']);
   });
 
+  // Added on 20 Nov 2026 after the independent check of TASK-0031 (plan gaps 1 and 2): an object's catchall and a
+  // .default() parent end the walk, and an object is followed only by its own keys, never by one it inherits.
+  it('ends the walk at an object’s catchall and at a .default() parent, and follows an object only by its own keys', () => {
+    const catchall = z.object({ months: z.object({}).catchall(z.object({ total: z.number().optional() })) });
+    expect(hideableProblems(make(catchall, { 'months.april.total': 'finance.invoice.total' }))).toEqual(['testHide: months.april.total is not in the answer']);
+    const withDefault = z.object({ client: z.object({ bank: z.string().optional() }).default({}) });
+    expect(hideableProblems(make(withDefault, { 'client.bank': 'crm.client.bank' }))).toEqual(['testHide: client.bank is not in the answer']);
+    expect(
+      hideableProblems(make(invoice, { constructor: 'finance.invoice.total', toString: 'finance.invoice.note', 'client.hasOwnProperty': 'crm.client.bank' })),
+    ).toEqual([
+      'testHide: constructor is not in the answer',
+      'testHide: toString is not in the answer',
+      'testHide: client.hasOwnProperty is not in the answer',
+    ]);
+  });
+
   it('refuses a name that is not <module>.<record type>.<field>', () => {
     expect(
       hideableProblems(

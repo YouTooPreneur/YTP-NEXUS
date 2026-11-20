@@ -55,6 +55,10 @@ test('the permission check reads, never locks, and answers only with the agreed 
   }
   assert.doesNotMatch(body, /\.for\(|FOR (UPDATE|SHARE|NO KEY|KEY)|pg_advisory|\.transaction\(|withCompany|securityWrite|inCompanyTransaction/);
   assert.doesNotMatch(body, /\b(logger|console)\b|writeActivity|writeSecurity|\.insert\(|\.update\(|\.delete\(/);
+  // The hidden names are sorted by JavaScript, never left to the database's order, which depends on the server's
+  // collation (added on 20 Nov 2026 after the independent check of TASK-0031, plan gap 4).
+  assert.match(body, /\.sort\(\)/, 'the hidden names are sorted with .sort()');
+  assert.doesNotMatch(body, /orderBy\([^)]*roleHiddenFields|ORDER BY[^;`]*\bfield\b/i, 'never the database’s order for the hidden names');
 });
 
 test('hideFields is a plain synchronous function', () => {

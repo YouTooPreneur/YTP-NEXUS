@@ -252,7 +252,10 @@ describe('accessFor: Core’s one permission check', () => {
 
   it('refuses 403 not_allowed for a person whose role is deleted', async () => {
     await asCompany(A, 'UPDATE core.roles SET deleted_at = now() WHERE id = $1', [roleIn(rolesA, 'staff')]);
-    expect(await refusal(check(A, people.staffA, 'probe.invoices', 'view'))).toMatchObject({ status: 403, code: 'not_allowed' });
+    // The message too (added on 20 Nov 2026 after the independent check of TASK-0031, plan gap 3).
+    const refused = await refusal(check(A, people.staffA, 'probe.invoices', 'view'));
+    expect(refused).toBeInstanceOf(AppError);
+    expect(refused).toMatchObject({ status: 403, code: 'not_allowed', message: 'You are not allowed to do this.' });
   });
 
   it('reads the grants afresh every time: a change applies to the very next request', async () => {

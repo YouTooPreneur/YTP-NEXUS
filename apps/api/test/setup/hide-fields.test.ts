@@ -89,6 +89,24 @@ describe('hideFields', () => {
     expect(given).toStrictEqual(answer());
   });
 
+  // Added on 20 Nov 2026 after the independent check of TASK-0031 (plan gap 5): a copy only along the paths it changes.
+  it('copies only along the paths it changes: unchanged parts keep their identity, and nothing is copied when no hidden name applies', () => {
+    const given = answer();
+    expect(as({ scope: 'all', hiddenFields: ['hr.person.pan'] }, () => hideFields(info(HIDEABLE), given))).toBe(given);
+    expect(as({ scope: 'all', hiddenFields: [] }, () => hideFields(info(HIDEABLE), given))).toBe(given);
+    const top = as({ scope: 'own', hiddenFields: ['team.person.salary'] }, () => hideFields(info(HIDEABLE), given)) as ReturnType<typeof answer>;
+    expect(top).not.toBe(given);
+    expect(top).not.toHaveProperty('salary');
+    expect(top.invoice).toBe(given.invoice);
+    expect(top.items).toBe(given.items);
+    const deep = as({ scope: 'own', hiddenFields: ['crm.client.bank'] }, () => hideFields(info(HIDEABLE), given)) as ReturnType<typeof answer>;
+    expect(deep.invoice).not.toBe(given.invoice);
+    expect(deep.invoice.client).not.toBe(given.invoice.client);
+    expect(deep.invoice.client).not.toHaveProperty('bank');
+    expect(deep.items).toBe(given.items);
+    expect(given.invoice.client).toHaveProperty('bank', 'HDFC 1234');
+  });
+
   it('removes from each item of a list answer, and skips a path whose parent is missing, null or not what the path expects', () => {
     const list = info({ '[].total': 'finance.invoice.total', '[].client.bank': 'crm.client.bank' });
     expect(
