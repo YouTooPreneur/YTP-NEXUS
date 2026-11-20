@@ -393,13 +393,15 @@ As built (TASK-0020): `core.outbox` has `id` from `core.uuid_v7()`, `company_id`
 | Field | Type | Notes |
 |---|---|---|
 | company_id + key | PK | `email`, `files` |
-| provider | text | `gmail`, `r2`, `seaweedfs` |
+| provider | text | `gmail`, `smtp` (Mailpit or another SMTP server, in development and tests), `r2`, `seaweedfs` |
 | status | enum not_connected, connected, error | |
 | is_on | boolean | |
 | settings | jsonb | Not secret: sender name, bucket name… |
-| secret_enc | bytea | **Unused in Release 1:** keys come from the environment file (TECH-DESIGN 6.6). Used from Release 16, when keys are pasted on the Integrations page (CORE-120) |
+| secret_enc | bytea | **Not made in Release 1:** keys come from the environment file (TECH-DESIGN 6.6). Added with Release 16's Integrations card, when keys are pasted on the Integrations page (CORE-120) |
 | last_check_at, last_check_ok, last_error | | Shown on Monitoring |
-| updated_at, updated_by | | Logged |
+| updated_at, updated_by | | `updated_by` is a person of the same company, or empty for automatic work (a door's check) |
+
+As built (TASK-0029): keyed by (`company_id`, `key`), with no `id`; `company_id` required and linked to `core.companies` (`ON DELETE RESTRICT`); `key` and `provider` are text with a check each (`doors_key_check`: `email`, `files`; `doors_provider_check`: `gmail`, `smtp`, `r2`, `seaweedfs`), the same lists as `DOOR_KEYS` and `DOOR_PROVIDERS` in `apps/api/src/modules/core/doors/doors.ts`; `status` is the database type `core.door_status`, default `not_connected`; `is_on` defaults to true and `settings` to `{}`; `last_check_at`, `last_check_ok` and `last_error` are empty until the first check; `updated_at` defaults to the time of the write, and `updated_by` is linked (`company_id`, `updated_by`) → `core.users (company_id, id)`, `ON DELETE RESTRICT`; no `secret_enc` column; the company row rule. The app may read and add rows and change only `provider`, `status`, `settings`, `last_check_at`, `last_check_ok`, `last_error`, `updated_at` and `updated_by`: never a row's company, door or `is_on` (no door is switched off in Release 1), and it never deletes a row. Rows are added and changed only by `recordDoorCheck` (TASK-0029), in a security write of its own: the status, the database's time of the check, whether it passed and, for an error, only `safeErrorMessage(error)` without NUL characters and cut to 2000 characters; `updated_by` empty, and no activity-log entry (a check is automatic work). The app's INSERT right covers every column, but only `recordDoorCheck` adds rows and it never sets `is_on`, so a row is always added on; switching `is_on` (and writing `settings`) comes with a later card that grants it and writes the activity log.
 
 **`core.error_events`** — recent errors for Monitoring (CORE-140, NFR-012)
 

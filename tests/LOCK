@@ -78,6 +78,8 @@ TASK-0024  apps/api/test/db/settings.test.ts  83a8d3280d187dee41f01f59ad120e7ba5
 TASK-0024  tests/setup/TASK-0024.test.mjs  303e1b4c2c62015bca5eabb0a03bde6fb872858156ee2a22ee86a5e9832527ea
 TASK-0025  apps/api/test/db/erasure.test.ts  847ca183e007ba7cde29aa3d9d732ce0777c5866ad26d64a68ce826fc48d7c3b
 TASK-0025  tests/setup/TASK-0025.test.mjs  9b458cb61044e1589befe446244300e37610b16c39a01ecff19dc15b3caa46bf
+TASK-0029  apps/api/test/db/doors.test.ts  afd9c800785f7943b7dfe3a7ba07bb067993cca78b332d031ed608655678ac35
+TASK-0029  tests/setup/TASK-0029.test.mjs  9bdeebc12423183451675088ab96fcb122623c21094246f496dd8eb108e99684
 TASK-0030  apps/api/test/db/roles.test.ts  e57f6d019c0603e4861dcc604f0d4e3e65bfd424bf1774dbd12cde6bd1fc8f51
 TASK-0030  tests/setup/TASK-0030.test.mjs  77ccf493749449f94adf200df1d45203e6b694e5d4c872bc8f96177a8d1879be
 TASK-0031  apps/api/test/db/permission.test.ts  bd258be4238a03be78a0a62679b3592c05f2a35a0f354a0849b515fa4cb042ae
