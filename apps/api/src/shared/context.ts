@@ -3,6 +3,14 @@ import { randomUUID } from 'node:crypto';
 import type { RequestHandler } from 'express';
 import type { Transaction } from '../db/company.js';
 
+// What the permission step found for the door (TASK-0031): the scope of the records the person may reach and the
+// names of the fields their role does not see, declared here so the request context imports nothing more.
+export type AccessScope = 'own' | 'team' | 'all';
+export interface Access {
+  scope: AccessScope;
+  hiddenFields: readonly string[];
+}
+
 export interface RequestContext {
   requestId: string;
   background: boolean;
@@ -10,6 +18,8 @@ export interface RequestContext {
   companyId?: string;
   // The signed-in session's ID (TASK-0033), never its token: the session facts (TASK-0034) are kept under it.
   sessionId?: string;
+  // The permission step's answer (TASK-0031); absent on public and signed-in-only doors.
+  access?: Access;
   // The request's transaction while it runs (TASK-0016); the repositories read it here.
   tx?: Transaction;
   // Where the request came from (TASK-0018): the security log keeps them with each entry.

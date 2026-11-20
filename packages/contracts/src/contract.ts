@@ -15,8 +15,15 @@ export interface Contract {
   query?: ZodObject<ZodRawShape>;
   body?: ZodType;
   response: ZodType;
-  /** Fields of the response that a role may hide (TECH-DESIGN 6.2). */
-  hideableFields?: readonly string[];
+  /**
+   * Fields of the answer that a role may hide (TECH-DESIGN 6.2): each answer path maps to the hidden field's name,
+   * `<module>.<record type>.<field>`: the Nexus module, the record type as the activity log writes it (singular, for
+   * example `invoice_line`) and the field's name in the record's contract, for example `finance.invoice.total`; the
+   * module's permission list offers exactly these names. A path has dots between keys; `[]` after a key means each item
+   * of that list, and a path starting `[].` means each item of an answer that is a list. Every such field is
+   * `.optional()` in the answer.
+   */
+  hideableFields?: Readonly<Record<string, string>>;
 }
 
 export function defineContract<const C extends Contract>(contract: C): C {
